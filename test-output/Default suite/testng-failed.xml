@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="crm.BaseTest">
+      <class name="crm.Login">
         <methods>
-          <include name="f"/>
-          <include name="beforesuite"/>
+          <include name="beforeMethod"/>
+          <include name="Login1"/>
         </methods>
-      </class> <!-- crm.BaseTest -->
+      </class> <!-- crm.Login -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

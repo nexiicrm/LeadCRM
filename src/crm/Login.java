@@ -1,7 +1,6 @@
 package crm;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import jxl.Sheet;
@@ -17,24 +16,24 @@ import org.testng.annotations.BeforeMethod;
 
 public class Login {
 	//Instantiating WebDriver
-	WebDriver driver;
+	public WebDriver driver;
   @Test
-  public Login() throws IOException, Exception{
+  public void Login_CRM() throws Exception{
 	  /*
 	   * Checking login button is present in home page
 	   */
+	  
 	  if(driver.findElement(By.cssSelector("p.login.button")).findElement(By.tagName("input")).getAttribute("value").equals("Login")){
 		  System.out.println("Login button is available in Lead CRM home page");
 	  }else{
 		  Assert.fail("Login Button is not present");
 	  }
 	
-	  System.out.println("\n");
 	  /*
 	   * Getting username and password from spreadsheet 1 and trying to log in
 	   */
 	  System.out.println("Trying to login with different username and passwords from excel sheets");
-	  File fp = new File(System.getProperty("user.dir") +"\\src\\LoginCredentials.xls");
+	  File fp = new File(System.getProperty("user.dir") +"\\src\\testData\\TestData.xls");
 	  Workbook wb = Workbook.getWorkbook(fp);
 	  Sheet sh = wb.getSheet(0);
 	  int rows = sh.getRows();
@@ -58,6 +57,7 @@ public class Login {
 	  		  
 	  		  //clicking forgot password link
 			  driver.findElement(By.id("wrapper")).findElement(By.tagName("a")).click();
+			  Thread.sleep(1000);
 			  
 			  //Checking for submit button in forgot password link
 			  if(driver.findElement(By.cssSelector("p.login.button")).findElement(By.tagName("input")).getAttribute("value").equals("Submit")){
@@ -65,10 +65,11 @@ public class Login {
 			  }else{
 				  Assert.fail("Submit Button is not present in forgot password link");
 			  }
+	
 			  
-				 /*
-		  		 * Getting usernames from spreadsheet 2 and trying to retreive password
-		  		 */
+		/*
+		 * Getting usernames from spreadsheet 2 and trying to retreive password
+		*/
 			  Sheet sh1 = wb.getSheet(1);
 			  int rows1 = sh1.getRows();
 			  int j=0;
@@ -105,6 +106,9 @@ public class Login {
 	  }
 	  
   }
+  
+  
+  
   @BeforeMethod
   
   /* 

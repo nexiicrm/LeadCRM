@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="10678" started-at="2014-10-01T08:43:06Z" finished-at="2014-10-01T08:43:17Z">
+  <suite name="Default suite" duration-ms="64596" started-at="2014-10-14T06:39:41Z" finished-at="2014-10-14T06:40:45Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="10678" started-at="2014-10-01T08:43:06Z" finished-at="2014-10-01T08:43:17Z">
-      <class name="crm.Admin">
-        <test-method status="PASS" signature="beforesuite()[pri:0, instance:crm.Admin@1a65a18]" name="beforesuite" is-config="true" duration-ms="224" started-at="2014-10-01T14:13:06Z" finished-at="2014-10-01T14:13:06Z">
+    <test name="Default test" duration-ms="64596" started-at="2014-10-14T06:39:41Z" finished-at="2014-10-14T06:40:45Z">
+      <class name="crm.Login">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:crm.Login@d57bcb]" name="beforeMethod" is-config="true" duration-ms="12572" started-at="2014-10-14T12:09:41Z" finished-at="2014-10-14T12:09:53Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- beforesuite -->
-        <test-method status="PASS" signature="f()[pri:0, instance:crm.Admin@1a65a18]" name="f" duration-ms="10664" started-at="2014-10-01T14:13:06Z" finished-at="2014-10-01T14:13:17Z">
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="Login1()[pri:0, instance:crm.Login@d57bcb]" name="Login1" duration-ms="52001" started-at="2014-10-14T12:09:53Z" finished-at="2014-10-14T12:10:45Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- f -->
-      </class> <!-- crm.Admin -->
+        </test-method> <!-- Login1 -->
+      </class> <!-- crm.Login -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
