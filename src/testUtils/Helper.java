@@ -80,13 +80,13 @@ public class Helper extends BaseTest
 	
 	public void login(String username, String password) throws Exception  // To Login 
 	{
-		Thread.sleep(2000);
+		sleep(2);
 		driver.findElement(By.id("username")).sendKeys(username);
-		Thread.sleep(1000);
+		sleep(1);
 		driver.findElement(By.id("password")).sendKeys(password);
-		Thread.sleep(1000);
+		sleep(1);
 		driver.findElement(By.cssSelector("p.login.button")).findElement(By.tagName("input")).submit();
-		Thread.sleep(1000);
+		sleep(1);
 		
 	}
 
