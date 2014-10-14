@@ -1,7 +1,9 @@
 package testUtils;
 
 import java.io.File;
+
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -74,6 +76,18 @@ public class Helper extends BaseTest
 		{
 			
 		}
+	}
+	
+	public void login(String username, String password) throws Exception  // To Login 
+	{
+		Thread.sleep(2000);
+		driver.findElement(By.id("username")).sendKeys(username);
+		Thread.sleep(1000);
+		driver.findElement(By.id("password")).sendKeys(password);
+		Thread.sleep(1000);
+		driver.findElement(By.cssSelector("p.login.button")).findElement(By.tagName("input")).submit();
+		Thread.sleep(1000);
+		
 	}
 
 }
