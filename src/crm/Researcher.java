@@ -2,7 +2,9 @@ package crm;
 
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -136,8 +138,8 @@ public class Researcher extends Helper{
 	  
 	  //===Researcher is 3rdsheet in excels=====//
 	  
-	  int columns = sh.getColumns();
-		int rows = sh.getRows();
+	  int columns = sh3.getColumns();
+		int rows = sh3.getRows();
 		String data;
 		int col;
 	  
@@ -201,10 +203,10 @@ public class Researcher extends Helper{
 			else{
 				System.out.println("Old password container is avilable");
 			}
-			data = sh.getCell(col, row).getContents();
+			data = sh3.getCell(col, row).getContents();
 			System.out.println(data);
 			System.out.println("*************************");
-			driver.findElement(By.id("oldPassword")).sendKeys(sh.getCell(col,row).getContents());
+			driver.findElement(By.id("oldPassword")).sendKeys(sh3.getCell(col,row).getContents());
 			System.out.println("*************************");
 			String s1 = driver.findElement(By.id("oldPassword")).getAttribute("value");
 			col++;
@@ -221,10 +223,10 @@ public class Researcher extends Helper{
 			else{
 				System.out.println("New password container is avilable");
 			}
-			data = sh.getCell(col, row).getContents();
+			data = sh3.getCell(col, row).getContents();
 			System.out.println(data);
 			System.out.println("*************************");
-			driver.findElement(By.id("newPassword")).sendKeys(sh.getCell(col,row).getContents());
+			driver.findElement(By.id("newPassword")).sendKeys(sh3.getCell(col,row).getContents());
 			System.out.println("*************************");
 			String s2 = driver.findElement(By.id("newPassword")).getAttribute("value");
 			col++;
@@ -241,10 +243,10 @@ public class Researcher extends Helper{
 			else{
 				System.out.println("Confirm password container is avilable");
 			}
-			data = sh.getCell(col, row).getContents();
+			data = sh3.getCell(col, row).getContents();
 			System.out.println(data);
 			System.out.println("*************************");
-			driver.findElement(By.id("confirmPassword")).sendKeys(sh.getCell(col,row).getContents());
+			driver.findElement(By.id("confirmPassword")).sendKeys(sh3.getCell(col,row).getContents());
 			System.out.println("*************************");
 			String s3 = driver.findElement(By.id("confirmPassword")).getAttribute("value");
 			col++;
@@ -299,6 +301,110 @@ public class Researcher extends Helper{
 		
   }
   
+  
+  ////////////
+  
+  @Test
+  public void f3() throws Exception {
+	//Login
+		
+			help.login(config.getProperty("Researcherusername"), config.getProperty("Researcherpassword"));
+			String old = config.getProperty("Researcherpassword");
+			System.out.println(old);
+			
+			
+			//======//
+			
+			
+		  
+		  List<WebElement> list1 = driver.findElement(By.id("tree_menu")).findElements(By.tagName("li"));
+		  
+			System.out.println("Number Elements in List1 : " + list1.size());
+			
+			System.out.println(" ");
+			
+			System.out.println("Elements in List1 are :");
+			
+			System.out.println("================================================");
+			
+			list1.get(0).click();
+			
+			//======= selecting MyAccount========//
+			
+			List<WebElement> li1 = driver.findElement(By.id("tree_menu")).findElements(By.className(" symbol-close"));
+			
+			System.out.println(li1.size());
+			
+			System.out.println(li1.get(2).getText());
+			
+			li1.get(1).click();
+			
+			List<WebElement> li2 = driver.findElement(By.className("  open")).findElements(By.tagName("a"));
+			
+			System.out.println("Lead uploads having :"+li2.size()+":sub element");
+			
+			//======Clicking Lead upload sub links====//
+			
+			System.out.println("sub element name:"+li2.get(0).getText());
+			
+			li2.get(0).click();
+			//System.out.println("hai");
+			 // get window handles tells us how many windows are there in system
+		       Set<String> Windowids = driver.getWindowHandles(); 
+		       Iterator<String> iter = Windowids.iterator();
+		       String MainWindow = iter.next();
+		       //System.out.println(MainWindow);
+		       
+		       //popup window
+		       String TabbedWindow = iter.next();
+		      // System.out.println(TabbedWindow);
+		       
+		       
+		       driver.switchTo().window(TabbedWindow);
+		       System.out.println(driver.getTitle());
+		       //=======Getting name of selecting fields in required field======//
+		      System.out.println("In required field we have::"+driver.findElement(By.tagName("legend")).getText());
+		       help.sleep(4);
+		     //  List<WebElement> li = driver.findElement(By.id("fields_to_get")).findElement(By.tagName("tbody")).findElement(By.tagName("tr"))
+					//	.findElement(By.tagName("td")).findElements(By.tagName("input"));
+		    
+		    List<WebElement> li = driver.findElement(By.id("ui-accordion-accordion-panel-0")).findElements(By.tagName("input"));   
+		    //System.out.println(li.get(0).getText());
+			help.sleep(4);
+			System.out.println("Requiredfield is having these many check boxes:"+li.size());
+			System.out.println("All check box names are displaying:");
+			System.out.println(driver.findElement(By.id("fields_to_get")).getText());
+			
+			//===============Selecting checkboxes  randomly===========//
+			
+			int i = li.size();
+			
+			System.out.println(i);
+			
+			int j = help.random(i);
+			
+			System.out.println(j);
+			
+			System.out.println(li.get(j).getText());
+			
+			li.get(j).click();
+			
+			driver.findElement(By.id("registerbutton")).click();
+			
+			help.sleep(3);
+			
+			//======displaing matching data when chicking check boxes======//
+			
+			List<WebElement> li5 = driver.findElement(By.id("example")).findElements(By.tagName("tr"));
+			//System.out.println(driver.findElement(By.id("example")).getText());
+			
+			System.out.println("This is matching Results of check boxes");
+			System.out.println(li5.size());
+					
+			System.out.println(driver.findElement(By.id("example")).getText());
+			
+			
+  }
 
   
 
