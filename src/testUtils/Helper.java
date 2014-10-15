@@ -1,11 +1,14 @@
 package testUtils;
 
+import java.util.List;
+import java.util.Random;
 import java.io.File;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -86,8 +89,37 @@ public class Helper extends BaseTest
 		driver.findElement(By.id("password")).sendKeys(password);
 		sleep(1);
 		driver.findElement(By.cssSelector("p.login.button")).findElement(By.tagName("input")).submit();
-		sleep(1);
-		
+		sleep(1);	
 	}
+	
+	public void expand()   // To expand side tree menu
+	{
+	  List<WebElement> exp = driver.findElement(By.className("menu")).findElements(By.className("close"));
+	  sleep(1);
+	  for (int i = 0; i < exp.size(); i++)
+	  { 
+		exp.get(i).findElement(By.className("    symbol-close")).click();
+		sleep(1);
+	  }
+	}
+	
+	public void collapse()  // To collapse side tree menu
+	{
+	  List<WebElement> coll = driver.findElement(By.className("menu")).findElements(By.className("open"));
+	  sleep(1);
+	  for (int i = 0; i < coll.size(); i++)
+	  {
+		coll.get(i).findElement(By.className("     symbol-open")).click();
+		sleep(1);
+	  }   
+    }
+	
+	public int random(int size)
+	{
+		Random r = new Random();
+		int n = r.nextInt(size);
+		return n;
+	}
+	
 
 }
