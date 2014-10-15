@@ -328,7 +328,7 @@ public class BDMAssignment extends Helper{
 	  driver.get(config.getProperty("url"));
 	  help.maxbrowser();
 	//logging into BDM account and extracting credentials from spreadsheet 3
-	  sh = w.getSheet(2);
-	  help.login(sh.getCell(0, 0).getContents(),sh.getCell(1, 0).getContents());
+	  //sh2 = w.getSheet(2);
+	  help.login(sh2.getCell(0, 0).getContents(),sh2.getCell(1, 0).getContents());
   }
 }
