@@ -1,10 +1,13 @@
 package crm;
 
 import java.util.List;
-import java.util.Random;
 
+import java.util.Random;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -13,22 +16,24 @@ import testUtils.Helper;
 public class BDM extends Helper {
 	
 	
-	@BeforeTest
-	public void before() throws Exception {
+	 @BeforeMethod
+	 public void before() throws Exception {
 		browser();
 		maxbrowser();
 		driver.get(config.getProperty("url"));
 		browsererror();
-		sh = w.getSheet(2);
+	
 		//Login for BDM module
-		login(sh.getCell(0,0).getContents(), sh.getCell(1,0).getContents());
+		login(sh2.getCell(0,0).getContents(), sh2.getCell(1,0).getContents());
 		String user = driver.findElement(By.className("user_name")).getText();
 		System.out.println("User Logged in as:" + user);
 		
-	}
-	  //Test method for Proposal upload
+	 }
+	
+	 
+	 //Test method for Proposal upload
 	 @Test
-	  public void proposal() throws InterruptedException {
+	 public void proposal() throws InterruptedException {
 		  
 		  //Verifying the no.of options in the left pane and Expanding the Proposal Uploads option
 		  List <WebElement> options = driver.findElement(By.id("tree_menu")).findElements(By.className(" close"));
@@ -85,7 +90,7 @@ public class BDM extends Helper {
 			  
 			  
 		  }//End of else condition
-	  }
+	 }
 	 
 	 @Test
 	 public void quote() throws InterruptedException {
@@ -134,29 +139,28 @@ public class BDM extends Helper {
 			  driver.findElement(By.name("quote")).sendKeys("E:\\abc2.txt");
 			  
 			  //driver.findElement(By.id("button")).click();
-			  Thread.sleep(4000);
+			  sleep(8);
 			  //Verifying the Success message displayed on the page after uploading the Proposal
 			  //System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.className("success_msg")).getText());
 			  
 			  //Closing the Quote Upload page
 			  driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
 			  
-			  sleep(3);
-			//Collapsing Quote Uploads option
+			  //Collapsing Quote Uploads option
 			  driver.findElement(By.id("tree_menu")).findElement(By.className(" open")).findElement(By.className("  symbol-open")).click();
 		  }
 		 
-	  }
+	 } 
 	 
 	 
 	 @Test
-	  public void testleadEdit() throws InterruptedException {
+	 public void testleadEdit() throws InterruptedException {
 		  
 		  //Verifying the no.of options in the left pane and Expanding the Lead Edit option
 		  List <WebElement> options = driver.findElement(By.id("tree_menu")).findElements(By.className(" close"));
 		  System.out.println("The left pane has '" + options.size() + "' Options");		  
-		  System.out.println("The option selected is:" + options.get(7).getText());
-		  options.get(7).findElement(By.tagName("span")).click();
+		  System.out.println("The option selected is:" + options.get(8).getText());
+		  options.get(8).findElement(By.tagName("span")).click();
 		  
 		  //Clicking on Edit Leads link
 		  System.out.println("Click on the '" + driver.findElement(By.id("editLeads")).getText() + "' Link" );
@@ -164,6 +168,18 @@ public class BDM extends Helper {
 		  
 		  //Verifying whether the required page is loaded or not
 		  System.out.println("Page loaded is:" + driver.findElement(By.id("container")).findElement(By.tagName("h1")).getText());
+		  
+		  //Verifying Pagination for the Lead Edit page(Previous and Next buttons)
+		  System.out.println("Verifying Next & Previous Buttons:");
+		  System.out.println(driver.findElement(By.id("example_info")).getText());
+		  sleep(2);
+		  driver.findElement(By.id("example_next")).click();
+		  System.out.println("Clicked on Next button");
+		  System.out.println(driver.findElement(By.id("example_info")).getText());
+		  sleep(2);
+		  driver.findElement(By.id("example_previous")).click();
+		  System.out.println("Clicked on Previous button");
+		  System.out.println(driver.findElement(By.id("example_info")).getText());
 		  
 		  //Selecting no.of entries for the table
 		  driver.findElement(By.id("example_length")).click();
@@ -193,14 +209,16 @@ public class BDM extends Helper {
 		  //Validating the Track it button
 		  Random r1 = new Random();
 		  int opt1 = r1.nextInt(leads.size());
-		  leads.get(3).findElement(By.className("analyse")).click();
-		  
-		  
+		  leads.get(opt1).findElement(By.className("analyse")).click();
+		  sleep(3);
 		  
 		  //Printing the details of the table
 		  String details = driver.findElement(By.tagName("table")).findElement(By.tagName("tbody")).getText();
+		  System.out.println("____________________________________________________");
 		  System.out.println(details);
+		  System.out.println("____________________________________________________");
 		  
+		  //Editing the Leads
 		  driver.findElement(By.id("editLeads")).click();
 		  driver.findElement(By.name("example_length")).findElements(By.tagName("option")).get(3).click();
 		  sleep(5);
@@ -208,10 +226,40 @@ public class BDM extends Helper {
 		  sleep(5);
 		  System.out.println(driver.findElement(By.cssSelector("span.ui-dialog-title")).getText());
 		  
+		  driver.findElement(By.id("firstname")).clear();
+		  driver.findElement(By.id("firstname")).sendKeys("Jennifer");
+		  driver.findElement(By.id("lastname")).clear();
+		  driver.findElement(By.id("lastname")).sendKeys("Strauss");
+		  driver.findElement(By.id("mobilenumber")).clear();
+		  driver.findElement(By.id("mobilenumber")).sendKeys("3-(486)235-8432");
+		  driver.findElement(By.id("boardnumber")).clear();
+		  driver.findElement(By.id("boardnumber")).sendKeys("8-(104)838-3404");
+		  new Select(driver.findElement(By.name("service"))).selectByVisibleText("SAAS");
+		  new Select(driver.findElement(By.name("domain"))).selectByVisibleText("Robotics");
+		  driver.findElement(By.id("desknumber")).clear();
+		  driver.findElement(By.id("desknumber")).sendKeys("3-(618)434-8752");
+		  driver.findElement(By.id("editbutton")).click();
+		  sleep(3);
+		  System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.className("success_msg")).getText());
+		  driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
 		  
-	  
-	  
-	  
-	  }
+		  
+		  
+		  //Tracking the edited lead and compare for modifications
+		  driver.findElement(By.name("example_length")).findElements(By.tagName("option")).get(3).click();
+		  sleep(5);
+		  driver.findElement(By.id("example")).findElement(By.tagName("tbody")).findElements(By.tagName("tr")).get(opt1).findElement(By.className("analyse")).click();
+		  sleep(3);
+		  String detailsModified = driver.findElement(By.tagName("table")).findElement(By.tagName("tbody")).getText();
+		  System.out.println("____________________________________________________");
+		  System.out.println(detailsModified);
+		  System.out.println("____________________________________________________");
+		  
+		  if(details.equals(detailsModified))
+			  System.out.println("The Lead is not edited");
+		  else {
+			  System.out.println("The lead details are modified.");
+		  }  
+	 }
 
 }
