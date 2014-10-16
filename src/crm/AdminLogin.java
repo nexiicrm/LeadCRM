@@ -23,7 +23,7 @@ public class AdminLogin extends Helper{
 	WebDriver driver ;
 	/*@BeforeMethod
 	public void bf(){
-		 //help.browser();
+		 help.browser();
 		driver = new FirefoxDriver();
 		 driver.get("http://192.168.50.32:8080/leadcrm/login.jsp");
 	}*/
@@ -70,9 +70,9 @@ public class AdminLogin extends Helper{
 	//  }													
 	  
 	   /*========= Creation of New User ======*/
-	   sh = w.getSheet(6);
-	   int columns = sh.getColumns();
-		int rows = sh.getRows();
+	   //sh = w.getSheet(6);
+	   int columns = sh6.getColumns();
+		int rows = sh6.getRows();
 		String data;
 		int col;
 		for(int row=1;row<rows;row++){
@@ -81,15 +81,15 @@ public class AdminLogin extends Helper{
 			 //data = sh.getCell(col, row).getContents();
 			 //System.out.println(data);
 			 System.out.println("*************************");	
-	   driver.findElement(By.name("firstname")).sendKeys(sh.getCell(col, row).getContents());
+	   driver.findElement(By.name("firstname")).sendKeys(sh6.getCell(col, row).getContents());
 	   sleep(1);
 	  
-	   driver.findElement(By.name("lastname")).sendKeys(sh.getCell(++col, row).getContents());
+	   driver.findElement(By.name("lastname")).sendKeys(sh6.getCell(++col, row).getContents());
 	   sleep(1);
 	   
-	   driver.findElement(By.name("email")).sendKeys(sh.getCell(++col, row).getContents());
+	   driver.findElement(By.name("email")).sendKeys(sh6.getCell(++col, row).getContents());
 	   sleep(1);
-	   driver.findElement(By.name("empid")).sendKeys(sh.getCell(++col, row).getContents());
+	   driver.findElement(By.name("empid")).sendKeys(sh6.getCell(++col, row).getContents());
 	   sleep(1);
 	   Random r = new Random();
 	   int a = r.nextInt(M.size());
