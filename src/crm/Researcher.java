@@ -20,106 +20,61 @@ import org.testng.annotations.AfterMethod;
 import testUtils.Helper;
 
 public class Researcher extends Helper{
+	
+	public void  treeSize() {
+		
+		 List<WebElement> list1 = driver.findElement(By.id("tree_menu")).findElements(By.tagName("li"));
+		  
+			System.out.println("Number Elements in List1 : " + list1.size());
+			
+			System.out.println(" ");
+			
+			System.out.println("Elements in List1 are :");
+			
+			System.out.println("================================================");
+		
+	}
 		
 	//===========Leads Upload=========//
+	
   @Test
   public void f() throws Exception {
 	  
 	//========Login=======//
-		driver.findElement(By.id("username")).sendKeys(config.getProperty("Researcherusername"));
-		
-		driver.findElement(By.id("password")).sendKeys(config.getProperty("Researcherpassword"));
-		
-		driver.findElement(By.cssSelector("p.login.button")).submit();
-		//====================//
 	  
-	  List<WebElement> list1 = driver.findElement(By.id("tree_menu")).findElements(By.tagName("li"));
-	  
-		System.out.println("Number Elements in List1 : " + list1.size());
+	  help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
+			
+		//===tree menu size dispayng======//
+		treeSize();
+		help.maxbrowser();
+		//======= Expanding tree menu========//
 		
-		System.out.println(" ");
-		
-		System.out.println("Elements in List1 are :");
-		
-		System.out.println("================================================");
-		
-		list1.get(0).click();
-		
-		//======= selecting Leads Upload========//
-		
-		System.out.println("Selecting Leads upload");
-		
-		List<WebElement> li1 = driver.findElement(By.id("tree_menu")).findElements(By.className(" symbol-close"));
-		
-		System.out.println(li1.size());
-		
-		System.out.println(li1.get(0).getText());
-		
-		li1.get(0).click();
-		
-		List<WebElement> li2 = driver.findElement(By.className("  open")).findElements(By.tagName("a"));
-		
-		System.out.println("Lead uploads having :"+li2.size()+":sub element");
-		
-		//======Clicking Lead upload sub links====//
-		
-		System.out.println("Clicking Leads upload SubLink");
-		
-		System.out.println("sub element name:"+li2.get(0).getText());
-		
-		li2.get(0).click();
-		
+		help.expand();
+		//=========clicking bulkuplods========//
+		driver.findElement(By.id("bulkUpload")).click();
 		//==== color matching===//
 		
-		//System.out.println(driver.findElement(By.className("medium")).getCssValue("background-color"));
-		
 		Actions a = new Actions(driver);
-		
 		a.moveToElement(driver.findElement(By.className("medium"))).build().perform();
-		
-		//System.out.println(driver.findElement(By.className("medium")).getCssValue("background-color"));
-		
-		//driver.findElement(By.id("leads_upload_button")).click();
-		
-		//System.out.println(driver.findElement(By.className("medium")).getCssValue("background-color"));
-		
 		String s1 = driver.findElement(By.className("medium")).getCssValue("background-color");
 		
-		//System.out.println(s1);
-		
 		if (driver.findElement(By.className("medium")).getCssValue("background-color").equals(s1)) 
-			
-			{
-			
+		{
 		//=====uploading files===//
 		
-		 
 		driver.findElement(By.className("medium")).sendKeys("C:\\Users\\Nexii\\Desktop\\Testresearc.xlsx");
-				
 		driver.findElement(By.id("leads_upload_button")).click();
-		
 		Thread.sleep(20000);
 		
-		System.out.println("test");
-		
-				
 		if(driver.findElement(By.id("result_msg_div")).getText().startsWith("Excel File Uploaded and Leads Saved Successfully....!"))
 		{
-			
 			System.out.println(driver.findElement(By.id("result_msg_div")).getText());
-			
 		} else {
-			
 			//====calling helper====//
 			help.screenshot("uploadleadsfailure");
-			
 			System.out.println("File Upload Failed Due to Can't open the specified file: '/usr/local/tomcat7/temp/poifiles/poi-ooxml-*******.tmp'");
-		
 		}
-		
-		System.out.println("tesdt");
-		
-		}
+				}
 		
 		else {
 			//====calling helper====//
@@ -127,71 +82,40 @@ public class Researcher extends Helper{
 			Assert.fail("Please select a file");
 		}
 		
-	driver.close();
-	driver.quit();
-	
-  }
-  
+		//====collaspsing treemenu====//
+		help.collapse();
+		//===closing driver=====//
+		driver.close();
+		driver.quit();
+  }  
 //===========My Account=========//
+  
+  
   @Test
   public void f1() throws Exception {
 	  
 	  //===Researcher is 3rdsheet in excels=====//
-	  
 	  int columns = sh3.getColumns();
 		int rows = sh3.getRows();
 		String data;
 		int col;
-	  
 	//Login
-		
 		help.login(config.getProperty("Researcherusername"), config.getProperty("Researcherpassword"));
 		String old = config.getProperty("Researcherpassword");
 		System.out.println(old);
-		
-		
-		//======//
-		
-		
-	  
-	  List<WebElement> list1 = driver.findElement(By.id("tree_menu")).findElements(By.tagName("li"));
-	  
-		System.out.println("Number Elements in List1 : " + list1.size());
-		
-		System.out.println(" ");
-		
-		System.out.println("Elements in List1 are :");
-		
-		System.out.println("================================================");
-		
-		list1.get(0).click();
-		
-		//======= selecting MyAccount========//
-		
-		List<WebElement> li1 = driver.findElement(By.id("tree_menu")).findElements(By.className(" symbol-close"));
-		
-		System.out.println(li1.size());
-		
-		System.out.println(li1.get(2).getText());
-		
-		li1.get(2).click();
-		
-		List<WebElement> li2 = driver.findElement(By.className("  open")).findElements(By.tagName("a"));
-		
-		System.out.println("Lead uploads having :"+li2.size()+":sub element");
-		
-		//======Clicking Lead upload sub links====//
-		
-		System.out.println("sub element name:"+li2.get(0).getText());
-		
-		li2.get(0).click();
-		
+	  //====size of tree menu===//
+	    treeSize();
+	    //======= Expanding tree menu========//
+		help.expand();
+		//=======maximizing browser========//
+		help.maxbrowser();
+	  //======Clicking searchleads in leadsearch menu====//
+		driver.findElement(By.linkText("Change Password")).click();
 		//===  checking validations for change passwords===//
 		
 		for(int row = 1;row < rows;row++)
 		{
 			col=0;
-			
 			//=========checking oldpassword===//
 			List<WebElement> li70 = driver.findElements(By.id("oldPassword"));
 
@@ -251,20 +175,14 @@ public class Researcher extends Helper{
 			String s3 = driver.findElement(By.id("confirmPassword")).getAttribute("value");
 			col++;
 			Thread.sleep(3000);
-			
-			//====Clicking Change button====//
-			
 			driver.findElement(By.id("change")).click();
-			
-								
-		if(s1.length()==0||s2.length()==0||s3.length()==0) {
+			if(s1.length()==0||s2.length()==0||s3.length()==0) {
 			//====calling helper====//
-			help.screenshot("Fields_Not_Empty");
+			//help.screenshot("Fields_Not_Empty");
 			System.out.println("Error message");
 			System.out.println("All Fields Must Not be Empty");
 			System.out.println("Error message");
 			Thread.sleep(1000);
-			
 		}
 		
 		if(s1.equalsIgnoreCase(old)) {
@@ -272,7 +190,7 @@ public class Researcher extends Helper{
 			if(s1.equalsIgnoreCase(old)&&s3.equalsIgnoreCase(s2))
 			{
 				//====calling helper====//
-				help.screenshot("old&newpasswords_Notsame)");
+				//help.screenshot("old&newpasswords_Notsame)");
 				System.out.println("Error message is:");
 				System.out.println("Old and new password must not be same");
 				Thread.sleep(1000);
@@ -280,8 +198,6 @@ public class Researcher extends Helper{
 		
 			else if(s2.equalsIgnoreCase(s3)) {
 				//====calling helper====//
-				help.screenshot("Mismatch_old&newpassword");
-				
 				System.out.println("Error message is:");
 				System.out.println("New password and confirm password not matching");
 			Thread.sleep(1000);
@@ -289,85 +205,63 @@ public class Researcher extends Helper{
 		
 		} else {
 			//====calling helper====//
-			help.screenshot("Check_oldpassword");
+			//help.screenshot("Check_oldpassword");
 			System.out.println("Error message is:");
 			System.out.println("Check old password");
 		}
+
+		//====Clicking Change button====//
 		
+		driver.findElement(By.id("change")).click();
+		help.sleep(5);
+		help.screenshot("Changepassword");
+		help.sleep(2);
+		driver.findElement(By.id("oldPassword")).clear();
+		driver.findElement(By.id("newPassword")).clear();
+		driver.findElement(By.id("confirmPassword")).clear();
+		
+		help.sleep(5);
 		}
-		//System.out.println("successfully change ur password");
+		
+				//===closing browser===//
 		driver.close();
 		driver.quit();
 		
   }
   
   
-  ////////////
+  //======Lead search=====//
   
   @Test
   public void f3() throws Exception {
 	//Login
 		
 			help.login(config.getProperty("Researcherusername"), config.getProperty("Researcherpassword"));
+			
 			String old = config.getProperty("Researcherpassword");
+			
 			System.out.println(old);
 			
-			
-			//======//
-			
-			
-		  
-		  List<WebElement> list1 = driver.findElement(By.id("tree_menu")).findElements(By.tagName("li"));
-		  
-			System.out.println("Number Elements in List1 : " + list1.size());
-			
-			System.out.println(" ");
-			
-			System.out.println("Elements in List1 are :");
-			
-			System.out.println("================================================");
-			
-			list1.get(0).click();
-			
-			//======= selecting MyAccount========//
-			
-			List<WebElement> li1 = driver.findElement(By.id("tree_menu")).findElements(By.className(" symbol-close"));
-			
-			System.out.println(li1.size());
-			
-			System.out.println(li1.get(2).getText());
-			
-			li1.get(1).click();
-			
-			List<WebElement> li2 = driver.findElement(By.className("  open")).findElements(By.tagName("a"));
-			
-			System.out.println("Lead uploads having :"+li2.size()+":sub element");
-			
-			//======Clicking Lead upload sub links====//
-			
-			System.out.println("sub element name:"+li2.get(0).getText());
-			
-			li2.get(0).click();
-			//System.out.println("hai");
-			 // get window handles tells us how many windows are there in system
-		       Set<String> Windowids = driver.getWindowHandles(); 
+			//===printing size of tree menu====//
+		    treeSize();
+		    
+		  //=======maximizing browser========//
+			help.maxbrowser();
+		    //====Expanding tree menu====//
+		    help.expand();
+		   //===clicking search leads====// 
+		    driver.findElement(By.id("serachLeads123")).click();
+		    //====Window handlers moving to next tab===// 
+		    Set<String> Windowids = driver.getWindowHandles(); 
 		       Iterator<String> iter = Windowids.iterator();
 		       String MainWindow = iter.next();
-		       //System.out.println(MainWindow);
-		       
 		       //popup window
 		       String TabbedWindow = iter.next();
-		      // System.out.println(TabbedWindow);
-		       
-		       
 		       driver.switchTo().window(TabbedWindow);
 		       System.out.println(driver.getTitle());
 		       //=======Getting name of selecting fields in required field======//
 		      System.out.println("In required field we have::"+driver.findElement(By.tagName("legend")).getText());
 		       help.sleep(4);
-		     //  List<WebElement> li = driver.findElement(By.id("fields_to_get")).findElement(By.tagName("tbody")).findElement(By.tagName("tr"))
-					//	.findElement(By.tagName("td")).findElements(By.tagName("input"));
-		    
 		    List<WebElement> li = driver.findElement(By.id("ui-accordion-accordion-panel-0")).findElements(By.tagName("input"));   
 		    //System.out.println(li.get(0).getText());
 			help.sleep(4);
@@ -378,32 +272,19 @@ public class Researcher extends Helper{
 			//===============Selecting checkboxes  randomly===========//
 			
 			int i = li.size();
-			
 			System.out.println(i);
-			
 			int j = help.random(i);
-			
 			System.out.println(j);
-			
 			System.out.println(li.get(j).getText());
-			
 			li.get(j).click();
-			
 			driver.findElement(By.id("registerbutton")).click();
-			
 			help.sleep(3);
-			
 			//======displaing matching data when chicking check boxes======//
 			
 			List<WebElement> li5 = driver.findElement(By.id("example")).findElements(By.tagName("tr"));
-			//System.out.println(driver.findElement(By.id("example")).getText());
-			
 			System.out.println("This is matching Results of check boxes");
 			System.out.println(li5.size());
-					
 			System.out.println(driver.findElement(By.id("example")).getText());
-			
-			
   }
 
   
