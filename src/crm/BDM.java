@@ -1,21 +1,23 @@
 package crm;
 
 import java.util.List;
+import java.util.Set;
 
-import java.util.Random;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import testUtils.Helper;
 
 public class BDM extends Helper {
 	
-	 @BeforeMethod
+
+
+
+	@BeforeMethod
 	 public void before() throws Exception {
 		browser();
 		maxbrowser();
@@ -26,11 +28,16 @@ public class BDM extends Helper {
 		help.login(sh2.getCell(0,0).getContents(), sh2.getCell(1,0).getContents());
 		String user = driver.findElement(By.className("user_name")).getText();
 		System.out.println("User Logged in as:" + user);
-		
 	 }
 	 
 	 
-/*	 //Test method for Proposal follow up
+	// @AfterMethod
+	 public void after() {
+		 driver.close();
+	 }
+	 
+	 
+	/* //Test method for Proposal follow up
 	 @Test
 	 public void proposalFollowup() {
 		 help.expand();
@@ -38,21 +45,12 @@ public class BDM extends Helper {
 		 driver.findElement(By.id("allfollowups")).click();
 		 help.sleep(2);
 		 search("Introductory Mail");
-		 List <WebElement> leads = driver.findElement(By.id("example")).findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
-		 if(leads.size()==0)
-			 System.out.println("No leads present to Prospect Identify for Proposals.");
-		 else { 
-			 leads.get(0).findElement(By.className("work")).click();
-			 
-		 }
-		 
-	 }*/
+	 } */
 	
 	 
 	 //Test method for Proposal upload
 	 @Test
 	 public void proposalUpload() {
-		  
 		  help.expand();
 		  System.out.println("Click on the '" + driver.findElement(By.id("proposalupload")).getText() + "' Link" );
 		  driver.findElement(By.id("proposalupload")).click();
@@ -82,9 +80,10 @@ public class BDM extends Helper {
 		  }//End of else condition
 	 } 
 	 
+	 
+	//Test method for Quote upload
 	 @Test
 	 public void quoteUpload() {
-
 		  help.expand();
 		  System.out.println("Click on the '" + driver.findElement(By.id("quoteupload")).getText() + "' Link" );
 		  driver.findElement(By.id("quoteupload")).click();
@@ -113,10 +112,9 @@ public class BDM extends Helper {
 			  driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
 			  help.collapse();
 		  }
-		 
 	 } 
 	 
-	 
+	 //Test method for Lead Edit Track it button
 	 @Test 
 	 public void testLeadTrackButton() {
 		 help.expand();
@@ -139,11 +137,13 @@ public class BDM extends Helper {
 			  System.out.println("Trackit button is enabled for all leads.");
 		  
 		  trackitButton(help.random(leads1.size()));
+		  help.collapse();
 	 } 
 	 
+	 
+	 //Test method for "Lead Edit" Edit button functionality
 	 @Test
 	 public void testLeadEditButton() {
-		  
 		  help.expand();
 		  //Clicking on Edit Leads link
 		  System.out.println("Click on the '" + driver.findElement(By.id("editLeads")).getText() + "' Link" );
@@ -152,7 +152,6 @@ public class BDM extends Helper {
 		  //Verifying whether the required page is loaded or not
 		  System.out.println("Page loaded is:" + driver.findElement(By.id("container")).findElement(By.tagName("h1")).getText());
 		  pagination();
-		  //pageEntries();
 		  driver.findElement(By.name("example_length")).findElements(By.tagName("option")).get(3).click();
 		  
 		  
@@ -208,7 +207,56 @@ public class BDM extends Helper {
 		  else {
 			  System.out.println("The lead details are modified.");
 		  }  
+		  help.collapse();
 	 } 
+	 
+	 
+	 //Test method for Search Leads
+	 @Test
+	 public static void searchLeads() {
+		 help.expand();
+		 System.out.println("Click on the '" + driver.findElement(By.id("serachLeads123")).getText() + "' Link" );
+		 driver.findElement(By.id("serachLeads123")).click();
+		 Set<String> parentWindow = driver.getWindowHandles();
+		 for(String childWindow : driver.getWindowHandles()) {
+				driver.switchTo().window(childWindow);
+			}
+		 //Selecting Required fields
+		 List <WebElement> requiredFields = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("td"));
+		 int a = help.random(requiredFields.size());
+		 System.out.println("The reqiured field:" + requiredFields.get(a).getText());
+		 requiredFields.get(a).findElement(By.tagName("input")).click();
+		 driver.findElement(By.cssSelector("span.ui-accordion-header-icon.ui-icon.ui-icon-triangle-1-e")).click();
+		 
+		 //Selecting a Category of Filter Options
+		 List <WebElement> filterOptions = driver.findElement(By.id("ui-accordion-accordion-panel-1")).findElements(By.className("row1"));
+		 System.out.println("Size of Filter option categories:" + filterOptions.size());
+		 int b =help.random(filterOptions.size());
+		 String opt = filterOptions.get(b).findElement(By.tagName("legend")).getText();
+		 System.out.println("Filter Option Selected:" + opt);
+		
+		 //Selecting an option in Filter Options 
+		 List <WebElement> option = filterOptions.get(b).findElements(By.tagName("td"));
+		 System.out.println("No.of options in " + opt + " List:" + option.size());
+		 int c = help.random(option.size());
+		 System.out.println("Option selected is:" + option.get(c).findElement(By.tagName("label")).getText());
+		 option.get(c).findElement(By.tagName("input")).click();
+		 driver.findElement(By.id("registerbutton")).click();
+		 help.sleep(5);
+		 //Printing the Table displayed with required fields
+		 System.out.println(driver.findElement(By.id("example")).findElement(By.tagName("tbody")).getText());
+		 
+		 //Pagination
+		 pagination();
+		 
+		 //No.of Entries per page
+		 pageEntries();
+		 
+		 //Search Box Validation
+		 search("Larry");
+		 driver.close();
+	 }
+	 
 	 
 	 
 	// Static Methods 
@@ -235,12 +283,11 @@ public class BDM extends Helper {
 		 
 		 
 		 //No. of Entries per page
-		 public  void pageEntries() {
+		 public static void pageEntries() {
 			  //Selecting no.of entries for the table
 			  driver.findElement(By.id("example_length")).click();
-			  List <WebElement> entries = driver.findElement(By.name("example_length")).findElements(By.tagName("option"));
-			  help.sleep(4000);
-			  System.out.println(entries.size());
+			  List <WebElement> entries = driver.findElement(By.id("example_length")).findElements(By.tagName("option"));
+			  help.sleep(4);
 			  int opt = help.random(entries.size());
 			  entries.get(opt).click();
 			  System.out.println("No.of Entries selected for the page:" + entries.get(opt).getText());
@@ -278,7 +325,7 @@ public class BDM extends Helper {
 		 //Method for validating Search box
 		 public static void search(String keyword) {
 			 driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys(keyword);
-			 
+			 System.out.println(driver.findElement(By.id("example")).findElement(By.tagName("tbody")).getText());
 		 }
 
 }
