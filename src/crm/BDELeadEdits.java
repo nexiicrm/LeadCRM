@@ -1,8 +1,10 @@
 package crm;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import testUtils.Helper;
@@ -11,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -133,7 +136,7 @@ public class BDELeadEdits  extends Helper
 	  
   }
   
-  @Test
+ @Test
   public void Leadedit() throws Exception 
   {
 	  List<WebElement> tree=driver.findElement(By.id("tree_menu")).findElements(By.className("close")); 
@@ -257,7 +260,7 @@ public class BDELeadEdits  extends Helper
 	  driver.close();
   }
  
-/*  @Test
+  @Test
   public void Closedphase() throws Exception 
   {
 	  List<WebElement> tree=driver.findElement(By.id("tree_menu")).findElements(By.className("close")); 
@@ -271,30 +274,97 @@ public class BDELeadEdits  extends Helper
 				System.out.println("===================================\n" +"No of"+ tree.get(j).getText()+ "sub links: "+(container.size()));
 				container.get(0).click();
 				System.out.println(container.get(0).getText()+":clicked and navigated to:"+driver.findElement(By.tagName("h1")).getText()+":successfully");
+				if(driver.findElement(By.className("dataTables_empty")).getText().contains("No data available in table"))
+				{
+					System.out.println(driver.findElement(By.className("dataTables_empty")).getText());
+				}
+				else
+				{
 				
-				//SEARCHBOX
-				//Searchbox();
+					//SEARCHBOX
+					Searchbox();
 				
-				//SHOW DROPDOWN
-				//Showdropdown();
+					//SHOW DROPDOWN
+					Showdropdown();
 				
-				//SORTING
-				//Sorting();
+					//SORTING
+					Sorting();
 				
-				//PAGINATION
-				//Pagination();
+					//PAGINATION
+					Pagination();
 				
-				//CLOSE
-				driver.findElement(By.className("close")).click();
-				System.out.println(driver.findElement(By.id("dialog-form")).findElement(By.tagName("h1")).getText()+":is opened");
-				List<WebElement> leadstatus=driver.findElement(By.name("leadstatus")).findElements(By.tagName("option"));
-				System.out.println("leadstatus dropdown size:"leadstatus.size());
-				
-				
+					//CLOSE
+					//driver.findElement(By.className("close")).click();
+					List<WebElement> tablerecords= driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+					int o=random(tablerecords.size());
+					tablerecords.get(o).findElement(By.id("1473")).click();
+					System.out.println(driver.findElement(By.id("dialog-form")).findElement(By.tagName("h1")).getText()+":is opened");
+					List<WebElement> leadstatus=driver.findElement(By.name("leadstatus")).findElements(By.tagName("option"));
+					System.out.println("leadstatus dropdown size:"+leadstatus.size());
+					int a=random(leadstatus.size());
+						if(leadstatus.get(a).getText().contains("SELECT"))
+							a++;
+						if(leadstatus.get(a).getText().equalsIgnoreCase("Customer"))
+						{
+							WebElement s=	driver.findElement(By.id("projectid")).findElement(By.tagName("label"));
+							if(s.getAttribute("display").contains("block"))
+							{
+								System.out.println(s.getText()+":textbox is available");
+								driver.findElement(By.id("project")).sendKeys(or.getProperty("projectdeatailes"));
+							}
+							else
+							{
+								Assert.fail("project textbox is not available");
+							}
+						}
+						else
+						{
+							driver.findElement(By.name("comment")).sendKeys(or.getProperty("comment"));
+						}
+						driver.findElement(By.id("closedphasebutton")).click();
+						System.out.println(driver.findElement(By.className("error_msg")).getText());
+				}
+			}
+	  }
+  }
+  
+/*  @Test
+  public void leadsearch() throws Exception 
+  {
+	  List<WebElement> tree=driver.findElement(By.id("tree_menu")).findElements(By.className("close")); 
+	  for(int j=0;j<tree.size();j++)
+	  {
+		  //To enter into leadsearch tree
+			if( tree.get(j).getText().equalsIgnoreCase("Lead Search"))
+			{
+				tree.get(j).findElements(By.tagName("span")).get(0).click(); 
+				List<WebElement> container=tree.get(j).findElements(By.tagName("a"));
+				System.out.println("===================================\n" +"No of"+ tree.get(j).getText()+ "sub links: "+(container.size()));
+				container.get(0).click();
+				//System.out.println(container.get(0).getText()+":clicked and navigated to:"+driver.findElement(By.tagName("h1")).getText()+":successfully");
+				Set<String> windows=driver.getWindowHandles();
+				Iterator<String> itr=windows.iterator();
+				String mainwindow=itr.next();
+				String tabbedwindow=itr.next();
+				 help.sleep(3);
+				driver.switchTo().window(tabbedwindow);
+				System.out.println(driver.getTitle());
+				System.out.println(" navigated to:"+driver.findElement(By.tagName("h1")).getText()+":successfully");
+				 List<WebElement> li = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("input"));
+				 System.out.println(li.size());
+				 for(int b=0;b<3;b++)
+				 {
+					 int a=random(li.size());
+					 li.get(a).click();
+					 if(a==0){
+					  break;
+					 }
+					 System.out.println(driver.findElement(By.id("fields_to_get")).findElements(By.tagName("label")).get(a).getText()+"clicked");
+				 }
+				//driver.close();
 			}
 	  }
   }*/
-  
 
   @AfterMethod
   public void afterMethod() 
