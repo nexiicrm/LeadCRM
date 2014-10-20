@@ -14,11 +14,12 @@ import testUtils.Helper;
 
 public class Management extends Helper {
 	
+	
   @Test
   public void test1() throws Exception 
   {
 	  //////////// logging into the site///////////////////////////
-	  help.login("ajaytesting4@gmail.com", "password");
+	  help.login("basanirakeshreddy000@gmail.com", "password");
 	  System.out.println("######logged in successfully into management role######");
 	  System.out.println("===========================================================================");
   }
@@ -27,7 +28,7 @@ public class Management extends Helper {
   public void test2() throws Exception
   {
 	  //////////////// Expanding and collapsing tree in the left pane of page ////////////
-	  help.login("ajaytesting4@gmail.com", "password");
+	  help.login("basanirakeshreddy000@gmail.com", "password");
 	  help.expand();
 	  help.collapse();
 	  System.out.println("######Expansion and collapsing of tree menu done successfully######");
@@ -38,12 +39,13 @@ public class Management extends Helper {
   public void test3() throws Exception
   {
 	  /////////////// All Proposals click and search box ///////////////////////////////
-	  help.login("ajaytesting4@gmail.com", "password");
+	  help.login("basanirakeshreddy000@gmail.com", "password");
 	  help.expand();
 	  help.sleep(2);
 	  driver.findElement(By.id(or.getProperty("allproposals_id"))).click();
       driver.findElement(By.tagName(or.getProperty("allproposals_tagName"))).click();
 	  driver.findElement(By.tagName(or.getProperty("allproposals_tagName"))).sendKeys("sreekar");
+  
   
 	  ///////////////////////// For drop down /////////////////////////
 	  List<WebElement> ele = driver.findElement(By.name(or.getProperty("allproposals_name"))).findElements(By.tagName(or.getProperty("allproposalsdrop_tagName")));
@@ -56,11 +58,11 @@ public class Management extends Helper {
 	  System.out.println("###### Done with search validation and dropdown validation ######");
 	  System.out.println("============================================================================");
   }
-  
+ 
   @Test
   public void test4() throws Exception
   {
-	  help.login("ajaytesting4@gmail.com", "password");
+	  help.login("basanirakeshreddy000@gmail.com", "password");
 	  help.expand();
 	  driver.findElement(By.id(or.getProperty("allproposals_id"))).click();
 	  help.sleep(2);
@@ -104,13 +106,13 @@ public class Management extends Helper {
   @Test
   public void test5() throws Exception
   {
-	  help.login("ajaytesting4@gmail.com", "password");
+	  help.login("basanirakeshreddy000@gmail.com", "password");
 	  help.expand();
      /////////////// All lost competition ///////////////////////////////
-	  driver.findElement(By.id("lostCompetitionList")).click();
-	  driver.findElement(By.tagName("input")).click();
-	  driver.findElement(By.tagName("input")).sendKeys("sreekar");
-	  List<WebElement> ele1 = driver.findElement(By.name("example_length")).findElements(By.tagName("option"));
+	  driver.findElement(By.id(or.getProperty("alllost_id"))).click();
+	  driver.findElement(By.tagName(or.getProperty("alllost_tagName"))).click();
+	  driver.findElement(By.tagName(or.getProperty("alllost_tagName"))).sendKeys("sreekar");
+	  List<WebElement> ele1 = driver.findElement(By.name(or.getProperty("alllost_name"))).findElements(By.tagName("alllostdrop_tagName"));
 	  System.out.println("size of all lost competition dropdown container: " + ele1.size());
 	  for (int j=0;j<ele1.size();j++)
 	  {
@@ -126,13 +128,13 @@ public class Management extends Helper {
   @Test
   public void test6() throws Exception
   {
-	  help.login("ajaytesting4@gmail.com", "password");
+	  help.login("basanirakeshreddy000@gmail.com", "password");
 	  help.expand();
 	  /////////////// All customers //////////////////////////
-	  driver.findElement(By.id("customersList")).click();
-	  driver.findElement(By.tagName("input")).click();
-	  driver.findElement(By.tagName("input")).sendKeys("shiva");
-	  List<WebElement> ele2 = driver.findElement(By.name("example_length")).findElements(By.tagName("option"));
+	  driver.findElement(By.id(or.getProperty("allcustomers_id"))).click();
+	  driver.findElement(By.tagName(or.getProperty("allcustomers_tagName"))).click();
+	  driver.findElement(By.tagName(or.getProperty("allcustomers_tagName"))).sendKeys("shiva");
+	  List<WebElement> ele2 = driver.findElement(By.name(or.getProperty("allcustomers_name"))).findElements(By.tagName(or.getProperty("allcustomersdrop_tagName")));
 	  System.out.println("size of all customers dropdown container: " + ele2.size());
 	  for (int j=0;j<ele2.size();j++)
 	  {
@@ -147,17 +149,17 @@ public class Management extends Helper {
   @Test
   public void test7() throws Exception
   {
-	  help.login("ajaytesting4@gmail.com", "password");
+	  help.login("basanirakeshreddy000@gmail.com", "password");
 	  help.expand();
 	  help.sleep(2);
-	  driver.findElement(By.id("customersList")).click();
-	  driver.findElement(By.tagName("input")).sendKeys("shiva");
-	  List<WebElement> lsc =driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+	  driver.findElement(By.id(or.getProperty("allcustomers_id"))).click();
+	  driver.findElement(By.tagName(or.getProperty("allcustomers_tagName"))).sendKeys("shiva");
+	  List<WebElement> lsc =driver.findElement(By.tagName(or.getProperty("allcustomersbody_tagName"))).findElements(By.tagName(or.getProperty("allcustomersrow_tagName")));
 	  System.out.println("No of rows " + lsc.size());
 	  ArrayList<String> arc = new ArrayList<String>();
 	  for (int i=0;i<lsc.size();i++)
 	  {
-		 List<WebElement> lssc = lsc.get(i).findElements(By.tagName("td"));
+		 List<WebElement> lssc = lsc.get(i).findElements(By.tagName(or.getProperty("allcustomerscol_tagName")));
 		 System.out.println("No of columns " + lssc.size());
 		 String s1c= lssc.get(0).getText();
 		 arc.add(s1c);	
@@ -165,12 +167,12 @@ public class Management extends Helper {
 		 arc.add(s2c);
 	  }  
 	  System.out.println(arc);
-	  driver.findElement(By.className("analyse")).click();
+	  driver.findElement(By.className(or.getProperty("allcustomers_className"))).click();
 	  help.sleep(2);
-	  List<WebElement> ls2c =driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+	  List<WebElement> ls2c =driver.findElement(By.tagName(or.getProperty("allcustomersbody_tagName"))).findElements(By.tagName(or.getProperty("allcustomersrow_tagName")));
 	  System.out.println("No of rows in track it lead details " + ls2c.size());
 	  ArrayList<String> ar1c = new ArrayList<String>();
-	  List<WebElement> lss2c = ls2c.get(0).findElements(By.tagName("td"));
+	  List<WebElement> lss2c = ls2c.get(0).findElements(By.tagName(or.getProperty("allcustomerscol_tagName")));
 	  System.out.println("No of columns in track it lead details " + lss2c.size());
 	  String s11c= lss2c.get(0).getText();
 	  ar1c.add(s11c);	
@@ -193,13 +195,13 @@ public class Management extends Helper {
   @Test
   public void test8() throws Exception
   {
-	  help.login("ajaytesting4@gmail.com", "password");
+	  help.login("basanirakeshreddy000@gmail.com", "password");
 	  help.expand();
       /////////////// All Quotes //////////////////////////
-	  driver.findElement(By.id("quotesList")).click();
-      driver.findElement(By.tagName("input")).click();
-      driver.findElement(By.tagName("input")).sendKeys("Karen");
-      List<WebElement> ele3 = driver.findElement(By.name("example_length")).findElements(By.tagName("option"));
+	  driver.findElement(By.id(or.getProperty("allquotes_id"))).click();
+      driver.findElement(By.tagName(or.getProperty("allquotes_tagName"))).click();
+      driver.findElement(By.tagName(or.getProperty("allquotes_tagName"))).sendKeys("Karen");
+      List<WebElement> ele3 = driver.findElement(By.name(or.getProperty("allquotes_name"))).findElements(By.tagName(or.getProperty("allquotesdrop_tagName")));
       System.out.println("size of all quotes dropdown container: " + ele3.size());
       for (int j=0;j<ele3.size();j++)
       {
@@ -212,17 +214,17 @@ public class Management extends Helper {
   @Test
   public void test9() throws Exception
   {
-	  help.login("ajaytesting4@gmail.com", "password");
+	  help.login("basanirakeshreddy000@gmail.com", "password");
 	  help.expand();
       help.sleep(2);
-      driver.findElement(By.id("quotesList")).click();
-      driver.findElement(By.tagName("input")).sendKeys("Karen");
-	  List<WebElement> lscq =driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+      driver.findElement(By.id(or.getProperty("allquotes_id"))).click();
+      driver.findElement(By.tagName(or.getProperty("allquotes_tagName"))).sendKeys("Karen");
+	  List<WebElement> lscq =driver.findElement(By.tagName(or.getProperty("allquotesbody_tagName"))).findElements(By.tagName(or.getProperty("allquotesrow_tagName")));
 	  System.out.println("No of rows " + lscq.size());
 	  ArrayList<String> arcq = new ArrayList<String>();
 	  for (int i=0;i<lscq.size();i++)
 	  {
-		 List<WebElement> lsscq = lscq.get(i).findElements(By.tagName("td"));
+		 List<WebElement> lsscq = lscq.get(i).findElements(By.tagName(or.getProperty("allquotescol_tagName")));
 		 System.out.println("No of columns " + lsscq.size());
 		 String s1cq= lsscq.get(0).getText();
 		 arcq.add(s1cq);	
@@ -230,12 +232,12 @@ public class Management extends Helper {
 		 arcq.add(s2cq);
 	  }  
 	  System.out.println(arcq);
-	  driver.findElement(By.className("analyse")).click();
+	  driver.findElement(By.className(or.getProperty("allquotes_className"))).click();
 	  help.sleep(2);
-	  List<WebElement> ls2cq =driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+	  List<WebElement> ls2cq =driver.findElement(By.tagName(or.getProperty("allquotesbody_tagName"))).findElements(By.tagName(or.getProperty("allquotesrow_tagName")));
 	  System.out.println("No of rows in track it lead details " + ls2cq.size());
 	  ArrayList<String> ar1cq = new ArrayList<String>();
-	  List<WebElement> lss2cq = ls2cq.get(0).findElements(By.tagName("td"));
+	  List<WebElement> lss2cq = ls2cq.get(0).findElements(By.tagName(or.getProperty("allquotescol_tagName")));
 	  System.out.println("No of columns in track it lead details " + lss2cq.size());
 	  String s11cq= lss2cq.get(0).getText();
 	  ar1cq.add(s11cq);	
@@ -257,20 +259,20 @@ public class Management extends Helper {
   @Test
   public void testLeads() throws Exception
   {
-	  help.login("ajaytesting4@gmail.com", "password");
+	  help.login("basanirakeshreddy000@gmail.com", "password");
 	  help.expand();
      ///////////////////////// Search leads //////////////////////////////////////////////
-     driver.findElement(By.id("serachLeads123")).click();
+     driver.findElement(By.id(or.getProperty("allleads_id"))).click();
      ArrayList<String> newTab = new ArrayList<String>(driver.getWindowHandles());
 	 driver.switchTo().window(newTab.get(1));
-	 List<WebElement> ls1 = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("input"));
+	 List<WebElement> ls1 = driver.findElement(By.id(or.getProperty("allleadstab_id"))).findElements(By.tagName(or.getProperty("allleads_tagName")));
 	 System.out.println("Required field container size of lead search " + ls1.size());
 	 for (int j=0;j<ls1.size();j++)
      {
    	  ls1.get(j).click();
      }
 	 help.sleep(2);
-     driver.findElement(By.id("ui-accordion-accordion-header-1")).click();
+     driver.findElement(By.id(or.getProperty("allleadsnext_id"))).click();
      help.sleep(2);
      driver.close();
      ArrayList<String> newTab1 = new ArrayList<String>(driver.getWindowHandles());
@@ -282,16 +284,16 @@ public class Management extends Helper {
   @Test
   public void testPassword() throws Exception
   {
-	  help.login("ajaytesting4@gmail.com", "password");
+	  help.login("basanirakeshreddy000@gmail.com", "password");
 	  help.expand();
     /////////////////////////// change password ////////////////////////////////////
 	 
-     driver.findElement(By.xpath(".//*[@id='tree_menu']/li[5]/ul/li/a")).click();
-     driver.findElement(By.id("oldPassword")).sendKeys("password");
-     driver.findElement(By.id("newPassword")).sendKeys("rakesh");
-     driver.findElement(By.id("confirmPassword")).sendKeys("rakesh");
+     driver.findElement(By.xpath(or.getProperty("change_xpath"))).click();
+     driver.findElement(By.id(or.getProperty("changeold_id"))).sendKeys("password");
+     driver.findElement(By.id(or.getProperty("changenew_id"))).sendKeys("rakesh");
+     driver.findElement(By.id(or.getProperty("changeconfirm_id"))).sendKeys("rakesh");
      help.sleep(2);
-   //  driver.findElement(By.id("change")).submit();
+   // driver.findElement(By.id(or.getProperty("change_id"))).submit();
 
      System.out.println("######Done with validation of change password page######");
 	  System.out.println("==============================================================================");
