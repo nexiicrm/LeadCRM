@@ -1,4 +1,5 @@
 package crm;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -212,7 +213,8 @@ public class BDMAssignment extends Helper{
 	  }
 	  
 	  @Test
-	  public void test4_assignleadPagination(){
+	  public void
+ test4_assignleadPagination(){
 	    expand();
 		driver.findElement(By.id("assignlead")).click();
 		sleep(2);
@@ -364,7 +366,7 @@ public class BDMAssignment extends Helper{
 		}
 		
 			@Test
-			public void workphaseFuturedate(){
+			public void test9_workphaseFuturedate(){
 			//Filling all the options by selecting tomorrows date and clicking on proceed button
 			expand();
 			driver.findElement(By.id("workPhase")).click();
@@ -393,8 +395,8 @@ public class BDMAssignment extends Helper{
 			
 			
 			
-		@Test
-		public void todaysfollowup(){
+	/*	@Test
+		public void test_todaysfollowup(){
 			//Checking trackit and followup button for all leads and printing work phase comments
 			System.out.println("****************TODAY'S FOLLOWUP*******************");
 			expand();
@@ -417,12 +419,13 @@ public class BDMAssignment extends Helper{
 			System.out.println("----------------Work phase comments table------------------");
 			List<WebElement> workphase_table = driver.findElement(By.id("body_result")).findElements(By.tagName("table"));
 			System.out.println(workphase_table.get(2).getText());
-			System.out.println("-----------------------------------------------------------");
+			System.out.println("------------------------------------------------
+-----------");
 			collapse();
 		   }
 		
 		@Test
-			public void todayNextFollowup(){
+			public void test_q_todayNextFollowup(){
 			expand();
 			driver.findElement(By.id("todayfollowups")).click();
 			sleep(2);
@@ -456,15 +459,107 @@ public class BDMAssignment extends Helper{
 			//Verifying followup changed to followup 4
 			driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys(lead_name);
 			List<WebElement> leads_info1 = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
-			if(leads_info1.get(0).findElements(By.tagName("td")).get(5).getText().equals("Followup 4")){
+			if(leads_info1.get(0).findElements(By.tagName("td")).get(5).getText().equals("Followup 4"))
 				System.out.println("Followup status changed to follow up 4");
-			}
-
 		}
 			
-			
 		
+		@Test
+		public void test_r_FollowupProspectIdentityProposal(){
+			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
+			Date date = new Date();
+			//expanding and clicking todays followup link
+			expand();
+			driver.findElement(By.id("todayfollowups")).click();
+			sleep(2);
+			driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("introductory mail");
+			List<WebElement> leads_info = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+			String lead_name = leads_info.get(0).findElements(By.tagName("td")).get(1).getText();
+			System.out.println(lead_name);
+			//clicking followup button for lead and getting title of child window
+			leads_info.get(0).findElements(By.tagName("a")).get(1).click();
+			sleep(2);
+			System.out.println("child window title is: " +driver.findElement(By.cssSelector("div.ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix")).getText());
+			sleep(2);
+			//Selecting an option from followup type and prospect type dropdown and clicking proceed
+			new Select(driver.findElement(By.name("followuptype"))).selectByVisibleText("Prospect Identify");
+			sleep(1);
+			new Select(driver.findElement(By.name("prospectType"))).selectByVisibleText("Proposal");
+			driver.findElement(By.id("button")).click();
+			System.out.println("Error-->" +driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+			sleep(2);
+			//selecting fix on date
+			driver.findElement(By.id("fixon")).sendKeys(simple.format(date));
+			driver.findElement(By.id("button")).click();
+			sleep(2);
+			System.out.println("Error-->" +driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+			//selecting followup email ids
+			new Select(driver.findElement(By.name("to"))).selectByVisibleText("ajay.kovuri8@nexiilabs.com");
+			driver.findElement(By.id("button")).click();
+			System.out.println("Error-->" +driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+			//inputing subject
+			driver.findElement(By.name("subject")).sendKeys("proposal test");
+			driver.findElement(By.id("button")).click();
+			System.out.println("Error-->" +driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+			//inputing message
+			driver.findElement(By.name("message")).sendKeys("proposal test message");
+			driver.findElement(By.id("button")).click();
+			System.out.println("Error-->" +driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+			//inputing followup comment
+			driver.findElement(By.name("followupcomment")).sendKeys("proposal test comment");
+			driver.findElement(By.id("button")).click();
+			System.out.println("Error-->" +driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+			//selecting next followup date
+			driver.findElement(By.id("nextfollowupdate")).sendKeys(simple.format(date));
+			driver.findElement(By.id("button")).click();
+			sleep(5);
+			System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+			driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
+			driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys(lead_name);
+			List<WebElement> leads_info1 = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+			leads_info1.get(0).findElements(By.tagName("a")).get(0).click();
+			sleep(1);
+			System.out.println("----------------Work phase comments table------------------");
+			List<WebElement> workphase_table = driver.findElement(By.id("body_result")).findElements(By.tagName("table"));
+			System.out.println(workphase_table.get(2).getText());
+			System.out.println("-----------------------------------------------------------");
+			collapse();
+		}*/
 		
+	//	@Test
+		public void test13_FollowupProspectIdentityQuote(){
+			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
+			Date date = new Date();
+			//expanding and clicking todays followup link
+			expand();
+			driver.findElement(By.id("todayfollowups")).click();
+			sleep(2);
+			driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("introductory mail");
+			List<WebElement> leads_info = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+			//clicking followup button for lead and getting title of child window
+			leads_info.get(0).findElements(By.tagName("a")).get(1).click();
+			sleep(2);
+			System.out.println("child window title is: " +driver.findElement(By.cssSelector("div.ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix")).getText());
+			sleep(2);
+			//Selecting an option from followup type and prospect type dropdown and clicking proceed
+			new Select(driver.findElement(By.name("followuptype"))).selectByVisibleText("Prospect Identify");
+			sleep(1);
+			new Select(driver.findElement(By.name("prospectType"))).selectByVisibleText("Quote");
+			driver.findElement(By.id("button")).click();
+			System.out.println("Error-->" +driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+			sleep(2);
+			//selecting fix on date
+			driver.findElement(By.id("fixon")).sendKeys(simple.format(date));
+			driver.findElement(By.id("button")).click();
+			sleep(2);
+			System.out.println("Error-->" +driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+			//inputing followup comment
+			driver.findElement(By.name("followupcomment")).sendKeys("Quote test comment");
+			driver.findElement(By.id("button")).click();
+			System.out.println("Error-->" +driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+			//selecting next followup date
+			driver.findElement(By.id("nextfollowupdate")).sendKeys(simple.format(date));
+		}
 		
   @BeforeMethod
   public void before() throws Exception{
