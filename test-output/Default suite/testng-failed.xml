@@ -3,12 +3,15 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="crm.Login">
+      <class name="crm.BDM">
         <methods>
-          <include name="beforeMethod"/>
-          <include name="Login1"/>
+          <include name="testLeadTrackButton"/>
+          <include name="after"/>
+          <include name="testLeadEditButton"/>
+          <include name="before"/>
+          <include name="beforesuite"/>
         </methods>
-      </class> <!-- crm.Login -->
+      </class> <!-- crm.BDM -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

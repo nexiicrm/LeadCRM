@@ -1,21 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="7" passed="7">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="64596" started-at="2014-10-14T06:39:41Z" finished-at="2014-10-14T06:40:45Z">
+  <suite name="Default suite" duration-ms="440218" started-at="2014-10-21T12:11:50Z" finished-at="2014-10-21T12:19:10Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="64596" started-at="2014-10-14T06:39:41Z" finished-at="2014-10-14T06:40:45Z">
-      <class name="crm.Login">
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:crm.Login@d57bcb]" name="beforeMethod" is-config="true" duration-ms="12572" started-at="2014-10-14T12:09:41Z" finished-at="2014-10-14T12:09:53Z">
+    <test name="Default test" duration-ms="440218" started-at="2014-10-21T12:11:50Z" finished-at="2014-10-21T12:19:10Z">
+      <class name="crm.BDM">
+        <test-method status="PASS" signature="beforesuite()[pri:0, instance:crm.BDM@974e4b]" name="beforesuite" is-config="true" duration-ms="470" started-at="2014-10-21T17:41:49Z" finished-at="2014-10-21T17:41:50Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="Login1()[pri:0, instance:crm.Login@d57bcb]" name="Login1" duration-ms="52001" started-at="2014-10-14T12:09:53Z" finished-at="2014-10-14T12:10:45Z">
+        </test-method> <!-- beforesuite -->
+        <test-method status="PASS" signature="before()[pri:0, instance:crm.BDM@974e4b]" name="before" is-config="true" duration-ms="16759" started-at="2014-10-21T17:41:50Z" finished-at="2014-10-21T17:42:06Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Login1 -->
-      </class> <!-- crm.Login -->
+        </test-method> <!-- before -->
+        <test-method status="PASS" signature="proposalFollowup()[pri:0, instance:crm.BDM@974e4b]" name="proposalFollowup" duration-ms="46330" started-at="2014-10-21T17:42:06Z" finished-at="2014-10-21T17:42:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- proposalFollowup -->
+        <test-method status="PASS" signature="after()[pri:0, instance:crm.BDM@974e4b]" name="after" is-config="true" duration-ms="50" started-at="2014-10-21T17:42:53Z" finished-at="2014-10-21T17:42:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- after -->
+        <test-method status="PASS" signature="before()[pri:0, instance:crm.BDM@974e4b]" name="before" is-config="true" duration-ms="16195" started-at="2014-10-21T17:42:53Z" finished-at="2014-10-21T17:43:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- before -->
+        <test-method status="PASS" signature="proposalUpload()[pri:0, instance:crm.BDM@974e4b]" name="proposalUpload" duration-ms="44842" started-at="2014-10-21T17:43:09Z" finished-at="2014-10-21T17:43:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- proposalUpload -->
+        <test-method status="PASS" signature="after()[pri:0, instance:crm.BDM@974e4b]" name="after" is-config="true" duration-ms="40" started-at="2014-10-21T17:43:54Z" finished-at="2014-10-21T17:43:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- after -->
+        <test-method status="PASS" signature="before()[pri:0, instance:crm.BDM@974e4b]" name="before" is-config="true" duration-ms="16366" started-at="2014-10-21T17:43:54Z" finished-at="2014-10-21T17:44:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- before -->
+        <test-method status="PASS" signature="quoteFollowup()[pri:0, instance:crm.BDM@974e4b]" name="quoteFollowup" duration-ms="45616" started-at="2014-10-21T17:44:10Z" finished-at="2014-10-21T17:44:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quoteFollowup -->
+        <test-method status="PASS" signature="after()[pri:0, instance:crm.BDM@974e4b]" name="after" is-config="true" duration-ms="40" started-at="2014-10-21T17:44:56Z" finished-at="2014-10-21T17:44:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- after -->
+        <test-method status="PASS" signature="before()[pri:0, instance:crm.BDM@974e4b]" name="before" is-config="true" duration-ms="16344" started-at="2014-10-21T17:44:56Z" finished-at="2014-10-21T17:45:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- before -->
+        <test-method status="PASS" signature="quoteUpload()[pri:0, instance:crm.BDM@974e4b]" name="quoteUpload" duration-ms="44900" started-at="2014-10-21T17:45:12Z" finished-at="2014-10-21T17:45:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quoteUpload -->
+        <test-method status="PASS" signature="after()[pri:0, instance:crm.BDM@974e4b]" name="after" is-config="true" duration-ms="70" started-at="2014-10-21T17:45:57Z" finished-at="2014-10-21T17:45:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- after -->
+        <test-method status="PASS" signature="before()[pri:0, instance:crm.BDM@974e4b]" name="before" is-config="true" duration-ms="16558" started-at="2014-10-21T17:45:57Z" finished-at="2014-10-21T17:46:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- before -->
+        <test-method status="PASS" signature="searchLeads()[pri:0, instance:crm.BDM@974e4b]" name="searchLeads" duration-ms="34511" started-at="2014-10-21T17:46:14Z" finished-at="2014-10-21T17:46:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchLeads -->
+        <test-method status="PASS" signature="after()[pri:0, instance:crm.BDM@974e4b]" name="after" is-config="true" duration-ms="20" started-at="2014-10-21T17:46:48Z" finished-at="2014-10-21T17:46:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- after -->
+        <test-method status="PASS" signature="before()[pri:0, instance:crm.BDM@974e4b]" name="before" is-config="true" duration-ms="16109" started-at="2014-10-21T17:46:48Z" finished-at="2014-10-21T17:47:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- before -->
+        <test-method status="PASS" signature="testLeadEditButton()[pri:0, instance:crm.BDM@974e4b]" name="testLeadEditButton" duration-ms="73617" started-at="2014-10-21T17:47:04Z" finished-at="2014-10-21T17:48:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLeadEditButton -->
+        <test-method status="PASS" signature="after()[pri:0, instance:crm.BDM@974e4b]" name="after" is-config="true" duration-ms="60" started-at="2014-10-21T17:48:18Z" finished-at="2014-10-21T17:48:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- after -->
+        <test-method status="PASS" signature="before()[pri:0, instance:crm.BDM@974e4b]" name="before" is-config="true" duration-ms="16655" started-at="2014-10-21T17:48:18Z" finished-at="2014-10-21T17:48:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- before -->
+        <test-method status="PASS" signature="testLeadTrackButton()[pri:0, instance:crm.BDM@974e4b]" name="testLeadTrackButton" duration-ms="35086" started-at="2014-10-21T17:48:35Z" finished-at="2014-10-21T17:49:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLeadTrackButton -->
+        <test-method status="PASS" signature="after()[pri:0, instance:crm.BDM@974e4b]" name="after" is-config="true" duration-ms="30" started-at="2014-10-21T17:49:10Z" finished-at="2014-10-21T17:49:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- after -->
+      </class> <!-- crm.BDM -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
