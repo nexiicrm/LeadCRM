@@ -311,7 +311,7 @@ public class BDE extends Helper{
 			 
 			 new Select(driver.findElement(By.name("prospectType"))).selectByVisibleText("Proposal");
 			 sleep(1);
-			 	  	  					 
+			 System.out.println("the");	  	  					 
 			 WebElement fixdate = driver.findElement(By.id("fixon"));
 			 fixdate.sendKeys(simple.format(date));
 			 sleep(1);
