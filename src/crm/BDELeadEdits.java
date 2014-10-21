@@ -58,6 +58,7 @@ public class BDELeadEdits  extends Helper
 			{
 				System.out.println("no of records displayed according to show dropdown selected item successfully");
 			}
+			
 		}
 	 }
   
@@ -93,6 +94,7 @@ public class BDELeadEdits  extends Helper
 		{
 			if(tablecolumns.get(l).getAttribute("class").equalsIgnoreCase("sorting"))
 				tablecolumns.get(l).click();
+			help.sleep(3);
 			if(tablecolumns.get(l).getAttribute("class").contains("sorting_asc"))
 				System.out.println("sorting ascending: is performed on column: "+tablecolumns.get(l).getText());
 			else
@@ -100,12 +102,26 @@ public class BDELeadEdits  extends Helper
 			
 			
 			
+			List<String> ids= new ArrayList<String>();
+			List<WebElement> tablerecords= driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+			for(int a=0;a<tablerecords.size();a++){
+				ids.add(a, tablerecords.get(a).findElements(By.tagName("td")).get(l).getText());
+				//System.out.println(ids.get(a));
+				}
 			
-			tablecolumns.get(l).click();
-			if(tablecolumns.get(l).getAttribute("class").contains("sorting_asc"))
-				System.out.println("sorting ascending: is performed on column: "+tablecolumns.get(l).getText());
-			else
-				System.out.println("sorting descending: is performed on column: "+tablecolumns.get(l).getText());
+			//validation
+			for(int i=0;i<ids.size();i++)
+			{
+				for(int j=i;j<ids.size();j++)
+				{
+					if((ids.get(i)).compareTo((ids.get(j)))<0){
+						System.out.println("sorting not done");
+					break;
+					}
+				}
+				System.out.println(ids.get(i));
+			}
+			
 		}
   }
   
@@ -150,14 +166,15 @@ public class BDELeadEdits  extends Helper
 				//System.out.println("===================================\n" +"No of"+ tree.get(j).getText()+ "sub links: "+(container.size()));
 				container.get(0).click();
 				System.out.println(container.get(0).getText()+":clicked and navigated to:"+driver.findElement(By.tagName("h1")).getText()+"     successfully");
-				//SEARCHBOX
-				Searchbox();
+				
 				//SHOW DROPDOWN
-				Showdropdown();
+				//Showdropdown();
+				//SEARCHBOX
+				//Searchbox();
 				//SORTING
 				Sorting();
 				//PAGINATION
-				Pagination();	
+				//Pagination();	
 			}
 	  }
 	  collapse();
@@ -218,11 +235,11 @@ public class BDELeadEdits  extends Helper
 				}else{
 				System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
 				}
-				driver.findElement(By.className("ui-button-text")).click();
+				//driver.findElement(By.className("ui-button-text")).click();
 			}
 	  }
-	  collapse();
-	  driver.close();
+	 // collapse();
+	  //driver.close();
   }
   @Test
   public void Trackit()
@@ -282,16 +299,16 @@ public class BDELeadEdits  extends Helper
 				{
 				
 					//SEARCHBOX
-					Searchbox();
+					//Searchbox();
 				
 					//SHOW DROPDOWN
-					Showdropdown();
+					//Showdropdown();
 				
 					//SORTING
-					Sorting();
+					//Sorting();
 				
 					//PAGINATION
-					Pagination();
+					//Pagination();
 				
 					//CLOSE
 					//driver.findElement(By.className("close")).click();
@@ -350,18 +367,29 @@ public class BDELeadEdits  extends Helper
 				driver.switchTo().window(tabbedwindow);
 				System.out.println(driver.getTitle());
 				System.out.println(" navigated to:"+driver.findElement(By.tagName("h1")).getText()+":successfully");
-				 List<WebElement> li = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("input"));
-				 System.out.println(li.size());
+				 List<WebElement> reqfields = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("input"));
+				 System.out.println("Total No of required fields:"+reqfields.size());
+				 for(int c=0;c<reqfields.size();c++)
+					 System.out.println("required fields:"+reqfields.get(c).getText());
 				 for(int b=0;b<3;b++)
 				 {
-					 int a=random(li.size());
-					 li.get(a).click();
+					 int a=random(reqfields.size());
+					 reqfields.get(a).click();
+					 System.out.println(driver.findElement(By.id("fields_to_get")).findElements(By.tagName("label")).get(a).getText()+"clicked");
 					 if(a==0){
 					  break;
 					 }
-					 System.out.println(driver.findElement(By.id("fields_to_get")).findElements(By.tagName("label")).get(a).getText()+"clicked");
 				 }
+				 driver.findElement(By.id("ui-accordion-accordion-header-1")).click();
+				 List<WebElement> filteroptions=driver.findElement(By.id("ui-accordion-accordion-panel-1")).findElements(By.tagName("fieldset"));
+				 System.out.println("Total no of filter options:"+filteroptions.size());
+				 for(int d=0;d<filteroptions.size();d++)
+				 {
+				 	
+					 System.out.println("Filter options:"+filteroptions.get(d).getText());
+				 
 				//driver.close();
+				 }
 			}
 	  }
   }*/
