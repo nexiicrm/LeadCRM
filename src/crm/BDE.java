@@ -317,7 +317,7 @@ public class BDE extends Helper{
 			 sleep(1);
 			  
 			 WebElement close =  driver.findElement(By.tagName("button"));
-			 //close.click();	
+			 close.click();	
 		 }		
 					
 	 }
