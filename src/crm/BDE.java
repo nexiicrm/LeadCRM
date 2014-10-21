@@ -1,6 +1,3 @@
-package crm;
-
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -326,14 +323,3 @@ public class BDE extends Helper{
 	 }
 					 
  }
-
-
-	
-			   
-    
-	
-	
-
-	
-	
-
