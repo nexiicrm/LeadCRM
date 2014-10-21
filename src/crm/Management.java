@@ -1,10 +1,13 @@
 package crm;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -15,36 +18,55 @@ import testUtils.Helper;
 public class Management extends Helper {
 	
 	
+	public static void pagination() 
+	{
+		  System.out.println("###### Verifying Next & Previous Buttons ######");
+		  System.out.println(driver.findElement(By.id(or.getProperty("page1_id"))).getText());
+		  help.sleep(2);
+		  driver.findElement(By.id(or.getProperty("page2_id"))).click();
+		  System.out.println("Clicked on Next button");
+		  System.out.println(driver.findElement(By.id(or.getProperty("page1_id"))).getText());
+		  help.sleep(2);
+		  driver.findElement(By.id(or.getProperty("page3_id"))).click();
+		  System.out.println("Clicked on Previous button");
+		  System.out.println(driver.findElement(By.id(or.getProperty("page1_id"))).getText());
+	 }
+	
+
   @Test
   public void test1() throws Exception 
   {
 	  //////////// logging into the site///////////////////////////
-	  help.login("basanirakeshreddy000@gmail.com", "password");
+	  help.login(sh5.getCell(0,0).getContents(), sh5.getCell(1,0).getContents());
+	  String user = driver.findElement(By.className("user_name")).getText();
+	  System.out.println("User Logged in as:" + user);
 	  System.out.println("######logged in successfully into management role######");
 	  System.out.println("===========================================================================");
   }
-  
+
   @Test
   public void test2() throws Exception
   {
 	  //////////////// Expanding and collapsing tree in the left pane of page ////////////
-	  help.login("basanirakeshreddy000@gmail.com", "password");
+	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
 	  help.collapse();
 	  System.out.println("######Expansion and collapsing of tree menu done successfully######");
 	  System.out.println("===========================================================================");
   }
-  
+
   @Test
   public void test3() throws Exception
   {
 	  /////////////// All Proposals click and search box ///////////////////////////////
-	  help.login("basanirakeshreddy000@gmail.com", "password");
+	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
 	  help.sleep(2);
 	  driver.findElement(By.id(or.getProperty("allproposals_id"))).click();
+	  help.sleep(1);
+	  pagination();
       driver.findElement(By.tagName(or.getProperty("allproposals_tagName"))).click();
-	  driver.findElement(By.tagName(or.getProperty("allproposals_tagName"))).sendKeys("sreekar");
+	  driver.findElement(By.tagName(or.getProperty("allproposals_tagName"))).sendKeys(sh5.getCell(0,1).getContents());
   
   
 	  ///////////////////////// For drop down /////////////////////////
@@ -62,9 +84,10 @@ public class Management extends Helper {
   @Test
   public void test4() throws Exception
   {
-	  help.login("basanirakeshreddy000@gmail.com", "password");
+	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
 	  driver.findElement(By.id(or.getProperty("allproposals_id"))).click();
+	  driver.findElement(By.tagName(or.getProperty("allproposals_tagName"))).sendKeys(sh5.getCell(0,1).getContents());
 	  help.sleep(2);
 	  List<WebElement> ls =driver.findElement(By.tagName(or.getProperty("allproposalsbody_tagName"))).findElements(By.tagName(or.getProperty("allproposalsrow_tagName")));
 	  System.out.println("No of rows " + ls.size());
@@ -106,12 +129,14 @@ public class Management extends Helper {
   @Test
   public void test5() throws Exception
   {
-	  help.login("basanirakeshreddy000@gmail.com", "password");
+	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
      /////////////// All lost competition ///////////////////////////////
 	  driver.findElement(By.id(or.getProperty("alllost_id"))).click();
+	  help.sleep(1);
+	  pagination();
 	  driver.findElement(By.tagName(or.getProperty("alllost_tagName"))).click();
-	  driver.findElement(By.tagName(or.getProperty("alllost_tagName"))).sendKeys("sreekar");
+	  driver.findElement(By.tagName(or.getProperty("alllost_tagName"))).sendKeys(sh5.getCell(0,1).getContents());
 	  List<WebElement> ele1 = driver.findElement(By.name(or.getProperty("alllost_name"))).findElements(By.tagName("alllostdrop_tagName"));
 	  System.out.println("size of all lost competition dropdown container: " + ele1.size());
 	  for (int j=0;j<ele1.size();j++)
@@ -128,12 +153,14 @@ public class Management extends Helper {
   @Test
   public void test6() throws Exception
   {
-	  help.login("basanirakeshreddy000@gmail.com", "password");
+	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
 	  /////////////// All customers //////////////////////////
 	  driver.findElement(By.id(or.getProperty("allcustomers_id"))).click();
+	  help.sleep(1);
+	  pagination();
 	  driver.findElement(By.tagName(or.getProperty("allcustomers_tagName"))).click();
-	  driver.findElement(By.tagName(or.getProperty("allcustomers_tagName"))).sendKeys("shiva");
+	  driver.findElement(By.tagName(or.getProperty("allcustomers_tagName"))).sendKeys(sh5.getCell(0,2).getContents());
 	  List<WebElement> ele2 = driver.findElement(By.name(or.getProperty("allcustomers_name"))).findElements(By.tagName(or.getProperty("allcustomersdrop_tagName")));
 	  System.out.println("size of all customers dropdown container: " + ele2.size());
 	  for (int j=0;j<ele2.size();j++)
@@ -149,11 +176,11 @@ public class Management extends Helper {
   @Test
   public void test7() throws Exception
   {
-	  help.login("basanirakeshreddy000@gmail.com", "password");
+	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
 	  help.sleep(2);
 	  driver.findElement(By.id(or.getProperty("allcustomers_id"))).click();
-	  driver.findElement(By.tagName(or.getProperty("allcustomers_tagName"))).sendKeys("shiva");
+	  driver.findElement(By.tagName(or.getProperty("allcustomers_tagName"))).sendKeys(sh5.getCell(0,2).getContents());
 	  List<WebElement> lsc =driver.findElement(By.tagName(or.getProperty("allcustomersbody_tagName"))).findElements(By.tagName(or.getProperty("allcustomersrow_tagName")));
 	  System.out.println("No of rows " + lsc.size());
 	  ArrayList<String> arc = new ArrayList<String>();
@@ -195,12 +222,14 @@ public class Management extends Helper {
   @Test
   public void test8() throws Exception
   {
-	  help.login("basanirakeshreddy000@gmail.com", "password");
+	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
       /////////////// All Quotes //////////////////////////
 	  driver.findElement(By.id(or.getProperty("allquotes_id"))).click();
+	  help.sleep(1);
+	  pagination();
       driver.findElement(By.tagName(or.getProperty("allquotes_tagName"))).click();
-      driver.findElement(By.tagName(or.getProperty("allquotes_tagName"))).sendKeys("Karen");
+      driver.findElement(By.tagName(or.getProperty("allquotes_tagName"))).sendKeys(sh5.getCell(0,3).getContents());
       List<WebElement> ele3 = driver.findElement(By.name(or.getProperty("allquotes_name"))).findElements(By.tagName(or.getProperty("allquotesdrop_tagName")));
       System.out.println("size of all quotes dropdown container: " + ele3.size());
       for (int j=0;j<ele3.size();j++)
@@ -214,11 +243,11 @@ public class Management extends Helper {
   @Test
   public void test9() throws Exception
   {
-	  help.login("basanirakeshreddy000@gmail.com", "password");
+	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
       help.sleep(2);
       driver.findElement(By.id(or.getProperty("allquotes_id"))).click();
-      driver.findElement(By.tagName(or.getProperty("allquotes_tagName"))).sendKeys("Karen");
+      driver.findElement(By.tagName(or.getProperty("allquotes_tagName"))).sendKeys(sh5.getCell(0,3).getContents());
 	  List<WebElement> lscq =driver.findElement(By.tagName(or.getProperty("allquotesbody_tagName"))).findElements(By.tagName(or.getProperty("allquotesrow_tagName")));
 	  System.out.println("No of rows " + lscq.size());
 	  ArrayList<String> arcq = new ArrayList<String>();
@@ -259,12 +288,13 @@ public class Management extends Helper {
   @Test
   public void testLeads() throws Exception
   {
-	  help.login("basanirakeshreddy000@gmail.com", "password");
+	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
      ///////////////////////// Search leads //////////////////////////////////////////////
      driver.findElement(By.id(or.getProperty("allleads_id"))).click();
      ArrayList<String> newTab = new ArrayList<String>(driver.getWindowHandles());
 	 driver.switchTo().window(newTab.get(1));
+	 help.sleep(1);
 	 List<WebElement> ls1 = driver.findElement(By.id(or.getProperty("allleadstab_id"))).findElements(By.tagName(or.getProperty("allleads_tagName")));
 	 System.out.println("Required field container size of lead search " + ls1.size());
 	 for (int j=0;j<ls1.size();j++)
@@ -284,14 +314,14 @@ public class Management extends Helper {
   @Test
   public void testPassword() throws Exception
   {
-	  help.login("basanirakeshreddy000@gmail.com", "password");
+	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
     /////////////////////////// change password ////////////////////////////////////
 	 
      driver.findElement(By.xpath(or.getProperty("change_xpath"))).click();
-     driver.findElement(By.id(or.getProperty("changeold_id"))).sendKeys("password");
-     driver.findElement(By.id(or.getProperty("changenew_id"))).sendKeys("rakesh");
-     driver.findElement(By.id(or.getProperty("changeconfirm_id"))).sendKeys("rakesh");
+     driver.findElement(By.id(or.getProperty("changeold_id"))).sendKeys(sh5.getCell(1,0).getContents());
+     driver.findElement(By.id(or.getProperty("changenew_id"))).sendKeys(sh5.getCell(0,4).getContents());
+     driver.findElement(By.id(or.getProperty("changeconfirm_id"))).sendKeys(sh5.getCell(0,4).getContents());
      help.sleep(2);
    // driver.findElement(By.id(or.getProperty("change_id"))).submit();
 
@@ -299,18 +329,31 @@ public class Management extends Helper {
 	  System.out.println("==============================================================================");
   }
 
-  
   @BeforeMethod
-  public void beforeClass() throws Exception {
+  public void beforeMethod() throws Exception {
 	  help.browser();
 	  help.maxbrowser();
 	  driver.get(config.getProperty("url"));	  
-	
+      help.browsererror();
+      
   }
 
  @AfterMethod
-  public void afterClass() {
+  public void afterMethod() {
 	driver.quit();
   }
-
+ @AfterClass
+    public void afterClass()
+    {
+      SimpleDateFormat simple = new SimpleDateFormat("E dd/MM/yyyy hh:mm:ss a"); // here E gives the day(mon, tue etc..)  and a gives am r pm
+      Date date = new Date();
+      System.out.println("The last run time of the instances " + simple.format(date).toString());
+      System.out.println("===================================================================================");
+    }
+ 
  }
+
+
+
+
+

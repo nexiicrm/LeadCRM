@@ -230,7 +230,7 @@ public class AdminLogin extends Helper{
  	 }
 	 
 
-/*	 @Test
+	 @Test
 	 public void d_newUserCreation() throws Exception{
 	   //========= Creation of New User ======
 		 mylogin();
@@ -288,7 +288,7 @@ public class AdminLogin extends Helper{
 		  sleep(1);
 		}
 		System.out.println("d_newUserCreation() sucess");
- }*/
+ }
 	 
 	 
  @Test
@@ -471,7 +471,85 @@ public class AdminLogin extends Helper{
 		pagination();
 	}
 	
-
+	@Test
+	public void t_configCreation() throws Exception{
+		mylogin();
+		expand();
+		driver.findElement(By.id("createConfiguration")).click();
+		sleep(2);
+		driver.findElement(By.name("templateUploadPath")).sendKeys("/usr/local/tomcat7/webapps/leadcrmtemplates");
+		driver.findElement(By.name("proposalUploadPath")).sendKeys("/usr/local/tomcat7/webapps/leadcrmproposals");
+		driver.findElement(By.name("quoteUploadPath")).sendKeys("/usr/local/tomcat7/webapps/leadcrmquotes");
+		driver.findElement(By.name("profileImageUploadPath")).sendKeys("/usr/local/tomcat7/webapps/leadcrmprofileimages");
+		driver.findElement(By.id("registerbutton")).click();
+		sleep(2);
+		WebElement w = driver.findElement(By.id("result_msg_div"));
+		if(w.getText().contains("Configurations Successfully Inserted ...!")){
+			System.out.println("configuration creation success");
+		}else{
+			System.out.println("configuration already exists");
+		}
+		
+	}
+	@Test
+	public void u_updateConfig() throws Exception{
+		mylogin();
+		expand();
+		driver.findElement(By.id("updateConfiguration")).click();
+		sleep(2);
+		driver.findElement(By.name("quoteUploadPath")).sendKeys("C:/configuration/quotes");
+		driver.findElement(By.id("registerbutton")).click();
+		sleep(2);
+		WebElement w = driver.findElement(By.className("success_msg"));
+		if(w.getText().contains("Configurations Successfully Updated ...!")){
+			System.out.println("successfully updated");
+		}
+	}
+	@Test
+	public void v_viewConfig() throws Exception{
+		mylogin();
+		expand();
+		driver.findElement(By.id("viewConfiguration")).click();
+		sleep(1);
+		help.screenshot("viewconfig");
+	}
+	@Test
+	public void w_deleteConfig() throws Exception{
+		mylogin();
+		expand();
+		driver.findElement(By.id("deleteConfiguration")).click();
+		sleep(2);
+		driver.findElement(By.id("registerbutton")).click();
+		sleep(2);
+		WebElement w = driver.findElement(By.className("success_msg"));
+		if(w.getText().equals("Successfully Deleted...!")){
+			System.out.println("configuration successfully deleted");
+		}
+	}
+	
+	@Test
+	public void x_myaccount() throws Exception{
+		mylogin();
+		expand();
+		driver.findElement(By.linkText("Change Password")).click();
+		sleep(2);
+		if(driver.getCurrentUrl().equalsIgnoreCase("http://192.168.50.32:8080/leadcrm/changepassword.jsp")){
+			System.out.println("The change password page is successfullyloaded");
+		}
+	}
+	
+	//@Test
+	public void y_validChangePassword() throws Exception{
+		mylogin();
+		expand();
+		driver.findElement(By.linkText("Change Password")).click();
+		sleep(2);
+		driver.findElement(By.id("oldPassword")).clear();
+		driver.findElement(By.id("oldPassword")).sendKeys("abcd");
+		driver.findElement(By.id("newPassword")).sendKeys("password");
+		driver.findElement(By.id("confirmPassword")).sendKeys("password");
+		driver.findElement(By.id("change")).click();
+	}
 }
  
 

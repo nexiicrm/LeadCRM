@@ -1,5 +1,7 @@
 package crm;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -31,13 +33,13 @@ public class BDM extends Helper {
 	 }
 	 
 	 
-	// @AfterMethod
+	 @AfterMethod
 	 public void after() {
 		 driver.close();
 	 }
 	 
 	 
-	/* //Test method for Proposal follow up
+	 //Test method for Proposal follow up
 	 @Test
 	 public void proposalFollowup() {
 		 help.expand();
@@ -45,10 +47,39 @@ public class BDM extends Helper {
 		 driver.findElement(By.id("allfollowups")).click();
 		 help.sleep(2);
 		 search("Introductory Mail");
-	 } */
+		 WebElement followupLead = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr")).get(0);
+		 System.out.println("Selected Lead is:" + followupLead.getText());
+		 if (followupLead.findElement(By.className("work")).isEnabled()) {
+			 followupLead.findElement(By.className("work")).click();
+			 help.sleep(3);
+			 System.out.println(driver.findElement(By.cssSelector("span.ui-dialog-title")).getText());
+			 new Select(driver.findElement(By.name("followuptype"))).selectByVisibleText("Prospect Identify");
+			 new Select(driver.findElement(By.name("prospectType"))).selectByVisibleText("Proposal");
+			 Date date = new Date();
+			 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			 String dateString = dateFormat.format(date);
+			 driver.findElement(By.id("fixon")).sendKeys(dateString);
+			 List <WebElement> toList = driver.findElement(By.name("to")).findElements(By.tagName("option"));
+			 toList.get(help.random(toList.size())).click();
+			 driver.findElement(By.name("subject")).sendKeys("Prospect Identify");
+			 driver.findElement(By.name("message")).sendKeys("Prospect Identify for Proposal Upload");
+			 driver.findElement(By.name("followupcomment")).sendKeys("Prospect Identify for Proposal Upload");
+			 driver.findElement(By.id("nextfollowupdate")).sendKeys(dateString);
+			 driver.findElement(By.id("button")).click();
+			 help.sleep(5);
+			 //Verifying the Success message displayed on the page after uploading the Proposal
+			 System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.className("success_msg")).getText());
+			 //Closing the Quote Upload page
+			 driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
+			 help.collapse();
+		 } else {
+			 System.out.println("No leads present in the Table for Prospect Identify.");
+		 }
+			 
+	 } 
 	
 	 
-	 //Test method for Proposal upload
+	 	 //Test method for Proposal upload
 	 @Test
 	 public void proposalUpload() {
 		  help.expand();
@@ -81,7 +112,41 @@ public class BDM extends Helper {
 	 } 
 	 
 	 
-	//Test method for Quote upload
+	//Test method for Proposal follow up
+		 @Test
+		 public void quoteFollowup() {
+			 help.expand();
+			 System.out.println("Click on the '" + driver.findElement(By.id("allfollowups")).getText() + "' Link" );
+			 driver.findElement(By.id("allfollowups")).click();
+			 help.sleep(2);
+			 search("Introductory Mail");
+			 WebElement followupLead = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr")).get(0);
+			 System.out.println("Selected Lead is:" + followupLead.getText());
+			 if (followupLead.findElement(By.className("work")).isEnabled()) {
+				 followupLead.findElement(By.className("work")).click();
+				 help.sleep(5);
+				 System.out.println(driver.findElement(By.cssSelector("span.ui-dialog-title")).getText());
+				 new Select(driver.findElement(By.name("followuptype"))).selectByVisibleText("Prospect Identify");
+				 new Select(driver.findElement(By.name("prospectType"))).selectByVisibleText("Quote");
+				 Date date = new Date();
+				 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				 String dateString = dateFormat.format(date);
+				 driver.findElement(By.id("fixon")).sendKeys(dateString);
+				 driver.findElement(By.name("followupcomment")).sendKeys("Prospect Identify for Quote Upload");
+				 driver.findElement(By.id("nextfollowupdate")).sendKeys(dateString);
+				 driver.findElement(By.id("button")).click();
+				 help.sleep(5);
+				 //Verifying the Success message displayed on the page after uploading the Proposal
+				 System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.className("success_msg")).getText());
+				 //Closing the Quote Upload page
+				 driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
+				 help.collapse();
+			 } else {
+				 System.out.println("No leads present in the Table for Prospect Identify.");
+			 }	 
+		 } 
+	 
+   	 //Test method for Quote upload
 	 @Test
 	 public void quoteUpload() {
 		  help.expand();
@@ -217,7 +282,7 @@ public class BDM extends Helper {
 		 help.expand();
 		 System.out.println("Click on the '" + driver.findElement(By.id("serachLeads123")).getText() + "' Link" );
 		 driver.findElement(By.id("serachLeads123")).click();
-		 Set<String> parentWindow = driver.getWindowHandles();
+		 String parentWindow = driver.getWindowHandle();
 		 for(String childWindow : driver.getWindowHandles()) {
 				driver.switchTo().window(childWindow);
 			}
@@ -255,7 +320,9 @@ public class BDM extends Helper {
 		 //Search Box Validation
 		 search("Larry");
 		 driver.close();
-	 }
+		 driver.switchTo().window(parentWindow);
+		 
+	 }   
 	 
 	 
 	 
