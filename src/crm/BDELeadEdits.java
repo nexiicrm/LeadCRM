@@ -31,6 +31,9 @@ public class BDELeadEdits  extends Helper
 	  driver.get(config.getProperty("url"));
 	  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  help.login("sreekar.jakkula@nexiilabs.com", "password");
+	  if(driver.findElement(By.className("user_name")).getText().equalsIgnoreCase("Hi ! BDE Sreekar")){
+		  System.out.println("logged into BDE done successfully");
+	  }
   }
   
   public void Showdropdown() throws InterruptedException
@@ -92,35 +95,56 @@ public class BDELeadEdits  extends Helper
 		System.out.println("totalcolumns having sorting options="+(tablecolumns.size()));
 		for(int l=0;l<tablecolumns.size();l++)
 		{
-			if(tablecolumns.get(l).getAttribute("class").equalsIgnoreCase("sorting"))
-				tablecolumns.get(l).click();
+			tablecolumns.get(l).click();
 			help.sleep(3);
 			if(tablecolumns.get(l).getAttribute("class").contains("sorting_asc"))
-				System.out.println("sorting ascending: is performed on column: "+tablecolumns.get(l).getText());
-			else
-			System.out.println("sorting descending: is performed on column: "+tablecolumns.get(l).getText());
-			
-			
-			
-			List<String> ids= new ArrayList<String>();
-			List<WebElement> tablerecords= driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
-			for(int a=0;a<tablerecords.size();a++){
-				ids.add(a, tablerecords.get(a).findElements(By.tagName("td")).get(l).getText());
-				//System.out.println(ids.get(a));
-				}
-			
-			//validation
-			for(int i=0;i<ids.size();i++)
 			{
-				for(int j=i;j<ids.size();j++)
+				System.out.println("sorting ascending: is performed on column: "+tablecolumns.get(l).getText());
+				List<String> ids= new ArrayList<String>();
+				List<WebElement> tablerecords= driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+				for(int a=0;a<tablerecords.size();a++)
+					ids.add(a, tablerecords.get(a).findElements(By.tagName("td")).get(l).getText());
+				//validation
+				for(int i=0;i<ids.size();i++)
 				{
-					if((ids.get(i)).compareTo((ids.get(j)))<0){
-						System.out.println("sorting not done");
-					break;
+					for(int j=i;j<ids.size();j++)
+					{
+						int val=(ids.get(i)).compareTo(ids.get(j));
+						System.out.println(val);
+						//if((ids.get(i)).compareTo((ids.get(j)))>0)
+						//{
+						//	System.out.println("sorting not done properly");
+						//}
 					}
+					System.out.println(ids.get(i));
 				}
-				System.out.println(ids.get(i));
+				
 			}
+			else
+			{
+				System.out.println("sorting descending: is performed on column: "+tablecolumns.get(l).getText());
+				List<String> ids= new ArrayList<String>();
+				List<WebElement> tablerecords= driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+				for(int a=0;a<tablerecords.size();a++)
+					ids.add(a, tablerecords.get(a).findElements(By.tagName("td")).get(l).getText());
+				help.sleep(5);
+				//validation
+				for(int i=0;i<ids.size();i++)
+				{
+					for(int j=i;j<ids.size();j++)
+					{
+						int val=(ids.get(i)).compareTo(ids.get(j));
+						System.out.println(val);
+						//if((ids.get(i)).compareTo((ids.get(j)))>=0)
+						//	continue;
+						//else
+						//	Assert.fail("failed");
+						
+					}
+					System.out.println(ids.get(i));
+				}
+			}
+			
 			
 		}
   }
@@ -168,13 +192,13 @@ public class BDELeadEdits  extends Helper
 				System.out.println(container.get(0).getText()+":clicked and navigated to:"+driver.findElement(By.tagName("h1")).getText()+"     successfully");
 				
 				//SHOW DROPDOWN
-				//Showdropdown();
+				Showdropdown();
 				//SEARCHBOX
-				//Searchbox();
+				Searchbox();
 				//SORTING
 				Sorting();
 				//PAGINATION
-				//Pagination();	
+				Pagination();	
 			}
 	  }
 	  collapse();
@@ -257,8 +281,18 @@ public class BDELeadEdits  extends Helper
 				container.get(0).click();
 				System.out.println(container.get(0).getText()+":clicked and navigated to:"+driver.findElement(By.tagName("h1")).getText()+":successfully");
 				System.out.println("=================================================\n"+"TRACKIT");
-				//TRACKIT
+				
 				List<WebElement> trackelement=driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+				 //Checking for the Track it button for each lead
+				  int trackit=0;
+				  for(int i=0; i<trackelement.size(); i++) {
+					if(trackelement.get(i).findElement(By.className("analyse")).isEnabled()) {
+					  
+					  trackit++;
+					}	  
+				  }
+				  if(trackit==trackelement.size())
+					  System.out.println("Trackit button is enabled for all leads.");
 				int p=random(trackelement.size());
 				String s2=trackelement.get(p).findElements(By.tagName("td")).get(1).getText();
 				System.out.println(s2);
@@ -351,45 +385,52 @@ public class BDELeadEdits  extends Helper
 	  List<WebElement> tree=driver.findElement(By.id("tree_menu")).findElements(By.className("close")); 
 	  for(int j=0;j<tree.size();j++)
 	  {
-		  //To enter into leadsearch tree
+		  //To enter into leadsearch 
 			if( tree.get(j).getText().equalsIgnoreCase("Lead Search"))
 			{
 				tree.get(j).findElements(By.tagName("span")).get(0).click(); 
 				List<WebElement> container=tree.get(j).findElements(By.tagName("a"));
-				System.out.println("===================================\n" +"No of"+ tree.get(j).getText()+ "sub links: "+(container.size()));
 				container.get(0).click();
-				//System.out.println(container.get(0).getText()+":clicked and navigated to:"+driver.findElement(By.tagName("h1")).getText()+":successfully");
+				
 				Set<String> windows=driver.getWindowHandles();
 				Iterator<String> itr=windows.iterator();
 				String mainwindow=itr.next();
 				String tabbedwindow=itr.next();
-				 help.sleep(3);
+				help.sleep(3);
 				driver.switchTo().window(tabbedwindow);
 				System.out.println(driver.getTitle());
 				System.out.println(" navigated to:"+driver.findElement(By.tagName("h1")).getText()+":successfully");
-				 List<WebElement> reqfields = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("input"));
-				 System.out.println("Total No of required fields:"+reqfields.size());
-				 for(int c=0;c<reqfields.size();c++)
-					 System.out.println("required fields:"+reqfields.get(c).getText());
-				 for(int b=0;b<3;b++)
-				 {
-					 int a=random(reqfields.size());
-					 reqfields.get(a).click();
-					 System.out.println(driver.findElement(By.id("fields_to_get")).findElements(By.tagName("label")).get(a).getText()+"clicked");
-					 if(a==0){
-					  break;
-					 }
-				 }
-				 driver.findElement(By.id("ui-accordion-accordion-header-1")).click();
-				 List<WebElement> filteroptions=driver.findElement(By.id("ui-accordion-accordion-panel-1")).findElements(By.tagName("fieldset"));
-				 System.out.println("Total no of filter options:"+filteroptions.size());
-				 for(int d=0;d<filteroptions.size();d++)
-				 {
-				 	
-					 System.out.println("Filter options:"+filteroptions.get(d).getText());
+				List<WebElement> reqfields = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("input"));
+				System.out.println("Total No of required fields:"+reqfields.size());
+				for(int c=0;c<reqfields.size();c++)
+				System.out.println((c+1)+":"+ driver.findElement(By.id("fields_to_get")).findElements(By.tagName("label")).get(c).getText());
+				//selecting required fields
+				int a=random(reqfields.size());
+				reqfields.get(a).click();
+				System.out.println(driver.findElement(By.id("fields_to_get")).findElements(By.tagName("label")).get(a).getText()+":clicked");
+				driver.findElement(By.id("ui-accordion-accordion-header-1")).click();
+				List<WebElement> filteroptions=driver.findElement(By.id("ui-accordion-accordion-panel-1")).findElements(By.tagName("fieldset"));
+				System.out.println("Total no of filter options:"+filteroptions.size());
+				//print filter options
+				for(int d=0;d<filteroptions.size();d++)
+				System.out.println("Filter options:"+filteroptions.get(d).findElement(By.tagName("legend")).getText());
+				//selecting randomly one  from filter options
+				int e=random(filteroptions.size());
+				System.out.println(filteroptions.get(e).findElement(By.tagName("legend")).getText()+":selected");
+				List<WebElement> options=filteroptions.get(e).findElements(By.tagName("input"));
+				System.out.println("No of options:"+options.size());
+				//selecting randomly one from options
+				int f=random(options.size());
+				options.get(f).click();
+				//validation
+				if(options.get(f).isSelected())
+				System.out.println(filteroptions.get(e).findElements(By.tagName("label")).get(f).getText()+":is selected");
+				else
+				System.out.println("filter options not selected properly");
+				driver.findElement(By.id("registerbutton")).click();
+				
+				
 				 
-				//driver.close();
-				 }
 			}
 	  }
   }*/
