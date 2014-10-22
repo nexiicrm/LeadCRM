@@ -12,7 +12,20 @@ import org.testng.annotations.Test;
 
 import testUtils.Helper;
 
-public class BDMAssignment extends Helper{
+public class BDM_hardik extends Helper{
+	
+		
+		public void research_verify(String module,String research_lead){
+			driver.findElement(By.id("researchPhase")).click();
+			  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys(research_lead);
+			  List<WebElement> research_bdm = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+			  String name = research_bdm.get(0).findElements(By.tagName("td")).get(1).getText();
+			  if(name.equals(research_lead))
+				  System.out.println("lead name found in " +module + " research module");
+			  else
+				  System.out.println("lead name not found in "+module + " research module");
+			  System.out.println("*********************************************");
+		}
 	
 		public void search(){
 		//Validating Search box 
@@ -40,14 +53,25 @@ public class BDMAssignment extends Helper{
 		
 		public void pagination(){
 			//Validating pagination
-			System.out.println("Number of entries per page: " +driver.findElement(By.id("example_info")).getText());  
-			System.out.println("Clicking next button");
-			driver.findElement(By.id("example_next")).click();
 			System.out.println("Number of entries per page: " +driver.findElement(By.id("example_info")).getText());
+			String next = driver.findElement(By.id("example_next")).getAttribute("class");
+			if(next.contains("enabled")){
+				System.out.println("Clicking next button");
+				driver.findElement(By.id("example_next")).click();
+				System.out.println("Number of entries per page: " +driver.findElement(By.id("example_info")).getText());
+				System.out.println("next Pagination is functioning properly");
+			}else
+				System.out.println("next button is not enabled");
+			sleep(1);
+			
+			String previous = driver.findElement(By.id("example_previous")).getAttribute("class");
+			if(previous.contains("enabled")){ 
 			System.out.println("Clicking previous button");
 			driver.findElement(By.id("example_previous")).click();
 			System.out.println("Number of entries per page: " +driver.findElement(By.id("example_info")).getText());
-			System.out.println("Pagination is functioning properly");
+			System.out.println("previous Pagination is functioning properly");
+			}else
+				System.out.println("previous button is not enabled");
 			System.out.println("");
 		}
 		
@@ -104,8 +128,8 @@ public class BDMAssignment extends Helper{
 			
 		}	
 
-      @Test
-      public void test1_expand_collapse() {
+  //    @Test
+      public void a_expand_collapse() {
 	  //Getting size of all the options in left pane
 	  List<WebElement> leftpane_options = driver.findElement(By.id("tree_menu")).findElements(By.className("   close"));
 	  System.out.println("Number of options present in left pane is= " +leftpane_options.size());
@@ -137,8 +161,8 @@ public class BDMAssignment extends Helper{
 	  System.out.println("***************************************************");
       }
       
-	  @Test
-	  public void test2_matching_service_name(){ 
+	//  @Test
+	  public void b_matching_service_name(){ 
 	  //expanding and clicking on assign lead link	  
 	  help.expand();
 	  driver.findElement(By.id("assignlead")).click();
@@ -163,23 +187,43 @@ public class BDMAssignment extends Helper{
 	  }else{
 	  System.out.println("fetching service name from table: " +leads_info.get(0).findElements(By.tagName("td")).get(5).getText());
 	  String lead_service = leads_info.get(0).findElements(By.tagName("td")).get(5).getText();
-	  if(lead_service.equalsIgnoreCase(rand_service)){
+	  if(lead_service.equalsIgnoreCase(rand_service))
 		  System.out.println("Service table is displayed with service name selected");
-	  }else{
+	  else
 		  System.out.println("Service table does not match with service name selected");
-	  }
 	 }
-	  collapse();
+	  System.out.println("*************************************************");
 	  } 
 	  
-	  @Test
-	  public void test3_serviceoptionsvalidation(){
+	//  @Test
+	  public void c_selectAllcheckbox(){
 	  //expanding and clicking on assign lead link	  
 	  expand();
 	  driver.findElement(By.id("assignlead")).click();
 	  sleep(2);
 	  new Select(driver.findElement(By.name("service"))).selectByVisibleText("Web");
 	  sleep(1);
+	  //check select all button and verifying it
+	  driver.findElement(By.id("selectall")).click();
+	  List<WebElement> select_lead = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+	  for(int i=0;i<select_lead.size();i++){
+		  boolean sel = select_lead.get(i).findElements(By.tagName("td")).get(6).findElement(By.id("checkbox")).isSelected();
+			  if(sel==true)
+				  System.out.println("lead name: " +select_lead.get(i).findElements(By.tagName("td")).get(1).getText() +" is ticked");
+			  else
+				  System.out.println("lead name not checked");  
+	  		}
+	  System.out.println("**************************************");
+	  }
+	  
+	//  @Test
+	  public void d_serviceoptionsvalidation_self(){
+		  expand();
+		  driver.findElement(By.id("assignlead")).click();
+		  sleep(2);
+		  new Select(driver.findElement(By.name("service"))).selectByVisibleText("Web");
+		  sleep(1);
+	  
 	  //Clicking Assign button without selecting assign to whom option
 	  System.out.println("CLICKING ON ASSIGN BUTTON WITHOUT SELECTING ASSIGN TO WHOM OPTION");
 	  driver.findElement(By.className("button")).click();
@@ -187,7 +231,7 @@ public class BDMAssignment extends Helper{
 	  
 	//Clicking Assign button without selecting any lead name
 	  System.out.println("CLICKING ON ASSIGN BUTTON WITHOUT SELECTING ANY LEAD");
-	  sleep(5);
+	  sleep(3);
 	  List<WebElement> assign_to_options = driver.findElement(By.id("form_assign_lead")).findElement(By.name("assignto")).findElements(By.tagName("option"));
 	  System.out.println("Getting assign to whom: " +assign_to_options.get(2).getText());
 	  for(int k=0;k<assign_to_options.size();k++){
@@ -199,22 +243,59 @@ public class BDMAssignment extends Helper{
 	  System.out.println("Error-->" +driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
 	  
 	  //Clicking Assign button by selecting any lead name
-	  List<WebElement> leads_check = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
-	  System.out.println("First Lead name= " +leads_check.get(0).findElements(By.tagName("td")).get(1).getText());
-	  String research_lead = leads_check.get(0).findElements(By.tagName("td")).get(1).getText();
-	  if(leads_check.size()==0){
+	  System.out.println("CLICKING ON ASSIGN BUTTON BY SELECTING ANY LEAD");
+	  List<WebElement> leads_check1 = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+	  String research_lead = leads_check1.get(0).findElements(By.tagName("td")).get(1).getText();
+	  System.out.println("lead name selected is: " +leads_check1.get(0).findElements(By.tagName("td")).get(1).getText());
+	  if(leads_check1.size()==0){
 		  System.out.println("Service table is empty");
 	  }else{
-	  leads_check.get(0).findElement(By.id("checkbox")).click();
+	  leads_check1.get(0).findElement(By.id("checkbox")).click();
 	  driver.findElement(By.className("button")).click();
 	  System.out.println("Lead" +" " +research_lead +"::" +driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
 	  }
-	  collapse();
+	  research_verify("BDM's",research_lead); 
 	  }
 	  
-	  @Test
-	  public void
- test4_assignleadPagination(){
+	//  	@Test
+		  public void e_selecttowhomassign_notself() throws Exception{
+		  //expanding and clicking on assign lead link	  
+		  expand();
+		  driver.findElement(By.id("assignlead")).click();
+		  sleep(2);
+		  new Select(driver.findElement(By.name("service"))).selectByVisibleText("Web");
+		  sleep(1);
+		  
+		  List<WebElement> assign_to_options = driver.findElement(By.id("form_assign_lead")).findElement(By.name("assignto")).findElements(By.tagName("option"));
+		  System.out.println("Getting assign to whom: " +assign_to_options.get(5).getText());
+		  for(int k=0;k<assign_to_options.size();k++){
+		  if(assign_to_options.get(k).getText().equals("Sreekar Jakkula"))
+			  assign_to_options.get(k).click();
+		  }
+		 sleep(2);
+		  //Clicking Assign button by selecting any lead name
+		  List<WebElement> leads_check = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+		  String research_lead = leads_check.get(0).findElements(By.tagName("td")).get(1).getText();
+		  if(leads_check.size()==0)
+			  System.out.println("Service table is empty");
+		  else{
+		  leads_check.get(0).findElement(By.id("checkbox")).click();
+		  driver.findElement(By.className("button")).click();
+		  sleep(3);
+		  System.out.println("Lead" +" " +research_lead +"::" +driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+		  	}
+		  
+		  //Validating that lead by login to BDE's account
+		  driver.findElement(By.className("user_logout")).findElement(By.tagName("a")).click();
+		  help.login(sh2.getCell(0, 1).getContents(),sh2.getCell(1, 1).getContents());
+		  System.out.println("logged in as: " +driver.findElement(By.className("content")).findElement(By.className("user_name")).getText());
+		  expand();
+		  research_verify("BDE's",research_lead);     
+		  }
+	  
+	  
+	//  @Test
+	  public void f_assignleadPagination(){
 	    expand();
 		driver.findElement(By.id("assignlead")).click();
 		sleep(2);
@@ -224,19 +305,18 @@ public class BDMAssignment extends Helper{
 	  	System.out.println("************VALIDATING ENTRIES BOX***************");
 	  	entries();
 	  	System.out.println("************VALIDATING SORTING *****************");
-	  	sort_name("lead id",0);
-	  	sort_name("lead name",1);
-	  	sort_name("lead email",2);
-	  	sort_name("lead company",3);
-	  	sort_name("lead domain",4);
+	  	//sort_name("lead id",0);
+	  	//sort_name("lead name",1);
+	  	//sort_name("lead email",2);
+	  	//sort_name("lead company",3);
+	  	//sort_name("lead domain",4);
 	  	System.out.println("************VALIDATING SEARCH TEXT BOX *****************");
 		search();
 		  	  
-		collapse();
 	  }
 	  
-		@Test
-		public void test5_research_phase(){
+	//	@Test
+		public void g_research_phase(){
 		//expanding and clicking on research on lead link
 		System.out.println("*******************RESEARCH PHASE***************************");
 		expand();
@@ -256,9 +336,10 @@ public class BDMAssignment extends Helper{
 			  
 		//Clicking on research button and filling all details in research on lead window
 		System.out.println("Clicking research for lead: " +leads_info.get(0).findElements(By.tagName("td")).get(1).getText());
-		leads_info.get(0).findElements(By.tagName("td")).get(6).click();
+		String name = leads_info.get(0).findElements(By.tagName("td")).get(1).getText();
+		leads_info.get(0).findElements(By.tagName("td")).get(6).findElement(By.className("segregate")).click();
+		sleep(3);
 		System.out.println("Child window is opened");
-		sleep(5);
 		System.out.println("Child window title is: " +driver.findElement(By.className("ui-dialog-title")).getText());
 		System.out.println("Clicking segregate button without filling all details");
 		driver.findElement(By.id("segregatebutton")).click();
@@ -277,32 +358,51 @@ public class BDMAssignment extends Helper{
 		driver.findElement(By.id("segregatebutton")).click();
 		System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
 		driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
-		collapse();
 	
+		//verifying that lead in work phase
+		driver.findElement(By.id("workPhase")).click();
+		driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys(name);
+		List<WebElement> leads_info1 = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+		leads_info1.get(0).findElements(By.tagName("a")).get(0).click();
+		sleep(1);
+		//printing research phase table
+		System.out.println("----------------Research phase comments table------------------");
+		WebElement research_table = driver.findElement(By.id("body_result")).findElements(By.tagName("table")).get(1);
+		System.out.println(research_table.getText());
+		System.out.println("---------------------------------------------------------------");
+		
+		WebElement abc = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr")).get(4);
+		String status = abc.findElements(By.tagName("td")).get(3).getText();
+		System.out.println(status);
+		if(status.contains("Qualified"))
+			System.out.println("Status is displayed correct");
+		else
+			System.out.println("Status is incorrect");
+		System.out.println("********************************************************");
 		}
 		
-		@Test
-		public void test6_researchPagination(){
+	//	@Test
+		public void h_researchPagination(){
 		expand();
-		driver.findElement(By.id("researchPhase")).click();	
+		driver.findElement(By.id("researchPhase")).click();
 		//Validating pagination,entries textbox,sorting technique and search text box
 		System.out.println("************VALIDATING PAGINATION***************");
 		pagination();
 		System.out.println("************VALIDATING ENTRIES BOX***************");
 		entries();
 		System.out.println("************VALIDATING SORTING *****************");
-		sort_name("lead id",0);
-		sort_name("lead name",1);
-		sort_name("lead email",2);
-		sort_name("lead company",3);
-		sort_name("lead domain",4);
+		//sort_name("lead id",0);
+		//sort_name("lead name",1);
+		//sort_name("lead email",2);
+		//sort_name("lead company",3);
+		//sort_name("lead domain",4);
 		System.out.println("************VALIDATING SEARCH TEXT BOX *****************");
 		search();
   } 
 		
 		
-		@Test
-		public void test7_workPhasetrackit(){
+	//	@Test
+		public void i_workPhasetrackit(){
 			System.out.println("***********************WORK PHASE********************");
 			//expanding and clicking on work phase link
 			expand();
@@ -319,22 +419,16 @@ public class BDMAssignment extends Helper{
 			}
 			if(trackit_followup==leads_info.size())
 			System.out.println("Trackit and Followup button is enabled for all leads.");
-			
-			leads_info.get(0).findElements(By.tagName("a")).get(0).click();
-			sleep(1);
-			System.out.println("----------------Research phase comments table------------------");
-			List<WebElement> research_table = driver.findElement(By.id("body_result")).findElements(By.tagName("table"));
-			System.out.println(research_table.get(1).getText());
-			System.out.println("---------------------------------------------------------------");
-			collapse();
+		
 		}
   
-		@Test
-		public void test8_workphaseFollowup(){
+	//	@Test
+		public void j_workphaseFollowup(){
 			expand();
 			driver.findElement(By.id("workPhase")).click();
 			sleep(2);
 			List<WebElement> leads_info = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+			String name = leads_info.get(0).findElements(By.tagName("td")).get(1).getText();
 			leads_info.get(0).findElements(By.tagName("a")).get(1).click();
 			sleep(2);
 			System.out.println("child window title is: " +driver.findElement(By.cssSelector("div.ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix")).getText());
@@ -362,17 +456,27 @@ public class BDMAssignment extends Helper{
 			System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
 			driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
 			sleep(2);
-			collapse();
+		
+			System.out.println("********************TODAY'S FOLLOWUP****************************");
+			//verifying that lead in today's followup phase
+			driver.findElement(By.id("todayfollowups")).click();
+			driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys(name);
+			List<WebElement> leads_info1 = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+			if(leads_info1.get(0).findElements(By.tagName("td")).get(1).getText().equals(name))
+				System.out.println("lead name is present in todays followup");
+			else
+				System.out.println("lead name not found in todays followup");
 		}
 		
-			@Test
-			public void test9_workphaseFuturedate(){
+		//	@Test
+			public void k_workphaseFuturedate(){
 			//Filling all the options by selecting tomorrows date and clicking on proceed button
 			expand();
 			driver.findElement(By.id("workPhase")).click();
 			sleep(2);
 			//Selecting future date and clicking on proceed 
 			List<WebElement> leads_info1 = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+			String name = leads_info1.get(0).findElements(By.tagName("td")).get(1).getText();
 			leads_info1.get(0).findElements(By.tagName("a")).get(1).click();
 			sleep(2);
 			System.out.println("child window title is: " +driver.findElement(By.cssSelector("div.ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix")).getText());
@@ -390,17 +494,25 @@ public class BDMAssignment extends Helper{
 			sleep(2);
 			System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
 			driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
-			collapse();
+
+			//verifying that lead in All followup phase
+			driver.findElement(By.id("allfollowups")).click();
+			driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys(name);
+			List<WebElement> leads_info2 = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+			if(leads_info2.get(0).findElements(By.tagName("td")).get(1).getText().equals(name))
+				System.out.println("lead name is present in All followup");
+			else
+				System.out.println("lead name not found in All followup");
 		}
 			
 			
 			
-	/*	@Test
-		public void test_todaysfollowup(){
+	//	@Test
+		public void l_allfollowup(){
 			//Checking trackit and followup button for all leads and printing work phase comments
-			System.out.println("****************TODAY'S FOLLOWUP*******************");
+			System.out.println("****************ALL FOLLOWUP*******************");
 			expand();
-			driver.findElement(By.id("todayfollowups")).click();
+			driver.findElement(By.id("allfollowups")).click();
 			sleep(2);
 			driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("introductory mail");
 			List<WebElement> leads_info = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
@@ -419,15 +531,14 @@ public class BDMAssignment extends Helper{
 			System.out.println("----------------Work phase comments table------------------");
 			List<WebElement> workphase_table = driver.findElement(By.id("body_result")).findElements(By.tagName("table"));
 			System.out.println(workphase_table.get(2).getText());
-			System.out.println("------------------------------------------------
------------");
-			collapse();
+			System.out.println("------------------------------------------------");
+			
 		   }
 		
-		@Test
-			public void test_q_todayNextFollowup(){
+	//	@Test
+			public void m_allNextFollowup(){
 			expand();
-			driver.findElement(By.id("todayfollowups")).click();
+			driver.findElement(By.id("allfollowups")).click();
 			sleep(2);
 			driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("introductory mail");
 			List<WebElement> leads_info = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
@@ -464,13 +575,13 @@ public class BDMAssignment extends Helper{
 		}
 			
 		
-		@Test
-		public void test_r_FollowupProspectIdentityProposal(){
+		//@Test
+		public void n_FollowupProspectIdentityProposal(){
 			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
 			Date date = new Date();
 			//expanding and clicking todays followup link
 			expand();
-			driver.findElement(By.id("todayfollowups")).click();
+			driver.findElement(By.id("allfollowups")).click();
 			sleep(2);
 			driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("introductory mail");
 			List<WebElement> leads_info = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
@@ -523,19 +634,28 @@ public class BDMAssignment extends Helper{
 			List<WebElement> workphase_table = driver.findElement(By.id("body_result")).findElements(By.tagName("table"));
 			System.out.println(workphase_table.get(2).getText());
 			System.out.println("-----------------------------------------------------------");
-			collapse();
-		}*/
+			//Verifying current status of that lead
+			WebElement abc = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr")).get(4);
+			String status = abc.findElements(By.tagName("td")).get(3).getText();
+			System.out.println(status);
+			if(status.contains("Prospect"))
+				System.out.println("Status is displayed correct");
+			else
+				System.out.println("Status is incorrect");
+			System.out.println("********************************************************");
+		}
 		
 	//	@Test
-		public void test13_FollowupProspectIdentityQuote(){
+		public void o_FollowupProspectIdentityQuote(){
 			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
 			Date date = new Date();
 			//expanding and clicking todays followup link
 			expand();
-			driver.findElement(By.id("todayfollowups")).click();
+			driver.findElement(By.id("allfollowups")).click();
 			sleep(2);
 			driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("introductory mail");
 			List<WebElement> leads_info = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+			String lead_name = leads_info.get(0).findElements(By.tagName("td")).get(1).getText();
 			//clicking followup button for lead and getting title of child window
 			leads_info.get(0).findElements(By.tagName("a")).get(1).click();
 			sleep(2);
@@ -559,7 +679,92 @@ public class BDMAssignment extends Helper{
 			System.out.println("Error-->" +driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
 			//selecting next followup date
 			driver.findElement(By.id("nextfollowupdate")).sendKeys(simple.format(date));
+			driver.findElement(By.id("button")).click();
+			sleep(4);
+			System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+
+			driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
+
+			driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys(lead_name);
+			List<WebElement> leads_info1 = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+			leads_info1.get(0).findElements(By.tagName("a")).get(0).click();
+			sleep(1);
+			System.out.println("----------------Work phase comments table------------------");
+			List<WebElement> workphase_table = driver.findElement(By.id("body_result")).findElements(By.tagName("table"));
+			System.out.println(workphase_table.get(2).getText());
+			System.out.println("-----------------------------------------------------------");
 		}
+		
+		
+	//	@Test
+		public void p_proposalQuoteSend(){
+			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
+			Date date = new Date();
+			expand();
+			driver.findElement(By.id("allfollowups")).click();
+			sleep(2);
+			driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Prospect Identify");
+			WebElement abc = driver.findElement(By.tagName("tbody")).findElement(By.tagName("tr"));
+			String name = abc.findElements(By.tagName("td")).get(1).getText();
+			abc.findElements(By.tagName("td")).get(6).findElement(By.className("work")).click();
+			sleep(3);
+			new Select(driver.findElement(By.name("followuptype"))).selectByVisibleText("Proposal/Quote Send");
+			sleep(1);
+			driver.findElement(By.name("followupcomment")).sendKeys("Proposal/Quote test comment");
+			driver.findElement(By.id("nextfollowupdate")).sendKeys(simple.format(date));
+			driver.findElement(By.id("button")).click();
+			sleep(2);
+			System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+			driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
+			driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys(name);
+			WebElement aaa = driver.findElement(By.tagName("tbody")).findElement(By.tagName("tr"));
+			String status = aaa.findElements(By.tagName("td")).get(5).getText();
+			if(status.contains("Proposal/Quote Send"))
+				System.out.println("Status is displayed correct");
+			else
+				System.out.println("Status is incorrect");
+			System.out.println("********************************************************");
+		}
+		
+		@Test
+			public void q_proposalQuoteaccept(){
+				expand();
+				driver.findElement(By.id("allfollowups")).click();
+				sleep(2);
+				driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Proposal/Quote Send");
+				WebElement abc = driver.findElement(By.tagName("tbody")).findElement(By.tagName("tr"));
+				String name = abc.findElements(By.tagName("td")).get(1).getText();
+				abc.findElements(By.tagName("td")).get(6).findElement(By.className("work")).click();
+				sleep(3);
+				//clicking proceed button without filling any option
+				driver.findElement(By.id("button")).click();
+				sleep(1);
+				System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+				//entering followuptype option and clicking proceed
+				new Select(driver.findElement(By.name("followuptype"))).selectByVisibleText("Proposal/Quote Accepted");
+				sleep(1);
+				driver.findElement(By.id("button")).click();
+				sleep(1);
+				System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+				//entering comment and proceed 
+				driver.findElement(By.name("followupcomment")).sendKeys("Proposal/Quote accepted comment");
+				driver.findElement(By.id("button")).click();
+				sleep(2);
+				System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+				driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();				
+				
+				//verification of lead in closed phase
+				driver.findElement(By.id("closedPhase")).click();
+				driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys(name);
+				WebElement leads_info = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr")).get(0);
+				if(leads_info.findElements(By.tagName("td")).get(1).getText().equals(name))
+					System.out.println("lead name is present in lead close");
+				else
+					System.out.println("lead name not found in lead close");
+				System.out.println("********************************************************");
+			}
+		
+		
 		
   @BeforeMethod
   public void before() throws Exception{
@@ -570,7 +775,7 @@ public class BDMAssignment extends Helper{
 	  help.login(sh2.getCell(0, 0).getContents(),sh2.getCell(1, 0).getContents());
   }
   
-  @AfterMethod
+  //@AfterMethod
   public void after(){
 	  driver.quit();
   }
