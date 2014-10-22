@@ -65,10 +65,6 @@ public class Management extends Helper {
 	  driver.findElement(By.id(or.getProperty("allproposals_id"))).click();
 	  help.sleep(1);
 	  pagination();
-      driver.findElement(By.tagName(or.getProperty("allproposals_tagName"))).click();
-	  driver.findElement(By.tagName(or.getProperty("allproposals_tagName"))).sendKeys(sh5.getCell(0,1).getContents());
-  
-  
 	  ///////////////////////// For drop down /////////////////////////
 	  List<WebElement> ele = driver.findElement(By.name(or.getProperty("allproposals_name"))).findElements(By.tagName(or.getProperty("allproposalsdrop_tagName")));
 	  System.out.println("size of all proposals dropdown container: " + ele.size());
@@ -77,8 +73,11 @@ public class Management extends Helper {
 		  ele.get(i).click();
 		  help.sleep(1);
 	  }
-	  System.out.println("###### Done with search validation and dropdown validation ######");
-	  System.out.println("============================================================================");
+	  //////////////////////// for search box 
+	  driver.findElement(By.tagName(or.getProperty("allproposals_tagName"))).click();
+	  driver.findElement(By.tagName(or.getProperty("allproposals_tagName"))).sendKeys(sh5.getCell(0,1).getContents());
+	  System.out.println("###### Done with search validation and dropdown validation of all proposals ######");
+	 
   }
  
   @Test
@@ -89,31 +88,30 @@ public class Management extends Helper {
 	  driver.findElement(By.id(or.getProperty("allproposals_id"))).click();
 	  driver.findElement(By.tagName(or.getProperty("allproposals_tagName"))).sendKeys(sh5.getCell(0,1).getContents());
 	  help.sleep(2);
-	  List<WebElement> ls =driver.findElement(By.tagName(or.getProperty("allproposalsbody_tagName"))).findElements(By.tagName(or.getProperty("allproposalsrow_tagName")));
-	  System.out.println("No of rows " + ls.size());
-	  ArrayList<String> ar = new ArrayList<String>();
+	  List<WebElement> ls =driver.findElement(By.cssSelector(or.getProperty("allproposalsrow_tagName"))).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
+	  System.out.println("No of columns " + ls.size());
+	 ArrayList<String> ar = new ArrayList<String>();
 	  for (int i=0;i<ls.size();i++)
 	  {
-		 List<WebElement> lss = ls.get(i).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
-		 System.out.println("No of columns " + lss.size());
-		 String s1= lss.get(0).getText();
-		 ar.add(s1);	
-		 String s2= lss.get(1).getText();
-		 ar.add(s2);
-	  }  
+		 String s1= ls.get(i).getText();
+		 ar.add(s1);  
+	  }
 	  System.out.println(ar);
-	  driver.findElement(By.className(or.getProperty("allproposals_className"))).click();
+	  driver.findElement(By.className(or.getProperty("allproposals_className"))).click(); // clicking track it
 	  help.sleep(2);
-	  List<WebElement> ls2 =driver.findElement(By.tagName(or.getProperty("allproposalsbody_tagName"))).findElements(By.tagName(or.getProperty("allproposalsrow_tagName")));
-	  System.out.println("No of rows in track it lead details " + ls2.size());
+	  List<WebElement> ls2 =driver.findElement(By.tagName(or.getProperty("allproposalsbody_tagName"))).findElements(By.tagName(or.getProperty("allproposalsrow1_tagName")));
+	  System.out.println("No of rows in track it lead details of all proposals " + ls2.size());
 	  ArrayList<String> ar1 = new ArrayList<String>();
-	  List<WebElement> lss2 = ls2.get(0).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
-	  System.out.println("No of columns in track it lead details " + lss2.size());
-	  String s11= lss2.get(0).getText();
-	  ar1.add(s11);	
-	  String s21= lss2.get(1).getText();
-	  ar1.add(s21);
+	  for (int i=0;i<ls2.size();i++)
+	  {
+		 // List<WebElement> lss2 = ls2.get(i).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
+		 String s1= ls2.get(i).getText();
+	     ar1.add(s1); 
+		 //String[] str =s1.split(":");
+	  }
 	  System.out.println(ar1);
+	  
+
 	  if(ar1.get(0).contains(ar.get(0)))
 	  {
 		 if(ar1.get(1).contains(ar.get(1))){
@@ -123,9 +121,9 @@ public class Management extends Helper {
 	  System.out.println("Data doesnt match in all proposals");
 	  System.out.println("######Done with validation of all proposals page######");
 	  System.out.println("==============================================================================");
-	 
+	  
   }
-    
+   
   @Test
   public void test5() throws Exception
   {
@@ -135,19 +133,54 @@ public class Management extends Helper {
 	  driver.findElement(By.id(or.getProperty("alllost_id"))).click();
 	  help.sleep(1);
 	  pagination();
-	  driver.findElement(By.tagName(or.getProperty("alllost_tagName"))).click();
-	  driver.findElement(By.tagName(or.getProperty("alllost_tagName"))).sendKeys(sh5.getCell(0,1).getContents());
-	  List<WebElement> ele1 = driver.findElement(By.name(or.getProperty("alllost_name"))).findElements(By.tagName("alllostdrop_tagName"));
-	  System.out.println("size of all lost competition dropdown container: " + ele1.size());
-	  for (int j=0;j<ele1.size();j++)
+	 ///////////// drop down validation
+	  List<WebElement> ele = driver.findElement(By.name(or.getProperty("allproposals_name"))).findElements(By.tagName(or.getProperty("allproposalsdrop_tagName")));
+	  System.out.println("size of all lost competition dropdown container: " + ele.size());
+	//  List<WebElement> ele1 = driver.findElement(By.name(or.getProperty("alllost_name"))).findElements(By.tagName("alllostdrop_tagName"));
+	 // System.out.println("size of all lost competition dropdown container: " + ele1.size());
+	  for (int j=0;j<ele.size();j++)
 	  {
-		  ele1.get(j).click();
+		  ele.get(j).click();
 		  help.sleep(1);
-		  }
-      //driver.findElement(By.className("analyse")).click();
+	  }
+	  /////////// search box validation
+	  driver.findElement(By.tagName(or.getProperty("alllost_tagName"))).click();
+	  driver.findElement(By.tagName(or.getProperty("alllost_tagName"))).sendKeys(sh5.getCell(0,5).getContents());
+	  ////////////// validation and comapring track it options
+	  List<WebElement> lsc =driver.findElement(By.tagName(or.getProperty("allcustomersbody_tagName"))).findElements(By.tagName(or.getProperty("allcustomersrow_tagName")));
+	  System.out.println("No of rows in all lost competition page" + lsc.size());
+	  ArrayList<String> arc = new ArrayList<String>();
+	  for (int i=0;i<lsc.size();i++)
+	  {
+		 List<WebElement> lssc = lsc.get(i).findElements(By.tagName(or.getProperty("allcustomerscol_tagName")));
+		 System.out.println("No of columns in all lost competition page" + lssc.size());
+		 String s1c= lssc.get(0).getText();
+		 arc.add(s1c);	
+		 String s2c= lssc.get(1).getText();
+		 arc.add(s2c);
+	  }  
+	  System.out.println(arc);
+	  driver.findElement(By.className(or.getProperty("allcustomers_className"))).click();
+	  help.sleep(2);
+	  List<WebElement> ls2c =driver.findElement(By.tagName(or.getProperty("allcustomersbody_tagName"))).findElements(By.tagName(or.getProperty("allcustomersrow_tagName")));
+	  System.out.println("No of rows in track it lead details of all lost competition " + ls2c.size());
+	  ArrayList<String> ar1c = new ArrayList<String>();
+	  List<WebElement> lss2c = ls2c.get(0).findElements(By.tagName(or.getProperty("allcustomerscol_tagName")));
+	  System.out.println("No of columns in track it lead details of all lost competition " + lss2c.size());
+	  String s11c= lss2c.get(0).getText();
+	  ar1c.add(s11c);	
+	  String s21c= lss2c.get(1).getText();
+	  ar1c.add(s21c);
+	  System.out.println(ar1c);
+	  if(ar1c.get(0).contains(arc.get(0)))
+	  {
+		 if(ar1c.get(1).contains(arc.get(1))){
+		 System.out.println("Data is matching exactly in all customers ");
+	  }
+	  }else
+	  System.out.println("Data doesnt match in all customers");
 	  System.out.println("######Done with validation of all lost competation page######");
 	  System.out.println("==============================================================================");
-	  
   }
   
   @Test
@@ -159,8 +192,7 @@ public class Management extends Helper {
 	  driver.findElement(By.id(or.getProperty("allcustomers_id"))).click();
 	  help.sleep(1);
 	  pagination();
-	  driver.findElement(By.tagName(or.getProperty("allcustomers_tagName"))).click();
-	  driver.findElement(By.tagName(or.getProperty("allcustomers_tagName"))).sendKeys(sh5.getCell(0,2).getContents());
+	 //////////////////////// dropdown validation
 	  List<WebElement> ele2 = driver.findElement(By.name(or.getProperty("allcustomers_name"))).findElements(By.tagName(or.getProperty("allcustomersdrop_tagName")));
 	  System.out.println("size of all customers dropdown container: " + ele2.size());
 	  for (int j=0;j<ele2.size();j++)
@@ -168,8 +200,10 @@ public class Management extends Helper {
 		  ele2.get(j).click();
 		  help.sleep(1);
 		  }
+	  /////////// serach fields validation
+	  driver.findElement(By.tagName(or.getProperty("allcustomers_tagName"))).click();
+	  driver.findElement(By.tagName(or.getProperty("allcustomers_tagName"))).sendKeys(sh5.getCell(0,2).getContents());
       System.out.println("###### done with the validation of search and dropdown of all customers ######"); 
-      System.out.println("==================================================================================");
       
   }
 	 
@@ -228,8 +262,7 @@ public class Management extends Helper {
 	  driver.findElement(By.id(or.getProperty("allquotes_id"))).click();
 	  help.sleep(1);
 	  pagination();
-      driver.findElement(By.tagName(or.getProperty("allquotes_tagName"))).click();
-      driver.findElement(By.tagName(or.getProperty("allquotes_tagName"))).sendKeys(sh5.getCell(0,3).getContents());
+      /////////////// drop down validation
       List<WebElement> ele3 = driver.findElement(By.name(or.getProperty("allquotes_name"))).findElements(By.tagName(or.getProperty("allquotesdrop_tagName")));
       System.out.println("size of all quotes dropdown container: " + ele3.size());
       for (int j=0;j<ele3.size();j++)
@@ -237,8 +270,10 @@ public class Management extends Helper {
     	  ele3.get(j).click();
     	  help.sleep(1);
       }
+      ///////////// search fields validation 
+      driver.findElement(By.tagName(or.getProperty("allquotes_tagName"))).click();
+      driver.findElement(By.tagName(or.getProperty("allquotes_tagName"))).sendKeys(sh5.getCell(0,3).getContents());
       System.out.println("###### done with the validation of search and dropdown of all quotes ######"); 
-      System.out.println("==================================================================================");
   }
   @Test
   public void test9() throws Exception
@@ -328,7 +363,6 @@ public class Management extends Helper {
      System.out.println("######Done with validation of change password page######");
 	  System.out.println("==============================================================================");
   }
-
   @BeforeMethod
   public void beforeMethod() throws Exception {
 	  help.browser();
