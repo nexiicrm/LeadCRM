@@ -12,6 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -22,6 +23,11 @@ public class AdminLogin extends Helper{
 	public void bf() {
 		 browser();
 		 driver.get("http://192.168.50.32:8080/leadcrm/login.jsp");
+		 if(driver.getTitle().equals("::LEAD-CRM::Login Here")){
+			 System.out.println("Page loaded successfully");
+		 }else{
+			 Assert.fail("Page Loading Failed");
+		 }
 		 maxbrowser();
 		 
 	}
@@ -30,27 +36,57 @@ public class AdminLogin extends Helper{
 		driver.close();
 	}
 	public void mylogin() throws Exception{
-		login(config.getProperty("auname"), config.getProperty("apass"));	
+		login(config.getProperty("auname"), config.getProperty("apass"));
+		WebElement w = driver.findElement(By.className("user_name"));
+		if(w.getText().equals("Hi ! Admin srini")){
+			System.out.println("Logged in Successfully");
+		}else
+		{
+			Assert.fail("Login failed");
+		}
 	}
 	
 	
 	public void pagination(){
 		 sleep(2);
-		   String s = driver.findElement(By.cssSelector("div.dataTables_info")).getText();
-		   System.out.println(s);
-	       driver.findElement(By.id("example_next")).click();
-	       String s1 = driver.findElement(By.id("example_info")).getText();
-	       System.out.println(s1);
-	       if(!s1.equalsIgnoreCase(s)){
-	    	   System.out.println("The page is navigated to next page successfully");
-	       }
-	       driver.findElement(By.id("example_previous")).click();
+		 //verifying for pagination to next page for all entries
+		 WebElement w= driver.findElement(By.id("example_next"));
+	     while(!w.getAttribute("class").equalsIgnoreCase("paginate_disabled_next")){
+	    	   String s = driver.findElement(By.cssSelector("div.dataTables_info")).getText();
+	    	   System.out.println(s);
+	          w.click();
+	         
+	         String s1 = driver.findElement(By.id("example_info")).getText();
+	        if(!s1.equalsIgnoreCase(s)){
+	    	   System.out.println("navigating to next page");
+	        }else{
+	    	   Assert.fail("page navigation failed to next page");
+	        }
+	        sleep(1);
+	        //verification of navigation to the previous pge for all entries 
+	      if(w.getAttribute("class").equalsIgnoreCase("paginate_disabled_next")) {
+	    	WebElement w1 =  driver.findElement(By.id("example_previous"));
+	        while(!w1.getAttribute("class").equalsIgnoreCase("paginate_disabled_previous")){
 	       String s2 = driver.findElement(By.id("example_info")).getText();
+	       w1.click();
+	       String s3 = driver.findElement(By.id("example_info")).getText();
 	       System.out.println(s2);
-	       if(!s1.equalsIgnoreCase(s2)){
-	    	   System.out.println("The page is navigated to previous page successfully");
-	       }
-	}
+	       if(!s2.equalsIgnoreCase(s3)){
+	    	   System.out.println("navigated to previous page");
+	      }else{
+	    	   Assert.fail("page navigation failed to previous page");
+	      }
+	        }
+	        //To break the loop once the circle finished
+		      if(!w.getAttribute("class").equalsIgnoreCase("paginate_disabled_next")){
+		    	  break;
+		      }
+	        }
+	      
+	   }
+	      }
+	
+
 	
 	public void showEntries(){
 		 //====== Verifying the Show Entries Drop down ========  
@@ -69,7 +105,7 @@ public class AdminLogin extends Helper{
 				 
 			   }
 			   else{
-				   System.out.println("The drop down menu is not working properly");
+				   Assert.fail("The drop down menu is not working properly");
 			   }
 			  
 			 sleep(3);
@@ -93,6 +129,8 @@ public class AdminLogin extends Helper{
 		  sleep(1);
 		   if(cnt!=0){
 		   System.out.println("search success ");
+		   }else{
+			   Assert.fail("Search not working properly");
 		   }
 	}
 	public void sortAscend(){
@@ -149,14 +187,11 @@ public class AdminLogin extends Helper{
 	
 	}
 	
-@Test
+//@Test
   public void a_createbutton()throws Exception  {
 	   //======= Login verification =========
 	 		mylogin();
-	 		WebElement w =	driver.findElement(By.className("user_name"));
-	 		if(w.getText().contains("Hi ! Admin srini")){
-	 			System.out.println("Loggedin Successfully");
-	 		}
+	 		
 	   //==========Side Tree Expansion==========
 	 	expand();
 	 	List<WebElement> li=driver.findElement(By.id("tree_menu")).findElements(By.tagName("a"));
@@ -165,49 +200,72 @@ public class AdminLogin extends Helper{
 	 		System.out.println(li.get(i).getText());
 	 	}
 	 	System.out.println("The tree expanded successfully");
+	 	collapse();
 	 	
 	 	
 	  
 	  //======Clicking on Create button=======
 	  
 	   driver.findElement(By.id("createUser")).click();
-	  sleep(2);
-	  System.out.println("a_createbutton successful");
+	   sleep(2);
+	   System.out.println("Navigated to create page successfully");
+	   System.out.println("===========================================");
  }
  
  
- @Test
+// @Test
   public void b_dropDownVerification() throws Exception{
 	  //======'Manager' Drop down button presence and its working=====
-	 	mylogin();
-	 	expand();
-	 	driver.findElement(By.id("createUser")).click();
-	     System.out.println("The drop down is present");
+	 	 mylogin();
+	 	 expand();
+	 	 driver.findElement(By.id("createUser")).click();
 	     sleep(2);
 	     List<WebElement> M = driver.findElement(By.name("manager")).findElements(By.tagName("option"));
-		 System.out.println(M.size());
-	  
-	 for(int i=0;i<M.size();i++){
-		 M.get(i).click(); 
+		 System.out.println("drop down size"+M.size());
+	     int count = 0;
+	    for(int i=0;i<M.size();i++){
+		  M.get(i).click(); 
+		  count++;
 	 }
+	    if(count==M.size()){
+	    	System.out.println("Manager drop down successfully choosing all values for "+count+" times");
+	    }else{
+	    	Assert.fail("manager drop down mossing some values");
+	    }
 	 //======'Role' Drop down button presence and its working=====
-	 List<WebElement> R = driver.findElement(By.name("role")).findElements(By.tagName("option"));
-	    System.out.println(R.size());
-	    for(int j=0;j<R.size();j++){
-		  R.get(j).click();
+	  List<WebElement> R = driver.findElement(By.name("role")).findElements(By.tagName("option"));
+	     System.out.println("drop down size"+R.size());
+	     int cnt=0;
+	     for(int j=0;j<R.size();j++){
+		   R.get(j).click();
+		   cnt++;
 	  }	
+	     if(cnt==R.size()){
+	    	 System.out.println("All elements are clicked in role  dropdown for "+cnt+" times");
+	     }
+	     else{
+	    	 Assert.fail("failed in choosing all the values from role drop down");
+	     }
 	    //======Service dropdown presence and working =======
 	    R.get(2).click();
 		List<WebElement>li = driver.findElement(By.name("service")).findElements(By.tagName("option"));
+		System.out.println("dropdown size"+li.size());
+		int cont=0;
 		for(int i= 0;i<li.size();i++){
 			li.get(i).click();
 			sleep(1);
+			cont++;
 		}
-	 System.out.println(" b_dropDownVerification successful");
+		if(cont==li.size()){
+			System.out.println("All values are clicked in service drop down for " + cont+" times");
+		}else{
+			Assert.fail("failed in choosing all values from service drop down");
+		}
+	 System.out.println("=========================================================");
  }
  
  
- 	@Test
+ //	@Test
  	public void c_ButtonVerification() throws Exception{
   		mylogin();
   		expand();
@@ -218,9 +276,14 @@ public class AdminLogin extends Helper{
   		List<WebElement> R = driver.findElement(By.name("role")).findElements(By.tagName("option"));
  	    R.get(2).click();
 	  driver.findElement(By.id("Service")).click();  
-	  sleep(1);
-	  driver.findElement(By.className("medium")).sendKeys("database admin");
 	  sleep(2);
+	  WebElement w = driver.findElement(By.cssSelector("span.ui-dialog-title"));
+	  System.out.println(w.getText());
+	  if(w.getText().equals("Create Service")){
+		  System.out.println("page navigated to createService window successfully");
+	  }
+	  driver.findElement(By.className("medium")).sendKeys("database admin");
+	  sleep(1);
 	  driver.findElement(By.id("createbutton")).click(); 
 	  sleep(2);
 	  Actions ac = new Actions(driver);
@@ -228,9 +291,8 @@ public class AdminLogin extends Helper{
 	  driver.findElement(By.cssSelector("button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only.ui-dialog-titlebar-close")).click();
 	  System.out.println("c_ButtonVerification() success");
  	 }
-	 
-
-	 @Test
+ 	
+	// 	@Test
 	 public void d_newUserCreation() throws Exception{
 	   //========= Creation of New User ======
 		 mylogin();
@@ -275,11 +337,12 @@ public class AdminLogin extends Helper{
 			 }
 	      driver.findElement(By.id("registerbutton")).submit(); 
 	      sleep(1);
-	      if(driver.findElement(By.className("error_msg")).getText().equals("User already exists...")){
-	    	  System.out.println("user creation failed");
+	      if(driver.findElement(By.id("result_msg_div")).getText().equals("Successfully Created...Password Sent to Your email id")){
+	    	 
+	    	  System.out.println("user created successfully");
 	      }else
 	      {
-	    	  System.out.println("user created successfully");
+	    	  Assert.fail("user already exist ");
 	      }
 		  driver.findElement(By.name("firstname")).clear();
 		  driver.findElement(By.name("lastname")).clear();
@@ -287,35 +350,34 @@ public class AdminLogin extends Helper{
 		  driver.findElement(By.name("empid")).clear();
 		  sleep(1);
 		}
-		System.out.println("d_newUserCreation() sucess");
+		System.out.println("=================d_newUserCreation() success==========================");
  }
 	 
 	 
- @Test
+// @Test
   public void e_showEntriesDropDown() throws Exception   {
 		   
 	   //======Clicking on Update button======= 
 	 	mylogin();
 	 	expand();
 	    driver.findElement(By.id("updateUser")).click();
+	    //verifying the show entries drop down in update page by calling method
 	  	showEntries();
-	   System.out.println("e_showEntriesDropDown() success");
+	   System.out.println("==============e_showEntriesDropDown() success=======================");
  }  
- 
- 
- 
- @Test
+ // @Test
 	 public void f_searchUsers() throws Exception{
 		  //====== Searching for a specific user ======== 
 		   mylogin();
 		   expand();
 		   driver.findElement(By.id("updateUser")).click();
+		   //searching for the specific user in update user page
 		  searchUser();
-		   System.out.println(" f_searchUsers() success");
+		   System.out.println(" =====================f_searchUsers() success=================");
 	 }   
 	 
 		
-	@Test
+//	@Test
 	public void g_updatingUser() throws Exception{
 		mylogin();
 		expand();
@@ -326,23 +388,24 @@ public class AdminLogin extends Helper{
 	   driver.findElement(By.id("118")).click();
 	   sleep(4);
 	   List<WebElement> man=driver.findElement(By.name("manager")).findElements(By.tagName("option"));
-	   System.out.println(man.size());
 	   int rnm = random(man.size());
 	   man.get(rnm).click();
-	   
-	   
+	     
 	   driver.findElement(By.id("updatebutton")).submit();
 	   sleep(2);
 	   WebElement we = driver.findElement(By.className("success_msg"));
 	   System.out.println(we.getText());
 	   if(we.getText().equalsIgnoreCase("Successfully Updated...")){
 		   System.out.println("user updated successfully");
+	   }else{
+		   Assert.fail("user updation failed");
 	   }
+	   
 	   sleep(2);
 	   driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
-	   System.out.println("g_updatingUser() is successs");
+	   System.out.println("===========g_updatingUser() is successs==============");
 	 }
-	 @Test
+//	 @Test
 	 public void h_sorting () throws Exception{
 		 mylogin();
 		 expand();
@@ -353,20 +416,19 @@ public class AdminLogin extends Helper{
 	 }
 	 
 	
-	 @Test
+//	 @Test
 	 public void i_pageNavigation() throws Exception{
      //==========Page Navigation ======== 
 		 mylogin();
 		 expand();
 		 driver.findElement(By.id("updateUser")).click();
 		pagination();
-      
-       System.out.println("h_pageNavigation() success");
+        System.out.println("h_pageNavigation() success");
 	 }
   
  
 	 
-   @Test
+ //  @Test
 	public void j_showentries() throws Exception{
 		mylogin();
 		expand();
@@ -374,8 +436,8 @@ public class AdminLogin extends Helper{
 		showEntries();
 		   System.out.println("j_showentries() success");
 	}			
-	@Test
-	public void k_serachbutton() throws Exception{
+//	@Test
+	public void k_searchbutton() throws Exception{
 		mylogin();
 		expand();
 		driver.findElement(By.id("deleteUser")).click();
@@ -384,23 +446,46 @@ public class AdminLogin extends Helper{
 	}
 	
 	 
-	@Test
+//	@Test
 	public void l_deletinguser() throws Exception{
 		mylogin();
 		expand();
 		driver.findElement(By.id("deleteUser")).click();
 		sleep(2);
 		driver.findElement(By.tagName("input")).sendKeys("ajay");
-		List<WebElement> li = driver.findElement(By.tagName("tbody")).findElements(By.tagName("a"));
-		System.out.println(li.size());
-		int i = random(li.size());
-		sleep(1);
-		li.get(i).click();
-		System.out.println("user deleted successfully");
-		
+		List<WebElement> li = driver.findElement(By.tagName("tbody")).findElement(By.tagName("tr")).findElements(By.tagName("td"));
+		String s = li.get(2).getText();
+		System.out.println(s);
+		ArrayList<String> a = new ArrayList<String>();
+		List<WebElement> li1 = driver.findElement(By.tagName("tbody")).findElements(By.tagName("a"));
+		li1.get(0).click();
+		sleep(3);
+		List<WebElement> li4 = driver.findElement(By.id("example_length")).findElements(By.tagName("option"));
+		li4.get(3).click();
+		sleep(3);
+		List<WebElement> li2 = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+		for(int i=0;i<li2.size();i++){
+			 List<WebElement> trr = li2.get(i).findElements(By.tagName("td"));
+			   System.out.println(trr.get(2).getText());
+			   String s1= trr.get(2).getText();
+			   a.add(s1);
+		}
+		System.out.println(a.size());
+		int count = 0;
+		for(int j=0;j<a.size();j++){
+			if(s.equals(a.get(j))){
+				count++;
+			}
+		}
+		if(count==0){
+			System.out.println("user deleted successfully");
+		}
+		else{
+			Assert.fail("user deletion failed");
+		}
 	}  
 	
-	@Test
+//	@Test
 	public void m_sort() throws Exception{
 		mylogin();
 		expand();
@@ -411,7 +496,7 @@ public class AdminLogin extends Helper{
 		
 	}
 	
-	@Test
+//	@Test
 	public void n_pagenavigation() throws Exception{
 		mylogin();
 		expand();
@@ -419,7 +504,7 @@ public class AdminLogin extends Helper{
 		pagination();
 	}
 	
-	@Test
+//	@Test
 	public void o_showEntries() throws Exception{
 		//=======verification of showentries dropdown ========
 		mylogin();
@@ -428,7 +513,7 @@ public class AdminLogin extends Helper{
 		sleep(2);
 		showEntries();
 	}  
-	@Test
+//	@Test
 	public void p_searchUser() throws Exception{
 		mylogin();
 		expand();
@@ -436,7 +521,7 @@ public class AdminLogin extends Helper{
 		sleep(2);
 		searchUser();
 	}	
-	@Test 
+//	@Test 
 	public void q_sortedUser() throws Exception{
 		mylogin();
 		expand();
@@ -446,7 +531,7 @@ public class AdminLogin extends Helper{
 		sleep(1);
 		sortDescend();
 	}
-	@Test
+//	@Test
 	public void r_viewUsers() throws Exception{
 		mylogin();
 		expand();
@@ -462,7 +547,7 @@ public class AdminLogin extends Helper{
 		}
 		System.out.println(i + " no.of users are viewed successfully");
 	}
-	@Test
+//	@Test
 	public void s_pageNavigation() throws Exception{
 		mylogin();
 		expand();
@@ -471,7 +556,7 @@ public class AdminLogin extends Helper{
 		pagination();
 	}
 	
-	@Test
+//	@Test
 	public void t_configCreation() throws Exception{
 		mylogin();
 		expand();
@@ -491,7 +576,7 @@ public class AdminLogin extends Helper{
 		}
 		
 	}
-	@Test
+//	@Test
 	public void u_updateConfig() throws Exception{
 		mylogin();
 		expand();
@@ -505,7 +590,7 @@ public class AdminLogin extends Helper{
 			System.out.println("successfully updated");
 		}
 	}
-	@Test
+//	@Test
 	public void v_viewConfig() throws Exception{
 		mylogin();
 		expand();
@@ -513,7 +598,7 @@ public class AdminLogin extends Helper{
 		sleep(1);
 		help.screenshot("viewconfig");
 	}
-	@Test
+//	@Test
 	public void w_deleteConfig() throws Exception{
 		mylogin();
 		expand();
@@ -527,29 +612,7 @@ public class AdminLogin extends Helper{
 		}
 	}
 	
-	@Test
-	public void x_myaccount() throws Exception{
-		mylogin();
-		expand();
-		driver.findElement(By.linkText("Change Password")).click();
-		sleep(2);
-		if(driver.getCurrentUrl().equalsIgnoreCase("http://192.168.50.32:8080/leadcrm/changepassword.jsp")){
-			System.out.println("The change password page is successfullyloaded");
-		}
-	}
-	
-	//@Test
-	public void y_validChangePassword() throws Exception{
-		mylogin();
-		expand();
-		driver.findElement(By.linkText("Change Password")).click();
-		sleep(2);
-		driver.findElement(By.id("oldPassword")).clear();
-		driver.findElement(By.id("oldPassword")).sendKeys("abcd");
-		driver.findElement(By.id("newPassword")).sendKeys("password");
-		driver.findElement(By.id("confirmPassword")).sendKeys("password");
-		driver.findElement(By.id("change")).click();
-	}
+		
 }
  
 
