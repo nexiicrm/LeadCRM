@@ -23,9 +23,32 @@ public class Management extends Helper {
   {
 	  //////////// logging into the site///////////////////////////
 	  help.login(sh5.getCell(0,0).getContents(), sh5.getCell(1,0).getContents());
-	  String user = driver.findElement(By.className("user_name")).getText();
+	  String user = driver.findElement(By.className(or.getProperty("user_Classname"))).getText();
 	  System.out.println("User Logged in as:" + user);
-	  System.out.println("######logged in successfully into management role######");
+	  List <WebElement> we  = driver.findElements(By.tagName(or.getProperty("user_tagname")));
+	  ArrayList <String> str = new ArrayList <String>();
+	  for(int i=0;i<we.size();i++){  
+		  str.add(we.get(i).getText());
+		  //System.out.println(str.get(i));
+	  }
+	  System.out.println(str);
+	/*  if(sh5.getCell(1,1).getContents().contains(str.get(0)))
+	  {
+		 if(sh5.getCell(1,2).getContents().contains(str.get(1)))
+		 {
+			 if(sh5.getCell(1,3).getContents().contains(str.get(2)))
+			 {	 
+				 if(sh5.getCell(1,4).getContents().contains(str.get(3)))
+				 {
+					 if(sh5.getCell(1,5).getContents().contains(str.get(4))){
+				 System.out.println("######logged in successfully into management role######");
+	        }
+	    }
+	 }
+	 }
+	 }else
+	  Assert.fail("Logged in as other user except management");
+	  */
 	  System.out.println("===========================================================================");
   }
 
@@ -336,8 +359,8 @@ public class Management extends Helper {
 	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
         ///////////////////////// Search leads //////////////////////////////////////////////
-	  if(driver.findElement(By.id(or.getProperty("search_id22"))).isDisplayed()) {
-      driver.findElement(By.id(or.getProperty("search_id22"))).click();
+	  if(driver.findElement(By.id(or.getProperty("allleads_id"))).isDisplayed()) {
+      driver.findElement(By.id(or.getProperty("allleads_id"))).click();
 	  String parentWindow = driver.getWindowHandle();
 	  for(String childWindow : driver.getWindowHandles()) 
 	  {
@@ -412,8 +435,8 @@ public class Management extends Helper {
  public static void pageEntries()
  {
 		//Selecting no.of entries for the table
-   driver.findElement(By.id("example_length")).click();
-   List <WebElement> entries = driver.findElement(By.id("example_length")).findElements(By.tagName("option"));
+   driver.findElement(By.id(or.getProperty("allproposals_name"))).click();
+   List <WebElement> entries = driver.findElement(By.id(or.getProperty("allproposals_name"))).findElements(By.tagName(or.getProperty("allproposalsdrop_tagName")));
    help.sleep(4);
    int opt = help.random(entries.size());
    entries.get(opt).click();
@@ -423,7 +446,7 @@ public class Management extends Helper {
      	 //Method for validating Search box
  public static void search(String keyword) 
   {
-    driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys(keyword);
+    driver.findElement(By.id(or.getProperty("searching_id"))).findElement(By.tagName(or.getProperty("allproposals_tagName"))).sendKeys(keyword);
   }
 
  @BeforeMethod
