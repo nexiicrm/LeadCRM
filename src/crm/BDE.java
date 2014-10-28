@@ -68,8 +68,8 @@ public class BDE extends Helper{
 			 sleep(4);
 			 res.click();
 			 sleep(1);
-			 WebElement cont1= driver.findElement(By.id(or.getProperty("fromid")));
-			 System.out.println(cont1.findElement(By.tagName(or.getProperty("pagetag"))).getText());
+		//	 WebElement cont1= driver.findElement(By.id(or.getProperty("fromid")));
+		//	 System.out.println(cont1.findElement(By.tagName(or.getProperty("pagetag"))).getText());
 		 }
 	}
 	
@@ -88,12 +88,14 @@ public class BDE extends Helper{
 		List<WebElement> table = driver.findElement(By.id(or.getProperty("tableId"))).findElement(By.tagName(or.getProperty("tableBody"))).findElements(By.tagName(or.getProperty("tableTr")));
 		System.out.println("Should display only one item,The table size is :::: " + table.size());
 		
-		String Leadres = table.get(0).findElement(By.className(or.getProperty("sortclass"))).getText();
-		
+		//String Leadres = table.get(0).findElement(By.className("sorting_1")).getText();
+		String Leadres = table.get(0).getText();
+		System.out.println("Lead no " + Leadres );
 	    if(Leadres.contentEquals(Leadno)){
 	    	System.out.println("The Lead is present");       
 	    }else
 	    	System.out.println("Lead not present");
+	    System.out.println("This is end search");
 	}
 	
 	
@@ -137,16 +139,17 @@ public class BDE extends Helper{
 	
 		  submitMessage(seg,"Successfully Updated."); 	 
 	}
-	public void tableSize()
+	public int tableSize()
 	{
 		List<WebElement> table = driver.findElement(By.id(or.getProperty("tableId"))).findElement(By.tagName(or.getProperty("tableBody"))).findElements(By.tagName(or.getProperty("tableTr")));
 		System.out.println("The table size is: "+ table.size() + " id is " + table.get(0).getAttribute(or.getProperty("leadId")));
-		if (table.size() == 0)
+		return table.size();
+		/*if (table.size() == 0)
 			 Assert.fail("Work Phase table field is Empty...");
 		else 
-			System.out.println("The Expected Lead is Present " + table.get(0).getAttribute(or.getProperty("leadId")));
+			System.out.println("The Expected Lead is Present " + table.get(0).getAttribute(or.getProperty("leadId")));*/
 	}
-	//@Test
+	@Test
 	public void trackIT()
 	{   
 		List<String> Lead = new ArrayList<String>();
@@ -191,9 +194,45 @@ public class BDE extends Helper{
 		     else
 		    	 System.out.println("These is Data Mismatch.............");
 		}
+		
+		
 
 	}
-	@BeforeMethod
+	
+	 public void proposalQuotePage(String s1, String s2) throws Exception 
+	 {
+		 login("srinivasa.sanchana@nexiilabs.com", "password");
+		 navigatePage(s1, s2);
+		 searchLead("90");
+		 System.out.println("two");
+		 WebElement table = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr")).get(0);
+		 System.out.println("1one");
+		 table.findElements(By.tagName("td")).get(5).click();
+		 sleep(1);
+	     //res.click();
+			
+	
+	 }    
+ 
+	 public void ProposalQuoteForm(String s1, String s2, String s3)
+	 {
+		 WebElement name = driver.findElement(By.name(s1));
+		 name.sendKeys("Comments of closed phase.. ");
+		 sleep(1);
+		 
+		 WebElement des = driver.findElement(By.name(s2));
+		 des.sendKeys("Comments of closed phase.. ");
+		 sleep(1);
+		 
+		 WebElement browse = driver.findElement(By.name(s3));
+		 String path  =  System.getProperty("user.dir") + "\\src\\configFiles\\configuration.properties";
+		 browse.sendKeys(path);
+		 
+		 WebElement upload = driver.findElement(By.id("button"));
+		 upload.click();
+		 
+	 }
+	//@BeforeMethod
 	public void beforeMethod() throws Exception{
 		browser();
 		maxbrowser();
@@ -277,7 +316,10 @@ public class BDE extends Helper{
 			 Assert.fail("Navigation of Reasearch on Lead page Failed");
 		 navigatePage("Work on Lead", "Work on Lead");
 		 searchLead(researchLead);
-		 tableSize();			
+		 if (tableSize() == 0)
+			 Assert.fail(" Expected Lead is not present in Work Phase");
+		 
+		 
 	}	
 	
 	//@Test
@@ -358,14 +400,15 @@ public class BDE extends Helper{
 	
 
 	 //@Test
-	 public void todaysFollowupProposal()
+	 public void todaysFollowupProposal() throws Exception
 	 {
 		 date = new Date();
 	     navigatePage("Today's FollowUp", "Today Followups");
 	     particularLeadSelection("Introductory Mail");
+	     sleep(2);
 		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Followup on Lead"))
 		 {   
-			 WebElement seg = driver.findElement(By.id("button"));
+			 WebElement seg = driver.findElement(By.className("button"));
 			 
 			 submitMessage(seg, "Please Select FollowUp Type");
 			 new Select(driver.findElement(By.name("followuptype"))).selectByVisibleText("Prospect Identify");
@@ -382,7 +425,7 @@ public class BDE extends Helper{
 			 sleep(1);
 			 
 			 submitMessage(seg, "Please Select Mail Id of Architect");
-			 //new Select(driver.findElement(By.name("to"))).selectByVisibleText("lakshmi.sure@nexiilabs.com"); 
+			 //Select(driver.findElement(By.name("to"))).selectByVisibleText("lakshmi.sure@nexiilabs.com"); 
 			 WebElement to = driver.findElement(By.name("to"));
 			 to.click();
 			 List<WebElement> option =to.findElements(By.tagName("option"));
@@ -421,6 +464,31 @@ public class BDE extends Helper{
 		 navigatePage("Today's FollowUp", "Today Followups");
 		 searchLead(Leadno);
 		 tableSize();
+		 
+		 
+		/* browser();
+		 maxbrowser();
+		 driver.get(config.getProperty("url"));
+		 proposalQuotePage("Proposal Upload", "Leads for Proposal Upload");
+		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Proposal Upload"))
+		 {
+		   ProposalQuoteForm("proposalname","proposaldescription","proposal");
+		 }*/
+		 
+		 
+	 }
+	 @Test
+	 public void p1() throws Exception
+	 {
+		 browser();
+		 maxbrowser();
+		 driver.get(config.getProperty("url"));
+		 proposalQuotePage("Proposal Upload", "Leads for Proposal Upload");
+		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Proposal Upload"))
+		 {
+		   ProposalQuoteForm("proposalname","proposaldescription","proposal");
+		 }
+		 
 	 }
 	 
      //@Test
@@ -447,8 +515,8 @@ public class BDE extends Helper{
          	
 	 }
 	 
-     @Test
-	 public void AllFollowupsQuoteUpload()
+     // @Test
+	 public void AllFollowupsQuoteUpload() throws Exception
 	 {
 		 date = new Date();	
     	 cal = Calendar.getInstance();
@@ -491,17 +559,27 @@ public class BDE extends Helper{
 		 }
 		 else
 			 Assert.fail("Navigation to page All Followup failed");
+		 
 		 navigatePage("All FollowUp", "All Followups");
 		 searchLead(Leadno);
-		 tableSize();	  
+		 tableSize();	
+		 
+		 
+		 proposalQuotePage("Quote Upload", "Leads for Quote Upload");
+		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Quote Upload"))
+		 {
+		   ProposalQuoteForm("quotename","quotedescription","quote");
+		 }
+		 
 	 }
-     
-	 @Test
-     public void closePhase()
+  
+	// @Test
+     public void AllFollowupclose()
+ 
      {
     	 navigatePage("All FollowUps", "All Followups");    
-    	 //particularLeadSelection("Prospect Identify");
-    	 particularLeadSelection("553");
+    	 particularLeadSelection("Prospect Identify");
+    	
     	 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Followup on Lead"))
 		 {
     		 WebElement seg = driver.findElement(By.id("button"));
@@ -522,10 +600,18 @@ public class BDE extends Helper{
 		 } else
 			 Assert.fail("Navigation to page All Followup failed");
     	 navigatePage("Lead Close", "Lead Close");
-    	 searchLead("Lead no");
+    	 searchLead(Leadno);
     	 tableSize();
     
      }
-	
+	 
+	 //@Test
+	 public void closePhase() 
+	 {
+		 navigatePage("Lead Close", "Closed Phase");
+		 
+	 }
+	 
+	 
  }
 
