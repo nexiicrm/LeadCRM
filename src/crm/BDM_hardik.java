@@ -1,14 +1,13 @@
 package crm;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 import testUtils.Helper;
 
@@ -161,6 +160,37 @@ public class BDM_hardik extends Helper{
 	  System.out.println("***************************************************");
       }
       
+      
+    //  @Test
+      public void aa_verifyingServiceNamesandAssign(){
+    	  //Verifying options available under select service equals options in excel sheet
+    	  expand();
+    	  driver.findElement(By.id("assignlead")).click();
+    	  sleep(2);
+    	  List<WebElement> services = driver.findElement(By.name("service")).findElements(By.tagName("option"));
+    	  List<String> service_list = new ArrayList<String>();
+    	  System.out.println("***************Checking options under select service*********************");
+    	  for(int i=1;i<services.size();i++){
+    		  service_list.add(services.get(i).getText());
+    		  if(sh6.getCell(8, i).getContents().equals(service_list.get(i-1)))
+    			  System.out.println(service_list.get(i-1) + "-->service is displayed");
+    		  else
+    			  System.out.println(service_list.get(i-1) + "-->service is not displayed");
+    	  }
+    	  //Verifying options available under assign to whom equals options in excel sheet
+    	  System.out.println("***************Checking options under Assign to Whom*********************");
+    	  List<String> assign = new ArrayList<String>();
+    	  List<WebElement> services_assign = driver.findElement(By.name("assignto")).findElements(By.tagName("option"));
+    	  for(int i=1;i<services_assign.size();i++){
+    		  assign.add(services_assign.get(i).getText());
+    		  if(sh6.getCell(9, i).getContents().equals(assign.get(i-1)))
+    			  System.out.println(assign.get(i-1) + "-->assign is displayed");
+    		  else
+    			  System.out.println(assign.get(i-1) + "-->assign is not displayed");
+    	  }
+    	  
+      }
+      
 	//  @Test
 	  public void b_matching_service_name(){ 
 	  //expanding and clicking on assign lead link	  
@@ -182,7 +212,7 @@ public class BDM_hardik extends Helper{
 	  
 	  //Verifying randomly selected option matches with name shown in service name column
 	  List<WebElement> leads_info = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
-	  if(leads_info.size()<=1){
+	  if(leads_info.size()<1){
 		  System.out.println("Service table is empty");
 	  }else{
 	  System.out.println("fetching service name from table: " +leads_info.get(0).findElements(By.tagName("td")).get(5).getText());
@@ -423,7 +453,7 @@ public class BDM_hardik extends Helper{
 		}
   
 	//	@Test
-		public void j_workphaseFollowup(){
+		public void j_workphaseFollowupTodaysDate(){
 			expand();
 			driver.findElement(By.id("workPhase")).click();
 			sleep(2);
@@ -726,7 +756,7 @@ public class BDM_hardik extends Helper{
 			System.out.println("********************************************************");
 		}
 		
-		@Test
+	//	@Test
 			public void q_proposalQuoteaccept(){
 				expand();
 				driver.findElement(By.id("allfollowups")).click();
@@ -764,6 +794,110 @@ public class BDM_hardik extends Helper{
 				System.out.println("********************************************************");
 			}
 		
+	//	@Test
+		public void r_verifyleadclosebutton(){
+			expand();
+			driver.findElement(By.id("closedPhase")).click();
+			//validating lead close button is enabled for all leads
+			List<WebElement> leads_info = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+			int close=0;
+			for(int i=0; i<leads_info.size(); i++) {
+			if(leads_info.get(i).findElement(By.className("close")).isEnabled()) {
+			close++; 
+				}
+			}
+			if(close==leads_info.size())
+			System.out.println("close button is enabled for all leads.");	
+			
+		}
+		
+	//	@Test
+		public void s_leadcloseCustomer() throws Exception{
+			expand();
+			driver.findElement(By.id("closedPhase")).click();
+			WebElement w = driver.findElement(By.tagName("tbody")).findElement(By.tagName("tr"));
+			String name = w.findElements(By.tagName("td")).get(1).getText();
+			System.out.println(name);
+			w.findElements(By.tagName("td")).get(6).findElement(By.className("close")).click();
+			sleep(2);
+			System.out.println("child window title is: " +driver.findElement(By.cssSelector("div.ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix")).getText());
+			driver.findElement(By.id("closedphasebutton")).click();
+			System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+			
+			new Select(driver.findElement(By.name("leadstatus"))).selectByVisibleText("Customer");
+			driver.findElement(By.id("closedphasebutton")).click();
+			System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+
+			driver.findElement(By.id("project")).sendKeys("Selenium Automation");
+			driver.findElement(By.id("closedphasebutton")).click();
+			System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+
+			
+			driver.findElement(By.name("comment")).sendKeys("lead customer");
+			driver.findElement(By.id("closedphasebutton")).click();
+			System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+
+			driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();				
+
+			//Validating that lead by login to Management's account.Also verifying lead status
+			  driver.findElement(By.className("user_logout")).findElement(By.tagName("a")).click();
+			  help.login(sh5.getCell(0, 0).getContents(),sh5.getCell(1, 0).getContents());
+			  System.out.println("logged in as: " +driver.findElement(By.className("content")).findElement(By.className("user_name")).getText());
+			  expand();
+			  driver.findElement(By.id("customersList")).click();
+			  sleep(2);
+			  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys(name);
+			  
+			  WebElement wb = driver.findElement(By.tagName("tbody")).findElement(By.tagName("tr"));
+			  String status = wb.findElements(By.tagName("td")).get(4).getText();
+			  if(status.equals("Customer"))
+				 System.out.println("Lead is displayed in All customers in Management module with proper lead status ");
+			  else
+				 System.out.println("Lead is not displayed in All customers in Management module");
+			  
+		}
+		
+	//	@Test
+		public void t_leadcloseLostCompetition() throws Exception{
+			expand();
+			driver.findElement(By.id("closedPhase")).click();
+			sleep(2);
+			WebElement w = driver.findElement(By.tagName("tbody")).findElement(By.tagName("tr"));
+			String name = w.findElements(By.tagName("td")).get(1).getText();
+			System.out.println(name);
+			w.findElements(By.tagName("td")).get(6).findElement(By.className("close")).click();
+			sleep(2);
+			System.out.println("child window title is: " +driver.findElement(By.cssSelector("div.ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix")).getText());
+			driver.findElement(By.id("closedphasebutton")).click();
+			System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+			
+			new Select(driver.findElement(By.name("leadstatus"))).selectByVisibleText("Lost Competition");
+			driver.findElement(By.id("closedphasebutton")).click();
+			System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+			
+			driver.findElement(By.name("comment")).sendKeys("lead lost competition");
+			driver.findElement(By.id("closedphasebutton")).click();
+			System.out.println(driver.findElement(By.id("result_msg_div")).findElement(By.tagName("label")).getText());
+
+			driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();				
+
+			//Validating that lead by login to Management's account.Also verifying lead status
+			  driver.findElement(By.className("user_logout")).findElement(By.tagName("a")).click();
+			  help.login(sh5.getCell(0, 0).getContents(),sh5.getCell(1, 0).getContents());
+			  System.out.println("logged in as: " +driver.findElement(By.className("content")).findElement(By.className("user_name")).getText());
+			  expand();
+			  driver.findElement(By.id("lostCompetitionList")).click();
+			  sleep(2);
+			  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys(name);
+			  
+			  WebElement wb = driver.findElement(By.tagName("tbody")).findElement(By.tagName("tr"));
+			  String status = wb.findElements(By.tagName("td")).get(4).getText();
+			  if(status.equals("Lost Competition"))
+				 System.out.println("Lead is displayed in All Lost Competition in Management module with proper lead status ");
+			  else
+				 System.out.println("Lead is not displayed in All Lost Competition in Management module");
+			  
+		}
 		
 		
   @BeforeMethod
