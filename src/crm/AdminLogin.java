@@ -1,6 +1,12 @@
 package crm;
 import testUtils.Helper;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import com.nexiilabs.dbcon.DBConnection;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -19,6 +25,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class AdminLogin extends Helper{
+	 public static Connection connection =null;
+	    public static Statement statement;
+	    public static ResultSet resultSet;
 	@BeforeMethod
 	public void bf() {
 		 browser();
@@ -46,6 +55,23 @@ public class AdminLogin extends Helper{
 		}
 	}
 	
+	 public String dbConnection(String string) throws Exception, IllegalAccessException, ClassNotFoundException{
+		  
+              
+	             Class.forName("com.mysql.jdbc.Driver").newInstance();
+	             connection = DBConnection.getConnection();
+	             statement = connection.createStatement();
+	             System.out.println("hurray connected");
+	             //resultSet = statement.executeQuery("select * from crm_user");
+	            // System.out.println("select password from crm_user where email_id='"+string+"'");
+	             resultSet = statement.executeQuery("select password from crm_user where email_id='"+string+"'");
+	             resultSet.next();
+	             String str = resultSet.getString("password"); 
+	              //return str; 
+	           // System.out.println(str);
+	       
+		return str;
+	}
 	
 	public void pagination(){
 		 sleep(2);
@@ -336,6 +362,11 @@ public class AdminLogin extends Helper{
 		}
 	 System.out.println("=========================================================");
  }
+  // @Test
+  public void test() throws IllegalAccessException, ClassNotFoundException, Exception{
+	  String s= dbConnection("rakesh.selinium@gmail.com");
+	  System.out.println(s);
+  }
  
  
 // 	@Test
@@ -387,7 +418,7 @@ public class AdminLogin extends Helper{
  
  	}
  	
-//	 	@Test
+	 //	@Test
 	 public void d_newUserCreation() throws Exception{
 	   //========= Creation of New User ======
 		 mylogin();
@@ -404,6 +435,7 @@ public class AdminLogin extends Helper{
 	    int columns = sh6.getColumns();
 		int rows = sh6.getRows();
 		int col;
+		//String s1;
 		for(int row=1;row<rows;row++){
 			 col=0;
 			 sleep(1);
@@ -481,17 +513,33 @@ public class AdminLogin extends Helper{
 	      WebElement ws = driver.findElement(By.id(or.getProperty("createUser_button")));
 	      if(ws.isDisplayed()){
 	      ws.submit(); 
-	      sleep(1);
+	      sleep(10);
 	      }else{
 	    	  Assert.fail("Create button not present");
 	      }
 	      //checking for the resultant message of created user
 	      if(driver.findElement(By.id(or.getProperty("resultant_msg"))).getText().equals("Successfully Created...Password Sent to Your email id")){
-	    	 
-	    	  System.out.println("user created successfully");
+	    	String s = dbConnection(sh6.getCell(2, row).getContents());
+	    	System.out.println(s);
+	    	sleep(1);
+	    	driver.get(config.getProperty("url"));
+	    	sleep(2);
+	    	login(sh6.getCell(2, row).getContents(),s);
+	    	sleep(4);
+	    	WebElement www = driver.findElement(By.className(or.getProperty("LoggedIn_nuser_name")));
+	    	if(www.equals(driver.findElement(By.className("user_logout"))))
+	    	{
+	    		  System.out.println("user created successfully");
+	    	}
+	    	//driver.findElement(By.className("user_logout")).click();
+	    	driver.findElement(By.linkText("Logout")).click();
+	    	
+	    	mylogin();
+	    	expand();
+	    	 driver.findElement(By.id(or.getProperty("create_button")));
 	      }else
 	      {
-	    	  System.out.println("user already exist....try with other details  ");
+	    	  System.out.println("user already exist....try with other credentials  ");
 	      }
 		  wu.clear();
 		  wl.clear();
@@ -957,7 +1005,30 @@ public class AdminLogin extends Helper{
 		}else{
 			Assert.fail("view Configuration button is not present");
 		}
-		help.screenshot("viewconfig");
+		List<WebElement> lip = driver.findElement(By.className(or.getProperty("pathclass"))).findElements(By.tagName(or.getProperty("labelview")));
+		System.out.println(lip.size());
+		if(lip.size()!=0){
+			int col = 1;
+			int row = 9;
+			for(int i = 0;i<lip.size();i++){
+				if(i%2!=0){
+					
+					System.out.println(row);
+					System.out.println(sh6.getCell(col, row).getContents());
+					System.out.println(lip.get(i).getText());
+					if(lip.get(i).getText().equalsIgnoreCase(sh6.getCell(col, row).getContents())){
+						System.out.println("server path is verified");
+						
+					}
+					else{
+						Assert.fail("path not present");
+					  }
+					row++;
+					}
+				}
+			}
+		
+		//help.screenshot("viewconfig");
 	}
 //	@Test
 	public void w_deleteConfig() throws Exception{
