@@ -541,37 +541,37 @@ public class BDM extends Helper {
 			 // Selecting Required fields
 			 List <WebElement> requiredFields = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("td"));
 			 int a = help.random(requiredFields.size());
-			 Reporter.log("<p>" +"The reqiured field:" + requiredFields.get(a).getText());
+			 String field = requiredFields.get(a).getText();
+			 Reporter.log("<p>" +"The reqiured field:" + field);
 			 requiredFields.get(a).findElement(By.tagName("input")).click();
 			 driver.findElement(By.cssSelector("span.ui-accordion-header-icon.ui-icon.ui-icon-triangle-1-e")).click();
+			 
 			 
 			 // Selecting a Category of Filter Options
 			 List <WebElement> filterOptions = driver.findElement(By.id("ui-accordion-accordion-panel-1")).findElements(By.className("row1"));
 			 Reporter.log("<p>" +"Size of Filter option categories:" + filterOptions.size());
-			 int b =help.random(filterOptions.size());
-			 String opt = filterOptions.get(b).findElement(By.tagName("legend")).getText();
-			 Reporter.log("<p>" +"Filter Option Selected:" + opt);
-			
-			 // Selecting an option in a category in Filter Options 
-			 List <WebElement> option = filterOptions.get(b).findElements(By.tagName("td"));
-			 Reporter.log("<p>" +"No.of options in " + opt + " List:" + option.size());
-			 int c = help.random(option.size());
-			 Reporter.log("<p>" +"Option selected is:" + option.get(c).findElement(By.tagName("label")).getText());
-			 option.get(c).findElement(By.tagName("input")).click();
-			 driver.findElement(By.id("registerbutton")).click();
-			 help.sleep(5);
-			 
-			 // Printing the Table displayed with required fields
-			 Reporter.log("<p>" +driver.findElement(By.id("example")).findElement(By.tagName("tbody")).getText());
-			 
-			 // Pagination
-			 pagination();
-			 
-			 // No.of Entries per page
-			 pageEntries();
-			 
-			 // Search Box Validation
-			 search("Larry");
+			 for(int i=0; i<filterOptions.size(); i++) 
+			 {
+				 String opt = filterOptions.get(i).findElement(By.tagName("legend")).getText();
+				 Reporter.log("<p>" +"Filter Option Selected:" + opt);
+				
+				 // Selecting an option in a category in Filter Options and clicking on search button
+				 List <WebElement> option = filterOptions.get(i).findElements(By.tagName("td"));
+				 Reporter.log("<p>" +"No.of options in " + opt + " List:" + option.size());
+				 int c = help.random(option.size());
+				 Reporter.log("<p>" +"Option selected is:" + option.get(c).findElement(By.tagName("label")).getText());
+				 option.get(c).findElement(By.tagName("input")).click();
+				 driver.findElement(By.id("registerbutton")).click();
+				 help.sleep(5);
+				 
+				 // Checking whether the required field selected is same as that of the row header in the table
+				 //String header = 
+				 
+				 // Printing the Table displayed with required fields
+				 Reporter.log("<p>" +driver.findElement(By.id("example")).findElement(By.tagName("tbody")).getText());
+				 //driver.navigate().refresh(); 
+				 option.get(c).findElement(By.tagName("input")).click();
+			 }
 			 
 			 // Closing the Child Window
 			 driver.close();
@@ -584,6 +584,90 @@ public class BDM extends Helper {
 		 Reporter.log("<p>___________________________________________________________________________________");
 	 } 	
 	
+	 
+	 
+	 // Test Method for Lead Search Paginations
+	 @Test
+	 public void searchLeadPagination() {
+		 Reporter.log("<p>" +"Test for Lead Search Phase Paginations");
+		 
+		 // Expands the side tree menu
+		 help.expand();
+		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id("serachLeads123")).getText() + "' Link" );
+		 if(driver.findElement(By.id("serachLeads123")).isDisplayed()) 
+		 {
+			 driver.findElement(By.id("serachLeads123")).click();
+			 
+			 // Switching to Child Window
+			 String parentWindow = driver.getWindowHandle();
+			 for(String childWindow : driver.getWindowHandles()) 
+			 {
+				 driver.switchTo().window(childWindow);
+			 }
+			 
+			 // Selecting Required fields
+			 List <WebElement> requiredFields = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("td"));
+			 List <String> fieldoptions = new ArrayList <String>();
+			 for(int i=1; i<requiredFields.size(); i++) 
+			 {
+				 fieldoptions.add(requiredFields.get(i).getText());
+			 }
+			 
+			 Reporter.log("<p>" +"The required field:" + requiredFields.get(0).getText());
+			 requiredFields.get(0).findElement(By.tagName("input")).click();
+			 driver.findElement(By.cssSelector("span.ui-accordion-header-icon.ui-icon.ui-icon-triangle-1-e")).click();
+			 
+			 // Selecting a Category of Filter Options
+			 WebElement filterOption = driver.findElement(By.id("ui-accordion-accordion-panel-1")).findElements(By.className("row1")).get(5);
+			 
+			 String opt = filterOption.findElement(By.tagName("legend")).getText();
+			 Reporter.log("<p>" +"Filter Option Selected:" + opt);
+			 // Selecting an option in a category in Filter Options and clicking on search button
+			 List <WebElement> option = filterOption.findElements(By.tagName("td"));
+			 Reporter.log("<p>" +"No.of options in " + opt + " List:" + option.size());
+			 
+			 Reporter.log("<p>" +"Option selected is:" + option.get(3).findElement(By.tagName("label")).getText());
+			 option.get(3).findElement(By.tagName("input")).click();
+			 driver.findElement(By.id("registerbutton")).click();
+			 help.sleep(5);
+			 
+			 // Printing the Table displayed with required fields
+			 List <WebElement> fields = driver.findElement(By.tagName("thead")).findElements(By.tagName("th"));
+			 List <String> fieldheads = new ArrayList <String>();
+			 for(int i=1; i<fields.size(); i++) 
+			 {
+				 fieldheads.add(fields.get(i).getText());
+			 }
+			 System.out.println(fieldheads);
+			 System.out.println(fieldoptions);
+			 
+			 if(fieldheads.equals(fieldoptions)) 
+			 {
+				 Reporter.log("<p>" +"The required fields selected is matched with the headers of the table.");
+				 Reporter.log("<p>" +driver.findElement(By.id("example")).findElement(By.tagName("tbody")).getText());
+				 
+				 // Pagination
+				 pagination();
+				 
+				 // No.of Entries per page
+				 pageEntries();
+				 
+				 // Search Box Validation
+				 search("Johnson");
+			 }
+			 else 
+				 Reporter.log("<p>" +"The required fields selected is not matched with the headers of the table.");
+			 			 
+			 // Closing the Child Window
+			 //driver.close();
+			 
+			 // Switching to Parent Window
+			 driver.switchTo().window(parentWindow);
+		 } 
+		 else
+			 Assert.fail("No Link Found");
+		 Reporter.log("<p>___________________________________________________________________________________");
+	 }
 	 
 	 @Test
 	 public void changePassword() {
@@ -744,20 +828,20 @@ public class BDM extends Helper {
 	
 	//Excess method
 	
-	/* @Test
+	 @Test
 	 public void trackit() {
 		 help.expand();
-		 driver.findElement(By.id("editLeads")).click();
+		 driver.findElement(By.id("allfollowups")).click();
 		 help.sleep(2);
-		 driver.findElement(By.id("example")).findElement(By.tagName("tbody")).findElements(By.tagName("tr")).get(0).findElement(By.className("analyse")).click();
+		 driver.findElement(By.id("example")).findElement(By.tagName("tbody")).findElements(By.tagName("tr")).get(5).findElement(By.className("analyse")).click();
 		 help.sleep(3);
-		 // Printing Particular field of the table that is current status 
-		 //WebElement a = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr")).get(4);
-		 //Reporter.log("<p>" +a.findElements(By.tagName("td")).get(3).getText());
+		  //Printing Particular field of the table that is current status 
+		 WebElement a = driver.findElements(By.tagName("tbody")).get(3).findElements(By.tagName("tr")).get(1);
+		 System.out.println(a.findElements(By.tagName("td")).get(2).findElement(By.tagName("a")).getText());
 		 
 		 // Printing all the fields of the table using Collections
-		 
-	 }*/
+		 //driver.findElements(By.tagName("tbody")).get(3).findElements(By.tagName("tr")).get(1).
+	 }
 	 
 	 
 	 
