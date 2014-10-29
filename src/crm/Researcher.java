@@ -23,21 +23,24 @@ public class Researcher extends Helper{
 	
 	public void  treeSize() {
 		
-		 List<WebElement> list1 = driver.findElement(By.id("tree_menu")).findElements(By.tagName("li"));
-		  
+		    List<WebElement> list1 = driver.findElement(By.id(or.getProperty("user_ids"))).findElements(By.tagName(or.getProperty("user_tagname")));
+		 
 			System.out.println("Number Elements in List1 : " + list1.size());
 			
-			System.out.println(" ");
+			//System.out.println(" ");
 			
-			System.out.println("Elements in List1 are :");
+			//System.out.println("Elements in List1 are :");
 			
-			System.out.println("================================================");
-		
+			//System.out.println("================================================");
+		    
+			String user = driver.findElement(By.className(or.getProperty("user_Classname"))).getText();
+			 
+		    System.out.println("User Logged in as:" + user);
 	}
 		
 	//===========Leads Upload=========//
 	
-  @Test
+ @Test
   public void f() throws Exception {
 	  
 	//========Login=======//
@@ -46,25 +49,26 @@ public class Researcher extends Helper{
 			
 		//===tree menu size dispayng======//
 		treeSize();
-		help.maxbrowser();
+		
 		//======= Expanding tree menu========//
 		
 		help.expand();
 		//=========clicking bulkuplods========//
-		driver.findElement(By.id("bulkUpload")).click();
+		driver.findElement(By.id(or.getProperty("uploadBulk"))).click();
+		
 		//==== color matching===//
 		
 		Actions a = new Actions(driver);
-		a.moveToElement(driver.findElement(By.className("medium"))).build().perform();
-		String s1 = driver.findElement(By.className("medium")).getCssValue("background-color");
+		a.moveToElement(driver.findElement(By.className(or.getProperty("Rtextbox")))).build().perform();
+		String s1 = driver.findElement(By.className(or.getProperty("Rtextbox"))).getCssValue(or.getProperty("upload_css"));
 		
-		if (driver.findElement(By.className("medium")).getCssValue("background-color").equals(s1)) 
+		if (driver.findElement(By.className(or.getProperty("Rtextbox"))).getCssValue(or.getProperty("upload_css")).equals(s1)) 
 		{
 		//=====uploading files===//
 		
-		driver.findElement(By.className("medium")).sendKeys("C:\\Users\\Nexii\\Desktop\\Testresearc.xlsx");
-		driver.findElement(By.id("leads_upload_button")).click();
-		Thread.sleep(20000);
+		driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys("C:\\Users\\Nexii\\Desktop\\Testresearc.xlsx");
+		driver.findElement(By.id(or.getProperty("leadUpload"))).click();
+		Thread.sleep(5000);
 		
 		if(driver.findElement(By.id("result_msg_div")).getText().startsWith("Excel File Uploaded and Leads Saved Successfully....!"))
 		{
@@ -82,11 +86,7 @@ public class Researcher extends Helper{
 			Assert.fail("Please select a file");
 		}
 		
-		//====collaspsing treemenu====//
-		help.collapse();
-		//===closing driver=====//
-		driver.close();
-		driver.quit();
+		
   }  
 //===========My Account=========//
   
@@ -102,15 +102,16 @@ public class Researcher extends Helper{
 	//Login
 		help.login(config.getProperty("Researcherusername"), config.getProperty("Researcherpassword"));
 		String old = config.getProperty("Researcherpassword");
-		System.out.println(old);
+		System.out.println("old password is:" + old);
 	  //====size of tree menu===//
 	    treeSize();
 	    //======= Expanding tree menu========//
 		help.expand();
-		//=======maximizing browser========//
-		help.maxbrowser();
+		
 	  //======Clicking searchleads in leadsearch menu====//
+		
 		driver.findElement(By.linkText("Change Password")).click();
+		help.sleep(2);
 		//===  checking validations for change passwords===//
 		
 		for(int row = 1;row < rows;row++)
@@ -127,6 +128,7 @@ public class Researcher extends Helper{
 			else{
 				System.out.println("Old password container is avilable");
 			}
+			
 			data = sh3.getCell(col, row).getContents();
 			System.out.println(data);
 			System.out.println("*************************");
@@ -223,10 +225,7 @@ public class Researcher extends Helper{
 		help.sleep(5);
 		}
 		
-				//===closing browser===//
-		driver.close();
-		driver.quit();
-		
+				
   }
   
   
@@ -240,17 +239,18 @@ public class Researcher extends Helper{
 			
 			String old = config.getProperty("Researcherpassword");
 			
-			System.out.println(old);
+			System.out.println("old password is:" + old);
+			
 			
 			//===printing size of tree menu====//
 		    treeSize();
-		    
-		  //=======maximizing browser========//
-			help.maxbrowser();
+		  
 		    //====Expanding tree menu====//
 		    help.expand();
+		    
 		   //===clicking search leads====// 
 		    driver.findElement(By.id("serachLeads123")).click();
+		    
 		    //====Window handlers moving to next tab===// 
 		    Set<String> Windowids = driver.getWindowHandles(); 
 		       Iterator<String> iter = Windowids.iterator();
@@ -259,22 +259,23 @@ public class Researcher extends Helper{
 		       String TabbedWindow = iter.next();
 		       driver.switchTo().window(TabbedWindow);
 		       System.out.println(driver.getTitle());
+		       
 		       //=======Getting name of selecting fields in required field======//
 		      System.out.println("In required field we have::"+driver.findElement(By.tagName("legend")).getText());
 		       help.sleep(4);
 		    List<WebElement> li = driver.findElement(By.id("ui-accordion-accordion-panel-0")).findElements(By.tagName("input"));   
 		    //System.out.println(li.get(0).getText());
 			help.sleep(4);
-			System.out.println("Requiredfield is having these many check boxes:"+li.size());
-			System.out.println("All check box names are displaying:");
+			System.out.println("Requiredfield is having these many check boxes :" +li.size());
+			System.out.println("All check box names are displaying one by one :");
 			System.out.println(driver.findElement(By.id("fields_to_get")).getText());
 			
 			//===============Selecting checkboxes  randomly===========//
 			
 			int i = li.size();
-			System.out.println(i);
+			//System.out.println(i);
 			int j = help.random(i);
-			System.out.println(j);
+			System.out.println("Randomly selected checkbox no is : "+ j);
 			System.out.println(li.get(j).getText());
 			li.get(j).click();
 			driver.findElement(By.id("registerbutton")).click();
@@ -282,8 +283,8 @@ public class Researcher extends Helper{
 			//======displaing matching data when chicking check boxes======//
 			
 			List<WebElement> li5 = driver.findElement(By.id("example")).findElements(By.tagName("tr"));
-			System.out.println("This is matching Results of check boxes");
-			System.out.println(li5.size());
+			
+			System.out.println("This are matching Results of check boxes: " + li5.size());
 			System.out.println(driver.findElement(By.id("example")).getText());
   }
 
@@ -295,6 +296,7 @@ public class Researcher extends Helper{
   @BeforeMethod
 public void beforeMethod() {
 	help.browser();
+	help.maxbrowser();
 	driver.get(config.getProperty("url"));
 	 if(driver.getTitle().equals("::LEAD-CRM::Login Here")){
 		 System.out.println("Lead CRM URL found");
@@ -306,6 +308,8 @@ public void beforeMethod() {
   @AfterMethod
   public void afterMethod() {
 	 // driver.quit();
+	  driver.close();
+	  driver.quit();
   }
 
 }

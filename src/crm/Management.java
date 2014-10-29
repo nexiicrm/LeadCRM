@@ -48,7 +48,7 @@ public class Management extends Helper {
 	 }
 	 }else
 	  Assert.fail("Logged in as other user except management");
-	  */
+	 */ 
 	  System.out.println("===========================================================================");
   }
 
@@ -84,7 +84,7 @@ public class Management extends Helper {
 	  }
 	  
 	  //////////////////////// for search box 
-	  search("sreekar");
+	  search("maria");
 	  System.out.println("###### Done with search validation and dropdown validation of all proposals ######"); 
   }
  
@@ -94,7 +94,7 @@ public class Management extends Helper {
 	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
 	  driver.findElement(By.id(or.getProperty("allproposals_id"))).click();
-	  search("sreekar");
+	  search("maria");
 	  help.sleep(2);
 	  List<WebElement> ls =driver.findElement(By.cssSelector(or.getProperty("allproposalsrow_tagName"))).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
 	  System.out.println("No of columns in all proposal list page are :" + ls.size());
@@ -138,6 +138,15 @@ public class Management extends Helper {
 	  ////////////////// to get the status
 	 String strt=  driver.findElements(By.tagName(or.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(or.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(or.getProperty("allproposalscol_tagName"))).get(1).getText();
 	 System.out.println(strt);
+	 help.sleep(2);
+	 String strtt = driver.findElements(By.tagName(or.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(or.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(or.getProperty("allproposalscol_tagName"))).get(2).getText();
+	 System.out.println(strtt);	
+	 System.out.println("tag name for the file is: "+ driver.findElement(By.tagName("a")).getTagName());
+	 String s1 = driver.findElement(By.tagName("a")).getTagName();
+	 if(s1.contentEquals("a")){
+		 System.out.println("File can be downloaded");
+	 }else
+	 Assert.fail("File cannot be downloaded");
 	 System.out.println("######Done with validation of all proposals page######");
 	 System.out.println("==============================================================================");
 	  
@@ -162,7 +171,7 @@ public class Management extends Helper {
 	  }
 	    /////////// search box validation
 	  driver.findElement(By.tagName(or.getProperty("allproposals_tagName"))).click();
-	  search("denni");
+	  search("medina");
 	    ////////////// validation and comapring track it options
 	  List<WebElement> lsc =driver.findElement(By.cssSelector(or.getProperty("allproposalsrow_tagName"))).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
 	  System.out.println("No of columns in all lost competition page are: " + lsc.size());
@@ -203,6 +212,14 @@ public class Management extends Helper {
 	    ///////////////// to get status
 	  String strt=  driver.findElements(By.tagName(or.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(or.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(or.getProperty("allproposalscol_tagName"))).get(1).getText();
 	  System.out.println(strt);
+	  String strtt = driver.findElements(By.tagName(or.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(or.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(or.getProperty("allproposalscol_tagName"))).get(2).getText();
+	  System.out.println(strtt);	
+	  System.out.println("tag name for the file is: "+ driver.findElement(By.tagName("a")).getTagName());
+	  String s1 = driver.findElement(By.tagName("a")).getTagName();
+	  if(s1.contentEquals("a")){
+			 System.out.println("File can be downloaded");
+		 }else
+		 Assert.fail("File cannot be downloaded");
 	  System.out.println("######Done with validation of all lost competation page######");
 	  System.out.println("==============================================================================");
   }
@@ -225,7 +242,7 @@ public class Management extends Helper {
 		  help.sleep(1);
 		  }
 	      /////////// serach fields validation
-	  search("shiva");
+	  search("sara");
       System.out.println("###### done with the validation of search and dropdown of all customers ######"); 
   }
 	 
@@ -236,7 +253,7 @@ public class Management extends Helper {
 	  help.expand();
 	  help.sleep(2);
 	  driver.findElement(By.id(or.getProperty("allcustomers_id"))).click();
-	  search("shiva");
+	  search("sara");
 	  List<WebElement> lsc =driver.findElement(By.cssSelector(or.getProperty("allproposalsrow_tagName"))).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
 	  System.out.println("No of columns in all customers page are: " + lsc.size());
    	  ArrayList<String> arc = new ArrayList<String>();
@@ -276,6 +293,14 @@ public class Management extends Helper {
 	      ////////////// to get the status
 	  String strt=  driver.findElements(By.tagName(or.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(or.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(or.getProperty("allproposalscol_tagName"))).get(1).getText();
 	  System.out.println(strt);
+	  String strtt = driver.findElements(By.tagName(or.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(or.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(or.getProperty("allproposalscol_tagName"))).get(2).getText();
+	  System.out.println(strtt);	
+	  System.out.println("tag name for the file is: "+ driver.findElement(By.tagName("a")).getTagName());
+	  String s1 = driver.findElement(By.tagName("a")).getTagName();
+	  if(s1.contentEquals("a")){
+			 System.out.println("File can be downloaded");
+		 }else
+		 Assert.fail("File cannot be downloaded");
 	  System.out.println("######Done with validation of all customers page######");
 	  System.out.println("==============================================================================");
   }
@@ -349,6 +374,14 @@ public class Management extends Helper {
 	  //////////// to get the status
 	 String strt=  driver.findElements(By.tagName(or.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(or.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(or.getProperty("allproposalscol_tagName"))).get(1).getText();
 	 System.out.println(strt);
+	 String strtt = driver.findElements(By.tagName(or.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(or.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(or.getProperty("allproposalscol_tagName"))).get(2).getText();
+	 System.out.println(strtt);	
+	 System.out.println("tag name for the file is: "+ driver.findElement(By.tagName("a")).getTagName());
+	 String s1 = driver.findElement(By.tagName("a")).getTagName();
+	 if(s1.contentEquals("a")){
+		 System.out.println("File can be downloaded");
+	 }else
+	 Assert.fail("File cannot be downloaded");
      System.out.println("######Done with validation of all quotes page######");
 	 System.out.println("==============================================================================");
   }
@@ -463,14 +496,6 @@ public class Management extends Helper {
  {
 	driver.quit();
   }
- @AfterClass
-  public void afterClass()
-   {
-    SimpleDateFormat simple = new SimpleDateFormat("E dd/MM/yyyy hh:mm:ss a"); // here E gives the day(mon, tue etc..)  and a gives am r pm
-    Date date = new Date();
-    System.out.println("The last run time of the instances " + simple.format(date).toString());
-    System.out.println("===================================================================================");
-   }
  }
 
 
