@@ -64,7 +64,7 @@ public class AdminLogin extends Helper{
 	             System.out.println("hurray connected");
 	             //resultSet = statement.executeQuery("select * from crm_user");
 	            // System.out.println("select password from crm_user where email_id='"+string+"'");
-	             resultSet = statement.executeQuery("select password from crm_user where email_id='"+string+"'");
+	             resultSet = statement.executeQuery("select password from crm_user where email_id='"+string+"' AND delete_status='no'");
 	             resultSet.next();
 	             String str = resultSet.getString("password"); 
 	              //return str; 
@@ -72,6 +72,23 @@ public class AdminLogin extends Helper{
 	       
 		return str;
 	}
+	 public String dbConnectionRole() throws Exception, IllegalAccessException, ClassNotFoundException{
+		  
+         
+         Class.forName("com.mysql.jdbc.Driver").newInstance();
+         connection = DBConnection.getConnection();
+         statement = connection.createStatement();
+         System.out.println("hurray connected");
+         //resultSet = statement.executeQuery("select * from crm_user");
+        // System.out.println("select password from crm_user where email_id='"+string+"'");
+         resultSet = statement.executeQuery("select a.role_name from crm_role a, crm_user b where a.role_id = b.role_id AND email_id = 'tulasirammail@gmail.com' AND delete_status = 'no'");
+         resultSet.next();
+         String str = resultSet.getString("role_name"); 
+          //return str; 
+       // System.out.println(str);
+   
+        return str;
+}
 	
 	public void pagination(){
 		 sleep(2);
@@ -122,9 +139,7 @@ public class AdminLogin extends Helper{
 	      
 	   }
 	      }
-	
-
-	
+		
 	public void showEntries(){
 		 //====== Verifying the Show Entries Drop down ========  
 		   List<WebElement> lw = driver.findElement(By.name(or.getProperty("show_dropDown"))).findElements(By.tagName(or.getProperty("option_tag")));
@@ -259,6 +274,14 @@ public class AdminLogin extends Helper{
 		 }
 	
 	}
+	//  @Test
+	  public void test() throws IllegalAccessException, ClassNotFoundException, Exception{
+		  //String s= dbConnection("sreekar3082@gmail.com");
+		//  System.out.println(s);
+		  String s1 =  dbConnectionRole();
+		  System.out.println(s1);
+		 
+	  }
 	
 // @Test
   public void a_createbutton()throws Exception  {
@@ -362,11 +385,7 @@ public class AdminLogin extends Helper{
 		}
 	 System.out.println("=========================================================");
  }
-  // @Test
-  public void test() throws IllegalAccessException, ClassNotFoundException, Exception{
-	  String s= dbConnection("rakesh.selinium@gmail.com");
-	  System.out.println(s);
-  }
+ 
  
  
 // 	@Test
@@ -439,6 +458,8 @@ public class AdminLogin extends Helper{
 		for(int row=1;row<rows;row++){
 			 col=0;
 			 sleep(1);
+			 if(!sh6.getCell(col, row).getContents().equals("")){
+					 
 			 //Assigning first name 
 			 WebElement wu = driver.findElement(By.name(or.getProperty("u_fname")));
 			 if(wu.isEnabled()){
@@ -546,6 +567,10 @@ public class AdminLogin extends Helper{
 		  we.clear();
 		  wei.clear();
 		  sleep(1);
+			 }else{
+				System.out.println("no data present in test data to read");
+				break;
+			 }
 		}
 		System.out.println("=================d_newUserCreation() success==========================");
  }
@@ -605,47 +630,105 @@ public class AdminLogin extends Helper{
 		  //searching for a specific user whose details to be uploaded  
 		WebElement ws =  driver.findElement(By.tagName(or.getProperty("SearchBox")));
 		if(ws.isDisplayed()){
-			ws.sendKeys("Ajay"); 
+			ws.sendKeys("tulasirammail@gmail.com"); 
 			sleep(2);
 		}else{
-			Assert.fail("update button nont present");
+			Assert.fail("Search box not present");
 		}
 		//clicking on the user to be updated 
-		List<WebElement> liA = driver.findElement(By.tagName(or.getProperty("table_tag"))).findElements(By.tagName(or.getProperty("Anchor_tag")));
+		List<String> ls = new ArrayList<String>();
+		//taking the values into a list before updation of user
+		List<WebElement> liA = driver.findElement(By.tagName(or.getProperty("table_tag"))).findElement(By.tagName(or.getProperty("tableRowtag"))).findElements(By.tagName(or.getProperty("tableData_tag")));
 		if(liA.size()!=0){
-			liA.get(0).click();
-		    sleep(3);
+			for(int t = 0;t<liA.size()-1;t++){
+				String si =liA.get(t).getText();
+				ls.add(si);
+				  sleep(1);
+			}
+		  
 		}else{
 			Assert.fail("failed to load the users with the given serach key");
 		}
+		System.out.println("arraylist size"+ ls.size());
+		System.out.println(ls);
+		//clicking on update button of a user
+		driver.findElement(By.tagName(or.getProperty("table_tag"))).findElement(By.tagName(or.getProperty("Anchor_tag"))).click();
 	   sleep(4);
 	   //performing modification to the existing data
 	   List<WebElement> man=driver.findElement(By.name(or.getProperty("manager_dd"))).findElements(By.tagName(or.getProperty("option_tag")));
 	   if(man.size()!=0){
 	   int rnm = random(man.size());
+	   if(man.get(rnm).getText().contains("--- SELECT ---")){
+		   rnm++;
+	   }
 	   man.get(rnm).click();
+	   sleep(1);
 	   }else{
 		   Assert.fail("manager drop down not present ");
 	   }
+	   	String s1 = dbConnectionRole();
+		 System.out.println("role before updation   "+s1);
+	   //updating the role of existing user
+		 sleep(2);
+	   List<WebElement> R = driver.findElement(By.name(or.getProperty("role_dd"))).findElements(By.tagName(or.getProperty("option_tag")));
+		 if(R.size()!=0){
+		 int b =random(R.size());
+		 System.out.println("randomly picked role  "+R.get(b).getText());
+		 if (R.get(b).getText().contentEquals("--- SELECT ---")||R.get(b).getText().contentEquals("Architect")){
+			 b++;  
+			
+		 }
+		 R.get(b).click();
 	   //clicking on update button
 	   WebElement wb = driver.findElement(By.id(or.getProperty("reupdate_button")));
 	   if(wb.isDisplayed()){
 		   wb.submit();
 		   sleep(2);
 	   }else{
-		   Assert.fail("update user button note present");
+		   Assert.fail("update user button not present");
 	   }
-	   //verifying for resultant message
-	   WebElement we = driver.findElement(By.id(or.getProperty("resultant_msg")));
-	   System.out.println(we.getText());
-	   if(we.getText().equalsIgnoreCase("Successfully Updated...")){
-		   System.out.println("user updated successfully");
-	   }else{
-		   Assert.fail("user updation failed");
-	   }
-	   
+	
+	 
+	   //closing the update popup window
 	   sleep(2);
 	   driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
+	   sleep(3);
+	   //reloading the values of user before updating(this is reloading because of cache problem)
+	   List<String> ls1 = new ArrayList<String>();
+	   for(int ts = 0;ts<ls.size();ts++){
+		   String st = ls.get(ts);
+		   ls1.add(st);
+	   }
+	   String s2 = dbConnectionRole();
+	   System.out.println("role after updation   "+s2);
+	   System.out.println(ls1.size());
+	   System.out.println(ls1);
+	   driver.findElement(By.tagName(or.getProperty("SearchBox"))).sendKeys("tulasirammail@gmail.com");
+	   sleep(2);	 
+			
+		
+		//picking the values after updating user and verifying them with values of before updation
+		
+		List<WebElement> liA1 = driver.findElement(By.tagName(or.getProperty("table_tag"))).findElement(By.tagName(or.getProperty("tableRowtag"))).findElements(By.tagName(or.getProperty("tableData_tag")));
+			int cnt = 0;
+		//	for(int t1 = 0;t1<liA1.size()-1;t1++){
+				System.out.println(liA1.get(4).getText());
+				System.out.println(ls1.get(4));
+				
+				if((!liA1.get(4).getText().equals(ls1.get(4)))||(!s1.equals(s2))){
+					cnt++;
+				}
+			//}
+			//checking for the user updation
+				if(cnt!=0){
+					System.out.println("user updated successfully");
+				}else{
+					Assert.fail("user updation failed");
+				}
+			
+		
+			
+		 }
 	   System.out.println("===========g_updatingUser() is successs==============");
 	 }
   // @Test
