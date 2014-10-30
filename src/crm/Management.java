@@ -1,20 +1,14 @@
 package crm;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import testUtils.Helper;
-
 
 public class Management extends Helper {
 	
@@ -24,31 +18,20 @@ public class Management extends Helper {
 	  //////////// logging into the site///////////////////////////
 	  help.login(sh5.getCell(0,0).getContents(), sh5.getCell(1,0).getContents());
 	  String user = driver.findElement(By.className(or.getProperty("user_Classname"))).getText();
+	  help.sleep(2);
+	  if(user.equals("Hi ! Management basani")){
 	  System.out.println("User Logged in as:" + user);
+	  }else
+		  Assert.fail("logged in as other user");
 	  List <WebElement> we  = driver.findElements(By.tagName(or.getProperty("user_tagname")));
+	  if(we.size()>=0){
 	  ArrayList <String> str = new ArrayList <String>();
 	  for(int i=0;i<we.size();i++){  
 		  str.add(we.get(i).getText());
-		  //System.out.println(str.get(i));
 	  }
-	  System.out.println(str);
-	/*  if(sh5.getCell(1,1).getContents().contains(str.get(0)))
-	  {
-		 if(sh5.getCell(1,2).getContents().contains(str.get(1)))
-		 {
-			 if(sh5.getCell(1,3).getContents().contains(str.get(2)))
-			 {	 
-				 if(sh5.getCell(1,4).getContents().contains(str.get(3)))
-				 {
-					 if(sh5.getCell(1,5).getContents().contains(str.get(4))){
-				 System.out.println("######logged in successfully into management role######");
-	        }
-	    }
-	 }
-	 }
-	 }else
-	  Assert.fail("Logged in as other user except management");
-	 */ 
+	  System.out.println("Elements in side tree menu are: " + str);
+	  }else
+		  Assert.fail("Side tree menu is not available");
 	  System.out.println("===========================================================================");
   }
 
@@ -68,23 +51,29 @@ public class Management extends Helper {
   {
 	  /////////////// All Proposals click and search box ///////////////////////////////
 	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
-	  help.expand();
+      help.expand();
 	  help.sleep(2);
+	  String str = driver.findElement(By.id(or.getProperty("allproposals_id"))).getText();
+	  if(str.equals("All Proposals")){
 	  driver.findElement(By.id(or.getProperty("allproposals_id"))).click();
+	  }else
+		  Assert.fail("All propoals cant be clickable");
 	  help.sleep(1);
 	  pagination();
 	  
 	  ///////////////////////// For drop down /////////////////////////
 	  List<WebElement> ele = driver.findElement(By.name(or.getProperty("allproposals_name"))).findElements(By.tagName(or.getProperty("allproposalsdrop_tagName")));
+	 if(ele.size()>=0){
 	  System.out.println("size of all proposals dropdown container: " + ele.size()); 
 	  for (int i=0;i<ele.size();i++)
 	  {
 		  ele.get(i).click();
 		  help.sleep(1);  
 	  }
-	  
+	 }else
+		 Assert.fail("Dropdown container doesnt have any elements");
 	  //////////////////////// for search box 
-	  search("maria");
+	  search("Evans");
 	  System.out.println("###### Done with search validation and dropdown validation of all proposals ######"); 
   }
  
@@ -93,23 +82,36 @@ public class Management extends Helper {
   {
 	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
+	  String str = driver.findElement(By.id(or.getProperty("allproposals_id"))).getText();
+	  if(str.equals("All Proposals")){
 	  driver.findElement(By.id(or.getProperty("allproposals_id"))).click();
-	  search("maria");
+	  }else
+		  Assert.fail("All propoals cant be clickable");
+	  search("Evans");
 	  help.sleep(2);
 	  List<WebElement> ls =driver.findElement(By.cssSelector(or.getProperty("allproposalsrow_tagName"))).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
 	  System.out.println("No of columns in all proposal list page are :" + ls.size());
 	  ArrayList<String> ar = new ArrayList<String>();
+	  if(ls.size()>=0){
 	  for (int i=0;i<ls.size();i++)
 	  {
 		 String s1= ls.get(i).getText();
 		 ar.add(s1);  
 	  }
 	  System.out.println("Array before clicking on trackit button is: " + ar);
-	  driver.findElement(By.className(or.getProperty("allproposals_className"))).click(); // clicking track it
-	  help.sleep(2);
+	  }else
+		  Assert.fail("No elements in array container");
+	  // clicking track it
+	  String str22 = driver.findElement(By.className(or.getProperty("allproposals_className"))).getText();
+      if(str22.equals("Track It")){
+	  driver.findElement(By.className(or.getProperty("allproposals_className"))).click(); 
+      }else
+    	  Assert.fail("Trackit cannot be clickable");
+      help.sleep(2);
 	  List<WebElement> ls2 =driver.findElement(By.tagName(or.getProperty("allproposalsbody_tagName"))).findElements(By.tagName(or.getProperty("allproposalsrow1_tagName")));
 	  System.out.println("No of rows in track it lead details of all proposals " + ls2.size());
 	  ArrayList<String> ar1 = new ArrayList<String>();
+	  if(ls2.size()>=0){
 	  for (int i=0;i<ls2.size();i++)
 	  {
 		 List<WebElement> s1= ls2.get(i).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
@@ -118,7 +120,9 @@ public class Management extends Helper {
 	     String s2 = s1.get(j).getText();
 		 ar1.add(s2); 
 		 } 
-	  }	  
+	  }	
+	  }else
+		  Assert.fail("there are no rows in trackit lead details");
 	  // System.out.println(ar1);
 	  System.out.println("array size after trackit button is clicked:" + ar1.size());
 	  System.out.println("array element after trackit button is clicked: " + ar1.get(0));
@@ -151,51 +155,68 @@ public class Management extends Helper {
 	 System.out.println("==============================================================================");
 	  
   }
-  
+ 
  @Test
   public void test5() throws Exception
   {
 	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
        /////////////// All lost competition ///////////////////////////////
+	  if(driver.findElement(By.id(or.getProperty("alllost_id"))).getText().equals("All Lost Competition")){
 	  driver.findElement(By.id(or.getProperty("alllost_id"))).click();
+	  }else
+		  Assert.fail("all lost comepetition button is not available");
 	  help.sleep(1);
 	  pagination();
 	   ///////////// drop down validation
 	  List<WebElement> ele = driver.findElement(By.name(or.getProperty("allproposals_name"))).findElements(By.tagName(or.getProperty("allproposalsdrop_tagName")));
 	  System.out.println("size of all lost competition dropdown container: " + ele.size());
+	  if(ele.size()>=0){
 	  for (int j=0;j<ele.size();j++)
 	  {
 		  ele.get(j).click();
 		  help.sleep(1);
 	  }
+	  }else
+		  Assert.fail("no elements found in  dropdown container");
 	    /////////// search box validation
-	  driver.findElement(By.tagName(or.getProperty("allproposals_tagName"))).click();
 	  search("medina");
 	    ////////////// validation and comapring track it options
-	  List<WebElement> lsc =driver.findElement(By.cssSelector(or.getProperty("allproposalsrow_tagName"))).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
+	 List<WebElement> lsc =driver.findElement(By.cssSelector(or.getProperty("allproposalsrow_tagName"))).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
 	  System.out.println("No of columns in all lost competition page are: " + lsc.size());
 	  ArrayList<String> arc = new ArrayList<String>();
+	  if(lsc.size()>=0){
 	  for (int i=0;i<lsc.size();i++)
 	  {
 		 String s1c= lsc.get(i).getText();
 		 arc.add(s1c);  
 	  }
 	  System.out.println("Array before clicking on trackit button is: " + arc);
-	  driver.findElement(By.className(or.getProperty("allproposals_className"))).click();
+	  }else
+		  Assert.fail("There are no elements in the array of lost competition");
+	                // clicking track it
+	  String str22 = driver.findElement(By.className(or.getProperty("allproposals_className"))).getText();
+      if(str22.equals("Track It")){
+	  driver.findElement(By.className(or.getProperty("allproposals_className"))).click(); 
+      }else
+    	  Assert.fail("Trackit cannot be clickable");
 	  help.sleep(2);
 	  List<WebElement> ls2c =driver.findElement(By.tagName(or.getProperty("allproposalsbody_tagName"))).findElements(By.tagName(or.getProperty("allproposalsrow1_tagName")));
 	  System.out.println("No of rows in track it lead details of all lost competition " + ls2c.size());
 	  ArrayList<String> ar1c = new ArrayList<String>();
+	  if(ls2c.size()>=0){
 	  for (int i=0;i<ls2c.size();i++)
 	  {
 		 List<WebElement> s1c= ls2c.get(i).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
+		 if(s1c.size()>=0){
 		 for(int j=0;j<s1c.size();j++){
       // System.out.println(s1.get(j).getText());
 	     String s2c = s1c.get(j).getText();
 		 ar1c.add(s2c); 
 		 } 
-	  }
+	  }}
+	  }else
+		  Assert.fail("no elements in container of all lost competition");
 	  System.out.println("Array size after trackit button is clicked: " + ar1c.size());
 	  System.out.println("array element after trackit button is clicked: " + ar1c.get(0));
 	  System.out.println("array element after trackit button is clicked: " + ar1c.get(1));
@@ -223,24 +244,30 @@ public class Management extends Helper {
 	  System.out.println("######Done with validation of all lost competation page######");
 	  System.out.println("==============================================================================");
   }
-  
+
  @Test
   public void test6() throws Exception
   {
 	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
      	  /////////////// All customers //////////////////////////
+	  if(driver.findElement(By.id(or.getProperty("allcustomers_id"))).getText().equals("All Customers")){
 	  driver.findElement(By.id(or.getProperty("allcustomers_id"))).click();
+	  }else
+		  Assert.fail("all customers link cannot be clickable");
 	  help.sleep(1);
 	  pagination();
 	    //////////////////////// dropdown validation
 	  List<WebElement> ele2 = driver.findElement(By.name(or.getProperty("allproposals_name"))).findElements(By.tagName(or.getProperty("allproposalsdrop_tagName")));
 	  System.out.println("size of all customers dropdown container: " + ele2.size());
+	  if(ele2.size()>=0){
 	  for (int j=0;j<ele2.size();j++)
 	  {
 		  ele2.get(j).click();
 		  help.sleep(1);
 		  }
+	  }else
+		  Assert.fail("dropdown container donot hold any elements");
 	      /////////// serach fields validation
 	  search("sara");
       System.out.println("###### done with the validation of search and dropdown of all customers ######"); 
@@ -252,31 +279,45 @@ public class Management extends Helper {
 	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
 	  help.sleep(2);
-	  driver.findElement(By.id(or.getProperty("allcustomers_id"))).click();
+	  if(driver.findElement(By.id(or.getProperty("allcustomers_id"))).getText().equals("All Customers")){
+		  driver.findElement(By.id(or.getProperty("allcustomers_id"))).click();
+		  }else
+			  Assert.fail("all customers link cannot be clickable");
 	  search("sara");
 	  List<WebElement> lsc =driver.findElement(By.cssSelector(or.getProperty("allproposalsrow_tagName"))).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
 	  System.out.println("No of columns in all customers page are: " + lsc.size());
    	  ArrayList<String> arc = new ArrayList<String>();
+   	  if(lsc.size()>=0){
 	  for (int i=0;i<lsc.size();i++)
 	  {
 		 String s1c= lsc.get(i).getText();
 		 arc.add(s1c);  
 	  }
 	  System.out.println("Array before clicking on trackit button is: " + arc);
-	  driver.findElement(By.className(or.getProperty("allproposals_className"))).click();
+   	  }else
+   		  Assert.fail("There are no elements in the array of all customers");
+   	String str22 = driver.findElement(By.className(or.getProperty("allproposals_className"))).getText();
+    if(str22.equals("Track It")){
+	  driver.findElement(By.className(or.getProperty("allproposals_className"))).click(); 
+    }else
+  	  Assert.fail("Trackit cannot be clickable");
 	  help.sleep(2);
 	  List<WebElement> ls2c =driver.findElement(By.tagName(or.getProperty("allproposalsbody_tagName"))).findElements(By.tagName(or.getProperty("allproposalsrow1_tagName")));
 	  System.out.println("No of rows in track it lead details of all customers " + ls2c.size());
 	  ArrayList<String> ar1c = new ArrayList<String>();
+	  if(ar1c.size()>=0){
 	  for (int i=0;i<ls2c.size();i++)
 	  {
 		 List<WebElement> s1c= ls2c.get(i).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
+		if(s1c.size()>=0){
 		 for(int j=0;j<s1c.size();j++){
       // System.out.println(s1.get(j).getText());
 	     String s2c = s1c.get(j).getText();
 		 ar1c.add(s2c); 
 		 } 
-	  }
+	  }}
+	  }else
+		  Assert.fail("no elements in the table of trackit of all customers");
 	  System.out.println("Array size after trackit button is clicked: " + ar1c.size());
 	  System.out.println("array element after trackit button is clicked: " + ar1c.get(0));
 	  System.out.println("array element after trackit button is clicked: " + ar1c.get(1));
@@ -311,53 +352,74 @@ public class Management extends Helper {
 	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
         /////////////// All Quotes //////////////////////////
+	  if(driver.findElement(By.id(or.getProperty("allquotes_id"))).getText().equals("All Quotes")){
 	  driver.findElement(By.id(or.getProperty("allquotes_id"))).click();
+	  }else 
+		  Assert.fail("all quotes link cannot be clickable");
 	  help.sleep(1);
 	  pagination();
         /////////////// drop down validation
       List<WebElement> ele3 = driver.findElement(By.name(or.getProperty("allproposals_name"))).findElements(By.tagName(or.getProperty("allproposalsdrop_tagName")));
       System.out.println("size of all quotes dropdown container: " + ele3.size());
+      if(ele3.size()>=0){
       for (int j=0;j<ele3.size();j++)
       {
     	  ele3.get(j).click();
     	  help.sleep(1);
       }
+      }else
+    	  Assert.fail("there are no elements in dropdown container");
         ///////////// search fields validation 
       search("karen");
       System.out.println("###### done with the validation of search and dropdown of all quotes ######"); 
   }
+ 
  @Test
   public void test9() throws Exception
   {
 	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
 	  help.expand();
       help.sleep(2);
-      driver.findElement(By.id(or.getProperty("allquotes_id"))).click();
+      if(driver.findElement(By.id(or.getProperty("allquotes_id"))).getText().equals("All Quotes")){
+    	  driver.findElement(By.id(or.getProperty("allquotes_id"))).click();
+    	  }else 
+    		  Assert.fail("all quotes link cannot be clickable");
       search("karen");
       List<WebElement> lsc =driver.findElement(By.cssSelector(or.getProperty("allproposalsrow_tagName"))).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
 	  System.out.println("No of columns in all quotes page are: " + lsc.size());
       ArrayList<String> arc = new ArrayList<String>();
+      if(lsc.size()>=0){
 	  for (int i=0;i<lsc.size();i++)
 	  {
 		 String s1c= lsc.get(i).getText();
 		 arc.add(s1c);  
 	  }
 	  System.out.println("Array before clicking on trackit button is: " + arc);
+      }else
+      Assert.fail("there are no elements in the array before trackit is clicked");
 	  sleep(1);
-	  driver.findElement(By.className(or.getProperty("allproposals_className"))).click();
+		String str22 = driver.findElement(By.className(or.getProperty("allproposals_className"))).getText();
+	    if(str22.equals("Track It")){
+		  driver.findElement(By.className(or.getProperty("allproposals_className"))).click(); 
+	    }else
+	  	  Assert.fail("Trackit cannot be clickable");
 	  help.sleep(2);
 	  List<WebElement> ls2c =driver.findElement(By.tagName(or.getProperty("allproposalsbody_tagName"))).findElements(By.tagName(or.getProperty("allproposalsrow1_tagName")));
 	  System.out.println("No of rows in track it lead details of all quotes " + ls2c.size());
 	  ArrayList<String> ar1c = new ArrayList<String>();
+	  if(ls2c.size()>=0){
 	  for (int i=0;i<ls2c.size();i++)
 	  {
 		 List<WebElement> s1c= ls2c.get(i).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
+		 if(s1c.size()>=0){
 		 for(int j=0;j<s1c.size();j++){
       // System.out.println(s1.get(j).getText());
 	     String s2c = s1c.get(j).getText();
 		 ar1c.add(s2c); 
 		 } 
-	  }
+	  }}
+      }else 
+	  Assert.fail("there are no elements in the track it table");
 	  System.out.println("Array size after trackit button is clicked: " + ar1c.size());
 	  System.out.println("array element after trackit button is clicked: " + ar1c.get(0));
 	  System.out.println("array element after trackit button is clicked: " + ar1c.get(1));
@@ -449,6 +511,8 @@ public class Management extends Helper {
 	 System.out.println("==============================================================================");
   }
   
+     // verifing is element present to click or not
+ 
           // pagination
  public static void pagination() 
  {
