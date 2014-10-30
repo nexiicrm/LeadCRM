@@ -1,6 +1,10 @@
 package crm;
 
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -18,12 +22,17 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.nexiilabs.dbcon.DBConnection;
+
 import testUtils.Helper;
 
-public class BDM extends Helper {
-	
 
-//BDM
+
+public class BDM extends Helper {
+
+	public static Connection connection =null;
+	public static Statement statement;
+	public static ResultSet rs;
 
 	@BeforeMethod
 	 public void before() throws Exception {
@@ -84,7 +93,7 @@ public class BDM extends Helper {
 				 help.sleep(5);
 				 
 				 // Verifying the Success message displayed on the page after following up
-				 Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).findElement(By.className("success_msg")).getText());
+				 Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
 				 
 				 // Closing the page
 				 driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
@@ -196,7 +205,7 @@ public class BDM extends Helper {
 				 help.sleep(5);
 				 
 				 // Verifying the Success message displayed on the page after uploading the Proposal
-				 Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).findElement(By.className("success_msg")).getText());
+				 Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
 				 
 				 // Closing the Proposal Upload page
 				 driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
@@ -253,10 +262,11 @@ public class BDM extends Helper {
 				  driver.findElement(By.id("button")).click();
 				  help.sleep(4);
 				  // Verifying the Success message displayed on the page after uploading the Proposal
-				  Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).findElement(By.className("success_msg")).getText());
+				  Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
 				  
 				  // Closing the Proposal Upload page
 				  driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
+				  
 			  }
 		 } 
 		 else
@@ -305,7 +315,7 @@ public class BDM extends Helper {
 					 help.sleep(5);
 					 
 					 // Verifying the Success message displayed on the page after uploading the Proposal
-					 Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).findElement(By.className("success_msg")).getText());
+					 Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
 					 
 					 // Closing the Quote Upload page
 					 driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
@@ -364,7 +374,7 @@ public class BDM extends Helper {
 				  help.sleep(5);
 				  
 				  // Verifying the Success message displayed on the page after uploading the Quote
-				  Reporter.log("<p>" + driver.findElement(By.id("result_msg_div")).findElement(By.className("success_msg")).getText());
+				  Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
 				  
 				  // Closing the Quote Upload page
 				  driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();  				  
@@ -433,9 +443,7 @@ public class BDM extends Helper {
 		  
 		  // Verifying whether the required page is loaded or not
 		  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id("container")).findElement(By.tagName("h1")).getText());
-		  pagination();
 		  driver.findElement(By.name("example_length")).findElements(By.tagName("option")).get(3).click();
-		  
 		  
 		  // Verifying no.of leads in the page
 		  List <WebElement> leads = driver.findElement(By.id("example")).findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
@@ -458,6 +466,9 @@ public class BDM extends Helper {
 		  int opt1 = help.random(leads.size());
 		  List <String> detail =  trackitButton(opt1);
 		  
+		  String lead = detail.get(0);
+		  List <String> dbDetail = leadEditdb(lead);
+		  
 		  //Editing the Leads
 		  driver.findElement(By.id("editLeads")).click();
 		  driver.findElement(By.name("example_length")).findElements(By.tagName("option")).get(3).click();
@@ -468,26 +479,47 @@ public class BDM extends Helper {
 		  help.sleep(5);
 		  Reporter.log("<p>" +driver.findElement(By.cssSelector("span.ui-dialog-title")).getText());
 		  
-		  // Editing the Fields
-		  driver.findElement(By.id("firstname")).clear();
-		  driver.findElement(By.id("firstname")).sendKeys("Jennifer");
-		  driver.findElement(By.id("lastname")).clear();
-		  driver.findElement(By.id("lastname")).sendKeys("Strauss");
-		  driver.findElement(By.id("mobilenumber")).clear();
-		  driver.findElement(By.id("mobilenumber")).sendKeys("3-(486)235-8432");
-		  driver.findElement(By.id("boardnumber")).clear();
-		  driver.findElement(By.id("boardnumber")).sendKeys("8-(104)838-3404");
-		  new Select(driver.findElement(By.name("service"))).selectByVisibleText("SAAS");
-		  new Select(driver.findElement(By.name("domain"))).selectByVisibleText("Robotics");
-		  driver.findElement(By.id("desknumber")).clear();
-		  driver.findElement(By.id("desknumber")).sendKeys("3-(618)434-8752");
+		  
+		  
+		  if((detail.get(1).equals("Jennifer")) || detail.get(1).equals("Bret"))
+		  {
+			// Editing the Fields
+			  driver.findElement(By.id("firstname")).clear();
+			  driver.findElement(By.id("firstname")).sendKeys("John");
+			  driver.findElement(By.id("lastname")).clear();
+			  driver.findElement(By.id("lastname")).sendKeys("Andrew");
+			  driver.findElement(By.id("mobilenumber")).clear();
+			  driver.findElement(By.id("mobilenumber")).sendKeys("3-(486)235-8432");
+			  driver.findElement(By.id("boardnumber")).clear();
+			  driver.findElement(By.id("boardnumber")).sendKeys("8-(104)838-3404");
+			  new Select(driver.findElement(By.name("service"))).selectByVisibleText("SAAS");
+			  new Select(driver.findElement(By.name("domain"))).selectByVisibleText("Robotics");
+			  driver.findElement(By.id("desknumber")).clear();
+			  driver.findElement(By.id("desknumber")).sendKeys("3-(618)434-8752"); 
+		  }
+		  else
+		  {
+			// Editing the Fields
+			  driver.findElement(By.id("firstname")).clear();
+			  driver.findElement(By.id("firstname")).sendKeys("Bret");
+			  driver.findElement(By.id("lastname")).clear();
+			  driver.findElement(By.id("lastname")).sendKeys("Lee");
+			  driver.findElement(By.id("mobilenumber")).clear();
+			  driver.findElement(By.id("mobilenumber")).sendKeys("3-(486)235-8432");
+			  driver.findElement(By.id("boardnumber")).clear();
+			  driver.findElement(By.id("boardnumber")).sendKeys("8-(104)838-3404");
+			  new Select(driver.findElement(By.name("service"))).selectByVisibleText("QA");
+			  new Select(driver.findElement(By.name("domain"))).selectByVisibleText("Finance");
+			  driver.findElement(By.id("desknumber")).clear();
+			  driver.findElement(By.id("desknumber")).sendKeys("3-(618)434-8752"); 
+		  }
 		  
 		  // Clicking on Edit button to proceed
 		  driver.findElement(By.id("editbutton")).click();
 		  help.sleep(3);
 		  
 		  // Getting the success message
-		  Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).findElement(By.className("success_msg")).getText());
+		  Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
 		  driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
 		  
 		  // Tracking the edited lead
@@ -497,8 +529,13 @@ public class BDM extends Helper {
 		  // Tracking the lead and getting the details into the List
 		  List <String> detail1 = trackitButton(opt1);
 		  
+		  List <String> dbDetail1 = leadEditdb(lead);
+		  
+		  System.out.println(detail);
+		  System.out.println(detail1);
+		  
 		  // Comparing the details in 2 lists before and after editing the lead and printing the edited fields
-		  if(detail.equals(detail1)) 
+		  if((detail.equals(detail1)) && dbDetail.equals(dbDetail1))
 		  {
 			  Reporter.log("<p>" +"Lead is not edited or modified.");
 		  } 
@@ -826,7 +863,7 @@ public class BDM extends Helper {
 	} 
 	
 	
-	//Excess method
+/*	//Excess method
 	
 	 @Test
 	 public void trackit() {
@@ -843,7 +880,7 @@ public class BDM extends Helper {
 		 //driver.findElements(By.tagName("tbody")).get(3).findElements(By.tagName("tr")).get(1).
 	 }
 	 
-	 
+	 */
 	 
 	 // -------- Static Methods ---------
 
@@ -916,7 +953,7 @@ public class BDM extends Helper {
 			  List <WebElement> list = driver.findElement(By.tagName("tbody")).findElements(By.tagName("td"));
 			  List <String> detailsList = new ArrayList <String>() ;
 			  for(int i=0; i<list.size(); i++)
-				  detailsList.add(list.get(i).getText());
+				  detailsList.add(list.get(i).findElements(By.tagName("label")).get(1).getText());
 			  
 			  // Return the String List
 			  return detailsList; 
@@ -955,4 +992,45 @@ public class BDM extends Helper {
 			 driver.findElement(By.className("user_logout")).findElement(By.linkText("Logout")).click();
 			 Reporter.log("<p>" + "Logged out of Management Module");
 		 }
+		 
+		 
+		 
+		 // Method for retieving the details in the database for Lead Edit
+		 public static List<String> leadEditdb(String id) 
+		 {
+			 List <String> dbList = new ArrayList<String> ();
+			 try {
+	             Class.forName("com.mysql.jdbc.Driver").newInstance();
+	             connection = DBConnection.getConnection();
+	             statement = connection.createStatement();
+	             rs = statement.executeQuery("select b.first_name, b.last_name, b.mobile_number, b.board_number, "
+	             		+ "b.desk_number, a.domain_name, c.service_name from crm_domain a, "
+	             		+ "crm_lead b, crm_service c where a.domain_id = b.domain_id AND "
+	             		+ "c.service_id=b.service_id AND  b.lead_id='" + id + "';");      
+	            
+	             while (rs.next()) {
+	            	 String fname = rs.getString("first_name");
+	                 String lname = rs.getString("last_name");
+	                 String name = fname + " " + lname;
+	                 String mobile = rs.getString("mobile_number");
+	                 String boardnum = rs.getString("board_number");
+	                 String desknum = rs.getString("desk_number");
+	                 String domain = rs.getString("domain_name");
+	                 String service = rs.getString("service_name");
+	                 
+	                 dbList.add(name);
+	                 dbList.add(mobile);
+	                 dbList.add(boardnum);
+	                 dbList.add(desknum);
+	                 dbList.add(domain);
+	                 dbList.add(service);
+	             } 
+			 } 
+		        catch (Exception e) 
+		        {
+		            e.printStackTrace();
+		        }   
+			return dbList;
+		 }
+		 
 }
