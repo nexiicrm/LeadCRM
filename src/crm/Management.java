@@ -5,9 +5,11 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import testUtils.Helper;
 
 public class Management extends Helper {
@@ -16,11 +18,13 @@ public class Management extends Helper {
   public void test1() throws Exception 
   {
 	  //////////// logging into the site///////////////////////////
-	  help.login(sh5.getCell(0,0).getContents(), sh5.getCell(1,0).getContents());
+	  help.login(config.getProperty("Muser"),config.getProperty("Mpass"));
 	  String user = driver.findElement(By.className(or.getProperty("user_Classname"))).getText();
+	  if(user != null){
 	  help.sleep(2);
 	  if(user.equals("Hi ! Management basani")){
 	  System.out.println("User Logged in as:" + user);
+	  }
 	  }else
 		  Assert.fail("logged in as other user");
 	  List <WebElement> we  = driver.findElements(By.tagName(or.getProperty("user_tagname")));
@@ -39,18 +43,18 @@ public class Management extends Helper {
   public void test2() throws Exception
   {
 	  //////////////// Expanding and collapsing tree in the left pane of page ////////////
-	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
+	  help.login(config.getProperty("Muser"),config.getProperty("Mpass"));
 	  help.expand();
 	  help.collapse();
 	  System.out.println("######Expansion and collapsing of tree menu done successfully######");
 	  System.out.println("===========================================================================");
   }
-
+ 
  @Test
   public void test3() throws Exception
   {
 	  /////////////// All Proposals click and search box ///////////////////////////////
-	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
+   	  help.login(config.getProperty("Muser"),config.getProperty("Mpass"));
       help.expand();
 	  help.sleep(2);
 	  String str = driver.findElement(By.id(or.getProperty("allproposals_id"))).getText();
@@ -60,37 +64,41 @@ public class Management extends Helper {
 		  Assert.fail("All propoals cant be clickable");
 	  help.sleep(1);
 	  pagination();
+	  help.sleep(2);
 	  
 	  ///////////////////////// For drop down /////////////////////////
 	  List<WebElement> ele = driver.findElement(By.name(or.getProperty("allproposals_name"))).findElements(By.tagName(or.getProperty("allproposalsdrop_tagName")));
-	 if(ele.size()>=0){
+	  if(ele.size()>=0){
 	  System.out.println("size of all proposals dropdown container: " + ele.size()); 
 	  for (int i=0;i<ele.size();i++)
 	  {
 		  ele.get(i).click();
 		  help.sleep(1);  
 	  }
-	 }else
+	  }else
 		 Assert.fail("Dropdown container doesnt have any elements");
 	  //////////////////////// for search box 
-	  search("Evans");
+	  search("Aaron");
 	  System.out.println("###### Done with search validation and dropdown validation of all proposals ######"); 
   }
  
  @Test
   public void test4() throws Exception
   {
-	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
+   	  help.login(config.getProperty("Muser"),config.getProperty("Mpass"));
 	  help.expand();
 	  String str = driver.findElement(By.id(or.getProperty("allproposals_id"))).getText();
 	  if(str.equals("All Proposals")){
 	  driver.findElement(By.id(or.getProperty("allproposals_id"))).click();
 	  }else
 		  Assert.fail("All propoals cant be clickable");
-	  search("Evans");
+	  search("Aaron");
 	  help.sleep(2);
 	  List<WebElement> ls =driver.findElement(By.cssSelector(or.getProperty("allproposalsrow_tagName"))).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
+	  if(ls.size()>=0){
 	  System.out.println("No of columns in all proposal list page are :" + ls.size());
+	  }else
+		  Assert.fail("there are no columns in all proposals list page");
 	  ArrayList<String> ar = new ArrayList<String>();
 	  if(ls.size()>=0){
 	  for (int i=0;i<ls.size();i++)
@@ -115,12 +123,14 @@ public class Management extends Helper {
 	  for (int i=0;i<ls2.size();i++)
 	  {
 		 List<WebElement> s1= ls2.get(i).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
+		 if(s1.size()>=0){
 		 for(int j=0;j<s1.size();j++){
 	     // System.out.println(s1.get(j).getText());
 	     String s2 = s1.get(j).getText();
 		 ar1.add(s2); 
 		 } 
 	  }	
+	  }
 	  }else
 		  Assert.fail("there are no rows in trackit lead details");
 	  // System.out.println(ar1);
@@ -138,11 +148,14 @@ public class Management extends Helper {
 	        }
 	    }
 	 }else
-	 System.out.println("Data doesnt match in all proposals");
+	 Assert.fail("Data doesnt match in all proposals");
 	  ////////////////// to get the status
 	 String strt=  driver.findElements(By.tagName(or.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(or.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(or.getProperty("allproposalscol_tagName"))).get(1).getText();
+	 if(strt != null){
 	 System.out.println(strt);
 	 help.sleep(2);
+	 }else
+		 Assert.fail();
 	 String strtt = driver.findElements(By.tagName(or.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(or.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(or.getProperty("allproposalscol_tagName"))).get(2).getText();
 	 System.out.println(strtt);	
 	 System.out.println("tag name for the file is: "+ driver.findElement(By.tagName("a")).getTagName());
@@ -159,7 +172,7 @@ public class Management extends Helper {
  @Test
   public void test5() throws Exception
   {
-	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
+ 	  help.login(config.getProperty("Muser"),config.getProperty("Mpass"));
 	  help.expand();
        /////////////// All lost competition ///////////////////////////////
 	  if(driver.findElement(By.id(or.getProperty("alllost_id"))).getText().equals("All Lost Competition")){
@@ -248,7 +261,7 @@ public class Management extends Helper {
  @Test
   public void test6() throws Exception
   {
-	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
+	  help.login(config.getProperty("Muser"),config.getProperty("Mpass"));
 	  help.expand();
      	  /////////////// All customers //////////////////////////
 	  if(driver.findElement(By.id(or.getProperty("allcustomers_id"))).getText().equals("All Customers")){
@@ -276,7 +289,7 @@ public class Management extends Helper {
  @Test
   public void test7() throws Exception
   {
-	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
+	  help.login(config.getProperty("Muser"),config.getProperty("Mpass"));
 	  help.expand();
 	  help.sleep(2);
 	  if(driver.findElement(By.id(or.getProperty("allcustomers_id"))).getText().equals("All Customers")){
@@ -349,7 +362,7 @@ public class Management extends Helper {
  @Test
   public void test8() throws Exception
   {
-	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
+	  help.login(config.getProperty("Muser"),config.getProperty("Mpass"));
 	  help.expand();
         /////////////// All Quotes //////////////////////////
 	  if(driver.findElement(By.id(or.getProperty("allquotes_id"))).getText().equals("All Quotes")){
@@ -377,7 +390,7 @@ public class Management extends Helper {
  @Test
   public void test9() throws Exception
   {
-	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
+	  help.login(config.getProperty("Muser"),config.getProperty("Mpass"));
 	  help.expand();
       help.sleep(2);
       if(driver.findElement(By.id(or.getProperty("allquotes_id"))).getText().equals("All Quotes")){
@@ -451,54 +464,14 @@ public class Management extends Helper {
 @Test
   public void testLeads() throws Exception
   {
-	  help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
-	  help.expand();
-        ///////////////////////// Search leads //////////////////////////////////////////////
-	  if(driver.findElement(By.id(or.getProperty("allleads_id"))).isDisplayed()) {
-      driver.findElement(By.id(or.getProperty("allleads_id"))).click();
-	  String parentWindow = driver.getWindowHandle();
-	  for(String childWindow : driver.getWindowHandles()) 
-	  {
-	  driver.switchTo().window(childWindow);
-	  }
-			 //Selecting Required fields
-	 help.sleep(2);
-	 List <WebElement> requiredFields = driver.findElement(By.id(or.getProperty("allleadstab_id"))).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
-	 int a = help.random(requiredFields.size());
-	 System.out.println("The reqiured field : " + requiredFields.get(a).getText());
-	 requiredFields.get(a).findElement(By.tagName(or.getProperty("allproposals_tagName"))).click();
-	 driver.findElement(By.cssSelector(or.getProperty("search_css"))).click();
-			 //Selecting a Category of Filter Options
-	 List <WebElement> filterOptions = driver.findElement(By.id(or.getProperty("search_id"))).findElements(By.className(or.getProperty("search_class")));
-	 System.out.println("Size of Filter option categories : " + filterOptions.size());
-	 int b =help.random(filterOptions.size());
-	 String opt = filterOptions.get(b).findElement(By.tagName(or.getProperty("search_tag"))).getText();
-	 System.out.println("Filter Option Selected : " + opt);		
-			 //Selecting an option in Filter Options 
-	 List <WebElement> option = filterOptions.get(b).findElements(By.tagName(or.getProperty("allproposalscol_tagName")));
-	 System.out.println("No.of options in " + opt + " List : " + option.size());
-	 int c = help.random(option.size());
-	 System.out.println("Option selected is : " + option.get(c).findElement(By.tagName(or.getProperty("search_tagname"))).getText());
-	 option.get(c).findElement(By.tagName(or.getProperty("allproposals_tagName"))).click();
-	 driver.findElement(By.id(or.getProperty("search_id1"))).click();
-	 help.sleep(5);
-	    //Printing the Table displayed with required fields
-	 pagination();
-	 pageEntries();
-	 search("Larry");
-	 System.out.println(driver.findElement(By.id(or.getProperty("search_idd"))).findElement(By.tagName(or.getProperty("allproposalsbody_tagName"))).getText());
-	 driver.close();
-	 driver.switchTo().window(parentWindow);
-	 } else {
-		 Assert.fail("No Link Found");
-		 }
-	  System.out.println("###### done with the validation of search leads ######");
-	  System.out.println("==============================================================================");
- }
+	help.login(config.getProperty("Muser"),config.getProperty("Mpass"));
+	 
+  } 	
+
  @Test
   public void testPassword() throws Exception
   {
-	 help.login(sh5.getCell(0,0).getContents(),sh5.getCell(1,0).getContents());
+	 help.login(config.getProperty("Muser"),config.getProperty("Mpass"));
 	 help.expand();
         /////////////////////////// change password ////////////////////////////////////
      driver.findElement(By.xpath(or.getProperty("change_xpath"))).click();
@@ -517,15 +490,41 @@ public class Management extends Helper {
  public static void pagination() 
  {
 	 System.out.println("###### Verifying Next & Previous Buttons ######");
-	 System.out.println(driver.findElement(By.id(or.getProperty("page1_id"))).getText());
+	 WebElement w= driver.findElement(By.id(or.getProperty("pagination_next")));
+	 if(w.isDisplayed()){
+		 System.out.println("pagination next button is present");
+	 }else
+		 Assert.fail("pagination button not present");
+	 String s1 =driver.findElement(By.id(or.getProperty("page1_id"))).getText();
+	 System.out.println(s1);
+	 while(!w.getAttribute("class").contains("disabled")){
 	 help.sleep(2);
-	 driver.findElement(By.id(or.getProperty("page2_id"))).click();
+	 String str = driver.findElement(By.id(or.getProperty("page2_id"))).getAttribute("class");
+	 
+	 if(str.contains("enabled")){
+	 w.click();
 	 System.out.println("Clicked on Next button");
 	 System.out.println(driver.findElement(By.id(or.getProperty("page1_id"))).getText());
-	 help.sleep(2);
-	 driver.findElement(By.id(or.getProperty("page3_id"))).click();
+	 help.sleep(1);
+	 }else
+		 System.out.println("Next button cant be clicked");
+	 }
+	 WebElement w1 =  driver.findElement(By.id(or.getProperty("pagiantion_prev")));
+	 if(w1.isDisplayed()){
+		System.out.println("pagination previous button present");
+	 }else
+		Assert.fail("pagination previous button not present");
+	 System.out.println(driver.findElement(By.id(or.getProperty("page1_id"))).getText());
+	 while(!w1.getAttribute("class").contains("disabled")){
+	 String str2 = driver.findElement(By.id(or.getProperty("page3_id"))).getAttribute("class");
+	 
+	 if(str2.contains("enabled")){
+	 w1.click();
 	 System.out.println("Clicked on Previous button");
 	 System.out.println(driver.findElement(By.id(or.getProperty("page1_id"))).getText());
+	 }else
+		 System.out.println("previous button cant be clicked");
+	 }
  }
   
           //No. of Entries per page
