@@ -50,11 +50,11 @@ public class BDM extends Helper {
 	 
 	 @AfterMethod
 	 public void after() {
-		// driver.close();
+		 driver.close();
 	 }
 	 
 	 
-	 // Test Method for Follow up 4 for Cold storage phase. 
+/*	 // Test Method for Follow up 4 for Cold storage phase. 
 	 @Test
 	 public void coldStorageFollowup() {
 		 
@@ -117,7 +117,7 @@ public class BDM extends Helper {
 		 // Expands the side tree menu and clicking on Cold Storage Link
 		 help.expand();
 		 
-		 // Clicking on Clod Storage Link
+		 // Clicking on Cold Storage Link
 		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id("coldstorage")).getText() + "' Link" );
 		 if(driver.findElement(By.id("coldstorage")).isDisplayed()) 
 		 {
@@ -136,7 +136,8 @@ public class BDM extends Helper {
 				Reporter.log("<p>" +"No. of leads in the Table:" + leads.size());
 				int confirm=0;
 				for(int i=0; i<leads.size(); i++) {
-					if(leads.get(i).findElement(By.className("analyse")).isEnabled()) {
+					if(leads.get(i).findElement(By.className("analyse")).isEnabled()) 
+					{
 					  confirm++;
 					}	  
 				}
@@ -147,6 +148,7 @@ public class BDM extends Helper {
 				int opt = help.random(leads.size());
 				Reporter.log("<p>" +"The ID of lead selected to confirm: " + leads.get(opt).findElement(By.tagName("td")).getText());
 				leads.get(opt).findElement(By.className("analyse")).click();
+				help.sleep(4);
 				Reporter.log("<p>" +driver.findElement(By.id("body_result")).findElement(By.className("success_msg")).getText());
 		       } 
 		     } 
@@ -370,14 +372,17 @@ public class BDM extends Helper {
 				  driver.findElement(By.name("quotedescription")).sendKeys("Quote Description");
 				  driver.findElement(By.id("button")).click();
 				  driver.findElement(By.name("quote")).sendKeys("E:\\abc2.txt");
-				  driver.findElement(By.id("button")).click();
+				//  driver.findElement(By.id("button")).click();
 				  help.sleep(5);
 				  
 				  // Verifying the Success message displayed on the page after uploading the Quote
 				  Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
 				  
 				  // Closing the Quote Upload page
-				  driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();  				  
+				  driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
+				  
+				  
+				  
 			  }
 		 } 
 		 else
@@ -483,7 +488,7 @@ public class BDM extends Helper {
 		  
 		  if((detail.get(1).equals("Jennifer")) || detail.get(1).equals("Bret"))
 		  {
-			// Editing the Fields
+			  // Editing the Fields
 			  driver.findElement(By.id("firstname")).clear();
 			  driver.findElement(By.id("firstname")).sendKeys("John");
 			  driver.findElement(By.id("lastname")).clear();
@@ -499,7 +504,7 @@ public class BDM extends Helper {
 		  }
 		  else
 		  {
-			// Editing the Fields
+			  // Editing the Fields
 			  driver.findElement(By.id("firstname")).clear();
 			  driver.findElement(By.id("firstname")).sendKeys("Bret");
 			  driver.findElement(By.id("lastname")).clear();
@@ -531,8 +536,8 @@ public class BDM extends Helper {
 		  
 		  List <String> dbDetail1 = leadEditdb(lead);
 		  
-		  System.out.println(detail);
-		  System.out.println(detail1);
+		  Reporter.log("<p>" + detail);
+		  Reporter.log("<p>" + detail1);
 		  
 		  // Comparing the details in 2 lists before and after editing the lead and printing the edited fields
 		  if((detail.equals(detail1)) && dbDetail.equals(dbDetail1))
@@ -557,67 +562,14 @@ public class BDM extends Helper {
 	 
 	 // Test method for Search Leads
 	 @Test
-	 public void searchLeads() {
+	 public void leadSearch() {
 		
 		 Reporter.log("<p>" +"Test for Lead Search Phase");
 		 
 		 // Expands the side tree menu
 		 help.expand();
 		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id("serachLeads123")).getText() + "' Link" );
-		 if(driver.findElement(By.id("serachLeads123")).isDisplayed()) 
-		 {
-			 driver.findElement(By.id("serachLeads123")).click();
-			 
-			 // Switching to Child Window
-			 String parentWindow = driver.getWindowHandle();
-			 for(String childWindow : driver.getWindowHandles()) 
-			 {
-				 driver.switchTo().window(childWindow);
-			 }
-			 
-			 // Selecting Required fields
-			 List <WebElement> requiredFields = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("td"));
-			 int a = help.random(requiredFields.size());
-			 String field = requiredFields.get(a).getText();
-			 Reporter.log("<p>" +"The reqiured field:" + field);
-			 requiredFields.get(a).findElement(By.tagName("input")).click();
-			 driver.findElement(By.cssSelector("span.ui-accordion-header-icon.ui-icon.ui-icon-triangle-1-e")).click();
-			 
-			 
-			 // Selecting a Category of Filter Options
-			 List <WebElement> filterOptions = driver.findElement(By.id("ui-accordion-accordion-panel-1")).findElements(By.className("row1"));
-			 Reporter.log("<p>" +"Size of Filter option categories:" + filterOptions.size());
-			 for(int i=0; i<filterOptions.size(); i++) 
-			 {
-				 String opt = filterOptions.get(i).findElement(By.tagName("legend")).getText();
-				 Reporter.log("<p>" +"Filter Option Selected:" + opt);
-				
-				 // Selecting an option in a category in Filter Options and clicking on search button
-				 List <WebElement> option = filterOptions.get(i).findElements(By.tagName("td"));
-				 Reporter.log("<p>" +"No.of options in " + opt + " List:" + option.size());
-				 int c = help.random(option.size());
-				 Reporter.log("<p>" +"Option selected is:" + option.get(c).findElement(By.tagName("label")).getText());
-				 option.get(c).findElement(By.tagName("input")).click();
-				 driver.findElement(By.id("registerbutton")).click();
-				 help.sleep(5);
-				 
-				 // Checking whether the required field selected is same as that of the row header in the table
-				 //String header = 
-				 
-				 // Printing the Table displayed with required fields
-				 Reporter.log("<p>" +driver.findElement(By.id("example")).findElement(By.tagName("tbody")).getText());
-				 //driver.navigate().refresh(); 
-				 option.get(c).findElement(By.tagName("input")).click();
-			 }
-			 
-			 // Closing the Child Window
-			 driver.close();
-			 
-			 // Switching to Parent Window
-			 driver.switchTo().window(parentWindow);
-		 } 
-		 else
-			 Assert.fail("No Link Found");
+		 
 		 Reporter.log("<p>___________________________________________________________________________________");
 	 } 	
 	
@@ -625,88 +577,20 @@ public class BDM extends Helper {
 	 
 	 // Test Method for Lead Search Paginations
 	 @Test
-	 public void searchLeadPagination() {
+	 public void leadSearchPagination() {
 		 Reporter.log("<p>" +"Test for Lead Search Phase Paginations");
 		 
 		 // Expands the side tree menu
 		 help.expand();
 		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id("serachLeads123")).getText() + "' Link" );
-		 if(driver.findElement(By.id("serachLeads123")).isDisplayed()) 
-		 {
-			 driver.findElement(By.id("serachLeads123")).click();
-			 
-			 // Switching to Child Window
-			 String parentWindow = driver.getWindowHandle();
-			 for(String childWindow : driver.getWindowHandles()) 
-			 {
-				 driver.switchTo().window(childWindow);
-			 }
-			 
-			 // Selecting Required fields
-			 List <WebElement> requiredFields = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("td"));
-			 List <String> fieldoptions = new ArrayList <String>();
-			 for(int i=1; i<requiredFields.size(); i++) 
-			 {
-				 fieldoptions.add(requiredFields.get(i).getText());
-			 }
-			 
-			 Reporter.log("<p>" +"The required field:" + requiredFields.get(0).getText());
-			 requiredFields.get(0).findElement(By.tagName("input")).click();
-			 driver.findElement(By.cssSelector("span.ui-accordion-header-icon.ui-icon.ui-icon-triangle-1-e")).click();
-			 
-			 // Selecting a Category of Filter Options
-			 WebElement filterOption = driver.findElement(By.id("ui-accordion-accordion-panel-1")).findElements(By.className("row1")).get(5);
-			 
-			 String opt = filterOption.findElement(By.tagName("legend")).getText();
-			 Reporter.log("<p>" +"Filter Option Selected:" + opt);
-			 // Selecting an option in a category in Filter Options and clicking on search button
-			 List <WebElement> option = filterOption.findElements(By.tagName("td"));
-			 Reporter.log("<p>" +"No.of options in " + opt + " List:" + option.size());
-			 
-			 Reporter.log("<p>" +"Option selected is:" + option.get(3).findElement(By.tagName("label")).getText());
-			 option.get(3).findElement(By.tagName("input")).click();
-			 driver.findElement(By.id("registerbutton")).click();
-			 help.sleep(5);
-			 
-			 // Printing the Table displayed with required fields
-			 List <WebElement> fields = driver.findElement(By.tagName("thead")).findElements(By.tagName("th"));
-			 List <String> fieldheads = new ArrayList <String>();
-			 for(int i=1; i<fields.size(); i++) 
-			 {
-				 fieldheads.add(fields.get(i).getText());
-			 }
-			 System.out.println(fieldheads);
-			 System.out.println(fieldoptions);
-			 
-			 if(fieldheads.equals(fieldoptions)) 
-			 {
-				 Reporter.log("<p>" +"The required fields selected is matched with the headers of the table.");
-				 Reporter.log("<p>" +driver.findElement(By.id("example")).findElement(By.tagName("tbody")).getText());
-				 
-				 // Pagination
-				 pagination();
-				 
-				 // No.of Entries per page
-				 pageEntries();
-				 
-				 // Search Box Validation
-				 search("Johnson");
-			 }
-			 else 
-				 Reporter.log("<p>" +"The required fields selected is not matched with the headers of the table.");
-			 			 
-			 // Closing the Child Window
-			 //driver.close();
-			 
-			 // Switching to Parent Window
-			 driver.switchTo().window(parentWindow);
-		 } 
-		 else
-			 Assert.fail("No Link Found");
+		 
+		 searchLeadPagination();
+		 
 		 Reporter.log("<p>___________________________________________________________________________________");
+		 
 	 }
 	 
-	 @Test
+/*	 @Test
 	 public void changePassword() {
 		 
 		 Reporter.log("<p>" +"Test for My Account Phase");
@@ -725,7 +609,7 @@ public class BDM extends Helper {
 		 else 
 			 Assert.fail("No Link Found");
 		 Reporter.log("<p>___________________________________________________________________________________");
-	 } 
+	 } */
 	 
 	 
 	 
@@ -863,24 +747,7 @@ public class BDM extends Helper {
 	} 
 	
 	
-/*	//Excess method
-	
-	 @Test
-	 public void trackit() {
-		 help.expand();
-		 driver.findElement(By.id("allfollowups")).click();
-		 help.sleep(2);
-		 driver.findElement(By.id("example")).findElement(By.tagName("tbody")).findElements(By.tagName("tr")).get(5).findElement(By.className("analyse")).click();
-		 help.sleep(3);
-		  //Printing Particular field of the table that is current status 
-		 WebElement a = driver.findElements(By.tagName("tbody")).get(3).findElements(By.tagName("tr")).get(1);
-		 System.out.println(a.findElements(By.tagName("td")).get(2).findElement(By.tagName("a")).getText());
-		 
-		 // Printing all the fields of the table using Collections
-		 //driver.findElements(By.tagName("tbody")).get(3).findElements(By.tagName("tr")).get(1).
-	 }
-	 
-	 */
+
 	 
 	 // -------- Static Methods ---------
 
@@ -902,7 +769,10 @@ public class BDM extends Helper {
 			  // Clicking on Upload button of a Lead opens a Quote Upload Page
 			  int opt = help.random(leads.size());
 			  String uploadleadId = leads.get(opt).findElement(By.className(" sorting_1")).getText();
+			  String name = leads.get(opt).findElements(By.tagName("td")).get(1).getText();
+			  
 			  Reporter.log("<p>" +"The ID of Lead selected to Upload:" + uploadleadId);
+			  Reporter.log(name);
 			  leads.get(opt).findElement(By.className("upload")).click();
 			  help.sleep(5);
 			  String title = driver.findElement(By.cssSelector("span.ui-dialog-title")).getText();
@@ -1033,4 +903,144 @@ public class BDM extends Helper {
 			return dbList;
 		 }
 		 
+		 
+		 // Method for Paginations in Search Lead phase
+		 
+		 public void searchLeadPagination() {
+			 
+			 
+			 if(driver.findElement(By.id("serachLeads123")).isDisplayed()) 
+			 {
+				 driver.findElement(By.id("serachLeads123")).click();
+				 
+				 // Switching to Child Window
+				 String parentWindow = driver.getWindowHandle();
+				 for(String childWindow : driver.getWindowHandles()) 
+				 {
+					 driver.switchTo().window(childWindow);
+				 }
+				 
+				 // Selecting Required fields
+				 List <WebElement> requiredFields = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("td"));
+				 List <String> fieldoptions = new ArrayList <String>();
+				 for(int i=1; i<requiredFields.size(); i++) 
+				 {
+					 fieldoptions.add(requiredFields.get(i).getText());
+				 }
+				 
+				 Reporter.log("<p>" +"The required field:" + requiredFields.get(0).getText());
+				 requiredFields.get(0).findElement(By.tagName("input")).click();
+				 driver.findElement(By.cssSelector("span.ui-accordion-header-icon.ui-icon.ui-icon-triangle-1-e")).click();
+				 
+				 // Selecting a Category of Filter Options
+				 WebElement filterOption = driver.findElement(By.id("ui-accordion-accordion-panel-1")).findElements(By.className("row1")).get(5);
+				 
+				 String opt = filterOption.findElement(By.tagName("legend")).getText();
+				 Reporter.log("<p>" +"Filter Option Selected:" + opt);
+				 // Selecting an option in a category in Filter Options and clicking on search button
+				 List <WebElement> option = filterOption.findElements(By.tagName("td"));
+				 Reporter.log("<p>" +"No.of options in " + opt + " List:" + option.size());
+				 
+				 Reporter.log("<p>" +"Option selected is:" + option.get(3).findElement(By.tagName("label")).getText());
+				 option.get(3).findElement(By.tagName("input")).click();
+				 driver.findElement(By.id("registerbutton")).click();
+				 help.sleep(5);
+				 
+				 // Printing the Table displayed with required fields
+				 List <WebElement> fields = driver.findElement(By.tagName("thead")).findElements(By.tagName("th"));
+				 List <String> fieldheads = new ArrayList <String>();
+				 for(int i=1; i<fields.size(); i++) 
+				 {
+					 fieldheads.add(fields.get(i).getText());
+				 }
+				 Reporter.log("<p>" + fieldheads);
+				 Reporter.log("<p>" + fieldoptions);
+				 
+				 if(fieldheads.equals(fieldoptions)) 
+				 {
+					 Reporter.log("<p>" +"The required fields selected is matched with the headers of the table.");
+					 Reporter.log("<p>" +driver.findElement(By.id("example")).findElement(By.tagName("tbody")).getText());
+					 
+					 // Pagination
+					 pagination();
+					 
+					 // No.of Entries per page
+					 pageEntries();
+					 
+					 // Sorting
+					// help.sorting();
+					 
+					 // Search Box Validation
+					 driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Johnson");
+					 Reporter.log("<p>" +driver.findElement(By.id("example")).findElement(By.tagName("tbody")).getText());
+				 }
+				 else 
+					 Reporter.log("<p>" +"The required fields selected is not matched with the headers of the table.");
+				 			 
+				 // Closing the Child Window
+				 //driver.close();
+				 
+				 // Switching to Parent Window
+				 driver.switchTo().window(parentWindow);
+			 } 
+			 else
+				 Assert.fail("No Link Found"); 
+		 }
+		 
+		 
+		 
+		 // Method for Lead Search phase
+		 public void searchLead() {
+			 if(driver.findElement(By.id("serachLeads123")).isDisplayed()) 
+			 {
+				 driver.findElement(By.id("serachLeads123")).click();
+				 
+				 // Switching to Child Window
+				 String parentWindow = driver.getWindowHandle();
+				 for(String childWindow : driver.getWindowHandles()) 
+				 {
+					 driver.switchTo().window(childWindow);
+				 }
+				 
+				 // Selecting Required fields
+				 List <WebElement> requiredFields = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("td"));
+				 int a = help.random(requiredFields.size());
+				 String field = requiredFields.get(a).getText();
+				 Reporter.log("<p>" +"The reqiured field:" + field);
+				 requiredFields.get(a).findElement(By.tagName("input")).click();
+				 driver.findElement(By.cssSelector("span.ui-accordion-header-icon.ui-icon.ui-icon-triangle-1-e")).click();
+				 
+				 
+				 // Selecting a Category of Filter Options
+				 List <WebElement> filterOptions = driver.findElement(By.id("ui-accordion-accordion-panel-1")).findElements(By.className("row1"));
+				 Reporter.log("<p>" +"Size of Filter option categories:" + filterOptions.size());
+				 for(int i=0; i<filterOptions.size(); i++) 
+				 {
+					 String opt = filterOptions.get(i).findElement(By.tagName("legend")).getText();
+					 Reporter.log("<p>" +"Filter Option Selected:" + opt);
+					
+					 // Selecting an option in a category in Filter Options and clicking on search button
+					 List <WebElement> option = filterOptions.get(i).findElements(By.tagName("td"));
+					 Reporter.log("<p>" +"No.of options in " + opt + " List:" + option.size());
+					 int c = help.random(option.size());
+					 Reporter.log("<p>" +"Option selected is:" + option.get(c).findElement(By.tagName("label")).getText());
+					 option.get(c).findElement(By.tagName("input")).click();
+					 driver.findElement(By.id("registerbutton")).click();
+					 help.sleep(5);
+					 
+					 // Printing the Table displayed with required fields
+					 Reporter.log("<p>" +driver.findElement(By.id("example")).findElement(By.tagName("tbody")).getText());
+					 //driver.navigate().refresh(); 
+					 option.get(c).findElement(By.tagName("input")).click();
+				 }
+				 
+				 // Closing the Child Window
+				 driver.close();
+				 
+				 // Switching to Parent Window
+				 driver.switchTo().window(parentWindow);
+			 } 
+			 else
+				 Assert.fail("No Link Found");
+		 }
 }
