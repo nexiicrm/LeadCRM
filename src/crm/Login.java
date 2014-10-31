@@ -42,7 +42,7 @@ public class Login extends Helper{
 			Reporter.log("<p>" + "logging with username: " +sh0.getCell(j-1, i).getContents() +", password: " +sh0.getCell(j, i).getContents() +"-->" +error_msg.getText());
 			}
 	  
-	  		//Checking for forgot password link
+	  /*		//Checking for forgot password link
 	  		List<WebElement> pass_links = driver.findElement(By.id("wrapper")).findElements(By.tagName(or.getProperty("pass_link_tagname")));
 	  		Reporter.log("<p>" + "FORGOT PASSWORD LINK PRESENT");
 	  		Reporter.log("<p>" + "Forgot password link is = " +pass_links.get(2).findElement(By.tagName(or.getProperty("tag"))).getAttribute("href"));
@@ -60,7 +60,7 @@ public class Login extends Helper{
 		/*
 		 * Getting usernames from spreadsheet 2 and trying to retreive password
 		*/
-	      int rows1 = sh1.getRows();
+	/*      int rows1 = sh1.getRows();
 		  int j=0;
 		  for(int i=0;i<rows1;i++){
 		  driver.get(config.getProperty("url") + "/login.jsp");
@@ -73,7 +73,8 @@ public class Login extends Helper{
 				  Reporter.log("<p>" + error_msg.get(2).getText());
 			  else
 				  Reporter.log("<p>" + error_msg.get(3).getText());
-		  						  }
+		  						  }*/
+		  
 	  
 		  //Getting Log in credentials from spreadsheet 3 and trying to log in 
 		  driver.findElement(By.id(or.getProperty("user_name"))).sendKeys(sh2.getCell(0, 0).getContents());
