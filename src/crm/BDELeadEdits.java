@@ -42,7 +42,7 @@ public class BDELeadEdits  extends Helper
 	  }*/
   }
   
-  public void Showdropdown() throws InterruptedException
+  public void Showdropdown()  
   {
 	  	System.out.println("=================================================\n"+"SHOW DROPDOWN:");
 		List<WebElement>showlength=driver.findElement(By.className("dataTables_length")).findElements(By.tagName("option"));
@@ -50,7 +50,7 @@ public class BDELeadEdits  extends Helper
 		for(int k=0;k<showlength.size();k++)
 		{
 			showlength.get(k).click();
-			Thread.sleep(2000);
+			help.sleep(3);
 			System.out.println("======================================================");
 			//validation
 			if(showlength.get(k).isSelected())
@@ -63,10 +63,14 @@ public class BDELeadEdits  extends Helper
 			int c=tablerecords.size();
 			System.out.println(driver.findElement(By.className("dataTables_info")).getText());
 		    //validation
-			if(b>=c)
+			if(b==c)
 			{
 				System.out.println("no of records displayed according to show dropdown selected item successfully");
-			}
+			}else if(driver.findElement(By.id("example_next")).getAttribute("class").contains("enabled")){
+				Assert.fail("show drop down failed");
+			}else
+				System.out.println("less no  of records are present in table than show dropdown selected item ");
+			
 			
 		}
 	 }
@@ -257,28 +261,32 @@ public class BDELeadEdits  extends Helper
 			}
 		}
   }
-/* @Test
- public void sample()
+ @Test
+ public void asample()
  {
 	  help.expand();
-	  if(driver.findElement(By.id("assignlead")).isDisplayed())
+	  if(driver.findElement(By.id("allfollowups")).isDisplayed())
 	  {
-	  		driver.findElement(By.id("assignlead")).click();
+	  		driver.findElement(By.id("allfollowups")).click();
 	  		help.sleep(3);
-	  		driver.findElement(By.name("service")).findElements(By.tagName("option")).get(1).click();
+	  		//driver.findElement(By.name("service")).findElements(By.tagName("option")).get(1).click();
+	  		//Showdropdown();
 	  		Sorting();
 	  		//next();
-	  		
+	  		//previous();
+	  		//Searchbox();
 	  }
- }*/
+	  collapse();
+	  driver.close();
+ }
  
  public void close(int y,String c) throws Exception
  {
-	 	driver.findElement(By.name("comment")).sendKeys(or.getProperty("comment"));
-		driver.findElement(By.id("closedphasebutton")).click();
+	 	driver.findElement(By.name(or.getProperty("comment_id"))).sendKeys(or.getProperty("comment"));
+		driver.findElement(By.id(or.getProperty("closeform_button"))).click();
 		//driver.findElement(By.xpath("//div[5]/div/button")).click();
-		System.out.println(driver.findElement(By.className("success_msg")).getText());
-		driver.findElement(By.className("ui-button-text"));
+		System.out.println(driver.findElement(By.className(or.getProperty("success_message"))).getText());
+		driver.findElement(By.className(or.getProperty("editform_close")));
 		help.sleep(3);
 		collapse();
 		driver.close();
@@ -305,13 +313,12 @@ public class BDELeadEdits  extends Helper
 				  if(li.contains(y))
 				  {
 					  System.out.println("pass");
-					 
-				  }
-			  
-		  }
+				  }else
+					  Assert.fail("not done");
+		}
  }
  
-/* @Test
+// @Test
  public void Trackit1()
  {
 	  
@@ -330,7 +337,7 @@ public class BDELeadEdits  extends Helper
 					trackit++;
 			}
 			if(trackit==trackelement.size())
-			System.out.println("Trackit button is enabled for all leads.");
+			System.out.println("Trackit button is present for all leads.");
 			//random selection of lead
 			int p=random(trackelement.size());
 	  		List<WebElement> ls =trackelement.get(p).findElements(By.tagName(or.getProperty("tablecol_tagname")));
@@ -375,10 +382,10 @@ public class BDELeadEdits  extends Helper
 	  	}
 	  	collapse();
 	  	driver.close();
-}*/
+}
 
   
-/*  @Test
+ // @Test
   public void Edit()
   {
 	  help.expand();
@@ -417,7 +424,7 @@ public class BDELeadEdits  extends Helper
 	  		System.out.println("lead before clicking on edit button is: " + ar);
 			leads.get(j).findElement(By.className(or.getProperty("edit_button"))).click();
 			System.out.println(driver.findElement(By.id(or.getProperty("dialog"))).findElement(By.tagName(or.getProperty("dialog_tagname"))).getText());
-			for(int row=2;row<=2;row++)
+			for(int row=3;row<=3;row++)
 			{
 					int col=0;
 					driver.findElement(By.id(or.getProperty("first_name"))).clear();
@@ -473,11 +480,11 @@ public class BDELeadEdits  extends Helper
 		}
 	  	collapse();
 	  	driver.close();
-  }*/
+  }
   
 
  
-  @Test
+ // @Test
   public void Closedphase() throws Exception 
   {
 	  help.expand();
@@ -486,49 +493,50 @@ public class BDELeadEdits  extends Helper
 	  {
 	  		driver.findElement(By.id(or.getProperty("closedphase_link"))).click();
 	  		help.sleep(3);
-	  		List<WebElement> tablerecords= driver.findElement(By.tagName(or.getProperty("table_body"))).findElements(By.tagName(or.getProperty("")));
+	  		List<WebElement> tablerecords= driver.findElement(By.tagName(or.getProperty("table_body"))).findElements(By.tagName(or.getProperty("tablerow_tagname")));
 	  		//Checking for the close button for each lead
 			int count=0;
 			for(int i=0; i<tablerecords.size(); i++) 
 			{
-				if(tablerecords.get(i).findElement(By.className("close")).isEnabled()) 
+				if(tablerecords.get(i).findElement(By.className(or.getProperty("close_button"))).isEnabled()) 
 				count++;
 			}
 			if(count==tablerecords.size())
 			System.out.println("close button is enabled for all leads.");
 			int o=random(tablerecords.size());
-			String s=tablerecords.get(o).findElements(By.tagName("td")).get(0).getText();
+			String s=tablerecords.get(o).findElements(By.tagName(or.getProperty("tablecol_tagname"))).get(0).getText();
 			int y=Integer.parseInt(s);
 			System.out.println("closed lead id:"+y);
-			tablerecords.get(o).findElement(By.className("close")).click();
-			System.out.println(driver.findElement(By.id("dialog-form")).findElement(By.tagName("h1")).getText()+":is opened");
-			List<WebElement> leadstatus=driver.findElement(By.name("leadstatus")).findElements(By.tagName("option"));
+			tablerecords.get(o).findElement(By.className(or.getProperty("close_button"))).click();
+			System.out.println(driver.findElement(By.id(or.getProperty("dialog"))).findElement(By.tagName(or.getProperty("dialog_tagname"))).getText()+":is opened");
+			List<WebElement> leadstatus=driver.findElement(By.name(or.getProperty("leadstatus_id"))).findElements(By.tagName(or.getProperty("dropdown_options")));
 			System.out.println("leadstatus dropdown size:"+leadstatus.size());
 			int a=random(leadstatus.size());
 			System.out.println(a);
 			if(a==0)
 			a++;
 			leadstatus.get(a).click();
-			if(leadstatus.get(a).getText().equalsIgnoreCase("Customer"))
+			if(leadstatus.get(a).getText().equalsIgnoreCase(or.getProperty("leadstatus_item1")))
 			{
 				String c="customersList";
-				driver.findElement(By.id("project")).sendKeys(or.getProperty("projectdeatailes"));
+				driver.findElement(By.id(or.getProperty("project_id"))).sendKeys(or.getProperty("projectdeatailes"));
 				close(y,c);
-				System.out.println("done");
+				//System.out.println("done");
 						  
 			}
-			if(leadstatus.get(a).getText().equalsIgnoreCase("Lost Competition"))
+			if(leadstatus.get(a).getText().equalsIgnoreCase(or.getProperty("leadstatus_item2")))
 			{
 				String c="lostCompetitionList";
 				close(y,c);
-				System.out.println("done");
+				//System.out.println("done");
 			}
 	  	}
+	  help.sleep(3);
 	  	collapse();
 	  	driver.close();
   }
   
-/*  @Test
+  @Test
   public void leadsearch() throws Exception 
   {
 	  help.expand();
@@ -581,9 +589,9 @@ public class BDELeadEdits  extends Helper
 	 }
 	  collapse();
 	  driver.close();
-  }*/
+  }
   
-/*  @Test
+//  @Test
 public void changePassword()
 {
 	  help.expand();
@@ -602,7 +610,7 @@ public void changePassword()
 	  System.out.println("___________________________________________________________________________________");
 			
 	  
-} */
+} 
  
  
 
