@@ -2,6 +2,9 @@ package crm;
 
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -17,31 +20,57 @@ import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 
+import com.nexiilabs.dbcon.DBConnection;
+
 import testUtils.Helper;
 
 public class Researcher extends Helper{
+	public static Connection connection = null;
+	public static Statement statement;
+	public static ResultSet resultSet;
 	
+	public String dbConnection(String string) throws Exception, IllegalAccessException, ClassNotFoundException{
+		 Class.forName("com.mysql.jdbc.Driver").newInstance();
+		 connection = DBConnection.getConnection();
+		 statement = connection.createStatement();
+		 System.out.println("hurray connected");
+		 resultSet = statement.executeQuery("select password from crm_user where email_id='"+string+"' AND delete_status='no'"); 
+		 resultSet.next();
+		 String str = resultSet.getString("password");
+		 return str;
+		 }
 	public void  treeSize() {
 		
 		    List<WebElement> list1 = driver.findElement(By.id(or.getProperty("user_ids"))).findElements(By.tagName(or.getProperty("user_tagname")));
 		 
 			System.out.println("Number Elements in List1 : " + list1.size());
-			
-			//System.out.println(" ");
-			
-			//System.out.println("Elements in List1 are :");
-			
-			//System.out.println("================================================");
-		    
 			String user = driver.findElement(By.className(or.getProperty("user_Classname"))).getText();
-			 
 		    System.out.println("User Logged in as:" + user);
+	}
+	//==wait for element==//
+	public boolean waitForElement(int timeout,By by) {
+		while(timeout>0) {
+			sleep(1);
+		
+		List<WebElement> list = driver.findElements(by);
+		if(list.size()!=0) {
+			return true;
+			
+		}
+		timeout--;
+		}
+		System.out.println("Waiting timed out element not found"+by.toString());
+		
+		return false;
+		
 	}
 		
 	//===========Leads Upload=========//
 	
- @Test
+  @Test
   public void f() throws Exception {
+	 
+	 System.out.println("===========Leads Upload=========");
 	  
 	//========Login=======//
 	  
@@ -54,7 +83,8 @@ public class Researcher extends Helper{
 		
 		help.expand();
 		//=========clicking bulkuplods========//
-		driver.findElement(By.id(or.getProperty("uploadBulk"))).click();
+		
+		driver.findElement(By.id(or.getProperty("uploadBulk11"))).click();
 		
 		//==== color matching===//
 		
@@ -62,23 +92,34 @@ public class Researcher extends Helper{
 		a.moveToElement(driver.findElement(By.className(or.getProperty("Rtextbox")))).build().perform();
 		String s1 = driver.findElement(By.className(or.getProperty("Rtextbox"))).getCssValue(or.getProperty("upload_css"));
 		
+		
 		if (driver.findElement(By.className(or.getProperty("Rtextbox"))).getCssValue(or.getProperty("upload_css")).equals(s1)) 
 		{
 		//=====uploading files===//
 		
-		driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys("C:\\Users\\Nexii\\Desktop\\Testresearc.xlsx");
+		driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys("C:\\Users\\Nexii\\git\\LeadCRM\\src\\invaliddata\\e.xlsx");
 		driver.findElement(By.id(or.getProperty("leadUpload"))).click();
-		Thread.sleep(5000);
+		waitForElement(60,By.className("error_msg"));
+		
+		
+		System.out.println("hai");
 		
 		if(driver.findElement(By.id("result_msg_div")).getText().startsWith("Excel File Uploaded and Leads Saved Successfully....!"))
 		{
 			System.out.println(driver.findElement(By.id("result_msg_div")).getText());
-		} else {
+		} /*else {
 			//====calling helper====//
 			help.screenshot("uploadleadsfailure");
 			System.out.println("File Upload Failed Due to Can't open the specified file: '/usr/local/tomcat7/temp/poifiles/poi-ooxml-*******.tmp'");
+		}*/
+		if(driver.findElement(By.id("result_msg_div")).getText().contains("Can't open the specified file:")){
+			
+			System.out.println("onetwo");
+			
+			
 		}
 				}
+		
 		
 		else {
 			//====calling helper====//
@@ -89,10 +130,11 @@ public class Researcher extends Helper{
 		
   }  
 //===========My Account=========//
-  
-  
-  @Test
+ 
+ // @Test
   public void f1() throws Exception {
+	  
+	  System.out.println("===========My Account=========");
 	  
 	  //===Researcher is 3rdsheet in excels=====//
 	  int columns = sh3.getColumns();
@@ -101,19 +143,42 @@ public class Researcher extends Helper{
 		int col;
 	//Login
 		help.login(config.getProperty("Researcherusername"), config.getProperty("Researcherpassword"));
+		//==placing original password in old==//
 		String old = config.getProperty("Researcherpassword");
 		System.out.println("old password is:" + old);
 	  //====size of tree menu===//
 	    treeSize();
+	    
 	    //======= Expanding tree menu========//
 		help.expand();
 		
-	  //======Clicking searchleads in leadsearch menu====//
+		//====getting current url====//
+		String currenturl= driver.getCurrentUrl();
 		
+	  //======Clicking changepassword in myaccount menu====//
+		driver.findElement(By.linkText("Change Password")).click();
+		help.sleep(2);
+		
+		//==connecting database and retriveng password==//
+		 String dat = dbConnection("pavan.nanigans@gmail.com");
+		 System.out.println(dat);
+		 
+		//=== clicking cancle button===//
+		driver.findElement(By.id("cancel")).click();
+		
+		//===getting current url after cancle button====//
+		String aftcancleurl = driver.getCurrentUrl();
+		
+		//comparing current url after cancle button//				
+		if(aftcancleurl.equalsIgnoreCase(currenturl)){
+			System.out.println("Successfully cancled the change password page");
+		} else {
+			System.out.println("Not successfully cancled change password page");
+		}
+		//======Clicking searchleads in leadsearch menu for change button====//
 		driver.findElement(By.linkText("Change Password")).click();
 		help.sleep(2);
 		//===  checking validations for change passwords===//
-		
 		for(int row = 1;row < rows;row++)
 		{
 			col=0;
@@ -134,7 +199,8 @@ public class Researcher extends Helper{
 			System.out.println("*************************");
 			driver.findElement(By.id("oldPassword")).sendKeys(sh3.getCell(col,row).getContents());
 			System.out.println("*************************");
-			String s1 = driver.findElement(By.id("oldPassword")).getAttribute("value");
+			//==placing oldpassword in s1==//
+			//String s1 = driver.findElement(By.id("oldPassword")).getAttribute("value");
 			col++;
 			Thread.sleep(3000);
 			//======new password=====//
@@ -146,7 +212,8 @@ public class Researcher extends Helper{
 				help.screenshot("newpassword container");
 				Assert.fail("not a container");
 			}
-			else{
+			else {
+				
 				System.out.println("New password container is avilable");
 			}
 			data = sh3.getCell(col, row).getContents();
@@ -154,7 +221,8 @@ public class Researcher extends Helper{
 			System.out.println("*************************");
 			driver.findElement(By.id("newPassword")).sendKeys(sh3.getCell(col,row).getContents());
 			System.out.println("*************************");
-			String s2 = driver.findElement(By.id("newPassword")).getAttribute("value");
+			//==placing new password in s2==//
+			//String s2 = driver.findElement(By.id("newPassword")).getAttribute("value");
 			col++;
 			Thread.sleep(3000);
 		
@@ -166,7 +234,7 @@ public class Researcher extends Helper{
 				help.screenshot("Configpassword container");
 				Assert.fail("not a container");
 			}
-			else{
+			else {
 				System.out.println("Confirm password container is avilable");
 			}
 			data = sh3.getCell(col, row).getContents();
@@ -174,77 +242,128 @@ public class Researcher extends Helper{
 			System.out.println("*************************");
 			driver.findElement(By.id("confirmPassword")).sendKeys(sh3.getCell(col,row).getContents());
 			System.out.println("*************************");
-			String s3 = driver.findElement(By.id("confirmPassword")).getAttribute("value");
+			//==Placing confirm password in s3==//
+			//String s3 = driver.findElement(By.id("confirmPassword")).getAttribute("value");
 			col++;
 			Thread.sleep(3000);
-			driver.findElement(By.id("change")).click();
-			if(s1.length()==0||s2.length()==0||s3.length()==0) {
+			//====Clicking Change button====//
+			//driver.findElement(By.id("change")).click();
+			help.sleep(5);
+			//System.out.println(driver.getCurrentUrl());
+			
+			if(driver.getCurrentUrl().equalsIgnoreCase("http://192.168.50.32:8080/leadcrm/login.jsp")) {
+				System.out.println("hai");
+				//==setting old password==//
+				
+			       String dat1 = dbConnection("pavan.nanigans@gmail.com");
+			       System.out.println("changed password"+dat1);
+			     
+				//Login
+				driver.findElement(By.id("username")).sendKeys(config.getProperty("Researcherusername"));
+				driver.findElement(By.id("password")).sendKeys(dat1);
+				driver.findElement(By.cssSelector("p.login.button")).findElement(By.tagName("input")).submit();
+				
+				//==placing change password==//
+				System.out.println("old password is:" + dat);
+				
+			  //====size of tree menu===//
+			    treeSize();
+			    
+			    //======= Expanding tree menu========//
+				help.expand();
+				
+				//====getting current url====//
+				String currenturl1= driver.getCurrentUrl();
+				
+			  //======Clicking changepassword in myaccount menu====//
+				driver.findElement(By.linkText("Change Password")).click();
+				help.sleep(2);
+				
+				//oldpassword//
+				driver.findElement(By.id("oldPassword")).sendKeys(dat1);
+				String one = driver.findElement(By.id("confirmPassword")).getAttribute("value");
+				
+				//newpassword//
+				driver.findElement(By.id("newPassword")).sendKeys(dat);
+				String two = driver.findElement(By.id("confirmPassword")).getAttribute("value");
+				
+				//confirm password//
+				driver.findElement(By.id("confirmPassword")).sendKeys(dat);
+				
+				String three = driver.findElement(By.id("confirmPassword")).getAttribute("value");
+				
+				if(one.equals(dat1)&&two.equals(one)&&three.equals(two))
+				{
+					String str = "000";
+					/*String temp = str;
+					str = two;
+					two = temp;
+					three =temp;*/
+					//oldpassword//
+					driver.findElement(By.id("oldPassword")).sendKeys(dat1);
+					
+					//newpassword//
+					driver.findElement(By.id("newPassword")).sendKeys(str);
+					
+					//confirm password//
+					driver.findElement(By.id("confirmPassword")).sendKeys(str);
+					//====Clicking Change button====//
+					driver.findElement(By.id("change")).click();
+					help.sleep(5);
+					
+					
+					
+				}else {
+				
+				//====Clicking Change button====//
+				//driver.findElement(By.id("change")).click();
+				help.sleep(5);
+				}
+			}/* else {
+			
+			//if(s1.length()==0||s2.length()==0||s3.length()==0) {
 			//====calling helper====//
 			//help.screenshot("Fields_Not_Empty");
 			System.out.println("Error message");
 			System.out.println("All Fields Must Not be Empty");
-			System.out.println("Error message");
 			Thread.sleep(1000);
 		}
+		*/
 		
-		if(s1.equalsIgnoreCase(old)) {
-			
-			if(s1.equalsIgnoreCase(old)&&s3.equalsIgnoreCase(s2))
-			{
-				//====calling helper====//
-				//help.screenshot("old&newpasswords_Notsame)");
-				System.out.println("Error message is:");
-				System.out.println("Old and new password must not be same");
-				Thread.sleep(1000);
-			}
-		
-			else if(s2.equalsIgnoreCase(s3)) {
-				//====calling helper====//
-				System.out.println("Error message is:");
-				System.out.println("New password and confirm password not matching");
-			Thread.sleep(1000);
-		}
-		
-		} else {
-			//====calling helper====//
-			//help.screenshot("Check_oldpassword");
-			System.out.println("Error message is:");
-			System.out.println("Check old password");
-		}
-
-		//====Clicking Change button====//
-		
-		driver.findElement(By.id("change")).click();
-		help.sleep(5);
+		//System.out.println("Error message is:");
+		List<WebElement> li6 = driver.findElement(By.id("wrapper")).findElements(By.tagName("label"));
+		System.out.println(li6.get(3).getText());
 		help.screenshot("Changepassword");
 		help.sleep(2);
 		driver.findElement(By.id("oldPassword")).clear();
 		driver.findElement(By.id("newPassword")).clear();
 		driver.findElement(By.id("confirmPassword")).clear();
-		
 		help.sleep(5);
+		//System.out.println("juyhai");
+		}
+		help.sleep(5);
+		//System.out.println("hai");
+		
 		}
 		
-				
-  }
+ // }
   
   
   //======Lead search=====//
   
-  @Test
+ // @Test
   public void f3() throws Exception {
+	  
+	  System.out.println("======Lead search=====");
 	//Login
 		
 			help.login(config.getProperty("Researcherusername"), config.getProperty("Researcherpassword"));
-			
 			String old = config.getProperty("Researcherpassword");
-			
 			System.out.println("old password is:" + old);
-			
 			
 			//===printing size of tree menu====//
 		    treeSize();
-		  
+		    
 		    //====Expanding tree menu====//
 		    help.expand();
 		    
@@ -286,6 +405,7 @@ public class Researcher extends Helper{
 			
 			System.out.println("This are matching Results of check boxes: " + li5.size());
 			System.out.println(driver.findElement(By.id("example")).getText());
+			help.sleep(2);
   }
 
   
@@ -294,7 +414,7 @@ public class Researcher extends Helper{
  *  Opening Firefox browser and getting the Lead CRM home page
  */
   @BeforeMethod
-public void beforeMethod() {
+  public void beforeMethod() {
 	help.browser();
 	help.maxbrowser();
 	driver.get(config.getProperty("url"));
@@ -305,7 +425,7 @@ public void beforeMethod() {
 	 }
 }
 
-  @AfterMethod
+ // @AfterMethod
   public void afterMethod() {
 	 // driver.quit();
 	  driver.close();
