@@ -88,30 +88,52 @@ public class BDE extends Helper{
 	public void searchLead(String Leadno)
 	{
 		WebElement search = driver.findElement(By.id(or.getProperty("searchid"))).findElement(By.tagName(or.getProperty("searchtag")));
-		search.sendKeys(Leadno);
+		if(search == null)
+			Assert.fail("The Search Text Box is not Present");
+		else
+			search.sendKeys(Leadno);
 	}
 	
 	// This method selects a random lead from table.
-	@Test
-	public void randomLeadSelection()
+	
+	public void LeadSelection(String txt)
 	{
 		navigatePage("Research On Company", "Lead Research");
 		List<WebElement> table = driver.findElement(By.id(or.getProperty("tableId"))).findElement(By.tagName(or.getProperty("tableBody"))).findElements(By.tagName(or.getProperty("tableTr")));
+
 		System.out.println("Selecting random element from table of size");
 		if (tableSize().contains("dataTables_empty"))
 			Assert.fail("The size table field is Empty... ");
 		else
-		{
-			//WebElement res = table.get(random(table.size())).findElement(By.className(or.getProperty("leadProceed")));
-			WebElement res = table.get(random(table.size()));
-			 List<WebElement> tdlis = res.findElements(By.tagName("tr"));
-			 randomLead = tdlis.get(0).getText() + " " + tdlis.get(1).getText() + " " +tdlis.get(2).getText();
-			 System.out.println("The particular Lead is : " + randomLead);
-			 sleep(4);
-			 res.click();
-			 sleep(1);
-			 
-			System.out.println("######### You have Navigated to Form ##########");   	
+		{   
+			if (txt.contentEquals("random"))
+			{
+				WebElement res = table.get(random(table.size()));
+				List<WebElement> tdlis = res.findElements(By.tagName("td"));
+				System.out.println(tdlis.size());
+				randomLead = tdlis.get(0).getText() + " " + tdlis.get(1).getText() + " " +tdlis.get(2).getText();
+				System.out.println("The particular Lead is : " + randomLead);
+				searchLead(randomLead);
+				driver.findElement(By.className("segregate")).click();
+				sleep(1); 
+				System.out.println("######### You have Navigated to Form ##########");   
+			}
+			else
+			{
+				searchLead(txt);
+				List<WebElement> table1 = driver.findElement(By.tagName(or.getProperty("tableBody"))).findElements(By.tagName(or.getProperty("tableTr")));
+				if(table1.size() == 0)
+					Assert.fail();
+				else
+				{
+					WebElement tr= table1.get(random(table1.size()));
+					List<WebElement> tdlis1 = tr.findElements(By.tagName("td"));
+					Leadno = tdlis1.get(0).getText() + " " + tdlis1.get(1).getText() + " " +tdlis1.get(2).getText();
+					System.out.println("The particular Lead is : " + Leadno);
+					searchLead(Leadno);
+					driver.findElement(By.className("segregate")).click();
+				}
+			}
 		}
 	}
 	
@@ -267,7 +289,7 @@ public class BDE extends Helper{
 	}
 	
 	// This researchOnCompany test, checks the functionality of Research On Company Page, 'Lead Research' Form.
-	//@Test
+	@Test
 	public void researchOnCompany()
 	{
 		navigatePage("Research On Company", "Lead Research");
@@ -334,7 +356,7 @@ public class BDE extends Helper{
 	{
 		date = new Date();	
 		navigatePage("Work on Lead", "Work on Lead");
-		randomLeadSelection();
+		LeadSelection("random");
 	    if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Work on Lead"))
 		{	
 	    	sleep(2);
@@ -384,7 +406,7 @@ public class BDE extends Helper{
 	    later = cal.getTime();
 	
 		navigatePage("Work on Lead", "Work on Lead");
-		randomLeadSelection();
+		LeadSelection("random");
 	    if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Work on Lead"))
 	    {
 	    	sleep(2);
