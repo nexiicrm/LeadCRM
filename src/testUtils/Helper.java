@@ -1,4 +1,4 @@
-package testUtils;
+package src.testUtils;
 
 import java.util.List;
 import java.util.Random;
@@ -14,7 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.Assert;
 
-import crm.BaseTest;
+import src.crm.BaseTest;
 
 public class Helper extends BaseTest
 {

@@ -1,4 +1,4 @@
-package crm;
+package src.crm;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -9,7 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
 
-import testUtils.Helper;
+import src.testUtils.Helper;
 
 
 public class Login extends Helper{

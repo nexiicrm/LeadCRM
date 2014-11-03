@@ -1,4 +1,4 @@
-package crm;
+package src.crm;
 
 
 import java.sql.Connection;
@@ -24,7 +24,7 @@ import org.testng.annotations.Test;
 
 import com.nexiilabs.dbcon.DBConnection;
 
-import testUtils.Helper;
+import src.testUtils.Helper;
 
 
 

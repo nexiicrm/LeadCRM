@@ -1,4 +1,4 @@
-package crm;
+package src.crm;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import testUtils.Helper;
+import src.testUtils.Helper;
 
 public class Smoke extends Helper
 {

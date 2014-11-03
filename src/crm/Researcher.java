@@ -1,4 +1,4 @@
-package crm;
+package src.crm;
 
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
@@ -22,7 +22,7 @@ import org.testng.annotations.AfterMethod;
 
 import com.nexiilabs.dbcon.DBConnection;
 
-import testUtils.Helper;
+import src.testUtils.Helper;
 
 public class Researcher extends Helper{
 	public static Connection connection = null;

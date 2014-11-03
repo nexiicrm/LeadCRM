@@ -1,4 +1,4 @@
-package crm;
+package src.crm;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import testUtils.Helper;
+import src.testUtils.Helper;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

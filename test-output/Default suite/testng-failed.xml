@@ -3,14 +3,28 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
+<<<<<<< Updated upstream
       <class name="crm.Management">
         <methods>
           <include name="afterMethod"/>
           <include name="beforeMethod"/>
           <include name="test4"/>
+=======
+      <class name="crm.BDE">
+        <methods>
+          <include name="workPhaseForLaterDate"/>
+          <include name="afterMethod"/>
+          <include name="todaysFollowup4"/>
+>>>>>>> Stashed changes
           <include name="beforesuite"/>
+          <include name="workPhaseForTodaysDate"/>
+          <include name="beforeMethod"/>
         </methods>
+<<<<<<< Updated upstream
       </class> <!-- crm.Management -->
+=======
+      </class> <!-- crm.BDE -->
+>>>>>>> Stashed changes
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

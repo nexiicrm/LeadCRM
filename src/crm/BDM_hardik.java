@@ -1,4 +1,4 @@
-package crm;
+package src.crm;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,7 +18,7 @@ import java.sql.Statement;
 
 import com.nexiilabs.dbcon.DBConnection;
 
-import testUtils.Helper;
+import src.testUtils.Helper;
 
 public class BDM_hardik extends Helper{
 	    public static Connection connection =null;

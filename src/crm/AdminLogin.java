@@ -1,5 +1,5 @@
-package crm;
-import testUtils.Helper;
+package src.crm;
+import src.testUtils.Helper;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -509,7 +509,7 @@ public class AdminLogin extends Helper{
 	   //========= Creation of New User ======
 		 mylogin();
 		 expand();
-		 String str;
+		 String str = null;
 		 WebElement wc = driver.findElement(By.id(or.getProperty("create_button")));
 	 	 if(wc.isDisplayed()){
 	 		 wc.click();

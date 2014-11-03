@@ -1,4 +1,4 @@
-package crm;
+package src.crm;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,7 +8,7 @@ import jxl.Workbook;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeSuite;
-import testUtils.Helper;
+import src.testUtils.Helper;
 
 public class BaseTest 
 {
