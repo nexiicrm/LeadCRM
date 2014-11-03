@@ -86,12 +86,14 @@ public class Researcher extends Helper{
 		
 		driver.findElement(By.id(or.getProperty("uploadBulk11"))).click();
 		
+		
 		//==== color matching===//
 		
 		Actions a = new Actions(driver);
 		a.moveToElement(driver.findElement(By.className(or.getProperty("Rtextbox")))).build().perform();
 		String s1 = driver.findElement(By.className(or.getProperty("Rtextbox"))).getCssValue(or.getProperty("upload_css"));
-		
+		//==clicking button directly==//
+		//driver.findElement(By.id(or.getProperty("leadUpload"))).click();
 		
 		if (driver.findElement(By.className(or.getProperty("Rtextbox"))).getCssValue(or.getProperty("upload_css")).equals(s1)) 
 		{
