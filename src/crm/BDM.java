@@ -43,9 +43,10 @@ public class BDM extends Helper {
 	
 		// Login for BDM module
 		help.login(sh2.getCell(0,0).getContents(), sh2.getCell(1,0).getContents());
-		String user = driver.findElement(By.className("user_name")).getText();
+		String user = driver.findElement(By.className(or.getProperty("username_class"))).getText();
 		Reporter.log("<p>" +"User Logged in as:" + user);
-	 }
+	}
+
 	 
 	 
 	 @AfterMethod
@@ -54,7 +55,7 @@ public class BDM extends Helper {
 	 }
 	 
 	 
-/*	 // Test Method for Follow up 4 for Cold storage phase. 
+	 // Test Method for Follow up 4 for Cold storage phase. 
 	 @Test
 	 public void coldStorageFollowup() {
 		 
@@ -64,23 +65,23 @@ public class BDM extends Helper {
 		 help.expand();
 		 
 		 // Clicking on All follow up Link
-		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id("allfollowups")).getText() + "' Link" );
-		 if(driver.findElement(By.id("allfollowups")).isDisplayed()) 
+		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(or.getProperty("allfollowupslink_id"))).getText() + "' Link" );
+		 if(driver.findElement(By.id(or.getProperty("allfollowupslink_id"))).isDisplayed()) 
 		 {
-			 driver.findElement(By.id("allfollowups")).click();
+			 driver.findElement(By.id(or.getProperty("allfollowupslink_id"))).click();
 			 help.sleep(2);
 			 search("Introductory Mail");
-			 WebElement followupLead = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr")).get(0);
+			 WebElement followupLead = driver.findElement(By.tagName(or.getProperty("leads_info_tag"))).findElements(By.tagName(or.getProperty("leads_info_tagname"))).get(0);
 			 Reporter.log("<p>" +"Selected Lead is:" + followupLead.getText());
-			 if (followupLead.findElement(By.className("work")).isEnabled()) 
+			 if (followupLead.findElement(By.className(or.getProperty("followupbutton_class"))).isEnabled()) 
 			 {
-				 followupLead.findElement(By.className("work")).click();
+				 followupLead.findElement(By.className(or.getProperty("followupbutton_class"))).click();
 				 help.sleep(3);
-				 Reporter.log("<p>" +driver.findElement(By.cssSelector("span.ui-dialog-title")).getText());
+				 Reporter.log("<p>" +driver.findElement(By.cssSelector(or.getProperty("windowTitle_css"))).getText());
 				 
 				 // Selecting follow up type and entering the follow up comment
-				 new Select(driver.findElement(By.name("followuptype"))).selectByVisibleText("Followup 4");
-				 driver.findElement(By.name("followupcomment")).sendKeys("Follow up 4");
+				 new Select(driver.findElement(By.name(or.getProperty("followuptype_name")))).selectByVisibleText("Followup 4");
+				 driver.findElement(By.name(or.getProperty("followupcomment_name"))).sendKeys("Follow up 4");
 				 
 				 // Selecting yesterday's date for follow up 4 to send the lead to cold storage and click Proceed button
 				 Calendar cal = Calendar.getInstance();
@@ -88,15 +89,15 @@ public class BDM extends Helper {
 				 cal.add(Calendar.DATE, -1);
 				 String date = dateFormat.format(cal.getTime());
 				 Reporter.log("<p>" +"Yesterday's date was "+ date); 
-				 driver.findElement(By.id("nextfollowupdate")).sendKeys(date);
-				 driver.findElement(By.id("button")).click();
+				 driver.findElement(By.id(or.getProperty("nextfollowupdate_id"))).sendKeys(date);
+				 driver.findElement(By.id(or.getProperty("proceedbutton_id"))).click();
 				 help.sleep(5);
 				 
 				 // Verifying the Success message displayed on the page after following up
-				 Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
+				 Reporter.log("<p>" +driver.findElement(By.id(or.getProperty("resultmsg_id"))).getText());
 				 
 				 // Closing the page
-				 driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
+				 driver.findElement(By.cssSelector(or.getProperty("windowclose_css"))).click();
 			 } 
 			 else 
 				 Reporter.log("<p>" +"No leads present in the Table for Follow up 4.");
@@ -108,7 +109,7 @@ public class BDM extends Helper {
 	 
 	 
 
-	 // Test method for Cold Storage
+/*	 // Test method for Cold Storage
 	 @Test
 	 public void coldStorage() {
 		
@@ -118,25 +119,25 @@ public class BDM extends Helper {
 		 help.expand();
 		 
 		 // Clicking on Cold Storage Link
-		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id("coldstorage")).getText() + "' Link" );
-		 if(driver.findElement(By.id("coldstorage")).isDisplayed()) 
+		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(or.getProperty("coldstorageLink_id"))).getText() + "' Link" );
+		 if(driver.findElement(By.id(or.getProperty("coldstorageLink_id"))).isDisplayed()) 
 		 {
-			 driver.findElement(By.id("coldstorage")).click();
+			 driver.findElement(By.id(or.getProperty("coldstorageLink_id"))).click();
 			 help.sleep(2);
 			 
 			 // Verifying whether the required page is loaded or not
-			 Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id("container")).findElement(By.tagName("h1")).getText());
+			 Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id(or.getProperty("pagevalidate_id"))).findElement(By.tagName(or.getProperty("pagevalidate_tag"))).getText());
 			 help.sleep(2);
-			 if(driver.findElement(By.id("example_info")).getText().equals("Showing 0 to 0 of 0 entries"))
-				  Reporter.log("<p>" +driver.findElement(By.className("dataTables_empty")).getText());
+			 if(driver.findElement(By.id(or.getProperty("tableinfo_id"))).getText().equals("Showing 0 to 0 of 0 entries"))
+				  Reporter.log("<p>" +driver.findElement(By.className(or.getProperty("emptytable_class"))).getText());
 			 
 		     else {
 		    	// Verifying no.of leads in the page
-				List <WebElement> leads = driver.findElement(By.id("example")).findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+				List <WebElement> leads = driver.findElement(By.id(or.getProperty("tablename_id"))).findElement(By.tagName(or.getProperty("leads_info_tag"))).findElements(By.tagName(or.getProperty("leads_info_tagname")));
 				Reporter.log("<p>" +"No. of leads in the Table:" + leads.size());
 				int confirm=0;
 				for(int i=0; i<leads.size(); i++) {
-					if(leads.get(i).findElement(By.className("analyse")).isEnabled()) 
+					if(leads.get(i).findElement(By.className(or.getProperty("trackitbutton_class"))).isEnabled()) 
 					{
 					  confirm++;
 					}	  
@@ -146,10 +147,10 @@ public class BDM extends Helper {
 				
 				// Clicking on Confirm button of a lead
 				int opt = help.random(leads.size());
-				Reporter.log("<p>" +"The ID of lead selected to confirm: " + leads.get(opt).findElement(By.tagName("td")).getText());
-				leads.get(opt).findElement(By.className("analyse")).click();
+				Reporter.log("<p>" +"The ID of lead selected to confirm: " + leads.get(opt).findElement(By.tagName(or.getProperty("servicename_tag"))).getText());
+				leads.get(opt).findElement(By.className(or.getProperty("trackitbutton_class"))).click();
 				help.sleep(4);
-				Reporter.log("<p>" +driver.findElement(By.id("body_result")).findElement(By.className("success_msg")).getText());
+				Reporter.log("<p>" +driver.findElement(By.id(or.getProperty("table_id"))).findElement(By.className(or.getProperty("successmsg_class"))).getText());
 		       } 
 		     } 
 		 else 
@@ -169,51 +170,51 @@ public class BDM extends Helper {
 		 help.expand();
 		 
 		 // Clicking on All follow ups link
-		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id("allfollowups")).getText() + "' Link" );
-		 if(driver.findElement(By.id("allfollowups")).isDisplayed()) 
+		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(or.getProperty("allfollowupslink_id"))).getText() + "' Link" );
+		 if(driver.findElement(By.id(or.getProperty("allfollowupslink_id"))).isDisplayed()) 
 		 {
-			 driver.findElement(By.id("allfollowups")).click();
+			 driver.findElement(By.id(or.getProperty("allfollowupslink_id"))).click();
 			 help.sleep(2);
 			 search("Introductory Mail");
-			 WebElement followupLead = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr")).get(0);
+			 WebElement followupLead = driver.findElement(By.tagName(or.getProperty("leads_info_tag"))).findElements(By.tagName(or.getProperty("leads_info_tagname"))).get(0);
 			 
-			 String uploadleadId = followupLead.findElement(By.className(" sorting_1")).getText();
+			 String uploadleadId = followupLead.findElement(By.className(or.getProperty("leadidintable_class"))).getText();
 			 Reporter.log("<p>" +"The ID of Lead selected to Upload:" + uploadleadId);
 			 
-			 if (followupLead.findElement(By.className("work")).isEnabled()) 
+			 if (followupLead.findElement(By.className(or.getProperty("followupbutton_class"))).isEnabled()) 
 			 {
-				 followupLead.findElement(By.className("work")).click();
+				 followupLead.findElement(By.className(or.getProperty("followupbutton_class"))).click();
 				 help.sleep(3);
-				 Reporter.log("<p>" +driver.findElement(By.cssSelector("span.ui-dialog-title")).getText());
-				 
+				 Reporter.log("<p>" +driver.findElement(By.cssSelector(or.getProperty("windowTitle_css"))).getText());
+				
 				 // Selecting followup type 
-				 new Select(driver.findElement(By.name("followuptype"))).selectByVisibleText("Prospect Identify");
-				 new Select(driver.findElement(By.name("prospectType"))).selectByVisibleText("Proposal");
+				 new Select(driver.findElement(By.name(or.getProperty("followuptype_name")))).selectByVisibleText("Prospect Identify");
+				 new Select(driver.findElement(By.name(or.getProperty("prospecttype_name")))).selectByVisibleText("Proposal");
 				 
 				 // Selecting a Fixon date
 				 Date date = new Date();
 				 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 				 String dateString = dateFormat.format(date);
-				 driver.findElement(By.id("fixon")).sendKeys(dateString);
+				 driver.findElement(By.id(or.getProperty("fixon_id"))).sendKeys(dateString);
 				 
 				 // Selecting an email id and filling subject, message, followup comment and next followup date
-				 List <WebElement> toList = driver.findElement(By.name("to")).findElements(By.tagName("option"));
+				 List <WebElement> toList = driver.findElement(By.name(or.getProperty("emailto_name"))).findElements(By.tagName(or.getProperty("service_options_tag")));
 				 toList.get(help.random(toList.size())).click();
-				 driver.findElement(By.name("subject")).sendKeys("Prospect Identify");
-				 driver.findElement(By.name("message")).sendKeys("Prospect Identify for Proposal Upload");
-				 driver.findElement(By.name("followupcomment")).sendKeys("Prospect Identify for Proposal Upload");
-				 driver.findElement(By.id("nextfollowupdate")).sendKeys(dateString);
-				 driver.findElement(By.id("button")).click();
+				 driver.findElement(By.name(or.getProperty("subject_name"))).sendKeys("Prospect Identify");
+				 driver.findElement(By.name(or.getProperty("message_name"))).sendKeys("Prospect Identify for Proposal Upload");
+				 driver.findElement(By.name(or.getProperty("followupcomment_name"))).sendKeys("Prospect Identify for Proposal Upload");
+				 driver.findElement(By.id(or.getProperty("nextfollowupdate_id"))).sendKeys(dateString);
+				 driver.findElement(By.id(or.getProperty("proceedbutton_id"))).click();
 				 help.sleep(5);
 				 
 				 // Verifying the Success message displayed on the page after uploading the Proposal
-				 Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
+				 Reporter.log("<p>" +driver.findElement(By.id(or.getProperty("resultmsg_id"))).getText());
 				 
 				 // Closing the Proposal Upload page
-				 driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
+				 driver.findElement(By.cssSelector(or.getProperty("windowclose_css"))).click();
 				 
 				// Logging out of the BDM module 
-				 driver.findElement(By.className("user_logout")).findElement(By.linkText("Logout")).click();
+				 driver.findElement(By.className(or.getProperty("logout_class"))).findElement(By.linkText(or.getProperty("logoutlink_linktext"))).click();
 				 Reporter.log("<p>" + "Logged out of BDM Module");
 			  
 				 String link = "proposal";
@@ -240,34 +241,34 @@ public class BDM extends Helper {
 		 help.expand();
 		 
 		 // Clicking on the Proposal Upload Link
-		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id("proposalupload")).getText() + "' Link" );
-	     if(driver.findElement(By.id("proposalupload")).isDisplayed()) 
+		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(or.getProperty("proposalupload_id"))).getText() + "' Link" );
+	     if(driver.findElement(By.id(or.getProperty("proposalupload_id"))).isDisplayed()) 
 	     {
-			  driver.findElement(By.id("proposalupload")).click();
+			  driver.findElement(By.id(or.getProperty("proposalupload_id"))).click();
 			  
 			  // Verifying whether the required page is loaded or not
-			  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id("container")).findElement(By.tagName("h1")).getText());
+			  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id(or.getProperty("pagevalidate_id"))).findElement(By.tagName(or.getProperty("pagevalidate_tag"))).getText());
 			  help.sleep(4);
 			  
-			  if(driver.findElement(By.id("example_info")).getText().equals("Showing 0 to 0 of 0 entries"))
-				  Reporter.log("<p>" +driver.findElement(By.className("dataTables_empty")).getText());
+			  if(driver.findElement(By.id(or.getProperty("tableinfo_id"))).getText().equals("Showing 0 to 0 of 0 entries"))
+				  Reporter.log("<p>" +driver.findElement(By.className(or.getProperty("emptytable_class"))).getText());
 			  else 
 			  {
 				   uploadButton();
 				  
 				  // Entering details to the fields in Proposal Upload page
-				  driver.findElement(By.name("proposalname")).sendKeys("Proposal Name");
-				  driver.findElement(By.id("button")).click();
-				  driver.findElement(By.name("proposaldescription")).sendKeys("Proposal Description");
-				  driver.findElement(By.id("button")).click();
-				  driver.findElement(By.name("proposal")).sendKeys("E:\\abc1.txt");
-				  driver.findElement(By.id("button")).click();
+				  driver.findElement(By.name(or.getProperty("proposalname_name"))).sendKeys("Proposal Name");
+				  driver.findElement(By.id(or.getProperty("proceedbutton_id"))).click();
+				  driver.findElement(By.name(or.getProperty("proposaldescription_name"))).sendKeys("Proposal Description");
+				  driver.findElement(By.id(or.getProperty("proceedbutton_id"))).click();
+				  driver.findElement(By.name(or.getProperty("proposaluploadbutton_name"))).sendKeys("E:\\abc1.txt");
+				  driver.findElement(By.id(or.getProperty("proceedbutton_id"))).click();
 				  help.sleep(4);
 				  // Verifying the Success message displayed on the page after uploading the Proposal
-				  Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
+				  Reporter.log("<p>" +driver.findElement(By.id(or.getProperty("resultmsg_id"))).getText());
 				  
 				  // Closing the Proposal Upload page
-				  driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
+				  driver.findElement(By.cssSelector(or.getProperty("windowclose_css"))).click();
 				  
 			  }
 		 } 
@@ -287,43 +288,43 @@ public class BDM extends Helper {
 			 help.expand();
 			 
 			 // Clicking on All follow ups Link
-			 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id("allfollowups")).getText() + "' Link" );
-			 if(driver.findElement(By.id("allfollowups")).isDisplayed()) 
+			 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(or.getProperty("allfollowupslink_id"))).getText() + "' Link" );
+			 if(driver.findElement(By.id(or.getProperty("allfollowupslink_id"))).isDisplayed()) 
 			 {
-				 driver.findElement(By.id("allfollowups")).click();
+				 driver.findElement(By.id(or.getProperty("allfollowupslink_id"))).click();
 				 help.sleep(2);
 				 
 				 // Search for Leads with Introductory mail as Last Follow up type
 				 search("Introductory Mail");
-				 WebElement followupLead = driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr")).get(0);
+				 WebElement followupLead = driver.findElement(By.tagName(or.getProperty("leads_info_tag"))).findElements(By.tagName(or.getProperty("leads_info_tagname"))).get(0);
 				 
-				 String uploadleadId = followupLead.findElement(By.className(" sorting_1")).getText();
+				 String uploadleadId = followupLead.findElement(By.className(or.getProperty("leadidintable_class"))).getText();
 				 Reporter.log("<p>" +"The ID of Lead selected to Upload:" + uploadleadId);
-				 if (followupLead.findElement(By.className("work")).isEnabled()) 
+				 if (followupLead.findElement(By.className(or.getProperty("followupbutton_class"))).isEnabled()) 
 				 {
 					 // Entering details for Quote upload
-					 followupLead.findElement(By.className("work")).click();
+					 followupLead.findElement(By.className(or.getProperty("followupbutton_class"))).click();
 					 help.sleep(5);
-					 Reporter.log("<p>" +driver.findElement(By.cssSelector("span.ui-dialog-title")).getText());
-					 new Select(driver.findElement(By.name("followuptype"))).selectByVisibleText("Prospect Identify");
-					 new Select(driver.findElement(By.name("prospectType"))).selectByVisibleText("Quote");
+					 Reporter.log("<p>" +driver.findElement(By.cssSelector(or.getProperty("windowTitle_css"))).getText());
+					 new Select(driver.findElement(By.name(or.getProperty("followuptype_name")))).selectByVisibleText("Prospect Identify");
+					 new Select(driver.findElement(By.name(or.getProperty("prospecttype_name")))).selectByVisibleText("Quote");
 					 Date date = new Date();
 					 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 					 String dateString = dateFormat.format(date);
-					 driver.findElement(By.id("fixon")).sendKeys(dateString);
-					 driver.findElement(By.name("followupcomment")).sendKeys("Prospect Identify for Quote Upload");
-					 driver.findElement(By.id("nextfollowupdate")).sendKeys(dateString);
-					 driver.findElement(By.id("button")).click();
+					 driver.findElement(By.id(or.getProperty("fixon_id"))).sendKeys(dateString);
+					 driver.findElement(By.name(or.getProperty("followupcomment_name"))).sendKeys("Prospect Identify for Quote Upload");
+					 driver.findElement(By.id(or.getProperty("nextfollowupdate_id"))).sendKeys(dateString);
+					 driver.findElement(By.id(or.getProperty("proceedbutton_id"))).click();
 					 help.sleep(5);
 					 
 					 // Verifying the Success message displayed on the page after uploading the Proposal
-					 Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
+					 Reporter.log("<p>" +driver.findElement(By.id(or.getProperty("resultmsg_id"))).getText());
 					 
 					 // Closing the Quote Upload page
-					 driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
+					 driver.findElement(By.cssSelector(or.getProperty("windowclose_css"))).click();
 					 
 					 // Logging out of the BDM module 
-					 driver.findElement(By.className("user_logout")).findElement(By.linkText("Logout")).click();
+					 driver.findElement(By.className(or.getProperty("logout_class"))).findElement(By.linkText(or.getProperty("logoutlink_linktext"))).click();
 					 Reporter.log("<p>" + "Logged out of BDM Module");
 				  
 					 String link = "quote";
@@ -351,35 +352,35 @@ public class BDM extends Helper {
 		 help.expand();
 		 
 		 // Clicking on Quote Uploads Link
-		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id("quoteupload")).getText() + "' Link" );
-		 if(driver.findElement(By.id("quoteupload")).isDisplayed()) 
+		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(or.getProperty("quoteupload_id"))).getText() + "' Link" );
+		 if(driver.findElement(By.id(or.getProperty("quoteupload_id"))).isDisplayed()) 
 		 {
-			  driver.findElement(By.id("quoteupload")).click();
+			  driver.findElement(By.id(or.getProperty("quoteupload_id"))).click();
 			  
 			  // Verifying whether the required page is loaded or not
-			  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id("container")).findElement(By.tagName("h1")).getText());
+			  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id(or.getProperty("pagevalidate_id"))).findElement(By.tagName(or.getProperty("pagevalidate_tag"))).getText());
 			  help.sleep(4);
 			  
-			  if(driver.findElement(By.id("example_info")).getText().equals("Showing 0 to 0 of 0 entries"))
-				 Reporter.log("<p>" + driver.findElement(By.className("dataTables_empty")).getText());
+			  if(driver.findElement(By.id(or.getProperty("tableinfo_id"))).getText().equals("Showing 0 to 0 of 0 entries"))
+				 Reporter.log("<p>" + driver.findElement(By.className(or.getProperty("emptytable_class"))).getText());
 			  else {
 				  // Verifying no.of leads in the page and getting the lead ID of the uploaded lead
 				  uploadButton();
 				  
 				  // Entering details to the fields in Quote Upload page
-				  driver.findElement(By.name("quotename")).sendKeys("Quote Name");
-				  driver.findElement(By.id("button")).click();
-				  driver.findElement(By.name("quotedescription")).sendKeys("Quote Description");
-				  driver.findElement(By.id("button")).click();
-				  driver.findElement(By.name("quote")).sendKeys("E:\\abc2.txt");
-				//  driver.findElement(By.id("button")).click();
+				  driver.findElement(By.name(or.getProperty("quotename_name"))).sendKeys("Quote Name");
+				  driver.findElement(By.id(or.getProperty("proceedbutton_id"))).click();
+				  driver.findElement(By.name(or.getProperty("quotedescription_name"))).sendKeys("Quote Description");
+				  driver.findElement(By.id(or.getProperty("proceedbutton_id"))).click();
+				  driver.findElement(By.name(or.getProperty("quoteuploadbutton_name"))).sendKeys("E:\\abc2.txt");
+				//  driver.findElement(By.id(or.getProperty("proceedbutton_id"))).click();
 				  help.sleep(5);
 				  
 				  // Verifying the Success message displayed on the page after uploading the Quote
-				  Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
+				  Reporter.log("<p>" +driver.findElement(By.id(or.getProperty("resultmsg_id"))).getText());
 				  
 				  // Closing the Quote Upload page
-				  driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
+				  driver.findElement(By.cssSelector(or.getProperty("windowclose_css"))).click();
 				  
 				  
 				  
@@ -402,18 +403,18 @@ public class BDM extends Helper {
 		 help.expand();
 		 
 		 // Clicking on Edit Leads link
-		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id("editLeads")).getText() + "' Link" );
-		 if(driver.findElement(By.id("editLeads")).isDisplayed()) 
+		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(or.getProperty("editleads_id"))).getText() + "' Link" );
+		 if(driver.findElement(By.id(or.getProperty("editleads_id"))).isDisplayed()) 
 		 {
-			 driver.findElement(By.id("editLeads")).click();
+			 driver.findElement(By.id(or.getProperty("editleads_id"))).click();
 			 help.sleep(3);
-			 List <WebElement> leads1 = driver.findElement(By.id("example")).findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+			 List <WebElement> leads1 = driver.findElement(By.id(or.getProperty("tablename_id"))).findElement(By.tagName(or.getProperty("leads_info_tag"))).findElements(By.tagName(or.getProperty("leads_info_tagname")));
 			 Reporter.log("<p>" +"No. of leads in the Lead Edit Table:" + leads1.size());
 			 
 			  // Checking for the Track it button for each lead
 			  int trackit=0;
 			  for(int i=0; i<leads1.size(); i++) {
-				if(leads1.get(i).findElement(By.className("analyse")).isEnabled()) {
+				if(leads1.get(i).findElement(By.className(or.getProperty("trackitbutton_class"))).isEnabled()) {
 				  
 				  trackit++;
 				}	  
@@ -443,15 +444,15 @@ public class BDM extends Helper {
 		  help.expand();
 		  
 		  // Clicking on Edit Leads link
-		  Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id("editLeads")).getText() + "' Link" );
-		  driver.findElement(By.id("editLeads")).click();
+		  Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(or.getProperty("editleads_id"))).getText() + "' Link" );
+		  driver.findElement(By.id(or.getProperty("editleads_id"))).click();
 		  
 		  // Verifying whether the required page is loaded or not
-		  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id("container")).findElement(By.tagName("h1")).getText());
-		  driver.findElement(By.name("example_length")).findElements(By.tagName("option")).get(3).click();
+		  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id(or.getProperty("pagevalidate_id"))).findElement(By.tagName(or.getProperty("pagevalidate_tag"))).getText());
+		  driver.findElement(By.name(or.getProperty("tablelength_name"))).findElements(By.tagName(or.getProperty("service_options_tag"))).get(3).click();
 		  
 		  // Verifying no.of leads in the page
-		  List <WebElement> leads = driver.findElement(By.id("example")).findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+		  List <WebElement> leads = driver.findElement(By.id(or.getProperty("tablename_id"))).findElement(By.tagName(or.getProperty("leads_info_tag"))).findElements(By.tagName(or.getProperty("leads_info_tagname")));
 		  help.sleep(3);
 		  Reporter.log("<p>" +"No. of leads in the Lead Edit Table:" + leads.size());
 		  
@@ -459,7 +460,7 @@ public class BDM extends Helper {
 		  int edit=0;
 		  for(int i=0; i<leads.size(); i++) 
 		  {
-			if(leads.get(i).findElement(By.className("edit")).isEnabled()) 
+			if(leads.get(i).findElement(By.className(or.getProperty("editbutton_class"))).isEnabled()) 
 			{
 			  edit++;
 			}	  
@@ -475,60 +476,60 @@ public class BDM extends Helper {
 		  List <String> dbDetail = leadEditdb(lead);
 		  
 		  //Editing the Leads
-		  driver.findElement(By.id("editLeads")).click();
-		  driver.findElement(By.name("example_length")).findElements(By.tagName("option")).get(3).click();
+		  driver.findElement(By.id(or.getProperty("editleads_id"))).click();
+		  driver.findElement(By.name("example_length")).findElements(By.tagName(or.getProperty("service_options_tag"))).get(3).click();
 		  help.sleep(5);
 		  
 		  // Selecting a lead and Clicking on Edit button
-		  driver.findElement(By.id("example")).findElement(By.tagName("tbody")).findElements(By.tagName("tr")).get(opt1).findElement(By.className("edit")).click();
+		  driver.findElement(By.id(or.getProperty("tablename_id"))).findElement(By.tagName(or.getProperty("leads_info_tag"))).findElements(By.tagName(or.getProperty("leads_info_tagname"))).get(opt1).findElement(By.className("edit")).click();
 		  help.sleep(5);
-		  Reporter.log("<p>" +driver.findElement(By.cssSelector("span.ui-dialog-title")).getText());
+		  Reporter.log("<p>" +driver.findElement(By.cssSelector(or.getProperty("windowTitle_css"))).getText());
 		  
 		  
 		  
 		  if((detail.get(1).equals("Jennifer")) || detail.get(1).equals("Bret"))
 		  {
 			  // Editing the Fields
-			  driver.findElement(By.id("firstname")).clear();
-			  driver.findElement(By.id("firstname")).sendKeys("John");
-			  driver.findElement(By.id("lastname")).clear();
-			  driver.findElement(By.id("lastname")).sendKeys("Andrew");
-			  driver.findElement(By.id("mobilenumber")).clear();
-			  driver.findElement(By.id("mobilenumber")).sendKeys("3-(486)235-8432");
-			  driver.findElement(By.id("boardnumber")).clear();
-			  driver.findElement(By.id("boardnumber")).sendKeys("8-(104)838-3404");
-			  new Select(driver.findElement(By.name("service"))).selectByVisibleText("SAAS");
-			  new Select(driver.findElement(By.name("domain"))).selectByVisibleText("Robotics");
-			  driver.findElement(By.id("desknumber")).clear();
-			  driver.findElement(By.id("desknumber")).sendKeys("3-(618)434-8752"); 
+			  driver.findElement(By.id(or.getProperty("firstname_id"))).clear();
+			  driver.findElement(By.id(or.getProperty("firstname_id"))).sendKeys("John");
+			  driver.findElement(By.id(or.getProperty("lastname_id"))).clear();
+			  driver.findElement(By.id(or.getProperty("lastname_id"))).sendKeys("Andrew");
+			  driver.findElement(By.id(or.getProperty("mobilenumber_id"))).clear();
+			  driver.findElement(By.id(or.getProperty("mobilenumber_id"))).sendKeys("3-(486)235-8432");
+			  driver.findElement(By.id(or.getProperty("boardnumber_id"))).clear();
+			  driver.findElement(By.id(or.getProperty("boardnumber_id"))).sendKeys("8-(104)838-3404");
+			  new Select(driver.findElement(By.name(or.getProperty("service_options_name")))).selectByVisibleText("SAAS");
+			  new Select(driver.findElement(By.name(or.getProperty("domainoption_name")))).selectByVisibleText("Robotics");
+			  driver.findElement(By.id(or.getProperty("desknumber_id"))).clear();
+			  driver.findElement(By.id(or.getProperty("desknumber_id"))).sendKeys("3-(618)434-8752"); 
 		  }
 		  else
 		  {
 			  // Editing the Fields
-			  driver.findElement(By.id("firstname")).clear();
-			  driver.findElement(By.id("firstname")).sendKeys("Bret");
-			  driver.findElement(By.id("lastname")).clear();
-			  driver.findElement(By.id("lastname")).sendKeys("Lee");
-			  driver.findElement(By.id("mobilenumber")).clear();
-			  driver.findElement(By.id("mobilenumber")).sendKeys("3-(486)235-8432");
-			  driver.findElement(By.id("boardnumber")).clear();
-			  driver.findElement(By.id("boardnumber")).sendKeys("8-(104)838-3404");
-			  new Select(driver.findElement(By.name("service"))).selectByVisibleText("QA");
-			  new Select(driver.findElement(By.name("domain"))).selectByVisibleText("Finance");
-			  driver.findElement(By.id("desknumber")).clear();
-			  driver.findElement(By.id("desknumber")).sendKeys("3-(618)434-8752"); 
+			  driver.findElement(By.id(or.getProperty("firstname_id"))).clear();
+			  driver.findElement(By.id(or.getProperty("firstname_id"))).sendKeys("Bret");
+			  driver.findElement(By.id(or.getProperty("lastname_id"))).clear();
+			  driver.findElement(By.id(or.getProperty("lastname_id"))).sendKeys("Lee");
+			  driver.findElement(By.id(or.getProperty("mobilenumber_id"))).clear();
+			  driver.findElement(By.id(or.getProperty("mobilenumber_id"))).sendKeys("3-(486)235-8432");
+			  driver.findElement(By.id(or.getProperty("boardnumber_id"))).clear();
+			  driver.findElement(By.id(or.getProperty("boardnumber_id"))).sendKeys("8-(104)838-3404");
+			  new Select(driver.findElement(By.name(or.getProperty("service_options_name")))).selectByVisibleText("QA");
+			  new Select(driver.findElement(By.name(or.getProperty("domainoption_name")))).selectByVisibleText("Finance");
+			  driver.findElement(By.id(or.getProperty("desknumber_id"))).clear();
+			  driver.findElement(By.id(or.getProperty("desknumber_id"))).sendKeys("3-(618)434-8752"); 
 		  }
 		  
 		  // Clicking on Edit button to proceed
-		  driver.findElement(By.id("editbutton")).click();
+		  driver.findElement(By.id(or.getProperty("editbutton_id"))).click();
 		  help.sleep(3);
 		  
 		  // Getting the success message
-		  Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
-		  driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
+		  Reporter.log("<p>" +driver.findElement(By.id(or.getProperty("resultmsg_id"))).getText());
+		  driver.findElement(By.cssSelector(or.getProperty("windowclose_css"))).click();
 		  
 		  // Tracking the edited lead
-		  driver.findElement(By.name("example_length")).findElements(By.tagName("option")).get(3).click();
+		  driver.findElement(By.name("example_length")).findElements(By.tagName(or.getProperty("service_tag"))).get(3).click();
 		  help.sleep(5);
 		  
 		  // Tracking the lead and getting the details into the List
@@ -613,7 +614,7 @@ public class BDM extends Helper {
 	 
 	 
 	 
-	 // ------Paginations for all Pages-------
+/*	 // ------Paginations for all Pages-------
 	 
 	 // Pagination for Proposal Uploads Page
 	 @Test
@@ -623,12 +624,12 @@ public class BDM extends Helper {
 		 
 		 // Expands the side tree menu
 		 help.expand();
-		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id("proposalupload")).getText() + "' Link" );
-		 if(driver.findElement(By.id("proposalupload")).isDisplayed()) {
-			  driver.findElement(By.id("proposalupload")).click();
+		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(or.getProperty("proposalupload_id"))).getText() + "' Link" );
+		 if(driver.findElement(By.id(or.getProperty("proposalupload_id"))).isDisplayed()) {
+			  driver.findElement(By.id(or.getProperty("proposalupload_id"))).click();
 			  
 			  // Verifying whether the required page is loaded or not
-			  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id("container")).findElement(By.tagName("h1")).getText());
+			  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id(or.getProperty("pagevalidate_id"))).findElement(By.tagName(or.getProperty("pagevalidate_tag"))).getText());
 			  help.sleep(4);
 			  
 			  // Pagination
@@ -655,12 +656,12 @@ public class BDM extends Helper {
 		 
 		 // Expands the side tree menu
 		 help.expand();
-		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id("quoteupload")).getText() + "' Link" );
-		 if(driver.findElement(By.id("quoteupload")).isDisplayed()) {
-			  driver.findElement(By.id("quoteupload")).click();
+		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(or.getProperty("quoteupload_id"))).getText() + "' Link" );
+		 if(driver.findElement(By.id(or.getProperty("quoteupload_id"))).isDisplayed()) {
+			  driver.findElement(By.id(or.getProperty("quoteupload_id"))).click();
 			  
 			  // Verifying whether the required page is loaded or not
-			  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id("container")).findElement(By.tagName("h1")).getText());
+			  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id(or.getProperty("pagevalidate_id"))).findElement(By.tagName(or.getProperty("pagevalidate_tag"))).getText());
 			  help.sleep(4);
 			  
 			  // Pagination
@@ -688,13 +689,13 @@ public class BDM extends Helper {
 		 
 		 // Expands the side tree menu
 		 help.expand();
-		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id("coldstorage")).getText() + "' Link" );
-		 if(driver.findElement(By.id("coldstorage")).isDisplayed()) 
+		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(or.getProperty("coldstorageLink_id"))).getText() + "' Link" );
+		 if(driver.findElement(By.id(or.getProperty("coldstorageLink_id"))).isDisplayed()) 
 		 {
-			  driver.findElement(By.id("coldstorage")).click();
+			  driver.findElement(By.id(or.getProperty("coldstorageLink_id"))).click();
 			  
 			  // Verifying whether the required page is loaded or not
-			  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id("container")).findElement(By.tagName("h1")).getText());
+			  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id(or.getProperty("pagevalidate_id"))).findElement(By.tagName(or.getProperty("pagevalidate_tag"))).getText());
 			  help.sleep(4);
 			  
 			  // Pagination
@@ -722,13 +723,13 @@ public class BDM extends Helper {
 		 
 		 // Expands the side tree menu
 		 help.expand();
-		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id("editLeads")).getText() + "' Link" );
-		 if(driver.findElement(By.id("editLeads")).isDisplayed()) 
+		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(or.getProperty("editleads_id"))).getText() + "' Link" );
+		 if(driver.findElement(By.id(or.getProperty("editleads_id"))).isDisplayed()) 
 		 {
-			  driver.findElement(By.id("editLeads")).click();
+			  driver.findElement(By.id(or.getProperty("editleads_id"))).click();
 			  
 			  // Verifying whether the required page is loaded or not
-			  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id("container")).findElement(By.tagName("h1")).getText());
+			  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id(or.getProperty("pagevalidate_id"))).findElement(By.tagName(or.getProperty("pagevalidate_tag"))).getText());
 			  help.sleep(4);
 			  
 			  // Pagination
@@ -746,7 +747,7 @@ public class BDM extends Helper {
 		 Reporter.log("<p>___________________________________________________________________________________");
 	} 
 	
-	
+	*/
 
 	 
 	 // -------- Static Methods ---------
@@ -756,7 +757,7 @@ public class BDM extends Helper {
 		 // Method for validating Upload button
 		 public static void uploadButton() {
 			  // Verifying no.of leads in the page
-			  List <WebElement> leads = driver.findElement(By.id("example")).findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+			  List <WebElement> leads = driver.findElement(By.id(or.getProperty("tablename_id"))).findElement(By.tagName(or.getProperty("leads_info_tag"))).findElements(By.tagName(or.getProperty("leads_info_tagname")));
 			  Reporter.log("<p>" +"No. of leads in the Table:" + leads.size());
 			  int upload=0;
 			  for(int i=0; i<leads.size(); i++) {
@@ -768,14 +769,14 @@ public class BDM extends Helper {
 				  Reporter.log("<p>" +"Upload button is enabled for all " + upload + " leads.");
 			  // Clicking on Upload button of a Lead opens a Quote Upload Page
 			  int opt = help.random(leads.size());
-			  String uploadleadId = leads.get(opt).findElement(By.className(" sorting_1")).getText();
-			  String name = leads.get(opt).findElements(By.tagName("td")).get(1).getText();
+			  String uploadleadId = leads.get(opt).findElement(By.className(or.getProperty("leadidintable_class"))).getText();
+			  String name = leads.get(opt).findElements(By.tagName(or.getProperty("servicename_tag"))).get(1).getText();
 			  
 			  Reporter.log("<p>" +"The ID of Lead selected to Upload:" + uploadleadId);
 			  Reporter.log(name);
 			  leads.get(opt).findElement(By.className("upload")).click();
 			  help.sleep(5);
-			  String title = driver.findElement(By.cssSelector("span.ui-dialog-title")).getText();
+			  String title = driver.findElement(By.cssSelector(or.getProperty("windowTitle_css"))).getText();
 			  Reporter.log("<p>" +"The lead window opened for upload:" + title);
 			  if(title.contains(uploadleadId))
 				  Reporter.log("<p>" +"Lead selected to upload is matched with the Lead opened.");
@@ -790,7 +791,7 @@ public class BDM extends Helper {
 		 public static void pageEntries() {
 			  // Selecting no.of entries for the table
 			  driver.findElement(By.id("example_length")).click();
-			  List <WebElement> entries = driver.findElement(By.id("example_length")).findElements(By.tagName("option"));
+			  List <WebElement> entries = driver.findElement(By.id("example_length")).findElements(By.tagName(or.getProperty("service_tag")));
 			  help.sleep(4);
 			  int opt = help.random(entries.size());
 			  entries.get(opt).click();
@@ -800,27 +801,27 @@ public class BDM extends Helper {
 		 // Method for Pagination(Previous and Next buttons)
 		 public static void pagination() {
 			  Reporter.log("<p>" +"Verifying Pagination Next & Previous Buttons:");
-			  Reporter.log("<p>" +driver.findElement(By.id("example_info")).getText());
+			  Reporter.log("<p>" +driver.findElement(By.id(or.getProperty("tableinfo_id"))).getText());
 			  help.sleep(2);
 			  driver.findElement(By.id("example_next")).click();
 			  Reporter.log("<p>" +"Clicked on Next button");
-			  Reporter.log("<p>" +driver.findElement(By.id("example_info")).getText());
+			  Reporter.log("<p>" +driver.findElement(By.id(or.getProperty("tableinfo_id"))).getText());
 			  help.sleep(2);
 			  driver.findElement(By.id("example_previous")).click();
 			  Reporter.log("<p>" +"Clicked on Previous button");
-			  Reporter.log("<p>" +driver.findElement(By.id("example_info")).getText());
+			  Reporter.log("<p>" +driver.findElement(By.id(or.getProperty("tableinfo_id"))).getText());
 		 }
 
 		 
 		 // Method for validating Track It button
 		 public static List<String> trackitButton(int opt1) 
 		 {
-			  List <WebElement> leads1 = driver.findElement(By.id("example")).findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
-			  leads1.get(opt1).findElement(By.className("analyse")).click();
+			  List <WebElement> leads1 = driver.findElement(By.id(or.getProperty("tablename_id"))).findElement(By.tagName(or.getProperty("leads_info_tag"))).findElements(By.tagName(or.getProperty("leads_info_tagname")));
+			  leads1.get(opt1).findElement(By.className(or.getProperty("trackitbutton_class"))).click();
 			  help.sleep(3);
 			  
 			  // Getting the details of the lead in the table to a List
-			  List <WebElement> list = driver.findElement(By.tagName("tbody")).findElements(By.tagName("td"));
+			  List <WebElement> list = driver.findElement(By.tagName(or.getProperty("leads_info_tag"))).findElements(By.tagName(or.getProperty("servicename_tag")));
 			  List <String> detailsList = new ArrayList <String>() ;
 			  for(int i=0; i<list.size(); i++)
 				  detailsList.add(list.get(i).findElements(By.tagName("label")).get(1).getText());
@@ -833,7 +834,7 @@ public class BDM extends Helper {
 		 // Method for validating Search box. Searches with keyword and prints the table with all search results
 		 public static void search(String keyword) {
 			 driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys(keyword);
-			 Reporter.log("<p>" +driver.findElement(By.id("example")).findElement(By.tagName("tbody")).getText());
+			 Reporter.log("<p>" +driver.findElement(By.id(or.getProperty("tablename_id"))).findElement(By.tagName(or.getProperty("leads_info_tag"))).getText());
 		 }
 
 		 
@@ -859,7 +860,7 @@ public class BDM extends Helper {
 				 search(leadId);
 			 }
 			 // Logging out of the Management module 
-			 driver.findElement(By.className("user_logout")).findElement(By.linkText("Logout")).click();
+			 driver.findElement(By.className(or.getProperty("logout_class"))).findElement(By.linkText(or.getProperty("logoutlink_linktext"))).click();
 			 Reporter.log("<p>" + "Logged out of Management Module");
 		 }
 		 
@@ -921,7 +922,7 @@ public class BDM extends Helper {
 				 }
 				 
 				 // Selecting Required fields
-				 List <WebElement> requiredFields = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("td"));
+				 List <WebElement> requiredFields = driver.findElement(By.id("fields_to_get")).findElements(By.tagName(or.getProperty("servicename_tag")));
 				 List <String> fieldoptions = new ArrayList <String>();
 				 for(int i=1; i<requiredFields.size(); i++) 
 				 {
@@ -938,7 +939,7 @@ public class BDM extends Helper {
 				 String opt = filterOption.findElement(By.tagName("legend")).getText();
 				 Reporter.log("<p>" +"Filter Option Selected:" + opt);
 				 // Selecting an option in a category in Filter Options and clicking on search button
-				 List <WebElement> option = filterOption.findElements(By.tagName("td"));
+				 List <WebElement> option = filterOption.findElements(By.tagName(or.getProperty("servicename_tag")));
 				 Reporter.log("<p>" +"No.of options in " + opt + " List:" + option.size());
 				 
 				 Reporter.log("<p>" +"Option selected is:" + option.get(3).findElement(By.tagName("label")).getText());
@@ -959,7 +960,7 @@ public class BDM extends Helper {
 				 if(fieldheads.equals(fieldoptions)) 
 				 {
 					 Reporter.log("<p>" +"The required fields selected is matched with the headers of the table.");
-					 Reporter.log("<p>" +driver.findElement(By.id("example")).findElement(By.tagName("tbody")).getText());
+					 Reporter.log("<p>" +driver.findElement(By.id(or.getProperty("tablename_id"))).findElement(By.tagName(or.getProperty("leads_info_tag"))).getText());
 					 
 					 // Pagination
 					 pagination();
@@ -972,7 +973,7 @@ public class BDM extends Helper {
 					 
 					 // Search Box Validation
 					 driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Johnson");
-					 Reporter.log("<p>" +driver.findElement(By.id("example")).findElement(By.tagName("tbody")).getText());
+					 Reporter.log("<p>" +driver.findElement(By.id(or.getProperty("tablename_id"))).findElement(By.tagName(or.getProperty("leads_info_tag"))).getText());
 				 }
 				 else 
 					 Reporter.log("<p>" +"The required fields selected is not matched with the headers of the table.");
@@ -1003,7 +1004,7 @@ public class BDM extends Helper {
 				 }
 				 
 				 // Selecting Required fields
-				 List <WebElement> requiredFields = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("td"));
+				 List <WebElement> requiredFields = driver.findElement(By.id("fields_to_get")).findElements(By.tagName(or.getProperty("servicename_tag")));
 				 int a = help.random(requiredFields.size());
 				 String field = requiredFields.get(a).getText();
 				 Reporter.log("<p>" +"The reqiured field:" + field);
@@ -1020,7 +1021,7 @@ public class BDM extends Helper {
 					 Reporter.log("<p>" +"Filter Option Selected:" + opt);
 					
 					 // Selecting an option in a category in Filter Options and clicking on search button
-					 List <WebElement> option = filterOptions.get(i).findElements(By.tagName("td"));
+					 List <WebElement> option = filterOptions.get(i).findElements(By.tagName(or.getProperty("servicename_tag")));
 					 Reporter.log("<p>" +"No.of options in " + opt + " List:" + option.size());
 					 int c = help.random(option.size());
 					 Reporter.log("<p>" +"Option selected is:" + option.get(c).findElement(By.tagName("label")).getText());
@@ -1029,7 +1030,7 @@ public class BDM extends Helper {
 					 help.sleep(5);
 					 
 					 // Printing the Table displayed with required fields
-					 Reporter.log("<p>" +driver.findElement(By.id("example")).findElement(By.tagName("tbody")).getText());
+					 Reporter.log("<p>" +driver.findElement(By.id(or.getProperty("tablename_id"))).findElement(By.tagName(or.getProperty("leads_info_tag"))).getText());
 					 //driver.navigate().refresh(); 
 					 option.get(c).findElement(By.tagName("input")).click();
 				 }
