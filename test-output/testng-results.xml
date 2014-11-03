@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< Updated upstream
 <testng-results skipped="0" failed="0" total="11" passed="11">
   <reporter-output>
   </reporter-output>
@@ -144,6 +145,201 @@
           </reporter-output>
         </test-method> <!-- afterMethod -->
       </class> <!-- crm.Management -->
+=======
+<testng-results skipped="1" failed="2" total="3" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="111497" started-at="2014-10-31T14:46:03Z" finished-at="2014-10-31T14:47:55Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="111497" started-at="2014-10-31T14:46:03Z" finished-at="2014-10-31T14:47:55Z">
+      <class name="crm.BDE">
+        <test-method status="PASS" signature="beforesuite()[pri:0, instance:crm.BDE@1d1702e]" name="beforesuite" is-config="true" duration-ms="1396" started-at="2014-10-31T20:16:02Z" finished-at="2014-10-31T20:16:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforesuite -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:crm.BDE@1d1702e]" name="beforeMethod" is-config="true" duration-ms="33979" started-at="2014-10-31T20:16:03Z" finished-at="2014-10-31T20:16:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="FAIL" signature="todaysFollowup4()[pri:0, instance:crm.BDE@1d1702e]" name="todaysFollowup4" duration-ms="19852" started-at="2014-10-31T20:16:37Z" finished-at="2014-10-31T20:16:57Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Table field is Empty...]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Table field is Empty...
+	at org.testng.Assert.fail(Assert.java:94)
+	at crm.BDE.particularLeadSelection(BDE.java:59)
+	at crm.BDE.todaysFollowup4(BDE.java:419)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- todaysFollowup4 -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:crm.BDE@1d1702e]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-10-31T20:16:57Z" finished-at="2014-10-31T20:16:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:crm.BDE@1d1702e]" name="beforeMethod" is-config="true" duration-ms="24744" started-at="2014-10-31T20:16:57Z" finished-at="2014-10-31T20:17:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="FAIL" signature="workPhaseForLaterDate()[pri:0, instance:crm.BDE@1d1702e]" name="workPhaseForLaterDate" duration-ms="16167" started-at="2014-10-31T20:17:22Z" finished-at="2014-10-31T20:17:38Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The size table field is Empty... ]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The size table field is Empty... 
+	at org.testng.Assert.fail(Assert.java:94)
+	at crm.BDE.randomLeadSelection(BDE.java:98)
+	at crm.BDE.workPhaseForLaterDate(BDE.java:379)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- workPhaseForLaterDate -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:crm.BDE@1d1702e]" name="afterMethod" is-config="true" duration-ms="1" started-at="2014-10-31T20:17:38Z" finished-at="2014-10-31T20:17:38Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="FAIL" signature="beforeMethod()[pri:0, instance:crm.BDE@1d1702e]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2014-10-31T20:17:38Z" finished-at="2014-10-31T20:17:38Z">
+          <exception class="org.openqa.selenium.NoSuchWindowException">
+            <message>
+              <![CDATA[Window not found. The browser window may have been closed.
+Command duration or timeout: 410 milliseconds
+Build info: version: '2.43.0', revision: '597b76b', time: '2014-09-09 20:52:14'
+System info: host: 'priyas', ip: '192.168.1.137', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_65'
+Session ID: 181022cd-b226-4cf9-977f-196589265248
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, webStorageEnabled=true, nativeEvents=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=32.0.3}]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchWindowException: Window not found. The browser window may have been closed.
+Command duration or timeout: 410 milliseconds
+Build info: version: '2.43.0', revision: '597b76b', time: '2014-09-09 20:52:14'
+System info: host: 'priyas', ip: '192.168.1.137', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_65'
+Session ID: 181022cd-b226-4cf9-977f-196589265248
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, webStorageEnabled=true, nativeEvents=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=32.0.3}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.maximize(RemoteWebDriver.java:829)
+	at testUtils.Helper.maxbrowser(Helper.java:48)
+	at crm.BDE.beforeMethod(BDE.java:220)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:653)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+Caused by: org.openqa.selenium.NoSuchWindowException: Window not found. The browser window may have been closed.
+Build info: version: '2.43.0', revision: '597b76b', time: '2014-09-09 20:52:14'
+System info: host: 'priyas', ip: '192.168.1.137', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_65'
+Driver info: driver.version: unknown
+	at <anonymous class>.nsCommandProcessor.prototype.execute(file:///C:/Users/Admin/AppData/Local/Temp/anonymous7135370870054993208webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11683:11)
+	at <anonymous class>.Dispatcher.executeAs/<(file:///C:/Users/Admin/AppData/Local/Temp/anonymous7135370870054993208webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:8430:5)
+	at <anonymous class>.Resource.prototype.handle(file:///C:/Users/Admin/AppData/Local/Temp/anonymous7135370870054993208webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:8577:194)
+	at <anonymous class>.Dispatcher.prototype.dispatch(file:///C:/Users/Admin/AppData/Local/Temp/anonymous7135370870054993208webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:8524:36)
+	at <anonymous class>.WebDriverServer/<.handle(file:///C:/Users/Admin/AppData/Local/Temp/anonymous7135370870054993208webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:11466:5)
+	at <anonymous class>.createHandlerFunc/<(file:///C:/Users/Admin/AppData/Local/Temp/anonymous7135370870054993208webdriver-profile/extensions/fxdriver@googlecode.com/components/httpd.js:1935:41)
+	at <anonymous class>.ServerHandler.prototype.handleResponse(file:///C:/Users/Admin/AppData/Local/Temp/anonymous7135370870054993208webdriver-profile/extensions/fxdriver@googlecode.com/components/httpd.js:2261:15)
+	at <anonymous class>.Connection.prototype.process(file:///C:/Users/Admin/AppData/Local/Temp/anonymous7135370870054993208webdriver-profile/extensions/fxdriver@googlecode.com/components/httpd.js:1168:5)
+	at <anonymous class>.RequestReader.prototype._handleResponse(file:///C:/Users/Admin/AppData/Local/Temp/anonymous7135370870054993208webdriver-profile/extensions/fxdriver@googlecode.com/components/httpd.js:1616:5)
+	at <anonymous class>.RequestReader.prototype._processBody(file:///C:/Users/Admin/AppData/Local/Temp/anonymous7135370870054993208webdriver-profile/extensions/fxdriver@googlecode.com/components/httpd.js:1464:9)
+	at <anonymous class>.RequestReader.prototype.onInputStreamReady(file:///C:/Users/Admin/AppData/Local/Temp/anonymous7135370870054993208webdriver-profile/extensions/fxdriver@googlecode.com/components/httpd.js:1333:9)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="SKIP" signature="workPhaseForTodaysDate()[pri:0, instance:crm.BDE@1d1702e]" name="workPhaseForTodaysDate" duration-ms="2" started-at="2014-10-31T20:17:55Z" finished-at="2014-10-31T20:17:55Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- workPhaseForTodaysDate -->
+        <test-method status="SKIP" signature="afterMethod()[pri:0, instance:crm.BDE@1d1702e]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-10-31T20:17:55Z" finished-at="2014-10-31T20:17:55Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- crm.BDE -->
+>>>>>>> Stashed changes
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

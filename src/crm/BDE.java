@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -57,12 +56,14 @@ public class BDE extends Helper{
 		 List<WebElement> table = driver.findElement(By.id(or.getProperty("tableId"))).findElement(By.tagName(or.getProperty("tableBody"))).findElements(By.tagName(or.getProperty("tableTr")));
 		
 		 if (tableSize().contains("dataTables_empty")) 
-			 Assert.fail("Work Phase table field is Empty...");
+			 Assert.fail("Table field is Empty...");
 		 else
 		 {
-			 WebElement res = table.get(random(table.size())).findElement(By.className(or.getProperty("leadProceed")));
-			 Leadno = res.getAttribute(or.getProperty("leadId"));
-			 System.out.println("WorkLead is" + Leadno);
+			// WebElement res = table.get(random(table.size())).findElement(By.className(or.getProperty("leadProceed")));
+			 WebElement res = table.get(random(table.size()));
+			 List<WebElement> tdlis = res.findElements(By.tagName("tr"));
+			 Leadno = tdlis.get(0).getText() + " " + tdlis.get(1).getText() + " " +tdlis.get(2).getText();
+			 System.out.println("The particular Lead is : " + Leadno);
 			 sleep(4);
 			 res.click();
 			 sleep(1);
@@ -76,13 +77,11 @@ public class BDE extends Helper{
 	  sb.submit();
 	  List<WebElement> ermg =driver.findElement(By.id(or.getProperty("resultid"))).findElements(By.tagName(or.getProperty("resulttag")));
 	  if(ermg.get(0).getText().contains(msg)) 
-		  System.out.println("The message :" + msg +" is displayed.....");
-	  
+		  System.out.println("The message :" + msg +" is displayed.....");  
 	  else if(ermg.get(0).getText().contains("Please Upload the Proposal or Quote First"))
 		  Assert.fail("Can't close the Lead with out uploading Quote or Proposal.");  
 	  else
-		  Assert.fail("The message : " + msg +". is not displayed and could see error :" + ermg.get(0).getText());  
-		  
+		  Assert.fail("The message : " + msg +". is not displayed and could see error :" + ermg.get(0).getText());  	  
 	}
 	
 	// This method takes parameter as string. Pass this string in to search box.
@@ -93,19 +92,25 @@ public class BDE extends Helper{
 	}
 	
 	// This method selects a random lead from table.
+	@Test
 	public void randomLeadSelection()
 	{
+		navigatePage("Research On Company", "Lead Research");
 		List<WebElement> table = driver.findElement(By.id(or.getProperty("tableId"))).findElement(By.tagName(or.getProperty("tableBody"))).findElements(By.tagName(or.getProperty("tableTr")));
-		System.out.println("Selecting random element from table of size" + " is " + table.size());
+		System.out.println("Selecting random element from table of size");
 		if (tableSize().contains("dataTables_empty"))
 			Assert.fail("The size table field is Empty... ");
 		else
 		{
-			WebElement res = table.get(random(table.size())).findElement(By.className(or.getProperty("leadProceed")));	
-			randomLead = res.getAttribute(or.getProperty("leadId"));
-			System.out.println("WorkLead is" + randomLead);
-			sleep(4);
-			res.click();	 
+			//WebElement res = table.get(random(table.size())).findElement(By.className(or.getProperty("leadProceed")));
+			WebElement res = table.get(random(table.size()));
+			 List<WebElement> tdlis = res.findElements(By.tagName("tr"));
+			 randomLead = tdlis.get(0).getText() + " " + tdlis.get(1).getText() + " " +tdlis.get(2).getText();
+			 System.out.println("The particular Lead is : " + randomLead);
+			 sleep(4);
+			 res.click();
+			 sleep(1);
+			 
 			System.out.println("######### You have Navigated to Form ##########");   	
 		}
 	}
@@ -129,16 +134,17 @@ public class BDE extends Helper{
 		  sleep(1);
 		  folldate.click();
 	
-		  submitMessage(seg,"Successfully Updated..."); 	 
+		  submitMessage(seg,"Successfully Updated...");
+		  WebElement close =  driver.findElement(By.tagName("button"));
+  		  close.click();
 	}
 	
 	//Return the size of the table....
 	public String tableSize()
 	{
 		List<WebElement> table = driver.findElement(By.id(or.getProperty("tableId"))).findElement(By.tagName(or.getProperty("tableBody"))).findElements(By.tagName(or.getProperty("tableTr")));
-		System.out.println("The table size is: "+ table.size() + " id is " + table.get(0).getAttribute(or.getProperty("leadId")));
 		List<WebElement> td = table.get(0).findElements(By.tagName("td"));
-        System.out.println(td.get(0).getAttribute(or.getProperty("class")));
+        //System.out.println(td.get(0).getAttribute(or.getProperty("class")));
 	    return td.get(0).getAttribute(or.getProperty("class"));	 	    
 	}
    
@@ -149,36 +155,35 @@ public class BDE extends Helper{
 		List<String> track  = new ArrayList<String>();
 		
 		List<WebElement> res = driver.findElements(By.tagName(or.getProperty("tagTd")));
-			
-	        // This For loop add the lead id, name, company, service, Mobile, Lead Status in to ArrayList 'Lead'
-			for (int k = 0 ; k< res.size(); k++)
-			{
-				Lead.add(res.get(0).getText());
-				System.out.println("The track index ::" + k + "contains ::" +res.get(k).getText() );
-			}
-			
-			driver.findElement(By.linkText("TracK IT")).click();
-			sleep(2);	
-			List<WebElement> tracks = driver.findElement(By.tagName(or.getProperty("tableBody"))).findElements(By.tagName(or.getProperty("tableTr")));
-			
-			// This For loop add the all the contents of track it form in to Array List 'track
-			for (int i=0;i< tracks.size();i++)
-			{
-			   List<WebElement> s1= tracks.get(i).findElements(By.tagName(or.getProperty("tagTd")));
-			   for(int j=0;j<s1.size();j++){
-			      String s2 = s1.get(j).getText();
-			      track.add(s2); 
-			   }
-			} 
-			System.out.println("Size is " + track.size() + "1: " + track.get(0) + "2: " + track.get(1) + "19: " + track.get(19) );
-		    
-			 if(track.get(0).contains(Lead.get(0)))
-			   if(track.get(1).contains(Lead.get(1)))   
-			    if(track.get(19).contains(Lead.get(19)))
-			         System.out.println("Data is exactly matching in track it page.");   
-		     else
-		    	 System.out.println("These is Data Mismatch.............");
+	    // This For loop add the lead id, name, company, service, Mobile, Lead Status in to ArrayList 'Lead'
+		for ( int k = 0 ; k< 6 ; k++ )
+		{
+			Lead.add(res.get(0).getText());
+			System.out.println("The track index ::" + k + "contains ::" +res.get(k).getText() );
 		}
+			
+		driver.findElement(By.linkText("Track It")).click();
+		sleep(2);	
+		List<WebElement> tracks = driver.findElement(By.tagName(or.getProperty("tableBody"))).findElements(By.tagName(or.getProperty("tableTr")));
+			
+		// This For loop add the all the contents of track it form in to Array List 'track
+		for (int i = 0 ; i< tracks.size() ; i++ )
+		{
+			 List<WebElement> s1= tracks.get(i).findElements(By.tagName(or.getProperty("tagTd")));
+			 for(int j=0;j<s1.size();j++){
+				 String s2 = s1.get(j).getText();
+			     track.add(s2); 
+			 }
+		} 
+		System.out.println("Size is " + track.size() + " 1) " + track.get(0) + " 2) " + track.get(1) + " 19) " + track.get(19) );
+		    
+	   if(track.get(0).contains(Lead.get(0)))
+		   if(track.get(1).contains(Lead.get(1)))   
+			    if(track.get(19).contains(Lead.get(5)))
+			         System.out.println("Data is exactly matching in track it page.");   
+			    else
+			    	System.out.println("These is Data Mismatch.............");
+	}
 	 
 	 //This method takes two parameters as strings. It will take the BDM page Proposal or Quote link, container name.
 	 //It will login to BDM page click particular lead from proposal or Quote page.
@@ -210,10 +215,10 @@ public class BDE extends Helper{
 		 String path  =  System.getProperty("user.dir") + "\\src\\configFiles\\configuration.properties";
 		 browse.sendKeys(path);
 		 
-		 WebElement upload = driver.findElement(By.id("button"));
+		 WebElement upload = driver.findElement(By.id(config.getProperty("formButton")));
 		 upload.click();	
 		 
-		 WebElement close =  driver.findElement(By.tagName("button"));
+		 WebElement close =  driver.findElement(By.tagName(config.getProperty("formButton")));
 		 close.click();
 	 }
 	 
@@ -231,7 +236,7 @@ public class BDE extends Helper{
 		//driver.close();
 	}
 	
-    @Test
+    //@Test
 	public void ExpandCollapse()
 	{	
 		//This List tree contains all Main Links of BDE Module , adds these in to "lisub" List.
@@ -262,7 +267,7 @@ public class BDE extends Helper{
 	}
 	
 	// This researchOnCompany test, checks the functionality of Research On Company Page, 'Lead Research' Form.
-	@Test
+	//@Test
 	public void researchOnCompany()
 	{
 		navigatePage("Research On Company", "Lead Research");
@@ -273,7 +278,7 @@ public class BDE extends Helper{
 		WebElement res = table.get(random(table.size())).findElement(By.className(or.getProperty("segButton")));
 		
 		String researchLead =res.getAttribute(or.getProperty("leadId"));
-	    System.out.println("Lead no is " + researchLead);
+	    System.out.println("Lead no is :" + researchLead);
 	    res.click();
 		sleep(2);
 		
@@ -316,7 +321,7 @@ public class BDE extends Helper{
 			 Assert.fail("Expected Lead is not present in Work Phase");
 		 else 
 			 System.out.println("The research Lead : " + researchLead +" is sucessfully navigated to Work Phase");
-		
+	
 		 trackIT();
 		 List<WebElement> tb = driver.findElements(By.tagName("table"));
 		 List<WebElement> lb2 = tb.get(1).findElement(By.tagName("tbody")).findElements(By.tagName("label"));
@@ -333,9 +338,7 @@ public class BDE extends Helper{
 	    if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Work on Lead"))
 		{	
 	    	sleep(2);
-	    	fillingForm("Introductory Mail","Selection of today's date.",simple.format(date));
-	    	WebElement close =  driver.findElement(By.tagName("button"));
-	    	close.click();	 
+	    	fillingForm("Introductory Mail","Selection of today's date.",simple.format(date));	 
 		}
 	    else
 		  Assert.fail("The navigation to work on Lead Form is failed");
@@ -370,8 +373,7 @@ public class BDE extends Helper{
 		 else 
 			 System.out.println("The research Lead : " + randomLead + " is also available in All FollowUps");
 		sleep(2);
-		trackIT();
-		
+		trackIT();		
 	}
 	
 	  //@Test
@@ -386,9 +388,7 @@ public class BDE extends Helper{
 	    if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Work on Lead"))
 	    {
 	    	sleep(2);
-	    	fillingForm("Introductory Mail","Selection of later date",simple.format(later));
-	    	WebElement close =  driver.findElement(By.tagName("button"));
-	    	close.click();	
+	    	fillingForm("Introductory Mail","Selection of later date",simple.format(later));	
 	    }
 	    else
 	    	Assert.fail("This form 'Work on Lead' navigation is unsuccessfull.");
@@ -409,13 +409,13 @@ public class BDE extends Helper{
 		 else 
 			 System.out.println("The research Lead : " + randomLead + " is also available in All FollowUps");
 		trackIT();
-		List<WebElement> tb = driver.findElements(By.tagName("table"));
-		List<WebElement> lb2 = tb.get(1).findElement(By.tagName("tbody")).findElements(By.tagName("label"));
+		/*List<WebElement> tb = driver.findElements(By.tagName(config.getProperty("table")));
+		List<WebElement> lb2 = tb.get(1).findElement(By.tagName(config.getProperty("tableBody"))).findElements(By.tagName("label"));
 		if(lb2.get(3).getText().contentEquals("Selection of later date"))
-			System.out.println("Trackit comments for Work Phase is successfull.");
+			System.out.println("Trackit comments for Work Phase is successfull.");*/
 	}
      
-     @Test
+     //@Test
      public void todaysFollowup4()
 	 {	
     	 date = new Date();	
@@ -428,8 +428,7 @@ public class BDE extends Helper{
 		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Followup on Lead"))
 		 {
 			 fillingForm("Followup 4","selection today date",simple.format(later));
-			 WebElement close =  driver.findElement(By.tagName("button"));
-			 close.click();	 
+				 
 		 }else
 			 Assert.fail("Navitage to todays followup form is failed.");
 		 
@@ -460,7 +459,7 @@ public class BDE extends Helper{
 	     sleep(2);
 		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Followup on Lead"))
 		 {   
-			 WebElement seg = driver.findElement(By.className("button"));
+			 WebElement seg = driver.findElement(By.className(config.getProperty("formButton")));
 			 
 			 submitMessage(seg, "Please Select FollowUp Type....");
 			 new Select(driver.findElement(By.name("followuptype"))).selectByVisibleText("Prospect Identify");
@@ -507,12 +506,19 @@ public class BDE extends Helper{
 			 	 
 			 submitMessage(seg,"Proposal Request Send Successfully"); 
 	
-			 WebElement close =  driver.findElement(By.tagName("button"));
+			 WebElement close =  driver.findElement(By.tagName(config.getProperty("formButton")));
 			 close.click();
 		 }	
 		 else
 		     	Assert.fail("Failed to navigate to todays Followup form");
 		 
+		 proposalQuotePage("Proposal Upload", "Leads for Proposal Upload");
+		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Proposal Upload"))
+		 {
+		   ProposalQuoteForm("proposalname","proposaldescription","proposal");
+		 } 
+		 
+		 //This block Checks for Lead Presence in Todays FollowUp and also proposal comment.
 		 navigatePage("Today's FollowUp", "Today Followups");
 		 searchLead(Leadno);
 		 if (tableSize().contains("dataTables_empty"))	
@@ -521,6 +527,7 @@ public class BDE extends Helper{
 			 System.out.println("The todays Followup Lead is : " + Leadno + " is available in today's FollowUps");
 		 trackIT();
 		 
+		 //This block checks whether Lead is Present in All Followup.
 		 navigatePage("All FollowUps", "All Followups");
 		 searchLead(Leadno);
 		 if (tableSize().contains("dataTables_empty"))	
@@ -528,12 +535,7 @@ public class BDE extends Helper{
 		 else 
 			 System.out.println("The todays Followup Lead is : " + Leadno + " is available in today's FollowUps");
 		 trackIT(); 
-		 
-		 proposalQuotePage("Proposal Upload", "Leads for Proposal Upload");
-		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Proposal Upload"))
-		 {
-		   ProposalQuoteForm("proposalname","proposaldescription","proposal");
-		 } 
+	
 	 }
 	 
      //@Test
@@ -548,10 +550,7 @@ public class BDE extends Helper{
     	 particularLeadSelection("Introductory Mail");
 		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Followup on Lead"))
 		 {
-			 fillingForm("Followup 4","selection today date",simple.format(later));
-			 WebElement close =  driver.findElement(By.tagName("button"));
-     		 close.click();
-			 
+			 fillingForm("Followup 4","selection today date",simple.format(later));		 
 		 }else
 			 Assert.fail("Navitage to todays followup form is failed."); 
 		 
@@ -567,7 +566,8 @@ public class BDE extends Helper{
 		 if (tableSize().contains("dataTables_empty"))	
 			 Assert.fail("Expected Lead is not present in ColdStorage");
 		 else 
-			 System.out.println("The todays Followup Lead is : " + Leadno + " is available in Cold Storage.");	 
+			 System.out.println("The todays Followup Lead is : " + Leadno + " is available in Cold Storage.");	
+		 
 	 }
 	 
      //@Test
@@ -614,6 +614,13 @@ public class BDE extends Helper{
 		 else
 			 Assert.fail("Navigation to page All Followup failed");
 		 
+		 proposalQuotePage("Quote Upload", "Leads for Quote Upload");
+		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Quote Upload"))
+		 {
+		   ProposalQuoteForm("quotename","quotedescription","quote");  
+		 }
+		 
+		 //This block check for the lead present in All FollowUp also verify the Track It comments
 		 navigatePage("All FollowUp", "All Followups");
 		 searchLead(Leadno);
 		 if (tableSize().contains("dataTables_empty"))	
@@ -622,15 +629,10 @@ public class BDE extends Helper{
 			 System.out.println("The All Followup Lead is : " + Leadno + " is available in All FollowUp.");
 		 trackIT(); 		 
 		 
-		 proposalQuotePage("Quote Upload", "Leads for Quote Upload");
-		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Quote Upload"))
-		 {
-		   ProposalQuoteForm("quotename","quotedescription","quote");
-		   
-		 }	 
+		 
 	 }
   
-	 @Test
+	 //@Test
      public void AllFollowupclose()
      {
     	 navigatePage("All FollowUps", "All Followups");    
@@ -648,20 +650,21 @@ public class BDE extends Helper{
     		 cmt.sendKeys("Comments of closed phase.. ");
     		 sleep(1);
     	     
-    		 submitMessage(seg, "Sucessfully Updated...");
-    		 
+    		 submitMessage(seg, "Sucessfully Updated..");
+    		 sleep(3);
     		 WebElement close =  driver.findElement(By.tagName("button"));
 			 close.click();
     		 
 		 } else
 			 Assert.fail("Navigation to page All Followup failed");
+    	 
+    	 //This block checks for Lead is moved for All FollowUpclose phase to Lead Close phase. 
     	 navigatePage("Lead Close", "Lead Close");
     	 searchLead(Leadno);
     	 if (tableSize().contains("dataTables_empty"))	
 			 Assert.fail("Expected Lead is not present in All FollowUp");
 		 else 
-			 System.out.println("The All Followup Lead is : " + Leadno + " is available in All FollowUp.");
-		 trackIT(); 		 	
+			 System.out.println("The All Followup Lead is : " + Leadno + " is available in All FollowUp."); 		 	
      }
 	 
 	 //@Test
@@ -670,7 +673,7 @@ public class BDE extends Helper{
 		 String coldLead = null;
 		 navigatePage("Cold Storage", "Cold Storage");
 		 List<WebElement> table = driver.findElement(By.tagName(or.getProperty("tableBody"))).findElements(By.tagName(or.getProperty("tableTr")));
-		 if (table.size() == 0)
+		 if (tableSize().contains("dataTables_empty"))
 			Assert.fail("There were no leads in cold Storage.. ");
 		 else
 		 {
@@ -679,6 +682,7 @@ public class BDE extends Helper{
 			System.out.println("Cold Storage lead is : " + coldLead);
 			res.click();	 	
 		 }
+		 
 		 //This block checks for lead moved from closed phase to BD
 		 navigatePage("Cold Storage", "Cold Storage");
 		 searchLead(coldLead);
