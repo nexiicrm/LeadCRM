@@ -3,6 +3,7 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
+<<<<<<< Updated upstream
       <class name="src.crm.AdminLogin">
         <methods>
           <include name="bf"/>
@@ -11,6 +12,16 @@
           <include name="t_configCreation"/>
         </methods>
       </class> <!-- src.crm.AdminLogin -->
+=======
+      <class name="src.crm.BDE">
+        <methods>
+          <include name="beforesuite"/>
+          <include name="workPhaseForTodaysDate"/>
+          <include name="afterMethod"/>
+          <include name="beforeMethod"/>
+        </methods>
+      </class> <!-- src.crm.BDE -->
+>>>>>>> Stashed changes
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< Updated upstream
 <testng-results skipped="0" failed="1" total="1" passed="0">
+=======
+<testng-results skipped="0" failed="0" total="2" passed="2">
+>>>>>>> Stashed changes
   <reporter-output>
     <line>
       <![CDATA[<p>Page loaded successfully]]>
@@ -11,6 +15,7 @@
       <![CDATA[<p>Uploaded file is Invalid]]>
     </line>
   </reporter-output>
+<<<<<<< Updated upstream
   <suite name="Default suite" duration-ms="76603" started-at="2014-11-04T02:25:58Z" finished-at="2014-11-04T02:27:15Z">
     <groups>
     </groups>
@@ -21,11 +26,24 @@
           </reporter-output>
         </test-method> <!-- beforesuite -->
         <test-method status="PASS" signature="bf()[pri:0, instance:src.crm.AdminLogin@e20459]" name="bf" is-config="true" duration-ms="8861" started-at="2014-11-03T18:25:58Z" finished-at="2014-11-03T18:26:07Z">
+=======
+  <suite name="Default suite" duration-ms="166899" started-at="2014-11-03T13:46:28Z" finished-at="2014-11-03T13:49:15Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="166899" started-at="2014-11-03T13:46:28Z" finished-at="2014-11-03T13:49:15Z">
+      <class name="src.crm.BDE">
+        <test-method status="PASS" signature="beforesuite()[pri:0, instance:src.crm.BDE@11beb4d]" name="beforesuite" is-config="true" duration-ms="1211" started-at="2014-11-03T19:16:27Z" finished-at="2014-11-03T19:16:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforesuite -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.BDE@11beb4d]" name="beforeMethod" is-config="true" duration-ms="36638" started-at="2014-11-03T19:16:28Z" finished-at="2014-11-03T19:17:05Z">
+>>>>>>> Stashed changes
           <reporter-output>
             <line>
               <![CDATA[<p>Page loaded successfully]]>
             </line>
           </reporter-output>
+<<<<<<< Updated upstream
         </test-method> <!-- bf -->
         <test-method status="FAIL" signature="t_configCreation()[pri:0, instance:src.crm.AdminLogin@e20459]" name="t_configCreation" duration-ms="66702" started-at="2014-11-03T18:26:07Z" finished-at="2014-11-03T18:27:14Z">
           <exception class="org.openqa.selenium.remote.UnreachableBrowserException">
@@ -189,6 +207,30 @@ Caused by: java.net.ConnectException: Connection refused: connect
           </reporter-output>
         </test-method> <!-- af -->
       </class> <!-- src.crm.AdminLogin -->
+=======
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="researchOnCompany()[pri:0, instance:src.crm.BDE@11beb4d]" name="researchOnCompany" duration-ms="49053" started-at="2014-11-03T19:17:05Z" finished-at="2014-11-03T19:17:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- researchOnCompany -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.BDE@11beb4d]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-03T19:17:54Z" finished-at="2014-11-03T19:17:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.BDE@11beb4d]" name="beforeMethod" is-config="true" duration-ms="29188" started-at="2014-11-03T19:17:54Z" finished-at="2014-11-03T19:18:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="workPhaseForLaterDate()[pri:0, instance:src.crm.BDE@11beb4d]" name="workPhaseForLaterDate" duration-ms="51908" started-at="2014-11-03T19:18:23Z" finished-at="2014-11-03T19:19:15Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- workPhaseForLaterDate -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.BDE@11beb4d]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-03T19:19:15Z" finished-at="2014-11-03T19:19:15Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- src.crm.BDE -->
+>>>>>>> Stashed changes
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
