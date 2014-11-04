@@ -392,7 +392,7 @@ public class AdminLogin extends Helper{
  }
  
  
-// @Test
+ //@Test
   public void b_dropDownVerification() throws Exception{
 	  //======'Manager' Drop down button presence and its working=====
 	 	 mylogin();
@@ -446,7 +446,6 @@ public class AdminLogin extends Helper{
 			int cont=0;
 			for(int i= 0;i<serviceList.size();i++){
 				serviceList.get(i).click();
-				sleep(1);
 				cont++;
 		}
 		if(cont==serviceList.size()){
@@ -462,7 +461,7 @@ public class AdminLogin extends Helper{
  
  
  
- //	@Test
+// 	@Test
  	public void c_ButtonVerification() throws Exception{
   		 mylogin();
   		 expand();
@@ -672,7 +671,7 @@ public class AdminLogin extends Helper{
  }
 	 
 	 
-// @Test
+ //@Test
   public void e_showEntriesDropDown() throws Exception   {
 		   
 	   //======Clicking on Update button======= 
@@ -1035,7 +1034,7 @@ public class AdminLogin extends Helper{
 		pagination();
 	}
 	
-//	@Test
+	//@Test
 	public void t_configCreation() throws Exception{
 		mylogin();
 		expand();
@@ -1047,6 +1046,44 @@ public class AdminLogin extends Helper{
 		}else{
 			Assert.fail("view Configuration button is not present");
 		}
+		if(driver.findElement(By.id(or.getProperty("resultMessage"))).getText().contains("Please Provide Configuration Details Before Updation...!")){
+			
+			driver.findElement(By.id("createConfiguration")).click();
+			sleep(2);
+			//template path assigning
+			WebElement wt1 = driver.findElement(By.name(or.getProperty("templatePath")));
+			wt1.sendKeys(sh6.getCell(1, 9).getContents());
+			sleep(1);
+			WebElement wp1 = driver.findElement(By.name(or.getProperty("proposalPath")));
+			wp1.sendKeys(sh6.getCell(1, 10).getContents());
+			sleep(1);
+			WebElement wq1 = driver.findElement(By.name(or.getProperty("quotePath")));
+			wq1.sendKeys(sh6.getCell(1, 11).getContents());
+			sleep(1);
+			WebElement wpi1 = driver.findElement(By.name(or.getProperty("profileImagePath")));
+			wpi1.sendKeys(sh6.getCell(1, 12).getContents());
+			sleep(1);
+			WebElement wr = driver.findElement(By.id(or.getProperty("createUser_button")));
+			if(wr.isDisplayed()){
+				wr.click();
+				sleep(2);
+			}else{
+				Assert.fail("create button not present");
+			}
+			WebElement w = driver.findElement(By.id(or.getProperty("resultant_msg")));
+			if(w.isDisplayed()){
+				if(w.getText().contains("Configurations Successfully Inserted ...!")){
+					sleep(2);
+					myResearcher();
+					
+					Reporter.log("<p>" + "configuration creation success");
+				}else{
+					Reporter.log("<p>" + "configuration already exists");
+				}
+			}else{
+				Assert.fail("no resultant message is displayed");
+			}
+		}else{
 		ArrayList<String> as = new ArrayList<String>();
 		List<WebElement> lip = driver.findElement(By.className(or.getProperty("pathclass"))).findElements(By.tagName(or.getProperty("labelview")));
 		Reporter.log("<p>" + lip.size());
@@ -1120,6 +1157,7 @@ public class AdminLogin extends Helper{
 			}
 		}else{
 			Assert.fail("no resultant message is displayed");
+		}
 		}
 		
 	}
@@ -1224,7 +1262,7 @@ public class AdminLogin extends Helper{
 	}
 
 
-//	@Test
+	//@Test
 	public void v_viewConfig() throws Exception{
 		mylogin();
 		expand();
