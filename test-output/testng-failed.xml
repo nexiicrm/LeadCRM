@@ -4,13 +4,18 @@
   <test name="Default test(failed)">
     <classes>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <class name="src.crm.AdminLogin">
+=======
+      <class name="src.crm.BDELeadEdits">
+>>>>>>> Stashed changes
         <methods>
-          <include name="bf"/>
+          <include name="afterMethod"/>
+          <include name="beforemethod"/>
+          <include name="Closedphase"/>
           <include name="beforesuite"/>
-          <include name="af"/>
-          <include name="t_configCreation"/>
         </methods>
+<<<<<<< Updated upstream
       </class> <!-- src.crm.AdminLogin -->
 =======
       <class name="src.crm.BDE">
@@ -21,6 +26,9 @@
           <include name="beforeMethod"/>
         </methods>
       </class> <!-- src.crm.BDE -->
+>>>>>>> Stashed changes
+=======
+      </class> <!-- src.crm.BDELeadEdits -->
 >>>>>>> Stashed changes
     </classes>
   </test> <!-- Default test(failed) -->
