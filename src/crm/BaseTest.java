@@ -20,8 +20,8 @@ import src.testUtils.Helper;
 public class BaseTest 
 {
   public static WebDriver driver = null;
-  public static Properties config,helper, admin, researcher, bdm, bde, mgmt  = null;
-  public static FileInputStream fis1, fis2, fis3, fis4, fis5, fis6, fis7, fis8 = null;
+  public static Properties config, or, admin, researcher, bdm, bde, mgmt  = null;
+  public static FileInputStream fis1, fis2, fis3, fis4, fis5, fis6, fis7, fis8, fis9 = null;
   public static Workbook w = null;
   public static Sheet sh0, sh1, sh2, sh3, sh4, sh5, sh6, sh7 = null;
   public static Logger log = null;
@@ -45,9 +45,9 @@ public class BaseTest
 	  config.load(fis1);
 	  
 	  log.debug("Loading Object Repository files");
-	  helper = new Properties();
-	  fis2 = new FileInputStream(System.getProperty("user.dir")+"\\src\\config\\helper.properties");
-	  helper.load(fis2);
+	  or = new Properties();
+	  fis2 = new FileInputStream(System.getProperty("user.dir")+"\\src\\config\\objectrepository.properties");
+	  or.load(fis2);
 	  
 	  log.debug("Loading Test data");
 	  fis3 = new FileInputStream(System.getProperty("user.dir")+"\\src\\testData\\TestData.xls");

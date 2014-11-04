@@ -88,11 +88,11 @@ public class Helper extends BaseTest
 	public void login(String username, String password) throws Exception  // To Login 
 	{
 		sleep(2);
-		driver.findElement(By.id(helper.getProperty("username_id"))).sendKeys(username);
+		driver.findElement(By.id(or.getProperty("username_id"))).sendKeys(username);
 		sleep(1);
-		driver.findElement(By.id(helper.getProperty("password_id"))).sendKeys(password);
+		driver.findElement(By.id(or.getProperty("password_id"))).sendKeys(password);
 		sleep(1);
-		driver.findElement(By.cssSelector(helper.getProperty("loginbutton_css"))).findElement(By.tagName(helper.getProperty("loginbutton_input_tagname"))).submit();
+		driver.findElement(By.cssSelector(or.getProperty("loginbutton_css"))).findElement(By.tagName(helper.getProperty("loginbutton_input_tagname"))).submit();
 		sleep(1);	
 	}
 	
