@@ -1,54 +1,94 @@
 package src.crm;
 
 import java.util.List;
-
+import java.io.FileInputStream;
+import jxl.Sheet;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import com.nexiilabs.dbcon.DBConnection;
 
 import src.testUtils.Helper;
 
+
 public class Smoke extends Helper
 {
-  @Test
+	
+ @Test
   public void aResearcher() throws Exception 
   {
 	  help.browser();
-	  driver.get("http://192.168.50.32:8080/leadcrm/login.jsp");
+	  driver.get(config.getProperty("url"));
 	  help.maxbrowser();
-	  help.login("ajay.kovuri@nexiilabs.com", "password");
+	  help.browsererror();
+	  help.login("pavan.nanigans@gmail.com", "password");
 	  help.expand();
-	  
-	  System.out.println(driver.findElement(By.id("bulkUpload")).getSize());
-	  /*if(driver.findElement(By.id("bulkUpload")).getSize()!=(0, 0))
-		  
+	  if (driver.findElement(By.id("bulkUpload")).isDisplayed())
 	  {
-	  driver.findElement(By.id("bulkUpload")).click();
+		  driver.findElement(By.id("bulkUpload")).click();
 	  }
 	  else
 	  {
 		  Assert.fail("Bulk upload option not available");
-	  }*/
+	  }
 	  Thread.sleep(2000);
-	  /*driver.findElement(By.className("medium")).sendKeys("D:\\Lead CRM\\Researcher Test Data 3.xlsx");
-	  Thread.sleep(2000);
-	  driver.findElement(By.id("leads_upload_button")).click();
-	  Thread.sleep(10000);*/
-	  //driver.findElement(By.linkText("Logout")).click();
+	  
+	  if (driver.findElement(By.className("medium")).isDisplayed())
+	  {
+		  driver.findElement(By.className("medium")).sendKeys("D:\\Lead CRM\\Researcher Test Data 3.xlsx");
+	  }
+	  else
+	  {
+		  Assert.fail("Browse option not available");
+	  }
+	  
+	  if (driver.findElement(By.id("leads_upload_button")).isDisplayed())
+	  {
+		  driver.findElement(By.id("leads_upload_button")).click();
+		  Thread.sleep(7000);
+	  }
+	  else
+	  {
+		  Assert.fail("Upload Button not available");
+	  }
+	  
+	  List<WebElement> lis = driver.findElements(By.id("result_msg_div"));
+	 
+	  String s1= "Excel File Uploaded and Leads Saved Successfully....!";
+	  if (lis.get(0).getText().equalsIgnoreCase(s1))
+	  {
+		System.out.println("File uploaded successfully");
+	  }
+	  else
+	  {
+		  Assert.fail("Uploaded file is Invalid");
+	  }
+	  if (driver.findElement(By.linkText("Logout")).isDisplayed()) 
+	  {
+		  driver.findElement(By.linkText("Logout")).click();
+	  }
+	  else
+	  {
+		  Assert.fail("Logout not available");
+	  }
+	  
 	  driver.close();
   }
   
- // @Test
+ @Test
   public void bBDM() throws Exception
   {
 	  help.browser();
-	  driver.get("http://192.168.50.32:8080/leadcrm/login.jsp");
+	  driver.get(config.getProperty("url"));
 	  help.maxbrowser();
+	  help.browsererror();
 	  help.login("srinivasa.sanchana@nexiilabs.com", "password");
 	  help.expand();
 	  
@@ -61,7 +101,7 @@ public class Smoke extends Helper
 	  new Select(driver.findElement(By.name("assignto"))).selectByVisibleText("Self");
 	  Thread.sleep(2000);
 	  
-	  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Jackw Garzan");
+	  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Russells Bennetta");
 	  Thread.sleep(3000);
 	  driver.findElement(By.id("selectall")).click();
 	  driver.findElement(By.id("submit")).findElement(By.className("button")).click();
@@ -69,13 +109,11 @@ public class Smoke extends Helper
 	  
 	  driver.findElement(By.id("researchPhase")).click();
 	  Thread.sleep(2000);
-	  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Jackw Garzan");
+	  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Russells Bennetta");
 	  Thread.sleep(3000);
 	  driver.findElement(By.className("segregate")).click();
 	  Thread.sleep(4000);
-	  
-	  driver.switchTo().frame("id");
-	  
+	    
 	  new Select(driver.findElement(By.name("companyfundstatus"))).selectByVisibleText("Listed");
 	  new Select(driver.findElement(By.name("companystatus"))).selectByVisibleText("Heavy Growth");
 	  driver.findElement(By.name("researchcomment")).sendKeys("Company has heavy growth in QA");
@@ -86,7 +124,7 @@ public class Smoke extends Helper
 	  Thread.sleep(3000);
 	  driver.findElement(By.id("workPhase")).click();
 	  Thread.sleep(2000);
-	  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Jackw Garzan");
+	  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Russells Bennetta");
 	  Thread.sleep(3000);
 	  driver.findElement(By.className("work")).click();
 	  Thread.sleep(4000);
@@ -102,7 +140,7 @@ public class Smoke extends Helper
 	  Thread.sleep(3000);
 	  driver.findElement(By.id("allfollowups")).click();
 	  Thread.sleep(2000);
-	  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Jackw Garzan");
+	  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Russells Bennetta");
 	  Thread.sleep(3000);
 	  driver.findElement(By.className("work")).click();
 	  Thread.sleep(4000);
@@ -129,7 +167,7 @@ public class Smoke extends Helper
 	  Thread.sleep(3000);
 	  driver.findElement(By.id("proposalupload")).click();
 	  Thread.sleep(2000);
-	  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Jackw Garzan");
+	  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Russells Bennetta");
 	  Thread.sleep(3000);
 	  driver.findElement(By.className("upload")).click();
 	  Thread.sleep(4000);
@@ -145,7 +183,7 @@ public class Smoke extends Helper
 	  Thread.sleep(3000);
 	  driver.findElement(By.id("allfollowups")).click();
 	  Thread.sleep(2000);
-	  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Jackw Garzan");
+	  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Russells Bennetta");
 	  Thread.sleep(3000);
 	  driver.findElement(By.className("work")).click();
 	  Thread.sleep(4000);
@@ -160,7 +198,7 @@ public class Smoke extends Helper
 	  Thread.sleep(3000);
 	  driver.findElement(By.id("closedPhase")).click();
 	  Thread.sleep(2000);
-	  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Jackw Garzan");
+	  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Russells Bennetta");
 	  Thread.sleep(3000);
 	  driver.findElement(By.className("close")).click();
 	  Thread.sleep(4000);
@@ -175,20 +213,34 @@ public class Smoke extends Helper
 	  driver.close();
   }
   
- //  @Test
+  @Test
    public void cManagement() throws Exception
    {
 	      help.browser();
-		  driver.get("http://192.168.50.32:8080/leadcrm/login.jsp");
+	      driver.get(config.getProperty("url"));
 		  help.maxbrowser();
-		  help.login("ajaytesting4@gmail.com", "password");
-		  help.expand();	  
-		  driver.findElement(By.id("customersList")).click();
+		  help.browsererror();
+		  help.login("basanirakeshreddy000@gmail.com", "password");
+		  help.expand();
+		  List<WebElement> lis = driver.findElements(By.id("customersList"));
+		  System.out.println(lis.size());
+		 if (driver.findElement(By.id("customersList")).isDisplayed()) 
+		  {
+			  driver.findElement(By.id("customersList")).click();
+		  }
+		  else
+		  {
+			  Assert.fail("All Customers Link not available");
+		  }
+		  
 		  Thread.sleep(2000);
-		  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Jackw Garzan");
+		  driver.findElement(By.id("example_filter")).findElement(By.tagName("input")).sendKeys("Russells Bennetta");
 		  driver.findElement(By.className("analyse")).click();
 		  Thread.sleep(6000);
-		  driver.close();	  
+		  driver.close();	   
    }
-   
-}
+     
+ }
+  
+  
+
