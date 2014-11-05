@@ -51,7 +51,7 @@ public class BDM extends Helper {
 
 	 
 	 
-	 @AfterMethod
+	// @AfterMethod
 	 public void after() {
 		 driver.close();
 	 }
@@ -59,7 +59,7 @@ public class BDM extends Helper {
 	 
 	 // Test Method for Follow up 4 for Cold storage phase. 
 	 @Test
-	 public void coldStorageFollowup() {
+	 public void a_coldStorageFollowup() {
 		 
 		 Reporter.log("<p>" +"Testing follow up for Cold storage");
 		 
@@ -72,6 +72,7 @@ public class BDM extends Helper {
 		 {
 			 driver.findElement(By.id(bdm.getProperty("allfollowupslink_id"))).click();
 			 help.sleep(2);
+			 Reporter.log("<p>" + "Searching leads with status as Introductory Mail.");
 			 search("Introductory Mail");
 			 WebElement followupLead = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
 			 Reporter.log("<p>" +"Selected Lead is:" + followupLead.getText());
@@ -79,7 +80,7 @@ public class BDM extends Helper {
 			 {
 				 followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).click();
 				 help.sleep(3);
-				 Reporter.log("<p>" +driver.findElement(By.cssSelector(bdm.getProperty("windowTitle_css"))).getText());
+				 Reporter.log("<p>" + driver.findElement(By.cssSelector(bdm.getProperty("windowTitle_css"))).getText());
 				 
 				 // Selecting follow up type and entering the follow up comment
 				 new Select(driver.findElement(By.name(bdm.getProperty("followuptype_name")))).selectByVisibleText("Followup 4");
@@ -107,13 +108,13 @@ public class BDM extends Helper {
 		 else
 			 Assert.fail("No Link Found");
 		 Reporter.log("<p>___________________________________________________________________________________");
-	 }
+	 }   
 	 
 	 
 
 	 // Test method for Cold Storage
 	 @Test
-	 public void coldStorage() {
+	 public void b_coldStorage() {
 		
 		 Reporter.log("<p>" +"Test for Cold storage");
 		 
@@ -136,15 +137,15 @@ public class BDM extends Helper {
 		     else {
 		    	
 		    	 String leadno = driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText();
-				 driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys("Prospect");
+				 driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys("Follow up 4");
 				 String leadnos = driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText();
 				 if(leadno.contains(leadnos)) 
 				 {
-					  Reporter.log("<p>" + "Lead Status of every lead is Prospect");
+					  Reporter.log("<p>" + "Lead Status of every lead is Follow up 4");
 				 }
 				 else
 				 {
-					  Reporter.log("<p>" + "Lead Status of every lead is not Prospect");
+					  Reporter.log("<p>" + "Lead Status of every lead is not Follow up 4");
 				 }
 		    	 
 		    	// Verifying no.of leads in the page
@@ -227,7 +228,7 @@ public class BDM extends Helper {
 	 
 	 // Test method for Proposal follow up
 	 @Test
-	 public void proposalFollowup() throws Exception {
+	 public void c_proposalFollowup() throws Exception {
 		
 		 Reporter.log("<p>" +"Testing follow up for Proposal Upload");
 		 
@@ -240,11 +241,17 @@ public class BDM extends Helper {
 		 {
 			 driver.findElement(By.id(bdm.getProperty("allfollowupslink_id"))).click();
 			 help.sleep(2);
+			 Reporter.log("<p>" + "Searching leads with status as Introductory Mail.");
 			 search("Introductory Mail");
 			 WebElement followupLead = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
 			 
 			 String uploadleadId = followupLead.findElement(By.className(bdm.getProperty("leadidintable_class"))).getText();
-			 Reporter.log("<p>" +"The ID of Lead selected to Upload:" + uploadleadId);
+			 String leadname = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(1).getText();
+			 String company = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(2).getText();
+			 String lead = uploadleadId + " " + leadname + " " + company;
+			 Reporter.log("<p>" +"The details of lead selected to confirm: " + lead);
+			 
+			 Reporter.log("<p>" +"The ID of Lead selected to Follow up:" + uploadleadId);
 			 
 			 if (followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).isEnabled()) 
 			 {
@@ -285,7 +292,7 @@ public class BDM extends Helper {
 				 String link = "proposal";
 			  
 				 // Logging into Researcher module and check for leads uploaded with quote
-				 management(link, uploadleadId);
+				 management(link, lead);
 			 } 
 			 else 
 				 Reporter.log("<p>" +"No leads present in the Table for Prospect Identify.");
@@ -298,7 +305,7 @@ public class BDM extends Helper {
 	 
 	 // Test method for Proposal upload
 	 @Test
-	 public void proposalUpload() {
+	 public void d_proposalUpload() {
 		 
 		 Reporter.log("<p>" +"Test for Proposal Upload");
 		 
@@ -337,7 +344,7 @@ public class BDM extends Helper {
 				  driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
 				  driver.findElement(By.name(bdm.getProperty("proposaldescription_name"))).sendKeys("Proposal Description");
 				  driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
-				  String file = System.getProperty("user.dir") + "\\src\\testData\\upload.txt";
+				  String file = System.getProperty("user.dir") + "\\src\\testData\\invalidtextfile.txt";
 				  driver.findElement(By.name(bdm.getProperty("proposaluploadbutton_name"))).sendKeys(file);
 				  driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
 				  help.sleep(4);
@@ -373,7 +380,7 @@ public class BDM extends Helper {
 	 
 	 // Test method for Quote follow up
 	 @Test
-	 public void quoteFollowup() throws Exception {
+	 public void e_quoteFollowup() throws Exception {
 			 Reporter.log("<p>" +"Testing follow up for Quote Upload");
 			 
 			 // Expands the side tree menu
@@ -387,11 +394,18 @@ public class BDM extends Helper {
 				 help.sleep(2);
 				 
 				 // Search for Leads with Introductory mail as Last Follow up type
+				 Reporter.log("<p>" + "Searching leads with status as Introductory Mail.");
 				 search("Introductory Mail");
 				 WebElement followupLead = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
 				 
 				 String uploadleadId = followupLead.findElement(By.className(bdm.getProperty("leadidintable_class"))).getText();
-				 Reporter.log("<p>" +"The ID of Lead selected to Upload:" + uploadleadId);
+				 String leadname = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(1).getText();
+				 String company = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(2).getText();
+				 String lead = uploadleadId + " " + leadname + " " + company;
+				 Reporter.log("<p>" +"The details of lead selected to confirm: " + lead);
+				 
+				 Reporter.log("<p>" +"The ID of Lead selected to Follow up:" + uploadleadId);
+				 
 				 if (followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).isEnabled()) 
 				 {
 					 // Entering details for Quote upload
@@ -422,7 +436,7 @@ public class BDM extends Helper {
 					 String link = "quote";
 				  
 					 // Logging into Researcher module and check for leads uploaded with quote
-					 management(link, uploadleadId);
+					 management(link, lead);
 				 } 
 				 else
 					 Reporter.log("<p>" +"No leads present in the Table for Prospect Identify."); 
@@ -436,7 +450,7 @@ public class BDM extends Helper {
 	 
  	 // Test method for Quote upload
 	 @Test
-	 public void quoteUpload() {
+	 public void f_quoteUpload() {
 		 
 		 Reporter.log("<p>" +"Test for Quote Upload");
 		 
@@ -477,7 +491,7 @@ public class BDM extends Helper {
 				  driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
 				  driver.findElement(By.name(bdm.getProperty("quotedescription_name"))).sendKeys("Quote Description");
 				  driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
-				  String file = System.getProperty("user.dir") + "\\src\\testData\\upload.txt";
+				  String file = System.getProperty("user.dir") + "\\src\\testData\\invalidtextfile.txt";
 				  driver.findElement(By.name(bdm.getProperty("quoteuploadbutton_name"))).sendKeys(file);
 				  driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
 				  help.sleep(5);
@@ -514,7 +528,7 @@ public class BDM extends Helper {
 	 
 	 // Test method for Lead Edit Track it button
 	 @Test 
-	 public void testLeadTrackButton() {
+	 public void g_testLeadTrackButton() {
 		 
 		 Reporter.log("<p>" +"Testing Track It button in Lead Edit Phase");
 		 
@@ -541,6 +555,7 @@ public class BDM extends Helper {
 			  if(trackit==leads1.size())
 				  Reporter.log("<p>" +"Trackit button is enabled for all leads.");
 			  
+			  Reporter.log("<p>" +"Details of the lead are: ");
 			  // Getting the details of the lead to a List and Printing the details
 			  List <String> details = trackitButton(help.random(leads1.size()));
 			  for(int i=0; i<details.size(); i++)
@@ -555,7 +570,7 @@ public class BDM extends Helper {
 	 
 	 // Test method for "Lead Edit" Edit button functionality
 	 @Test
-	 public void testLeadEditButton() {
+	 public void h_testLeadEditButton() {
 		 
 		 Reporter.log("<p>" +"Testing Edit button in Lead Edit Phase and its Functionality");
 		 
@@ -682,7 +697,7 @@ public class BDM extends Helper {
 	 
 	 // Test method for Search Leads
 	 @Test
-	 public void leadSearch() {
+	 public void i_leadSearch() {
 		
 		 Reporter.log("<p>" +"Test for Lead Search Phase");
 		 
@@ -693,12 +708,12 @@ public class BDM extends Helper {
 		 
 		 Reporter.log("<p>___________________________________________________________________________________");
 	 } 	
-	
+
 	 
 	 
 	 // Test Method for Lead Search Paginations
-	 @Test
-	 public void leadSearchPagination() throws Exception {
+	// @Test
+	 public void j_leadSearchPagination() throws Exception {
 		 Reporter.log("<p>" +"Test for Lead Search Phase Paginations");
 		 
 		 // Expands the side tree menu
@@ -716,9 +731,49 @@ public class BDM extends Helper {
 	 
 	 // ------Paginations for all Pages-------
 	 
+	 
+	 
+		// Pagination for Cold Storage page
+		//@Test
+		public void k_paginationColdStorage() throws Exception {
+			
+			 Reporter.log("<p>" +"Test for Pagination in Cold Storage page");
+			 
+			 // Expands the side tree menu
+			 help.expand();
+			 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(bdm.getProperty("coldstorageLink_id"))).getText() + "' Link" );
+			 if(driver.findElement(By.id(bdm.getProperty("coldstorageLink_id"))).isDisplayed()) 
+			 {
+				  driver.findElement(By.id(bdm.getProperty("coldstorageLink_id"))).click();
+				  
+				  // Verifying whether the required page is loaded or not
+				  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id(bdm.getProperty("pagevalidate_id"))).findElement(By.tagName(bdm.getProperty("pagevalidate_tag"))).getText());
+				  help.sleep(4);
+				  
+				  // Pagination
+				  //help.pagination();
+				  
+				  // Page Entries
+				  help.pageEntries();
+				  
+				  // Sorting
+				  help.sorting();
+				  
+				  // Search 
+				  Reporter.log("<p>" +"The Lead searched for:");
+				  search("Henry");	    
+			 } 
+			 else 
+				 Assert.fail("No Link Found");
+			 Reporter.log("<p>___________________________________________________________________________________");
+		}
+		
+		
+		
+	 
 	 // Pagination for Proposal Uploads Page
-	 @Test
-	 public void proposalPagination() throws Exception {
+	// @Test
+	 public void l_paginationproposal() throws Exception {
 		 
 		 Reporter.log("<p>" +"Test for Pagination in proposal upload page");
 		 
@@ -733,10 +788,13 @@ public class BDM extends Helper {
 			  help.sleep(4);
 			  
 			  // Pagination
-			  pagination();
+			  //help.pagination();
 			  
 			  // Page Entries
-			  pageEntries();
+			  help.pageEntries();
+			  
+			  // Sorting
+			  help.sorting();
 			  
 			  // Search 
 			  Reporter.log("<p>" +"The Lead searched for:");
@@ -749,8 +807,8 @@ public class BDM extends Helper {
 	 
 	 
 	 // Pagination for Quote Uploads page
-	 @Test
-	 public void quotePagination() throws Exception {
+	 //@Test
+	 public void m_paginationQuote() throws Exception {
 		 
 		 Reporter.log("<p>" +"Test for Pagination in quote upload page");
 		 
@@ -765,59 +823,28 @@ public class BDM extends Helper {
 			  help.sleep(4);
 			  
 			  // Pagination
-			  pagination();
+			  //help.pagination();
 			  
 			  // Page Entries
-			  pageEntries();
+			  help.pageEntries();
+			  
+			  // Sorting
+			  help.sorting();
 			  
 			  // Search 
 			  Reporter.log("<p>" +"The Lead searched for:");
-			  search("Henry");	  
+			  search("Henry");	    
 		 } 
 		 else
 			 Assert.fail("No Link Found");
 		 Reporter.log("<p>___________________________________________________________________________________");
 	 }
-	 
-	 
-	 
-	// Pagination for Cold Storage page
-	@Test
-	public void coldStoragePagination() throws Exception {
-		
-		 Reporter.log("<p>" +"Test for Pagination in Cold Storage page");
-		 
-		 // Expands the side tree menu
-		 help.expand();
-		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(bdm.getProperty("coldstorageLink_id"))).getText() + "' Link" );
-		 if(driver.findElement(By.id(bdm.getProperty("coldstorageLink_id"))).isDisplayed()) 
-		 {
-			  driver.findElement(By.id(bdm.getProperty("coldstorageLink_id"))).click();
-			  
-			  // Verifying whether the required page is loaded or not
-			  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id(bdm.getProperty("pagevalidate_id"))).findElement(By.tagName(bdm.getProperty("pagevalidate_tag"))).getText());
-			  help.sleep(4);
-			  
-			  // Pagination
-			  pagination();
-			  
-			  // Page Entries
-			  pageEntries();
-			  
-			  // Search 
-			  Reporter.log("<p>" +"The Lead searched for:");
-			  search("Henry");	  
-		 } 
-		 else 
-			 Assert.fail("No Link Found");
-		 Reporter.log("<p>___________________________________________________________________________________");
-	}
 	
 	
 	
 	// Pagination for Lead Edit page
-	@Test
-	public void leadEditPagination() throws Exception {
+	//@Test
+	public void n_paginationleadEdit() throws Exception {
 		 
 		 Reporter.log("<p>" +"Test for Pagination in Lead Edit page");
 		 
@@ -833,14 +860,17 @@ public class BDM extends Helper {
 			  help.sleep(4);
 			  
 			  // Pagination
-			  pagination();
+			  //help.pagination();
 			  
 			  // Page Entries
-			  pageEntries();
+			  help.pageEntries();
+			  
+			  // Sorting
+			  help.sorting();
 			  
 			  // Search 
 			  Reporter.log("<p>" +"The Lead searched for:");
-			  search("Henry");	  
+			  search("Henry");	   
 		 } 
 		 else 
 			 Assert.fail("No Link Found");
@@ -1048,8 +1078,12 @@ public class BDM extends Helper {
 	    				  // Getting the details of the lead in the table to a List
 	    				  WebElement details = driver.findElements(By.tagName(bdm.getProperty("leads_info_tag"))).get(3).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(1);
 	    				  Reporter.log("<p>" + details.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(1).getText());
-	    				  Reporter.log("<p>" + "The attribute of href is: " + details.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(2).getAttribute("href"));
+	    				  Reporter.log("<p>" + "The attribute of href is: " + details.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(2).findElement(By.tagName(bdm.getProperty("anchor_tag"))).getAttribute("href"));
 	    				  String download = details.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(2).findElement(By.tagName(bdm.getProperty("anchor_tag"))).getText();
+	    				  
+	    				  Reporter.log("<P>" + "The file uploaded is: " + file);
+	    				  Reporter.log("<P>" + "The file displayed in the track it of lead is:" + download);
+	    				  
 	    				  if(file.contains(download)) {
 	    					  Reporter.log("<p>" + "The file uploaded is verified."  );
 	    				  }
@@ -1074,3 +1108,6 @@ public class BDM extends Helper {
 		 }
 		 
 }
+
+
+
