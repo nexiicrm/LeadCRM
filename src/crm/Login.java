@@ -43,8 +43,8 @@ public class Login extends Helper{
 			driver.findElement(By.id(or.getProperty("user_name"))).sendKeys(sh0.getCell(j, i).getContents());
 			j++;
 			driver.findElement(By.id(or.getProperty("passwd"))).sendKeys(sh0.getCell(j, i).getContents());
-			driver.findElement(By.cssSelector(or.getProperty("login_button_css"))).findElement(By.tagName(or.getProperty("button_tagname"))).click();
-			sleep(2);
+			driver.findElement(By.cssSelector(or.getProperty("login_button_css"))).findElement(By.tagName(or.getProperty("button_tagname"))).submit();
+			help.sleep(2);
 			WebElement error_msg = driver.findElement(By.id("wrapper")).findElements(By.tagName("label")).get(2);
 			Reporter.log("<p>" + "logging with username: " +sh0.getCell(j-1, i).getContents() +", password: " +sh0.getCell(j, i).getContents() +"-->" +error_msg.getText());
 			}
@@ -56,7 +56,7 @@ public class Login extends Helper{
 	  		  
 	  		//clicking forgot password link
 			driver.findElement(By.id(or.getProperty("errormsg_id"))).findElement(By.tagName(or.getProperty("tag"))).click();
-			sleep(1);
+			help.sleep(2);
 			  
 			//Checking for submit button in forgot password link
 			if(driver.findElement(By.cssSelector(or.getProperty("login_button_css"))).findElement(By.tagName(or.getProperty("button_tagname"))).getAttribute("value").equals("Submit"))
@@ -75,7 +75,7 @@ public class Login extends Helper{
 		   driver.findElement(By.id(or.getProperty("errormsg_id"))).findElement(By.tagName(or.getProperty("tag"))).click();
 		   driver.findElement(By.id(or.getProperty("user_name"))).sendKeys(sh1.getCell(j, i).getContents());
 		   Reporter.log("<p>" + "Entering username as " +sh1.getCell(j, i).getContents() + " in forgot password link");
-		   driver.findElement(By.cssSelector(or.getProperty("login_button_css"))).findElement(By.tagName(or.getProperty("button_tagname"))).click();
+		   driver.findElement(By.cssSelector(or.getProperty("login_button_css"))).findElement(By.tagName(or.getProperty("button_tagname"))).submit();
 		   sleep(6);
 		   List<WebElement> error_msg = driver.findElement(By.id("wrapper")).findElements(By.tagName("label"));
 			  if(error_msg.get(3).getText().isEmpty())
@@ -114,7 +114,7 @@ public class Login extends Helper{
 	    	{
 		    driver.findElement(By.id(or.getProperty("user_name"))).sendKeys(sr2.get(i));
 		    driver.findElement(By.id(or.getProperty("passwd"))).sendKeys(sr3.get(i));
-		    driver.findElement(By.cssSelector(or.getProperty("login_button_css"))).findElement(By.tagName(or.getProperty("button_tagname"))).click();
+		    driver.findElement(By.cssSelector("p.login.button")).findElement(By.tagName("input")).submit();
 		    Reporter.log("<p>" + "Logging with username: " +sr2.get(i)+"," +"password: " +sr3.get(i));
 		    if(driver.getTitle().contains("Admin") || driver.getTitle().contains(sr1.get(i)))
 		    {
