@@ -21,7 +21,7 @@ import com.nexiilabs.dbcon.DBConnection;
 
 
 public class BDE extends Helper{
-	String[] expected = {"Research Phase" , "Work Phase", "Closed Phase", "Cold Storage", "Lead Search", "Lead Edit", "My Account", 
+	String[] expected = {//"Research Phase" , "Work Phase", "Closed Phase", "Cold Storage", "Lead Search", "Lead Edit", "My Account", 
 			"Research On Company", "Work on Lead", "Today's FollowUp", "All FollowUps", "Lead Close", "Cold Storage", "Search Leads", "Edit Leads", "Change Password"};
     
 	List<String> lisub = new ArrayList<String>();
@@ -112,6 +112,7 @@ public class BDE extends Helper{
 	public void submitMessage(WebElement sb, String msg)
 	{
 		  sb.submit();
+		  sleep(5);
 		  List<WebElement> ermg =driver.findElement(By.id(bde.getProperty("resultid"))).findElements(By.tagName(bde.getProperty("resulttag")));
 		  if(ermg.get(0).getText().contentEquals(msg));
 			  Reporter.log("<p> The message :" + msg +" is displayed.....");  
@@ -189,12 +190,8 @@ public class BDE extends Helper{
 		    if(track.get(1).contains(Lead.get(1)))   
 			    if(track.get(19).contains(Lead.get(5)))
 			         Reporter.log("<p> Data is exactly matching in track it page....");   
-			    else
-			    	Reporter.log("<p> These is Data Mismatch in ...");
-		    else
-		    	Reporter.log("<p> There is mismatch Lead name is different");
 	    else
-	    	Reporter.log("<p> There is mismatch in LeadID ");
+	    	Reporter.log("<p> There is mismatch in Data");
 	}
 	 
 	 //This method takes two parameters as strings. It will take the BDM page Proposal or Quote link, container name.
@@ -203,8 +200,7 @@ public class BDE extends Helper{
 	 {
 		 List<String> sr1 = new ArrayList<String>();
 		 try
-	     {  
-			 	
+	     {   	
 	            Class.forName("com.mysql.jdbc.Driver").newInstance();
 	            connection = DBConnection.getConnection();
 	            statement = connection.createStatement();
@@ -261,33 +257,20 @@ public class BDE extends Helper{
 		 close.click();
 		 driver.close();
 	 }
-	 
-	@BeforeMethod
-	public void beforeMethod() throws Exception{
-		browser();
-		maxbrowser();
-		driver.get(config.getProperty("url"));
-		login(config.getProperty("bdename"), config.getProperty("bdepass"));
-		browsererror();		
-	}
 	
-	@AfterMethod
-	public void afterMethod() throws Exception{
-		//driver.close();
-		driver.manage().deleteAllCookies();
-	}
-	
-    //@Test
+    @Test
 	public void ExpandCollapse()
 	{	
 		//This List tree contains all Main Links of BDE Module , adds these in to "lisub" List.
-		List<WebElement> tree = driver.findElement(By.id(bde.getProperty("Treeid"))).findElements(By.className(bde.getProperty("close")));
-		sleep(1);
-		Reporter.log("<p>  ++++++++ Adding Links of tree in to array lisub ++++++++++");
-		for (int i = 0; i < tree.size(); i++)
-			lisub.add(tree.get(i).getText());	
+	    
+    	String user = driver.findElement(By.className("user_name")).getText();
+    	System.out.println("user " + user);
+    	if (user.contains("Hi ! BDE"))
+    		Reporter.log("<p>  ++++++++ Logged in as BDE user ++++++++++");
+    	else
+    		Assert.fail("You have not logged in as BDE user.");
+		sidetreemenuverify(3);
 		expand();
-		
 		//This List tree contains all Main subLinks of BDE Module, adds these in to "lisub" List.
 		Reporter.log("<p>  ++++++++ Adding Links of tree in to array lisub ++++++++++");
 		List<WebElement> subtree= driver.findElement(By.id(bde.getProperty("Treeid"))).findElements(By.tagName(bde.getProperty("subtreetag")));
@@ -352,7 +335,8 @@ public class BDE extends Helper{
 			 Assert.fail("Expected Lead is not present in Work Phase");
 		 else 
 			 Reporter.log("<p> The research Lead : " + randomLead +" is sucessfully navigated to Work Phase");
-	
+		 
+		 //This block checks the trackit functionality 
 		 trackIT();
 		 List<WebElement> tb = driver.findElements(By.tagName("table"));
 		 List<WebElement> lb2 = tb.get(1).findElement(By.tagName("tbody")).findElements(By.tagName("label"));
@@ -362,7 +346,7 @@ public class BDE extends Helper{
 			Reporter.log(" Track it comments for Research phase not Present");
 	}	
 	
-	//@Test
+	//@Test(invocationCount = 1)
     public void bworkPhaseForTodaysDate()
 	{
 		date = new Date();	
@@ -412,7 +396,7 @@ public class BDE extends Helper{
 		trackIT();		
 	}
 	
-	  //@Test
+	  //@Test(invocationCount = 1)
 	  public void cworkPhaseForLaterDate()
 	  {   
 	    cal = Calendar.getInstance();
@@ -490,7 +474,7 @@ public class BDE extends Helper{
 			 Reporter.log("<p> The research Lead : " + Leadno + " is also available in All FollowUps");	 
 	 }
      
-	 //@Test
+	 //@Test(invocationCount = 2)
 	 public void etodaysFollowupProposal() throws Exception
 	 {
 		 date = new Date();
@@ -578,7 +562,7 @@ public class BDE extends Helper{
 	
 	 }
 	 
-     //@Test
+     @Test
 	 public void fAllFollowups4()
 	 {
 		 date = new Date();	
@@ -609,7 +593,7 @@ public class BDE extends Helper{
 			 Reporter.log("<p> The todays Followup Lead is : " + Leadno + " is available in Cold Storage.");		 
 	 }
 	 
-     //@Test
+     @Test
 	 public void gAllFollowupsQuoteUpload() throws Exception
 	 {
 		 date = new Date();	
@@ -659,7 +643,6 @@ public class BDE extends Helper{
 		 else 
 			Assert.fail("Not navigated.");
 		
-		 
 		 //This block check for the lead present in All FollowUp also verify the Track It comments
 		 navigatePage("All FollowUp", "All Followups");
 		 searchLead(Leadno);
@@ -672,8 +655,8 @@ public class BDE extends Helper{
 		 
 	 }
   
-	 //@Test
-     public void iAllFollowupclose()
+	 @Test
+     public void hAllFollowupclose()
      {
     	 navigatePage("All FollowUps", "All Followups");    
     	 LeadSelection("Prospect Identify" , "work");
@@ -699,7 +682,7 @@ public class BDE extends Helper{
 			 Assert.fail("Navigation to page All Followup failed");
     	 
     	 //This block checks for Lead is moved for All FollowUpclose phase to Lead Close phase. 
-    	 navigatePage("Lead Close", "Lead Close");
+    	 //navigatePage("Lead Close", "Lead Close");
     	 searchLead(Leadno);
     	 if (tableSize().contains("dataTables_empty"))	
 			 Assert.fail("Expected Lead is not present in All FollowUp");
@@ -709,10 +692,10 @@ public class BDE extends Helper{
      }
 	 
 	 @Test
-	 public void jcoldStorage() 
+	 public void icoldStorage() 
 	 {
 		 
-		/* navigatePage("Cold Storage", "Cold Storage");
+		 navigatePage("Cold Storage", "Cold Storage");
 		 LeadSelection("random" , "analyse");
 		 
 		 //This block checks for lead moved from closed phase to BD
@@ -729,35 +712,42 @@ public class BDE extends Helper{
 		 if (tableSize().contains("dataTables_empty"))	
 			 Reporter.log("<p> The Cold Phase lead is : " + randomLead + " is not available in All FollowUp.");
 		 else 
-			  Assert.fail("Expected Lead is still present in All FollowUp after Confirmation.");*/
+			  Assert.fail("Expected Lead is still present in All FollowUp after Confirmation.");
 		 
 		 //Search Closed Lead in DB from Search Leads
-		 navigatePage("Search Leads", "Search Criteria");
-		 //driver.findElement(By.name("rqfieldsCheckAll")).click();
-		 sleep(5);
-		 WebElement reqfields = driver.findElement(By.id(bdm.getProperty("requiredfields_id"))).findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(0);
-	     reqfields.findElement(By.tagName(bdm.getProperty("searchbox_tag"))).click();
-	      
-	      driver.findElement(By.cssSelector(bdm.getProperty("filteroption_css"))).click();
+		 expand();
+		/* driver.findElement(By.id("serachLeads123")).click();
+		 sleep(8);
+		 
+		 //Clicking Check All Field
+		 List<WebElement> reqfields = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("input"));
+		 reqfields.get(0).click();
+		 help.sleep(1);
+		 
+		 //Clicking filter Option
+		 driver.findElement(By.id("ui-accordion-accordion-header-1")).click();
+		 List<WebElement> filteroptions=driver.findElement(By.id("ui-accordion-accordion-panel-1")).findElements(By.tagName("fieldset"));
+		 List<WebElement> options=filteroptions.get(6).findElements(By.tagName("input"));
+		 Reporter.log("<p>" +"No of options:"+options.size());
+		 help.sleep(1);
+		 options.get(0).click();
+		 
+		 //List<WebElement> filteroptions=driver.findElement(By.id("ui-accordion-accordion-panel-1")).findElements(By.tagName("fieldset"));
+		 //System.out.println(filteroptions.size());
+		 //WebElement reqfields = driver.findElement(By.linkText("Check All"));
+	     //reqfields.click();
+	     //driver.findElement(By.cssSelector(bde.getProperty("filteroption_css"))).click();
 	      
 	      // Selecting Cold storage in filter options
-	      WebElement status = driver.findElement(By.id(bdm.getProperty("statusid_id"))).findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(4);
-	      status.findElement(By.tagName(bdm.getProperty("searchbox_tag"))).click();
+	      //WebElement status = driver.findElement(By.id(bde.getProperty("statusid_id"))).findElements(By.tagName("")).get(4);
+	      //status.findElement(By.tagName(bdm.getProperty("searchbox_tag"))).click();
 	      
 	      // Clicking on search button
-	      driver.findElement(By.id(bdm.getProperty("registerbutton_id"))).click();
-		 
-		 
-		 
-		/* List<WebElement> li = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("input"));
-		 li.get(0).click();
-		 sleep(3);
-		 driver.findElement(By.id("ui-accordion-accordion-header-1")).findElement(By.tagName("span")).click();
-		 driver.findElement(By.id("status_ids")).findElement(By.name("statusesCheckAll")).click();
-		 driver.findElement(By.id("registerbutton")).click();*/
-	 }
+	      driver.findElement(By.id(bdm.getProperty("registerbutton_id"))).click();*/
+	
+		 }
 	 
-	 //@Test
+	 @Test
 	 public void kconfirmLeadsOfTodaysDate()
 	 {
 		 date = new Date();	
@@ -769,15 +759,34 @@ public class BDE extends Helper{
 		 List<WebElement> All = driver.findElement(By.tagName(bde.getProperty("tableBody"))).findElements(By.tagName(bde.getProperty("tableTr")));
 		 
 		 for(int i = 0; i < All.size(); i++)
-			  l1.add(All.get(i).findElement(By.className(bde.getProperty("sortclass"))).getText());
+		 {
+			 // l1.add(All.get(i).findElement(By.className(bde.getProperty("sortclass"))).getText());
+			 if (tableSize().contains("dataTables_empty"))
+			 {
+				 navigatePage("Today's FollowUp", "Today Followups");
+			     searchLead(simple.format(date));
+			     if(tableSize().contains("dataTables_empty"))
+				    Assert.fail("There were no leads in All FollowUp table to verify this senario.");
+			     else
+			    	Assert.fail("There is some mis match in size of Todays Followup");
+			 }
+			 else
+			 {
+				 List<WebElement> tds = All.get(i).findElements(By.tagName("td"));
+				 l1.add(tds.get(0).getText() + " " + tds.get(1).getText() + " " +tds.get(2).getText());
+			 }
+		 }   
 		 
 		 navigatePage("Today's FollowUp", "Today Followups");
 		 searchLead(simple.format(date));
 		 List<WebElement> Today = driver.findElement(By.tagName(bde.getProperty("tableBody"))).findElements(By.tagName(bde.getProperty("tableTr")));
 		 
 		 for(int j = 0; j < All.size(); j++)
-			  l2.add(Today.get(j).findElement(By.className(bde.getProperty("sortclass"))).getText());
-		 
+		 {
+			  //l2.add(Today.get(j).findElement(By.className(bde.getProperty("sortclass"))).getText());
+			 List<WebElement> tds1 = Today.get(j).findElements(By.tagName("td"));
+		     l2.add(tds1.get(0).getText() + " " + tds1.get(1).getText() + " " +tds1.get(2).getText());
+		 }
 		 Reporter.log("<p>  AllFollowUp table size:" + Today.size() + "Todays FollowUp table size:" + All.size());
 		 
 		 if(All.size() == Today.size())
@@ -792,5 +801,20 @@ public class BDE extends Helper{
 		 }
 	 }
 	 
+	 @BeforeMethod
+		public void beforeMethod() throws Exception{
+			browser();
+			maxbrowser();
+			driver.get(config.getProperty("url"));
+			login(config.getProperty("bdename"),config.getProperty("bdepwd"));
+			browsererror();		
+	    }
+		
+		@AfterMethod
+		public void afterMethod() throws Exception{
+			driver.close();
+			driver.manage().deleteAllCookies();
+		}
+		
 
  }
