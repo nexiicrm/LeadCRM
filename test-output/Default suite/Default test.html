@@ -55,27 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
-=======
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
->>>>>>> Stashed changes
+<td>Tests passed/Failed/Skipped:</td><td>4/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Nov 03 19:32:11 IST 2014</td>
+<td>Started on:</td><td>Wed Nov 05 19:59:54 IST 2014</td>
 </tr>
-<<<<<<< Updated upstream
-<tr><td>Total time:</td><td>76 seconds (76603 ms)</td>
-=======
-<td>Tests passed/Failed/Skipped:</td><td>2/0/0</td>
-</tr><tr>
-<td>Started on:</td><td>Mon Nov 03 19:16:28 IST 2014</td>
-</tr>
-<tr><td>Total time:</td><td>166 seconds (166899 ms)</td>
->>>>>>> Stashed changes
-=======
-<tr><td>Total time:</td><td>220 seconds (220841 ms)</td>
->>>>>>> Stashed changes
+<tr><td>Total time:</td><td>384 seconds (384660 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -83,346 +67,187 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED CONFIGURATIONS</b></td></tr>
-=======
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
->>>>>>> Stashed changes
-=======
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
->>>>>>> Stashed changes
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<td title='src.crm.AdminLogin.af()'><b>af</b><br>Test class: src.crm.AdminLogin</td>
-<td><div><pre>org.openqa.selenium.remote.UnreachableBrowserException: Error communicating with the remote browser. It may have died.
-Build info: version: &apos;2.43.0&apos;, revision: &apos;597b76b&apos;, time: &apos;2014-09-09 20:52:14&apos;
-System info: host: &apos;tulasiramg&apos;, ip: &apos;192.168.1.150&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_65&apos;
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:593)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:614)
-	at org.openqa.selenium.remote.RemoteWebDriver.close(RemoteWebDriver.java:463)
-	at src.crm.AdminLogin.af(AdminLogin.java:46)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
-	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:786)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
-	at org.testng.TestRunner.privateRun(TestRunner.java:767)
-	at org.testng.TestRunner.run(TestRunner.java:617)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
-	at org.testng.TestNG.run(TestNG.java:1057)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:7057 [/127.0.0.1] failed: Connection refused: connect
-	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:140)
-	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:318)
-	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:72)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
-	at org.openqa.selenium.remote.HttpCommandExecutor.fallBackExecute(HttpCommandExecutor.java:215)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-	at org.openqa.selenium.firefox.internal.NewProfileExtensionConnection.execute(NewProfileExtensionConnection.java:165)
-	at org.openqa.selenium.firefox.FirefoxDriver$LazyCommandExecutor.execute(FirefoxDriver.java:364)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:572)
-	... 29 more
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
-	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
-	at java.net.PlainSocketImpl.connect(Unknown Source)
-	at java.net.SocksSocketImpl.connect(Unknown Source)
-	at java.net.Socket.connect(Unknown Source)
-	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:72)
-	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:123)
-	... 43 more
-</pre></div><a href='#' onClick='toggleBox("stack-trace4124740", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace4124740'><pre>org.openqa.selenium.remote.UnreachableBrowserException: Error communicating with the remote browser. It may have died.
-Build info: version: &apos;2.43.0&apos;, revision: &apos;597b76b&apos;, time: &apos;2014-09-09 20:52:14&apos;
-System info: host: &apos;tulasiramg&apos;, ip: &apos;192.168.1.150&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_65&apos;
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:593)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:614)
-	at org.openqa.selenium.remote.RemoteWebDriver.close(RemoteWebDriver.java:463)
-	at src.crm.AdminLogin.af(AdminLogin.java:46)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
-	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:786)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
-	at org.testng.TestRunner.privateRun(TestRunner.java:767)
-	at org.testng.TestRunner.run(TestRunner.java:617)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
-	at org.testng.TestNG.run(TestNG.java:1057)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:7057 [/127.0.0.1] failed: Connection refused: connect
-	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:140)
-	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:318)
-	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:72)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
-	at org.openqa.selenium.remote.HttpCommandExecutor.fallBackExecute(HttpCommandExecutor.java:215)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-	at org.openqa.selenium.firefox.internal.NewProfileExtensionConnection.execute(NewProfileExtensionConnection.java:165)
-	at org.openqa.selenium.firefox.FirefoxDriver$LazyCommandExecutor.execute(FirefoxDriver.java:364)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:572)
-	... 29 more
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
-	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
-	at java.net.PlainSocketImpl.connect(Unknown Source)
-	at java.net.SocksSocketImpl.connect(Unknown Source)
-	at java.net.Socket.connect(Unknown Source)
-	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:72)
-	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:123)
-	... 43 more
-</pre></div></td>
-<td>0</td>
-<td>src.crm.AdminLogin@e20459</td></tr>
-</table><p>
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='src.crm.AdminLogin.t_configCreation()'><b>t_configCreation</b><br>Test class: src.crm.AdminLogin<br/>
-<a href="#Output-2488371" onClick='toggleBox("Output-2488371", this, "Show output", "Hide output");'>Show output</a>
-=======
-<td title='src.crm.BDELeadEdits.Closedphase()'><b>Closedphase</b><br>Test class: src.crm.BDELeadEdits<br/>
-<a href="#Output-1933107283" onClick='toggleBox("Output-1933107283", this, "Show output", "Hide output");'>Show output</a>
->>>>>>> Stashed changes
+<td title='src.crm.Researcher.f1()'><b>f1</b><br>Test class: src.crm.Researcher<br/>
+<a href="#Output-30553794" onClick='toggleBox("Output-30553794", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-1933107283" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1933107283">
-<p>totalcolumns having sorting options=7<br/>
-<p>sorting descending: on column: 1:Lead Id<br/>
-<p>sorting ascending: on column: 1:Lead Id<br/>
-<p>sorting ascending: on column: 2:Lead Name<br/>
-<p>sorting descending: on column: 2:Lead Name<br/>
-<p>sorting ascending: on column: 3:Company Name<br/>
-<p>sorting descending: on column: 3:Company Name<br/>
-<p>sorting ascending: on column: 4:Service Name<br/>
-<p>sorting descending: on column: 4:Service Name<br/>
-<p>sorting ascending: on column: 5:Lead Phase<br/>
-<p>sorting descending: on column: 5:Lead Phase<br/>
-<p>sorting ascending: on column: 6:Lead Status<br/>
-<p>sorting descending: on column: 6:Lead Status<br/>
-<p>sorting ascending: on column: 7:Action<br/>
-<p>sorting descending: on column: 7:Action<br/>
-<p>close button is enabled for all leads.<br/>
-<p>closed lead id:1003<br/>
-<p>Lead Close:is opened<br/>
-<p>leadstatus dropdown size:3<br/>
-<p>2<br/>
-<p>Succesfully Lead Closed and it lost competetion<br/>
-<p>1<br/>
-<p>[1003]<br/>
-<p>pass<br/>
+<a href="#Output-30553794" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-30553794">
+<p>===========Leads Upload=========<br/>
+<p>Number Elements in List1 : 6<br/>
+<p>User Logged in as:Hi ! Researcher<br/>
+<p>Please Provide Valid Excel File....!<br/>
+<p>Please Provide Valid Excel File....!<br/>
 </div>
 </td>
-<<<<<<< Updated upstream
-<td><div><pre>org.openqa.selenium.remote.UnreachableBrowserException: Error communicating with the remote browser. It may have died.
-Build info: version: &apos;2.43.0&apos;, revision: &apos;597b76b&apos;, time: &apos;2014-09-09 20:52:14&apos;
-System info: host: &apos;tulasiramg&apos;, ip: &apos;192.168.1.150&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_65&apos;
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:593)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:614)
-	at org.openqa.selenium.remote.RemoteWebDriver.close(RemoteWebDriver.java:463)
-	at src.crm.AdminLogin.myResearcher(AdminLogin.java:124)
-	at src.crm.AdminLogin.t_configCreation(AdminLogin.java:1152)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
-	at org.testng.TestRunner.privateRun(TestRunner.java:767)
-	at org.testng.TestRunner.run(TestRunner.java:617)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
-	at org.testng.TestNG.run(TestNG.java:1057)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:7057 [/127.0.0.1] failed: Connection refused: connect
-	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:140)
-	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:318)
-	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:72)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
-	at org.openqa.selenium.remote.HttpCommandExecutor.fallBackExecute(HttpCommandExecutor.java:215)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-	at org.openqa.selenium.firefox.internal.NewProfileExtensionConnection.execute(NewProfileExtensionConnection.java:165)
-	at org.openqa.selenium.firefox.FirefoxDriver$LazyCommandExecutor.execute(FirefoxDriver.java:364)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:572)
-	... 28 more
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
-	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
-	at java.net.PlainSocketImpl.connect(Unknown Source)
-	at java.net.SocksSocketImpl.connect(Unknown Source)
-	at java.net.Socket.connect(Unknown Source)
-	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:72)
-	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:123)
-	... 42 more
-</pre></div><a href='#' onClick='toggleBox("stack-trace2488371", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace2488371'><pre>org.openqa.selenium.remote.UnreachableBrowserException: Error communicating with the remote browser. It may have died.
-Build info: version: &apos;2.43.0&apos;, revision: &apos;597b76b&apos;, time: &apos;2014-09-09 20:52:14&apos;
-System info: host: &apos;tulasiramg&apos;, ip: &apos;192.168.1.150&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_65&apos;
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:593)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:614)
-	at org.openqa.selenium.remote.RemoteWebDriver.close(RemoteWebDriver.java:463)
-	at src.crm.AdminLogin.myResearcher(AdminLogin.java:124)
-	at src.crm.AdminLogin.t_configCreation(AdminLogin.java:1152)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
-	at org.testng.TestRunner.privateRun(TestRunner.java:767)
-	at org.testng.TestRunner.run(TestRunner.java:617)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
-	at org.testng.TestNG.run(TestNG.java:1057)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:7057 [/127.0.0.1] failed: Connection refused: connect
-	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:140)
-	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:318)
-	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:72)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
-	at org.openqa.selenium.remote.HttpCommandExecutor.fallBackExecute(HttpCommandExecutor.java:215)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-	at org.openqa.selenium.firefox.internal.NewProfileExtensionConnection.execute(NewProfileExtensionConnection.java:165)
-	at org.openqa.selenium.firefox.FirefoxDriver$LazyCommandExecutor.execute(FirefoxDriver.java:364)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:572)
-	... 28 more
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
-	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
-	at java.net.PlainSocketImpl.connect(Unknown Source)
-	at java.net.SocksSocketImpl.connect(Unknown Source)
-	at java.net.Socket.connect(Unknown Source)
-	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:72)
-	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:123)
-	... 42 more
-</pre></div></td>
-<td>66</td>
-<td>src.crm.AdminLogin@e20459</td></tr>
-=======
-<td title='src.crm.BDE.researchOnCompany()'><b>researchOnCompany</b><br>Test class: src.crm.BDE</td>
 <td></td>
-<td>49</td>
-<td>src.crm.BDE@11beb4d</td></tr>
+<td>54</td>
+<td>src.crm.Researcher@18ab963</td></tr>
 <tr>
-<td title='src.crm.BDE.workPhaseForLaterDate()'><b>workPhaseForLaterDate</b><br>Test class: src.crm.BDE</td>
+<td title='src.crm.Researcher.f2()'><b>f2</b><br>Test class: src.crm.Researcher<br/>
+<a href="#Output-16569993" onClick='toggleBox("Output-16569993", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-16569993" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-16569993">
+<p>===========Leads Upload1=========<br/>
+<p>Number Elements in List1 : 6<br/>
+<p>User Logged in as:Hi ! Researcher<br/>
+<p>Waiting timed out element not foundBy.className: error_msg<br/>
+<p>Excel File Uploaded and Leads Saved Successfully....!<br/>
+</div>
+</td>
 <td></td>
-<td>51</td>
-<td>src.crm.BDE@11beb4d</td></tr>
->>>>>>> Stashed changes
-=======
+<td>94</td>
+<td>src.crm.Researcher@18ab963</td></tr>
+<tr>
+<td title='src.crm.Researcher.f3()'><b>f3</b><br>Test class: src.crm.Researcher<br/>
+<a href="#Output-13150556" onClick='toggleBox("Output-13150556", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-13150556" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-13150556">
+<p>=================search leads=================<br/>
+<p>=================Expanding tree menu=================<br/>
+<p>The reqiured field:Last Name<br/>
+<p>Size of Filter option categories:7<br/>
+<p>Filter Option Selected:Choose Company<br/>
+<p>No.of options in Choose Company List:382<br/>
+<p>Option selected is:Camimbo<br/>
+<p>1 Hicks
+2 Bailey
+3 Cole
+4 Stevens
+5 Snyder
+6 Burton
+7 Mccoy<br/>
+<p>Filter Option Selected:Choose Country<br/>
+<p>No.of options in Choose Country List:118<br/>
+<p>Option selected is:Belgium<br/>
+<p>1 Palmer
+2 Young
+3 Burns
+4 Wheeler
+5 Stevens
+6 Ferguson
+7 Arnold
+8 Bishop
+9 Pierce
+10 Howard<br/>
+<p>Filter Option Selected:Choose City<br/>
+<p>No.of options in Choose City List:1854<br/>
+<p>Option selected is:Magaria<br/>
+<p>1 Fields<br/>
+<p>Filter Option Selected:Choose Domain<br/>
+<p>No.of options in Choose Domain List:22<br/>
+<p>Option selected is:Domain G<br/>
+<p>1 euvri
+2 Wood
+3 Torres
+4 Washington
+5 Rogers
+6 Cook
+7 Coleman
+8 Schmidt
+9 Willis
+10 Rodriguez<br/>
+<p>Filter Option Selected:Choose Campaign<br/>
+<p>No.of options in Choose Campaign List:41<br/>
+<p>Option selected is:Check ALL<br/>
+<p>1 Vasquez
+2 Davis
+3 Bowman
+4 Strauss
+5 Lee
+6 mehatha
+7 tulugu
+8 euvri
+9 Mitchell
+10 Marshall<br/>
+<p>Filter Option Selected:Choose Service<br/>
+<p>No.of options in Choose Service List:11<br/>
+<p>Option selected is:special officer<br/>
+<p>1 tulugu
+2 euvri<br/>
+<p>Filter Option Selected:Choose Status<br/>
+<p>No.of options in Choose Status List:6<br/>
+<p>Option selected is:Pre Qualified<br/>
+<p>1 Vasquez
+2 Davis
+3 Bowman
+4 Strauss
+5 Lee
+6 mehatha
+7 tulugu
+8 euvri
+9 Mitchell
+10 Marshall<br/>
+</div>
+</td>
 <td></td>
-<td>203</td>
-<td>src.crm.BDELeadEdits@6a97e765</td></tr>
->>>>>>> Stashed changes
+<td>94</td>
+<td>src.crm.Researcher@18ab963</td></tr>
+<tr>
+<td title='src.crm.Researcher.f5()'><b>f5</b><br>Test class: src.crm.Researcher<br/>
+<a href="#Output-26783891" onClick='toggleBox("Output-26783891", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-26783891" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-26783891">
+<p>Number Elements in List1 : 12<br/>
+<p>old password is:password<br/>
+<p>Successfully canceled the change password page<br/>
+<p>Old password container is avilable<br/>
+<p>password<br/>
+<p>*************************<br/>
+<p>*************************<br/>
+<p>New password container is avilable<br/>
+<p>123<br/>
+<p>*************************<br/>
+<p>*************************<br/>
+<p>Confirm password container is avilable<br/>
+<p>sai<br/>
+<p>*************************<br/>
+<p>*************************<br/>
+<p>Old password container is avilable<br/>
+<p>123<br/>
+<p>*************************<br/>
+<p>*************************<br/>
+<p>New password container is avilable<br/>
+<p>123<br/>
+<p>*************************<br/>
+<p>*************************<br/>
+<p>Confirm password container is avilable<br/>
+<p>123<br/>
+<p>*************************<br/>
+<p>*************************<br/>
+<p>Old password container is avilable<br/>
+<p>password<br/>
+<p>*************************<br/>
+<p>*************************<br/>
+<p>New password container is avilable<br/>
+<p>password<br/>
+<p>*************************<br/>
+<p>*************************<br/>
+<p>Confirm password container is avilable<br/>
+<p>password<br/>
+<p>*************************<br/>
+<p>*************************<br/>
+<p>changed password000<br/>
+<p>old password is:password<br/>
+<p>Number Elements in List1 : 12<br/>
+<p>changed password000<br/>
+<p>old password is:password<br/>
+<p>Number Elements in List1 : 12<br/>
+</div>
+</td>
+<td></td>
+<td>72</td>
+<td>src.crm.Researcher@18ab963</td></tr>
 </table><p>
 </body>
 </html>

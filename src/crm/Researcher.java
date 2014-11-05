@@ -85,10 +85,10 @@ public class Researcher extends Helper{
 		Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
 	}
 		
-	//===========Leads Upload=========//
+//===========Leads Upload=========//
 	
   @Test
-  public void lead() throws Exception {
+  public void f1() throws Exception {
 	 
 	// System.out.println("===========Leads Upload=========");
 	 Reporter.log("<p>" +"===========Leads Upload========="); 
@@ -137,7 +137,7 @@ public class Researcher extends Helper{
 //===========Leads Upload valid data=========//
 	
   @Test
-  public void lead1() throws Exception {
+  public void f2() throws Exception {
 	  
 	   
 	 
@@ -163,6 +163,8 @@ public class Researcher extends Helper{
 		//==calling action method==//
 		 action();
 		 sleep(3);
+		 
+		 driver.findElement(By.linkText("Logout")).click();
 		
   }  
  //====checking in bdm====// 
@@ -178,7 +180,7 @@ public class Researcher extends Helper{
 			System.out.println(rows);
 			String data;
 			
-			for(int row = 1;row < rows;row++)
+			/*for(int row = 1;row < rows;row++)
 			{
 				int col=3,col1=13;
 				//using key-value pair
@@ -192,18 +194,35 @@ public class Researcher extends Helper{
 			}
 				
 			
-			}		
+			}	*/	
 	  
   }
+  
+  @Test
+  public void f3() throws Exception {
+	  
+	  Reporter.log("<p>" + "=================search leads=================");
+			
+	  help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
+	  
+	  Reporter.log("<p>" + "=================Expanding tree menu=================");
+	  
+	  help.expand();
+	  
+	  help.searchLead();
+				
+	  
+  }
+  
 //===========My Account=========//
  
- @Test
+ /*// @Test
   public void f1() throws Exception {
 	  
 	  System.out.println("===========My Account=========");
 	  
 	  //===Researcher is 3rdsheet in excels=====//
-	  int columns = sh3.getColumns();
+	  	int columns = sh3.getColumns();
 		int rows = sh3.getRows();
 		String data;
 		int col;
@@ -416,11 +435,11 @@ public class Researcher extends Helper{
 			driver.findElement(By.id(or.getProperty("confirmpass"))).clear();
 			help.sleep(3);
 		}
-		}
+		}*/
   //======Lead search=====//
   
- // @Test
-  public void f3() throws Exception {
+ //@Test
+  public void f4() throws Exception {
 	  
 	  System.out.println("======Lead search=====");
 	//Login
@@ -479,15 +498,15 @@ public class Researcher extends Helper{
   
   //testing data
 
- @Test
-  public void f4() throws Exception {
+  @Test
+  public void f5() throws Exception {
 	  
 	  System.out.println("======Lead search=====");
 		//Login
 			
 				help.login(config.getProperty("auname"),config.getProperty("apass"));
-				String old = config.getProperty("apass");
-				System.out.println("old password is:" + old);
+			//	String old = config.getProperty("apass");
+				//System.out.println("old password is:" + old);
 				
 				//===printing size of tree menu====//
 			    treeSize();
@@ -495,10 +514,7 @@ public class Researcher extends Helper{
 			    //====Expanding tree menu====//
 			    help.expand();
 			    
-			   //changePassword("srini.sanchana@gmail.com");
-			   
-	  
-	  
+			   changePassword("srini.sanchana@gmail.com");
   }
   
  
@@ -518,11 +534,11 @@ public class Researcher extends Helper{
 	 }
 }
 
- // @AfterMethod
+  @AfterMethod
   public void afterMethod() {
 	 // driver.quit();
 	  driver.close();
-	  driver.quit();
+	  //driver.quit();
   }
 
 }

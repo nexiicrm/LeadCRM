@@ -1,310 +1,673 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<testng-results skipped="0" failed="1" total="1" passed="0">
-=======
-<testng-results skipped="0" failed="0" total="2" passed="2">
->>>>>>> Stashed changes
-=======
-<testng-results skipped="0" failed="0" total="1" passed="1">
->>>>>>> Stashed changes
+<testng-results skipped="0" failed="0" total="4" passed="4">
   <reporter-output>
     <line>
-      <![CDATA[<p>totalcolumns having sorting options=7]]>
+      <![CDATA[<p>===========Leads Upload=========]]>
     </line>
     <line>
-      <![CDATA[<p>sorting descending: on column: 1:Lead Id]]>
+      <![CDATA[<p>Number Elements in List1 : 6]]>
     </line>
     <line>
-      <![CDATA[<p>sorting ascending: on column: 1:Lead Id]]>
+      <![CDATA[<p>User Logged in as:Hi ! Researcher]]>
     </line>
     <line>
-      <![CDATA[<p>sorting ascending: on column: 2:Lead Name]]>
+      <![CDATA[<p>Please Provide Valid Excel File....!]]>
     </line>
     <line>
-      <![CDATA[<p>sorting descending: on column: 2:Lead Name]]>
+      <![CDATA[<p>Please Provide Valid Excel File....!]]>
     </line>
     <line>
-      <![CDATA[<p>sorting ascending: on column: 3:Company Name]]>
+      <![CDATA[<p>===========Leads Upload1=========]]>
     </line>
     <line>
-      <![CDATA[<p>sorting descending: on column: 3:Company Name]]>
+      <![CDATA[<p>Number Elements in List1 : 6]]>
     </line>
     <line>
-      <![CDATA[<p>sorting ascending: on column: 4:Service Name]]>
+      <![CDATA[<p>User Logged in as:Hi ! Researcher]]>
     </line>
     <line>
-      <![CDATA[<p>sorting descending: on column: 4:Service Name]]>
+      <![CDATA[<p>Waiting timed out element not foundBy.className: error_msg]]>
     </line>
     <line>
-      <![CDATA[<p>sorting ascending: on column: 5:Lead Phase]]>
+      <![CDATA[<p>Excel File Uploaded and Leads Saved Successfully....!]]>
     </line>
     <line>
-      <![CDATA[<p>sorting descending: on column: 5:Lead Phase]]>
+      <![CDATA[<p>=================search leads=================]]>
     </line>
     <line>
-      <![CDATA[<p>sorting ascending: on column: 6:Lead Status]]>
+      <![CDATA[<p>=================Expanding tree menu=================]]>
     </line>
     <line>
-      <![CDATA[<p>sorting descending: on column: 6:Lead Status]]>
+      <![CDATA[<p>The reqiured field:Last Name]]>
     </line>
     <line>
-      <![CDATA[<p>sorting ascending: on column: 7:Action]]>
+      <![CDATA[<p>Size of Filter option categories:7]]>
     </line>
     <line>
-      <![CDATA[<p>sorting descending: on column: 7:Action]]>
+      <![CDATA[<p>Filter Option Selected:Choose Company]]>
     </line>
     <line>
-      <![CDATA[<p>close button is enabled for all leads.]]>
+      <![CDATA[<p>No.of options in Choose Company List:382]]>
     </line>
     <line>
-      <![CDATA[<p>closed lead id:1003]]>
+      <![CDATA[<p>Option selected is:Camimbo]]>
     </line>
     <line>
-      <![CDATA[<p>Lead Close:is opened]]>
+      <![CDATA[<p>1 Hicks
+2 Bailey
+3 Cole
+4 Stevens
+5 Snyder
+6 Burton
+7 Mccoy]]>
     </line>
     <line>
-      <![CDATA[<p>leadstatus dropdown size:3]]>
+      <![CDATA[<p>Filter Option Selected:Choose Country]]>
     </line>
     <line>
-      <![CDATA[<p>2]]>
+      <![CDATA[<p>No.of options in Choose Country List:118]]>
     </line>
     <line>
-      <![CDATA[<p>Succesfully Lead Closed and it lost competetion]]>
+      <![CDATA[<p>Option selected is:Belgium]]>
     </line>
     <line>
-      <![CDATA[<p>1]]>
+      <![CDATA[<p>1 Palmer
+2 Young
+3 Burns
+4 Wheeler
+5 Stevens
+6 Ferguson
+7 Arnold
+8 Bishop
+9 Pierce
+10 Howard]]>
     </line>
     <line>
-      <![CDATA[<p>[1003]]]>
+      <![CDATA[<p>Filter Option Selected:Choose City]]>
     </line>
     <line>
-      <![CDATA[<p>pass]]>
+      <![CDATA[<p>No.of options in Choose City List:1854]]>
+    </line>
+    <line>
+      <![CDATA[<p>Option selected is:Magaria]]>
+    </line>
+    <line>
+      <![CDATA[<p>1 Fields]]>
+    </line>
+    <line>
+      <![CDATA[<p>Filter Option Selected:Choose Domain]]>
+    </line>
+    <line>
+      <![CDATA[<p>No.of options in Choose Domain List:22]]>
+    </line>
+    <line>
+      <![CDATA[<p>Option selected is:Domain G]]>
+    </line>
+    <line>
+      <![CDATA[<p>1 euvri
+2 Wood
+3 Torres
+4 Washington
+5 Rogers
+6 Cook
+7 Coleman
+8 Schmidt
+9 Willis
+10 Rodriguez]]>
+    </line>
+    <line>
+      <![CDATA[<p>Filter Option Selected:Choose Campaign]]>
+    </line>
+    <line>
+      <![CDATA[<p>No.of options in Choose Campaign List:41]]>
+    </line>
+    <line>
+      <![CDATA[<p>Option selected is:Check ALL]]>
+    </line>
+    <line>
+      <![CDATA[<p>1 Vasquez
+2 Davis
+3 Bowman
+4 Strauss
+5 Lee
+6 mehatha
+7 tulugu
+8 euvri
+9 Mitchell
+10 Marshall]]>
+    </line>
+    <line>
+      <![CDATA[<p>Filter Option Selected:Choose Service]]>
+    </line>
+    <line>
+      <![CDATA[<p>No.of options in Choose Service List:11]]>
+    </line>
+    <line>
+      <![CDATA[<p>Option selected is:special officer]]>
+    </line>
+    <line>
+      <![CDATA[<p>1 tulugu
+2 euvri]]>
+    </line>
+    <line>
+      <![CDATA[<p>Filter Option Selected:Choose Status]]>
+    </line>
+    <line>
+      <![CDATA[<p>No.of options in Choose Status List:6]]>
+    </line>
+    <line>
+      <![CDATA[<p>Option selected is:Pre Qualified]]>
+    </line>
+    <line>
+      <![CDATA[<p>1 Vasquez
+2 Davis
+3 Bowman
+4 Strauss
+5 Lee
+6 mehatha
+7 tulugu
+8 euvri
+9 Mitchell
+10 Marshall]]>
+    </line>
+    <line>
+      <![CDATA[<p>Number Elements in List1 : 12]]>
+    </line>
+    <line>
+      <![CDATA[<p>old password is:password]]>
+    </line>
+    <line>
+      <![CDATA[<p>Successfully canceled the change password page]]>
+    </line>
+    <line>
+      <![CDATA[<p>Old password container is avilable]]>
+    </line>
+    <line>
+      <![CDATA[<p>password]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>New password container is avilable]]>
+    </line>
+    <line>
+      <![CDATA[<p>123]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>Confirm password container is avilable]]>
+    </line>
+    <line>
+      <![CDATA[<p>sai]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>Old password container is avilable]]>
+    </line>
+    <line>
+      <![CDATA[<p>123]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>New password container is avilable]]>
+    </line>
+    <line>
+      <![CDATA[<p>123]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>Confirm password container is avilable]]>
+    </line>
+    <line>
+      <![CDATA[<p>123]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>Old password container is avilable]]>
+    </line>
+    <line>
+      <![CDATA[<p>password]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>New password container is avilable]]>
+    </line>
+    <line>
+      <![CDATA[<p>password]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>Confirm password container is avilable]]>
+    </line>
+    <line>
+      <![CDATA[<p>password]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>*************************]]>
+    </line>
+    <line>
+      <![CDATA[<p>changed password000]]>
+    </line>
+    <line>
+      <![CDATA[<p>old password is:password]]>
+    </line>
+    <line>
+      <![CDATA[<p>Number Elements in List1 : 12]]>
+    </line>
+    <line>
+      <![CDATA[<p>changed password000]]>
+    </line>
+    <line>
+      <![CDATA[<p>old password is:password]]>
+    </line>
+    <line>
+      <![CDATA[<p>Number Elements in List1 : 12]]>
     </line>
   </reporter-output>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  <suite name="Default suite" duration-ms="76603" started-at="2014-11-04T02:25:58Z" finished-at="2014-11-04T02:27:15Z">
-=======
-  <suite name="Default suite" duration-ms="220841" started-at="2014-11-03T14:02:11Z" finished-at="2014-11-03T14:05:52Z">
->>>>>>> Stashed changes
+  <suite name="Default suite" duration-ms="384660" started-at="2014-11-05T14:29:54Z" finished-at="2014-11-05T14:36:19Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="220841" started-at="2014-11-03T14:02:11Z" finished-at="2014-11-03T14:05:52Z">
-      <class name="src.crm.BDELeadEdits">
-        <test-method status="PASS" signature="beforesuite()[pri:0, instance:src.crm.BDELeadEdits@6a97e765]" name="beforesuite" is-config="true" duration-ms="688" started-at="2014-11-03T19:32:10Z" finished-at="2014-11-03T19:32:11Z">
+    <test name="Default test" duration-ms="384660" started-at="2014-11-05T14:29:54Z" finished-at="2014-11-05T14:36:19Z">
+      <class name="src.crm.Researcher">
+        <test-method status="PASS" signature="beforesuite()[pri:0, instance:src.crm.Researcher@18ab963]" name="beforesuite" is-config="true" duration-ms="8114" started-at="2014-11-05T19:59:46Z" finished-at="2014-11-05T19:59:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforesuite -->
-<<<<<<< Updated upstream
-        <test-method status="PASS" signature="bf()[pri:0, instance:src.crm.AdminLogin@e20459]" name="bf" is-config="true" duration-ms="8861" started-at="2014-11-03T18:25:58Z" finished-at="2014-11-03T18:26:07Z">
-=======
-  <suite name="Default suite" duration-ms="166899" started-at="2014-11-03T13:46:28Z" finished-at="2014-11-03T13:49:15Z">
-    <groups>
-    </groups>
-    <test name="Default test" duration-ms="166899" started-at="2014-11-03T13:46:28Z" finished-at="2014-11-03T13:49:15Z">
-      <class name="src.crm.BDE">
-        <test-method status="PASS" signature="beforesuite()[pri:0, instance:src.crm.BDE@11beb4d]" name="beforesuite" is-config="true" duration-ms="1211" started-at="2014-11-03T19:16:27Z" finished-at="2014-11-03T19:16:28Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforesuite -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.BDE@11beb4d]" name="beforeMethod" is-config="true" duration-ms="36638" started-at="2014-11-03T19:16:28Z" finished-at="2014-11-03T19:17:05Z">
->>>>>>> Stashed changes
-=======
-        <test-method status="PASS" signature="beforemethod()[pri:0, instance:src.crm.BDELeadEdits@6a97e765]" name="beforemethod" is-config="true" duration-ms="17712" started-at="2014-11-03T19:32:11Z" finished-at="2014-11-03T19:32:29Z">
->>>>>>> Stashed changes
-          <reporter-output>
-          </reporter-output>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        </test-method> <!-- bf -->
-        <test-method status="FAIL" signature="t_configCreation()[pri:0, instance:src.crm.AdminLogin@e20459]" name="t_configCreation" duration-ms="66702" started-at="2014-11-03T18:26:07Z" finished-at="2014-11-03T18:27:14Z">
-          <exception class="org.openqa.selenium.remote.UnreachableBrowserException">
-            <message>
-              <![CDATA[Error communicating with the remote browser. It may have died.
-Build info: version: '2.43.0', revision: '597b76b', time: '2014-09-09 20:52:14'
-System info: host: 'tulasiramg', ip: '192.168.1.150', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_65'
-Driver info: driver.version: RemoteWebDriver]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.remote.UnreachableBrowserException: Error communicating with the remote browser. It may have died.
-Build info: version: '2.43.0', revision: '597b76b', time: '2014-09-09 20:52:14'
-System info: host: 'tulasiramg', ip: '192.168.1.150', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_65'
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:593)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:614)
-	at org.openqa.selenium.remote.RemoteWebDriver.close(RemoteWebDriver.java:463)
-	at src.crm.AdminLogin.myResearcher(AdminLogin.java:124)
-	at src.crm.AdminLogin.t_configCreation(AdminLogin.java:1152)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
-	at org.testng.TestRunner.privateRun(TestRunner.java:767)
-	at org.testng.TestRunner.run(TestRunner.java:617)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
-	at org.testng.TestNG.run(TestNG.java:1057)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:7057 [/127.0.0.1] failed: Connection refused: connect
-	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:140)
-	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:318)
-	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:72)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
-	at org.openqa.selenium.remote.HttpCommandExecutor.fallBackExecute(HttpCommandExecutor.java:215)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-	at org.openqa.selenium.firefox.internal.NewProfileExtensionConnection.execute(NewProfileExtensionConnection.java:165)
-	at org.openqa.selenium.firefox.FirefoxDriver$LazyCommandExecutor.execute(FirefoxDriver.java:364)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:572)
-	... 28 more
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
-	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
-	at java.net.PlainSocketImpl.connect(Unknown Source)
-	at java.net.SocksSocketImpl.connect(Unknown Source)
-	at java.net.Socket.connect(Unknown Source)
-	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:72)
-	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:123)
-	... 42 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.remote.UnreachableBrowserException -->
-=======
-        </test-method> <!-- beforemethod -->
-        <test-method status="PASS" signature="Closedphase()[pri:0, instance:src.crm.BDELeadEdits@6a97e765]" name="Closedphase" duration-ms="203111" started-at="2014-11-03T19:32:29Z" finished-at="2014-11-03T19:35:52Z">
->>>>>>> Stashed changes
-          <reporter-output>
-            <line>
-              <![CDATA[<p>totalcolumns having sorting options=7]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting descending: on column: 1:Lead Id]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting ascending: on column: 1:Lead Id]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting ascending: on column: 2:Lead Name]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting descending: on column: 2:Lead Name]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting ascending: on column: 3:Company Name]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting descending: on column: 3:Company Name]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting ascending: on column: 4:Service Name]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting descending: on column: 4:Service Name]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting ascending: on column: 5:Lead Phase]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting descending: on column: 5:Lead Phase]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting ascending: on column: 6:Lead Status]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting descending: on column: 6:Lead Status]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting ascending: on column: 7:Action]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting descending: on column: 7:Action]]>
-            </line>
-            <line>
-              <![CDATA[<p>close button is enabled for all leads.]]>
-            </line>
-            <line>
-              <![CDATA[<p>closed lead id:1003]]>
-            </line>
-            <line>
-              <![CDATA[<p>Lead Close:is opened]]>
-            </line>
-            <line>
-              <![CDATA[<p>leadstatus dropdown size:3]]>
-            </line>
-            <line>
-              <![CDATA[<p>2]]>
-            </line>
-            <line>
-              <![CDATA[<p>Succesfully Lead Closed and it lost competetion]]>
-            </line>
-            <line>
-              <![CDATA[<p>1]]>
-            </line>
-            <line>
-              <![CDATA[<p>[1003]]]>
-            </line>
-            <line>
-              <![CDATA[<p>pass]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- Closedphase -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.BDELeadEdits@6a97e765]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-03T19:35:52Z" finished-at="2014-11-03T19:35:52Z">
-          <reporter-output>
-          </reporter-output>
-<<<<<<< Updated upstream
-        </test-method> <!-- af -->
-      </class> <!-- src.crm.AdminLogin -->
-=======
-        </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="researchOnCompany()[pri:0, instance:src.crm.BDE@11beb4d]" name="researchOnCompany" duration-ms="49053" started-at="2014-11-03T19:17:05Z" finished-at="2014-11-03T19:17:54Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- researchOnCompany -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.BDE@11beb4d]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-03T19:17:54Z" finished-at="2014-11-03T19:17:54Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.BDE@11beb4d]" name="beforeMethod" is-config="true" duration-ms="29188" started-at="2014-11-03T19:17:54Z" finished-at="2014-11-03T19:18:23Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="beforeMethod" is-config="true" duration-ms="19143" started-at="2014-11-05T19:59:54Z" finished-at="2014-11-05T20:00:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="workPhaseForLaterDate()[pri:0, instance:src.crm.BDE@11beb4d]" name="workPhaseForLaterDate" duration-ms="51908" started-at="2014-11-03T19:18:23Z" finished-at="2014-11-03T19:19:15Z">
+        <test-method status="PASS" signature="f1()[pri:0, instance:src.crm.Researcher@18ab963]" name="f1" duration-ms="54711" started-at="2014-11-05T20:00:13Z" finished-at="2014-11-05T20:01:08Z">
           <reporter-output>
+            <line>
+              <![CDATA[<p>===========Leads Upload=========]]>
+            </line>
+            <line>
+              <![CDATA[<p>Number Elements in List1 : 6]]>
+            </line>
+            <line>
+              <![CDATA[<p>User Logged in as:Hi ! Researcher]]>
+            </line>
+            <line>
+              <![CDATA[<p>Please Provide Valid Excel File....!]]>
+            </line>
+            <line>
+              <![CDATA[<p>Please Provide Valid Excel File....!]]>
+            </line>
           </reporter-output>
-        </test-method> <!-- workPhaseForLaterDate -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.BDE@11beb4d]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-03T19:19:15Z" finished-at="2014-11-03T19:19:15Z">
+        </test-method> <!-- f1 -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="afterMethod" is-config="true" duration-ms="47" started-at="2014-11-05T20:01:08Z" finished-at="2014-11-05T20:01:08Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-      </class> <!-- src.crm.BDE -->
->>>>>>> Stashed changes
-=======
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="beforeMethod" is-config="true" duration-ms="15368" started-at="2014-11-05T20:01:08Z" finished-at="2014-11-05T20:01:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="f2()[pri:0, instance:src.crm.Researcher@18ab963]" name="f2" duration-ms="94725" started-at="2014-11-05T20:01:23Z" finished-at="2014-11-05T20:02:58Z">
+          <reporter-output>
+            <line>
+              <![CDATA[<p>===========Leads Upload1=========]]>
+            </line>
+            <line>
+              <![CDATA[<p>Number Elements in List1 : 6]]>
+            </line>
+            <line>
+              <![CDATA[<p>User Logged in as:Hi ! Researcher]]>
+            </line>
+            <line>
+              <![CDATA[<p>Waiting timed out element not foundBy.className: error_msg]]>
+            </line>
+            <line>
+              <![CDATA[<p>Excel File Uploaded and Leads Saved Successfully....!]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- f2 -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="afterMethod" is-config="true" duration-ms="2184" started-at="2014-11-05T20:02:58Z" finished-at="2014-11-05T20:03:00Z">
+          <reporter-output>
+          </reporter-output>
         </test-method> <!-- afterMethod -->
-      </class> <!-- src.crm.BDELeadEdits -->
->>>>>>> Stashed changes
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="beforeMethod" is-config="true" duration-ms="14853" started-at="2014-11-05T20:03:00Z" finished-at="2014-11-05T20:03:15Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="f3()[pri:0, instance:src.crm.Researcher@18ab963]" name="f3" duration-ms="94134" started-at="2014-11-05T20:03:15Z" finished-at="2014-11-05T20:04:49Z">
+          <reporter-output>
+            <line>
+              <![CDATA[<p>=================search leads=================]]>
+            </line>
+            <line>
+              <![CDATA[<p>=================Expanding tree menu=================]]>
+            </line>
+            <line>
+              <![CDATA[<p>The reqiured field:Last Name]]>
+            </line>
+            <line>
+              <![CDATA[<p>Size of Filter option categories:7]]>
+            </line>
+            <line>
+              <![CDATA[<p>Filter Option Selected:Choose Company]]>
+            </line>
+            <line>
+              <![CDATA[<p>No.of options in Choose Company List:382]]>
+            </line>
+            <line>
+              <![CDATA[<p>Option selected is:Camimbo]]>
+            </line>
+            <line>
+              <![CDATA[<p>1 Hicks
+2 Bailey
+3 Cole
+4 Stevens
+5 Snyder
+6 Burton
+7 Mccoy]]>
+            </line>
+            <line>
+              <![CDATA[<p>Filter Option Selected:Choose Country]]>
+            </line>
+            <line>
+              <![CDATA[<p>No.of options in Choose Country List:118]]>
+            </line>
+            <line>
+              <![CDATA[<p>Option selected is:Belgium]]>
+            </line>
+            <line>
+              <![CDATA[<p>1 Palmer
+2 Young
+3 Burns
+4 Wheeler
+5 Stevens
+6 Ferguson
+7 Arnold
+8 Bishop
+9 Pierce
+10 Howard]]>
+            </line>
+            <line>
+              <![CDATA[<p>Filter Option Selected:Choose City]]>
+            </line>
+            <line>
+              <![CDATA[<p>No.of options in Choose City List:1854]]>
+            </line>
+            <line>
+              <![CDATA[<p>Option selected is:Magaria]]>
+            </line>
+            <line>
+              <![CDATA[<p>1 Fields]]>
+            </line>
+            <line>
+              <![CDATA[<p>Filter Option Selected:Choose Domain]]>
+            </line>
+            <line>
+              <![CDATA[<p>No.of options in Choose Domain List:22]]>
+            </line>
+            <line>
+              <![CDATA[<p>Option selected is:Domain G]]>
+            </line>
+            <line>
+              <![CDATA[<p>1 euvri
+2 Wood
+3 Torres
+4 Washington
+5 Rogers
+6 Cook
+7 Coleman
+8 Schmidt
+9 Willis
+10 Rodriguez]]>
+            </line>
+            <line>
+              <![CDATA[<p>Filter Option Selected:Choose Campaign]]>
+            </line>
+            <line>
+              <![CDATA[<p>No.of options in Choose Campaign List:41]]>
+            </line>
+            <line>
+              <![CDATA[<p>Option selected is:Check ALL]]>
+            </line>
+            <line>
+              <![CDATA[<p>1 Vasquez
+2 Davis
+3 Bowman
+4 Strauss
+5 Lee
+6 mehatha
+7 tulugu
+8 euvri
+9 Mitchell
+10 Marshall]]>
+            </line>
+            <line>
+              <![CDATA[<p>Filter Option Selected:Choose Service]]>
+            </line>
+            <line>
+              <![CDATA[<p>No.of options in Choose Service List:11]]>
+            </line>
+            <line>
+              <![CDATA[<p>Option selected is:special officer]]>
+            </line>
+            <line>
+              <![CDATA[<p>1 tulugu
+2 euvri]]>
+            </line>
+            <line>
+              <![CDATA[<p>Filter Option Selected:Choose Status]]>
+            </line>
+            <line>
+              <![CDATA[<p>No.of options in Choose Status List:6]]>
+            </line>
+            <line>
+              <![CDATA[<p>Option selected is:Pre Qualified]]>
+            </line>
+            <line>
+              <![CDATA[<p>1 Vasquez
+2 Davis
+3 Bowman
+4 Strauss
+5 Lee
+6 mehatha
+7 tulugu
+8 euvri
+9 Mitchell
+10 Marshall]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- f3 -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="afterMethod" is-config="true" duration-ms="70" started-at="2014-11-05T20:04:49Z" finished-at="2014-11-05T20:04:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="beforeMethod" is-config="true" duration-ms="15502" started-at="2014-11-05T20:04:49Z" finished-at="2014-11-05T20:05:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="f5()[pri:0, instance:src.crm.Researcher@18ab963]" name="f5" duration-ms="72503" started-at="2014-11-05T20:05:05Z" finished-at="2014-11-05T20:06:17Z">
+          <reporter-output>
+            <line>
+              <![CDATA[<p>Number Elements in List1 : 12]]>
+            </line>
+            <line>
+              <![CDATA[<p>old password is:password]]>
+            </line>
+            <line>
+              <![CDATA[<p>Successfully canceled the change password page]]>
+            </line>
+            <line>
+              <![CDATA[<p>Old password container is avilable]]>
+            </line>
+            <line>
+              <![CDATA[<p>password]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>New password container is avilable]]>
+            </line>
+            <line>
+              <![CDATA[<p>123]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>Confirm password container is avilable]]>
+            </line>
+            <line>
+              <![CDATA[<p>sai]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>Old password container is avilable]]>
+            </line>
+            <line>
+              <![CDATA[<p>123]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>New password container is avilable]]>
+            </line>
+            <line>
+              <![CDATA[<p>123]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>Confirm password container is avilable]]>
+            </line>
+            <line>
+              <![CDATA[<p>123]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>Old password container is avilable]]>
+            </line>
+            <line>
+              <![CDATA[<p>password]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>New password container is avilable]]>
+            </line>
+            <line>
+              <![CDATA[<p>password]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>Confirm password container is avilable]]>
+            </line>
+            <line>
+              <![CDATA[<p>password]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>*************************]]>
+            </line>
+            <line>
+              <![CDATA[<p>changed password000]]>
+            </line>
+            <line>
+              <![CDATA[<p>old password is:password]]>
+            </line>
+            <line>
+              <![CDATA[<p>Number Elements in List1 : 12]]>
+            </line>
+            <line>
+              <![CDATA[<p>changed password000]]>
+            </line>
+            <line>
+              <![CDATA[<p>old password is:password]]>
+            </line>
+            <line>
+              <![CDATA[<p>Number Elements in List1 : 12]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- f5 -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="afterMethod" is-config="true" duration-ms="1389" started-at="2014-11-05T20:06:17Z" finished-at="2014-11-05T20:06:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- src.crm.Researcher -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

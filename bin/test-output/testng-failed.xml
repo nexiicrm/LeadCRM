@@ -3,33 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      <class name="src.crm.AdminLogin">
-=======
-      <class name="src.crm.BDELeadEdits">
->>>>>>> Stashed changes
+      <class name="src.crm.Researcher">
         <methods>
-          <include name="afterMethod"/>
-          <include name="beforemethod"/>
-          <include name="Closedphase"/>
-          <include name="beforesuite"/>
-        </methods>
-<<<<<<< Updated upstream
-      </class> <!-- src.crm.AdminLogin -->
-=======
-      <class name="src.crm.BDE">
-        <methods>
-          <include name="beforesuite"/>
-          <include name="workPhaseForTodaysDate"/>
-          <include name="afterMethod"/>
           <include name="beforeMethod"/>
+          <include name="beforesuite"/>
+          <include name="f4"/>
         </methods>
-      </class> <!-- src.crm.BDE -->
->>>>>>> Stashed changes
-=======
-      </class> <!-- src.crm.BDELeadEdits -->
->>>>>>> Stashed changes
+      </class> <!-- src.crm.Researcher -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

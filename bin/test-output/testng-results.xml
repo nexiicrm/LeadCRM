@@ -1,141 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 <testng-results skipped="0" failed="1" total="1" passed="0">
-=======
-<testng-results skipped="0" failed="0" total="2" passed="2">
->>>>>>> Stashed changes
-=======
-<testng-results skipped="0" failed="0" total="1" passed="1">
->>>>>>> Stashed changes
   <reporter-output>
     <line>
-      <![CDATA[<p>totalcolumns having sorting options=7]]>
-    </line>
-    <line>
-      <![CDATA[<p>sorting descending: on column: 1:Lead Id]]>
-    </line>
-    <line>
-      <![CDATA[<p>sorting ascending: on column: 1:Lead Id]]>
-    </line>
-    <line>
-      <![CDATA[<p>sorting ascending: on column: 2:Lead Name]]>
-    </line>
-    <line>
-      <![CDATA[<p>sorting descending: on column: 2:Lead Name]]>
-    </line>
-    <line>
-      <![CDATA[<p>sorting ascending: on column: 3:Company Name]]>
-    </line>
-    <line>
-      <![CDATA[<p>sorting descending: on column: 3:Company Name]]>
-    </line>
-    <line>
-      <![CDATA[<p>sorting ascending: on column: 4:Service Name]]>
-    </line>
-    <line>
-      <![CDATA[<p>sorting descending: on column: 4:Service Name]]>
-    </line>
-    <line>
-      <![CDATA[<p>sorting ascending: on column: 5:Lead Phase]]>
-    </line>
-    <line>
-      <![CDATA[<p>sorting descending: on column: 5:Lead Phase]]>
-    </line>
-    <line>
-      <![CDATA[<p>sorting ascending: on column: 6:Lead Status]]>
-    </line>
-    <line>
-      <![CDATA[<p>sorting descending: on column: 6:Lead Status]]>
-    </line>
-    <line>
-      <![CDATA[<p>sorting ascending: on column: 7:Action]]>
-    </line>
-    <line>
-      <![CDATA[<p>sorting descending: on column: 7:Action]]>
-    </line>
-    <line>
-      <![CDATA[<p>close button is enabled for all leads.]]>
-    </line>
-    <line>
-      <![CDATA[<p>closed lead id:1003]]>
-    </line>
-    <line>
-      <![CDATA[<p>Lead Close:is opened]]>
-    </line>
-    <line>
-      <![CDATA[<p>leadstatus dropdown size:3]]>
-    </line>
-    <line>
-      <![CDATA[<p>2]]>
-    </line>
-    <line>
-      <![CDATA[<p>Succesfully Lead Closed and it lost competetion]]>
-    </line>
-    <line>
-      <![CDATA[<p>1]]>
-    </line>
-    <line>
-      <![CDATA[<p>[1003]]]>
-    </line>
-    <line>
-      <![CDATA[<p>pass]]>
+      <![CDATA[<p>Number Elements in List1 : 12]]>
     </line>
   </reporter-output>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  <suite name="Default suite" duration-ms="76603" started-at="2014-11-04T02:25:58Z" finished-at="2014-11-04T02:27:15Z">
-=======
-  <suite name="Default suite" duration-ms="220841" started-at="2014-11-03T14:02:11Z" finished-at="2014-11-03T14:05:52Z">
->>>>>>> Stashed changes
+  <suite name="Default suite" duration-ms="28474" started-at="2014-11-05T14:18:00Z" finished-at="2014-11-05T14:18:28Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="220841" started-at="2014-11-03T14:02:11Z" finished-at="2014-11-03T14:05:52Z">
-      <class name="src.crm.BDELeadEdits">
-        <test-method status="PASS" signature="beforesuite()[pri:0, instance:src.crm.BDELeadEdits@6a97e765]" name="beforesuite" is-config="true" duration-ms="688" started-at="2014-11-03T19:32:10Z" finished-at="2014-11-03T19:32:11Z">
+    <test name="Default test" duration-ms="28474" started-at="2014-11-05T14:18:00Z" finished-at="2014-11-05T14:18:28Z">
+      <class name="src.crm.Researcher">
+        <test-method status="PASS" signature="beforesuite()[pri:0, instance:src.crm.Researcher@2cef66]" name="beforesuite" is-config="true" duration-ms="1422" started-at="2014-11-05T19:47:58Z" finished-at="2014-11-05T19:48:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforesuite -->
-<<<<<<< Updated upstream
-        <test-method status="PASS" signature="bf()[pri:0, instance:src.crm.AdminLogin@e20459]" name="bf" is-config="true" duration-ms="8861" started-at="2014-11-03T18:25:58Z" finished-at="2014-11-03T18:26:07Z">
-=======
-  <suite name="Default suite" duration-ms="166899" started-at="2014-11-03T13:46:28Z" finished-at="2014-11-03T13:49:15Z">
-    <groups>
-    </groups>
-    <test name="Default test" duration-ms="166899" started-at="2014-11-03T13:46:28Z" finished-at="2014-11-03T13:49:15Z">
-      <class name="src.crm.BDE">
-        <test-method status="PASS" signature="beforesuite()[pri:0, instance:src.crm.BDE@11beb4d]" name="beforesuite" is-config="true" duration-ms="1211" started-at="2014-11-03T19:16:27Z" finished-at="2014-11-03T19:16:28Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.Researcher@2cef66]" name="beforeMethod" is-config="true" duration-ms="18457" started-at="2014-11-05T19:48:00Z" finished-at="2014-11-05T19:48:18Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- beforesuite -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.BDE@11beb4d]" name="beforeMethod" is-config="true" duration-ms="36638" started-at="2014-11-03T19:16:28Z" finished-at="2014-11-03T19:17:05Z">
->>>>>>> Stashed changes
-=======
-        <test-method status="PASS" signature="beforemethod()[pri:0, instance:src.crm.BDELeadEdits@6a97e765]" name="beforemethod" is-config="true" duration-ms="17712" started-at="2014-11-03T19:32:11Z" finished-at="2014-11-03T19:32:29Z">
->>>>>>> Stashed changes
-          <reporter-output>
-          </reporter-output>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        </test-method> <!-- bf -->
-        <test-method status="FAIL" signature="t_configCreation()[pri:0, instance:src.crm.AdminLogin@e20459]" name="t_configCreation" duration-ms="66702" started-at="2014-11-03T18:26:07Z" finished-at="2014-11-03T18:27:14Z">
-          <exception class="org.openqa.selenium.remote.UnreachableBrowserException">
+        </test-method> <!-- beforeMethod -->
+        <test-method status="FAIL" signature="f4()[pri:0, instance:src.crm.Researcher@2cef66]" name="f4" duration-ms="9970" started-at="2014-11-05T19:48:18Z" finished-at="2014-11-05T19:48:28Z">
+          <exception class="org.openqa.selenium.NoSuchWindowException">
             <message>
-              <![CDATA[Error communicating with the remote browser. It may have died.
-Build info: version: '2.43.0', revision: '597b76b', time: '2014-09-09 20:52:14'
-System info: host: 'tulasiramg', ip: '192.168.1.150', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_65'
-Driver info: driver.version: RemoteWebDriver]]>
+              <![CDATA[Window not found. The browser window may have been closed.
+Command duration or timeout: 63 milliseconds
+Build info: version: '2.44.0', revision: '76d78cf', time: '2014-10-23 20:02:37'
+System info: host: 'admin-PC', ip: '192.168.1.163', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_55'
+Session ID: f10f3427-99e1-4955-9405-8b3ecc888ad0
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=31.0}]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.remote.UnreachableBrowserException: Error communicating with the remote browser. It may have died.
-Build info: version: '2.43.0', revision: '597b76b', time: '2014-09-09 20:52:14'
-System info: host: 'tulasiramg', ip: '192.168.1.150', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_65'
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:593)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:614)
-	at org.openqa.selenium.remote.RemoteWebDriver.close(RemoteWebDriver.java:463)
-	at src.crm.AdminLogin.myResearcher(AdminLogin.java:124)
-	at src.crm.AdminLogin.t_configCreation(AdminLogin.java:1152)
+              <![CDATA[org.openqa.selenium.NoSuchWindowException: Window not found. The browser window may have been closed.
+Command duration or timeout: 63 milliseconds
+Build info: version: '2.44.0', revision: '76d78cf', time: '2014-10-23 20:02:37'
+System info: host: 'admin-PC', ip: '192.168.1.163', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_55'
+Session ID: f10f3427-99e1-4955-9405-8b3ecc888ad0
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=31.0}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByClassName(RemoteWebDriver.java:433)
+	at org.openqa.selenium.By$ByClassName.findElement(By.java:387)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at src.crm.Researcher.treeSize(Researcher.java:57)
+	at src.crm.Researcher.f4(Researcher.java:512)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -160,151 +74,31 @@ Driver info: driver.version: RemoteWebDriver
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:7057 [/127.0.0.1] failed: Connection refused: connect
-	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:140)
-	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:318)
-	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:72)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
-	at org.openqa.selenium.remote.HttpCommandExecutor.fallBackExecute(HttpCommandExecutor.java:215)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-	at org.openqa.selenium.firefox.internal.NewProfileExtensionConnection.execute(NewProfileExtensionConnection.java:165)
-	at org.openqa.selenium.firefox.FirefoxDriver$LazyCommandExecutor.execute(FirefoxDriver.java:364)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:572)
-	... 28 more
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
-	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
-	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
-	at java.net.PlainSocketImpl.connect(Unknown Source)
-	at java.net.SocksSocketImpl.connect(Unknown Source)
-	at java.net.Socket.connect(Unknown Source)
-	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:72)
-	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:123)
-	... 42 more
+Caused by: org.openqa.selenium.NoSuchWindowException: Window not found. The browser window may have been closed.
+Build info: version: '2.44.0', revision: '76d78cf', time: '2014-10-23 20:02:37'
+System info: host: 'admin-PC', ip: '192.168.1.163', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_55'
+Driver info: driver.version: unknown
+	at <anonymous class>.nsCommandProcessor.prototype.execute(file:///C:/Users/Nexii/AppData/Local/Temp/anonymous5726099145840167589webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11706:11)
+	at <anonymous class>.Dispatcher.executeAs/<(file:///C:/Users/Nexii/AppData/Local/Temp/anonymous5726099145840167589webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:8437:5)
+	at <anonymous class>.Resource.prototype.handle(file:///C:/Users/Nexii/AppData/Local/Temp/anonymous5726099145840167589webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:8584:194)
+	at <anonymous class>.Dispatcher.prototype.dispatch(file:///C:/Users/Nexii/AppData/Local/Temp/anonymous5726099145840167589webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:8531:36)
+	at <anonymous class>.WebDriverServer/<.handle(file:///C:/Users/Nexii/AppData/Local/Temp/anonymous5726099145840167589webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:11489:5)
+	at <anonymous class>.createHandlerFunc/<(file:///C:/Users/Nexii/AppData/Local/Temp/anonymous5726099145840167589webdriver-profile/extensions/fxdriver@googlecode.com/components/httpd.js:1935:41)
+	at <anonymous class>.ServerHandler.prototype.handleResponse(file:///C:/Users/Nexii/AppData/Local/Temp/anonymous5726099145840167589webdriver-profile/extensions/fxdriver@googlecode.com/components/httpd.js:2261:15)
+	at <anonymous class>.Connection.prototype.process(file:///C:/Users/Nexii/AppData/Local/Temp/anonymous5726099145840167589webdriver-profile/extensions/fxdriver@googlecode.com/components/httpd.js:1168:5)
+	at <anonymous class>.RequestReader.prototype._handleResponse(file:///C:/Users/Nexii/AppData/Local/Temp/anonymous5726099145840167589webdriver-profile/extensions/fxdriver@googlecode.com/components/httpd.js:1616:5)
+	at <anonymous class>.RequestReader.prototype._processBody(file:///C:/Users/Nexii/AppData/Local/Temp/anonymous5726099145840167589webdriver-profile/extensions/fxdriver@googlecode.com/components/httpd.js:1464:9)
+	at <anonymous class>.RequestReader.prototype.onInputStreamReady(file:///C:/Users/Nexii/AppData/Local/Temp/anonymous5726099145840167589webdriver-profile/extensions/fxdriver@googlecode.com/components/httpd.js:1333:9)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.remote.UnreachableBrowserException -->
-=======
-        </test-method> <!-- beforemethod -->
-        <test-method status="PASS" signature="Closedphase()[pri:0, instance:src.crm.BDELeadEdits@6a97e765]" name="Closedphase" duration-ms="203111" started-at="2014-11-03T19:32:29Z" finished-at="2014-11-03T19:35:52Z">
->>>>>>> Stashed changes
+          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
           <reporter-output>
             <line>
-              <![CDATA[<p>totalcolumns having sorting options=7]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting descending: on column: 1:Lead Id]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting ascending: on column: 1:Lead Id]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting ascending: on column: 2:Lead Name]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting descending: on column: 2:Lead Name]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting ascending: on column: 3:Company Name]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting descending: on column: 3:Company Name]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting ascending: on column: 4:Service Name]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting descending: on column: 4:Service Name]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting ascending: on column: 5:Lead Phase]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting descending: on column: 5:Lead Phase]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting ascending: on column: 6:Lead Status]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting descending: on column: 6:Lead Status]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting ascending: on column: 7:Action]]>
-            </line>
-            <line>
-              <![CDATA[<p>sorting descending: on column: 7:Action]]>
-            </line>
-            <line>
-              <![CDATA[<p>close button is enabled for all leads.]]>
-            </line>
-            <line>
-              <![CDATA[<p>closed lead id:1003]]>
-            </line>
-            <line>
-              <![CDATA[<p>Lead Close:is opened]]>
-            </line>
-            <line>
-              <![CDATA[<p>leadstatus dropdown size:3]]>
-            </line>
-            <line>
-              <![CDATA[<p>2]]>
-            </line>
-            <line>
-              <![CDATA[<p>Succesfully Lead Closed and it lost competetion]]>
-            </line>
-            <line>
-              <![CDATA[<p>1]]>
-            </line>
-            <line>
-              <![CDATA[<p>[1003]]]>
-            </line>
-            <line>
-              <![CDATA[<p>pass]]>
+              <![CDATA[<p>Number Elements in List1 : 12]]>
             </line>
           </reporter-output>
-        </test-method> <!-- Closedphase -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.BDELeadEdits@6a97e765]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-03T19:35:52Z" finished-at="2014-11-03T19:35:52Z">
-          <reporter-output>
-          </reporter-output>
-<<<<<<< Updated upstream
-        </test-method> <!-- af -->
-      </class> <!-- src.crm.AdminLogin -->
-=======
-        </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="researchOnCompany()[pri:0, instance:src.crm.BDE@11beb4d]" name="researchOnCompany" duration-ms="49053" started-at="2014-11-03T19:17:05Z" finished-at="2014-11-03T19:17:54Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- researchOnCompany -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.BDE@11beb4d]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-03T19:17:54Z" finished-at="2014-11-03T19:17:54Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.BDE@11beb4d]" name="beforeMethod" is-config="true" duration-ms="29188" started-at="2014-11-03T19:17:54Z" finished-at="2014-11-03T19:18:23Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="workPhaseForLaterDate()[pri:0, instance:src.crm.BDE@11beb4d]" name="workPhaseForLaterDate" duration-ms="51908" started-at="2014-11-03T19:18:23Z" finished-at="2014-11-03T19:19:15Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- workPhaseForLaterDate -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.BDE@11beb4d]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-03T19:19:15Z" finished-at="2014-11-03T19:19:15Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-      </class> <!-- src.crm.BDE -->
->>>>>>> Stashed changes
-=======
-        </test-method> <!-- afterMethod -->
-      </class> <!-- src.crm.BDELeadEdits -->
->>>>>>> Stashed changes
+        </test-method> <!-- f4 -->
+      </class> <!-- src.crm.Researcher -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
