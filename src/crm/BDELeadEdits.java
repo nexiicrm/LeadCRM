@@ -44,225 +44,18 @@ public class BDELeadEdits  extends Helper
 	  driver.get(config.getProperty("url"));
 	  help.sleep(1);
 	  help.login(config.getProperty("bdename"),config.getProperty("bdepass"));
-	  if(driver.findElement(By.className(bde.getProperty("login_class"))).getText().contains("HiBDE")){
+	  if(driver.findElement(By.className(bde.getProperty("login_class"))).getText().contains("Hi ! BDE")){
 		  Reporter.log("<p>"+"logged successfully");
-	  }
+	  }else
+		  Assert.fail("login not done");
 	 
   }
   
-  public void showdropdown()  
-  {
-	  	Reporter.log("<p>" +"=================================================\n"+"SHOW DROPDOWN:");
-		List<WebElement>showlength=driver.findElement(By.className("dataTables_length")).findElements(By.tagName("option"));
-		Reporter.log("<p>" +"No of elements in show dropdown box:"+showlength.size());
-		for(int k=0;k<showlength.size();k++)
-		{
-			showlength.get(k).click();
-			help.sleep(3);
-			Reporter.log("<p>" +"======================================================");
-			//validation
-			if(showlength.get(k).isSelected())
-				Reporter.log("<p>" +"selected item in show dropdown is:"+showlength.get(k).getAttribute("value"));
-		
-			String a=showlength.get(k).getAttribute("value");
-			int b=Integer.parseInt(a);
-			List<WebElement> tablerecords= driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
-			Reporter.log("<p>" +"no of records displaying is:"+ tablerecords.size());
-			int c=tablerecords.size();
-			Reporter.log("<p>" +driver.findElement(By.className("dataTables_info")).getText());
-		    //validation
-			if(b==c)
-			{
-				Reporter.log("<p>" +"no of records displayed according to show dropdown selected item successfully");
-			}else if(driver.findElement(By.id("example_next")).getAttribute("class").contains("enabled")){
-				Assert.fail("show drop down failed");
-			}else
-				Reporter.log("<p>" +"less no  of records are present in table than show dropdown selected item ");
-			}
-	 }
-  
-  public void searchbox()
-  {
-		Reporter.log("<p>" +"=================================================\n"+"SEARCH BOX");
-		driver.findElement(By.className("dataTables_filter")).findElement(By.tagName("input")).sendKeys(sh4.getCell(0,4).getContents());
-		//String s=bde.getProperty("search");
-		String s=sh4.getCell(0,4).getContents();
-		if(driver.findElement(By.className("dataTables_info")).getText().contains("Showing 0 to 0 of 0"))
-		{
-		Reporter.log("<p>" +driver.findElement(By.className("dataTables_empty")).getText());
-		}
-		else
-		{
-			List<WebElement> tablerecords= driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
-			int o=random(tablerecords.size());
-			//validation
-			if(tablerecords.get(o).getText().contains(s))
-			{
-				Reporter.log("<p>" +tablerecords.get(o).getText());	
-				Reporter.log("<p>" +" displayed record contains  search item:"+s+": successfully");
-			}
-		}
-		Reporter.log("<p>" +driver.findElement(By.className("dataTables_info")).getText());
-	}
-  
-
-  
-  
-public void ascending(int l)
-{
-	  List<String> ids= new ArrayList<String>();
-	  ArrayList<Integer> li= new ArrayList<Integer>();
-	  List<WebElement> tablerecords= driver.findElement(By.id(bde.getProperty("table_id"))).findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
-	  List<WebElement> tablerecords2=tablerecords.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
- if(tablerecords2.size()>1)
- {
-	  for(int a=0;a<tablerecords.size();a++){
-		  if(l==0){
-			  	 String s=tablerecords.get(a).findElements(By.tagName(bde.getProperty("tablecol_tagname"))).get(l).getText() ;
-				 int z = Integer.parseInt(s);
-				 li.add(a, z);
-		  }
-		  else{
-			  ids.add(a, tablerecords.get(a).findElements(By.tagName(bde.getProperty("tablecol_tagname"))).get(l).getText());
-		  }
-	  }
-	  help.sleep(1);
-	  //validation
-	  if(l==0){
-			 for(int i=0;i<li.size();i++){
-				 for(int j=i;j<li.size();j++){
-					 int val=(li.get(i)).compareTo(li.get(j));
-					 if(val<=0)
-					continue;
-					 else
-					Assert.fail("sorting ascending: is  on column: "+(l+1)+":failed");
-				 }
-			 }
-	  }
-	  else{
-		  for(int i=0;i<ids.size();i++){
-			  for(int j=i;j<ids.size();j++){
-				  int val=(ids.get(i)).compareToIgnoreCase(ids.get(j));
-				 if(val<=0)
-				continue;
-				 else
-				Assert.fail("sorting ascending: is  on column: "+(l+1)+":failed");
-			  }
-		  }
-	  }
- }
-}
-  
-  
-public void descending(int l)
-{
-	  List<String> ids= new ArrayList<String>();
-	  ArrayList<Integer> li= new ArrayList<Integer>();
-	  List<WebElement> tablerecords= driver.findElement(By.id(bde.getProperty("table_id"))).findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
-	  List<WebElement> tablerecords2=tablerecords.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
- if(tablerecords2.size()>1)
- {
-	  for(int a=0;a<tablerecords.size();a++){
-		  	if(l==0){
-		  		String s=tablerecords.get(a).findElements(By.tagName(bde.getProperty("tablecol_tagname"))).get(l).getText() ;
-			    int z = Integer.parseInt(s);
-			 	li.add(a, z);
-		  	}else{
-			  ids.add(a, tablerecords.get(a).findElements(By.tagName(bde.getProperty("tablecol_tagname"))).get(l).getText());
-		  	}
-	  }
-	  help.sleep(1);
-	  //validation
-	 if(l==0){
-		 for(int i=0;i<li.size();i++){
-			 for(int j=i;j<li.size();j++){
-				 int val=(li.get(i)).compareTo(li.get(j));
-				 if(val>=0)
-				continue;
-				 else
-				Assert.fail("sorting descending: is on column: "+(l+1)+":failed");
-			 }
-		 }
-	 }
-	 else{
-		 for(int i=0;i<ids.size();i++){
-			 for(int j=i;j<ids.size();j++){
-				 int val=(ids.get(i)).compareToIgnoreCase(ids.get(j));
-				 if(val>=0)
-				continue;
-				 else
-				Assert.fail("sorting descending: is on column: "+(l+1)+":failed");
-			 }
-		}
-	 }
- }
-}
-  
- public void sorting()
-  {
-	  int n=1;
-	  	List<WebElement> tablecolumns= driver.findElement(By.tagName(bde.getProperty("table_head"))).findElements(By.tagName(bde.getProperty("tablehead_tagname")));
-	  	if(driver.getCurrentUrl().contains("search/search_leads.jsp"))
-	  	{
-	  		n--;
-	  	}
-	  	Reporter.log("<p>" +"totalcolumns having sorting options="+(tablecolumns.size()));
-		for(int l=0;l<(tablecolumns.size()-n);l++){
-			tablecolumns.get(l).click();
-			help.sleep(1);
-			if(tablecolumns.get(l).getAttribute("class").contains(bde.getProperty("ascending_class"))){
-				Reporter.log("<p>" +"sorting ascending: on column: "+(l+1)+":"+tablecolumns.get(l).getText());
-				ascending(l);
-			}else{
-				Reporter.log("<p>" +"sorting descending: on column: "+(l+1)+":"+tablecolumns.get(l).getText());
-				descending(l);
-			}
-			tablecolumns.get(l).click();
-			help.sleep(1);
-			if(tablecolumns.get(l).getAttribute("class").contains(bde.getProperty("ascending_class"))){
-				Reporter.log("<p>" +"sorting ascending: on column: "+(l+1)+":"+tablecolumns.get(l).getText());
-				ascending(l);
-			}else{
-				Reporter.log("<p>" +"sorting descending: on column: "+(l+1)+":"+tablecolumns.get(l).getText());
-				descending(l);
-			}
-		}
-  }
- 
- 
-  public void next()
-  {
-	  for(int z=0;z<10;z++)
-		{
-			Reporter.log("<p>" +driver.findElement(By.className("dataTables_info")).getText());
-			if(driver.findElement(By.id("example_next")).getAttribute("class").contains("enabled")){
-			driver.findElement(By.id("example_next")).click();
-			}else{
-			Reporter.log("<p>" +driver.findElement(By.id("example_next")).getAttribute("class"));
-			break;
-			}
-		}
-  }
-  
-  
-  public void previous()
-  {
-		for(int y=0;y<10;y++)
-		{
-			Reporter.log("<p>" +driver.findElement(By.className("dataTables_info")).getText());
-			if(driver.findElement(By.id("example_previous")).getAttribute("class").contains("enabled")){
-			driver.findElement(By.id("example_previous")).click();
-			}else{
-			Reporter.log("<p>" +driver.findElement(By.id("example_previous")).getAttribute("class"));
-			break;
-			}
-		}
-  }
-  
- public void close(int y,String c,String data) throws Exception
+public void close(int y,String c,String data) throws Exception
  {
 	 	driver.findElement(By.name(bde.getProperty("comment_id"))).sendKeys(sh4.getCell(0,6).getContents());
 		driver.findElement(By.id(bde.getProperty("closeform_button"))).click();
+		help.sleep(2);
 		Reporter.log("<p>" +driver.findElement(By.className(bde.getProperty("success_message"))).getText());
 		driver.findElement(By.className(bde.getProperty("editform_close")));
 		help.sleep(2);
@@ -323,75 +116,27 @@ public void descending(int l)
  }
  
  
- 
-
 // @Test
- public void showbox()
+public void Trackit() throws Exception
+{
+	   help.expand();
+	  Reporter.log("<p>"+"==============\n"+"TRACKIT"+"===================");;
+ if(driver.findElement(By.id(bde.getProperty("leadedit_link"))).isDisplayed())
  {
-	  help.expand();
-	  if(driver.findElement(By.id(bde.getProperty("leadedit_link"))).isDisplayed()){
 	  		driver.findElement(By.id(bde.getProperty("leadedit_link"))).click();
-	  		help.sleep(1);
-	  		showdropdown();
-	  }
-	  driver.close();
- }
- 
-// @Test
- public void search()
- {
-	  help.expand();
-	  if(driver.findElement(By.id(bde.getProperty("leadedit_link"))).isDisplayed()){
-	  		driver.findElement(By.id(bde.getProperty("leadedit_link"))).click();
-	  		help.sleep(1);
-	  		searchbox();
-	  }
-	  driver.close();
- }
- 
-// @Test
- public void paginationnext()
- {
-	  help.expand();
-	  if(driver.findElement(By.id(bde.getProperty("leadedit_link"))).isDisplayed()){
-	  		driver.findElement(By.id(bde.getProperty("leadedit_link"))).click();
-	  		help.sleep(1);
-	  		next();
-	  }
-	  driver.close();
- }
- 
-// @Test
- public void paginationprevious()
- {
-	  help.expand();
-	  if(driver.findElement(By.id(bde.getProperty("leadedit_link"))).isDisplayed()){
-	  		driver.findElement(By.id(bde.getProperty("leadedit_link"))).click();
-	  		help.sleep(1);
-	  		previous();
-	  }
-	  driver.close();
- }
- 
- 
-// @Test
- public void totalsorting()
- {
-	  help.expand();
-	  if(driver.findElement(By.id(bde.getProperty("leadedit_link"))).isDisplayed()){
-	  		driver.findElement(By.id(bde.getProperty("leadedit_link"))).click();
-	  		help.sleep(1);
+	  		help.sleep(3);
 	  		help.sorting();
-	  }
-	  driver.close();
+	  		help.pageEntries();
  }
+ driver.close();
+}
  
  
-// @Test
- public void Trackit()
+ 
+  @Test
+ public void Trackit1() throws Exception
  {
-	  
-	  help.expand();
+	   help.expand();
 	  Reporter.log("<p>"+"==============\n"+"TRACKIT"+"===================");;
   if(driver.findElement(By.id(bde.getProperty("leadedit_link"))).isDisplayed())
   {
@@ -403,7 +148,7 @@ public void descending(int l)
 	  		List<WebElement> trackelement2=trackelement.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
 	 if( trackelement2.size()>1)
 	 {
-	  		//Checking for the Track it button for each lead
+		 //Checking for the Track it button for each lead
 	  		int trackit=0;
 			for(int i=0; i<trackelement.size(); i++) {
 					if(trackelement.get(i).findElement(By.className(bde.getProperty("tracit_button"))).isEnabled()) 
@@ -465,16 +210,16 @@ public void descending(int l)
 }
 
   
-//  @Test
-  public void Edit()
+  @Test
+  public void Edit() throws Exception
   {
 	  help.expand();
 	  Reporter.log("<p>" +"=====\n"+"EDIT::"+"======");
 	if(driver.findElement(By.id(bde.getProperty("leadedit_link"))).isDisplayed())
 	{
-	  		driver.findElement(By.id(bde.getProperty("leadedit_link"))).click();
-	  		help.sleep(5);
-		  	List <WebElement> leads = driver.findElement(By.id(bde.getProperty("table_id"))).findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
+			driver.findElement(By.id(bde.getProperty("leadedit_link"))).click();
+	  		help.sleep(2);
+	  		List <WebElement> leads = driver.findElement(By.id(bde.getProperty("table_id"))).findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
 		  	if(leads.size()==0)
 	  			Assert.fail("table body tagname not found successfully in edit");
 		  	help.sleep(2);
@@ -546,7 +291,10 @@ public void descending(int l)
 			List <WebElement> leads1 = driver.findElement(By.id(bde.getProperty("table_id"))).findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
 			if(leads1.size()==0)
 				Assert.fail("table id not found in edit");
+			help.sleep(5);
+			
 	  		List<WebElement> ls1 =leads1.get(j).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
+			
 	  		ArrayList<String> ar1 = new ArrayList<String>();
 	  		for (int i=0;i<ls1.size();i++){
 	  			String s1= ls1.get(i).getText();
@@ -573,10 +321,25 @@ public void descending(int l)
 	  	driver.close();
   }
   
-
+//  @Test
+ public void Closedphase() throws Exception 
+ {
+	   help.expand();
+	  help.sleep(5);
+  if(driver.findElement(By.id(bde.getProperty("closedphase_link"))).isDisplayed())
+  {
+	  		driver.findElement(By.id(bde.getProperty("closedphase_link"))).click();
+	  		help.sleep(3);
+	  		help.sorting();
+	  		help.pageEntries();
+  }
+  driver.close();
+ }
+  
+  
  
   @Test
- public void Closedphase() throws Exception 
+ public void Closedphase1() throws Exception 
  {
 	  int q;
 	  int f;
@@ -594,7 +357,7 @@ public void descending(int l)
 	  		List<WebElement> tablerecords2=tablerecords.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
 	  if(tablerecords2.size()>1)
 	  {
-	  		//Checking for the close button for each lead
+		  //Checking for the close button for each lead
 			int count=0;
 			for(int i=0; i<tablerecords.size(); i++) {
 				if(tablerecords.get(i).findElement(By.className(bde.getProperty("close_button"))).isEnabled()) 
@@ -647,64 +410,23 @@ public void descending(int l)
   }else{
 		  Assert.fail("closed phase  link not found successfully");
 	  }
-	  	help.sleep(1);
+	  	//help.sleep(1);
 	  	//driver.close();
   }
   
-/*  @Test
+
+  
+//  @Test
   public void leadsearch() throws Exception 
   {
 	  help.expand();
-	  if(driver.findElement(By.id("serachLeads123")).isDisplayed())
-	  {
-	  		driver.findElement(By.id("serachLeads123")).click();
-			// Switching to Child Window
-			 String parentWindow = driver.getWindowHandle();
-			 for(String childWindow : driver.getWindowHandles()) 
-			 {
-				 driver.switchTo().window(childWindow);
-			 }
-			 help.sleep(3);
-			Reporter.log("<p>" +driver.getTitle());
-			Reporter.log("<p>" +" navigated to:"+driver.findElement(By.tagName("h1")).getText()+":successfully");
-			List<WebElement> reqfields = driver.findElement(By.id("fields_to_get")).findElements(By.tagName("input"));
-			Reporter.log("<p>" +"Total No of required fields:"+reqfields.size());
-			for(int c=0;c<reqfields.size();c++)
-			Reporter.log("<p>" +(c+1)+":"+ driver.findElement(By.id("fields_to_get")).findElements(By.tagName("label")).get(c).getText());
-			//selecting required fields
-			int a=random(reqfields.size());
-			reqfields.get(a).click();
-			Reporter.log("<p>" +driver.findElement(By.id("fields_to_get")).findElements(By.tagName("label")).get(a).getText()+":clicked");
-			driver.findElement(By.id("ui-accordion-accordion-header-1")).click();
-			List<WebElement> filteroptions=driver.findElement(By.id("ui-accordion-accordion-panel-1")).findElements(By.tagName("fieldset"));
-			Reporter.log("<p>" +"Total no of filter options:"+filteroptions.size());
-			//print filter options
-			for(int d=0;d<filteroptions.size();d++)
-			Reporter.log("<p>" +"Filter options:"+filteroptions.get(d).findElement(By.tagName("legend")).getText());
-			//selecting randomly one  from filter options
-			int e=random(filteroptions.size());
-			Reporter.log("<p>" +filteroptions.get(e).findElement(By.tagName("legend")).getText()+":selected");
-			List<WebElement> options=filteroptions.get(e).findElements(By.tagName("input"));
-			Reporter.log("<p>" +"No of options:"+options.size());
-			//selecting randomly one from options
-			int f=random(options.size());
-			options.get(f).click();
-			//validation
-			if(options.get(f).isSelected())
-			Reporter.log("<p>" +filteroptions.get(e).findElements(By.tagName("label")).get(f).getText()+":is selected");
-			else
-			Reporter.log("<p>" +"filter options not selected properly");
-			driver.findElement(By.id("registerbutton")).click();
-			help.sleep(5);
-			// Printing the Table displayed with required fields
-			 Reporter.log("<p>" +driver.findElement(By.id("example")).findElement(By.tagName("tbody")).getText());
-			 Sorting();
-			// Switching to Parent Window
-			 driver.switchTo().window(parentWindow);
-	 }
-	  driver.close();
-  }*/
+	  help.sleep(1);
+     searchLead();
+     driver.close();
+  }
   
+
+ 
   
   @AfterMethod
   public void afterMethod() 
