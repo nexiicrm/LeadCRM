@@ -92,7 +92,7 @@ public class Helper extends BaseTest
 		sleep(1);
 		driver.findElement(By.id(or.getProperty("password_id"))).sendKeys(password);
 		sleep(1);
-		driver.findElement(By.cssSelector(or.getProperty("loginbutton_css"))).findElement(By.tagName(helper.getProperty("loginbutton_input_tagname"))).submit();
+		driver.findElement(By.cssSelector(or.getProperty("loginbutton_css"))).findElement(By.tagName(or.getProperty("loginbutton_input_tagname"))).submit();
 		sleep(1);	
 	}
 	
