@@ -3,6 +3,7 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
+<<<<<<< Updated upstream
       <class name="src.crm.Researcher">
         <methods>
           <include name="beforeMethod"/>
@@ -10,6 +11,14 @@
           <include name="f4"/>
         </methods>
       </class> <!-- src.crm.Researcher -->
+=======
+      <class name="src.crm.Smoke">
+        <methods>
+          <include name="cagement"/>
+          <include name="beforesuite"/>
+        </methods>
+      </class> <!-- src.crm.Smoke -->
+>>>>>>> Stashed changes
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

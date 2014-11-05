@@ -2,7 +2,9 @@ package src.crm;
 
 import java.util.List;
 import java.io.FileInputStream;
+
 import jxl.Sheet;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
@@ -13,6 +15,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import com.nexiilabs.dbcon.DBConnection;
 
 import src.testUtils.Helper;
@@ -21,7 +24,7 @@ import src.testUtils.Helper;
 public class Smoke extends Helper
 {
 	
- @Test
+ //@Test
   public void aResearcher() throws Exception 
   {
 	  help.browser();
@@ -82,7 +85,7 @@ public class Smoke extends Helper
 	  driver.close();
   }
   
- @Test
+ //@Test
   public void bBDM() throws Exception
   {
 	  help.browser();
@@ -213,7 +216,7 @@ public class Smoke extends Helper
 	  driver.close();
   }
   
-  @Test
+  //@Test
    public void cManagement() throws Exception
    {
 	      help.browser();
@@ -239,6 +242,19 @@ public class Smoke extends Helper
 		  Thread.sleep(6000);
 		  driver.close();	   
    }
+  
+  @Test
+  public void cagement() throws Exception
+  {
+	      help.browser();
+	      driver.get(config.getProperty("url"));
+		  help.maxbrowser();
+		  help.browsererror();
+		  help.login("srinivasa.sanchana@nexiilabs.com", "password");
+		  help.expand();
+		  help.changePassword("srinivasa.sanchana@nexiilabs.com");
+		    
+  }
      
  }
   
