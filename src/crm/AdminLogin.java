@@ -48,11 +48,11 @@ public class AdminLogin extends Helper{
 	//login method
 	public void mylogin() throws Exception{
 		login(config.getProperty("auname"), config.getProperty("apass"));
-		WebElement loggedInName = driver.findElement(By.className(or.getProperty("LoggedIn_nuser_name")));
+		WebElement loggedInName = driver.findElement(By.className(admin.getProperty("LoggedIn_nuser_name")));
 		if(loggedInName.getText().contains("Hi ! Admin ")){
-			List<WebElement> rolesList = driver.findElement(By.className(or.getProperty("sidetreemenu"))).findElements(By.tagName(or.getProperty("listtag")));
+			List<WebElement> rolesList = driver.findElement(By.className(admin.getProperty("sidetreemenu"))).findElements(By.tagName(admin.getProperty("listtag")));
 			//Reporter.log("<p>" + li.size());
-			if((sh6.getCell(2, 15).getContents().equals(rolesList.get(0).getText()))&&(sh6.getCell(2, 16).getContents().equals(rolesList.get(5).getText())&&(sh6.getCell(2, 17).getContents().equals(rolesList.get(10).getText())))){
+			if((sh6.getCell(10, 1).getContents().equals(rolesList.get(0).getText()))&&(sh6.getCell(10, 2).getContents().equals(rolesList.get(5).getText())&&(sh6.getCell(10, 3).getContents().equals(rolesList.get(10).getText())))){
 				Reporter.log("<p>" + rolesList.get(0).getText());
 				Reporter.log("<p>" + rolesList.get(5).getText());
 				Reporter.log("<p>" + rolesList.get(10).getText());
@@ -77,7 +77,7 @@ public class AdminLogin extends Helper{
 	help.login("pavan.nanigans@gmail.com", "password" );
 	help.expand();
 	sleep(2);
-	//if (driver.findElement(By.id(or.getProperty("uploadBulk"))).isDisplayed())
+	//if (driver.findElement(By.id(admin.getProperty("uploadBulk"))).isDisplayed())
 //	{
 	driver.findElement(By.id("bulkUpload")).click();
 	//}
@@ -86,19 +86,19 @@ public class AdminLogin extends Helper{
 	//Assert.fail("Bulk upload option not available");
 	//}
 	 sleep(7);
-	if (driver.findElement(By.className(or.getProperty("Rtextbox"))).isDisplayed())
+	if (driver.findElement(By.className(admin.getProperty("Rtextbox"))).isDisplayed())
 	{
-		driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys("D:\\LEADCRM\\Researcher Test Data1.xls");
+		driver.findElement(By.className(admin.getProperty("Rtextbox"))).sendKeys("D:\\LEADCRM\\Researcher Test Data1.xls");
 	}
 	else
 	{
 		Assert.fail("Browse option not available");
 	}
 
-	if (driver.findElement(By.id(or.getProperty("leadUpload"))).isDisplayed())
+	if (driver.findElement(By.id(admin.getProperty("leadUpload"))).isDisplayed())
 		
 	{
-		driver.findElement(By.id(or.getProperty("leadUpload"))).click();
+		driver.findElement(By.id(admin.getProperty("leadUpload"))).click();
 		sleep(7);
 	}
 	else
@@ -106,7 +106,7 @@ public class AdminLogin extends Helper{
 		Assert.fail("leads_upload_button not presented");
 	}
 
-	List<WebElement> resultantmessage = driver.findElements(By.id(or.getProperty("resultant_msg")));
+	List<WebElement> resultantmessage = driver.findElements(By.id(admin.getProperty("resultant_msg")));
 	if(resultantmessage.size()!=0){
 		String s1= "Excel File Uploaded and Leads Saved Successfully....!";
 		if (resultantmessage.get(0).getText().equalsIgnoreCase(s1))
@@ -142,8 +142,8 @@ public class AdminLogin extends Helper{
          Class.forName("com.mysql.jdbc.Driver").newInstance();
          connection = DBConnection.getConnection();
          statement = connection.createStatement();
-         Reporter.log("<p>" + "hurray connected");
          resultSet = statement.executeQuery("select a.role_name from crm_role a, crm_user b where a.role_id = b.role_id AND email_id = 'tulasirammail@gmail.com' AND delete_status = 'no'");
+         
          resultSet.next();
          String str = resultSet.getString("role_name"); 
          return str;
@@ -152,7 +152,7 @@ public class AdminLogin extends Helper{
 	public void pagination(){
 		 sleep(2);
 		 //verifying for pagination to next page for all entries
-		 WebElement pageNext= driver.findElement(By.id(or.getProperty("pagination_next")));
+		 WebElement pageNext= driver.findElement(By.id(admin.getProperty("pagination_next")));
 		 if(pageNext.isDisplayed()){
 			 Reporter.log("<p>" + "pagination next button is present");
 		 }else
@@ -161,11 +161,11 @@ public class AdminLogin extends Helper{
 		 }
 		 //clicking on the pagination next until it is disabled
 	     while(!pageNext.getAttribute("class").equalsIgnoreCase("paginate_disabled_next")){
-	    	   String s = driver.findElement(By.cssSelector(or.getProperty("list_info"))).getText();
+	    	   String s = driver.findElement(By.cssSelector(admin.getProperty("list_info"))).getText();
 	    	   Reporter.log("<p>" + s);
 	    	   pageNext.click();
 	         
-	          String s1 = driver.findElement(By.cssSelector(or.getProperty("list_info"))).getText();
+	          String s1 = driver.findElement(By.cssSelector(admin.getProperty("list_info"))).getText();
 	          if(!s1.equalsIgnoreCase(s)){
 	        	 Reporter.log("<p>" + "navigating to next page");
 	          }else{
@@ -174,7 +174,7 @@ public class AdminLogin extends Helper{
 	         sleep(1);
 	         //verification of navigation to the previous page for all entries 
 	         if(pageNext.getAttribute("class").equalsIgnoreCase("paginate_disabled_next")) {
-	    	     WebElement pagePrevious =  driver.findElement(By.id(or.getProperty("pagiantion_prev")));
+	    	     WebElement pagePrevious =  driver.findElement(By.id(admin.getProperty("pagiantion_prev")));
 	    	 if(pagePrevious.isDisplayed()){
 	    		Reporter.log("<p>" + "pagination previous button present");
 	    	 }else{
@@ -182,9 +182,9 @@ public class AdminLogin extends Helper{
 	      }
 	    	 //clicking on the pagination to previous page until it is disabled
 	        while(!pagePrevious.getAttribute("class").equalsIgnoreCase("paginate_disabled_previous")){
-	        	String s2 = driver.findElement(By.cssSelector(or.getProperty("list_info"))).getText();
+	        	String s2 = driver.findElement(By.cssSelector(admin.getProperty("list_info"))).getText();
 	        	pagePrevious.click();
-	        	String s3 = driver.findElement(By.cssSelector(or.getProperty("list_info"))).getText();
+	        	String s3 = driver.findElement(By.cssSelector(admin.getProperty("list_info"))).getText();
 	        	Reporter.log("<p>" + s2);
 	        	if(!s2.equalsIgnoreCase(s3)){
 	        		Reporter.log("<p>" + "navigated to previous page");
@@ -204,7 +204,7 @@ public class AdminLogin extends Helper{
 	public void showEntries(){
 		 //====== Verifying the Show Entries Drop down ========  
 		//picking all the drop down values into one list
-		   List<WebElement> entriesDropdown = driver.findElement(By.name(or.getProperty("show_dropDown"))).findElements(By.tagName(or.getProperty("option_tag")));
+		   List<WebElement> entriesDropdown = driver.findElement(By.name(admin.getProperty("show_dropDown"))).findElements(By.tagName(admin.getProperty("option_tag")));
 		   if(entriesDropdown.size()!=0){
 			   Reporter.log("<p>" + entriesDropdown.size());
 			   for(int i = 0;i<entriesDropdown.size();i++){
@@ -213,7 +213,7 @@ public class AdminLogin extends Helper{
 				   sleep(1);
 				   int x = Integer.parseInt(entriesDropdown.get(i).getText());
 				   //taking the number of rows displayed into one list
-				   List<WebElement> tableRows =driver.findElement(By.tagName(or.getProperty("table_tag"))).findElements(By.tagName(or.getProperty("tableRowtag")));
+				   List<WebElement> tableRows =driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableRowtag")));
 				  //comparing no.of rows with the selected values in the drop down
 				   if(x==(tableRows.size()))
 				   {
@@ -223,7 +223,7 @@ public class AdminLogin extends Helper{
 				   else {
 					   //checking the case if the no.of entries are less than selected value
 					   if(tableRows.size()<x){
-						  WebElement wl =  driver.findElement(By.id(or.getProperty("pagination_next")));
+						  WebElement wl =  driver.findElement(By.id(admin.getProperty("pagination_next")));
 						  if(wl.getAttribute("class").equalsIgnoreCase("paginate_disabled_next")){
 							  Reporter.log("<p>" + "The list of items are "+tableRows.size() +" which are less than the "+ x +" entries chosen from the drop down");
 						  }else{
@@ -243,11 +243,11 @@ public class AdminLogin extends Helper{
 	
 	public void searchUser(){
 		   sleep(1);
-		   WebElement searchbox =driver.findElement(By.tagName(or.getProperty("SearchBox")));
+		   WebElement searchbox =driver.findElement(By.tagName(admin.getProperty("SearchBox")));
 		   if(searchbox.isEnabled()){
 			   searchbox.sendKeys("Ajay"); 
 			   sleep(2);
-			   List<WebElement> tableData = driver.findElement(By.tagName(or.getProperty("table_tag"))).findElements(By.tagName(or.getProperty("tableData_tag")));
+			   List<WebElement> tableData = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
 			   Reporter.log("<p>" + "total matches found:"+tableData.size());
 			   int count = 0;
 			   for(int x =0;x<tableData.size();x++){
@@ -269,18 +269,18 @@ public class AdminLogin extends Helper{
 		   }
 	}
 	public void sortAscend(){
-		 List<WebElement> tbody = driver.findElement(By.tagName(or.getProperty("table_tag"))).findElements(By.tagName(or.getProperty("tableRowtag")));
+		 List<WebElement> tbody = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableRowtag")));
 		 if(tbody.size()!=0){
 		   Reporter.log("<p>" + tbody.size());
 		   ArrayList<Integer> li= new ArrayList<Integer>();
 		   for(int m = 0;m<tbody.size();m++){
-			   List<WebElement> trr = tbody.get(m).findElements(By.tagName(or.getProperty("tableData_tag")));
+			   List<WebElement> trr = tbody.get(m).findElements(By.tagName(admin.getProperty("tableData_tag")));
 			   Reporter.log("<p>" + trr.get(0).getText());
 			   String s= trr.get(0).getText();
 			   int y = Integer.parseInt(s);
 			   li.add(y);
 			 }
-		 WebElement w = driver.findElement(By.className(or.getProperty("SortAsc_button")));
+		 WebElement w = driver.findElement(By.className(admin.getProperty("SortAsc_button")));
 		 if(w.isDisplayed()){
 			 if(w.getAttribute("class").equals("sorting_asc")){
 				 Reporter.log("<p>" + "elements in ascending order");
@@ -302,19 +302,19 @@ public class AdminLogin extends Helper{
 		 }
 	}
 	public void sortDescend(){
-		WebElement w =  driver.findElement(By.className(or.getProperty("SortAsc_button")));
+		WebElement w =  driver.findElement(By.className(admin.getProperty("SortAsc_button")));
 		if(w.isDisplayed()){
 			w.click();
 		}
 		else{
 			Assert.fail("sort Ascend button not present");
 		}
-		 List<WebElement> tbody1 = driver.findElement(By.tagName(or.getProperty("table_tag"))).findElements(By.tagName(or.getProperty("tableRowtag")));
+		 List<WebElement> tbody1 = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableRowtag")));
 		 if(tbody1.size()!=0){
 		   Reporter.log("<p>" + tbody1.size());
 		   ArrayList<Integer> li1= new ArrayList<Integer>();
 		   for(int m1 = 0;m1<tbody1.size();m1++){
-			   List<WebElement> trr1 = tbody1.get(m1).findElements(By.tagName(or.getProperty("tableData_tag")));
+			   List<WebElement> trr1 = tbody1.get(m1).findElements(By.tagName(admin.getProperty("tableData_tag")));
 			   if(trr1.size()!=0){
 				   Reporter.log("<p>" + trr1.get(0).getText());
 				   String s1= trr1.get(0).getText();
@@ -324,7 +324,7 @@ public class AdminLogin extends Helper{
 				   Assert.fail("table data list not loaded properly");
 			   }
 			 }
-		 WebElement w1 = driver.findElement(By.className(or.getProperty("SortDsc_button")));
+		 WebElement w1 = driver.findElement(By.className(admin.getProperty("SortDsc_button")));
 		 if(w1.isDisplayed()){
 			 if(w1.getAttribute("class").equals("sorting_desc")){
 				 Reporter.log("<p>" + "elements in descending  order");
@@ -347,12 +347,12 @@ public class AdminLogin extends Helper{
 		 }
 	
 	}
-	//  @Test
+	  @Test
 	  public void test() throws IllegalAccessException, ClassNotFoundException, Exception{
-		  String s= dbConnection("vp@gmail.com");
-		  Reporter.log("<p>" + s);
-		//  String s1 =  dbConnectionRole();
-		//  Reporter.log("<p>" + s1);
+		//  String s= dbConnection("santosh@gmail.com");
+		//  Reporter.log("<p>" + s);
+		  String s1 =  dbConnectionRole();
+		  Reporter.log("<p>" + s1);
 		
 		 
 	  }
@@ -364,7 +364,7 @@ public class AdminLogin extends Helper{
 	 		
 	   //==========Side Tree Expansion==========
 	 	expand();
-	 	List<WebElement> sideTreeList=driver.findElement(By.id(or.getProperty("Sidetree_menu"))).findElements(By.tagName(or.getProperty("Anchor_tag")));
+	 	List<WebElement> sideTreeList=driver.findElement(By.id(admin.getProperty("Sidetree_menu"))).findElements(By.tagName(admin.getProperty("Anchor_tag")));
 	 	if(sideTreeList.size()!=0){
 	 		Reporter.log("<p>" + sideTreeList.size());
 	 		for(int i =0;i<sideTreeList.size();i++){
@@ -379,7 +379,7 @@ public class AdminLogin extends Helper{
 	  
 	  //======Clicking on Create button=======
 	  
-	   WebElement wc = driver.findElement(By.id(or.getProperty("create_button")));
+	   WebElement wc = driver.findElement(By.id(admin.getProperty("create_button")));
 	   if(wc.isDisplayed()){
 		   wc.click();
 		   sleep(2);
@@ -397,14 +397,14 @@ public class AdminLogin extends Helper{
 	  //======'Manager' Drop down button presence and its working=====
 	 	 mylogin();
 	 	 expand();
-	 	 WebElement createButton = driver.findElement(By.id(or.getProperty("create_button")));
+	 	 WebElement createButton = driver.findElement(By.id(admin.getProperty("create_button")));
 	 	 if(createButton.isDisplayed()){
 	 		createButton.click();
 	 		 sleep(2);
 	 	 }else{
 	 		 Assert.fail("Create button not present");
 	 	 }
-	     List<WebElement> ManagerDropdown = driver.findElement(By.name(or.getProperty("manager_dd"))).findElements(By.tagName(or.getProperty("option_tag")));
+	     List<WebElement> ManagerDropdown = driver.findElement(By.name(admin.getProperty("manager_dd"))).findElements(By.tagName(admin.getProperty("option_tag")));
 	     if(ManagerDropdown.size()!=0){
 	    	 Reporter.log("<p>" + "drop down size"+ManagerDropdown.size());
 	    	 int count = 0;
@@ -421,7 +421,7 @@ public class AdminLogin extends Helper{
 	    	 Assert.fail(" manager drop down is not presented");
 	     }
 	 //======'Role' Drop down button presence and its working=====
-	  List<WebElement> Role = driver.findElement(By.name(or.getProperty("role_dd"))).findElements(By.tagName(or.getProperty("option_tag")));
+	  List<WebElement> Role = driver.findElement(By.name(admin.getProperty("role_dd"))).findElements(By.tagName(admin.getProperty("option_tag")));
 	  if(Role.size()!=0){
 	     Reporter.log("<p>" + "drop down size"+Role.size());
 	     int cnt=0;
@@ -440,7 +440,7 @@ public class AdminLogin extends Helper{
 	  }
 	    //======Service dropdown presence and working =======
 	  	Role.get(2).click();
-		List<WebElement>serviceList = driver.findElement(By.name(or.getProperty("service_dd"))).findElements(By.tagName(or.getProperty("option_tag")));
+		List<WebElement>serviceList = driver.findElement(By.name(admin.getProperty("service_dd"))).findElements(By.tagName(admin.getProperty("option_tag")));
 		if(serviceList.size()!=0){
 			Reporter.log("<p>" + "dropdown size"+serviceList.size());
 			int cont=0;
@@ -466,7 +466,7 @@ public class AdminLogin extends Helper{
   		 mylogin();
   		 expand();
   		 //clicking on create button
-  		 WebElement createButton = driver.findElement(By.id(or.getProperty("create_button")));
+  		 WebElement createButton = driver.findElement(By.id(admin.getProperty("create_button")));
 	 	 if(createButton.isDisplayed()){
 	 		createButton.click();
 	 		 sleep(2);
@@ -475,10 +475,10 @@ public class AdminLogin extends Helper{
 	 	 }
   		
  		//======checking of '+' button working ========
-  		List<WebElement> Role = driver.findElement(By.name(or.getProperty("role_dd"))).findElements(By.tagName(or.getProperty("option_tag")));
+  		List<WebElement> Role = driver.findElement(By.name(admin.getProperty("role_dd"))).findElements(By.tagName(admin.getProperty("option_tag")));
   		if(Role.size()!=0){
   			Role.get(2).click();
-  			WebElement serviceButton = driver.findElement(By.id(or.getProperty("service_button")));
+  			WebElement serviceButton = driver.findElement(By.id(admin.getProperty("service_button")));
   			if(serviceButton.isDisplayed()){
   				serviceButton.click();  
   				sleep(2);
@@ -486,21 +486,21 @@ public class AdminLogin extends Helper{
   				Reporter.log("<p>" + "service button not present");
   			}
   		//clicking on the  + button for providing additional service	
-  		WebElement w = driver.findElement(By.cssSelector(or.getProperty("createService_popup")));
+  		WebElement w = driver.findElement(By.cssSelector(admin.getProperty("createService_popup")));
 	    Reporter.log("<p>" + w.getText());
 	    if(w.getText().equals("Create Service")){
 		    Reporter.log("<p>" + "page navigated to createService window successfully");
 	    }else{
 		    Assert.fail("page naviagation to the create service is failed");
 	    }
-	    WebElement wt = driver.findElement(By.className(or.getProperty("text_service")));
+	    WebElement wt = driver.findElement(By.className(admin.getProperty("text_service")));
 	    if(wt.isEnabled()){
 		    wt.sendKeys("database admin");
 		    sleep(1);
 	    }else{
 		    Assert.fail("text box is not enabled");
 	   }
-	   driver.findElement(By.id(or.getProperty("create_service"))).click(); 
+	   driver.findElement(By.id(admin.getProperty("create_service"))).click(); 
 	   sleep(2);
 	   Actions ac = new Actions(driver);
 	   ac.moveToElement(driver.findElement(By.cssSelector("button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only.ui-dialog-titlebar-close"))).build().perform();
@@ -525,7 +525,7 @@ public class AdminLogin extends Helper{
 		 String s1 = null;
 		//String s1;
 		for(int row=1;row<rows;row++){
-			 WebElement wc = driver.findElement(By.id(or.getProperty("create_button")));
+			 WebElement wc = driver.findElement(By.id(admin.getProperty("create_button")));
 		 	 if(wc.isDisplayed()){
 		 		 wc.click();
 		 		 sleep(2);
@@ -537,7 +537,7 @@ public class AdminLogin extends Helper{
 			 if(!sh6.getCell(col, row).getContents().equals("")){
 					 
 			 //Assigning first name 
-				 WebElement wu = driver.findElement(By.name(or.getProperty("u_fname")));
+				 WebElement wu = driver.findElement(By.name(admin.getProperty("u_fname")));
 			 if(wu.isEnabled()){
 				 wu.sendKeys(sh6.getCell(col, row).getContents());
 				 sleep(1);
@@ -546,7 +546,7 @@ public class AdminLogin extends Helper{
 				 Assert.fail("firstname text box not present");
 			 }
 			 //Assigning last name
-			 WebElement wl = driver.findElement(By.name(or.getProperty("u_lname")));
+			 WebElement wl = driver.findElement(By.name(admin.getProperty("u_lname")));
 			 if(wl.isEnabled()){
 				 wl.sendKeys(sh6.getCell(++col, row).getContents());
 				 sleep(1);
@@ -554,7 +554,7 @@ public class AdminLogin extends Helper{
 				 Assert.fail("last name text box not present");
 			 }
 			 //Assigning email
-			 WebElement we = driver.findElement(By.name(or.getProperty("u_email")));
+			 WebElement we = driver.findElement(By.name(admin.getProperty("u_email")));
 			 if(we.isEnabled()){
 				 we.sendKeys(sh6.getCell(++col, row).getContents());
 				 sleep(1);
@@ -562,7 +562,7 @@ public class AdminLogin extends Helper{
 				 Assert.fail("email text box not present");
 			 }
 			 //Assigning empId
-			 WebElement wei = driver.findElement(By.name(or.getProperty("u_empId")));
+			 WebElement wei = driver.findElement(By.name(admin.getProperty("u_empId")));
 			 if(wei.isEnabled()){
 				 wei.sendKeys(sh6.getCell(++col, row).getContents());
 				 sleep(1);}
@@ -570,7 +570,7 @@ public class AdminLogin extends Helper{
 				 Assert.fail("empId text box not present");
 			 }
 			 //choosing the manager from the drop down
-			 List<WebElement> M = driver.findElement(By.name(or.getProperty("manager_dd"))).findElements(By.tagName(or.getProperty("option_tag")));
+			 List<WebElement> M = driver.findElement(By.name(admin.getProperty("manager_dd"))).findElements(By.tagName(admin.getProperty("option_tag")));
 			 if(M.size()!=0){
 				 int a =random(M.size());
 				 if (M.get(a).getText().contentEquals("--- SELECT ---")){
@@ -584,7 +584,7 @@ public class AdminLogin extends Helper{
 			 }
 			
 			 //choosing the role from the role drop down
-			 List<WebElement> R = driver.findElement(By.name(or.getProperty("role_dd"))).findElements(By.tagName(or.getProperty("option_tag")));
+			 List<WebElement> R = driver.findElement(By.name(admin.getProperty("role_dd"))).findElements(By.tagName(admin.getProperty("option_tag")));
 			 if(R.size()!=0){
 				 int b =random(R.size());
 				
@@ -597,7 +597,7 @@ public class AdminLogin extends Helper{
 				 Reporter.log("<p>" + R.get(b).getText());
 				 if(R.get(b).getText().equals("Architect")){
 					 //selecting the service if the role is architect
-					 List<WebElement> ls= driver.findElement(By.name(or.getProperty("service_dd"))).findElements(By.tagName(or.getProperty("option_tag")));
+					 List<WebElement> ls= driver.findElement(By.name(admin.getProperty("service_dd"))).findElements(By.tagName(admin.getProperty("option_tag")));
 					 if(ls.size()!=0){
 						 Reporter.log("<p>" + ls.size());
 						 int c = random(ls.size());
@@ -611,7 +611,7 @@ public class AdminLogin extends Helper{
 				 Assert.fail("Role drop down not present");
 			 }
 			 //finally clicking on the create button
-	       WebElement ws = driver.findElement(By.id(or.getProperty("createUser_button")));
+	       WebElement ws = driver.findElement(By.id(admin.getProperty("createUser_button")));
 	       if(ws.isDisplayed()){
 	    	   ws.submit(); 
 	    	   sleep(10);
@@ -619,7 +619,7 @@ public class AdminLogin extends Helper{
 	    	  Assert.fail("Create button not present");
 	      }
 	      //checking for the resultant message of created user
-	      if(driver.findElement(By.id(or.getProperty("resultant_msg"))).getText().contains("Successfully Created")){
+	      if(driver.findElement(By.id(admin.getProperty("resultant_msg"))).getText().contains("Successfully Created")){
 	    	String s = dbConnection(sh6.getCell(2, row).getContents());
 	    	Reporter.log("<p>" + s);
 	    	sleep(1);
@@ -633,7 +633,7 @@ public class AdminLogin extends Helper{
 		    	sleep(2);
 		    	login(sh6.getCell(2, row).getContents(),s);
 		    	sleep(4);
-		    	List<WebElement> lid = driver.findElement(By.id(or.getProperty("login_page"))).findElements(By.tagName(or.getProperty("labelview")));
+		    	List<WebElement> lid = driver.findElement(By.id(admin.getProperty("login_page"))).findElements(By.tagName(admin.getProperty("labelview")));
 	    		Reporter.log("<p>" + lid.get(2).getText());
 		    	if(lid.get(2).getText().equals("Invalid User Login")){
 	    			Reporter.log("<p>" + "The roles manager and Architect have no login access");
@@ -644,8 +644,8 @@ public class AdminLogin extends Helper{
 		    	sleep(2);
 		    	login(sh6.getCell(2, row).getContents(),s);
 		    	sleep(4);
-		    	if(driver.findElement(By.className(or.getProperty("LoggedIn_nuser_name"))).getText().contains(s2)){
-		    		Reporter.log("<p>" + driver.findElement(By.className(or.getProperty("LoggedIn_nuser_name"))).getText());
+		    	if(driver.findElement(By.className(admin.getProperty("LoggedIn_nuser_name"))).getText().contains(s2)){
+		    		Reporter.log("<p>" + driver.findElement(By.className(admin.getProperty("LoggedIn_nuser_name"))).getText());
 		    	
 	    				Reporter.log("<p>" + "user created successfully");
 	    			}
@@ -656,7 +656,7 @@ public class AdminLogin extends Helper{
 	    	sleep(2);
 	    	mylogin();
 	    	expand();
-	    	 driver.findElement(By.id(or.getProperty("create_button")));
+	    	 driver.findElement(By.id(admin.getProperty("create_button")));
 	      }else
 	      {
 	    	  Reporter.log("<p>" + "user already exist....try with other credentials  ");
@@ -677,7 +677,7 @@ public class AdminLogin extends Helper{
 	   //======Clicking on Update button======= 
 	 	mylogin();
 	 	expand();
-	    WebElement wup = driver.findElement(By.id(or.getProperty("updateUser_button")));
+	    WebElement wup = driver.findElement(By.id(admin.getProperty("updateUser_button")));
 	    if(wup.isDisplayed()){
 	    	wup.click();
 	    	sleep(2);
@@ -695,7 +695,7 @@ public class AdminLogin extends Helper{
 		   mylogin();
 		   expand();
 		   //clicking on update button
-		   WebElement wup = driver.findElement(By.id(or.getProperty("updateUser_button")));
+		   WebElement wup = driver.findElement(By.id(admin.getProperty("updateUser_button")));
 		    if(wup.isDisplayed()){
 		    	wup.click();
 		    	sleep(2);
@@ -714,7 +714,7 @@ public class AdminLogin extends Helper{
 		mylogin();
 		expand();
 		//clicking on the update button from the side tree menu
-		 WebElement wup = driver.findElement(By.id(or.getProperty("updateUser_button")));
+		 WebElement wup = driver.findElement(By.id(admin.getProperty("updateUser_button")));
 		    if(wup.isDisplayed()){
 		    	wup.click();
 		    	sleep(2);
@@ -723,7 +723,7 @@ public class AdminLogin extends Helper{
 		    	Assert.fail("update button not present");
 		    }
 		  //searching for a specific user whose details to be uploaded  
-		 WebElement ws =  driver.findElement(By.tagName(or.getProperty("SearchBox")));
+		 WebElement ws =  driver.findElement(By.tagName(admin.getProperty("SearchBox")));
 		 if(ws.isDisplayed()){
 			ws.sendKeys("tulasirammail@gmail.com"); 
 			sleep(2);
@@ -731,10 +731,10 @@ public class AdminLogin extends Helper{
 			Assert.fail("Search box not present");
 		}
 		//clicking on update button of a user
-		driver.findElement(By.tagName(or.getProperty("table_tag"))).findElement(By.tagName(or.getProperty("Anchor_tag"))).click();
+		driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElement(By.tagName(admin.getProperty("Anchor_tag"))).click();
 	   sleep(4);
 	   //performing modification to the existing data
-	   List<WebElement> man=driver.findElement(By.name(or.getProperty("manager_dd"))).findElements(By.tagName(or.getProperty("option_tag")));
+	   List<WebElement> man=driver.findElement(By.name(admin.getProperty("manager_dd"))).findElements(By.tagName(admin.getProperty("option_tag")));
 	   if(man.size()!=0){
 	   int rnm = random(man.size());
 	   if(man.get(rnm).getText().contains("--- SELECT ---")){
@@ -749,7 +749,7 @@ public class AdminLogin extends Helper{
 		 Reporter.log("<p>" + "role before updation   "+s1);
 	   //updating the role of existing user
 		 sleep(2);
-	   List<WebElement> R = driver.findElement(By.name(or.getProperty("role_dd"))).findElements(By.tagName(or.getProperty("option_tag")));
+	   List<WebElement> R = driver.findElement(By.name(admin.getProperty("role_dd"))).findElements(By.tagName(admin.getProperty("option_tag")));
 		 if(R.size()!=0){
 		 int b =random(R.size());
 		 
@@ -759,7 +759,7 @@ public class AdminLogin extends Helper{
 		 }
 		 R.get(b).click();
 	   //clicking on update button
-	   WebElement wb = driver.findElement(By.id(or.getProperty("reupdate_button")));
+	   WebElement wb = driver.findElement(By.id(admin.getProperty("reupdate_button")));
 	   if(wb.isDisplayed()){
 		   wb.submit();
 		   sleep(2);
@@ -779,7 +779,7 @@ public class AdminLogin extends Helper{
 	   driver.get(config.getProperty("url"));
 	   login("tulasirammail@gmail.com",Rolepass);
 	   sleep(5);
-	   if(driver.findElement(By.className(or.getProperty("LoggedIn_nuser_name"))).getText().contains(s2)){
+	   if(driver.findElement(By.className(admin.getProperty("LoggedIn_nuser_name"))).getText().contains(s2)){
 		   Reporter.log("<p>" + "User updated successfully");
 	   }else{
 		   Assert.fail("user updation failed");
@@ -793,7 +793,7 @@ public class AdminLogin extends Helper{
 	 public void h_sorting () throws Exception{
 		 mylogin();
 		 expand();
-		 WebElement wup = driver.findElement(By.id(or.getProperty("updateUser_button")));
+		 WebElement wup = driver.findElement(By.id(admin.getProperty("updateUser_button")));
 		    if(wup.isDisplayed()){
 		    	wup.click();
 		    	sleep(2);
@@ -812,7 +812,7 @@ public class AdminLogin extends Helper{
 		 mylogin();
 		 expand();
 		 //clicking on the update button from the side tree menu
-		 WebElement wup = driver.findElement(By.id(or.getProperty("updateUser_button")));
+		 WebElement wup = driver.findElement(By.id(admin.getProperty("updateUser_button")));
 		    if(wup.isDisplayed()){
 		    	wup.click();
 		    	sleep(2);
@@ -832,7 +832,7 @@ public class AdminLogin extends Helper{
 		mylogin();
 		expand();
 		//clicking on delete user button from the tree menu
-		WebElement wd = driver.findElement(By.id(or.getProperty("deleteUser_Button")));
+		WebElement wd = driver.findElement(By.id(admin.getProperty("deleteUser_Button")));
 		if(wd.isDisplayed()){
 			wd.click();
 			sleep(2);
@@ -847,7 +847,7 @@ public class AdminLogin extends Helper{
 	public void k_searchbutton() throws Exception{
 		mylogin();
 		expand();
-		WebElement wd = driver.findElement(By.id(or.getProperty("deleteUser_Button")));
+		WebElement wd = driver.findElement(By.id(admin.getProperty("deleteUser_Button")));
 		if(wd.isDisplayed()){
 			wd.click();
 			sleep(2);
@@ -865,7 +865,7 @@ public class AdminLogin extends Helper{
 		mylogin();
 		expand();
 		//clicking on delete user button
-		WebElement wd = driver.findElement(By.id(or.getProperty("deleteUser_Button")));
+		WebElement wd = driver.findElement(By.id(admin.getProperty("deleteUser_Button")));
 		if(wd.isDisplayed()){
 			wd.click();
 			sleep(2);
@@ -873,7 +873,7 @@ public class AdminLogin extends Helper{
 			Assert.fail("delete user button not present in tree menu");
 		}
 		//entering a value in search box
-		WebElement wi = driver.findElement(By.tagName(or.getProperty("SearchBox")));
+		WebElement wi = driver.findElement(By.tagName(admin.getProperty("SearchBox")));
 		if(wi.isEnabled()){
 			wi.sendKeys("ajay");
 			sleep(3);
@@ -882,14 +882,14 @@ public class AdminLogin extends Helper{
 			Assert.fail("search text box is not enabled");
 		}
 		//picking all the rows into one list 
-		List<WebElement> li = driver.findElement(By.tagName(or.getProperty("table_tag"))).findElement(By.tagName(or.getProperty("tableRowtag"))).findElements(By.tagName(or.getProperty("tableData_tag")));
+		List<WebElement> li = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElement(By.tagName(admin.getProperty("tableRowtag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
 		Reporter.log("<p>" + li.size());
 		if(li.size()!=0){
 			//storing the mailId of user to be deleted in a string 
 			String s = li.get(2).getText();
 			Reporter.log("<p>" + s);
 			 String sdelete = dbConnection(s);
-			List<WebElement> li1 = driver.findElement(By.tagName(or.getProperty("table_tag"))).findElements(By.tagName(or.getProperty("Anchor_tag")));
+			List<WebElement> li1 = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("Anchor_tag")));
 			if(li1.size()!=0){
 				//clicking on the delete button of a specific user
 				li1.get(0).click();
@@ -903,7 +903,7 @@ public class AdminLogin extends Helper{
 		   sleep(2);
 		   login(s,sdelete);
 		   sleep(3);
-		   List<WebElement> lid = driver.findElement(By.id(or.getProperty("login_page"))).findElements(By.tagName(or.getProperty("labelview")));
+		   List<WebElement> lid = driver.findElement(By.id(admin.getProperty("login_page"))).findElements(By.tagName(admin.getProperty("labelview")));
 		  if(lid.size()!=0){
 			  if(lid.get(2).getText().contains("Invalid User Login")){
 		  
@@ -919,7 +919,7 @@ public class AdminLogin extends Helper{
 	public void m_sort() throws Exception{
 		mylogin();
 		expand();
-		WebElement wd = driver.findElement(By.id(or.getProperty("deleteUser_Button")));
+		WebElement wd = driver.findElement(By.id(admin.getProperty("deleteUser_Button")));
 		if(wd.isDisplayed()){
 			wd.click();
 			sleep(2);
@@ -937,7 +937,7 @@ public class AdminLogin extends Helper{
 	public void n_pagenavigation() throws Exception{
 		mylogin();
 		expand();
-		WebElement wd = driver.findElement(By.id(or.getProperty("deleteUser_Button")));
+		WebElement wd = driver.findElement(By.id(admin.getProperty("deleteUser_Button")));
 		if(wd.isDisplayed()){
 			wd.click();
 			sleep(2);
@@ -953,7 +953,7 @@ public class AdminLogin extends Helper{
 		//=======verification of show entries dropdown ========
 		mylogin();
 		expand();
-		WebElement wv =driver.findElement(By.id(or.getProperty("viewAllUsers")));
+		WebElement wv =driver.findElement(By.id(admin.getProperty("viewAllUsers")));
 		if(wv.isDisplayed()){
 			wv.click();
 			sleep(2);
@@ -967,7 +967,7 @@ public class AdminLogin extends Helper{
 	public void p_searchUser() throws Exception{
 		mylogin();
 		expand();
-		WebElement wv =driver.findElement(By.id(or.getProperty("viewAllUsers")));
+		WebElement wv =driver.findElement(By.id(admin.getProperty("viewAllUsers")));
 		if(wv.isDisplayed()){
 			wv.click();
 			sleep(2);
@@ -980,7 +980,7 @@ public class AdminLogin extends Helper{
 	public void q_sortedUser() throws Exception{
 		mylogin();
 		expand();
-		WebElement wv =driver.findElement(By.id(or.getProperty("viewAllUsers")));
+		WebElement wv =driver.findElement(By.id(admin.getProperty("viewAllUsers")));
 		if(wv.isDisplayed()){
 			wv.click();
 			sleep(2);
@@ -995,19 +995,19 @@ public class AdminLogin extends Helper{
 	public void r_viewUsers() throws Exception{
 		mylogin();
 		expand();
-		WebElement wv =driver.findElement(By.id(or.getProperty("viewAllUsers")));
+		WebElement wv =driver.findElement(By.id(admin.getProperty("viewAllUsers")));
 		if(wv.isDisplayed()){
 			wv.click();
 			sleep(2);
 		}else{
 			Assert.fail("view all users button is not present");
 		}
-		WebElement we =driver.findElement(By.id(or.getProperty("pagination_next")));
+		WebElement we =driver.findElement(By.id(admin.getProperty("pagination_next")));
 		if(we.isDisplayed()){
 		int i = 10;
-		while(!we.getAttribute("class").equalsIgnoreCase(or.getProperty("nextpage_disabled"))){
+		while(!we.getAttribute("class").equalsIgnoreCase(admin.getProperty("nextpage_disabled"))){
 			we.click();
-			List<WebElement> li = driver.findElement(By.tagName(or.getProperty("table_tag"))).findElements(By.tagName(or.getProperty("tableRowtag")));
+			List<WebElement> li = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableRowtag")));
 			if(li.size()!=0){
 				i= i+li.size();
 				sleep(2);
@@ -1024,7 +1024,7 @@ public class AdminLogin extends Helper{
 	public void s_pageNavigation() throws Exception{
 		mylogin();
 		expand();
-		WebElement wv =driver.findElement(By.id(or.getProperty("viewAllUsers")));
+		WebElement wv =driver.findElement(By.id(admin.getProperty("viewAllUsers")));
 		if(wv.isDisplayed()){
 			wv.click();
 			sleep(2);
@@ -1034,43 +1034,45 @@ public class AdminLogin extends Helper{
 		pagination();
 	}
 	
-	//@Test
+//	@Test
 	public void t_configCreation() throws Exception{
 		mylogin();
 		expand();
 		//taking the values of the existing paths
-		WebElement w1 = driver.findElement(By.id(or.getProperty("viewConfig")));
+		WebElement w1 = driver.findElement(By.id(admin.getProperty("viewConfig")));
 		if(w1.isDisplayed()){
 			w1.click();
 			sleep(1);
 		}else{
 			Assert.fail("view Configuration button is not present");
 		}
-		if(driver.findElement(By.id(or.getProperty("resultMessage"))).getText().contains("Please Provide Configuration Details Before Updation...!")){
+		int cols = 6;
+		int rows = 2;
+		if(driver.findElement(By.id(admin.getProperty("resultMessage"))).getText().contains("Please Provide Configuration Details Before Updation...!")){
 			
 			driver.findElement(By.id("createConfiguration")).click();
 			sleep(2);
 			//template path assigning
-			WebElement wt1 = driver.findElement(By.name(or.getProperty("templatePath")));
-			wt1.sendKeys(sh6.getCell(1, 9).getContents());
+			WebElement wt1 = driver.findElement(By.name(admin.getProperty("templatePath")));
+			wt1.sendKeys(sh6.getCell(6, 1).getContents());
 			sleep(1);
-			WebElement wp1 = driver.findElement(By.name(or.getProperty("proposalPath")));
-			wp1.sendKeys(sh6.getCell(1, 10).getContents());
+			WebElement wp1 = driver.findElement(By.name(admin.getProperty("proposalPath")));
+			wp1.sendKeys(sh6.getCell(6, 2).getContents());
 			sleep(1);
-			WebElement wq1 = driver.findElement(By.name(or.getProperty("quotePath")));
-			wq1.sendKeys(sh6.getCell(1, 11).getContents());
+			WebElement wq1 = driver.findElement(By.name(admin.getProperty("quotePath")));
+			wq1.sendKeys(sh6.getCell(6, 3).getContents());
 			sleep(1);
-			WebElement wpi1 = driver.findElement(By.name(or.getProperty("profileImagePath")));
-			wpi1.sendKeys(sh6.getCell(1, 12).getContents());
+			WebElement wpi1 = driver.findElement(By.name(admin.getProperty("profileImagePath")));
+			wpi1.sendKeys(sh6.getCell(6, 4).getContents());
 			sleep(1);
-			WebElement wr = driver.findElement(By.id(or.getProperty("createUser_button")));
+			WebElement wr = driver.findElement(By.id(admin.getProperty("createUser_button")));
 			if(wr.isDisplayed()){
 				wr.click();
 				sleep(2);
 			}else{
 				Assert.fail("create button not present");
 			}
-			WebElement w = driver.findElement(By.id(or.getProperty("resultant_msg")));
+			WebElement w = driver.findElement(By.id(admin.getProperty("resultant_msg")));
 			if(w.isDisplayed()){
 				if(w.getText().contains("Configurations Successfully Inserted ...!")){
 					sleep(2);
@@ -1085,7 +1087,7 @@ public class AdminLogin extends Helper{
 			}
 		}else{
 		ArrayList<String> as = new ArrayList<String>();
-		List<WebElement> lip = driver.findElement(By.className(or.getProperty("pathclass"))).findElements(By.tagName(or.getProperty("labelview")));
+		List<WebElement> lip = driver.findElement(By.className(admin.getProperty("pathclass"))).findElements(By.tagName(admin.getProperty("labelview")));
 		Reporter.log("<p>" + lip.size());
 		for(int i = 0;i<lip.size();i++){
 			if(i%2!=0){
@@ -1095,57 +1097,57 @@ public class AdminLogin extends Helper{
 		}
 		//deleting existing paths
 		sleep(2);
-		driver.findElement(By.id(or.getProperty("deleteConfig"))).click();
+		driver.findElement(By.id(admin.getProperty("deleteConfig"))).click();
 		sleep(2);
-		driver.findElement(By.id(or.getProperty("createUser_button"))).click();
+		driver.findElement(By.id(admin.getProperty("createUser_button"))).click();
 		sleep(2);
 		//clicking on createConfig button
 		driver.findElement(By.id("createConfiguration")).click();
 		sleep(2);
 		//template path assigning
-		WebElement wt = driver.findElement(By.name(or.getProperty("templatePath")));
-		if(!as.get(0).equals(sh6.getCell(1, 9).getContents())){
+		WebElement wt = driver.findElement(By.name(admin.getProperty("templatePath")));
+		if(!as.get(0).equals(sh6.getCell(6, 1).getContents())){
 		
-			wt.sendKeys(sh6.getCell(1, 9).getContents());
+			wt.sendKeys(sh6.getCell(6, 1).getContents());
 			
 		}else{
-			wt.sendKeys(sh6.getCell(0, 15).getContents());
+			wt.sendKeys(sh6.getCell(8, 1).getContents());
 		}
 		sleep(1);
 		
 		//proposal path uploading 
-		WebElement wp = driver.findElement(By.name(or.getProperty("proposalPath")));
-			if(!as.get(1).equals(sh6.getCell(1, 10).getContents())){
-				wp.sendKeys(sh6.getCell(1, 10).getContents());
+		WebElement wp = driver.findElement(By.name(admin.getProperty("proposalPath")));
+			if(!as.get(1).equals(sh6.getCell(6, 2).getContents())){
+				wp.sendKeys(sh6.getCell(6, 2).getContents());
 			}else{
-				wp.sendKeys(sh6.getCell(0, 15).getContents());
+				wp.sendKeys(sh6.getCell(8, 2).getContents());
 			}
 			sleep(1);
 		//quote path upload	
-		WebElement wq = driver.findElement(By.name(or.getProperty("quotePath")));
-		if(!as.get(2).equals(sh6.getCell(1, 11).getContents())){
-			wq.sendKeys(sh6.getCell(1, 11).getContents());
+		WebElement wq = driver.findElement(By.name(admin.getProperty("quotePath")));
+		if(!as.get(2).equals(sh6.getCell(6, 3).getContents())){
+			wq.sendKeys(sh6.getCell(6, 3).getContents());
 		}else{
-			wq.sendKeys(sh6.getCell(0, 16).getContents());
+			wq.sendKeys(sh6.getCell(8, 3).getContents());
 		}
 		sleep(1);
 		
 		//profile image path upload
-		WebElement wpi = driver.findElement(By.name(or.getProperty("profileImagePath")));
-		if(!as.get(3).equals(sh6.getCell(1, 12).getContents())){
-			wpi.sendKeys(sh6.getCell(1, 12).getContents());
+		WebElement wpi = driver.findElement(By.name(admin.getProperty("profileImagePath")));
+		if(!as.get(3).equals(sh6.getCell(6, 4).getContents())){
+			wpi.sendKeys(sh6.getCell(6, 4).getContents());
 		}else{
-			wpi.sendKeys(sh6.getCell(0, 17).getContents());
+			wpi.sendKeys(sh6.getCell(8, 4).getContents());
 		}
 		sleep(1);
-		WebElement wr = driver.findElement(By.id(or.getProperty("createUser_button")));
+		WebElement wr = driver.findElement(By.id(admin.getProperty("createUser_button")));
 		if(wr.isDisplayed()){
 			wr.click();
 			sleep(2);
 		}else{
 			Assert.fail("create button not present");
 		}
-		WebElement w = driver.findElement(By.id(or.getProperty("resultant_msg")));
+		WebElement w = driver.findElement(By.id(admin.getProperty("resultant_msg")));
 		if(w.isDisplayed()){
 			if(w.getText().contains("Configurations Successfully Inserted ...!")){
 				sleep(2);
@@ -1167,15 +1169,18 @@ public class AdminLogin extends Helper{
 		mylogin();
 		expand();
 		//taking the values of the existing paths
-		WebElement w1 = driver.findElement(By.id(or.getProperty("viewConfig")));
+		WebElement w1 = driver.findElement(By.id(admin.getProperty("viewConfig")));
 		if(w1.isDisplayed()){
 			w1.click();
 			sleep(1);
 		}else{
 			Assert.fail("view Configuration button is not present");
 		}
+		if(driver.findElement(By.id(admin.getProperty("resultMessage"))).getText().equals("Please Provide Configuration Details Before Updation...!")){
+			System.out.println("There is no configuration exists previously to update");
+		}else{
 		ArrayList<String> as = new ArrayList<String>();
-		List<WebElement> lip = driver.findElement(By.className(or.getProperty("pathclass"))).findElements(By.tagName(or.getProperty("labelview")));
+		List<WebElement> lip = driver.findElement(By.className(admin.getProperty("pathclass"))).findElements(By.tagName(admin.getProperty("labelview")));
 		Reporter.log("<p>" + lip.size());
 		for(int i = 0;i<lip.size();i++){
 			if(i%2!=0){
@@ -1185,10 +1190,10 @@ public class AdminLogin extends Helper{
 		}
 		
 		//clicking on updateConfig button
-		driver.findElement(By.id(or.getProperty("updateConfig"))).click();
+		driver.findElement(By.id(admin.getProperty("updateConfig"))).click();
 		sleep(2);
 		//template path modification
-		WebElement wt = driver.findElement(By.name(or.getProperty("templatePath")));
+		WebElement wt = driver.findElement(By.name(admin.getProperty("templatePath")));
 		if(!as.get(0).equals(sh6.getCell(1, 9).getContents())){
 			wt.clear();
 			sleep(1);
@@ -1202,7 +1207,7 @@ public class AdminLogin extends Helper{
 		sleep(1);
 		
 		//proposal path modification
-		WebElement wp = driver.findElement(By.name(or.getProperty("proposalPath")));
+		WebElement wp = driver.findElement(By.name(admin.getProperty("proposalPath")));
 			if(!as.get(1).equals(sh6.getCell(1, 10).getContents())){
 				wp.clear();
 				sleep(1);
@@ -1214,7 +1219,7 @@ public class AdminLogin extends Helper{
 			}
 			sleep(1);
 		//quote path modification	
-		WebElement wq = driver.findElement(By.name(or.getProperty("quotePath")));
+		WebElement wq = driver.findElement(By.name(admin.getProperty("quotePath")));
 		if(!as.get(2).equals(sh6.getCell(1, 11).getContents())){
 			wq.clear();
 			sleep(1);
@@ -1227,7 +1232,7 @@ public class AdminLogin extends Helper{
 		sleep(1);
 		
 		//profile image path modification
-		WebElement wpi = driver.findElement(By.name(or.getProperty("profileImagePath")));
+		WebElement wpi = driver.findElement(By.name(admin.getProperty("profileImagePath")));
 		if(!as.get(3).equals(sh6.getCell(1, 12).getContents())){
 			wpi.clear();
 			sleep(1);
@@ -1238,14 +1243,14 @@ public class AdminLogin extends Helper{
 			wpi.sendKeys(sh6.getCell(0, 17).getContents());
 		}
 		sleep(1);
-		WebElement wr = driver.findElement(By.id(or.getProperty("createUser_button")));
+		WebElement wr = driver.findElement(By.id(admin.getProperty("createUser_button")));
 		if(wr.isDisplayed()){
 			wr.click();
 			sleep(2);
 		}else{
 			Assert.fail("create button not present");
 		}
-		WebElement w = driver.findElement(By.id(or.getProperty("resultant_msg")));
+		WebElement w = driver.findElement(By.id(admin.getProperty("resultant_msg")));
 		if(w.isDisplayed()){
 			if(w.getText().contains("Configurations Successfully Updated ...!")){
 				sleep(2);
@@ -1258,7 +1263,7 @@ public class AdminLogin extends Helper{
 		}else{
 			Assert.fail("no resultant message is displayed");
 		}
-		
+		}
 	}
 
 
@@ -1266,14 +1271,17 @@ public class AdminLogin extends Helper{
 	public void v_viewConfig() throws Exception{
 		mylogin();
 		expand();
-		WebElement w = driver.findElement(By.id(or.getProperty("viewConfig")));
+		WebElement w = driver.findElement(By.id(admin.getProperty("viewConfig")));
 		if(w.isDisplayed()){
 			w.click();
 			sleep(1);
 		}else{
 			Assert.fail("view Configuration button is not present");
 		}
-		List<WebElement> lip = driver.findElement(By.className(or.getProperty("pathclass"))).findElements(By.tagName(or.getProperty("labelview")));
+		if(driver.findElement(By.id(admin.getProperty("resultMessage"))).getText().equals("Please Provide Configuration Details Before Updation...!")){
+			System.out.println("There is no configuration exists previously to view");
+		}else{
+		List<WebElement> lip = driver.findElement(By.className(admin.getProperty("pathclass"))).findElements(By.tagName(admin.getProperty("labelview")));
 		Reporter.log("<p>" + lip.size());
 		if(lip.size()!=0){
 			int col = 1;
@@ -1295,6 +1303,7 @@ public class AdminLogin extends Helper{
 					}
 				}
 			}
+		}
 		
 		//help.screenshot("viewconfig");
 	}
@@ -1302,21 +1311,24 @@ public class AdminLogin extends Helper{
 	public void w_deleteConfig() throws Exception{
 		mylogin();
 		expand();
-		WebElement w = driver.findElement(By.id(or.getProperty("deleteConfig")));
+		WebElement w = driver.findElement(By.id(admin.getProperty("deleteConfig")));
 		if(w.isDisplayed()){
 			w.click();
 			sleep(2);
 		}else{
 			Assert.fail("delete configuration button not present");
 		}
-		WebElement w2 = driver.findElement(By.id(or.getProperty("createUser_button")));
+		if(driver.findElement(By.id(admin.getProperty("resultMessage"))).getText().equals("Please Provide Configuration Details Before Updation...!")){
+			System.out.println("There is no configuration exists previously to delete");
+		}else{
+		WebElement w2 = driver.findElement(By.id(admin.getProperty("createUser_button")));
 		if(w2.isDisplayed()){
 			w2.click();
 			sleep(2);
 		}else{
 			Assert.fail("delete button is not present");
 		}
-		WebElement w1 = driver.findElement(By.id(or.getProperty("resultant_msg")));
+		WebElement w1 = driver.findElement(By.id(admin.getProperty("resultant_msg")));
 		if(w1.isDisplayed()){
 			if(w1.getText().equals("Successfully Deleted...!")){
 				myResearcher();
@@ -1328,8 +1340,88 @@ public class AdminLogin extends Helper{
 		}else{
 			Assert.fail("resultant message is not displayed");
 		}
+		}
 	}
+//	@Test
+	public void serchUser() throws Exception{
+		mylogin();
+		expand();
+		driver.findElement(By.id(admin.getProperty("viewAllUsers"))).click();
+		sleep(2);
+		//picking the values 
+		WebElement w =driver.findElement(By.id(admin.getProperty("pagination_next")));
+		ArrayList<String> ar = new ArrayList<String>();
+		while(!w.getAttribute("class").equalsIgnoreCase(admin.getProperty("nextpage_disabled"))){
+			sleep(2);
+			List<WebElement> mylist = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
+			System.out.println(mylist.size());
+			for(int i =0;i<mylist.size();i++){
+				ar.add(mylist.get(i).getText());
+				}
+			w.click();
+		}
+				
+		List<WebElement> mylist1 = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
+		System.out.println(mylist1.size());
+		for(int i1 =0;i1<mylist1.size();i1++){
+			ar.add(mylist1.get(i1).getText());
 		
+			}
+		System.out.println(ar.size());
+		int j = random(ar.size());
+		System.out.println(ar.get(j));
+		driver.findElement(By.tagName(admin.getProperty("SearchBox"))).sendKeys(ar.get(j));
+		sleep(1);
+		List<WebElement> tlist = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
+		System.out.println(tlist.size());
+		if(tlist.size()>1){
+			List<WebElement> rowList = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableRowtag")));
+			System.out.println(rowList.size());
+			for(int k = 0;k<rowList.size();k++){
+				int count = 0;
+				List<WebElement> dataList = rowList.get(k).findElements(By.tagName(admin.getProperty("tableData_tag")));
+				System.out.println("dataList Size"+ dataList.size());
+				for(int p = 0;p<dataList.size();p++){
+					if(ar.get(j).equals(dataList.get(p).getText())){
+						System.out.println(dataList.get(p).getText());
+						count++;
+					}
+				}
+				if(count!=0){
+					System.out.println("search item found  for "+count+ " times");
+				}else{
+					System.out.println("searching failed");
+				}
+			}
+		}else{
+			System.out.println("No matching records found");
+		}//finishing the search with the item in the displayed table
+		
+		//search with negative scenario
+		int row = 1;
+		int count1=0;
+		for(int q = 0;q<ar.size();q++){
+			count1=0;
+			if(sh6.getCell(5, row).getContents().equalsIgnoreCase(ar.get(q))){
+				count1++;
+			}
+		//	System.out.println(count1);
+		}
+		//System.out.println(count1);
+		if(count1==0){
+			driver.findElement(By.tagName(admin.getProperty("SearchBox"))).clear();
+			sleep(1);
+			driver.findElement(By.tagName(admin.getProperty("SearchBox"))).sendKeys(sh6.getCell(12, row).getContents());
+			sleep(1);
+			List<WebElement> tlist1 = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
+			System.out.println(tlist1.size());
+			if(tlist1.size()==1){
+				System.out.println("no resultant users are displayed with the give nsearch key");
+			}else{
+				System.out.println("search box is failed to show the results with the given search key");
+			}
+		}
+	}
 }
  
 
