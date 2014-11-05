@@ -73,8 +73,9 @@ public class AdminLogin extends Helper{
 	driver.get(config.getProperty("url"));
 	help.maxbrowser();
 	help.browsererror();
-	
-	help.login("pavan.nanigans@gmail.com", "password" );
+	String smail = dbReaserchPass();
+	String spass = dbConnection(smail);
+	help.login(smail, spass );
 	help.expand();
 	sleep(2);
 	//if (driver.findElement(By.id(admin.getProperty("uploadBulk"))).isDisplayed())
@@ -146,6 +147,17 @@ public class AdminLogin extends Helper{
          
          resultSet.next();
          String str = resultSet.getString("role_name"); 
+         return str;
+}
+ public String dbReaserchPass() throws Exception, IllegalAccessException, ClassNotFoundException{
+		  
+         
+         Class.forName("com.mysql.jdbc.Driver").newInstance();
+         connection = DBConnection.getConnection();
+         statement = connection.createStatement();
+         resultSet = statement.executeQuery("select   b.email_id from crm_role a, crm_user b where a.role_id = b.role_id AND a.role_id = 6 AND delete_status='no' Group by a.role_name");
+         resultSet.next();
+         String str = resultSet.getString("email_id"); 
          return str;
 }
 	
@@ -347,13 +359,14 @@ public class AdminLogin extends Helper{
 		 }
 	
 	}
-	  @Test
+	//  @Test
 	  public void test() throws IllegalAccessException, ClassNotFoundException, Exception{
-		//  String s= dbConnection("santosh@gmail.com");
+		 // String s= dbConnection("pavan.nanigans@gmail.com");
 		//  Reporter.log("<p>" + s);
-		  String s1 =  dbConnectionRole();
-		  Reporter.log("<p>" + s1);
-		
+		//  String s1 =  dbConnectionRole();
+		//  Reporter.log("<p>" + s1);
+		String se = dbReaserchPass();
+		System.out.println(se);
 		 
 	  }
 	
@@ -1034,7 +1047,7 @@ public class AdminLogin extends Helper{
 		pagination();
 	}
 	
-//	@Test
+	//@Test
 	public void t_configCreation() throws Exception{
 		mylogin();
 		expand();
@@ -1164,7 +1177,7 @@ public class AdminLogin extends Helper{
 		
 	}
 	
-//	@Test
+	//@Test
 	public void t_updateConfig() throws Exception{
 		mylogin();
 		expand();
@@ -1194,53 +1207,53 @@ public class AdminLogin extends Helper{
 		sleep(2);
 		//template path modification
 		WebElement wt = driver.findElement(By.name(admin.getProperty("templatePath")));
-		if(!as.get(0).equals(sh6.getCell(1, 9).getContents())){
+		if(!as.get(0).equals(sh6.getCell(6, 1).getContents())){
 			wt.clear();
 			sleep(1);
-			wt.sendKeys(sh6.getCell(1, 9).getContents());
+			wt.sendKeys(sh6.getCell(6, 1).getContents());
 			
 		}else{
 			wt.clear();
 			sleep(1);
-			wt.sendKeys(sh6.getCell(0, 15).getContents());
+			wt.sendKeys(sh6.getCell(8, 1).getContents());
 		}
 		sleep(1);
 		
 		//proposal path modification
 		WebElement wp = driver.findElement(By.name(admin.getProperty("proposalPath")));
-			if(!as.get(1).equals(sh6.getCell(1, 10).getContents())){
+			if(!as.get(1).equals(sh6.getCell(6, 2).getContents())){
 				wp.clear();
 				sleep(1);
-				wp.sendKeys(sh6.getCell(1, 10).getContents());
+				wp.sendKeys(sh6.getCell(6, 2).getContents());
 			}else{
 				wp.clear();
 				sleep(1);
-				wp.sendKeys(sh6.getCell(0, 15).getContents());
+				wp.sendKeys(sh6.getCell(8, 2).getContents());
 			}
 			sleep(1);
 		//quote path modification	
 		WebElement wq = driver.findElement(By.name(admin.getProperty("quotePath")));
-		if(!as.get(2).equals(sh6.getCell(1, 11).getContents())){
+		if(!as.get(2).equals(sh6.getCell(6, 3).getContents())){
 			wq.clear();
 			sleep(1);
-			wq.sendKeys(sh6.getCell(1, 11).getContents());
+			wq.sendKeys(sh6.getCell(6, 3).getContents());
 		}else{
 			wq.clear();
 			sleep(1);
-			wq.sendKeys(sh6.getCell(0, 16).getContents());
+			wq.sendKeys(sh6.getCell(8, 3).getContents());
 		}
 		sleep(1);
 		
 		//profile image path modification
 		WebElement wpi = driver.findElement(By.name(admin.getProperty("profileImagePath")));
-		if(!as.get(3).equals(sh6.getCell(1, 12).getContents())){
+		if(!as.get(3).equals(sh6.getCell(6, 4).getContents())){
 			wpi.clear();
 			sleep(1);
-			wpi.sendKeys(sh6.getCell(1, 12).getContents());
+			wpi.sendKeys(sh6.getCell(6, 4).getContents());
 		}else{
 			wpi.clear();
 			sleep(1);
-			wpi.sendKeys(sh6.getCell(0, 17).getContents());
+			wpi.sendKeys(sh6.getCell(8, 4).getContents());
 		}
 		sleep(1);
 		WebElement wr = driver.findElement(By.id(admin.getProperty("createUser_button")));
@@ -1267,7 +1280,7 @@ public class AdminLogin extends Helper{
 	}
 
 
-	//@Test
+//	@Test
 	public void v_viewConfig() throws Exception{
 		mylogin();
 		expand();
@@ -1282,22 +1295,18 @@ public class AdminLogin extends Helper{
 			System.out.println("There is no configuration exists previously to view");
 		}else{
 		List<WebElement> lip = driver.findElement(By.className(admin.getProperty("pathclass"))).findElements(By.tagName(admin.getProperty("labelview")));
-		Reporter.log("<p>" + lip.size());
 		if(lip.size()!=0){
-			int col = 1;
-			int row = 9;
+			int col = 6;
+			int row = 1;
 			for(int i = 0;i<lip.size();i++){
 				if(i%2!=0){
-					
-					Reporter.log("<p>" + row);
-					Reporter.log("<p>" + sh6.getCell(col, row).getContents());
 					Reporter.log("<p>" + lip.get(i).getText());
 					if(lip.get(i).getText().equalsIgnoreCase(sh6.getCell(col, row).getContents())){
-						Reporter.log("<p>" + "server path is verified");
+						Reporter.log("<p>" + "The existing path is server path");
 						
 					}
 					else{
-						Assert.fail("path not present");
+						System.out.println("The existing paths are not the server paths, uploads can't be performed");
 					  }
 					row++;
 					}
@@ -1342,7 +1351,7 @@ public class AdminLogin extends Helper{
 		}
 		}
 	}
-//	@Test
+	@Test
 	public void serchUser() throws Exception{
 		mylogin();
 		expand();
@@ -1354,7 +1363,6 @@ public class AdminLogin extends Helper{
 		while(!w.getAttribute("class").equalsIgnoreCase(admin.getProperty("nextpage_disabled"))){
 			sleep(2);
 			List<WebElement> mylist = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
-			System.out.println(mylist.size());
 			for(int i =0;i<mylist.size();i++){
 				ar.add(mylist.get(i).getText());
 				}
@@ -1368,21 +1376,24 @@ public class AdminLogin extends Helper{
 		
 			}
 		System.out.println(ar.size());
-		int j = random(ar.size());
-		System.out.println(ar.get(j));
-		driver.findElement(By.tagName(admin.getProperty("SearchBox"))).sendKeys(ar.get(j));
+		//int j = random(ar.size());
+		//driver.findElement(By.tagName(admin.getProperty("SearchBox"))).sendKeys(ar.get(j));
+		driver.findElement(By.tagName(admin.getProperty("SearchBox"))).sendKeys("srini");
 		sleep(1);
 		List<WebElement> tlist = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
 		System.out.println(tlist.size());
 		if(tlist.size()>1){
+			do{
 			List<WebElement> rowList = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableRowtag")));
 			System.out.println(rowList.size());
+			//if(!driver.findElement(By.id(admin.getProperty("pagination_next"))).getAttribute("class").equals("paginate_disabled_next")){
 			for(int k = 0;k<rowList.size();k++){
 				int count = 0;
 				List<WebElement> dataList = rowList.get(k).findElements(By.tagName(admin.getProperty("tableData_tag")));
 				System.out.println("dataList Size"+ dataList.size());
 				for(int p = 0;p<dataList.size();p++){
-					if(ar.get(j).equals(dataList.get(p).getText())){
+					//if(ar.get(j).equals(dataList.get(p).getText())){
+					if("srini".equals(dataList.get(p).getText())){
 						System.out.println(dataList.get(p).getText());
 						count++;
 					}
@@ -1393,6 +1404,8 @@ public class AdminLogin extends Helper{
 					System.out.println("searching failed");
 				}
 			}
+			w.click();
+			}while(!driver.findElement(By.id(admin.getProperty("pagination_next"))).getAttribute("class").equals("paginate_disabled_next"));
 		}else{
 			System.out.println("No matching records found");
 		}//finishing the search with the item in the displayed table
