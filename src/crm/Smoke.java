@@ -243,18 +243,6 @@ public class Smoke extends Helper
 		  driver.close();	   
    }
   
-  @Test
-  public void cagement() throws Exception
-  {
-	      help.browser();
-	      driver.get(config.getProperty("url"));
-		  help.maxbrowser();
-		  help.browsererror();
-		  help.login("srinivasa.sanchana@nexiilabs.com", "password");
-		  help.expand();
-		  help.changePassword("srinivasa.sanchana@nexiilabs.com");
-		    
-  }
      
  }
   

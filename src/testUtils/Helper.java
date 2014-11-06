@@ -400,7 +400,7 @@ public class Helper extends BaseTest
 		//pagination();
 
 		// No.of Entries per page
-		pageEntries();
+		//pageEntries();
 
 		// Sorting
 		sorting();
@@ -522,260 +522,252 @@ public class Helper extends BaseTest
   
   
   
-  public void changePassword(String email) throws Exception   // Change password pass email id as argument
+  public void changePassword(String email) throws Exception // Change password pass email id as argument
   {
-	  resultSet = statement.executeQuery("select password from crm_user where email_id='"+email+"' AND delete_status='no'"); 
-	  resultSet.next();
-	  String dat = resultSet.getString("password");
+  resultSet = statement.executeQuery("select password from crm_user where email_id='"+email+"' AND delete_status='no'"); 
+  resultSet.next();
+  String dat = resultSet.getString("password");
+  //===Researcher is 3rdsheet in excels=====//
+  int rows = sh3.getRows();
+  String data;
+  int col;
+  //====getting current url====//
+  String currenturl= driver.getCurrentUrl();
+  //======Clicking changepassword in myaccount menu====//
+  driver.findElement(By.linkText(or.getProperty("changepassword"))).click();
+  help.sleep(2);
+  //==connecting database and retriveng password==//
 
-	  //===Researcher is 3rdsheet in excels=====//
-	  int rows = sh3.getRows();
-	  String data;
-	  int col;
-	  //====getting current url====//
-	  String currenturl= driver.getCurrentUrl();
+  Reporter.log("<p>" + "old password is:" + dat);
+  //=== clicking cancle button===//
+  driver.findElement(By.id(or.getProperty("cancel1"))).sendKeys(Keys.ENTER);
+  help.sleep(3);
+  //===getting current url after cancle button====//
+  String aftcancleurl = driver.getCurrentUrl();
+  //comparing current url after cancle button// 
+  if(aftcancleurl.equalsIgnoreCase(currenturl)){
+  } else {
+  Assert.fail("<p>" +"Not successfully canceled change password page");
+  }
+  //======Clicking searchleads in leadsearch menu for change button====//
+  driver.findElement(By.linkText(or.getProperty("changepassword"))).sendKeys(Keys.ENTER);
+  sleep(1);
+  //=== checking validations for change passwords===//
+  for(int row = 1;row < rows;row++)
+  {
+  col=0;
+  if((driver.getCurrentUrl().equalsIgnoreCase("http://192.168.50.32:8080/leadcrm/login.jsp"))) {
+  Reporter.log("<p>" +"*************************");
+  } else {
+  //=========checking oldpassword===//
+  List<WebElement> li70 = driver.findElements(By.id(or.getProperty("oldpass")));
+  if(li70.size()==0)
+  { 
+  help.screenshot("oldpasswordcontainer");
+  // Assert.fail("not a container");
+  }
+  data = sh3.getCell(col, row).getContents();
+  driver.findElement(By.id(or.getProperty("oldpass"))).sendKeys(sh3.getCell(col,row).getContents());
+  //==placing oldpassword in s1==//
+  String s1 = driver.findElement(By.id(or.getProperty("oldpass"))).getAttribute("value");
+  col++;
+  sleep(1);
+  //======new password=====//
+  List<WebElement> newpass = driver.findElements(By.id(or.getProperty("newpass")));
+  if(newpass.size()==0)
+  { 
+  //====calling helper====//
+  help.screenshot("newpassword container");
+  Assert.fail("not a container");
+  }
+  else {
+  Reporter.log("<p>" +"New password container is avilable");
+  }
+  data = sh3.getCell(col, row).getContents();
 
-	  //======Clicking changepassword in myaccount menu====//
-	  driver.findElement(By.linkText(or.getProperty("changepassword"))).click();
-	  help.sleep(2);
+  driver.findElement(By.id(or.getProperty("newpass"))).sendKeys(sh3.getCell(col,row).getContents());
 
-	  //==connecting database and retriveng password==//
-	
-	  Reporter.log("<p>" + "old password is:" + dat);
+  //==placing new password in s2==//
+  String s2 = driver.findElement(By.id(or.getProperty("newpass"))).getAttribute("value");
+  col++;
+  sleep(1);
+  List<WebElement> confirmpass = driver.findElements(By.id(or.getProperty("confirmpass")));
+  if(confirmpass.size()==0)
+  {
+  //====calling helper====//
+  help.screenshot("Configpassword container");
+  Assert.fail("not a container");
+  }
+  else {
+  Reporter.log("<p>" +"Confirm password container is avilable");
+  }
+  data = sh3.getCell(col, row).getContents();
 
-	  //=== clicking cancle button===//
-	  driver.findElement(By.id(or.getProperty("cancel1"))).sendKeys(Keys.ENTER);
-	  help.sleep(3);
 
-	  //===getting current url after cancle button====//
-	  String aftcancleurl = driver.getCurrentUrl();
+  driver.findElement(By.id(or.getProperty("confirmpass"))).sendKeys(sh3.getCell(col,row).getContents());
 
-	  //comparing current url after cancle button// 
-	  if(aftcancleurl.equalsIgnoreCase(currenturl)){
-	  } else {
-	  Assert.fail("<p>" +"Not successfully canceled change password page");
-	  }
-	  //======Clicking searchleads in leadsearch menu for change button====//
-	  driver.findElement(By.linkText(or.getProperty("changepassword"))).sendKeys(Keys.ENTER);
-	  sleep(1);
-	  //=== checking validations for change passwords===//
-	  for(int row = 1;row < rows;row++)
-	  {
-	  col=0;
-	  //=========checking oldpassword===//
-	  List<WebElement> li70 = driver.findElements(By.id(or.getProperty("oldpass")));
-	  if(li70.size()==0)
-	  { 
-	  help.screenshot("oldpasswordcontainer");
-	  Assert.fail("not a container");
-	  }
-	  data = sh3.getCell(col, row).getContents();
-	  driver.findElement(By.id(or.getProperty("oldpass"))).sendKeys(sh3.getCell(col,row).getContents());
-	  //==placing oldpassword in s1==//
-	  String s1 = driver.findElement(By.id(or.getProperty("oldpass"))).getAttribute("value");
-	  col++;
-	  sleep(1);
-	  //======new password=====//
-	  List<WebElement> newpass = driver.findElements(By.id(or.getProperty("newpass")));
-	  if(newpass.size()==0)
-	  { 
-	  //====calling helper====//
-	  help.screenshot("newpassword container");
-	  Assert.fail("not a container");
-	  }
-	  else {
+  //==Placing confirm password in s3==//
+  String s3 = driver.findElement(By.id(or.getProperty("confirmpass"))).getAttribute("value");
+  col++;
+  Thread.sleep(2000);
+  //====Clicking Change button====//
+  driver.findElement(By.id(or.getProperty("change1"))).sendKeys(Keys.ENTER);
+  //===This is for if my oldpassword and my currently changing password is same then handing that scenario===//
+  if(s1.equalsIgnoreCase(dat)&&s2.equalsIgnoreCase(s1)&&s3.equalsIgnoreCase(s2)) {
+  String str ="pavan";
+  driver.findElement(By.id(or.getProperty("oldpass"))).clear();
+  driver.findElement(By.id(or.getProperty("newpass"))).clear();
+  driver.findElement(By.id(or.getProperty("confirmpass"))).clear();
+  driver.findElement(By.id(or.getProperty("oldpass"))).sendKeys(dat);
+  driver.findElement(By.id(or.getProperty("newpass"))).sendKeys(str);
+  driver.findElement(By.id(or.getProperty("confirmpass"))).sendKeys(str);
+  //====Clicking Change button====//
+  driver.findElement(By.id(or.getProperty("change1"))).sendKeys(Keys.ENTER);
+  help.sleep(1);
+  }
+  if(driver.getCurrentUrl().equalsIgnoreCase("http://192.168.50.32:8080/leadcrm/login.jsp")) {
+  //==setting old password==//
+  Class.forName("com.mysql.jdbc.Driver").newInstance();
+  connection = DBConnection.getConnection();
+  statement = connection.createStatement();
+  resultSet = statement.executeQuery("select password from crm_user where email_id='"+email+"' AND delete_status='no'"); 
+  resultSet.next();
 
-	  Reporter.log("<p>" +"New password container is avilable");
-	  }
-	  data = sh3.getCell(col, row).getContents();
-	  
-	  driver.findElement(By.id(or.getProperty("newpass"))).sendKeys(sh3.getCell(col,row).getContents());
-	 
-	  //==placing new password in s2==//
-	  String s2 = driver.findElement(By.id(or.getProperty("newpass"))).getAttribute("value");
-	  col++;
-	  sleep(1);
+  String dat1 = resultSet.getString("password");
+  //Login
+  driver.findElement(By.id(or.getProperty("username1"))).sendKeys(email);
+  driver.findElement(By.id(or.getProperty("password1"))).sendKeys(dat1);
+  driver.findElement(By.cssSelector(or.getProperty("loginbutton1"))).findElement(By.tagName("input")).submit();
+  //====size of tree menu===//
 
-	  List<WebElement> confirmpass = driver.findElements(By.id(or.getProperty("confirmpass")));
-	  if(confirmpass.size()==0)
-	  {
-	  //====calling helper====//
-	  help.screenshot("Configpassword container");
-	  Assert.fail("not a container");
-	  }
-	  else {
-	  Reporter.log("<p>" +"Confirm password container is avilable");
-	  }
-	  data = sh3.getCell(col, row).getContents();
-	 
-	  
-	  driver.findElement(By.id(or.getProperty("confirmpass"))).sendKeys(sh3.getCell(col,row).getContents());
-	 
-	  //==Placing confirm password in s3==//
-	  String s3 = driver.findElement(By.id(or.getProperty("confirmpass"))).getAttribute("value");
-	  col++;
-	  Thread.sleep(2000);
+  List<WebElement> list1 = driver.findElement(By.id(or.getProperty("user_ids"))).findElements(By.tagName(or.getProperty("user_tagname")));
+  Reporter.log("<p>" + "Number Elements in List1 : " + list1.size());
 
-	  //====Clicking Change button====//
-	  driver.findElement(By.id(or.getProperty("change1"))).sendKeys(Keys.ENTER);
-	  //===This is for if my oldpassword and my currently changing password is same then handing that scenario===//
-	  if(s1.equalsIgnoreCase(dat)&&s2.equalsIgnoreCase(s1)&&s3.equalsIgnoreCase(s2)) {
-	  String str ="000";
-	  driver.findElement(By.id(or.getProperty("oldpass"))).clear();
-	  driver.findElement(By.id(or.getProperty("newpass"))).clear();
-	  driver.findElement(By.id(or.getProperty("confirmpass"))).clear();
+  String user = driver.findElement(By.className(or.getProperty("user_Classname"))).getText();
+  if(user.contains("Hi !"))
+  //======= Expanding tree menu========//
+  help.expand();
+  //======Clicking changepassword in myaccount menu====//
+  driver.findElement(By.linkText(or.getProperty("changepassword"))).click();
+  help.sleep(1);
+  //oldpassword//
+  driver.findElement(By.id(or.getProperty("oldpass"))).sendKeys(dat1);
+  //newpassword//
+  driver.findElement(By.id(or.getProperty("newpass"))).sendKeys(dat);
+  //confirm password//
+  driver.findElement(By.id(or.getProperty("confirmpass"))).sendKeys(dat);
+  driver.findElement(By.id(or.getProperty("change1"))).sendKeys(Keys.ENTER);
+  resultSet = statement.executeQuery("select password from crm_user where email_id='"+email+"' AND delete_status='no'"); 
+  resultSet.next();
+  String dat2 = resultSet.getString("password");
+  //Login
+  driver.findElement(By.id(or.getProperty("username1"))).sendKeys(email);
+  driver.findElement(By.id(or.getProperty("password1"))).sendKeys(dat2);
+  driver.findElement(By.cssSelector(or.getProperty("loginbutton1"))).findElement(By.tagName("input")).submit();
 
-	  driver.findElement(By.id(or.getProperty("oldpass"))).sendKeys(dat);
-	  driver.findElement(By.id(or.getProperty("newpass"))).sendKeys(str);
-	  driver.findElement(By.id(or.getProperty("confirmpass"))).sendKeys(str);
-	  //====Clicking Change button====//
-	  driver.findElement(By.id(or.getProperty("change1"))).sendKeys(Keys.ENTER);
-	  help.sleep(1);
+  //====size of tree menu===//
+  List<WebElement> lis = driver.findElement(By.id(or.getProperty("user_ids"))).findElements(By.tagName(or.getProperty("user_tagname")));
 
-	  }
-	  if(driver.getCurrentUrl().equalsIgnoreCase("http://192.168.50.32:8080/leadcrm/login.jsp")) {
+  String use = driver.findElement(By.className(or.getProperty("user_Classname"))).getText();
+  if(use.contains("Hi !"))
+  Reporter.log("<p>" + "User password reset sucessfully");
+  driver.findElement(By.linkText("Logout")).click();
+  }
+  // driver.findElement(By.linkText("Logout")).click();
+  }
+  }
 
-	  //==setting old password==//
-	  Class.forName("com.mysql.jdbc.Driver").newInstance();
-	  connection = DBConnection.getConnection();
-	  statement = connection.createStatement();
-	  resultSet = statement.executeQuery("select password from crm_user where email_id='"+email+"' AND delete_status='no'"); 
-	  resultSet.next();
-	  
-	  String dat1 = resultSet.getString("password");
-	  //Login
-	  driver.findElement(By.id(or.getProperty("username1"))).sendKeys(config.getProperty("Researcherusername"));
-	  driver.findElement(By.id(or.getProperty("password1"))).sendKeys(dat1);
-	  driver.findElement(By.cssSelector(or.getProperty("loginbutton1"))).findElement(By.tagName("input")).submit();
-	  //====size of tree menu===//
-	  
-	  List<WebElement> list1 = driver.findElement(By.id(or.getProperty("user_ids"))).findElements(By.tagName(or.getProperty("user_tagname")));
-	  Reporter.log("<p>" + "Number Elements in List1 : " + list1.size());
-	  
-	  String user = driver.findElement(By.className(or.getProperty("user_Classname"))).getText();
-	  if(user.contains("Hi !"))
-	  	  //======= Expanding tree menu========//
-	  help.expand();
-	  //======Clicking changepassword in myaccount menu====//
-	  driver.findElement(By.linkText(or.getProperty("changepassword"))).click();
-	  help.sleep(1);
 
-	  //oldpassword//
-	  driver.findElement(By.id(or.getProperty("oldpass"))).sendKeys(dat1);
-
-	  //newpassword//
-	  driver.findElement(By.id(or.getProperty("newpass"))).sendKeys(dat);
-
-	  //confirm password//
-	  driver.findElement(By.id(or.getProperty("confirmpass"))).sendKeys(dat);
-	  driver.findElement(By.id(or.getProperty("change1"))).sendKeys(Keys.ENTER);
-
-	  resultSet = statement.executeQuery("select password from crm_user where email_id='"+email+"' AND delete_status='no'"); 
-	  resultSet.next();
-	  String dat2 = resultSet.getString("password");
-	  //Login
-	  driver.findElement(By.id(or.getProperty("username1"))).sendKeys(config.getProperty("Researcherusername"));
-	  driver.findElement(By.id(or.getProperty("password1"))).sendKeys(dat2);
-	  driver.findElement(By.cssSelector(or.getProperty("loginbutton1"))).findElement(By.tagName("input")).submit();
-	  
-	  //====size of tree menu===//
-	  List<WebElement> lis = driver.findElement(By.id(or.getProperty("user_ids"))).findElements(By.tagName(or.getProperty("user_tagname")));
-	  
-	  String use = driver.findElement(By.className(or.getProperty("user_Classname"))).getText();
-	  if(use.contains("Hi !"))
-	  Reporter.log("<p>" + "User password reset sucessfully");
-	  driver.findElement(By.linkText("Logout")).click();
-	  }
-	  }
-	  }
+  }
 
   
   public void searchtable() throws Exception  //Helper to perform search on your table
   {
-	  List<WebElement> tableList = driver.findElement(By.tagName(or.getProperty("table_tag"))).findElements(By.tagName(or.getProperty("tableRowtag")));
-			  if(tableList.size()!=0)
-			  {
-			  //picking the values 
-			  WebElement w =driver.findElement(By.id(or.getProperty("pagination_next")));
-			  ArrayList<String> ar = new ArrayList<String>();
-			  while(!w.getAttribute("class").equalsIgnoreCase(or.getProperty("nextpage_disabled"))){
-			  sleep(2);
-			  List<WebElement> mylist = driver.findElement(By.tagName(or.getProperty("table_tag"))).findElements(By.tagName(or.getProperty("tableData_tag")));
-			  for(int i =0;i<mylist.size();i++){
-			  ar.add(mylist.get(i).getText());
-			  }
-			  w.click();
-			  }
+	  List<WebElement> ent1 = driver.findElements(By.name(or.getProperty("entries_example_length_name")));
+	  if (ent1.size()==0) 
+	  {
+	  Assert.fail("Table not available, call method after selecting any side tree menu");
+	  }
+	  sleep(3); 
+	  String result = null;
+	  WebElement w =driver.findElement(By.id(admin.getProperty("pagination_next")));
+	  ArrayList<String> ar = new ArrayList<String>();
+	  while(!w.getAttribute("class").equalsIgnoreCase(admin.getProperty("nextpage_disabled"))){
+	  sleep(2);
+	  List<WebElement> mylist = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
+	  for(int i =0;i<mylist.size();i++){
+	  ar.add(mylist.get(i).getText());
+	  }
+	  w.click();
+	  }
 
-			  List<WebElement> mylist1 = driver.findElement(By.tagName(or.getProperty("table_tag"))).findElements(By.tagName(or.getProperty("tableData_tag")));
-			  Reporter.log("<p>" +mylist1.size());
-			  for(int i1 =0;i1<mylist1.size();i1++){
-			  ar.add(mylist1.get(i1).getText());
+	  List<WebElement> mylist1 = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
+	  for(int i1 =0;i1<mylist1.size();i1++){
+	  ar.add(mylist1.get(i1).getText());
 
-			  }
-			  Reporter.log("<p>total items to be matched with search key" +ar.size());
-			  int j = random(ar.size());
-			  driver.findElement(By.tagName(or.getProperty("SearchBox"))).sendKeys(ar.get(j));
-			  sleep(1);
-			  List<WebElement> tlist = driver.findElement(By.tagName(or.getProperty("table_tag"))).findElements(By.tagName(or.getProperty("tableData_tag")));
+	  }
+	  int count2= 0;
+	  int j = random(ar.size());
+	  driver.findElement(By.tagName(admin.getProperty("SearchBox"))).sendKeys(ar.get(j));
+	  sleep(2);
+	  result  = driver.findElement(By.cssSelector(admin.getProperty("list_info"))).getText();
+	  List<WebElement> tlist = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
+	  if(tlist.size()>1){
+	  do{
+	  List<WebElement> rowList = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableRowtag")));
+	  for(int k = 0;k<rowList.size();k++){
+	  int count = 0;
+	  List<WebElement> dataList = rowList.get(k).findElements(By.tagName(admin.getProperty("tableData_tag")));
+	  for(int p = 0;p<dataList.size();p++){
+	  if(dataList.get(p).getText().contains(ar.get(j))){
+	  count++;
+	  }
+	  }
+	  if(count!=0){
+	 // Reporter.log("<p>" +"No.of search results "+ count);
+		  count2 = count2 + count;
+	  }else{
+	  Reporter.log("<p>" +"searching failed");
+	  }
+	  }
+	 // Reporter.log("<p>" + "No. of results found"+ count2);
+	  driver.findElement(By.id(admin.getProperty("pagination_next"))).click();
+	  sleep(2);
+	  }while(!driver.findElement(By.id(admin.getProperty("pagination_next"))).getAttribute("class").equals("paginate_disabled_next"));
+	 // Reporter.log("<p>" +"Search results found with given search term");
+	  String sresult[] = result.split(" ");
+	  Reporter.log("<p>" +"No .of Search results with search key within table:: "+sresult[5]);
+	  
+	  //search with negative scenario
+	  int row = 1;
+	  int count1=0;
+	  for(int q = 0;q<ar.size();q++){
+	  count1=0;
+	  if(sh6.getCell(5, row).getContents().equalsIgnoreCase(ar.get(q))){
+	  count1++;
+	  }
+	  }
+	  if(count1==0){
+	  driver.findElement(By.tagName(admin.getProperty("SearchBox"))).clear();
+	  sleep(3);
+	  driver.findElement(By.tagName(admin.getProperty("SearchBox"))).sendKeys(sh6.getCell(12, row).getContents());
+	  sleep(1);
+	  List<WebElement> tlist1 = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
+	  //Reporter.log("<p>" +tlist1.size());
+	  Reporter.log("<p>" +"==========when tried with negative scenario=========");
+	  if(tlist1.size()==1){
+	  Reporter.log("<p>" +"No results displayed with search key not in table");
+	  }else{
+	  Reporter.log("<p>" +"search box failed to show the results with the given search key");
+	  }
+	  }else{
+	  Assert.fail("The string should mis-match with the list items when trying with negative scenario");
+	  }
 
-			  if(tlist.size()>1){
-			  do{
-			  List<WebElement> rowList = driver.findElement(By.tagName(or.getProperty("table_tag"))).findElements(By.tagName(or.getProperty("tableRowtag")));
+	  }else{
+	  Assert.fail("No data present in the table to search");
+	  }//finishing the search with the item in the displayed table
 
-			  for(int k = 0;k<rowList.size();k++){
-			  int count = 0;
-			  List<WebElement> dataList = rowList.get(k).findElements(By.tagName(or.getProperty("tableData_tag")));
-
-			  for(int p = 0;p<dataList.size();p++){
-			  if(ar.get(j).equals(dataList.get(p).getText())){
-
-			  Reporter.log("<p>" +dataList.get(p).getText());
-			  count++;
-			  }
-			  }
-			  Reporter.log("<p>" +"count outside for"+ count );
-			  if(count!=0){
-			  Reporter.log("<p>" +"search item found for "+count+ " times");
-			  }else{
-			  Reporter.log("<p>" +"searching failed");
-			  }
-			  }
-			  driver.findElement(By.id(or.getProperty("pagination_next"))).click();
-			  sleep(2);
-			  }while(!driver.findElement(By.id(or.getProperty("pagination_next"))).getAttribute("class").equals("paginate_disabled_next"));
-			  }else{
-			  Reporter.log("<p>" +"No matching records found");
-			  }
-			  //finishing the search with the item in the displayed table
-			  //search with negative scenario
-			  int row = 1;
-			  int count1=0;
-			  for(int q = 0;q<ar.size();q++){
-			  count1=0;
-			  if(sh6.getCell(5, row).getContents().equalsIgnoreCase(ar.get(q))){
-			  count1++;
-			  }
-
-			  }
-			  
-			  if(count1==0){
-			  driver.findElement(By.tagName(or.getProperty("SearchBox"))).clear();
-			  sleep(1);
-			  driver.findElement(By.tagName(or.getProperty("SearchBox"))).sendKeys(sh6.getCell(12, row).getContents());
-			  sleep(1);
-			  List<WebElement> tlist1 = driver.findElement(By.tagName(or.getProperty("table_tag"))).findElements(By.tagName(or.getProperty("tableData_tag")));
-			  Reporter.log("<p>" +"==========when tried with negative scenario=========");
-			  if(tlist1.size()==1){
-			  Reporter.log("<p>" +"no resultant users are displayed with the give nsearch key");
-			  }else{
-			  Reporter.log("<p>" +"search box is failed to show the results with the given search key");
-			  }
-			  }
-			  }else{
-			  Assert.fail("table not loaded");
-			  }
-     }	    
-  
-} 	
+  }
+	 } 	
 
