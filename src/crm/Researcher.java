@@ -219,7 +219,7 @@ public class Researcher extends Helper{
 	                   String email = resultSet.getString("email_id");
 	                   String password = resultSet.getString("password");
 	                   System.out.println(role  + email + password);
-	                   
+	                   //HII
 	                   // Login to BDM
 	         		  // driver.get(config.getProperty("url"));
 	         		   help.login(email,password);
