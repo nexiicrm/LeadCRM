@@ -58,7 +58,7 @@ public class BDM extends Helper {
 	 
 	 
 	 // Test Method for Follow up 4 for Cold storage phase. 
-	 @Test
+//	 @Test
 	 public void a_coldStorageFollowup() {
 		 
 		 Reporter.log("<p>" +"Testing follow up for Cold storage");
@@ -74,37 +74,42 @@ public class BDM extends Helper {
 			 help.sleep(2);
 			 Reporter.log("<p>" + "Searching leads with status as Introductory Mail.");
 			 search("Introductory Mail");
-			 WebElement followupLead = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
-			 Reporter.log("<p>" +"Selected Lead is:" + followupLead.getText());
-			 if (followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).isEnabled()) 
-			 {
-				 followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).click();
-				 help.sleep(3);
-				 Reporter.log("<p>" + driver.findElement(By.cssSelector(bdm.getProperty("windowTitle_css"))).getText());
-				 
-				 // Selecting follow up type and entering the follow up comment
-				 new Select(driver.findElement(By.name(bdm.getProperty("followuptype_name")))).selectByVisibleText("Followup 4");
-				 driver.findElement(By.name(bdm.getProperty("followupcomment_name"))).sendKeys("Follow up 4");
-				 
-				 // Selecting yesterday's date for follow up 4 to send the lead to cold storage and click Proceed button
-				 Calendar cal = Calendar.getInstance();
-				 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-				 cal.add(Calendar.DATE, -1);
-				 String date = dateFormat.format(cal.getTime());
-				 Reporter.log("<p>" +"Yesterday's date was "+ date); 
-				 driver.findElement(By.id(bdm.getProperty("nextfollowupdate_id"))).sendKeys(date);
-				 driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
-				 help.sleep(5);
-				 
-				 // Verifying the Success message displayed on the page after following up
-				 Reporter.log("<p>" +driver.findElement(By.id(bdm.getProperty("resultmsg_id"))).getText());
-				 
-				 // Closing the page
-				 driver.findElement(By.cssSelector(bdm.getProperty("windowclose_css"))).click();
-			 } 
-			 else 
-				 Reporter.log("<p>" +"No leads present in the Table for Follow up 4.");
-		 } 
+			 if(driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText().equals("Showing 0 to 0 of 0 entries"));
+				
+		     else 
+		     {
+		    	 WebElement followupLead = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
+				 Reporter.log("<p>" +"Selected Lead is:" + followupLead.getText());
+				 if (followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).isEnabled()) 
+				 {
+					 followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).click();
+					 help.sleep(3);
+					 Reporter.log("<p>" + driver.findElement(By.cssSelector(bdm.getProperty("windowTitle_css"))).getText());
+					 
+					 // Selecting follow up type and entering the follow up comment
+					 new Select(driver.findElement(By.name(bdm.getProperty("followuptype_name")))).selectByVisibleText("Followup 4");
+					 driver.findElement(By.name(bdm.getProperty("followupcomment_name"))).sendKeys("Follow up 4");
+					 
+					 // Selecting yesterday's date for follow up 4 to send the lead to cold storage and click Proceed button
+					 Calendar cal = Calendar.getInstance();
+					 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+					 cal.add(Calendar.DATE, -1);
+					 String date = dateFormat.format(cal.getTime());
+					 Reporter.log("<p>" +"Yesterday's date was "+ date); 
+					 driver.findElement(By.id(bdm.getProperty("nextfollowupdate_id"))).sendKeys(date);
+					 driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
+					 help.sleep(5);
+					 
+					 // Verifying the Success message displayed on the page after following up
+					 Reporter.log("<p>" +driver.findElement(By.id(bdm.getProperty("resultmsg_id"))).getText());
+					 
+					 // Closing the page
+					 driver.findElement(By.cssSelector(bdm.getProperty("windowclose_css"))).click();
+				 } 
+				 else 
+					 Reporter.log("<p>" +"No leads present in the Table for Follow up 4.");
+		     } 
+		 }
 		 else
 			 Assert.fail("No Link Found");
 		 Reporter.log("<p>___________________________________________________________________________________");
@@ -113,7 +118,7 @@ public class BDM extends Helper {
 	 
 
 	 // Test method for Cold Storage
-	 @Test
+	// @Test
 	 public void b_coldStorage() {
 		
 		 Reporter.log("<p>" +"Test for Cold storage");
@@ -227,7 +232,7 @@ public class BDM extends Helper {
 	
 	 
 	 // Test method for Proposal follow up
-	 @Test
+//	 @Test
 	 public void c_proposalFollowup() throws Exception {
 		
 		 Reporter.log("<p>" +"Testing follow up for Proposal Upload");
@@ -243,60 +248,66 @@ public class BDM extends Helper {
 			 help.sleep(2);
 			 Reporter.log("<p>" + "Searching leads with status as Introductory Mail.");
 			 search("Introductory Mail");
-			 WebElement followupLead = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
 			 
-			 String uploadleadId = followupLead.findElement(By.className(bdm.getProperty("leadidintable_class"))).getText();
-			 String leadname = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(1).getText();
-			 String company = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(2).getText();
-			 String lead = uploadleadId + " " + leadname + " " + company;
-			 Reporter.log("<p>" +"The details of lead selected to confirm: " + lead);
-			 
-			 Reporter.log("<p>" +"The ID of Lead selected to Follow up:" + uploadleadId);
-			 
-			 if (followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).isEnabled()) 
-			 {
-				 followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).click();
-				 help.sleep(3);
-				 Reporter.log("<p>" +driver.findElement(By.cssSelector(bdm.getProperty("windowTitle_css"))).getText());
+			 if(driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText().equals("Showing 0 to 0 of 0 entries"));
 				
-				 // Selecting followup type 
-				 new Select(driver.findElement(By.name(bdm.getProperty("followuptype_name")))).selectByVisibleText("Prospect Identify");
-				 new Select(driver.findElement(By.name(bdm.getProperty("prospecttype_name")))).selectByVisibleText("Proposal");
+		     else 
+		     {
+		    	 WebElement followupLead = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
 				 
-				 // Selecting a Fixon date
-				 Date date = new Date();
-				 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-				 String dateString = dateFormat.format(date);
-				 driver.findElement(By.id(bdm.getProperty("fixon_id"))).sendKeys(dateString);
+				 String uploadleadId = followupLead.findElement(By.className(bdm.getProperty("leadidintable_class"))).getText();
+				 String leadname = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(1).getText();
+				 String company = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(2).getText();
+				 String lead = uploadleadId + " " + leadname + " " + company;
+				 Reporter.log("<p>" +"The details of lead selected to confirm: " + lead);
 				 
-				 // Selecting an email id and filling subject, message, followup comment and next followup date
-				 List <WebElement> toList = driver.findElement(By.name(bdm.getProperty("emailto_name"))).findElements(By.tagName(bdm.getProperty("service_options_tag")));
-				 toList.get(help.random(toList.size())).click();
-				 driver.findElement(By.name(bdm.getProperty("subject_name"))).sendKeys("Prospect Identify");
-				 driver.findElement(By.name(bdm.getProperty("message_name"))).sendKeys("Prospect Identify for Proposal Upload");
-				 driver.findElement(By.name(bdm.getProperty("followupcomment_name"))).sendKeys("Prospect Identify for Proposal Upload");
-				 driver.findElement(By.id(bdm.getProperty("nextfollowupdate_id"))).sendKeys(dateString);
-				 driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
-				 help.sleep(5);
+				 Reporter.log("<p>" +"The ID of Lead selected to Follow up:" + uploadleadId);
 				 
-				 // Verifying the Success message displayed on the page after uploading the Proposal
-				 Reporter.log("<p>" +driver.findElement(By.id(bdm.getProperty("resultmsg_id"))).getText());
-				 
-				 // Closing the Proposal Upload page
-				 driver.findElement(By.cssSelector(bdm.getProperty("windowclose_css"))).click();
-				 
-				// Logging out of the BDM module 
-				 driver.findElement(By.className(bdm.getProperty("logout_class"))).findElement(By.linkText(bdm.getProperty("logoutlink_linktext"))).click();
-				 Reporter.log("<p>" + "Logged out of BDM Module");
-			  
-				 String link = "proposal";
-			  
-				 // Logging into Researcher module and check for leads uploaded with quote
-				 management(link, lead);
+				 if (followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).isEnabled()) 
+				 {
+					 followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).click();
+					 help.sleep(3);
+					 Reporter.log("<p>" +driver.findElement(By.cssSelector(bdm.getProperty("windowTitle_css"))).getText());
+					
+					 // Selecting followup type 
+					 new Select(driver.findElement(By.name(bdm.getProperty("followuptype_name")))).selectByVisibleText("Prospect Identify");
+					 new Select(driver.findElement(By.name(bdm.getProperty("prospecttype_name")))).selectByVisibleText("Proposal");
+					 
+					 // Selecting a Fixon date
+					 Date date = new Date();
+					 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+					 String dateString = dateFormat.format(date);
+					 driver.findElement(By.id(bdm.getProperty("fixon_id"))).sendKeys(dateString);
+					 
+					 // Selecting an email id and filling subject, message, followup comment and next followup date
+					 List <WebElement> toList = driver.findElement(By.name(bdm.getProperty("emailto_name"))).findElements(By.tagName(bdm.getProperty("service_options_tag")));
+					 toList.get(help.random(toList.size())).click();
+					 driver.findElement(By.name(bdm.getProperty("subject_name"))).sendKeys("Prospect Identify");
+					 driver.findElement(By.name(bdm.getProperty("message_name"))).sendKeys("Prospect Identify for Proposal Upload");
+					 driver.findElement(By.name(bdm.getProperty("followupcomment_name"))).sendKeys("Prospect Identify for Proposal Upload");
+					 driver.findElement(By.id(bdm.getProperty("nextfollowupdate_id"))).sendKeys(dateString);
+					 driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
+					 help.sleep(5);
+					 
+					 // Verifying the Success message displayed on the page after uploading the Proposal
+					 Reporter.log("<p>" +driver.findElement(By.id(bdm.getProperty("resultmsg_id"))).getText());
+					 
+					 // Closing the Proposal Upload page
+					 driver.findElement(By.cssSelector(bdm.getProperty("windowclose_css"))).click();
+					 
+					// Logging out of the BDM module 
+					 driver.findElement(By.className(bdm.getProperty("logout_class"))).findElement(By.linkText(bdm.getProperty("logoutlink_linktext"))).click();
+					 Reporter.log("<p>" + "Logged out of BDM Module");
+				  
+					 String link = "proposal";
+				  
+					 // Logging into Researcher module and check for leads uploaded with quote
+					 management(link, lead);
+				 } 
+				 else 
+					 Reporter.log("<p>" +"No leads present in the Table for Prospect Identify.");
 			 } 
-			 else 
-				 Reporter.log("<p>" +"No leads present in the Table for Prospect Identify.");
-		 } 
+		 }
 		 else
 			 Assert.fail("No Link Found");
 		 Reporter.log("<p>___________________________________________________________________________________");
@@ -304,7 +315,7 @@ public class BDM extends Helper {
 	
 	 
 	 // Test method for Proposal upload
-	 @Test
+//	 @Test
 	 public void d_proposalUpload() {
 		 
 		 Reporter.log("<p>" +"Test for Proposal Upload");
@@ -379,7 +390,7 @@ public class BDM extends Helper {
 	 
 	 
 	 // Test method for Quote follow up
-	 @Test
+	// @Test
 	 public void e_quoteFollowup() throws Exception {
 			 Reporter.log("<p>" +"Testing follow up for Quote Upload");
 			 
@@ -396,51 +407,56 @@ public class BDM extends Helper {
 				 // Search for Leads with Introductory mail as Last Follow up type
 				 Reporter.log("<p>" + "Searching leads with status as Introductory Mail.");
 				 search("Introductory Mail");
-				 WebElement followupLead = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
-				 
-				 String uploadleadId = followupLead.findElement(By.className(bdm.getProperty("leadidintable_class"))).getText();
-				 String leadname = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(1).getText();
-				 String company = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(2).getText();
-				 String lead = uploadleadId + " " + leadname + " " + company;
-				 Reporter.log("<p>" +"The details of lead selected to confirm: " + lead);
-				 
-				 Reporter.log("<p>" +"The ID of Lead selected to Follow up:" + uploadleadId);
-				 
-				 if (followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).isEnabled()) 
-				 {
-					 // Entering details for Quote upload
-					 followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).click();
-					 help.sleep(5);
-					 Reporter.log("<p>" +driver.findElement(By.cssSelector(bdm.getProperty("windowTitle_css"))).getText());
-					 new Select(driver.findElement(By.name(bdm.getProperty("followuptype_name")))).selectByVisibleText("Prospect Identify");
-					 new Select(driver.findElement(By.name(bdm.getProperty("prospecttype_name")))).selectByVisibleText("Quote");
-					 Date date = new Date();
-					 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-					 String dateString = dateFormat.format(date);
-					 driver.findElement(By.id(bdm.getProperty("fixon_id"))).sendKeys(dateString);
-					 driver.findElement(By.name(bdm.getProperty("followupcomment_name"))).sendKeys("Prospect Identify for Quote Upload");
-					 driver.findElement(By.id(bdm.getProperty("nextfollowupdate_id"))).sendKeys(dateString);
-					 driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
-					 help.sleep(5);
+				 if(driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText().equals("Showing 0 to 0 of 0 entries"));
+					
+			     else 
+			     {
+			    	 WebElement followupLead = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
 					 
-					 // Verifying the Success message displayed on the page after uploading the Proposal
-					 Reporter.log("<p>" +driver.findElement(By.id(bdm.getProperty("resultmsg_id"))).getText());
+					 String uploadleadId = followupLead.findElement(By.className(bdm.getProperty("leadidintable_class"))).getText();
+					 String leadname = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(1).getText();
+					 String company = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(2).getText();
+					 String lead = uploadleadId + " " + leadname + " " + company;
+					 Reporter.log("<p>" +"The details of lead selected to confirm: " + lead);
 					 
-					 // Closing the Quote Upload page
-					 driver.findElement(By.cssSelector(bdm.getProperty("windowclose_css"))).click();
+					 Reporter.log("<p>" +"The ID of Lead selected to Follow up:" + uploadleadId);
 					 
-					 // Logging out of the BDM module 
-					 driver.findElement(By.className(bdm.getProperty("logout_class"))).findElement(By.linkText(bdm.getProperty("logoutlink_linktext"))).click();
-					 Reporter.log("<p>" + "Logged out of BDM Module");
-				  
-					 String link = "quote";
-				  
-					 // Logging into Researcher module and check for leads uploaded with quote
-					 management(link, lead);
+					 if (followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).isEnabled()) 
+					 {
+						 // Entering details for Quote upload
+						 followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).click();
+						 help.sleep(5);
+						 Reporter.log("<p>" +driver.findElement(By.cssSelector(bdm.getProperty("windowTitle_css"))).getText());
+						 new Select(driver.findElement(By.name(bdm.getProperty("followuptype_name")))).selectByVisibleText("Prospect Identify");
+						 new Select(driver.findElement(By.name(bdm.getProperty("prospecttype_name")))).selectByVisibleText("Quote");
+						 Date date = new Date();
+						 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+						 String dateString = dateFormat.format(date);
+						 driver.findElement(By.id(bdm.getProperty("fixon_id"))).sendKeys(dateString);
+						 driver.findElement(By.name(bdm.getProperty("followupcomment_name"))).sendKeys("Prospect Identify for Quote Upload");
+						 driver.findElement(By.id(bdm.getProperty("nextfollowupdate_id"))).sendKeys(dateString);
+						 driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
+						 help.sleep(5);
+						 
+						 // Verifying the Success message displayed on the page after uploading the Proposal
+						 Reporter.log("<p>" +driver.findElement(By.id(bdm.getProperty("resultmsg_id"))).getText());
+						 
+						 // Closing the Quote Upload page
+						 driver.findElement(By.cssSelector(bdm.getProperty("windowclose_css"))).click();
+						 
+						 // Logging out of the BDM module 
+						 driver.findElement(By.className(bdm.getProperty("logout_class"))).findElement(By.linkText(bdm.getProperty("logoutlink_linktext"))).click();
+						 Reporter.log("<p>" + "Logged out of BDM Module");
+					  
+						 String link = "quote";
+					  
+						 // Logging into Researcher module and check for leads uploaded with quote
+						 management(link, lead);
+					 } 
+					 else
+						 Reporter.log("<p>" +"No leads present in the Table for Prospect Identify."); 
 				 } 
-				 else
-					 Reporter.log("<p>" +"No leads present in the Table for Prospect Identify."); 
-			 } 
+			 }	 
 			 else
 				 Assert.fail("No Link Found"); 
 			 Reporter.log("<p>___________________________________________________________________________________");
@@ -449,7 +465,7 @@ public class BDM extends Helper {
 	 
 	 
  	 // Test method for Quote upload
-	 @Test
+	// @Test
 	 public void f_quoteUpload() {
 		 
 		 Reporter.log("<p>" +"Test for Quote Upload");
@@ -527,7 +543,7 @@ public class BDM extends Helper {
 	 
 	 
 	 // Test method for Lead Edit Track it button
-	 @Test 
+	// @Test 
 	 public void g_testLeadTrackButton() {
 		 
 		 Reporter.log("<p>" +"Testing Track It button in Lead Edit Phase");
@@ -569,7 +585,7 @@ public class BDM extends Helper {
 	 
 	 
 	 // Test method for "Lead Edit" Edit button functionality
-	 @Test
+	// @Test
 	 public void h_testLeadEditButton() {
 		 
 		 Reporter.log("<p>" +"Testing Edit button in Lead Edit Phase and its Functionality");
@@ -696,7 +712,7 @@ public class BDM extends Helper {
 	 
 	 
 	 // Test method for Search Leads
-	 @Test
+	// @Test
 	 public void i_leadSearch() {
 		
 		 Reporter.log("<p>" +"Test for Lead Search Phase");
@@ -734,7 +750,7 @@ public class BDM extends Helper {
 	 
 	 
 		// Pagination for Cold Storage page
-		//@Test
+		@Test
 		public void k_paginationColdStorage() throws Exception {
 			
 			 Reporter.log("<p>" +"Test for Pagination in Cold Storage page");
@@ -760,8 +776,8 @@ public class BDM extends Helper {
 				  help.sorting();
 				  
 				  // Search 
-				  Reporter.log("<p>" +"The Lead searched for:");
-				  search("Henry");	    
+				  help.searchtable();
+				      
 			 } 
 			 else 
 				 Assert.fail("No Link Found");
@@ -797,8 +813,7 @@ public class BDM extends Helper {
 			  help.sorting();
 			  
 			  // Search 
-			  Reporter.log("<p>" +"The Lead searched for:");
-			  search("Henry");	  
+			  help.searchtable();
 		 } 
 		 else
 			 Assert.fail("No Link Found");
@@ -832,8 +847,7 @@ public class BDM extends Helper {
 			  help.sorting();
 			  
 			  // Search 
-			  Reporter.log("<p>" +"The Lead searched for:");
-			  search("Henry");	    
+			  help.searchtable();   
 		 } 
 		 else
 			 Assert.fail("No Link Found");
@@ -869,8 +883,7 @@ public class BDM extends Helper {
 			  help.sorting();
 			  
 			  // Search 
-			  Reporter.log("<p>" +"The Lead searched for:");
-			  search("Henry");	   
+			  help.searchtable();   
 		 } 
 		 else 
 			 Assert.fail("No Link Found");
@@ -957,17 +970,19 @@ public class BDM extends Helper {
 				 Class.forName("com.mysql.jdbc.Driver").newInstance();
 	             connection = DBConnection.getConnection();
 	             statement = connection.createStatement();
-	             
 	             rs = statement.executeQuery("select  a.role_name, b.email_id, b.password "
-	              		+ "from crm_role a, crm_user b where "
-	              		+ "a.role_id = b.role_id AND delete_status='no';");
+		              		+ "from crm_role a, crm_user b where "
+		              		+ "a.role_id = b.role_id AND delete_status='no' AND role_name='Management' Limit 1;");
+	             
+	             
 	             
 	             while (rs.next()) {
 	                
 	                 String role = rs.getString("role_name");
 	                 String email = rs.getString("email_id");
 	                 String password = rs.getString("password");
-	                 if((email.contains("basani")) && (role.contains("Management")))
+	                 System.out.println(email +password);
+	                 if (role.contains("Management"))
 	                	 help.login(email, password);
 	             } 
 		        } 
