@@ -4,6 +4,7 @@
   <test name="Default test(failed)">
     <classes>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <class name="src.crm.Researcher">
         <methods>
           <include name="beforeMethod"/>
@@ -18,6 +19,21 @@
           <include name="beforesuite"/>
         </methods>
       </class> <!-- src.crm.Smoke -->
+>>>>>>> Stashed changes
+=======
+      <class name="src.crm.BDE">
+        <methods>
+          <include name="LC_TS_46_2_todaysFollowupProposal"/>
+          <include name="LC_TS_46_1_todaysFollowup4"/>
+          <include name="LC_TS_47_TC002_AllFollowupsQuoteUpload"/>
+          <include name="beforesuite"/>
+          <include name="LC_TS_47_TC004_confirmLeadsOfTodaysDate"/>
+          <include name="afterMethod"/>
+          <include name="LC_TS_47_TC005_UIToFieldCheck"/>
+          <include name="beforeMethod"/>
+          <include name="LC_TS_47_TC006_coldStorage"/>
+        </methods>
+      </class> <!-- src.crm.BDE -->
 >>>>>>> Stashed changes
     </classes>
   </test> <!-- Default test(failed) -->
