@@ -10,11 +10,15 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.nexiilabs.dbcon.DBConnection;
+
 import src.testUtils.Helper;
 
 public class Management extends Helper {
 String randomLead;
 String Leadno;
+
+
 
  @Test
   public void test57_TC001() throws Exception 
@@ -59,12 +63,41 @@ String Leadno;
 		  Assert.fail("All propoals cant be clickable");
 	  }
 	  help.sleep(2);
+   ///////////////////////// search entries////////////////////////////////////
+      help.searchtable();
+  }
+ @Test
+ public void test58_TC004() throws Exception
+ {
+	  help.expand();
+	  help.sleep(2);
+	  String str = driver.findElement(By.id(mgmt.getProperty("allproposals_id"))).getText();
+	  if(str.equals("All Proposals"))
+	  {
+	  driver.findElement(By.id(mgmt.getProperty("allproposals_id"))).click();
+	  }else{
+		  Assert.fail("All propoals cant be clickable");
+	  }
+	  help.sleep(2);
 	  ///////////////////////// For drop down and pagination /////////////////////////
 	  help.pageEntries();
-	 // pagination();
-	  //////////////////////// for sorting//////////////////
-	  help.sorting();
-	///////////////////////// lead status ////////////////////////
+ }
+ @Test
+ public void test58_TC005() throws Exception
+ {
+    help.expand();
+    help.sleep(2);
+    String str = driver.findElement(By.id(mgmt.getProperty("allproposals_id"))).getText();
+    if(str.equals("All Proposals"))
+     {
+      driver.findElement(By.id(mgmt.getProperty("allproposals_id"))).click();
+     }else{
+	  Assert.fail("All propoals cant be clickable");
+     }
+    help.sleep(2);
+   //////////////////////// for sorting//////////////////
+	help.sorting();
+   ///////////////////////// lead status ////////////////////////
 	  String page = driver.findElement(By.id("example_info")).getText();
 	  Reporter.log("<p>" + "entries before searching  : " + page);
 	  search("prospect"); 
@@ -193,8 +226,36 @@ String Leadno;
 		  Assert.fail("all lost comepetition button is not available");
 	  }
 	  help.sleep(1);
+      ///////////////////////// search entries////////////////////////////////////
+      help.searchtable();
+  }
+ @Test
+ public void test59_TC004() throws Exception
+ {
+	 help.expand();
+     /////////////// All lost competition ///////////////////////////////
+	  if(driver.findElement(By.id(mgmt.getProperty("alllost_id"))).getText().equals("All Lost Competition"))
+	  {
+	  driver.findElement(By.id(mgmt.getProperty("alllost_id"))).click();
+	  }else{
+		  Assert.fail("all lost comepetition button is not available");
+	  }
+	  help.sleep(1);
 	   ///////////// drop down validation and pagination/////////
 	  help.pageEntries();
+ }
+ @Test
+ public void test59_TC005() throws Exception
+ {
+	 help.expand();
+     /////////////// All lost competition ///////////////////////////////
+	  if(driver.findElement(By.id(mgmt.getProperty("alllost_id"))).getText().equals("All Lost Competition"))
+	  {
+	  driver.findElement(By.id(mgmt.getProperty("alllost_id"))).click();
+	  }else{
+		  Assert.fail("all lost comepetition button is not available");
+	  }
+	  help.sleep(1);
 	  /////////////////////// for sorting///////////////
 	  help.sorting();
 	  //////////////////// lead status validation ////////////////////////
@@ -314,8 +375,38 @@ String Leadno;
 		  Assert.fail("all customers link cannot be clickable");
 	  }
 	  help.sleep(1);
-	    //////////////////////// dropdown validation and pagination ////////////////////
-	  help.pageEntries();
+      ///////////////////////// search entries////////////////////////////////////
+      help.searchtable(); 
+  }
+ 
+ @Test
+ public void test60_TC004() throws Exception
+ {
+	 help.expand();
+	  /////////////// All customers //////////////////////////
+    if(driver.findElement(By.id(mgmt.getProperty("allcustomers_id"))).getText().equals("All Customers"))
+     {
+     driver.findElement(By.id(mgmt.getProperty("allcustomers_id"))).click();
+     }else{
+	  Assert.fail("all customers link cannot be clickable");
+     }
+     help.sleep(1);
+	 //////////////////////// dropdown validation and pagination ////////////////////
+	 help.pageEntries();
+ }
+ 
+ @Test
+ public void test60_TC005() throws Exception
+ {
+	 help.expand();
+	  /////////////// All customers //////////////////////////
+     if(driver.findElement(By.id(mgmt.getProperty("allcustomers_id"))).getText().equals("All Customers"))
+      {
+      driver.findElement(By.id(mgmt.getProperty("allcustomers_id"))).click();
+      }else{
+	  Assert.fail("all customers link cannot be clickable");
+      }
+      help.sleep(1);
 	  /////////////////////////////// for sorting ///////////////////////
 	  help.sorting();
          ////////////////////lead status validation ////////////////////////
@@ -433,8 +524,38 @@ String Leadno;
 		  Assert.fail("all quotes link cannot be clickable");
 	  }
 	  help.sleep(1);
-        /////////////// drop down validation and pagination/////////////
+     ///////////////////////// search entries////////////////////////////////////
+     help.searchtable();
+  }
+ 
+ @Test
+ public void test61_TC004() throws Exception
+ {
+	  help.expand();
+      /////////////// All Quotes //////////////////////////
+	  if(driver.findElement(By.id(mgmt.getProperty("allquotes_id"))).getText().equals("All Quotes"))
+	  {
+	  driver.findElement(By.id(mgmt.getProperty("allquotes_id"))).click();
+	  }else {
+		  Assert.fail("all quotes link cannot be clickable");
+	  }
+	  help.sleep(1);
+	  /////////////// drop down validation and pagination/////////////
 	  help.pageEntries();
+ }
+ 
+ @Test
+ public void test61_TC005() throws Exception
+ {
+	  help.expand();
+      /////////////// All Quotes //////////////////////////
+	  if(driver.findElement(By.id(mgmt.getProperty("allquotes_id"))).getText().equals("All Quotes"))
+	  {
+	  driver.findElement(By.id(mgmt.getProperty("allquotes_id"))).click();
+	  }else {
+		  Assert.fail("all quotes link cannot be clickable");
+	  }
+	  help.sleep(1);
 	  ////////////////// for sorting/////////////////
 	  help.sorting();
 	  //////////////////////////// prospect type
@@ -535,23 +656,23 @@ String Leadno;
 	 Reporter.log("<p>" + "######Done with validation of all quotes page######");
 	 Reporter.log("<p>" + "==============================================================================");
   }
+  
  
-@Test
+  @Test
   public void test62_TC001() throws Exception
   {
 	help.expand();
 	help.searchLead();
-	//help.searchLeadPagination();
-	 Reporter.log("<p>" + "######Done with validation of testleads page######");
-	 Reporter.log("<p>" + "==============================================================================");
+	Reporter.log("<p>" + "######Done with validation of testleads page######");
+	Reporter.log("<p>" + "==============================================================================");
   } 	
 
-// @Test
+ @Test
   public void test65_TC001() throws Exception
   {
 	 help.expand();
-        /////////////////////////// change password ////////////////////////////////////
-   
+     /////////////////////////// change password ////////////////////////////////////
+     help.changePassword("basanirakeshreddy000@gmail.com");
 	 Reporter.log("<p>" + "######Done with validation of change password page######");
 	 Reporter.log("<p>" + "==============================================================================");
   }
@@ -564,11 +685,11 @@ String Leadno;
  public void searchBox()
  {	
 	 List<WebElement> table = driver.findElement(By.id(mgmt.getProperty("search_idd"))).findElement(By.tagName(mgmt.getProperty("allproposalsbody_tagName"))).findElements(By.tagName(mgmt.getProperty("allproposalsrow1_tagName")));
-	 if(table.size()>0)
+	 if(table.size()>1)
 	 {	
 	 WebElement res = table.get(random(table.size()));
 	 List<WebElement> tdlis = res.findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName")));
-		    if(tdlis.size()>0)
+		    if(tdlis.size()>1)
 		    {
 		    	randomLead = tdlis.get(0).getText() + " " + tdlis.get(1).getText() + " " +tdlis.get(2).getText();
 		    	Reporter.log("<p>" + "The particular Lead is : " + randomLead);
@@ -582,46 +703,7 @@ String Leadno;
 	 	}
  }
  
- // pagination
-public  void pagination() 
-{
-Reporter.log("<p>" + "###### Verifying Next & Previous Buttons ######");
-WebElement w= driver.findElement(By.id(or.getProperty("page2_id")));
-if(w.isDisplayed()){
-Reporter.log("<p>" + "pagination next button is present");
-}else
-Assert.fail("pagination button not present");
-String s1 =driver.findElement(By.id(or.getProperty("page1_id"))).getText();
-Reporter.log("<p>" + s1);
-while(!w.getAttribute("class").contains("disabled")){
-help.sleep(2);
-String str = driver.findElement(By.id(or.getProperty("page2_id"))).getAttribute("class");
 
-if(str.contains("enabled")){
-w.click();
-Reporter.log("<p>" + "Clicked on Next button");
-Reporter.log("<p>" + driver.findElement(By.id(or.getProperty("page1_id"))).getText());
-help.sleep(1);
-}else
-Reporter.log("<p>" + "Next button cant be clicked");
-}
-WebElement w1 =  driver.findElement(By.id(or.getProperty("pagiantion_prev")));
-if(w1.isDisplayed()){
-Reporter.log("<p>" + "pagination previous button present");
-}else
-Assert.fail("pagination previous button not present");
-Reporter.log("<p>" + driver.findElement(By.id(or.getProperty("page1_id"))).getText());
-while(!w1.getAttribute("class").contains("disabled")){
-String str2 = driver.findElement(By.id(or.getProperty("page3_id"))).getAttribute("class");
-
-if(str2.contains("enabled")){
-w1.click();
-Reporter.log("<p>" + "Clicked on Previous button");
-Reporter.log("<p>" + driver.findElement(By.id(or.getProperty("page1_id"))).getText());
-}else
-Reporter.log("<p>" + "previous button cant be clicked");
-}
-}
 
  @BeforeMethod
   public void beforeMethod() throws Exception 
