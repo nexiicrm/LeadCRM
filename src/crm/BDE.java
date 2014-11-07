@@ -127,7 +127,7 @@ public class BDE extends Helper{
 	//This method is Work Phase Form Which takes 3 parameters FollowUp Type, Comment, Date and fill form fields
 	public void fillingForm(String s1, String s2, String s3)
 	{
-		  WebElement seg = driver.findElement(By.id(bde.getProperty("formButton")));
+		  WebElement seg = driver.findElement(By.className(bde.getProperty("formButton")));
 		  
 		  submitMessage(seg, "Please Select FollowUp Type....");
 		  new Select(driver.findElement(By.name(bde.getProperty("Type")))).selectByVisibleText(s1);
@@ -198,24 +198,30 @@ public class BDE extends Helper{
 	 //This method takes two parameters as strings. It will take the BDM page Proposal or Quote link, container name.
 	 //It will login to BDM page click particular lead from proposal or Quote page.
 	 public void proposalQuotePage(String Linkname, String Containername) throws Exception 
-	 { 
+	 {   
+		 
+		 List<String> sr1 = new ArrayList<String>();
 		 try
 	     {   	
 	            Class.forName("com.mysql.jdbc.Driver").newInstance();
 	            connection = DBConnection.getConnection();
 	            statement = connection.createStatement();
-	            resultSet = statement.executeQuery("select  a.role_name, b.email_id, b.password "+ "from crm_role a, crm_user b where " 
-	                                             + "a.role_id = b.role_id AND a.role_name = 'BDM' AND delete_status='no'Limit 1;");      
-	            while (resultSet.next())
-	            {        
-	               // String role = resultSet.getString("role_name");
-	                String email = resultSet.getString("email_id");
-	                String pass = resultSet.getString("password");
+	            resultSet = statement.executeQuery("select  a.role_name, b.email_id, b.password "
+	                       + "from crm_role a, crm_user b where "
+	                       + "a.role_id = b.role_id AND delete_status='no';");      
+	               while (resultSet.next()) {
+	              
+	                   String role = resultSet.getString("role_name");
+	                   String email = resultSet.getString("email_id");
+	                   String pass = resultSet.getString("password");
+	                   if(email.contains("srinivas") && role.contains("BDM")){
+	                   sr1.add(email);
+	                   sr1.add(pass);
 	                
-	                browser();
-	    			maxbrowser();
+	                //browser();
+	    			//maxbrowser();
 	    			driver.get(config.getProperty("url"));
-	       		    help.login(email,pass);   
+	       		    help.login(sr1.get(0),sr1.get(1));   
 	       		    
 	       		    String user = driver.findElement(By.className("user_name")).getText();
 	       		    System.out.println("user " + user);
@@ -226,10 +232,16 @@ public class BDE extends Helper{
 	       		    
 	       		    navigatePage(Linkname, Containername);
 	       		    searchLead(Leadno);
+	       		    if (tableSize().contains("dataTables_empty"))    	
+	       		    	Assert.fail("Expected Lead of QUOTE or PROPOSAL " + Leadno +" is not present in Management "+ Linkname);
+	       		    else 
+	       		    	Reporter.log("<p> The Expected Lead  : " + Leadno + " is also available in BDM "+ Linkname);
+	       		    
 	       		    WebElement table = driver.findElement(By.tagName(bde.getProperty("tableBody"))).findElement(By.tagName(bde.getProperty("tableTr")));
 	       		    table.findElements(By.tagName(bde.getProperty("tagTd"))).get(5).findElement(By.className("upload")).click();
-	       		    sleep(1);  
+	       		    sleep(4);  
 	           }
+	         }
 	     }
 	     catch (Exception e){ 
 		      e.printStackTrace();
@@ -240,7 +252,7 @@ public class BDE extends Helper{
 	 public void ProposalQuoteForm(String s1, String s2, String s3)
 	 {
 		 WebElement name = driver.findElement(By.name(s1));
-		 name.sendKeys(" BDE Lead ");
+		 name.sendKeys("BDE Lead");
 		 sleep(1);
 		 
 		 WebElement des = driver.findElement(By.name(s2));
@@ -256,11 +268,15 @@ public class BDE extends Helper{
 		 
 		 WebElement close =  driver.findElement(By.tagName(bde.getProperty("formButton")));
 		 close.click();
-		 driver.close();
+		 
+		 sleep(3);
+		 driver.findElement(By.className("user_logout")).click();
+		 sleep(4);
+		 
 	 }
 	
-    //@Test
-	public void LC_TS_43_ExpandCollapse()
+    @Test
+	public void LC_TS_43_ExpandCollapse() throws Exception
 	{	
 		//This List tree contains all Main Links of BDE Module , adds these in to "lisub" List.
 	    
@@ -273,13 +289,32 @@ public class BDE extends Helper{
     	
     	//This tree checks for the tree links of BDE page
 		sidetreemenuverify(3);
+        navigatePage("Research On Company", "Lead Research");
+		
+		help.searchtable();
+		help.sorting();
+		help.pageEntries();
+        
+        navigatePage("Work on Lead", "Work on Lead");
+		
+		help.searchtable();
+		help.sorting();
+		help.pageEntries();
+		
+		navigatePage("All FollowUps", "All Followups");
+   	 
+   	    help.searchtable();
+		help.sorting();
+		help.pageEntries();
+        
 	}
 	
 	// This researchOnCompany test, checks the functionality of Research On Company Page, 'Lead Research' Form.
-    @Test(invocationCount = 1)
-	public void LC_TS_44_researchOnCompany()
+    @Test(invocationCount = 3)
+	public void LC_TS_44_researchOnCompany() throws Exception
 	{
 		navigatePage("Research On Company", "Lead Research");
+		
 		LeadSelection("random", "segregate");
 		Reporter.log("<p> ######### Navigated to  ResearchOnCompany Form ##########\n");   
 	    if (driver.findElement(By.tagName(bde.getProperty("pagetag"))).getText().equalsIgnoreCase("Research on Lead"))
@@ -305,7 +340,7 @@ public class BDE extends Helper{
 		 }else
 			 Assert.fail("Navigation of Reasearch on Lead page Failed");
 	     
-	     //Check for Lead not Present in Research Phase
+	   /*  //Check for Lead not Present in Research Phase
 	     navigatePage("Research On Company", "Lead Research");
 	     searchLead(randomLead);
 	     if (tableSize().contains("dataTables_empty"))
@@ -328,14 +363,16 @@ public class BDE extends Helper{
 		 if(lb2.get(2).getText().contains("Research Phase completed as per the schedule"))
 			Reporter.log("<p> Trackit comments for Research Phase is successfull.");
 		 else
-			Reporter.log("Track it comments for Research phase not Present");
+			Reporter.log("Track it comments for Research phase not Present");*/
 	}	
 	
 	@Test(invocationCount = 1)
-    public void LC_TS_45_1_workPhaseForTodaysDate()
+    public void LC_TS_45_1_workPhaseForTodaysDate() throws Exception
 	{
 		date = new Date();	
 		navigatePage("Work on Lead", "Work on Lead");
+		
+		
 		LeadSelection("random", "work");
 	    if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Work on Lead"))
 		{	
@@ -378,10 +415,10 @@ public class BDE extends Helper{
 		 else 
 			 Reporter.log("<p> The research Lead : " + randomLead + " is also available in All FollowUps");
 		sleep(2);
-		trackIT();		
+		trackIT();	
 	}
 	
-	  //@Test(invocationCount = 2)
+	  @Test(invocationCount = 1)
 	  public void LC_TS_45_2_workPhaseForLaterDate()
 	  {   
 	    cal = Calendar.getInstance();
@@ -390,6 +427,7 @@ public class BDE extends Helper{
 	
 		navigatePage("Work on Lead", "Work on Lead");
 		LeadSelection("random", "work");
+		
 	    if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Work on Lead"))
 	    {
 	    	sleep(2);
@@ -424,7 +462,7 @@ public class BDE extends Helper{
 			Reporter.log("<p> Track it comments for Work Phase later date not found");
 	}
      
-    // @Test
+     @Test
      public void LC_TS_46_1_todaysFollowup4()
 	 {	
     	 date = new Date();	
@@ -434,6 +472,7 @@ public class BDE extends Helper{
  	     
     	 navigatePage("Today's FollowUp", "Today Followups");
     	 LeadSelection("Introductory Mail", "work");
+    	 sleep(4);
 		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Followup on Lead"))
 		 {
 			 fillingForm("Followup 4","selection today date",simple.format(later));
@@ -464,7 +503,7 @@ public class BDE extends Helper{
 		 date = new Date();
 	     navigatePage("Today's FollowUp", "Today Followups");
 	     LeadSelection("Introductory Mail" , "work");
-	     sleep(2);
+	     sleep(4);
 		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Followup on Lead"))
 		 {   
 			 WebElement seg = driver.findElement(By.className(bde.getProperty("formButton")));
@@ -474,19 +513,21 @@ public class BDE extends Helper{
 			 sleep(2);
 			 
 			 submitMessage(seg, "Please Select Prospect Type....");
+			 sleep(2);
 			 new Select(driver.findElement(By.name("prospectType"))).selectByVisibleText("Proposal");
 			 sleep(2);
 		
 			 
 			 submitMessage(seg, "Please Enter Fixed Date....");
+			 sleep(2);
 			 WebElement fixdate = driver.findElement(By.id("fixon"));
 			 fixdate.sendKeys(simple.format(date));
-			 sleep(2);
+			 sleep(4);
 			 
 			 submitMessage(seg, "Please Select Mail Id of Architect....");
-			 
+			 sleep(2);
 			 WebElement to = driver.findElement(By.name(bde.getProperty("to")));
-			 to.click();
+			 //to.click();
 			 List<WebElement> option =to.findElements(By.tagName(bde.getProperty("option")));
 			 option.get(1).click();
 			 sleep(2);
@@ -494,17 +535,17 @@ public class BDE extends Helper{
 			 submitMessage(seg, "Please Enter Subject");
 			 WebElement sub = driver.findElement(By.name(bde.getProperty("subject")));
 			 sub.sendKeys("Sending Prospect Proposal");
-			 sleep(2);
+			 sleep(4);
 			 
 			 submitMessage(seg,"Please Leave A Message");
 			 WebElement msg = driver.findElement(By.name(bde.getProperty("message")));
 			 msg.sendKeys("This is proposal message field");
-			 sleep(2);
+			 sleep(4);
 			 
 			 submitMessage(seg,"Please Leave A Comment");
 			 WebElement cmt = driver.findElement(By.name(bde.getProperty("Comment")));
 			 cmt.sendKeys("This is followup comment of proposal");
-			 sleep(2);
+			 sleep(4);
 			  
 			
 			 submitMessage(seg,"Please Enter Next FollowUp Date");			  	  					 
@@ -513,7 +554,8 @@ public class BDE extends Helper{
 			 sleep(2);	
 			 	 
 			 submitMessage(seg,"Proposal Request Send Successfully"); 
-	
+	         sleep(2);
+	         
 			 WebElement close =  driver.findElement(By.tagName("button"));
 			 close.click();
 			
@@ -522,6 +564,8 @@ public class BDE extends Helper{
 		 {
 		     Assert.fail("Failed to navigate to todays Followup form");
 		 }
+		 driver.findElement(By.className("user_logout")).click();
+		 sleep(4);
 		 
 		 proposalQuotePage("Proposal Upload", "Leads for Proposal Upload");
 		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Proposal Upload"))
@@ -531,8 +575,7 @@ public class BDE extends Helper{
 		 
 		 //This block Checks for Lead Presence in Todays FollowUp and also proposal comment.
 		 
-		 login(config.getProperty("bdename"),config.getProperty("bdepass"));
-		 
+		 login(config.getProperty("bdename"),config.getProperty("bdepass")); 
 		 navigatePage("Today's FollowUp", "Today Followups");
 		 searchLead(Leadno);
 		 if (tableSize().contains("dataTables_empty"))	
@@ -553,8 +596,8 @@ public class BDE extends Helper{
 	
 	 }
 	 
-     //@Test
-	 public void LC_TS_47_TC001_AllFollowups4()
+     @Test
+	 public void LC_TS_47_TC001_AllFollowups4() throws Exception
 	 {
 		 date = new Date();	
     	 cal = Calendar.getInstance();
@@ -562,7 +605,9 @@ public class BDE extends Helper{
  	     later = cal.getTime();
  	     
     	 navigatePage("All FollowUps", "All Followups");
+ 		 
     	 LeadSelection("Introductory Mail" , "work");
+    	 sleep(4);
 		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Followup on Lead"))
 		 {
 			 fillingForm("Followup 4","Sending Lead to Cold Phase",simple.format(later));		 
@@ -594,34 +639,37 @@ public class BDE extends Helper{
  	     
     	 navigatePage("All FollowUps", "All Followups");
     	 LeadSelection("Introductory Mail" , "work");
+    	 sleep(4);
 		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Followup on Lead"))
 		 {
 			 WebElement seg = driver.findElement(By.id(bde.getProperty("formButton")));
 			 
 			 submitMessage(seg, "Please Select FollowUp Type");
 			 new Select(driver.findElement(By.name(bde.getProperty("Type")))).selectByVisibleText("Prospect Identify");
-			 sleep(1);
+			 sleep(2);
 			 
 			 submitMessage(seg, "Please Select FollowUp Type");
 			 new Select(driver.findElement(By.name(bde.getProperty("prospectType")))).selectByVisibleText("Quote");
-			 sleep(1);
+			 sleep(2);
 			 
 			 submitMessage(seg, "Please Enter Fixed Date");
 			 WebElement fixdate = driver.findElement(By.id(bde.getProperty("fixon")));
 			 fixdate.sendKeys(simple.format(date));
-			 sleep(1);
+			 sleep(2);
 			 
 			 submitMessage(seg,"Please Leave A Comment");
 			 WebElement cmt = driver.findElement(By.name(bde.getProperty("Comment")));
 			 cmt.sendKeys("This is followup comment of Quote");
-			 sleep(1);		  
+			 sleep(2);		  
 			
 			 submitMessage(seg,"Please Enter Next FollowUp Date");			  	  					 
 			 WebElement folldate = driver.findElement(By.id(bde.getProperty("Date")));
 			 folldate.sendKeys(simple.format(later));
-			 sleep(1);	
+			 sleep(2);	
 			 	 
-			 submitMessage(seg,"Quote Details Successfully Updated"); 		 
+			 submitMessage(seg,"Quote Details Successfully Updated");  
+			 sleep(4);
+			 
 			 WebElement close =  driver.findElement(By.tagName("button"));
 			 close.click(); 
 			 
@@ -630,6 +678,9 @@ public class BDE extends Helper{
 		 {
 			 Assert.fail("Navigation to page All Followup failed");
 		 }
+		 
+		 driver.findElement(By.className("user_logout")).click();
+		 sleep(4);
 		 
 		 proposalQuotePage("Quote Upload", "Leads for Quote Upload");
 		 if (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Quote Upload"))
@@ -652,7 +703,7 @@ public class BDE extends Helper{
 		 trackIT(); 		  
 	 }
   
-	 //@Test
+	 @Test
      public void LC_TS_47_TC003_AllFollowupclose()
      {
     	 navigatePage("All FollowUps", "All Followups");    
@@ -688,7 +739,7 @@ public class BDE extends Helper{
      }
 	 
 	
-	 //@Test
+	 @Test
 	 public void LC_TS_47_TC004_confirmLeadsOfTodaysDate()
 	 {
 		 date = new Date();	
@@ -742,7 +793,7 @@ public class BDE extends Helper{
 		 }
 	 }
 	 
-	//@Test
+	@Test
 	public void LC_TS_47_TC005_UIToFieldCheck()
 	{
 		 date = new Date();
@@ -806,7 +857,7 @@ public class BDE extends Helper{
 		
 	   }
 	}   
-	    // @Test
+	     @Test
 		 public void LC_TS_47_TC006_coldStorage() 
 		 { 
 			 navigatePage("Cold Storage", "Cold Storage");
@@ -886,7 +937,7 @@ public class BDE extends Helper{
 		
 	@AfterMethod
 	public void afterMethod() throws Exception{
-			driver.close();
+			//driver.close();
 			driver.manage().deleteAllCookies();
 	}
 		
