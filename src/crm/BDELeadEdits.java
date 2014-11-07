@@ -110,7 +110,7 @@ public class BDELeadEdits  extends Helper
   
 
 	
-//@Test                                              // in manual test case LC_TS_48      closed phase
+@Test                                              // in manual test case LC_TS_48      closed phase
 public void LC_TS_48_TC001() throws Exception 
 {
 	   help.expand();
@@ -456,7 +456,8 @@ public void LC_TS_50_TC002() throws Exception
 		  	int columns=sh4.getColumns();
 			int rows=sh4.getRows();
 			String data;
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			help.sleep(2);
+			//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			//random selection of edit button
 			int j=random(leads.size());
 			//getting details of random lead before clicking edit button
@@ -536,7 +537,7 @@ public void LC_TS_50_TC002() throws Exception
 	  driver.quit();
   }
   
-  @Test                                                               // in manual test case LC_TS_53 & 54                myaccount
+ // @Test                                                               // in manual test case LC_TS_53 & 54                myaccount
   public void LC_TS_52_TC002() throws Exception
   {
 	  help.expand();
