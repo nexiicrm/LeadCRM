@@ -547,7 +547,7 @@ public class Helper extends BaseTest
 			  //comparing current url after cancle button// 
 			  if(aftcancleurl.equalsIgnoreCase(currenturl)){
 			  } else {
-			  Assert.fail("<p>" +"Not successfully canceled change password page");
+			  Assert.fail("Not successfully cancled change password page");
 			  }
 			  //======Clicking searchleads in leadsearch menu for change button====//
 			  driver.findElement(By.linkText(or.getProperty("changepassword"))).sendKeys(Keys.ENTER);
@@ -649,7 +649,7 @@ public class Helper extends BaseTest
 			  help.expand();
 			  //======Clicking changepassword in myaccount menu====//
 			  driver.findElement(By.linkText(or.getProperty("changepassword"))).click();
-			  help.sleep(1);
+			  help.sleep(5);
 			  //oldpassword//
 			  driver.findElement(By.id(or.getProperty("oldpass"))).sendKeys(dat1);
 			  //newpassword//
@@ -657,10 +657,13 @@ public class Helper extends BaseTest
 			  //confirm password//
 			  driver.findElement(By.id(or.getProperty("confirmpass"))).sendKeys(dat);
 			  driver.findElement(By.id(or.getProperty("change1"))).sendKeys(Keys.ENTER);
+			  sleep(3);
 			  resultSet = statement.executeQuery("select password from crm_user where email_id='"+email+"' AND delete_status='no'"); 
 			  resultSet.next();
+			 // sleep(2);
 			  String dat2 = resultSet.getString("password");
 			  //Login
+			  sleep(2);
 			  driver.findElement(By.id(or.getProperty("username1"))).sendKeys(email);
 			  driver.findElement(By.id(or.getProperty("password1"))).sendKeys(dat2);
 			  driver.findElement(By.cssSelector(or.getProperty("loginbutton1"))).findElement(By.tagName("input")).submit();
@@ -764,7 +767,7 @@ public class Helper extends BaseTest
 	  }
 
 	  }else{
-		  Reporter.log("<p>" + "No data present in the table to search");
+		  Reporter.log("No data present in the table to search");
 	  }//finishing the search with the item in the displayed table
 
   }
