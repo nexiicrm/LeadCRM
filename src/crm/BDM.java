@@ -51,14 +51,14 @@ public class BDM extends Helper {
 
 	 
 	 
-	// @AfterMethod
+	 @AfterMethod
 	 public void after() {
 		 driver.close();
 	 }
 	 
 	 
 	 // Test Method for Follow up 4 for Cold storage phase. 
-//	 @Test
+	 @Test
 	 public void a_coldStorageFollowup() {
 		 
 		 Reporter.log("<p>" +"Testing follow up for Cold storage");
@@ -118,7 +118,7 @@ public class BDM extends Helper {
 	 
 
 	 // Test method for Cold Storage
-	// @Test
+	 @Test
 	 public void b_coldStorage() {
 		
 		 Reporter.log("<p>" +"Test for Cold storage");
@@ -232,7 +232,7 @@ public class BDM extends Helper {
 	
 	 
 	 // Test method for Proposal follow up
-//	 @Test
+	 @Test
 	 public void c_proposalFollowup() throws Exception {
 		
 		 Reporter.log("<p>" +"Testing follow up for Proposal Upload");
@@ -315,7 +315,7 @@ public class BDM extends Helper {
 	
 	 
 	 // Test method for Proposal upload
-//	 @Test
+	 @Test
 	 public void d_proposalUpload() {
 		 
 		 Reporter.log("<p>" +"Test for Proposal Upload");
@@ -390,7 +390,7 @@ public class BDM extends Helper {
 	 
 	 
 	 // Test method for Quote follow up
-	// @Test
+	 @Test
 	 public void e_quoteFollowup() throws Exception {
 			 Reporter.log("<p>" +"Testing follow up for Quote Upload");
 			 
@@ -465,7 +465,7 @@ public class BDM extends Helper {
 	 
 	 
  	 // Test method for Quote upload
-	// @Test
+	 @Test
 	 public void f_quoteUpload() {
 		 
 		 Reporter.log("<p>" +"Test for Quote Upload");
@@ -543,7 +543,7 @@ public class BDM extends Helper {
 	 
 	 
 	 // Test method for Lead Edit Track it button
-	// @Test 
+	 @Test 
 	 public void g_testLeadTrackButton() {
 		 
 		 Reporter.log("<p>" +"Testing Track It button in Lead Edit Phase");
@@ -585,7 +585,7 @@ public class BDM extends Helper {
 	 
 	 
 	 // Test method for "Lead Edit" Edit button functionality
-	// @Test
+	 @Test
 	 public void h_testLeadEditButton() {
 		 
 		 Reporter.log("<p>" +"Testing Edit button in Lead Edit Phase and its Functionality");
@@ -712,7 +712,7 @@ public class BDM extends Helper {
 	 
 	 
 	 // Test method for Search Leads
-	// @Test
+	 @Test
 	 public void i_leadSearch() {
 		
 		 Reporter.log("<p>" +"Test for Lead Search Phase");
@@ -728,7 +728,7 @@ public class BDM extends Helper {
 	 
 	 
 	 // Test Method for Lead Search Paginations
-	// @Test
+	 @Test
 	 public void j_leadSearchPagination() throws Exception {
 		 Reporter.log("<p>" +"Test for Lead Search Phase Paginations");
 		 
@@ -788,7 +788,7 @@ public class BDM extends Helper {
 		
 	 
 	 // Pagination for Proposal Uploads Page
-	// @Test
+	 @Test
 	 public void l_paginationproposal() throws Exception {
 		 
 		 Reporter.log("<p>" +"Test for Pagination in proposal upload page");
@@ -822,7 +822,7 @@ public class BDM extends Helper {
 	 
 	 
 	 // Pagination for Quote Uploads page
-	 //@Test
+	 @Test
 	 public void m_paginationQuote() throws Exception {
 		 
 		 Reporter.log("<p>" +"Test for Pagination in quote upload page");
@@ -857,7 +857,7 @@ public class BDM extends Helper {
 	
 	
 	// Pagination for Lead Edit page
-	//@Test
+	@Test
 	public void n_paginationleadEdit() throws Exception {
 		 
 		 Reporter.log("<p>" +"Test for Pagination in Lead Edit page");
@@ -891,6 +891,13 @@ public class BDM extends Helper {
 	} 
 	
 	
+	// Change Password
+	@Test
+	 public void changePassword() throws Exception {
+		
+		      help.expand();
+		      help.changePassword(config.getProperty("bdmuser"));
+	 }
 
 	 
 	 // -------- Static Methods ---------
