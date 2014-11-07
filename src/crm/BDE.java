@@ -291,21 +291,21 @@ public class BDE extends Helper{
 		sidetreemenuverify(3);
         navigatePage("Research On Company", "Lead Research");
 		
-		help.searchtable();
+        help.pageEntries();
 		help.sorting();
-		help.pageEntries();
+		help.searchtable();
         
         navigatePage("Work on Lead", "Work on Lead");
 		
-		help.searchtable();
+        help.pageEntries();
 		help.sorting();
-		help.pageEntries();
+		help.searchtable();
 		
 		navigatePage("All FollowUps", "All Followups");
    	 
-   	    help.searchtable();
-		help.sorting();
 		help.pageEntries();
+		help.sorting();
+		help.searchtable();
         
 	}
 	
@@ -340,7 +340,7 @@ public class BDE extends Helper{
 		 }else
 			 Assert.fail("Navigation of Reasearch on Lead page Failed");
 	     
-	   /*  //Check for Lead not Present in Research Phase
+	     //Check for Lead not Present in Research Phase
 	     navigatePage("Research On Company", "Lead Research");
 	     searchLead(randomLead);
 	     if (tableSize().contains("dataTables_empty"))
@@ -363,7 +363,7 @@ public class BDE extends Helper{
 		 if(lb2.get(2).getText().contains("Research Phase completed as per the schedule"))
 			Reporter.log("<p> Trackit comments for Research Phase is successfull.");
 		 else
-			Reporter.log("Track it comments for Research phase not Present");*/
+			Reporter.log("Track it comments for Research phase not Present");
 	}	
 	
 	@Test(invocationCount = 1)
@@ -857,7 +857,8 @@ public class BDE extends Helper{
 		
 	   }
 	}   
-	     @Test
+	
+	     @Test  //This module checks cold storage.
 		 public void LC_TS_47_TC006_coldStorage() 
 		 { 
 			 navigatePage("Cold Storage", "Cold Storage");
@@ -937,7 +938,7 @@ public class BDE extends Helper{
 		
 	@AfterMethod
 	public void afterMethod() throws Exception{
-			//driver.close();
+			driver.close();
 			driver.manage().deleteAllCookies();
 	}
 		
