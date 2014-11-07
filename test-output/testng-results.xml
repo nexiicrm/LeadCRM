@@ -1,372 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <testng-results skipped="0" failed="0" total="4" passed="4">
-  <reporter-output>
-    <line>
-      <![CDATA[<p>===========Leads Upload=========]]>
-    </line>
-    <line>
-      <![CDATA[<p>Number Elements in List1 : 6]]>
-    </line>
-    <line>
-      <![CDATA[<p>User Logged in as:Hi ! Researcher]]>
-    </line>
-    <line>
-      <![CDATA[<p>Please Provide Valid Excel File....!]]>
-    </line>
-    <line>
-      <![CDATA[<p>Please Provide Valid Excel File....!]]>
-    </line>
-    <line>
-      <![CDATA[<p>===========Leads Upload1=========]]>
-    </line>
-    <line>
-      <![CDATA[<p>Number Elements in List1 : 6]]>
-    </line>
-    <line>
-      <![CDATA[<p>User Logged in as:Hi ! Researcher]]>
-    </line>
-    <line>
-      <![CDATA[<p>Waiting timed out element not foundBy.className: error_msg]]>
-    </line>
-    <line>
-      <![CDATA[<p>Excel File Uploaded and Leads Saved Successfully....!]]>
-    </line>
-    <line>
-      <![CDATA[<p>=================search leads=================]]>
-    </line>
-    <line>
-      <![CDATA[<p>=================Expanding tree menu=================]]>
-    </line>
-    <line>
-      <![CDATA[<p>The reqiured field:Last Name]]>
-    </line>
-    <line>
-      <![CDATA[<p>Size of Filter option categories:7]]>
-    </line>
-    <line>
-      <![CDATA[<p>Filter Option Selected:Choose Company]]>
-    </line>
-    <line>
-      <![CDATA[<p>No.of options in Choose Company List:382]]>
-    </line>
-    <line>
-      <![CDATA[<p>Option selected is:Camimbo]]>
-    </line>
-    <line>
-      <![CDATA[<p>1 Hicks
-2 Bailey
-3 Cole
-4 Stevens
-5 Snyder
-6 Burton
-7 Mccoy]]>
-    </line>
-    <line>
-      <![CDATA[<p>Filter Option Selected:Choose Country]]>
-    </line>
-    <line>
-      <![CDATA[<p>No.of options in Choose Country List:118]]>
-    </line>
-    <line>
-      <![CDATA[<p>Option selected is:Belgium]]>
-    </line>
-    <line>
-      <![CDATA[<p>1 Palmer
-2 Young
-3 Burns
-4 Wheeler
-5 Stevens
-6 Ferguson
-7 Arnold
-8 Bishop
-9 Pierce
-10 Howard]]>
-    </line>
-    <line>
-      <![CDATA[<p>Filter Option Selected:Choose City]]>
-    </line>
-    <line>
-      <![CDATA[<p>No.of options in Choose City List:1854]]>
-    </line>
-    <line>
-      <![CDATA[<p>Option selected is:Magaria]]>
-    </line>
-    <line>
-      <![CDATA[<p>1 Fields]]>
-    </line>
-    <line>
-      <![CDATA[<p>Filter Option Selected:Choose Domain]]>
-    </line>
-    <line>
-      <![CDATA[<p>No.of options in Choose Domain List:22]]>
-    </line>
-    <line>
-      <![CDATA[<p>Option selected is:Domain G]]>
-    </line>
-    <line>
-      <![CDATA[<p>1 euvri
-2 Wood
-3 Torres
-4 Washington
-5 Rogers
-6 Cook
-7 Coleman
-8 Schmidt
-9 Willis
-10 Rodriguez]]>
-    </line>
-    <line>
-      <![CDATA[<p>Filter Option Selected:Choose Campaign]]>
-    </line>
-    <line>
-      <![CDATA[<p>No.of options in Choose Campaign List:41]]>
-    </line>
-    <line>
-      <![CDATA[<p>Option selected is:Check ALL]]>
-    </line>
-    <line>
-      <![CDATA[<p>1 Vasquez
-2 Davis
-3 Bowman
-4 Strauss
-5 Lee
-6 mehatha
-7 tulugu
-8 euvri
-9 Mitchell
-10 Marshall]]>
-    </line>
-    <line>
-      <![CDATA[<p>Filter Option Selected:Choose Service]]>
-    </line>
-    <line>
-      <![CDATA[<p>No.of options in Choose Service List:11]]>
-    </line>
-    <line>
-      <![CDATA[<p>Option selected is:special officer]]>
-    </line>
-    <line>
-      <![CDATA[<p>1 tulugu
-2 euvri]]>
-    </line>
-    <line>
-      <![CDATA[<p>Filter Option Selected:Choose Status]]>
-    </line>
-    <line>
-      <![CDATA[<p>No.of options in Choose Status List:6]]>
-    </line>
-    <line>
-      <![CDATA[<p>Option selected is:Pre Qualified]]>
-    </line>
-    <line>
-      <![CDATA[<p>1 Vasquez
-2 Davis
-3 Bowman
-4 Strauss
-5 Lee
-6 mehatha
-7 tulugu
-8 euvri
-9 Mitchell
-10 Marshall]]>
-    </line>
-    <line>
-      <![CDATA[<p>Number Elements in List1 : 12]]>
-    </line>
-    <line>
-      <![CDATA[<p>old password is:password]]>
-    </line>
-    <line>
-      <![CDATA[<p>Successfully canceled the change password page]]>
-    </line>
-    <line>
-      <![CDATA[<p>Old password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>password]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>New password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>123]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>Confirm password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>sai]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>Old password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>123]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>New password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>123]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>Confirm password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>123]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>Old password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>password]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>New password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>password]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>Confirm password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>password]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>changed password000]]>
-    </line>
-    <line>
-      <![CDATA[<p>old password is:password]]>
-    </line>
-    <line>
-      <![CDATA[<p>Number Elements in List1 : 12]]>
-    </line>
-    <line>
-      <![CDATA[<p>changed password000]]>
-    </line>
-    <line>
-      <![CDATA[<p>old password is:password]]>
-    </line>
-    <line>
-      <![CDATA[<p>Number Elements in List1 : 12]]>
-    </line>
-  </reporter-output>
-  <suite name="Default suite" duration-ms="384660" started-at="2014-11-05T14:29:54Z" finished-at="2014-11-05T14:36:19Z">
-    <groups>
-    </groups>
-    <test name="Default test" duration-ms="384660" started-at="2014-11-05T14:29:54Z" finished-at="2014-11-05T14:36:19Z">
-      <class name="src.crm.Researcher">
-        <test-method status="PASS" signature="beforesuite()[pri:0, instance:src.crm.Researcher@18ab963]" name="beforesuite" is-config="true" duration-ms="8114" started-at="2014-11-05T19:59:46Z" finished-at="2014-11-05T19:59:54Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforesuite -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="beforeMethod" is-config="true" duration-ms="19143" started-at="2014-11-05T19:59:54Z" finished-at="2014-11-05T20:00:13Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="f1()[pri:0, instance:src.crm.Researcher@18ab963]" name="f1" duration-ms="54711" started-at="2014-11-05T20:00:13Z" finished-at="2014-11-05T20:01:08Z">
-          <reporter-output>
-            <line>
-              <![CDATA[<p>===========Leads Upload=========]]>
-            </line>
-            <line>
-              <![CDATA[<p>Number Elements in List1 : 6]]>
-            </line>
-            <line>
-              <![CDATA[<p>User Logged in as:Hi ! Researcher]]>
-            </line>
-            <line>
-              <![CDATA[<p>Please Provide Valid Excel File....!]]>
-            </line>
-            <line>
-              <![CDATA[<p>Please Provide Valid Excel File....!]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- f1 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="afterMethod" is-config="true" duration-ms="47" started-at="2014-11-05T20:01:08Z" finished-at="2014-11-05T20:01:08Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="beforeMethod" is-config="true" duration-ms="15368" started-at="2014-11-05T20:01:08Z" finished-at="2014-11-05T20:01:23Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="f2()[pri:0, instance:src.crm.Researcher@18ab963]" name="f2" duration-ms="94725" started-at="2014-11-05T20:01:23Z" finished-at="2014-11-05T20:02:58Z">
-          <reporter-output>
-            <line>
-              <![CDATA[<p>===========Leads Upload1=========]]>
-            </line>
-            <line>
-              <![CDATA[<p>Number Elements in List1 : 6]]>
-            </line>
-            <line>
-              <![CDATA[<p>User Logged in as:Hi ! Researcher]]>
-            </line>
-            <line>
-              <![CDATA[<p>Waiting timed out element not foundBy.className: error_msg]]>
-            </line>
-            <line>
-              <![CDATA[<p>Excel File Uploaded and Leads Saved Successfully....!]]>
 =======
-<testng-results skipped="0" failed="1" total="1" passed="0">
+<testng-results skipped="0" failed="0" total="1" passed="1">
+>>>>>>> 284ffdd2d282fd20aefc59ad08b594d5dad947b3
   <reporter-output>
+    <line>
+      <![CDATA[<p>Number Elements in List1 : 22]]>
+    </line>
     <line>
       <![CDATA[<p>old password is:password]]>
     </line>
@@ -388,16 +31,23 @@
     <line>
       <![CDATA[<p>Confirm password container is avilable]]>
     </line>
+    <line>
+      <![CDATA[<p>Number Elements in List1 : 22]]>
+    </line>
+    <line>
+      <![CDATA[<p>User password reset sucessfully]]>
+    </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="53815" started-at="2014-11-05T12:37:46Z" finished-at="2014-11-05T12:38:39Z">
+  <suite name="Default suite" duration-ms="86712" started-at="2014-11-06T14:12:48Z" finished-at="2014-11-06T14:14:14Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="53815" started-at="2014-11-05T12:37:46Z" finished-at="2014-11-05T12:38:39Z">
-      <class name="src.crm.Smoke">
-        <test-method status="PASS" signature="beforesuite()[pri:0, instance:src.crm.Smoke@8978c7]" name="beforesuite" is-config="true" duration-ms="913" started-at="2014-11-05T18:07:45Z" finished-at="2014-11-05T18:07:46Z">
+    <test name="Default test" duration-ms="86712" started-at="2014-11-06T14:12:48Z" finished-at="2014-11-06T14:14:14Z">
+      <class name="src.crm.Researcher">
+        <test-method status="PASS" signature="beforesuite()[pri:0, instance:src.crm.Researcher@1b4d41e]" name="beforesuite" is-config="true" duration-ms="1542" started-at="2014-11-06T19:42:46Z" finished-at="2014-11-06T19:42:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforesuite -->
+<<<<<<< HEAD
         <test-method status="FAIL" signature="cagement()[pri:0, instance:src.crm.Smoke@8978c7]" name="cagement" duration-ms="53795" started-at="2014-11-05T18:07:46Z" finished-at="2014-11-05T18:08:39Z">
           <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
@@ -1543,6 +1193,16 @@ Driver info: driver.version: unknown
 ]]>
             </full-stacktrace>
           </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+=======
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.Researcher@1b4d41e]" name="beforeMethod" is-config="true" duration-ms="41979" started-at="2014-11-06T19:42:48Z" finished-at="2014-11-06T19:43:30Z">
+          <reporter-output>
+            <line>
+              <![CDATA[<p>Number Elements in List1 : 22]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="f5()[pri:0, instance:src.crm.Researcher@1b4d41e]" name="f5" duration-ms="44713" started-at="2014-11-06T19:43:30Z" finished-at="2014-11-06T19:44:14Z">
+>>>>>>> 284ffdd2d282fd20aefc59ad08b594d5dad947b3
           <reporter-output>
             <line>
               <![CDATA[<p>old password is:password]]>
@@ -1551,6 +1211,7 @@ Driver info: driver.version: unknown
               <![CDATA[<p>New password container is avilable]]>
             </line>
             <line>
+<<<<<<< HEAD
               <![CDATA[<p>Confirm password container is avilable]]>
             </line>
             <line>
@@ -1900,115 +1561,33 @@ Caused by: java.net.ConnectException: Connection refused: connect
               <![CDATA[<p>*************************]]>
             </line>
             <line>
+=======
+>>>>>>> 284ffdd2d282fd20aefc59ad08b594d5dad947b3
               <![CDATA[<p>Confirm password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>sai]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>Old password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>123]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
             </line>
             <line>
               <![CDATA[<p>New password container is avilable]]>
             </line>
             <line>
-              <![CDATA[<p>123]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
               <![CDATA[<p>Confirm password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>123]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>Old password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>password]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
             </line>
             <line>
               <![CDATA[<p>New password container is avilable]]>
             </line>
             <line>
-              <![CDATA[<p>password]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
               <![CDATA[<p>Confirm password container is avilable]]>
             </line>
             <line>
-              <![CDATA[<p>password]]>
+              <![CDATA[<p>Number Elements in List1 : 22]]>
             </line>
             <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>changed password000]]>
-            </line>
-            <line>
-              <![CDATA[<p>old password is:password]]>
-            </line>
-            <line>
-              <![CDATA[<p>Number Elements in List1 : 12]]>
-            </line>
-            <line>
-              <![CDATA[<p>changed password000]]>
-            </line>
-            <line>
-              <![CDATA[<p>old password is:password]]>
-            </line>
-            <line>
-              <![CDATA[<p>Number Elements in List1 : 12]]>
+              <![CDATA[<p>User password reset sucessfully]]>
             </line>
           </reporter-output>
 <<<<<<< Updated upstream
         </test-method> <!-- f5 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="afterMethod" is-config="true" duration-ms="1389" started-at="2014-11-05T20:06:17Z" finished-at="2014-11-05T20:06:19Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
       </class> <!-- src.crm.Researcher -->
+<<<<<<< HEAD
 =======
               <![CDATA[<p>New password container is avilable]]>
             </line>
@@ -2063,6 +1642,8 @@ Caused by: java.net.ConnectException: Connection refused: connect
         </test-method> <!-- afterMethod -->
       </class> <!-- src.crm.BDE -->
 >>>>>>> Stashed changes
+=======
+>>>>>>> 284ffdd2d282fd20aefc59ad08b594d5dad947b3
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

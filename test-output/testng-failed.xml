@@ -3,15 +3,19 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+=======
+>>>>>>> 284ffdd2d282fd20aefc59ad08b594d5dad947b3
       <class name="src.crm.Researcher">
         <methods>
           <include name="beforeMethod"/>
           <include name="beforesuite"/>
-          <include name="f4"/>
+          <include name="f5"/>
         </methods>
       </class> <!-- src.crm.Researcher -->
+<<<<<<< HEAD
 =======
       <class name="src.crm.Smoke">
         <methods>
@@ -35,6 +39,8 @@
         </methods>
       </class> <!-- src.crm.BDE -->
 >>>>>>> Stashed changes
+=======
+>>>>>>> 284ffdd2d282fd20aefc59ad08b594d5dad947b3
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

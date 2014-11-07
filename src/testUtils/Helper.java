@@ -680,6 +680,7 @@ public class Helper extends BaseTest
 
   }
 
+ 
   
   public void searchtable() throws Exception  //Helper to perform search on your table
   {
@@ -770,4 +771,3 @@ public class Helper extends BaseTest
 
   }
 	 } 	
-
