@@ -16,9 +16,6 @@ import src.testUtils.Helper;
 
 public class Management extends Helper {
 String randomLead;
-String Leadno;
-
-
 
  @Test
   public void test57_TC001() throws Exception 
@@ -699,7 +696,7 @@ String Leadno;
 		    	Assert.fail("there are no elements to pick lead id and name");
 	 		}
 	 	}else{
-	 			Assert.fail("There is no data present in the table");
+	 		Reporter.log("<p>" + "There is no data present in the table");
 	 	}
  }
  
