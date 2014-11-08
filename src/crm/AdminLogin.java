@@ -153,9 +153,9 @@ public class AdminLogin extends Helper{
          return str;
 }
 	
-		//  @Test
+		// @Test
 	  public void test() throws IllegalAccessException, ClassNotFoundException, Exception{
-		 String s= dbConnection("srini.sanchana@gmail.com");
+		  String s= dbConnection("srinivasa.sanchana@nexiilabs.com");
 		  Reporter.log("<p>" + s);
 		//  String s1 =  dbConnectionRole();
 		//  Reporter.log("<p>" + s1);
@@ -164,7 +164,7 @@ public class AdminLogin extends Helper{
 		 
 	  }
 	
-	  // @Test
+	 //  @Test
   public void a_createbutton()throws Exception  {
 	   //======= Login verification =========
 	 		mylogin();
@@ -199,7 +199,7 @@ public class AdminLogin extends Helper{
  }
  
  
- //@Test
+// @Test
   public void b_dropDownVerification() throws Exception{
 	  //======'Manager' Drop down button presence and its working=====
 	 	 mylogin();
@@ -268,7 +268,7 @@ public class AdminLogin extends Helper{
  
  
  
- 	//@Test
+ //	@Test
  	public void c_ButtonVerification() throws Exception{
   		 mylogin();
   		 expand();
@@ -301,12 +301,11 @@ public class AdminLogin extends Helper{
 		    Assert.fail("page naviagation to the create service is failed");
 	    }
 	    WebElement wt = driver.findElement(By.className(admin.getProperty("text_service")));
-	    if(wt.isEnabled()){
+	    
 		    wt.sendKeys("database admin");
-		    sleep(1);
-	    }else{
-		    Assert.fail("text box is not enabled");
-	   }
+		 
+		     sleep(1);
+	  
 	   driver.findElement(By.id(admin.getProperty("create_service"))).click(); 
 	   sleep(2);
 	   Actions ac = new Actions(driver);
@@ -319,7 +318,7 @@ public class AdminLogin extends Helper{
  
  	}
  	
-	//@Test
+ //	@Test
 	 public void d_newUserCreation() throws Exception{
 	   //========= Creation of New User ======
 		 mylogin();
@@ -475,7 +474,8 @@ public class AdminLogin extends Helper{
 			 }
 		}
 		Reporter.log("<p>" + "=================d_newUserCreation() success==========================");
- }
+}
+	 
 	 
 	 
  
@@ -739,7 +739,7 @@ public class AdminLogin extends Helper{
 		
 	}
 	
-//	@Test
+	//@Test
 	public void n_pagenavigation() throws Exception{
 		mylogin();
 		expand();
@@ -754,7 +754,7 @@ public class AdminLogin extends Helper{
 		pageEntries();
 	}
 
-//	@Test
+	//@Test
 	public void p_searchUser() throws Exception{
 		mylogin();
 		expand();
@@ -809,7 +809,7 @@ public class AdminLogin extends Helper{
 			Assert.fail("pagiantionNext_button is not present");
 		}
 	}
-//	@Test
+	//@Test
 	public void s_pageNavigation() throws Exception{
 		mylogin();
 		expand();
@@ -953,7 +953,7 @@ public class AdminLogin extends Helper{
 		
 	}
 	
-//	@Test
+	//@Test
 	public void t_updateConfig() throws Exception{
 		mylogin();
 		expand();
@@ -1091,7 +1091,7 @@ public class AdminLogin extends Helper{
 		}
 		
 	}
-	//@Test
+//	@Test
 	public void w_deleteConfig() throws Exception{
 		mylogin();
 		expand();
@@ -1156,10 +1156,16 @@ public class AdminLogin extends Helper{
 		}
 	}	
 		
-		
-		
 	}
 	
+//	@Test
+	public void v_changePassword() throws Exception{
+		mylogin();
+		expand();
+		sleep(4);
+		help.changePassword("srini.sanchana@gmail.com");
+		
+	}
 }
  
 
