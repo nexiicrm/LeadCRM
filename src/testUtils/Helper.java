@@ -527,6 +527,7 @@ public class Helper extends BaseTest
 	  		  resultSet = statement.executeQuery("select password from crm_user where email_id='"+email+"' AND delete_status='no'"); 
 			  resultSet.next();
 			  String dat = resultSet.getString("password");
+			  Reporter.log("<p>"+"your old password is:"+dat);
 			  //===Researcher is 3rdsheet in excels=====//
 			  int rows = sh3.getRows();
 			  String data;
@@ -581,7 +582,7 @@ public class Helper extends BaseTest
 			  Assert.fail("not a container");
 			  }
 			  else {
-			  Reporter.log("<p>" +"New password container is avilable");
+			  //Reporter.log("<p>" +"New password container is avilable");
 			  }
 			  data = sh3.getCell(col, row).getContents();
 			
@@ -599,7 +600,7 @@ public class Helper extends BaseTest
 			  Assert.fail("not a container");
 			  }
 			  else {
-			  Reporter.log("<p>" +"Confirm password container is avilable");
+			  //Reporter.log("<p>" +"Confirm password container is avilable");
 			  }
 			  data = sh3.getCell(col, row).getContents();
 			
@@ -634,6 +635,7 @@ public class Helper extends BaseTest
 			  resultSet.next();
 			
 			  String dat1 = resultSet.getString("password");
+			  Reporter.log("<p>"+"Your changed password is:"+dat1);
 			  //Login
 			  driver.findElement(By.id(or.getProperty("username1"))).sendKeys(email);
 			  driver.findElement(By.id(or.getProperty("password1"))).sendKeys(dat1);
@@ -673,7 +675,7 @@ public class Helper extends BaseTest
 			
 			  String use = driver.findElement(By.className(or.getProperty("user_Classname"))).getText();
 			  if(use.contains("Hi !"))
-			  Reporter.log("<p>" + "User password reset sucessfully");
+			  Reporter.log("<p>" + "User password reset sucessfully & your password is : "+dat2);
 			  driver.findElement(By.linkText("Logout")).click();
 			  }
 			  // driver.findElement(By.linkText("Logout")).click();

@@ -85,64 +85,77 @@ public class Researcher extends Helper{
 	public void action()
 	{
 		//=====uploading files===//
-		//System.out.println(driver.findElement(By.id("result_msg_div")).getText());
 		Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
 	}
 		
+	// @Test
+	  public void f() throws Exception {
+		 
+		//========Login=======//
+		  
+		  help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
+				
+			//===tree menu size dispaying======//
+			treeSize();
+			
+			//======= Expanding tree menu========//
+			
+			help.expand();
+			 sleep(2);
+			 help.collapse();
+		 
+	 }
 //===========Leads Upload invalid data=========//
 	
- // @Test
+  @Test
   public void f1() throws Exception {
 	 
 	// System.out.println("===========Leads Upload=========");
 	 Reporter.log("<p>" +"===========Leads Upload========="); 
-	//========Login=======//
-	  
-	  help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
+	//========Login to researcher module=======//
+	 help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
 			
-		//===tree menu size dispaying======//
-		treeSize();
-		
-		//======= Expanding tree menu========//
-		
-		help.expand();
-		 sleep(2);
-		//=========clicking bulkuplods========//
-		 driver.findElement(By.id("bulkUpload")).click();
-		 //==clicking directly  leaduplodbutton==//
-		 driver.findElement(By.id(or.getProperty("leadUpload"))).click();
-		 sleep(3);
-		//==clicking invalid  xlsx sheet==//
-		 driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys("C:\\Users\\Nexii\\git\\LeadCRM\\src\\testData\\invalidxlsx1.xlsx");
-		 driver.findElement(By.id(or.getProperty("leadUpload"))).click();
-		 waitForElement(60,By.className("error_msg"));
-		 sleep(3);
-		//==calling action method==//
-		 action();
-		 sleep(3);
-		//==clicking invalid  xlsx sheet==//
-		 driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys("C:\\Users\\Nexii\\git\\LeadCRM\\src\\testData\\invalidxlxs2.xlsx");
-		 driver.findElement(By.id(or.getProperty("leadUpload"))).click();
-		 waitForElement(60,By.className("error_msg"));
-		//==calling action method==//
-		 action();
-		 sleep(3);
-		//==clicking invalid  xlsx sheet==//
-		 driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys("C:\\Users\\Nexii\\git\\LeadCRM\\src\\testData\\invalidtextfile.txt");
-		 driver.findElement(By.id(or.getProperty("leadUpload"))).click();
-		 waitForElement(60,By.className("error_msg"));
-		 sleep(3);
+	//===tree menu size dispaying======//
+	 treeSize();
+	//======= Expanding tree menu========//
+	 help.expand();
+	 sleep(2);
+	//=========clicking bulkuplods========//
+	 driver.findElement(By.id("bulkUpload")).click();
+	//==clicking directly  leaduplodbutton==//
+	// driver.findElement(By.id(or.getProperty("leadUpload"))).click();
+	 sleep(3);
+	//==clicking invalid  xlsx sheet==//
+	 driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys(System.getProperty("user.dir")+"\\src\\testData\\invalidxlsx1.xlsx");
+	 driver.findElement(By.id(or.getProperty("leadUpload"))).click();
+	 waitForElement(60,By.className("error_msg"));
+	 sleep(3);
+	//==calling action method==//
+	 action();
+	 sleep(3);
+	//==clicking invalid  xlsx sheet==//
+	 driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys(System.getProperty("user.dir")+"\\src\\testData\\invalidxlxs2.xlsx");
+	 driver.findElement(By.id(or.getProperty("leadUpload"))).click();
+	 waitForElement(60,By.className("error_msg"));
+	//==calling action method==//
+	 action();
+	 sleep(3);
+	//==clicking invalid  xlsx sheet==//
+	 driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys(System.getProperty("user.dir")+"\\src\\testData\\invalidtextfile.txt");
+	 driver.findElement(By.id(or.getProperty("leadUpload"))).click();
+	 waitForElement(60,By.className("error_msg"));
+	 sleep(3);
 		 //================tree collapsing===========//
-		/* System.out.println("Tree collapsing");*/
-		 Reporter.log("<p>" +"Tree collapsing"); 
+		
+	 Reporter.log("<p>" +"Tree collapsing"); 
 		 
-		 help.collapse();
+	 help.collapse();
 		 
   }  
   
 //===========Leads Upload valid data=========//
 	
- // @Test
+  @Test
   public void f2() throws Exception {
 	  
 	   
@@ -151,7 +164,7 @@ public class Researcher extends Helper{
 	  
 	//========Login=======//
 	  
-	  help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
+	   help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
 			
 		//===tree menu size dispaying======//
 		treeSize();
@@ -163,14 +176,20 @@ public class Researcher extends Helper{
 		//=========clicking bulkuplods========//
 		 driver.findElement(By.id("bulkUpload")).click();
 		//==clicking valid  xlsx sheet==//
-		 driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys("C:\\Users\\Nexii\\git\\LeadCRM\\src\\testData\\validxlxs.xlsx");
+		 driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys(System.getProperty("user.dir")+"\\src\\testData\\xlsxval.xlsx");
 		 driver.findElement(By.id(or.getProperty("leadUpload"))).click();
 		 waitForElement(60,By.className("error_msg"));
 		//==calling action method==//
 		 action();
-		 sleep(3);
-		 sh8 = w.getSheet(8); // data sheet
-			int rows = sh8.getRows();
+		// sleep(3);
+		// sh8 = w.getSheet(8); // data sheet
+		 log.debug("Loading Test data");
+		 FileInputStream fp;
+		 Workbook wb =null;
+		  fp = new FileInputStream(System.getProperty("user.dir")+"\\src\\testData\\xlsfile.xls");
+		  wb = Workbook.getWorkbook(fp);
+		 Sheet sh99 = wb.getSheet(0); // Login sheet
+			int rows = sh99.getRows();
 			HashSet<String> a=new HashSet<String>();
 			HashMap<String,String> hm=new HashMap<String,String>();
 			List<String> newlist = null;
@@ -180,13 +199,9 @@ public class Researcher extends Helper{
 				int col=3,col1=13;
 				
 				//add elements to hash set
-				a.add(sh8.getCell(col1,row).getContents());
-				
+				a.add(sh99.getCell(col1,row).getContents());
 				newlist=new ArrayList<String>(a);
-				   
-				hm.put(sh8.getCell(col,row).getContents(),sh8.getCell(col1,row).getContents());
-				
-				
+				hm.put(sh99.getCell(col,row).getContents(),sh99.getCell(col1,row).getContents());
 			}
 			
 			HashMap<String,String> lead= new HashMap<String,String>();
@@ -196,11 +211,11 @@ public class Researcher extends Helper{
 			   ArrayList<String> keylist =  new ArrayList<String>();
 			   keylist = getKeysByValue(hm, service);
 				  
-			   for(int j=0; j<3;j++){
+			   for(int j=0; j<3;j++)
+			   {
 				   lead.put(keylist.get(j), service);
 			   }  	   
 		   }
-		   System.out.println(lead);
 		   // logout of researcher
 		   driver.findElement(By.className(bdm.getProperty("logout_class"))).findElement(By.linkText(bdm.getProperty("logoutlink_linktext"))).click();
   		  help.sleep(2);
@@ -210,7 +225,7 @@ public class Researcher extends Helper{
 	             Class.forName("com.mysql.jdbc.Driver").newInstance();
 	             connection = DBConnection.getConnection();
 	             statement = connection.createStatement();
-			resultSet = statement.executeQuery("select  a.role_name, b.email_id, b.password "
+			     resultSet = statement.executeQuery("select  a.role_name, b.email_id, b.password "
 	                 + "from crm_role a, crm_user b where "
 	                 + "a.role_id = b.role_id AND delete_status='no' AND role_name='BDM' Limit 2;");
 	               
@@ -218,10 +233,7 @@ public class Researcher extends Helper{
 	            	   String role = resultSet.getString("role_name");
 	                   String email = resultSet.getString("email_id");
 	                   String password = resultSet.getString("password");
-	                   System.out.println(role  + email + password);
-	                   //HII
 	                   // Login to BDM
-	         		  // driver.get(config.getProperty("url"));
 	         		   help.login(email,password);
 	         		   help.expand();
 	         		   driver.findElement(By.id("assignlead")).click();
@@ -234,10 +246,22 @@ public class Researcher extends Helper{
 	         			   for(int j=0;j<emailid.size();j++) {
 	         			   driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys(emailid.get(j));
 	         			    help.sleep(4);
+	         			    ////////////
+	         			   List<WebElement> tlist1 = driver.findElement(By.tagName(researcher.getProperty("table_tag"))).findElements(By.tagName(researcher.getProperty("tableData_tag")));
+	         			  //Reporter.log("<p>" +tlist1.size());
+	         			   String str = null;
+	         			   for(int k=0;k<tlist1.size();k++) {
+	         				   str = tlist1.get(i).getText();
+	         			   }
+	         			  Reporter.log("<p>"+str);
+	         			  //Reporter.log("<p>" +"==========when tried with negative scenario=========");
+	         			  if(str.contains("No matching records found")){
+	         			  Assert.fail("No matching records found");
+	         			  } else{
 	         			    Reporter.log("<p>" +driver.findElement(By.id(bdm.getProperty("tablename_id"))).findElement(By.tagName(bdm.getProperty("leads_info_tag"))).getText());
 	         			    driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).clear();
 	         			    help.sleep(1);
-	         			    
+	         			   }
 	         			   }   
 	               } 
 	         		  driver.findElement(By.className(bdm.getProperty("logout_class"))).findElement(By.linkText(bdm.getProperty("logoutlink_linktext"))).click();
@@ -264,6 +288,7 @@ public class Researcher extends Helper{
     return (ArrayList<String>) keys;
 }
   
+  //==========calling search leads==========//
  // @Test
   public void f3() throws Exception {
 	  
@@ -276,6 +301,27 @@ public class Researcher extends Helper{
 	  help.expand();
 	  
 	  help.searchLead();
+	  help.sleep(2);
+				
+	  
+  }
+  
+  //====searchLeadPagenation=========//
+  //@Test
+  public void f4() throws Exception {
+	  
+	  Reporter.log("<p>" + "=================search leads=================");
+			
+	  help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
+	  
+	  Reporter.log("<p>" + "=================Expanding tree menu=================");
+	  
+	  help.expand();
+	  
+	  //help.searchLead();
+	  
+	  help.searchLeadPagination();
+	  help.sleep(2);
 				
 	  
   }
@@ -283,13 +329,13 @@ public class Researcher extends Helper{
 
   
 
- @Test
+// @Test
   public void f5() throws Exception {
 	  
-	  System.out.println("======Lead search=====");
-		/*//Login
+	 Reporter.log("<p>" +"======change password=====");
+		//Login
 			
-				help.login(config.getProperty("bdmuser"),config.getProperty("bdmpwd"));
+				help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
 			//	String old = config.getProperty("apass");
 				//System.out.println("old password is:" + old);
 				
@@ -297,9 +343,9 @@ public class Researcher extends Helper{
 			    treeSize();
 			    
 			    //====Expanding tree menu====//
-			    help.expand();*/
+			    help.expand();
 			    
-			   changePassword("srinivasa.sanchana@nexiilabs.com");
+			   changePassword("pavan.nanigans@gmail.com");
   }
   
  
@@ -313,20 +359,14 @@ public class Researcher extends Helper{
 	help.maxbrowser();
 	driver.get(config.getProperty("url"));
 	 if(driver.getTitle().equals("::LEAD-CRM::Login Here")){
-		 System.out.println("Lead CRM URL found");
+		 Reporter.log("<p>"+"Lead CRM URL found");
 	 }else{
-		 System.out.println("Error in opening Lead CRM URL");
+		 Reporter.log("<p>"+"Error in opening Lead CRM URL");
 	 }
-	 help.login(config.getProperty("bdmuser"),config.getProperty("bdmpwd"));
-	 treeSize();
-	    
-	    //====Expanding tree menu====//
-	    help.expand();
-	    
-	  // changePassword("srinivasa.sanchana@nexiilabs.com");
+	
 }
 
- // @AfterMethod
+  @AfterMethod
   public void afterMethod() {
 	 // driver.quit();
 	  driver.close();
