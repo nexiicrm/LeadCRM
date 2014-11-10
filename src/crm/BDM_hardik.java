@@ -34,7 +34,6 @@ public class BDM_hardik extends Helper{
 	    }
 	    
 	    public void startup(String linkname,String page){
-	    	expand();
 			driver.findElement(By.id(linkname)).click();
 			help.sleep(2);
 	  	  	page_validate(page);
@@ -65,6 +64,15 @@ public class BDM_hardik extends Helper{
 	        else
 	         Reporter.log("<p>" + "Lead Status of every lead is not " +status);
 	    }
+	    
+	    public static void paginate() throws Exception {
+	    	//Page entries
+	    	help.pageEntries();
+	    	//Sorting
+	    	help.sorting();
+	    	// Search
+	    	help.searchtable();
+	    	}
 	    
 	    
 	    public String assignmultipleLeadsname(int r){
@@ -161,6 +169,33 @@ public class BDM_hardik extends Helper{
 			help.sleep(4);
 	    }
 	    
+	    public void assignleadsBDM_BDE(String modulename){
+			try {  
+	            Class.forName("com.mysql.jdbc.Driver").newInstance();
+	            connection = DBConnection.getConnection();
+	            statement = connection.createStatement();
+	            resultSet = statement.executeQuery("select a.role_name, b.first_name, b.last_name, b.email_id, b.password from crm_role a, crm_user b where"
+	              + " 							a.role_id = b.role_id AND a.role_name = '" +modulename 
+	              + "'										AND delete_status = 'no' Limit 1;");      
+	            while (resultSet.next()) {	             
+	                String fnamelname = resultSet.getString("first_name") +" " +resultSet.getString("last_name");
+	                Reporter.log("Randomly picking any " +modulename + " from DB");
+	                new Select(driver.findElement(By.name("assignto"))).selectByVisibleText(fnamelname);
+	        		driver.findElement(By.id(bdm.getProperty("selectallbutton_id"))).click();
+	        		help.sleep(3);
+	    		    driver.findElement(By.className(bdm.getProperty("assignbutton_class"))).click();
+	    		    help.sleep(2);
+	    		    Reporter.log("<p>" + "Randomly picking " +modulename +" from Database and assigning");
+	        		Reporter.log("<p>" +driver.findElement(By.id(bdm.getProperty("resultmsg_id"))).findElement(By.tagName(bdm.getProperty("resultmsg_tag"))).getText());
+
+	              		}
+	    	  }
+	    	catch (Exception e){ 
+		           e.printStackTrace();
+		       }
+	    }
+	    
+	    
 	    public void managementmodule(String name,String finalstatus,String link){
 	    	//Verifying lead name by log in to Management module
 	    	try {  
@@ -215,35 +250,34 @@ public class BDM_hardik extends Helper{
 	    	 }
 		}
 		
-        @Test
-        public void a_expand_collapse() {
-	        //Getting size of all super links available in left pane
-	        List<WebElement> leftpane_options = driver.findElement(By.id(bdm.getProperty("leftpane_id"))).findElements(By.className(bdm.getProperty("leftpane_class")));
-	        Reporter.log("<p>" + "Total number of options available in left pane is " +leftpane_options.size());
-	  
-	        //Expansion of side tree menu
-	        //Getting all super options and clicking it
-	        for(int i=0;i<leftpane_options.size();i++){
-		        Reporter.log("<p>" + leftpane_options.get(i).getText());
-		        leftpane_options.get(i).findElement(By.tagName(bdm.getProperty("leftpane_tag"))).click(); 
-	        }
-	        Reporter.log("<p>" + "Expansion of side tree is functioning properly");
-	  
-	        Reporter.log("<p> ___________________________________________________________________"); 
-	        //Getting all the sub options from super options
-	        List<WebElement> inner_links = driver.findElement(By.id(bdm.getProperty("leftpane_id"))).findElements(By.tagName(bdm.getProperty("innerlink_tag")));
-	        Reporter.log("<p>" + "Total number of sub options available in left pane is " +inner_links.size());
-	        for(int j=0;j<inner_links.size();j++){
-		        Reporter.log("<p>" + inner_links.get(j).getText());
-	        }
-	  
-	        //Collapse of side tree menu
-	        List<WebElement> leftpane_sub_options = driver.findElement(By.id(bdm.getProperty("leftpane_id"))).findElements(By.className(bdm.getProperty("leftpane_suboption_class")));
-	        for(int i=0;i<leftpane_sub_options.size();i++){
-		        help.sleep(1);
-		        leftpane_sub_options.get(i).findElement(By.tagName(bdm.getProperty("leftpane_tag"))).click();  
-	        }
-	        Reporter.log("<p>" + "Collapsing of side tree menu is functioning properly");   
+        	@Test
+        	public void a_paginations() throws Exception { 
+        	help.expand();
+        	// Assign Lead
+        	startup("assignlead", "Assign Leads");
+        	new Select(driver.findElement(By.name(bdm.getProperty("service_name")))).selectByVisibleText("SAAS");
+        	help.sleep(3);
+        	paginate(); 
+
+        	// Reasearch Phase
+        	startup("researchPhase","Lead Research");
+        	paginate();
+
+        	// Work on Lead
+        	startup("workPhase","Work on Lead");
+        	paginate();
+
+        	// Today's follow up
+        	startup("todayfollowups","Today Followups");
+        	paginate();
+
+        	//All Follow up
+        	startup("allfollowups","All Followups");
+        	paginate();
+
+        	// Lead Close
+        	startup("closedPhase","Closed Phase");
+        	paginate();
   
 	        Reporter.log("<p> ___________________________________________________________________"); 
             }
@@ -251,6 +285,7 @@ public class BDM_hardik extends Helper{
       
         @Test
         public void b_verifyingServiceNamesandAssign(){ 
+        	help.expand();
     	    startup("assignlead","Assign Leads");
     	    ArrayList<String> sr1= new ArrayList<String>();
     	    ArrayList<String> sr2= new ArrayList<String>();
@@ -305,7 +340,8 @@ public class BDM_hardik extends Helper{
       
 	    @Test
 	    public void c_matching_service_name(){ 
-	        //expanding and clicking on assign lead link	  
+	        //expanding and clicking on assign lead link
+        	help.expand();
 	        startup("assignlead","Assign Leads");
 	        //Clicking on select service dropdown and getting all the options
 	        help.sleep(5);
@@ -350,10 +386,11 @@ public class BDM_hardik extends Helper{
 	  
 	    @Test
 	    public void d_selectAllcheckbox(){
-	    	//expanding and clicking on assign lead link	  
+	    	//expanding and clicking on assign lead link
+        	help.expand();
 	    	startup("assignlead","Assign Leads");
 	    	new Select(driver.findElement(By.name(bdm.getProperty("service_name")))).selectByVisibleText("Web");
-	    	help.sleep(1);
+	    	help.sleep(5);
 	    	//check select all button and verifying it
 	    	driver.findElement(By.id(bdm.getProperty("selectallbutton_id"))).click();
 	    	List<WebElement> select_lead = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname")));
@@ -363,12 +400,48 @@ public class BDM_hardik extends Helper{
 	    			Reporter.log("<p>" + "lead name: " +select_lead.get(i).findElements(By.tagName("td")).get(1).getText() +" is ticked");
 	    		else
 	    			Reporter.log("<p>" + "lead name not checked");  
+	    		
+			    Reporter.log("<p> ___________________________________________________________________"); 
+
 	  			}
+	    }
+	    
+	    @Test
+	    public void e_assignmultipleleadsBDM_BDE(){
+        	help.expand();
+	    	startup("assignlead","Assign Leads");
+	    	//Assigning multiple leads to self(BDM)
+	    	new Select(driver.findElement(By.name(bdm.getProperty("service_name")))).selectByVisibleText("Web");
+	    	help.sleep(5);
+			new Select(driver.findElement(By.name("assignto"))).selectByVisibleText("Self");
+    		driver.findElement(By.id(bdm.getProperty("selectallbutton_id"))).click();
+    		help.sleep(3);
+		    driver.findElement(By.className(bdm.getProperty("assignbutton_class"))).click();
+		    help.sleep(2);
+		    Reporter.log("<p>" + "Assigning leads to Self");
+    		Reporter.log("<p>" +driver.findElement(By.id(bdm.getProperty("resultmsg_id"))).findElement(By.tagName(bdm.getProperty("resultmsg_tag"))).getText());
+    		
+    		//Assigning multiple leads to BDE
+    		new Select(driver.findElement(By.name(bdm.getProperty("service_name")))).selectByVisibleText("Cloud");
+	    	help.sleep(4);
+			new Select(driver.findElement(By.name("assignto"))).selectByVisibleText("sreekar jakkula");
+    		driver.findElement(By.id(bdm.getProperty("selectallbutton_id"))).click();
+    		help.sleep(3);
+		    driver.findElement(By.className(bdm.getProperty("assignbutton_class"))).click();
+		    help.sleep(2);
+		    Reporter.log("<p>" + "Assigning leads to BDM");
+    		Reporter.log("<p>" +driver.findElement(By.id(bdm.getProperty("resultmsg_id"))).findElement(By.tagName(bdm.getProperty("resultmsg_tag"))).getText());
+
+    		//Picking any one BDM and BDE from DB and assigning multiple leads 
+    		assignleadsBDM_BDE("BDM");
+    		assignleadsBDM_BDE("BDE");
+	
 	    	Reporter.log("<p> ___________________________________________________________________"); 
 	    	}
 	  
 	    @Test
-	    public void e_serviceoptionsvalidation_self(){
+	    public void f_serviceoptionsvalidation_self(){
+        	help.expand();
 	    	startup("assignlead","Assign Leads");
 	    	new Select(driver.findElement(By.name(bdm.getProperty("service_name")))).selectByVisibleText("Web");
 	    	help.sleep(1); 
@@ -405,11 +478,41 @@ public class BDM_hardik extends Helper{
 	    	}
 	    	research_verify("BDM's",research_lead); 
 	    }
+	    
+	    
+		@Test
+		public void g_assignmultipleLeads_BDM () throws Exception{
+			//expanding and clicking on assign lead link	  
+        	help.expand();
+	    	startup("assignlead","Assign Leads");
+			new Select(driver.findElement(By.name(bdm.getProperty("service_name")))).selectByVisibleText("Web");
+			new Select(driver.findElement(By.name("assignto"))).selectByVisibleText("Self");
+			help.sleep(3);
+			String name = assignmultipleLeadsname(0);
+			String name1 = assignmultipleLeadsname(1);
+			List<WebElement> leads_check = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname")));
+
+			if(leads_check.size()==0){
+				Reporter.log("<p>" + "Service table is empty");
+			}
+			else{
+					leads_check.get(0).findElement(By.id(bdm.getProperty("leadcheckbox_id"))).click();
+					leads_check.get(1).findElement(By.id(bdm.getProperty("leadcheckbox_id"))).click();
+				    driver.findElement(By.className(bdm.getProperty("assignbutton_class"))).click();
+				    help.sleep(3);
+				    Reporter.log("<p>" + "Lead" +" " +name +"and " +name1 +":: " +driver.findElement(By.id(bdm.getProperty("resultmsg_id"))).findElement(By.tagName(bdm.getProperty("resultmsg_tag"))).getText());
+				    research_verify("BDM",name);
+				    help.sleep(3);
+				    research_verify("BDM",name1);		  
+				}
+		}
+	    
 	  
 	    @Test
-		public void f_selecttowhomassign_notself() throws Exception{
+		public void h_selecttowhomassign_notself() throws Exception{
 			//expanding and clicking on assign lead link	
-			startup("assignlead","Assign Leads");
+        	help.expand();
+	    	startup("assignlead","Assign Leads");
 			new Select(driver.findElement(By.name(bdm.getProperty("service_name")))).selectByVisibleText("Web");
 			help.sleep(3);
 			String research_lead = assignmultipleLeadsname(0);
@@ -422,9 +525,10 @@ public class BDM_hardik extends Helper{
 	  
 		  
 		@Test
-		public void g_assignmultipleLeads_BDE() throws Exception{
+		public void i_assignmultipleLeads_BDE() throws Exception{
 			//expanding and clicking on assign lead link	  
-	    	startup("assignlead","Assign Leads");
+        	help.expand();
+			startup("assignlead","Assign Leads");
 			new Select(driver.findElement(By.name(bdm.getProperty("service_name")))).selectByVisibleText("Web");
 			help.sleep(3);
 			String name = assignmultipleLeadsname(0);
@@ -439,26 +543,17 @@ public class BDM_hardik extends Helper{
 		}
 		  
 	  
-	    @Test
-	    public void h_assignleadPagination() throws Exception{
-	    	startup("assignlead","Assign Leads");
-	    	//Validating pagination,entries textbox,sorting technique and search
-		  	Reporter.log("<p>" + "************VALIDATING PAGINATION AND ENTRIES BOX***************" + "<p>");
-		   	help.pageEntries();
-		  	Reporter.log("<p>" + "************VALIDATING SORTING *****************" + "<p>");
-	  	  	help.sorting();
-	  	    Reporter.log("<p>" + "************VALIDATING PAGE SEARCH *****************" + "<p>");
-	  	  	help.searchtable(); 
-	  	  	Reporter.log("<p> ___________________________________________________________________"); 
-	  }
-	  
 		@Test
-		public void i_researchbuttoncheck(){
+		public void j_researchbuttoncheck(){
 			//expanding and clicking on research on lead link
+        	help.expand();
 			Reporter.log("<p>" + "*******************RESEARCH PHASE***************************");
   	  		startup("researchPhase","Lead Research");
   	  		//Checking whether research button is available for all leads in page
   	  		List<WebElement> leads_info = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname")));
+  	  		if(leads_info.get(0).getText().equals("No data available in table"))
+  	  			Reporter.log("<p>" + "Leads table in Lead Close is empty");
+  	  		else{
   	  		int research=0;
   	  		for(int i=0; i<leads_info.size(); i++) {
   	  			if(leads_info.get(i).findElement(By.className(bdm.getProperty("researchbutton_class"))).isEnabled()) {
@@ -469,11 +564,14 @@ public class BDM_hardik extends Helper{
   	  			Reporter.log("<p>" + "Research button is enabled for all leads."); 
 		
   	  		Reporter.log("<p> ___________________________________________________________________"); 
+  	  		}
 		}
 		
 		@Test
-		public void j_researchformfill(){
-  	  		startup("researchPhase","Lead Research");
+		public void k_researchformfill(){
+			//expanding and clicking on research on lead link
+        	help.expand();
+			startup("researchPhase","Lead Research");
   	  		List<WebElement> leads_info = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname")));
 		
   	  		//Clicking on research button and filling all details in research on lead window
@@ -527,25 +625,13 @@ public class BDM_hardik extends Helper{
   	  		Reporter.log("<p> ___________________________________________________________________"); 
 		}
 		
-		@Test
-		public void k_researchPagination() throws Exception{
-  	  		startup("researchPhase","Lead Research");
-  	  	    //Validating pagination,entries textbox,sorting technique and search
-		  	Reporter.log("<p>" + "************VALIDATING PAGINATION AND ENTRIES BOX***************" + "<p>");
-		   	help.pageEntries();
-		  	Reporter.log("<p>" + "************VALIDATING SORTING *****************" + "<p>");
-	  	  	help.sorting();
-	  	    Reporter.log("<p>" + "************VALIDATING PAGE SEARCH *****************" + "<p>");
-	  	  	help.searchtable(); 
-	  	  	Reporter.log("<p> ___________________________________________________________________");
-  } 
-		
 		
 		@Test
 		public void l_workPhasetrackit(){
 			Reporter.log("<p>" + "***********************WORK PHASE********************");
 			//expanding and clicking on work phase link
-	  	  	startup("workPhase","Work on Lead");
+        	help.expand();
+			startup("workPhase","Work on Lead");
 			//Checking whether trackit and followup buttons are available for all leads in page
 			List<WebElement> leads_info = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname")));
 			int trackit_followup=0;
@@ -566,22 +652,12 @@ public class BDM_hardik extends Helper{
 			}
 		}
 		
-		@Test
-		public void m_workphasePagination() throws Exception{
-		  	startup("workPhase","Work on Lead");
-		    //Validating pagination,entries textbox,sorting technique and search
-		  	Reporter.log("<p>" + "************VALIDATING PAGINATION AND ENTRIES BOX***************" + "<p>");
-		   	help.pageEntries();
-		  	Reporter.log("<p>" + "************VALIDATING SORTING *****************" + "<p>");
-	  	  	help.sorting();
-	  	    Reporter.log("<p>" + "************VALIDATING PAGE SEARCH *****************" + "<p>");
-	  	  	help.searchtable(); 
-	  	  	Reporter.log("<p> ___________________________________________________________________");
-		} 
   
 		@Test
-		public void n_workphaseFollowupTodaysDate(){
-	  	  	startup("workPhase","Work on Lead");
+		public void m_workphaseFollowupTodaysDate(){
+			//expanding and clicking on work phase link
+			help.expand();
+			startup("workPhase","Work on Lead");
 	    	WebElement leads_info = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
 			if(leads_info.findElement(By.tagName(bdm.getProperty("servicename_tag"))).getText().equals("No data available in table")){
 				Reporter.log("<p>" + "Leads table in Workphase is empty");
@@ -636,24 +712,12 @@ public class BDM_hardik extends Helper{
 			}
 		}
 		
-		@Test
-		public void o_todaysfollowupPagination() throws Exception{
-	  	  	startup("todayfollowups","Today Followups");
-	  	    //Validating pagination,entries textbox,sorting technique and search
-		  	Reporter.log("<p>" + "************VALIDATING PAGINATION AND ENTRIES BOX***************" + "<p>");
-		   	help.pageEntries();
-		  	Reporter.log("<p>" + "************VALIDATING SORTING *****************" + "<p>");
-	  	  	help.sorting();
-	  	    Reporter.log("<p>" + "************VALIDATING PAGE SEARCH *****************" + "<p>");
-	  	  	help.searchtable(); 
-	  	  	Reporter.log("<p> ___________________________________________________________________");
-
-  }
 		
 			@Test
-			public void p_workphaseFuturedate(){
+			public void n_workphaseFuturedate(){
 			//Filling all the options by selecting tomorrows date and clicking on proceed button
-	  	  	startup("workPhase","Work on Lead");
+			help.expand();
+			startup("workPhase","Work on Lead");
 			//Selecting future date and clicking on proceed 
 	  	  	String name = idnamecmpny(0);
 			WebElement leads_info = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
@@ -697,22 +761,11 @@ public class BDM_hardik extends Helper{
 			}
 		}
 				
-		@Test
-		public void q_allfollowupPagination() throws Exception{
-			startup("allfollowups","All Followups");
-			//Validating pagination,entries textbox,sorting technique and search
-		  	Reporter.log("<p>" + "************VALIDATING PAGINATION AND ENTRIES BOX***************" + "<p>");
-		   	help.pageEntries();
-		  	Reporter.log("<p>" + "************VALIDATING SORTING *****************" + "<p>");
-	  	  	help.sorting();
-	  	    Reporter.log("<p>" + "************VALIDATING PAGE SEARCH *****************" + "<p>");
-	  	  	help.searchtable(); 
-	  	  	Reporter.log("<p> ___________________________________________________________________");
-		}	
 			
 		@Test
-		public void r_confirmleadsofTodaysDate(){
+		public void o_confirmleadsofTodaysDate(){
 			//Clicking todays followup link and getting all leads for todays date
+			help.expand();
 			startup("allfollowups","All Followups");
 			List<String> leads = confirmleadstodaysAllfollowups();
 			//Clicking todays Allfollowup link and getting all leads for todays date
@@ -735,10 +788,11 @@ public class BDM_hardik extends Helper{
 			
 			
 		@Test
-		public void s_allfollowup(){
+		public void p_allfollowup(){
 			//Checking trackit and followup button for all leads and printing work phase comments
 			Reporter.log("<p>" + "****************ALL FOLLOWUP*******************");
-	  	  	startup("allfollowups","All Followups");
+			help.expand();
+			startup("allfollowups","All Followups");
 			driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys("introductory mail");
 			List<WebElement> leads_info = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname")));
 			if(leads_info.get(0).findElement(By.tagName(bdm.getProperty("servicename_tag"))).getText().equals("No matching records found")){
@@ -763,8 +817,9 @@ public class BDM_hardik extends Helper{
 		}
 		
 		@Test
-		public void t_allNextFollowup(){
-	  	  	startup("allfollowups","All Followups");
+		public void q_allNextFollowup(){
+			help.expand();
+			startup("allfollowups","All Followups");
 			driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys("introductory mail");
 			String name = idnamecmpny(0);
 			WebElement leads_info = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
@@ -805,11 +860,12 @@ public class BDM_hardik extends Helper{
 		}
 			
 		@Test
-		public void u_FollowupProspectIdentityProposal(){
+		public void r_FollowupProspectIdentityProposal(){
 			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
 			Date date = new Date();
 			//expanding and clicking todays followup link
-	  	  	startup("allfollowups","All Followups");
+			help.expand();
+			startup("allfollowups","All Followups");
 			driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys("introductory mail");
 			List<WebElement> leads_info = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname")));
 			if(leads_info.get(0).findElement(By.tagName(bdm.getProperty("servicename_tag"))).getText().equals("No matching records found"))
@@ -916,13 +972,17 @@ public class BDM_hardik extends Helper{
 		}
 		
 		@Test
-		public void v_FollowupProspectIdentityQuote(){
+		public void s_FollowupProspectIdentityQuote(){
 			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
 			Date date = new Date();
 			//expanding and clicking todays followup link
-	  	  	startup("allfollowups","All Followups");
+			help.expand();
+			startup("allfollowups","All Followups");
 			driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys("introductory mail");
 			List<WebElement> leads_info = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname")));
+			if(leads_info.get(0).findElement(By.tagName(bdm.getProperty("servicename_tag"))).getText().equals("No matching records found"))
+				Reporter.log("<p>" + "Leads table is empty");
+			else{
 			int r = help.random(leads_info.size());
 			//randomly getting lead id,name and company from table
 			String name = idnamecmpny(r);
@@ -966,14 +1026,16 @@ public class BDM_hardik extends Helper{
 			
 			Reporter.log("<p> ___________________________________________________________________"); 
 			}
-		
+		}
 		
 		
 		@Test
-		public void w_proposalQuoteSend(){
+		public void t_proposalQuoteSend(){
 			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
 			Date date = new Date();
-	  	  	startup("allfollowups","All Followups");
+			//expanding and clicking on All followups link
+			help.expand();
+			startup("allfollowups","All Followups");
 			driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys("Prospect Identify");
 			help.sleep(2);
 			
@@ -1016,8 +1078,10 @@ public class BDM_hardik extends Helper{
 		}
 		
 		@Test
-		public void x_proposalQuoteaccept(){
-		    startup("allfollowups","All Followups");
+		public void u_proposalQuoteaccept(){
+			//expanding and clicking on All followup link
+			help.expand();
+			startup("allfollowups","All Followups");
 			driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys("Proposal/Quote Send");
 			WebElement abc = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElement(By.tagName(bdm.getProperty("leads_info_tagname")));
 			if(abc.getText().equals("No matching records found"))
@@ -1059,24 +1123,17 @@ public class BDM_hardik extends Helper{
 
 		}
 			
-		@Test
-		public void y_closeleadPagination() throws Exception{
-		  	startup("closedPhase","Closed Phase");
-		  	//Validating pagination,entries textbox,sorting technique and search
-		  	Reporter.log("<p>" + "************VALIDATING PAGINATION AND ENTRIES BOX***************" + "<p>");
-		   	help.pageEntries();
-		  	Reporter.log("<p>" + "************VALIDATING SORTING *****************" + "<p>");
-	  	  	help.sorting();
-	  	    Reporter.log("<p>" + "************VALIDATING PAGE SEARCH *****************" + "<p>");
-	  	  	help.searchtable(); 
-	  	  	Reporter.log("<p> ___________________________________________________________________"); 
-	  }	
 		
 		@Test
-		public void z_verifyleadclosebutton(){
-	  	  	startup("closedPhase","Closed Phase");
+		public void v_verifyleadclosebutton(){
+			//expanding and clicking on closed phase link
+			help.expand();
+			startup("closedPhase","Closed Phase");
 			//validating lead close button is enabled for all leads
 			List<WebElement> leads_info = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname")));
+			if(leads_info.get(0).getText().equals("No data available in table"))
+				Reporter.log("<p>" + "Leads table in Lead Close is empty");
+			else{
 			int close=0;
 			for(int i=0; i<leads_info.size(); i++) {
 			if(leads_info.get(i).findElement(By.className(bdm.getProperty("closebutton_class"))).isEnabled()) {
@@ -1088,11 +1145,14 @@ public class BDM_hardik extends Helper{
 			//verifying lead status of every lead is same or not
 			verifyleadstatus("Prospect");
 			Reporter.log("<p> ___________________________________________________________________"); 
+			}
 		}
 		
 		@Test
-		public void zz_leadcloseCustomer() throws Exception{
-	  	  	startup("closedPhase","Closed Phase");
+		public void w_leadcloseCustomer() throws Exception{
+			//expanding and clicking on closed phase link
+			help.expand();
+			startup("closedPhase","Closed Phase");
 			WebElement w = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
 			if(w.getText().equals("No data available in table"))
 				Reporter.log("<p>" + "Leads table in Lead Close is empty");
@@ -1127,8 +1187,10 @@ public class BDM_hardik extends Helper{
 		}
 		
 		@Test
-		public void zzz_leadcloseLostCompetition() throws Exception{
-	  	  	startup("closedPhase","Closed Phase");
+		public void x_leadcloseLostCompetition() throws Exception{
+			//expanding and clicking on closed phase link
+			help.expand();
+			startup("closedPhase","Closed Phase");
 			WebElement w = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
 			if(w.getText().equals("No data available in table"))
 				Reporter.log("<p>" + "Leads table in Lead Close is empty");

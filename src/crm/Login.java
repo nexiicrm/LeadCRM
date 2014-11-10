@@ -45,11 +45,16 @@ public class Login extends Helper{
 			driver.findElement(By.id(or.getProperty("passwd"))).sendKeys(sh0.getCell(j, i).getContents());
 			driver.findElement(By.cssSelector(or.getProperty("login_button_css"))).findElement(By.tagName(or.getProperty("button_tagname"))).submit();
 			help.sleep(2);
+			if(!(driver.getTitle().contains("Login"))){
+				Reporter.log("<p>" + "logged in as " +driver.findElement(By.className(or.getProperty("loginusername_class"))).getText());
+				driver.findElement(By.className(or.getProperty("logout_class"))).findElement(By.tagName(or.getProperty("logout_tag"))).click();
+
+			}else{
 			WebElement error_msg = driver.findElement(By.id("wrapper")).findElements(By.tagName("label")).get(2);
 			Reporter.log("<p>" + "logging with username: " +sh0.getCell(j-1, i).getContents() +", password: " +sh0.getCell(j, i).getContents() +"-->" +error_msg.getText());
 			}
-	  
-	  		//Checking for forgot password link
+			}
+	 		//Checking for forgot password link
 	  		List<WebElement> pass_links = driver.findElement(By.id("wrapper")).findElements(By.tagName(or.getProperty("pass_link_tagname")));
 	  		Reporter.log("<p>" + "FORGOT PASSWORD LINK PRESENT");
 	  		Reporter.log("<p>" + "Forgot password link is = " +pass_links.get(2).findElement(By.tagName(or.getProperty("tag"))).getAttribute("href"));
@@ -99,10 +104,12 @@ public class Login extends Helper{
 	                  String role = resultSet.getString("role_name");
 	                  String email = resultSet.getString("email_id");
 	                  String pass = resultSet.getString("password");
+	                  if(!(role.contains("Architect") || role.contains("Manager")))
+	                  {
 	                  sr1.add(role);      
 	                  sr2.add(email);
 	                  sr3.add(pass);
-	                  
+	                  }
 	              }            
 	           }
 	    	  
@@ -116,7 +123,7 @@ public class Login extends Helper{
 		    driver.findElement(By.id(or.getProperty("passwd"))).sendKeys(sr3.get(i));
 		    driver.findElement(By.cssSelector("p.login.button")).findElement(By.tagName("input")).submit();
 		    Reporter.log("<p>" + "Logging with username: " +sr2.get(i)+"," +"password: " +sr3.get(i));
-		    if(driver.getTitle().contains("Admin") || driver.getTitle().contains(sr1.get(i)))
+		    if(driver.getTitle().contains(sr1.get(i)) || driver.getTitle().contains(sr1.get(i).substring(0,4)))
 		    {
 		    sleep(4);
 		    Reporter.log("<p>" + "logged in as " +driver.findElement(By.className(or.getProperty("loginusername_class"))).getText());
