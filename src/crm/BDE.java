@@ -523,8 +523,9 @@ public class BDE extends Helper{
   	     //Click on one random lead of status Introductory mail and fills the form by giving prospectType as 'Proposal'.
   		 if ((LeadSelection("Introductory Mail" , "work") == 1) && (driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Followup on Lead")))
   		 {   
-  			 
+  			
   			 WebElement seg = driver.findElement(By.className(bde.getProperty("formButton")));
+  			 sleep(2);
   			 
   			 submitMessage(seg, "Please Select FollowUp Type....");
   			 new Select(driver.findElement(By.name("followuptype"))).selectByVisibleText("Prospect Identify");
@@ -651,7 +652,7 @@ public class BDE extends Helper{
   	 }
   	 
        // This test method checks functionality of All FollowUp phase prospect Identify of Quote
-       //@Test
+     @Test
   	 public void LC_TS_47_TC002_AllFollowupsQuoteUpload() throws Exception
   	 {
   		 date = new Date();	
@@ -661,10 +662,12 @@ public class BDE extends Helper{
    	     
       	 navigatePage("All FollowUps", "All Followups");
       	 
-  		 if ((LeadSelection("random", "segregate") == 1) &&(LeadSelection("Introductory Mail" , "work") == 1 && driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Followup on Lead")))
+  		 if(LeadSelection("Introductory Mail" , "work") == 1 && driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Followup on Lead"))
   		 {
+  			 sleep(2);
   			 WebElement seg = driver.findElement(By.id(bde.getProperty("formButton")));
   			 
+  			 sleep(2);
   			 submitMessage(seg, "Please Select FollowUp Type");
   			 new Select(driver.findElement(By.name(bde.getProperty("Type")))).selectByVisibleText("Prospect Identify");
   			 sleep(2);
@@ -731,7 +734,7 @@ public class BDE extends Helper{
       	 navigatePage("All FollowUps", "All Followups");    
       	 LeadSelection("Prospect Identify" , "work");
       	 sleep(4);
-      	 if ((LeadSelection("random", "segregate") == 1) &&(driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Followup on Lead")))
+      	 if ((LeadSelection("Introductory Mail" , "work") == 1) &&(driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Followup on Lead")))
   		 {
       		 WebElement seg = driver.findElement(By.id("button"));
       		 submitMessage(seg, "Please Select FollowUp Type");
@@ -814,7 +817,7 @@ public class BDE extends Helper{
   		 }
   	 }
   	
-  	@Test // This checks the To Field check of prospect Identify phase.
+  	//@Test // This checks the To Field check of prospect Identify phase.
   	public void LC_TS_47_TC001_UIToFieldCheck()
   	{
   		 date = new Date();
@@ -880,14 +883,23 @@ public class BDE extends Helper{
   		 }	
      }
   	   
-     @Test
+     //@Test
      public void LC_TS_47_TC006_coldStorage() 
   	 { 
       	 //This block checks for lead moved from closed phase to BD
   		 navigatePage("Cold Storage", "Cold Storage");
   	     if (LeadSelection("random" , "analyse") == 1);
   		 {
-  			 sleep(4);
+  			 sleep(2);
+  			 
+  			//This block checks for lead moved from closed phase to BD
+			 navigatePage("Cold Storage", "Cold Storage");
+			 searchLead(randomLead);
+			 if (tableSizeCheck().contains("dataTables_empty"))	
+				 Reporter.log("<p> The All Followup Lead is : " + randomLead + " is not available Cold Storage.");
+			 else 
+				 Assert.fail("Expected Lead is still present in Cold Storage after Confirmation.");
+  			
   			 //This block checks for lead moved from All FollowUp.
   			 navigatePage("All FollowUps", "All Followups");
   			 searchLead(randomLead);
