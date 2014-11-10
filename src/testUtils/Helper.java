@@ -522,164 +522,166 @@ public class Helper extends BaseTest
   
   
   
-  public void changePassword(String email) throws Exception // Change password pass email id as argument
-  {
-  resultSet = statement.executeQuery("select password from crm_user where email_id='"+email+"' AND delete_status='no'"); 
-  resultSet.next();
-  String dat = resultSet.getString("password");
-  //===Researcher is 3rdsheet in excels=====//
-  int rows = sh3.getRows();
-  String data;
-  int col;
-  //====getting current url====//
-  String currenturl= driver.getCurrentUrl();
-  //======Clicking changepassword in myaccount menu====//
-  driver.findElement(By.linkText(or.getProperty("changepassword"))).click();
-  help.sleep(2);
-  //==connecting database and retriveng password==//
-
-  Reporter.log("<p>" + "old password is:" + dat);
-  //=== clicking cancle button===//
-  driver.findElement(By.id(or.getProperty("cancel1"))).sendKeys(Keys.ENTER);
-  help.sleep(3);
-  //===getting current url after cancle button====//
-  String aftcancleurl = driver.getCurrentUrl();
-  //comparing current url after cancle button// 
-  if(aftcancleurl.equalsIgnoreCase(currenturl)){
-  } else {
-  Assert.fail("<p>" +"Not successfully canceled change password page");
+  		public void changePassword(String email) throws Exception // Change password pass email id as argument
+  		{
+	  		  resultSet = statement.executeQuery("select password from crm_user where email_id='"+email+"' AND delete_status='no'"); 
+			  resultSet.next();
+			  String dat = resultSet.getString("password");
+			  //===Researcher is 3rdsheet in excels=====//
+			  int rows = sh3.getRows();
+			  String data;
+			  int col;
+			  //====getting current url====//
+			  String currenturl= driver.getCurrentUrl();
+			  //======Clicking changepassword in myaccount menu====//
+			  driver.findElement(By.linkText(or.getProperty("changepassword"))).click();
+			  help.sleep(2);
+			  //==connecting database and retriveng password==//
+			
+			  Reporter.log("<p>" + "old password is:" + dat);
+			  //=== clicking cancle button===//
+			  driver.findElement(By.id(or.getProperty("cancel1"))).sendKeys(Keys.ENTER);
+			  help.sleep(3);
+			  //===getting current url after cancle button====//
+			  String aftcancleurl = driver.getCurrentUrl();
+			  //comparing current url after cancle button// 
+			  if(aftcancleurl.equalsIgnoreCase(currenturl)){
+			  } else {
+			  Assert.fail("Not successfully cancled change password page");
+			  }
+			  //======Clicking searchleads in leadsearch menu for change button====//
+			  driver.findElement(By.linkText(or.getProperty("changepassword"))).sendKeys(Keys.ENTER);
+			  sleep(1);
+			  //=== checking validations for change passwords===//
+			  for(int row = 1;row < rows;row++)
+			  {
+			  col=0;
+			  if((driver.getCurrentUrl().equalsIgnoreCase("http://192.168.50.32:8080/leadcrm/login.jsp"))) {
+			  Reporter.log("<p>" +"*************************");
+			  } else {
+			  //=========checking oldpassword===//
+			  List<WebElement> li70 = driver.findElements(By.id(or.getProperty("oldpass")));
+			  if(li70.size()==0)
+			  { 
+			  help.screenshot("oldpasswordcontainer");
+			  // Assert.fail("not a container");
+			  }
+			  data = sh3.getCell(col, row).getContents();
+			  driver.findElement(By.id(or.getProperty("oldpass"))).sendKeys(sh3.getCell(col,row).getContents());
+			  //==placing oldpassword in s1==//
+			  String s1 = driver.findElement(By.id(or.getProperty("oldpass"))).getAttribute("value");
+			  col++;
+			  sleep(1);
+			  //======new password=====//
+			  List<WebElement> newpass = driver.findElements(By.id(or.getProperty("newpass")));
+			  if(newpass.size()==0)
+			  { 
+			  //====calling helper====//
+			  help.screenshot("newpassword container");
+			  Assert.fail("not a container");
+			  }
+			  else {
+			  Reporter.log("<p>" +"New password container is avilable");
+			  }
+			  data = sh3.getCell(col, row).getContents();
+			
+			  driver.findElement(By.id(or.getProperty("newpass"))).sendKeys(sh3.getCell(col,row).getContents());
+			
+			  //==placing new password in s2==//
+			  String s2 = driver.findElement(By.id(or.getProperty("newpass"))).getAttribute("value");
+			  col++;
+			  sleep(1);
+			  List<WebElement> confirmpass = driver.findElements(By.id(or.getProperty("confirmpass")));
+			  if(confirmpass.size()==0)
+			  {
+			  //====calling helper====//
+			  help.screenshot("Configpassword container");
+			  Assert.fail("not a container");
+			  }
+			  else {
+			  Reporter.log("<p>" +"Confirm password container is avilable");
+			  }
+			  data = sh3.getCell(col, row).getContents();
+			
+			
+			  driver.findElement(By.id(or.getProperty("confirmpass"))).sendKeys(sh3.getCell(col,row).getContents());
+			
+			  //==Placing confirm password in s3==//
+			  String s3 = driver.findElement(By.id(or.getProperty("confirmpass"))).getAttribute("value");
+			  col++;
+			  Thread.sleep(2000);
+			  //====Clicking Change button====//
+			  driver.findElement(By.id(or.getProperty("change1"))).sendKeys(Keys.ENTER);
+			  //===This is for if my oldpassword and my currently changing password is same then handing that scenario===//
+			  if(s1.equalsIgnoreCase(dat)&&s2.equalsIgnoreCase(s1)&&s3.equalsIgnoreCase(s2)) {
+			  String str ="000";
+			  driver.findElement(By.id(or.getProperty("oldpass"))).clear();
+			  driver.findElement(By.id(or.getProperty("newpass"))).clear();
+			  driver.findElement(By.id(or.getProperty("confirmpass"))).clear();
+			  driver.findElement(By.id(or.getProperty("oldpass"))).sendKeys(dat);
+			  driver.findElement(By.id(or.getProperty("newpass"))).sendKeys(str);
+			  driver.findElement(By.id(or.getProperty("confirmpass"))).sendKeys(str);
+			  //====Clicking Change button====//
+			  driver.findElement(By.id(or.getProperty("change1"))).sendKeys(Keys.ENTER);
+			  help.sleep(1);
+			  }
+			  if(driver.getCurrentUrl().equalsIgnoreCase("http://192.168.50.32:8080/leadcrm/login.jsp")) {
+			  //==setting old password==//
+			  Class.forName("com.mysql.jdbc.Driver").newInstance();
+			  connection = DBConnection.getConnection();
+			  statement = connection.createStatement();
+			  resultSet = statement.executeQuery("select password from crm_user where email_id='"+email+"' AND delete_status='no'"); 
+			  resultSet.next();
+			
+			  String dat1 = resultSet.getString("password");
+			  //Login
+			  driver.findElement(By.id(or.getProperty("username1"))).sendKeys(email);
+			  driver.findElement(By.id(or.getProperty("password1"))).sendKeys(dat1);
+			  driver.findElement(By.cssSelector(or.getProperty("loginbutton1"))).findElement(By.tagName("input")).submit();
+			  //====size of tree menu===//
+			
+			  List<WebElement> list1 = driver.findElement(By.id(or.getProperty("user_ids"))).findElements(By.tagName(or.getProperty("user_tagname")));
+			  Reporter.log("<p>" + "Number Elements in List1 : " + list1.size());
+			
+			  String user = driver.findElement(By.className(or.getProperty("user_Classname"))).getText();
+			  if(user.contains("Hi !"))
+			  //======= Expanding tree menu========//
+			  help.expand();
+			  //======Clicking changepassword in myaccount menu====//
+			  driver.findElement(By.linkText(or.getProperty("changepassword"))).click();
+			  help.sleep(5);
+			  //oldpassword//
+			  driver.findElement(By.id(or.getProperty("oldpass"))).sendKeys(dat1);
+			  //newpassword//
+			  driver.findElement(By.id(or.getProperty("newpass"))).sendKeys(dat);
+			  //confirm password//
+			  driver.findElement(By.id(or.getProperty("confirmpass"))).sendKeys(dat);
+			  driver.findElement(By.id(or.getProperty("change1"))).sendKeys(Keys.ENTER);
+			  sleep(3);
+			  resultSet = statement.executeQuery("select password from crm_user where email_id='"+email+"' AND delete_status='no'"); 
+			  resultSet.next();
+			 // sleep(2);
+			  String dat2 = resultSet.getString("password");
+			  //Login
+			  sleep(2);
+			  driver.findElement(By.id(or.getProperty("username1"))).sendKeys(email);
+			  driver.findElement(By.id(or.getProperty("password1"))).sendKeys(dat2);
+			  driver.findElement(By.cssSelector(or.getProperty("loginbutton1"))).findElement(By.tagName("input")).submit();
+			
+			  //====size of tree menu===//
+			  List<WebElement> lis = driver.findElement(By.id(or.getProperty("user_ids"))).findElements(By.tagName(or.getProperty("user_tagname")));
+			
+			  String use = driver.findElement(By.className(or.getProperty("user_Classname"))).getText();
+			  if(use.contains("Hi !"))
+			  Reporter.log("<p>" + "User password reset sucessfully");
+			  driver.findElement(By.linkText("Logout")).click();
+			  }
+			  // driver.findElement(By.linkText("Logout")).click();
+			  }
+			  }
   }
-  //======Clicking searchleads in leadsearch menu for change button====//
-  driver.findElement(By.linkText(or.getProperty("changepassword"))).sendKeys(Keys.ENTER);
-  sleep(1);
-  //=== checking validations for change passwords===//
-  for(int row = 1;row < rows;row++)
-  {
-  col=0;
-  if((driver.getCurrentUrl().equalsIgnoreCase("http://192.168.50.32:8080/leadcrm/login.jsp"))) {
-  Reporter.log("<p>" +"*************************");
-  } else {
-  //=========checking oldpassword===//
-  List<WebElement> li70 = driver.findElements(By.id(or.getProperty("oldpass")));
-  if(li70.size()==0)
-  { 
-  help.screenshot("oldpasswordcontainer");
-  // Assert.fail("not a container");
-  }
-  data = sh3.getCell(col, row).getContents();
-  driver.findElement(By.id(or.getProperty("oldpass"))).sendKeys(sh3.getCell(col,row).getContents());
-  //==placing oldpassword in s1==//
-  String s1 = driver.findElement(By.id(or.getProperty("oldpass"))).getAttribute("value");
-  col++;
-  sleep(1);
-  //======new password=====//
-  List<WebElement> newpass = driver.findElements(By.id(or.getProperty("newpass")));
-  if(newpass.size()==0)
-  { 
-  //====calling helper====//
-  help.screenshot("newpassword container");
-  Assert.fail("not a container");
-  }
-  else {
-  Reporter.log("<p>" +"New password container is avilable");
-  }
-  data = sh3.getCell(col, row).getContents();
 
-  driver.findElement(By.id(or.getProperty("newpass"))).sendKeys(sh3.getCell(col,row).getContents());
-
-  //==placing new password in s2==//
-  String s2 = driver.findElement(By.id(or.getProperty("newpass"))).getAttribute("value");
-  col++;
-  sleep(1);
-  List<WebElement> confirmpass = driver.findElements(By.id(or.getProperty("confirmpass")));
-  if(confirmpass.size()==0)
-  {
-  //====calling helper====//
-  help.screenshot("Configpassword container");
-  Assert.fail("not a container");
-  }
-  else {
-  Reporter.log("<p>" +"Confirm password container is avilable");
-  }
-  data = sh3.getCell(col, row).getContents();
-
-
-  driver.findElement(By.id(or.getProperty("confirmpass"))).sendKeys(sh3.getCell(col,row).getContents());
-
-  //==Placing confirm password in s3==//
-  String s3 = driver.findElement(By.id(or.getProperty("confirmpass"))).getAttribute("value");
-  col++;
-  Thread.sleep(2000);
-  //====Clicking Change button====//
-  driver.findElement(By.id(or.getProperty("change1"))).sendKeys(Keys.ENTER);
-  //===This is for if my oldpassword and my currently changing password is same then handing that scenario===//
-  if(s1.equalsIgnoreCase(dat)&&s2.equalsIgnoreCase(s1)&&s3.equalsIgnoreCase(s2)) {
-  String str ="pavan";
-  driver.findElement(By.id(or.getProperty("oldpass"))).clear();
-  driver.findElement(By.id(or.getProperty("newpass"))).clear();
-  driver.findElement(By.id(or.getProperty("confirmpass"))).clear();
-  driver.findElement(By.id(or.getProperty("oldpass"))).sendKeys(dat);
-  driver.findElement(By.id(or.getProperty("newpass"))).sendKeys(str);
-  driver.findElement(By.id(or.getProperty("confirmpass"))).sendKeys(str);
-  //====Clicking Change button====//
-  driver.findElement(By.id(or.getProperty("change1"))).sendKeys(Keys.ENTER);
-  help.sleep(1);
-  }
-  if(driver.getCurrentUrl().equalsIgnoreCase("http://192.168.50.32:8080/leadcrm/login.jsp")) {
-  //==setting old password==//
-  Class.forName("com.mysql.jdbc.Driver").newInstance();
-  connection = DBConnection.getConnection();
-  statement = connection.createStatement();
-  resultSet = statement.executeQuery("select password from crm_user where email_id='"+email+"' AND delete_status='no'"); 
-  resultSet.next();
-
-  String dat1 = resultSet.getString("password");
-  //Login
-  driver.findElement(By.id(or.getProperty("username1"))).sendKeys(email);
-  driver.findElement(By.id(or.getProperty("password1"))).sendKeys(dat1);
-  driver.findElement(By.cssSelector(or.getProperty("loginbutton1"))).findElement(By.tagName("input")).submit();
-  //====size of tree menu===//
-
-  List<WebElement> list1 = driver.findElement(By.id(or.getProperty("user_ids"))).findElements(By.tagName(or.getProperty("user_tagname")));
-  Reporter.log("<p>" + "Number Elements in List1 : " + list1.size());
-
-  String user = driver.findElement(By.className(or.getProperty("user_Classname"))).getText();
-  if(user.contains("Hi !"))
-  //======= Expanding tree menu========//
-  help.expand();
-  //======Clicking changepassword in myaccount menu====//
-  driver.findElement(By.linkText(or.getProperty("changepassword"))).click();
-  help.sleep(1);
-  //oldpassword//
-  driver.findElement(By.id(or.getProperty("oldpass"))).sendKeys(dat1);
-  //newpassword//
-  driver.findElement(By.id(or.getProperty("newpass"))).sendKeys(dat);
-  //confirm password//
-  driver.findElement(By.id(or.getProperty("confirmpass"))).sendKeys(dat);
-  driver.findElement(By.id(or.getProperty("change1"))).sendKeys(Keys.ENTER);
-  resultSet = statement.executeQuery("select password from crm_user where email_id='"+email+"' AND delete_status='no'"); 
-  resultSet.next();
-  String dat2 = resultSet.getString("password");
-  //Login
-  driver.findElement(By.id(or.getProperty("username1"))).sendKeys(email);
-  driver.findElement(By.id(or.getProperty("password1"))).sendKeys(dat2);
-  driver.findElement(By.cssSelector(or.getProperty("loginbutton1"))).findElement(By.tagName("input")).submit();
-
-  //====size of tree menu===//
-  List<WebElement> lis = driver.findElement(By.id(or.getProperty("user_ids"))).findElements(By.tagName(or.getProperty("user_tagname")));
-
-  String use = driver.findElement(By.className(or.getProperty("user_Classname"))).getText();
-  if(use.contains("Hi !"))
-  Reporter.log("<p>" + "User password reset sucessfully");
-  driver.findElement(By.linkText("Logout")).click();
-  }
-  // driver.findElement(By.linkText("Logout")).click();
-  }
-  }
-
-
-  }
-
+ 
   
   public void searchtable() throws Exception  //Helper to perform search on your table
   {
@@ -765,9 +767,8 @@ public class Helper extends BaseTest
 	  }
 
 	  }else{
-	  Assert.fail("No data present in the table to search");
+		  Reporter.log("No data present in the table to search");
 	  }//finishing the search with the item in the displayed table
 
   }
 	 } 	
-

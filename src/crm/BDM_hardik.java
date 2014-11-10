@@ -215,7 +215,7 @@ public class BDM_hardik extends Helper{
 	    	 }
 		}
 		
-   //   @Test
+        @Test
         public void a_expand_collapse() {
 	        //Getting size of all super links available in left pane
 	        List<WebElement> leftpane_options = driver.findElement(By.id(bdm.getProperty("leftpane_id"))).findElements(By.className(bdm.getProperty("leftpane_class")));
@@ -249,7 +249,7 @@ public class BDM_hardik extends Helper{
             }
       
       
-   //   @Test
+        @Test
         public void b_verifyingServiceNamesandAssign(){ 
     	    startup("assignlead","Assign Leads");
     	    ArrayList<String> sr1= new ArrayList<String>();
@@ -320,8 +320,8 @@ public class BDM_hardik extends Helper{
 	        Reporter.log("<p>" + "Randomly selected option from select service is = " +service_options.get(option).getText());
 	        //Verifying randomly selected option matches with name shown in service name column
 	        List<WebElement> leads_info = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname")));
-	        if(driver.findElement(By.id(bdm.getProperty("previouspage_id"))).getAttribute("class").equals("paginate_disabled_previous") &&
-	        		driver.findElement(By.id(bdm.getProperty("nextpage_id"))).getAttribute("class").equals("paginate_disabled_next")){
+	        if(driver.findElement(By.id("example_previous")).getAttribute("class").equals("paginate_disabled_previous") &&
+	        		driver.findElement(By.id("example_next")).getAttribute("class").equals("paginate_disabled_next")){
 	        	for(int i=0;i<leads_info.size();i++){
 	        		String lead_service = leads_info.get(i).findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(5).getText();
 	        		service.add(lead_service);
@@ -348,7 +348,7 @@ public class BDM_hardik extends Helper{
 	  	         }
 	       }
 	  
-//	    @Test
+	    @Test
 	    public void d_selectAllcheckbox(){
 	    	//expanding and clicking on assign lead link	  
 	    	startup("assignlead","Assign Leads");
@@ -367,7 +367,7 @@ public class BDM_hardik extends Helper{
 	    	Reporter.log("<p> ___________________________________________________________________"); 
 	    	}
 	  
-//	    @Test
+	    @Test
 	    public void e_serviceoptionsvalidation_self(){
 	    	startup("assignlead","Assign Leads");
 	    	new Select(driver.findElement(By.name(bdm.getProperty("service_name")))).selectByVisibleText("Web");
@@ -406,7 +406,7 @@ public class BDM_hardik extends Helper{
 	    	research_verify("BDM's",research_lead); 
 	    }
 	  
-	//  @Test
+	    @Test
 		public void f_selecttowhomassign_notself() throws Exception{
 			//expanding and clicking on assign lead link	
 			startup("assignlead","Assign Leads");
@@ -421,7 +421,7 @@ public class BDM_hardik extends Helper{
 		    }
 	  
 		  
-	//	@Test
+		@Test
 		public void g_assignmultipleLeads_BDE() throws Exception{
 			//expanding and clicking on assign lead link	  
 	    	startup("assignlead","Assign Leads");
@@ -439,19 +439,20 @@ public class BDM_hardik extends Helper{
 		}
 		  
 	  
-//	    @Test
+	    @Test
 	    public void h_assignleadPagination() throws Exception{
 	    	startup("assignlead","Assign Leads");
-	    	//Validating pagination,entries textbox,sorting technique
-	    	new Select(driver.findElement(By.name(bdm.getProperty("service_options_name")))).selectByVisibleText("Web");
-	    	Reporter.log("<p>" + "************VALIDATING PAGINATION AND ENTRIES BOX***************" + "<p>");
-	    	help.pageEntries();
-	    	Reporter.log("<p>" + "************VALIDATING SORTING *****************" + "<p>");
-	    	help.sorting();	 
-	    	Reporter.log("<p> ___________________________________________________________________"); 
+	    	//Validating pagination,entries textbox,sorting technique and search
+		  	Reporter.log("<p>" + "************VALIDATING PAGINATION AND ENTRIES BOX***************" + "<p>");
+		   	help.pageEntries();
+		  	Reporter.log("<p>" + "************VALIDATING SORTING *****************" + "<p>");
+	  	  	help.sorting();
+	  	    Reporter.log("<p>" + "************VALIDATING PAGE SEARCH *****************" + "<p>");
+	  	  	help.searchtable(); 
+	  	  	Reporter.log("<p> ___________________________________________________________________"); 
 	  }
 	  
-//		@Test
+		@Test
 		public void i_researchbuttoncheck(){
 			//expanding and clicking on research on lead link
 			Reporter.log("<p>" + "*******************RESEARCH PHASE***************************");
@@ -470,7 +471,7 @@ public class BDM_hardik extends Helper{
   	  		Reporter.log("<p> ___________________________________________________________________"); 
 		}
 		
-//		@Test
+		@Test
 		public void j_researchformfill(){
   	  		startup("researchPhase","Lead Research");
   	  		List<WebElement> leads_info = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname")));
@@ -526,21 +527,21 @@ public class BDM_hardik extends Helper{
   	  		Reporter.log("<p> ___________________________________________________________________"); 
 		}
 		
-	//	@Test
+		@Test
 		public void k_researchPagination() throws Exception{
   	  		startup("researchPhase","Lead Research");
-  	  		//Validating pagination,entries textbox,sorting technique
-  	  		Reporter.log("<p>" + "************VALIDATING PAGINATION AND ENTRIES BOX***************" +"<p>");
-  	  		help.pageEntries();
-  	  		Reporter.log("<p>" + "************VALIDATING SORTING *****************" + "<p>");
-  	  		help.sorting();
-		 
-  	  		Reporter.log("<p> ___________________________________________________________________"); 
-
+  	  	    //Validating pagination,entries textbox,sorting technique and search
+		  	Reporter.log("<p>" + "************VALIDATING PAGINATION AND ENTRIES BOX***************" + "<p>");
+		   	help.pageEntries();
+		  	Reporter.log("<p>" + "************VALIDATING SORTING *****************" + "<p>");
+	  	  	help.sorting();
+	  	    Reporter.log("<p>" + "************VALIDATING PAGE SEARCH *****************" + "<p>");
+	  	  	help.searchtable(); 
+	  	  	Reporter.log("<p> ___________________________________________________________________");
   } 
 		
 		
-//		@Test
+		@Test
 		public void l_workPhasetrackit(){
 			Reporter.log("<p>" + "***********************WORK PHASE********************");
 			//expanding and clicking on work phase link
@@ -565,19 +566,20 @@ public class BDM_hardik extends Helper{
 			}
 		}
 		
-	//	@Test
+		@Test
 		public void m_workphasePagination() throws Exception{
 		  	startup("workPhase","Work on Lead");
-		  	//Validating pagination,entries textbox,sorting technique
-		  	Reporter.log("<p>" + "************VALIDATING PAGINATION AND ENTRIES BOX***************" +"<p>");
-		  	help.pageEntries();
+		    //Validating pagination,entries textbox,sorting technique and search
+		  	Reporter.log("<p>" + "************VALIDATING PAGINATION AND ENTRIES BOX***************" + "<p>");
+		   	help.pageEntries();
 		  	Reporter.log("<p>" + "************VALIDATING SORTING *****************" + "<p>");
-		  	help.sorting();
-			
-		   	Reporter.log("<p> ___________________________________________________________________");
+	  	  	help.sorting();
+	  	    Reporter.log("<p>" + "************VALIDATING PAGE SEARCH *****************" + "<p>");
+	  	  	help.searchtable(); 
+	  	  	Reporter.log("<p> ___________________________________________________________________");
 		} 
   
-	//	@Test
+		@Test
 		public void n_workphaseFollowupTodaysDate(){
 	  	  	startup("workPhase","Work on Lead");
 	    	WebElement leads_info = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
@@ -634,20 +636,21 @@ public class BDM_hardik extends Helper{
 			}
 		}
 		
-	//	@Test
+		@Test
 		public void o_todaysfollowupPagination() throws Exception{
 	  	  	startup("todayfollowups","Today Followups");
-	  	  	//Validating pagination,entries textbox,sorting technique
-	  	  	Reporter.log("<p>" + "************VALIDATING PAGINATION AND ENTRIES BOX***************" + "<p>");
-	  	  	help.pageEntries();
-	  	  	Reporter.log("<p>" + "************VALIDATING SORTING *****************" + "<p>");
+	  	    //Validating pagination,entries textbox,sorting technique and search
+		  	Reporter.log("<p>" + "************VALIDATING PAGINATION AND ENTRIES BOX***************" + "<p>");
+		   	help.pageEntries();
+		  	Reporter.log("<p>" + "************VALIDATING SORTING *****************" + "<p>");
 	  	  	help.sorting();
-		 
-	  	  	Reporter.log("<p> ___________________________________________________________________"); 
+	  	    Reporter.log("<p>" + "************VALIDATING PAGE SEARCH *****************" + "<p>");
+	  	  	help.searchtable(); 
+	  	  	Reporter.log("<p> ___________________________________________________________________");
 
   }
 		
-	//		@Test
+			@Test
 			public void p_workphaseFuturedate(){
 			//Filling all the options by selecting tomorrows date and clicking on proceed button
 	  	  	startup("workPhase","Work on Lead");
@@ -694,19 +697,20 @@ public class BDM_hardik extends Helper{
 			}
 		}
 				
-	//	@Test
+		@Test
 		public void q_allfollowupPagination() throws Exception{
 			startup("allfollowups","All Followups");
-		  	//Validating pagination,entries textbox,sorting technique
+			//Validating pagination,entries textbox,sorting technique and search
 		  	Reporter.log("<p>" + "************VALIDATING PAGINATION AND ENTRIES BOX***************" + "<p>");
-		  	help.pageEntries();
+		   	help.pageEntries();
 		  	Reporter.log("<p>" + "************VALIDATING SORTING *****************" + "<p>");
-		   	help.sorting();	 
-		  	  	
-		   	Reporter.log("<p> ___________________________________________________________________"); 
+	  	  	help.sorting();
+	  	    Reporter.log("<p>" + "************VALIDATING PAGE SEARCH *****************" + "<p>");
+	  	  	help.searchtable(); 
+	  	  	Reporter.log("<p> ___________________________________________________________________");
 		}	
 			
-//		@Test
+		@Test
 		public void r_confirmleadsofTodaysDate(){
 			//Clicking todays followup link and getting all leads for todays date
 			startup("allfollowups","All Followups");
@@ -730,7 +734,7 @@ public class BDM_hardik extends Helper{
 		}
 			
 			
-//		@Test
+		@Test
 		public void s_allfollowup(){
 			//Checking trackit and followup button for all leads and printing work phase comments
 			Reporter.log("<p>" + "****************ALL FOLLOWUP*******************");
@@ -758,7 +762,7 @@ public class BDM_hardik extends Helper{
 		   }
 		}
 		
-	//	@Test
+		@Test
 		public void t_allNextFollowup(){
 	  	  	startup("allfollowups","All Followups");
 			driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys("introductory mail");
@@ -800,7 +804,7 @@ public class BDM_hardik extends Helper{
 			}
 		}
 			
-//		@Test
+		@Test
 		public void u_FollowupProspectIdentityProposal(){
 			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
 			Date date = new Date();
@@ -911,7 +915,7 @@ public class BDM_hardik extends Helper{
 		
 		}
 		
-	//	@Test
+		@Test
 		public void v_FollowupProspectIdentityQuote(){
 			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
 			Date date = new Date();
@@ -965,7 +969,7 @@ public class BDM_hardik extends Helper{
 		
 		
 		
-	//	@Test
+		@Test
 		public void w_proposalQuoteSend(){
 			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
 			Date date = new Date();
@@ -1011,7 +1015,7 @@ public class BDM_hardik extends Helper{
 			Reporter.log("<p> ___________________________________________________________________"); 
 		}
 		
-	//	@Test
+		@Test
 		public void x_proposalQuoteaccept(){
 		    startup("allfollowups","All Followups");
 			driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys("Proposal/Quote Send");
@@ -1055,19 +1059,20 @@ public class BDM_hardik extends Helper{
 
 		}
 			
-	//	@Test
+		@Test
 		public void y_closeleadPagination() throws Exception{
 		  	startup("closedPhase","Closed Phase");
-		  	//Validating pagination,entries textbox,sorting technique
+		  	//Validating pagination,entries textbox,sorting technique and search
 		  	Reporter.log("<p>" + "************VALIDATING PAGINATION AND ENTRIES BOX***************" + "<p>");
 		   	help.pageEntries();
 		  	Reporter.log("<p>" + "************VALIDATING SORTING *****************" + "<p>");
 	  	  	help.sorting();
-			 
+	  	    Reporter.log("<p>" + "************VALIDATING PAGE SEARCH *****************" + "<p>");
+	  	  	help.searchtable(); 
 	  	  	Reporter.log("<p> ___________________________________________________________________"); 
 	  }	
 		
-	//	@Test
+		@Test
 		public void z_verifyleadclosebutton(){
 	  	  	startup("closedPhase","Closed Phase");
 			//validating lead close button is enabled for all leads
@@ -1085,7 +1090,7 @@ public class BDM_hardik extends Helper{
 			Reporter.log("<p> ___________________________________________________________________"); 
 		}
 		
-	//	@Test
+		@Test
 		public void zz_leadcloseCustomer() throws Exception{
 	  	  	startup("closedPhase","Closed Phase");
 			WebElement w = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
@@ -1121,7 +1126,7 @@ public class BDM_hardik extends Helper{
 			}
 		}
 		
-	//	@Test
+		@Test
 		public void zzz_leadcloseLostCompetition() throws Exception{
 	  	  	startup("closedPhase","Closed Phase");
 			WebElement w = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);

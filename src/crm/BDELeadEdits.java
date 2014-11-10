@@ -51,48 +51,41 @@ public class BDELeadEdits  extends Helper
 	 
   }
   
-public void close(int y,String c,String data) throws Exception
- {
+  public void close(int y,String c,String data) throws Exception
+  {
 	 	driver.findElement(By.name(bde.getProperty("comment_id"))).sendKeys(sh4.getCell(0,6).getContents());
 		driver.findElement(By.id(bde.getProperty("closeform_button"))).click();
 		help.sleep(2);
 		Reporter.log("<p>" +driver.findElement(By.className(bde.getProperty("success_message"))).getText());
 		driver.findElement(By.className(bde.getProperty("editform_close")));
 		help.sleep(2);
-		driver.close();
-		help.browser();
-		help.maxbrowser();
-		driver.get(config.getProperty("url"));
+		 driver.findElement(By.className("user_logout")).click();
 		help.sleep(3);
 		//for getting mailid,password from database
-		ArrayList<String> sr1= new ArrayList<String>();
-		try {  
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
+		try
+		{ 
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
             connection = DBConnection.getConnection();
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery("select  a.role_name, b.email_id, b.password "
-                    + "from crm_role a, crm_user b where "
-                    + "a.role_id = b.role_id AND delete_status='no';");      
-            while (resultSet.next()) {
-           
-                String role = resultSet.getString("role_name");
-                String email = resultSet.getString("email_id");
-                String pass = resultSet.getString("password");
-                if(email.contains("basani") && role.contains("Management")){
-                	 sr1.add(0,email);
-                     sr1.add(1,pass);
-                }
-             }
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery("select a.role_name, b.email_id, b.password "+ "from crm_role a, crm_user b where " 
+			+ "a.role_id = b.role_id AND a.role_name = 'BDM' AND delete_status='no'Limit 1;"); 
+			while (resultSet.next())
+			{ 
+				// String role = resultSet.getString("role_name");
+				String email = resultSet.getString("email_id");
+				String pass = resultSet.getString("password");
+				help.login(email,pass);
+			}
 		}
 		catch (Exception e){ 
             e.printStackTrace();
         }
-		help.login(sr1.get(0),sr1.get(1));
+		
 		help.expand();
 		if(driver.findElement(By.id(c)).isDisplayed())
 		{
-			  driver.findElement(By.id(c)).click();
-			  ArrayList<Integer> li= new ArrayList<Integer>();
+			  	  driver.findElement(By.id(c)).click();
+			      ArrayList<Integer> li= new ArrayList<Integer>();
 				  help.sleep(3);
 				  //sending data into searchbox
 				  WebElement search = driver.findElement(By.id(bde.getProperty("searchid"))).findElement(By.tagName(bde.getProperty("searchtag")));
@@ -111,13 +104,151 @@ public void close(int y,String c,String data) throws Exception
 				  if(li.contains(y))
 				  Reporter.log("<p>" +"closed lead in BDE module is present in management module");
 				  else
-					  Assert.fail("closed lead in BDE module is not  present in management module");
+				  Assert.fail("closed lead in BDE module is not  present in management module");
 		}
+ }
+  
+
+	
+@Test                                              // in manual test case LC_TS_48      closed phase
+public void LC_TS_48_TC001() throws Exception 
+{
+	   help.expand();
+	  help.sleep(5);
+ if(driver.findElement(By.id(bde.getProperty("closedphase_link"))).isDisplayed())
+ {
+	  		driver.findElement(By.id(bde.getProperty("closedphase_link"))).click();
+	  		help.sleep(3);
+	  		help.sorting();
+	  		help.pageEntries();
+	  		searchtable();
+ }else
+     Assert.fail("closed phase  link not found successfully");
+ driver.quit();
+}
+ 
+//@Test                                                     // in manual test case LC_TS_48     closed phase
+public void LC_TS_48_TC002() throws Exception
+{
+	  help.expand();
+	  help.sleep(1);
+  if(driver.findElement(By.id(bde.getProperty("closedphase_link"))).isDisplayed())
+  {
+	  		driver.findElement(By.id(bde.getProperty("closedphase_link"))).click();
+	  		help.sleep(1);
+	  		List<WebElement> tablerecords= driver.findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
+	  		
+	  		if(tablerecords.size()==0)
+	  			Assert.fail("tablebody id not found");
+	  		List<WebElement> tablerecords2=tablerecords.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
+	  		if(tablerecords2.size()>1)
+	  		{
+	  			//Checking for the close button for each lead
+	  			int check=0;
+	  			do
+	  			{
+	  				if(check!=0)
+	  				driver.findElement(By.id("example_next")).click();
+	  				List<WebElement> tablerecords3=driver.findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
+	  				int count=0;
+	  				for(int i=0; i<tablerecords3.size(); i++) 
+	  				{
+	  					if(tablerecords3.get(i).findElement(By.className(bde.getProperty("close_button"))).isEnabled()) 
+	  					count++;
+	  					else
+	  						Assert.fail("close button not found");
+	  				}
+	  				check++;
+	  				if(count==tablerecords3.size())
+	  				Reporter.log("<p>" +"close button is enabled for all leads.");
+	  			}while(driver.findElement(By.id("example_next")).getAttribute("class").contains("enabled"));
+	  		}else
+	  	      Reporter.log("<p>"+"no data available");
+	 }else
+     Assert.fail("closed phase  link not found successfully");
+	  
+driver.quit();
+}
+
+
+// @Test                                                         // in manual test case LC_TS_48     closed phase
+public void LC_TS_48_TC003() throws Exception 
+{
+	 
+	  help.expand();
+	  help.sleep(1);
+ if(driver.findElement(By.id(bde.getProperty("closedphase_link"))).isDisplayed())
+ {
+	  		driver.findElement(By.id(bde.getProperty("closedphase_link"))).click();
+	  		help.sleep(3);
+	  		List<WebElement> tablerecords= driver.findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
+	  		String g=driver.findElement(By.className("dataTables_info")).getText();
+	  		if(tablerecords.size()==0)
+	  			Assert.fail("tablebody id not found");
+	  		List<WebElement> tablerecords2=tablerecords.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
+	  if(tablerecords2.size()>1)
+	  {
+		//Checking for the close button for each lead
+			int count=0;
+			for(int i=0; i<tablerecords.size(); i++) 
+			{
+				if(tablerecords.get(i).findElement(By.className(bde.getProperty("close_button"))).isEnabled()) 
+					count++;
+				else
+				Assert.fail("close button not found");
+			}
+			if(count==tablerecords.size())
+				Reporter.log("<p>" +"close button is enabled for all leads.");
+			//random selection of close button
+			int o=random(tablerecords.size());
+			//getting  details of random lead
+			List<WebElement>leaddata=tablerecords.get(o).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
+			String s=leaddata.get(0).getText();
+			 String data=  leaddata.get(0).getText() + " " + leaddata.get(1).getText() + " " +leaddata.get(2).getText();
+			//converting string to integer
+			int y=Integer.parseInt(s);
+			Reporter.log("<p>" +"closed lead id:"+y);
+			//clicking on close button
+			tablerecords.get(o).findElement(By.className(bde.getProperty("close_button"))).click();
+			Reporter.log("<p>" +driver.findElement(By.id(bde.getProperty("dialog"))).findElement(By.tagName(bde.getProperty("dialog_tagname"))).getText()+":is opened");
+			List<WebElement> leadstatus=driver.findElement(By.name(bde.getProperty("leadstatus_id"))).findElements(By.tagName(bde.getProperty("dropdown_options")));
+			if(leadstatus.size()==0)
+				Assert.fail("lead status id not found in close form");
+			int a=random(leadstatus.size());
+			if(a==0)
+			a++;
+			leadstatus.get(a).click();
+			if(leadstatus.get(a).getText().equalsIgnoreCase(bde.getProperty("leadstatus_item1"))){
+				String c="customersList";
+				driver.findElement(By.id(bde.getProperty("project_id"))).sendKeys(sh4.getCell(0,5).getContents());
+				close(y,c,data);
+			}
+			if(leadstatus.get(a).getText().equalsIgnoreCase(bde.getProperty("leadstatus_item2"))){
+				String c="lostCompetitionList";
+				close(y,c,data);
+			}
+	  }else
+	   Reporter.log("<p>"+"no data available");
+	
+	}else
+  Assert.fail("closed phase  link not found successfully");
+	  
+	  	driver.quit();
+ }
+ 
+// @Test                                                   // in manual test case LC_TS_49 & 50 &51         leadsearch
+ public void LC_TS_49_TC001() throws Exception 
+ {
+	  help.expand();
+	  help.sleep(1);
+    searchLead();
+    driver.quit();
  }
  
  
-// @Test
-public void Trackit() throws Exception
+ 
+// @Test                                                   // in manual test case LC_TS_52                  leadedits(trackit)
+public void LC_TS_50_TC001() throws Exception
 {
 	   help.expand();
 	  Reporter.log("<p>"+"==============\n"+"TRACKIT"+"===================");;
@@ -127,14 +258,57 @@ public void Trackit() throws Exception
 	  		help.sleep(3);
 	  		help.sorting();
 	  		help.pageEntries();
- }
- driver.close();
+	  		searchtable();
+ }else
+	   Assert.fail("lead edit link not found successfully");
+ driver.quit();
 }
  
+//@Test                                                      // in manual test case LC_TS_52           leadedits(trackit)     
+public void LC_TS_50_TC002() throws Exception
+{
+   help.expand();
+  Reporter.log("<p>"+"==============\n"+"TRACKIT"+"===================");;
+  if(driver.findElement(By.id(bde.getProperty("leadedit_link"))).isDisplayed())
+  {
+  		driver.findElement(By.id(bde.getProperty("leadedit_link"))).click();
+  		help.sleep(3);
+  		List<WebElement> trackelement=driver.findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
+  		if(trackelement.size()==0)
+  			Assert.fail("table body tagname not found successfully in trackit");
+  		List<WebElement> trackelement2=trackelement.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
+  		if( trackelement2.size()>1)
+  		{
+  			//Checking for the Track it button for each lead
+  			int check=0;
+  			do
+  			{
+  				if(check!=0)
+  				driver.findElement(By.id("example_next")).click();
+  				List<WebElement> trackelement3=driver.findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
+  				int trackit=0;
+  				for(int i=0; i<trackelement3.size(); i++) {
+				if(trackelement3.get(i).findElement(By.className(bde.getProperty("tracit_button"))).isEnabled()) 
+				trackit++;
+				else
+			  	Assert.fail("trackit button is not found successfully");
+  				}
+				if(trackit==trackelement3.size())
+  				Reporter.log("<p>"+"Trackit button is present for all leads."); 
+				check++;
+  			}while(driver.findElement(By.id("example_next")).getAttribute("class").contains("enabled"));
+  			
+  		}else
+	  	 Reporter.log("<p>"+"no data available");
+	}else
+     Assert.fail("lead edit link not found successfully");
+  driver.quit();
+}
+
+
  
- 
-  @Test
- public void Trackit1() throws Exception
+//  @Test                                                          // in manual test case LC_TS_52                leadedits(trackit)
+ public void LC_TS_50_TC003() throws Exception
  {
 	   help.expand();
 	  Reporter.log("<p>"+"==============\n"+"TRACKIT"+"===================");;
@@ -148,17 +322,17 @@ public void Trackit() throws Exception
 	  		List<WebElement> trackelement2=trackelement.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
 	 if( trackelement2.size()>1)
 	 {
-		 //Checking for the Track it button for each lead
-	  		int trackit=0;
+		//Checking for the Track it button for each lead
+			int trackit=0;
 			for(int i=0; i<trackelement.size(); i++) {
-					if(trackelement.get(i).findElement(By.className(bde.getProperty("tracit_button"))).isEnabled()) 
-					trackit++;
-					else
-				  	Assert.fail("trackit button is not found successfully");
+				if(trackelement.get(i).findElement(By.className(bde.getProperty("tracit_button"))).isEnabled()) 
+				trackit++;
+				else
+			  	Assert.fail("trackit button is not found successfully");
 			}
 			if(trackit==trackelement.size())
-			Reporter.log("<p>"+"Trackit button is present for all leads.");
-			//random selection of track it button
+				Reporter.log("<p>"+"Trackit button is present for all leads."); 
+		   //random selection of track it button
 			int p=random(trackelement.size());
 			//getting details of random lead before clicking track it button
 	  		List<WebElement> ls =trackelement.get(p).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
@@ -200,18 +374,18 @@ public void Trackit() throws Exception
 	  				}
 	  			}
 	  		}else
-	  			Reporter.log("<p>" +"Data doesnt match ");
+	  		 Reporter.log("<p>" +"Data doesnt match ");
 	 }else
-		 Reporter.log("<p>" +"no data available ");
-  }else{
-		  Assert.fail("lead edit link not found successfully");
-	  }
-	  	driver.close();
+	  Reporter.log("<p>" +"no data available ");
+  }else
+   Assert.fail("lead edit link not found successfully");
+	  
+	  	driver.quit();
 }
 
   
-  @Test
-  public void Edit() throws Exception
+ // @Test                                                              // in manual test case LC_TS_52               leadedits(EDIT)
+  public void LC_TS_51_TC001() throws Exception
   {
 	  help.expand();
 	  Reporter.log("<p>" +"=====\n"+"EDIT::"+"======");
@@ -226,8 +400,49 @@ public void Trackit() throws Exception
 		  	List <WebElement> leads2=leads.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
 	  if(leads2.size()>1)
 	  {
-		  	Reporter.log("<p>" +"No. of leads in the Lead Edit Table:" + leads.size());
 		  	// Checking for the buttons for each lead
+		  	int check=0;
+		  	do
+		  	{
+		  		if(check!=0)
+		  			driver.findElement(By.id("example_next")).click();
+		  		List<WebElement> leads3=driver.findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
+		  		int edit=0;
+		  		for(int i=0; i<leads3.size(); i++)
+		  		{
+		  			if(leads3.get(i).findElement(By.className(bde.getProperty("edit_button"))).isEnabled()) 
+		  				edit++;
+		  			else
+		  				Assert.fail("edit button is not found successfully");
+		  		}
+		  		check++;
+				if(edit==leads3.size())
+					Reporter.log("<p>" +"Edit buttons are enabled for all leads.");
+		  	}while(driver.findElement(By.id("example_next")).getAttribute("class").contains("enabled"));
+	  }else
+		   Reporter.log("<p>"+"no data available");
+	}else
+		   Assert.fail("lead edit link not found successfully");
+	driver.quit();
+  }
+  
+//  @Test                                                               // in manual test case LC_TS_52                leadedits(EDIT)
+  public void LC_TS_51_TC002() throws Exception
+  {
+	  help.expand();
+	  Reporter.log("<p>" +"=====\n"+"EDIT::"+"======");
+	if(driver.findElement(By.id(bde.getProperty("leadedit_link"))).isDisplayed())
+	{
+			driver.findElement(By.id(bde.getProperty("leadedit_link"))).click();
+	  		help.sleep(2);
+	  		List <WebElement> leads = driver.findElement(By.id(bde.getProperty("table_id"))).findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
+		  	if(leads.size()==0)
+	  			Assert.fail("table body tagname not found successfully in edit");
+		  	help.sleep(2);
+		  	List <WebElement> leads2=leads.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
+	  if(leads2.size()>1)
+	  {
+			// Checking for the buttons for each lead
 		  	int edit=0;
 		  	for(int i=0; i<leads.size(); i++) {
 				if(leads.get(i).findElement(By.className(bde.getProperty("edit_button"))).isEnabled()) 
@@ -237,10 +452,12 @@ public void Trackit() throws Exception
 			}
 		  	if(edit==leads.size())
 			Reporter.log("<p>" +"Edit buttons are enabled for all leads.");
+		  	Reporter.log("<p>" +"No. of leads in the Lead Edit Table:" + leads.size());
 		  	int columns=sh4.getColumns();
 			int rows=sh4.getRows();
 			String data;
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			help.sleep(2);
+			//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			//random selection of edit button
 			int j=random(leads.size());
 			//getting details of random lead before clicking edit button
@@ -314,119 +531,22 @@ public void Trackit() throws Exception
 	  			}
 	  		}
 	  }else
-		  Reporter.log("<p>"+"no data available");
-  }else{
-		  Assert.fail("lead edit link not found successfully");
-	  }
-	  	driver.close();
+	   Reporter.log("<p>"+"no data available");
+  }else
+   Assert.fail("lead edit link not found successfully");
+	  driver.quit();
   }
   
-//  @Test
- public void Closedphase() throws Exception 
- {
-	   help.expand();
-	  help.sleep(5);
-  if(driver.findElement(By.id(bde.getProperty("closedphase_link"))).isDisplayed())
-  {
-	  		driver.findElement(By.id(bde.getProperty("closedphase_link"))).click();
-	  		help.sleep(3);
-	  		help.sorting();
-	  		help.pageEntries();
-  }
-  driver.close();
- }
-  
-  
- 
-  @Test
- public void Closedphase1() throws Exception 
- {
-	  int q;
-	  int f;
-	  help.expand();
-	  help.sleep(5);
-  if(driver.findElement(By.id(bde.getProperty("closedphase_link"))).isDisplayed())
-  {
-	  		driver.findElement(By.id(bde.getProperty("closedphase_link"))).click();
-	  		help.sleep(3);
-	  		List<WebElement> tablerecords= driver.findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
-	  		String g=driver.findElement(By.className("dataTables_info")).getText();
-	  		q=tablerecords.size();
-	  		if(tablerecords.size()==0)
-	  			Assert.fail("tablebody id not found");
-	  		List<WebElement> tablerecords2=tablerecords.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
-	  if(tablerecords2.size()>1)
-	  {
-		  //Checking for the close button for each lead
-			int count=0;
-			for(int i=0; i<tablerecords.size(); i++) {
-				if(tablerecords.get(i).findElement(By.className(bde.getProperty("close_button"))).isEnabled()) 
-				count++;
-				else
-					Assert.fail("close button not found");
-			}
-			if(count==tablerecords.size())
-			Reporter.log("<p>" +"close button is enabled for all leads.");
-			//validation for prospect
-			 WebElement search1 = driver.findElement(By.id(bde.getProperty("searchid"))).findElement(By.tagName(bde.getProperty("searchtag")));
-			   if(search1 == null)
-			    Assert.fail("The Search Text Box is not Present");
-			   else
-			    search1.sendKeys("Prospect");
-			   List<WebElement> tablerecords1= driver.findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
-			   f=tablerecords1.size();
-			   if(q==f&&g.equalsIgnoreCase(driver.findElement(By.className("dataTables_info")).getText()))
-				   Reporter.log("<p>"+"all leads having prospect as lead status");
-			//random selection of close button
-			int o=random(tablerecords.size());
-			//getting  details of random lead
-			List<WebElement>leaddata=tablerecords.get(o).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
-			String s=leaddata.get(0).getText();
-			 String data=  leaddata.get(0).getText() + " " + leaddata.get(1).getText() + " " +leaddata.get(2).getText();
-			//converting string to integer
-			int y=Integer.parseInt(s);
-			Reporter.log("<p>" +"closed lead id:"+y);
-			//clicking on close button
-			tablerecords.get(o).findElement(By.className(bde.getProperty("close_button"))).click();
-			Reporter.log("<p>" +driver.findElement(By.id(bde.getProperty("dialog"))).findElement(By.tagName(bde.getProperty("dialog_tagname"))).getText()+":is opened");
-			List<WebElement> leadstatus=driver.findElement(By.name(bde.getProperty("leadstatus_id"))).findElements(By.tagName(bde.getProperty("dropdown_options")));
-			if(leadstatus.size()==0)
-				Assert.fail("lead status id not found in close form");
-			int a=random(leadstatus.size());
-			if(a==0)
-			a++;
-			leadstatus.get(a).click();
-			if(leadstatus.get(a).getText().equalsIgnoreCase(bde.getProperty("leadstatus_item1"))){
-				String c="customersList";
-				driver.findElement(By.id(bde.getProperty("project_id"))).sendKeys(sh4.getCell(0,5).getContents());
-				close(y,c,data);
-			}
-			if(leadstatus.get(a).getText().equalsIgnoreCase(bde.getProperty("leadstatus_item2"))){
-				String c="lostCompetitionList";
-				close(y,c,data);
-			}
-	  }else
-		  Reporter.log("<p>"+"no data available");
-  }else{
-		  Assert.fail("closed phase  link not found successfully");
-	  }
-	  	//help.sleep(1);
-	  	//driver.close();
-  }
-  
-
-  
-//  @Test
-  public void leadsearch() throws Exception 
+ // @Test                                                               // in manual test case LC_TS_53 & 54                myaccount
+  public void LC_TS_52_TC002() throws Exception
   {
 	  help.expand();
-	  help.sleep(1);
-     searchLead();
-     driver.close();
+	  String email1=config.getProperty("bdename");
+	  help.sleep(2);
+	  changePassword(email1);
+	  driver.quit();
   }
   
-
- 
   
   @AfterMethod
   public void afterMethod() 

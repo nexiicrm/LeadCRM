@@ -129,19 +129,19 @@ public class AdminLogin extends Helper{
 	             String str = resultSet.getString("password"); 
 	           return str;
 	}
-	 public String dbConnectionRole() throws Exception, IllegalAccessException, ClassNotFoundException{
+	 public String dbConnectionRole(String string) throws Exception, IllegalAccessException, ClassNotFoundException{
 		  
          
          Class.forName("com.mysql.jdbc.Driver").newInstance();
          connection = DBConnection.getConnection();
          statement = connection.createStatement();
-         resultSet = statement.executeQuery("select a.role_name from crm_role a, crm_user b where a.role_id = b.role_id AND email_id = 'tulasirammail@gmail.com' AND delete_status = 'no'");
+         resultSet = statement.executeQuery("select a.role_name from crm_role a, crm_user b where a.role_id = b.role_id AND email_id ='"+string+"' AND delete_status = 'no'");
          
          resultSet.next();
          String str = resultSet.getString("role_name"); 
          return str;
-}
- public String dbReaserchPass() throws Exception, IllegalAccessException, ClassNotFoundException{
+	 }
+	 public String dbReaserchPass() throws Exception, IllegalAccessException, ClassNotFoundException{
 		  
          
          Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -153,14 +153,10 @@ public class AdminLogin extends Helper{
          return str;
 }
 	
-	
-	
-	
-	
-	//  @Test
+		// @Test
 	  public void test() throws IllegalAccessException, ClassNotFoundException, Exception{
-		 // String s= dbConnection("pavan.nanigans@gmail.com");
-		//  Reporter.log("<p>" + s);
+		  String s= dbConnection("srinivasa.sanchana@nexiilabs.com");
+		  Reporter.log("<p>" + s);
 		//  String s1 =  dbConnectionRole();
 		//  Reporter.log("<p>" + s1);
 		String se = dbReaserchPass();
@@ -168,7 +164,7 @@ public class AdminLogin extends Helper{
 		 
 	  }
 	
-// @Test
+	 //  @Test
   public void a_createbutton()throws Exception  {
 	   //======= Login verification =========
 	 		mylogin();
@@ -203,7 +199,7 @@ public class AdminLogin extends Helper{
  }
  
  
- //@Test
+// @Test
   public void b_dropDownVerification() throws Exception{
 	  //======'Manager' Drop down button presence and its working=====
 	 	 mylogin();
@@ -272,7 +268,7 @@ public class AdminLogin extends Helper{
  
  
  
- 	//@Test
+ //	@Test
  	public void c_ButtonVerification() throws Exception{
   		 mylogin();
   		 expand();
@@ -305,12 +301,11 @@ public class AdminLogin extends Helper{
 		    Assert.fail("page naviagation to the create service is failed");
 	    }
 	    WebElement wt = driver.findElement(By.className(admin.getProperty("text_service")));
-	    if(wt.isEnabled()){
+	    
 		    wt.sendKeys("database admin");
-		    sleep(1);
-	    }else{
-		    Assert.fail("text box is not enabled");
-	   }
+		 
+		     sleep(1);
+	  
 	   driver.findElement(By.id(admin.getProperty("create_service"))).click(); 
 	   sleep(2);
 	   Actions ac = new Actions(driver);
@@ -323,7 +318,7 @@ public class AdminLogin extends Helper{
  
  	}
  	
-	//@Test
+ //	@Test
 	 public void d_newUserCreation() throws Exception{
 	   //========= Creation of New User ======
 		 mylogin();
@@ -479,7 +474,8 @@ public class AdminLogin extends Helper{
 			 }
 		}
 		Reporter.log("<p>" + "=================d_newUserCreation() success==========================");
- }
+}
+	 
 	 
 	 
  
@@ -498,91 +494,115 @@ public class AdminLogin extends Helper{
 		    	Assert.fail("update button not present");
 		    }
 		   //searching for the specific user in update user page
-		  searchUser();
+		    searchtable();
 		   Reporter.log("<p>" + " =====================f_searchUsers() success=================");
 	 }   
 	 
-		
-	@Test
-	public void g_updatingUser() throws Exception{
-		mylogin();
-		expand();
-		//clicking on the update button from the side tree menu
-		 WebElement wup = driver.findElement(By.id(admin.getProperty("updateUser_button")));
-		    if(wup.isDisplayed()){
-		    	wup.click();
-		    	sleep(2);
-		    }
-		    else{
-		    	Assert.fail("update button not present");
-		    }
-		  //searching for a specific user whose details to be uploaded  
-		 WebElement ws =  driver.findElement(By.tagName(admin.getProperty("SearchBox")));
-		 if(ws.isDisplayed()){
-			ws.sendKeys("tulasirammail@gmail.com"); 
-			sleep(2);
-		}else{
-			Assert.fail("Search box not present");
-		}
-		//clicking on update button of a user
-		driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElement(By.tagName(admin.getProperty("Anchor_tag"))).click();
-	   sleep(4);
-	   //performing modification to the existing data
-	   List<WebElement> man=driver.findElement(By.name(admin.getProperty("manager_dd"))).findElements(By.tagName(admin.getProperty("option_tag")));
-	   if(man.size()!=0){
-	   int rnm = random(man.size());
-	   if(man.get(rnm).getText().contains("--- SELECT ---")){
-		   rnm++;
-	   }
-	   man.get(rnm).click();
-	   sleep(1);
-	   }else{
-		   Assert.fail("manager drop down not present ");
-	   }
-	   	String s1 = dbConnectionRole();
-		 Reporter.log("<p>" + "role before updation   "+s1);
-	   //updating the role of existing user
-		 sleep(2);
-	   List<WebElement> R = driver.findElement(By.name(admin.getProperty("role_dd"))).findElements(By.tagName(admin.getProperty("option_tag")));
-		 if(R.size()!=0){
-		 int b =random(R.size());
-		 
-		 if (R.get(b).getText().contentEquals("--- SELECT ---")||R.get(b).getText().contentEquals("Architect")||R.get(b).getText().contentEquals("Manager")){
-			 b= b+3;  
-			 Reporter.log("<p>" + "randomly picked role  "+R.get(b).getText());
-		 }
-		 R.get(b).click();
-	   //clicking on update button
-	   WebElement wb = driver.findElement(By.id(admin.getProperty("reupdate_button")));
-	   if(wb.isDisplayed()){
-		   wb.submit();
-		   sleep(2);
-	   }else{
-		   Assert.fail("update user button not present");
-	   }
 	
-	 
-	   //closing the update popup window
-	   sleep(2);
-	   driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
-	   sleep(3);
-	  	   String s2 = dbConnectionRole();
-	   Reporter.log("<p>" + "role after updation   "+s2);
-	   String Rolepass = dbConnection("tulasirammail@gmail.com");
-	   Reporter.log("<p>" + Rolepass);
-	   driver.get(config.getProperty("url"));
-	   login("tulasirammail@gmail.com",Rolepass);
-	   sleep(5);
-	   if(driver.findElement(By.className(admin.getProperty("LoggedIn_nuser_name"))).getText().contains(s2)){
-		   Reporter.log("<p>" + "User updated successfully");
-	   }else{
-		   Assert.fail("user updation failed");
-	   }
+	// @Test
+		public void g_updatingUser() throws Exception{
+			mylogin();
+			expand();
+			//clicking on the update button from the side tree menu
+			 WebElement wup = driver.findElement(By.id(admin.getProperty("updateUser_button")));
+			    if(wup.isDisplayed()){
+			    	wup.click();
+			    	sleep(2);
+			    }
+			    else{
+			    	Assert.fail("update button not present");
+			    }
+			  //searching for a specific user whose details to be uploaded  
+			    WebElement w =driver.findElement(By.id(admin.getProperty("pagination_next")));
+				ArrayList<String> ar = new ArrayList<String>();
+				while(!w.getAttribute("class").equalsIgnoreCase(admin.getProperty("nextpage_disabled"))){
+					sleep(2);
+					List<WebElement> mylist = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
+					for(int i =0;i<mylist.size();i++){
+						ar.add(mylist.get(i).getText());
+						}
+					w.click();
+				}
+						
+				List<WebElement> mylist1 = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
+				for(int i1 =0;i1<mylist1.size();i1++){
+					ar.add(mylist1.get(i1).getText());
+				
+					}
+				int j = random(ar.size());
+				driver.findElement(By.tagName(admin.getProperty("SearchBox"))).sendKeys(ar.get(j));
+				sleep(2);
+				List<WebElement> pickEmail =  driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
+				String smail = pickEmail.get(2).getText();
+			//clicking on update button of a user
+			driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElement(By.tagName(admin.getProperty("Anchor_tag"))).click();
+		   sleep(4);
+		   //performing modification to the existing data
+		   List<WebElement> man=driver.findElement(By.name(admin.getProperty("manager_dd"))).findElements(By.tagName(admin.getProperty("option_tag")));
+		   if(man.size()!=0){
+		   int rnm = random(man.size());
+		   if(man.get(rnm).getText().contains("--- SELECT ---")){
+			   rnm++;
+		   }
+		   man.get(rnm).click();
+		   sleep(1);
+		   }else{
+			   Assert.fail("manager drop down not present ");
+		   }
+		   	String s1 = dbConnectionRole(smail);
+			 Reporter.log("<p>" + "role before updation   "+s1);
+		   //updating the role of existing user
+			 sleep(2);
+		   List<WebElement> R = driver.findElement(By.name(admin.getProperty("role_dd"))).findElements(By.tagName(admin.getProperty("option_tag")));
+			 if(R.size()!=0){
+			 int b =random(R.size());
+			 
+			 if (R.get(b).getText().contentEquals("--- SELECT ---")||R.get(b).getText().contentEquals("Architect")||R.get(b).getText().contentEquals("Manager")){
+				 b= b+3;  
+				 Reporter.log("<p>" + "randomly picked role  "+R.get(b).getText());
+			 }
+			 R.get(b).click();
+		   //clicking on update button
+		   WebElement wb = driver.findElement(By.id(admin.getProperty("reupdate_button")));
+		   if(wb.isDisplayed()){
+			   wb.submit();
+			   sleep(2);
+		   }else{
+			   Assert.fail("update user button not present");
+		   }
+		
 		 
-		 
+		   //closing the update popup window
+		   sleep(2);
+		   driver.findElement(By.cssSelector("span.ui-button-icon-primary.ui-icon.ui-icon-closethick")).click();
+		   sleep(3);
+		   String s2 = dbConnectionRole(smail);
+		   Reporter.log("<p>" + "role after updation   "+s2);
+		   String sub =null;
+		   if(s2.equals("Administrator")){
+			    sub = s2.substring(0, 4);
+		   }
+		   String Rolepass = dbConnection(smail);
+		   Reporter.log("<p>" + Rolepass);
+		   driver.get(config.getProperty("url"));
+		   login(smail,Rolepass);
+		   sleep(5);
+		    Reporter.log("<p>" +s2);
+		    Reporter.log("<p>" +driver.findElement(By.className(admin.getProperty("LoggedIn_nuser_name"))).getText());
+		   if((driver.findElement(By.className(admin.getProperty("LoggedIn_nuser_name"))).getText().contains(s2))||driver.findElement(By.className(admin.getProperty("LoggedIn_nuser_name"))).getText().contains(sub)){
+			   Reporter.log("<p>" + "User updated successfully");
+		   }else{
+			   Assert.fail("user updation failed");
+		   }
+			 
+			 
+			 }
+			Reporter.log("<p>" + "===========g_updatingUser() is successs==============");
 		 }
-		Reporter.log("<p>" + "===========g_updatingUser() is successs==============");
-	 }
+		
+	 
+	 
+	
  //  @Test
 	 public void h_sorting () throws Exception{
 		 mylogin();
@@ -595,12 +615,12 @@ public class AdminLogin extends Helper{
 		    else{
 		    	Assert.fail("update button not present");
 		    }
-		    sorting();
+		   // sorting();
 		
 	 }
 	 
 	
-//	 @Test
+	// @Test
 	 public void i_pageNavigation() throws Exception{
      //==========Page Navigation ======== 
 		 mylogin();
@@ -615,7 +635,7 @@ public class AdminLogin extends Helper{
 		    	Assert.fail("update button not present");
 		    }
 		    //calling for the 'pagination' user defined method
-	
+		    pageEntries();
         Reporter.log("<p>" + "=============h_pageNavigation() success==============");
 	 }
   
@@ -634,12 +654,12 @@ public class AdminLogin extends Helper{
 			Assert.fail("delete user button not present in tree menu");
 		}
 		//calling the search user method for searching a specific user 
-		searchUser();
+		searchtable();
 		   Reporter.log("<p>" + "======== k_serachbutton() success===========");
 	}
 	
 	 
-	//@Test
+//	@Test
 	public void l_deletinguser() throws Exception{
 		mylogin();
 		expand();
@@ -651,15 +671,25 @@ public class AdminLogin extends Helper{
 		}else{
 			Assert.fail("delete user button not present in tree menu");
 		}
-		//entering a value in search box
-		WebElement wi = driver.findElement(By.tagName(admin.getProperty("SearchBox")));
-		if(wi.isEnabled()){
-			wi.sendKeys("ajay");
-			sleep(3);
+		//selecting a user randomly from the existing user for deletion 
+		WebElement w =driver.findElement(By.id(admin.getProperty("pagination_next")));
+		ArrayList<String> ar = new ArrayList<String>();
+		while(!w.getAttribute("class").equalsIgnoreCase(admin.getProperty("nextpage_disabled"))){
+			sleep(2);
+			List<WebElement> mylist = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
+			for(int i =0;i<mylist.size();i++){
+				ar.add(mylist.get(i).getText());
+				}
+			w.click();
 		}
-		else{
-			Assert.fail("search text box is not enabled");
-		}
+				
+		List<WebElement> mylist1 = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
+		for(int i1 =0;i1<mylist1.size();i1++){
+			ar.add(mylist1.get(i1).getText());
+		
+			}
+		int j = random(ar.size());
+		driver.findElement(By.tagName(admin.getProperty("SearchBox"))).sendKeys(ar.get(j));
 		//picking all the rows into one list 
 		List<WebElement> li = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElement(By.tagName(admin.getProperty("tableRowtag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
 		Reporter.log("<p>" + li.size());
@@ -709,7 +739,7 @@ public class AdminLogin extends Helper{
 		
 	}
 	
-//	@Test
+	//@Test
 	public void n_pagenavigation() throws Exception{
 		mylogin();
 		expand();
@@ -721,10 +751,10 @@ public class AdminLogin extends Helper{
 			Assert.fail("delete user button not present in tree menu");
 		}
 		//calling the paginations user defined method
-		
+		pageEntries();
 	}
 
-//	@Test
+	//@Test
 	public void p_searchUser() throws Exception{
 		mylogin();
 		expand();
@@ -735,7 +765,7 @@ public class AdminLogin extends Helper{
 		}else{
 			Assert.fail("view all users button is not present");
 		}
-		searchUser();
+		searchtable();
 	}	
 //	@Test 
 	public void q_sortedUser() throws Exception{
@@ -779,7 +809,7 @@ public class AdminLogin extends Helper{
 			Assert.fail("pagiantionNext_button is not present");
 		}
 	}
-//	@Test
+	//@Test
 	public void s_pageNavigation() throws Exception{
 		mylogin();
 		expand();
@@ -790,7 +820,7 @@ public class AdminLogin extends Helper{
 		}else{
 			Assert.fail("view all users button is not present");
 		}
-		pagination();
+		pageEntries();
 	}
 	
 	//@Test
@@ -923,7 +953,7 @@ public class AdminLogin extends Helper{
 		
 	}
 	
-//	@Test
+	//@Test
 	public void t_updateConfig() throws Exception{
 		mylogin();
 		expand();
@@ -1026,7 +1056,7 @@ public class AdminLogin extends Helper{
 	}
 
 
-//	@Test
+	//@Test
 	public void v_viewConfig() throws Exception{
 		mylogin();
 		expand();
@@ -1061,7 +1091,7 @@ public class AdminLogin extends Helper{
 		}
 		
 	}
-	//@Test
+//	@Test
 	public void w_deleteConfig() throws Exception{
 		mylogin();
 		expand();
@@ -1094,8 +1124,9 @@ public class AdminLogin extends Helper{
 		}else{
 			Assert.fail("resultant message is not displayed");
 		}
-		
-	/*	driver.get(config.getProperty("url"));
+		sleep(2);
+		browser();
+		driver.get(config.getProperty("url"));
 		help.maxbrowser();
 		mylogin();
 		expand();
@@ -1122,91 +1153,19 @@ public class AdminLogin extends Helper{
 			sleep(2);
 		}else{
 			Assert.fail("create button not present");
-		}*/
+		}
 	}	
 		
-		
-		
-	}
-	//@Test
-	public void searchUser() throws Exception{
-		
-		WebElement w =driver.findElement(By.id(admin.getProperty("pagination_next")));
-		ArrayList<String> ar = new ArrayList<String>();
-		while(!w.getAttribute("class").equalsIgnoreCase(admin.getProperty("nextpage_disabled"))){
-			sleep(2);
-			List<WebElement> mylist = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
-			for(int i =0;i<mylist.size();i++){
-				ar.add(mylist.get(i).getText());
-				}
-			w.click();
-		}
-				
-		List<WebElement> mylist1 = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
-		for(int i1 =0;i1<mylist1.size();i1++){
-			ar.add(mylist1.get(i1).getText());
-		
-			}
-		int j = random(ar.size());
-		driver.findElement(By.tagName(admin.getProperty("SearchBox"))).sendKeys(ar.get(j));
-		sleep(1);
-		List<WebElement> tlist = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
-		if(tlist.size()>1){
-			do{
-			List<WebElement> rowList = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableRowtag")));
-			Reporter.log("<p>" +rowList.size());
-			for(int k = 0;k<rowList.size();k++){
-				int count = 0;
-				List<WebElement> dataList = rowList.get(k).findElements(By.tagName(admin.getProperty("tableData_tag")));
-				Reporter.log("<p>" +"dataList Size"+ dataList.size());
-				for(int p = 0;p<dataList.size();p++){
-					if(ar.get(j).equals(dataList.get(p).getText())){
-					
-						Reporter.log("<p>" +dataList.get(p).getText());
-						count++;
-					}
-				}
-				Reporter.log("<p>" +"count outside for"+ count );
-				if(count!=0){
-					Reporter.log("<p>" +"search item found  for "+count+ " times");
-				}else{
-					Reporter.log("<p>" +"searching failed");
-				}
-			}
-			driver.findElement(By.id(admin.getProperty("pagination_next"))).click();
-			sleep(2);
-			}while(!driver.findElement(By.id(admin.getProperty("pagination_next"))).getAttribute("class").equals("paginate_disabled_next"));
-		}else{
-			Reporter.log("<p>" +"No matching records found");
-		}//finishing the search with the item in the displayed table
-		
-		//search with negative scenario
-		int row = 1;
-		int count1=0;
-		for(int q = 0;q<ar.size();q++){
-			count1=0;
-			if(sh6.getCell(5, row).getContents().equalsIgnoreCase(ar.get(q))){
-				count1++;
-			}
-		}
-		if(count1==0){
-			driver.findElement(By.tagName(admin.getProperty("SearchBox"))).clear();
-			sleep(1);
-			driver.findElement(By.tagName(admin.getProperty("SearchBox"))).sendKeys(sh6.getCell(12, row).getContents());
-			sleep(1);
-			List<WebElement> tlist1 = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
-			//Reporter.log("<p>" +tlist1.size());
-			Reporter.log("<p>" +"==========when tried wiht negative scenario=========");
-			if(tlist1.size()==1){
-				Reporter.log("<p>" +"no resultant users are displayed with the give nsearch key");
-			}else{
-				Reporter.log("<p>" +"search box is failed to show the results with the given search key");
-			}
-		}
 	}
 	
-	
-	
+//	@Test
+	public void v_changePassword() throws Exception{
+		mylogin();
+		expand();
+		sleep(4);
+		help.changePassword("srini.sanchana@gmail.com");
+		
+	}
 }
  
 

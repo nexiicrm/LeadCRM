@@ -3,22 +3,14 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-<<<<<<< Updated upstream
-      <class name="src.crm.Researcher">
+      <class name="src.crm.BDE">
         <methods>
+          <include name="LC_TS_46_2_todaysFollowupProposal"/>
+          <include name="beforesuite"/>
+          <include name="afterMethod"/>
           <include name="beforeMethod"/>
-          <include name="beforesuite"/>
-          <include name="f4"/>
         </methods>
-      </class> <!-- src.crm.Researcher -->
-=======
-      <class name="src.crm.Smoke">
-        <methods>
-          <include name="cagement"/>
-          <include name="beforesuite"/>
-        </methods>
-      </class> <!-- src.crm.Smoke -->
->>>>>>> Stashed changes
+      </class> <!-- src.crm.BDE -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

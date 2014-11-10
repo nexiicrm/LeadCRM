@@ -1,442 +1,226 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< Updated upstream
-<testng-results skipped="0" failed="0" total="4" passed="4">
+<testng-results skipped="7" failed="0" total="8" passed="1">
   <reporter-output>
     <line>
-      <![CDATA[<p>===========Leads Upload=========]]>
+      <![CDATA[<p>   ###### Navigate to the page ::: Research On Company########## 
+ ]]>
     </line>
     <line>
-      <![CDATA[<p>Number Elements in List1 : 6]]>
+      <![CDATA[<p> You have Sucessfully navigated to Research On Company]]>
     </line>
     <line>
-      <![CDATA[<p>User Logged in as:Hi ! Researcher]]>
+      <![CDATA[<p> 7]]>
     </line>
     <line>
-      <![CDATA[<p>Please Provide Valid Excel File....!]]>
+      <![CDATA[<p>  The particular Lead is : 568 Angela Morgan Quimba]]>
     </line>
     <line>
-      <![CDATA[<p>Please Provide Valid Excel File....!]]>
+      <![CDATA[<p>  ######### You have Navigated to Form ##########]]>
     </line>
     <line>
-      <![CDATA[<p>===========Leads Upload1=========]]>
+      <![CDATA[<p> ######### Navigated to  ResearchOnCompany Form ##########
+]]>
     </line>
     <line>
-      <![CDATA[<p>Number Elements in List1 : 6]]>
+      <![CDATA[<p> The message :Please Select Company Fund Status is displayed.....]]>
     </line>
     <line>
-      <![CDATA[<p>User Logged in as:Hi ! Researcher]]>
+      <![CDATA[<p> The message : Please Select Company Fund Status. is not displayed and could see error :Please Select Company Fund Status]]>
     </line>
     <line>
-      <![CDATA[<p>Waiting timed out element not foundBy.className: error_msg]]>
+      <![CDATA[<p> The message :Please Select Company Status is displayed.....]]>
     </line>
     <line>
-      <![CDATA[<p>Excel File Uploaded and Leads Saved Successfully....!]]>
+      <![CDATA[<p> The message : Please Select Company Status. is not displayed and could see error :Please Select Company Status]]>
     </line>
     <line>
-      <![CDATA[<p>=================search leads=================]]>
+      <![CDATA[<p> The message :Please Leave a Comment is displayed.....]]>
     </line>
     <line>
-      <![CDATA[<p>=================Expanding tree menu=================]]>
+      <![CDATA[<p> The message : Please Leave a Comment. is not displayed and could see error :Please Leave a Comment]]>
     </line>
     <line>
-      <![CDATA[<p>The reqiured field:Last Name]]>
+      <![CDATA[<p> The message :Segregated Successfully and Lead Moved to Work Phase is displayed.....]]>
     </line>
     <line>
-      <![CDATA[<p>Size of Filter option categories:7]]>
+      <![CDATA[<p> The message : Segregated Successfully and Lead Moved to Work Phase. is not displayed and could see error :Segregated Successfully and Lead Moved to Work Phase]]>
     </line>
     <line>
-      <![CDATA[<p>Filter Option Selected:Choose Company]]>
+      <![CDATA[<p>   ###### Navigate to the page ::: Research On Company########## 
+ ]]>
     </line>
     <line>
-      <![CDATA[<p>No.of options in Choose Company List:382]]>
+      <![CDATA[<p> You have Sucessfully navigated to Research On Company]]>
     </line>
     <line>
-      <![CDATA[<p>Option selected is:Camimbo]]>
+      <![CDATA[<p> The research Lead : 568 Angela Morgan Quimba is not present in Research Phase.]]>
     </line>
     <line>
-      <![CDATA[<p>1 Hicks
-2 Bailey
-3 Cole
-4 Stevens
-5 Snyder
-6 Burton
-7 Mccoy]]>
+      <![CDATA[<p>   ###### Navigate to the page ::: Work on Lead########## 
+ ]]>
     </line>
     <line>
-      <![CDATA[<p>Filter Option Selected:Choose Country]]>
+      <![CDATA[<p> You have Sucessfully navigated to Work on Lead]]>
     </line>
     <line>
-      <![CDATA[<p>No.of options in Choose Country List:118]]>
+      <![CDATA[<p> The research Lead : 568 Angela Morgan Quimba is sucessfully navigated to Work Phase]]>
     </line>
     <line>
-      <![CDATA[<p>Option selected is:Belgium]]>
+      <![CDATA[<p> The track index ::0contains ::568]]>
     </line>
     <line>
-      <![CDATA[<p>1 Palmer
-2 Young
-3 Burns
-4 Wheeler
-5 Stevens
-6 Ferguson
-7 Arnold
-8 Bishop
-9 Pierce
-10 Howard]]>
+      <![CDATA[<p> The track index ::1contains ::Angela Morgan]]>
     </line>
     <line>
-      <![CDATA[<p>Filter Option Selected:Choose City]]>
+      <![CDATA[<p> The track index ::2contains ::Quimba]]>
     </line>
     <line>
-      <![CDATA[<p>No.of options in Choose City List:1854]]>
+      <![CDATA[<p> The track index ::3contains ::Mobile]]>
     </line>
     <line>
-      <![CDATA[<p>Option selected is:Magaria]]>
+      <![CDATA[<p> The track index ::4contains ::9-(230)702-4760]]>
     </line>
     <line>
-      <![CDATA[<p>1 Fields]]>
+      <![CDATA[<p> The track index ::5contains ::Qualified]]>
     </line>
     <line>
-      <![CDATA[<p>Filter Option Selected:Choose Domain]]>
+      <![CDATA[<p> Size is 20 1) Lead Id : 568 2) Name : Angela Morgan 19) Current Status : Qualified]]>
     </line>
     <line>
-      <![CDATA[<p>No.of options in Choose Domain List:22]]>
-    </line>
-    <line>
-      <![CDATA[<p>Option selected is:Domain G]]>
-    </line>
-    <line>
-      <![CDATA[<p>1 euvri
-2 Wood
-3 Torres
-4 Washington
-5 Rogers
-6 Cook
-7 Coleman
-8 Schmidt
-9 Willis
-10 Rodriguez]]>
-    </line>
-    <line>
-      <![CDATA[<p>Filter Option Selected:Choose Campaign]]>
-    </line>
-    <line>
-      <![CDATA[<p>No.of options in Choose Campaign List:41]]>
-    </line>
-    <line>
-      <![CDATA[<p>Option selected is:Check ALL]]>
-    </line>
-    <line>
-      <![CDATA[<p>1 Vasquez
-2 Davis
-3 Bowman
-4 Strauss
-5 Lee
-6 mehatha
-7 tulugu
-8 euvri
-9 Mitchell
-10 Marshall]]>
-    </line>
-    <line>
-      <![CDATA[<p>Filter Option Selected:Choose Service]]>
-    </line>
-    <line>
-      <![CDATA[<p>No.of options in Choose Service List:11]]>
-    </line>
-    <line>
-      <![CDATA[<p>Option selected is:special officer]]>
-    </line>
-    <line>
-      <![CDATA[<p>1 tulugu
-2 euvri]]>
-    </line>
-    <line>
-      <![CDATA[<p>Filter Option Selected:Choose Status]]>
-    </line>
-    <line>
-      <![CDATA[<p>No.of options in Choose Status List:6]]>
-    </line>
-    <line>
-      <![CDATA[<p>Option selected is:Pre Qualified]]>
-    </line>
-    <line>
-      <![CDATA[<p>1 Vasquez
-2 Davis
-3 Bowman
-4 Strauss
-5 Lee
-6 mehatha
-7 tulugu
-8 euvri
-9 Mitchell
-10 Marshall]]>
-    </line>
-    <line>
-      <![CDATA[<p>Number Elements in List1 : 12]]>
-    </line>
-    <line>
-      <![CDATA[<p>old password is:password]]>
-    </line>
-    <line>
-      <![CDATA[<p>Successfully canceled the change password page]]>
-    </line>
-    <line>
-      <![CDATA[<p>Old password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>password]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>New password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>123]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>Confirm password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>sai]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>Old password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>123]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>New password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>123]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>Confirm password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>123]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>Old password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>password]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>New password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>password]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>Confirm password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>password]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>*************************]]>
-    </line>
-    <line>
-      <![CDATA[<p>changed password000]]>
-    </line>
-    <line>
-      <![CDATA[<p>old password is:password]]>
-    </line>
-    <line>
-      <![CDATA[<p>Number Elements in List1 : 12]]>
-    </line>
-    <line>
-      <![CDATA[<p>changed password000]]>
-    </line>
-    <line>
-      <![CDATA[<p>old password is:password]]>
-    </line>
-    <line>
-      <![CDATA[<p>Number Elements in List1 : 12]]>
+      <![CDATA[<p> Trackit comments for Research Phase is successfull.]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="384660" started-at="2014-11-05T14:29:54Z" finished-at="2014-11-05T14:36:19Z">
+  <suite name="Default suite" duration-ms="100279" started-at="2014-11-07T07:41:07Z" finished-at="2014-11-07T07:42:47Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="384660" started-at="2014-11-05T14:29:54Z" finished-at="2014-11-05T14:36:19Z">
-      <class name="src.crm.Researcher">
-        <test-method status="PASS" signature="beforesuite()[pri:0, instance:src.crm.Researcher@18ab963]" name="beforesuite" is-config="true" duration-ms="8114" started-at="2014-11-05T19:59:46Z" finished-at="2014-11-05T19:59:54Z">
+    <test name="Default test" duration-ms="100279" started-at="2014-11-07T07:41:07Z" finished-at="2014-11-07T07:42:47Z">
+      <class name="src.crm.BDE">
+        <test-method status="PASS" signature="beforesuite()[pri:0, instance:src.crm.BDE@1023565]" name="beforesuite" is-config="true" duration-ms="2518" started-at="2014-11-07T13:11:04Z" finished-at="2014-11-07T13:11:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforesuite -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="beforeMethod" is-config="true" duration-ms="19143" started-at="2014-11-05T19:59:54Z" finished-at="2014-11-05T20:00:13Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="30578" started-at="2014-11-07T13:11:07Z" finished-at="2014-11-07T13:11:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="f1()[pri:0, instance:src.crm.Researcher@18ab963]" name="f1" duration-ms="54711" started-at="2014-11-05T20:00:13Z" finished-at="2014-11-05T20:01:08Z">
+        <test-method status="PASS" signature="LC_TS_44_researchOnCompany()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_44_researchOnCompany" duration-ms="68597" started-at="2014-11-07T13:11:38Z" finished-at="2014-11-07T13:12:46Z">
           <reporter-output>
             <line>
-              <![CDATA[<p>===========Leads Upload=========]]>
+              <![CDATA[<p>   ###### Navigate to the page ::: Research On Company########## 
+ ]]>
             </line>
             <line>
-              <![CDATA[<p>Number Elements in List1 : 6]]>
+              <![CDATA[<p> You have Sucessfully navigated to Research On Company]]>
             </line>
             <line>
-              <![CDATA[<p>User Logged in as:Hi ! Researcher]]>
+              <![CDATA[<p> 7]]>
             </line>
             <line>
-              <![CDATA[<p>Please Provide Valid Excel File....!]]>
+              <![CDATA[<p>  The particular Lead is : 568 Angela Morgan Quimba]]>
             </line>
             <line>
-              <![CDATA[<p>Please Provide Valid Excel File....!]]>
+              <![CDATA[<p>  ######### You have Navigated to Form ##########]]>
+            </line>
+            <line>
+              <![CDATA[<p> ######### Navigated to  ResearchOnCompany Form ##########
+]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message :Please Select Company Fund Status is displayed.....]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message : Please Select Company Fund Status. is not displayed and could see error :Please Select Company Fund Status]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message :Please Select Company Status is displayed.....]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message : Please Select Company Status. is not displayed and could see error :Please Select Company Status]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message :Please Leave a Comment is displayed.....]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message : Please Leave a Comment. is not displayed and could see error :Please Leave a Comment]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message :Segregated Successfully and Lead Moved to Work Phase is displayed.....]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message : Segregated Successfully and Lead Moved to Work Phase. is not displayed and could see error :Segregated Successfully and Lead Moved to Work Phase]]>
+            </line>
+            <line>
+              <![CDATA[<p>   ###### Navigate to the page ::: Research On Company########## 
+ ]]>
+            </line>
+            <line>
+              <![CDATA[<p> You have Sucessfully navigated to Research On Company]]>
+            </line>
+            <line>
+              <![CDATA[<p> The research Lead : 568 Angela Morgan Quimba is not present in Research Phase.]]>
+            </line>
+            <line>
+              <![CDATA[<p>   ###### Navigate to the page ::: Work on Lead########## 
+ ]]>
+            </line>
+            <line>
+              <![CDATA[<p> You have Sucessfully navigated to Work on Lead]]>
+            </line>
+            <line>
+              <![CDATA[<p> The research Lead : 568 Angela Morgan Quimba is sucessfully navigated to Work Phase]]>
+            </line>
+            <line>
+              <![CDATA[<p> The track index ::0contains ::568]]>
+            </line>
+            <line>
+              <![CDATA[<p> The track index ::1contains ::Angela Morgan]]>
+            </line>
+            <line>
+              <![CDATA[<p> The track index ::2contains ::Quimba]]>
+            </line>
+            <line>
+              <![CDATA[<p> The track index ::3contains ::Mobile]]>
+            </line>
+            <line>
+              <![CDATA[<p> The track index ::4contains ::9-(230)702-4760]]>
+            </line>
+            <line>
+              <![CDATA[<p> The track index ::5contains ::Qualified]]>
+            </line>
+            <line>
+              <![CDATA[<p> Size is 20 1) Lead Id : 568 2) Name : Angela Morgan 19) Current Status : Qualified]]>
+            </line>
+            <line>
+              <![CDATA[<p> Trackit comments for Research Phase is successfull.]]>
             </line>
           </reporter-output>
-        </test-method> <!-- f1 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="afterMethod" is-config="true" duration-ms="47" started-at="2014-11-05T20:01:08Z" finished-at="2014-11-05T20:01:08Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="beforeMethod" is-config="true" duration-ms="15368" started-at="2014-11-05T20:01:08Z" finished-at="2014-11-05T20:01:23Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="f2()[pri:0, instance:src.crm.Researcher@18ab963]" name="f2" duration-ms="94725" started-at="2014-11-05T20:01:23Z" finished-at="2014-11-05T20:02:58Z">
-          <reporter-output>
-            <line>
-              <![CDATA[<p>===========Leads Upload1=========]]>
-            </line>
-            <line>
-              <![CDATA[<p>Number Elements in List1 : 6]]>
-            </line>
-            <line>
-              <![CDATA[<p>User Logged in as:Hi ! Researcher]]>
-            </line>
-            <line>
-              <![CDATA[<p>Waiting timed out element not foundBy.className: error_msg]]>
-            </line>
-            <line>
-              <![CDATA[<p>Excel File Uploaded and Leads Saved Successfully....!]]>
-=======
-<testng-results skipped="0" failed="1" total="1" passed="0">
-  <reporter-output>
-    <line>
-      <![CDATA[<p>old password is:password]]>
-    </line>
-    <line>
-      <![CDATA[<p>New password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>Confirm password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>New password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>Confirm password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>New password container is avilable]]>
-    </line>
-    <line>
-      <![CDATA[<p>Confirm password container is avilable]]>
-    </line>
-  </reporter-output>
-  <suite name="Default suite" duration-ms="53815" started-at="2014-11-05T12:37:46Z" finished-at="2014-11-05T12:38:39Z">
-    <groups>
-    </groups>
-    <test name="Default test" duration-ms="53815" started-at="2014-11-05T12:37:46Z" finished-at="2014-11-05T12:38:39Z">
-      <class name="src.crm.Smoke">
-        <test-method status="PASS" signature="beforesuite()[pri:0, instance:src.crm.Smoke@8978c7]" name="beforesuite" is-config="true" duration-ms="913" started-at="2014-11-05T18:07:45Z" finished-at="2014-11-05T18:07:46Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforesuite -->
-        <test-method status="FAIL" signature="cagement()[pri:0, instance:src.crm.Smoke@8978c7]" name="cagement" duration-ms="53795" started-at="2014-11-05T18:07:46Z" finished-at="2014-11-05T18:08:39Z">
-          <exception class="org.openqa.selenium.NoSuchElementException">
+        </test-method> <!-- LC_TS_44_researchOnCompany -->
+        <test-method status="FAIL" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:46Z" finished-at="2014-11-07T13:12:46Z">
+          <exception class="org.openqa.selenium.remote.SessionNotFoundException">
             <message>
-              <![CDATA[Unable to locate element: {"method":"id","selector":"tree_menu"}
-Command duration or timeout: 12 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+              <![CDATA[The FirefoxDriver cannot be used after quit() was called.
 Build info: version: '2.44.0', revision: '76d78cf', time: '2014-10-23 20:02:37'
-System info: host: 'pavann', ip: '172.16.10.71', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_67'
-Session ID: efa093c2-6f68-4bce-868f-597d2ab26b21
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=33.0.2}]]]>
+System info: host: 'LAKSHMIPRIYAS', ip: '172.16.10.174', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_40'
+Driver info: driver.version: RemoteWebDriver]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"id","selector":"tree_menu"}
-Command duration or timeout: 12 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+              <![CDATA[org.openqa.selenium.remote.SessionNotFoundException: The FirefoxDriver cannot be used after quit() was called.
 Build info: version: '2.44.0', revision: '76d78cf', time: '2014-10-23 20:02:37'
-System info: host: 'pavann', ip: '172.16.10.71', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_67'
-Session ID: efa093c2-6f68-4bce-868f-597d2ab26b21
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=33.0.2}]
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:393)
-	at org.openqa.selenium.By$ById.findElement(By.java:214)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
-	at src.testUtils.Helper.changePassword(Helper.java:652)
-	at src.crm.Smoke.cagement(Smoke.java:255)
+System info: host: 'LAKSHMIPRIYAS', ip: '172.16.10.174', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_40'
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.firefox.FirefoxDriver$LazyCommandExecutor.execute(FirefoxDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:572)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:614)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions.deleteAllCookies(RemoteWebDriver.java:685)
+	at src.crm.BDE.afterMethod(BDE.java:885)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:786)
 	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
 	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
 	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
@@ -455,352 +239,97 @@ Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cs
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"id","selector":"tree_menu"}
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '2.44.0', revision: '76d78cf', time: '2014-10-23 20:02:37'
-System info: host: 'pavann', ip: '172.16.10.71', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_67'
-Driver info: driver.version: unknown
-	at <anonymous class>.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous3658404246597104744webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
-	at <anonymous class>.FirefoxDriver.prototype.findElement(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous3658404246597104744webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
-	at <anonymous class>.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous3658404246597104744webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
-	at <anonymous class>.DelayedCommand.prototype.executeInternal_(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous3658404246597104744webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
-	at <anonymous class>.DelayedCommand.prototype.execute/<(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous3658404246597104744webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
-          <reporter-output>
-            <line>
-              <![CDATA[<p>old password is:password]]>
-            </line>
-            <line>
-              <![CDATA[<p>New password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>Confirm password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>New password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>Confirm password container is avilable]]>
->>>>>>> Stashed changes
-            </line>
-          </reporter-output>
-        </test-method> <!-- f2 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="afterMethod" is-config="true" duration-ms="2184" started-at="2014-11-05T20:02:58Z" finished-at="2014-11-05T20:03:00Z">
+          </exception> <!-- org.openqa.selenium.remote.SessionNotFoundException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="beforeMethod" is-config="true" duration-ms="14853" started-at="2014-11-05T20:03:00Z" finished-at="2014-11-05T20:03:15Z">
+        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="f3()[pri:0, instance:src.crm.Researcher@18ab963]" name="f3" duration-ms="94134" started-at="2014-11-05T20:03:15Z" finished-at="2014-11-05T20:04:49Z">
-          <reporter-output>
-            <line>
-<<<<<<< Updated upstream
-              <![CDATA[<p>=================search leads=================]]>
-            </line>
-            <line>
-              <![CDATA[<p>=================Expanding tree menu=================]]>
-            </line>
-            <line>
-              <![CDATA[<p>The reqiured field:Last Name]]>
-            </line>
-            <line>
-              <![CDATA[<p>Size of Filter option categories:7]]>
-            </line>
-            <line>
-              <![CDATA[<p>Filter Option Selected:Choose Company]]>
-            </line>
-            <line>
-              <![CDATA[<p>No.of options in Choose Company List:382]]>
-            </line>
-            <line>
-              <![CDATA[<p>Option selected is:Camimbo]]>
-            </line>
-            <line>
-              <![CDATA[<p>1 Hicks
-2 Bailey
-3 Cole
-4 Stevens
-5 Snyder
-6 Burton
-7 Mccoy]]>
-            </line>
-            <line>
-              <![CDATA[<p>Filter Option Selected:Choose Country]]>
-            </line>
-            <line>
-              <![CDATA[<p>No.of options in Choose Country List:118]]>
-            </line>
-            <line>
-              <![CDATA[<p>Option selected is:Belgium]]>
-            </line>
-            <line>
-              <![CDATA[<p>1 Palmer
-2 Young
-3 Burns
-4 Wheeler
-5 Stevens
-6 Ferguson
-7 Arnold
-8 Bishop
-9 Pierce
-10 Howard]]>
-            </line>
-            <line>
-              <![CDATA[<p>Filter Option Selected:Choose City]]>
-            </line>
-            <line>
-              <![CDATA[<p>No.of options in Choose City List:1854]]>
-            </line>
-            <line>
-              <![CDATA[<p>Option selected is:Magaria]]>
-            </line>
-            <line>
-              <![CDATA[<p>1 Fields]]>
-            </line>
-            <line>
-              <![CDATA[<p>Filter Option Selected:Choose Domain]]>
-            </line>
-            <line>
-              <![CDATA[<p>No.of options in Choose Domain List:22]]>
-            </line>
-            <line>
-              <![CDATA[<p>Option selected is:Domain G]]>
-            </line>
-            <line>
-              <![CDATA[<p>1 euvri
-2 Wood
-3 Torres
-4 Washington
-5 Rogers
-6 Cook
-7 Coleman
-8 Schmidt
-9 Willis
-10 Rodriguez]]>
-            </line>
-            <line>
-              <![CDATA[<p>Filter Option Selected:Choose Campaign]]>
-            </line>
-            <line>
-              <![CDATA[<p>No.of options in Choose Campaign List:41]]>
-            </line>
-            <line>
-              <![CDATA[<p>Option selected is:Check ALL]]>
-            </line>
-            <line>
-              <![CDATA[<p>1 Vasquez
-2 Davis
-3 Bowman
-4 Strauss
-5 Lee
-6 mehatha
-7 tulugu
-8 euvri
-9 Mitchell
-10 Marshall]]>
-            </line>
-            <line>
-              <![CDATA[<p>Filter Option Selected:Choose Service]]>
-            </line>
-            <line>
-              <![CDATA[<p>No.of options in Choose Service List:11]]>
-            </line>
-            <line>
-              <![CDATA[<p>Option selected is:special officer]]>
-            </line>
-            <line>
-              <![CDATA[<p>1 tulugu
-2 euvri]]>
-            </line>
-            <line>
-              <![CDATA[<p>Filter Option Selected:Choose Status]]>
-            </line>
-            <line>
-              <![CDATA[<p>No.of options in Choose Status List:6]]>
-            </line>
-            <line>
-              <![CDATA[<p>Option selected is:Pre Qualified]]>
-            </line>
-            <line>
-              <![CDATA[<p>1 Vasquez
-2 Davis
-3 Bowman
-4 Strauss
-5 Lee
-6 mehatha
-7 tulugu
-8 euvri
-9 Mitchell
-10 Marshall]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- f3 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="afterMethod" is-config="true" duration-ms="70" started-at="2014-11-05T20:04:49Z" finished-at="2014-11-05T20:04:49Z">
+        <test-method status="SKIP" signature="LC_TS_45_2_workPhaseForLaterDate()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_45_2_workPhaseForLaterDate" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="beforeMethod" is-config="true" duration-ms="15502" started-at="2014-11-05T20:04:49Z" finished-at="2014-11-05T20:05:05Z">
+        </test-method> <!-- LC_TS_45_2_workPhaseForLaterDate -->
+        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="f5()[pri:0, instance:src.crm.Researcher@18ab963]" name="f5" duration-ms="72503" started-at="2014-11-05T20:05:05Z" finished-at="2014-11-05T20:06:17Z">
-          <reporter-output>
-            <line>
-              <![CDATA[<p>Number Elements in List1 : 12]]>
-            </line>
-            <line>
-              <![CDATA[<p>old password is:password]]>
-            </line>
-            <line>
-              <![CDATA[<p>Successfully canceled the change password page]]>
-            </line>
-            <line>
-              <![CDATA[<p>Old password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>password]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>New password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>123]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>Confirm password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>sai]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>Old password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>123]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>New password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>123]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>Confirm password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>123]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>Old password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>password]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>New password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>password]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>Confirm password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>password]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>*************************]]>
-            </line>
-            <line>
-              <![CDATA[<p>changed password000]]>
-            </line>
-            <line>
-              <![CDATA[<p>old password is:password]]>
-            </line>
-            <line>
-              <![CDATA[<p>Number Elements in List1 : 12]]>
-            </line>
-            <line>
-              <![CDATA[<p>changed password000]]>
-            </line>
-            <line>
-              <![CDATA[<p>old password is:password]]>
-            </line>
-            <line>
-              <![CDATA[<p>Number Elements in List1 : 12]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- f5 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.Researcher@18ab963]" name="afterMethod" is-config="true" duration-ms="1389" started-at="2014-11-05T20:06:17Z" finished-at="2014-11-05T20:06:19Z">
+        <test-method status="SKIP" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-      </class> <!-- src.crm.Researcher -->
-=======
-              <![CDATA[<p>New password container is avilable]]>
-            </line>
-            <line>
-              <![CDATA[<p>Confirm password container is avilable]]>
-            </line>
+        <test-method status="SKIP" signature="LC_TS_45_2_workPhaseForLaterDate()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_45_2_workPhaseForLaterDate" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
           </reporter-output>
-        </test-method> <!-- cagement -->
-      </class> <!-- src.crm.Smoke -->
->>>>>>> Stashed changes
+        </test-method> <!-- LC_TS_45_2_workPhaseForLaterDate -->
+        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="SKIP" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="SKIP" signature="LC_TS_46_2_todaysFollowupProposal()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_46_2_todaysFollowupProposal" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LC_TS_46_2_todaysFollowupProposal -->
+        <test-method status="SKIP" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="SKIP" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="SKIP" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="SKIP" signature="LC_TS_47_TC004_confirmLeadsOfTodaysDate()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_47_TC004_confirmLeadsOfTodaysDate" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LC_TS_47_TC004_confirmLeadsOfTodaysDate -->
+        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="SKIP" signature="LC_TS_47_TC002_AllFollowupsQuoteUpload()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_47_TC002_AllFollowupsQuoteUpload" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LC_TS_47_TC002_AllFollowupsQuoteUpload -->
+        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="SKIP" signature="LC_TS_47_TC006_coldStorage()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_47_TC006_coldStorage" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LC_TS_47_TC006_coldStorage -->
+        <test-method status="SKIP" signature="LC_TS_47_TC005_UIToFieldCheck()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_47_TC005_UIToFieldCheck" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LC_TS_47_TC005_UIToFieldCheck -->
+        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="SKIP" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="SKIP" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- src.crm.BDE -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
