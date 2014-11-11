@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="7" failed="0" total="8" passed="1">
+<testng-results skipped="0" failed="1" total="5" passed="4">
   <reporter-output>
     <line>
       <![CDATA[<p>   ###### Navigate to the page ::: Research On Company########## 
@@ -12,7 +12,7 @@
       <![CDATA[<p> 7]]>
     </line>
     <line>
-      <![CDATA[<p>  The particular Lead is : 568 Angela Morgan Quimba]]>
+      <![CDATA[<p>  The particular Lead is : 1086 Peter Daniels Cogidoo]]>
     </line>
     <line>
       <![CDATA[<p>  ######### You have Navigated to Form ##########]]>
@@ -53,7 +53,85 @@
       <![CDATA[<p> You have Sucessfully navigated to Research On Company]]>
     </line>
     <line>
-      <![CDATA[<p> The research Lead : 568 Angela Morgan Quimba is not present in Research Phase.]]>
+      <![CDATA[<p> 7]]>
+    </line>
+    <line>
+      <![CDATA[<p>  The particular Lead is : 1087 Amanda Fisher Photobug]]>
+    </line>
+    <line>
+      <![CDATA[<p>  ######### You have Navigated to Form ##########]]>
+    </line>
+    <line>
+      <![CDATA[<p> ######### Navigated to  ResearchOnCompany Form ##########
+]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message :Please Select Company Fund Status is displayed.....]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message : Please Select Company Fund Status. is not displayed and could see error :Please Select Company Fund Status]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message :Please Select Company Status is displayed.....]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message : Please Select Company Status. is not displayed and could see error :Please Select Company Status]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message :Please Leave a Comment is displayed.....]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message : Please Leave a Comment. is not displayed and could see error :Please Leave a Comment]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message :Segregated Successfully and Lead Moved to Work Phase is displayed.....]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message : Segregated Successfully and Lead Moved to Work Phase. is not displayed and could see error :Segregated Successfully and Lead Moved to Work Phase]]>
+    </line>
+    <line>
+      <![CDATA[<p>   ###### Navigate to the page ::: Research On Company########## 
+ ]]>
+    </line>
+    <line>
+      <![CDATA[<p> You have Sucessfully navigated to Research On Company]]>
+    </line>
+    <line>
+      <![CDATA[<p> 7]]>
+    </line>
+    <line>
+      <![CDATA[<p>  The particular Lead is : 1081 Helen Williamson Wordify]]>
+    </line>
+    <line>
+      <![CDATA[<p>  ######### You have Navigated to Form ##########]]>
+    </line>
+    <line>
+      <![CDATA[<p> ######### Navigated to  ResearchOnCompany Form ##########
+]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message :Please Select Company Fund Status is displayed.....]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message : Please Select Company Fund Status. is not displayed and could see error :Please Select Company Fund Status]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message :Please Select Company Status is displayed.....]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message : Please Select Company Status. is not displayed and could see error :Please Select Company Status]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message :Please Leave a Comment is displayed.....]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message : Please Leave a Comment. is not displayed and could see error :Please Leave a Comment]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message :Segregated Successfully and Lead Moved to Work Phase is displayed.....]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message : Segregated Successfully and Lead Moved to Work Phase. is not displayed and could see error :Segregated Successfully and Lead Moved to Work Phase]]>
     </line>
     <line>
       <![CDATA[<p>   ###### Navigate to the page ::: Work on Lead########## 
@@ -63,47 +141,63 @@
       <![CDATA[<p> You have Sucessfully navigated to Work on Lead]]>
     </line>
     <line>
-      <![CDATA[<p> The research Lead : 568 Angela Morgan Quimba is sucessfully navigated to Work Phase]]>
+      <![CDATA[<p> 7]]>
     </line>
     <line>
-      <![CDATA[<p> The track index ::0contains ::568]]>
+      <![CDATA[<p>  The particular Lead is : 1086 Peter Daniels Cogidoo]]>
     </line>
     <line>
-      <![CDATA[<p> The track index ::1contains ::Angela Morgan]]>
+      <![CDATA[<p>  ######### You have Navigated to Form ##########]]>
     </line>
     <line>
-      <![CDATA[<p> The track index ::2contains ::Quimba]]>
+      <![CDATA[<p> The message :Please Select FollowUp Type.... is displayed.....]]>
     </line>
     <line>
-      <![CDATA[<p> The track index ::3contains ::Mobile]]>
+      <![CDATA[<p> The message : Please Select FollowUp Type..... is not displayed and could see error :Please Select FollowUp Type....]]>
     </line>
     <line>
-      <![CDATA[<p> The track index ::4contains ::9-(230)702-4760]]>
+      <![CDATA[<p> The message :Please Leave A Comment.... is displayed.....]]>
     </line>
     <line>
-      <![CDATA[<p> The track index ::5contains ::Qualified]]>
+      <![CDATA[<p> The message : Please Leave A Comment..... is not displayed and could see error :Please Leave A Comment....]]>
     </line>
     <line>
-      <![CDATA[<p> Size is 20 1) Lead Id : 568 2) Name : Angela Morgan 19) Current Status : Qualified]]>
+      <![CDATA[<p> The message :Please Enter Next FollowUp Date.... is displayed.....]]>
     </line>
     <line>
-      <![CDATA[<p> Trackit comments for Research Phase is successfull.]]>
+      <![CDATA[<p> The message : Please Enter Next FollowUp Date..... is not displayed and could see error :Please Enter Next FollowUp Date....]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message :Successfully Updated... is displayed.....]]>
+    </line>
+    <line>
+      <![CDATA[<p> The message : Successfully Updated.... is not displayed and could see error :Successfully Updated...]]>
+    </line>
+    <line>
+      <![CDATA[<p>   ###### Navigate to the page ::: Today's FollowUp########## 
+ ]]>
+    </line>
+    <line>
+      <![CDATA[<p> You have Sucessfully navigated to Today's FollowUp]]>
+    </line>
+    <line>
+      <![CDATA[<p> The particular Lead is : 1086 Peter Daniels Cogidoo]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="100279" started-at="2014-11-07T07:41:07Z" finished-at="2014-11-07T07:42:47Z">
+  <suite name="Default suite" duration-ms="366954" started-at="2014-11-07T12:05:28Z" finished-at="2014-11-07T12:11:35Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="100279" started-at="2014-11-07T07:41:07Z" finished-at="2014-11-07T07:42:47Z">
+    <test name="Default test" duration-ms="366954" started-at="2014-11-07T12:05:28Z" finished-at="2014-11-07T12:11:35Z">
       <class name="src.crm.BDE">
-        <test-method status="PASS" signature="beforesuite()[pri:0, instance:src.crm.BDE@1023565]" name="beforesuite" is-config="true" duration-ms="2518" started-at="2014-11-07T13:11:04Z" finished-at="2014-11-07T13:11:07Z">
+        <test-method status="PASS" signature="beforesuite()[pri:0, instance:src.crm.BDE@1023565]" name="beforesuite" is-config="true" duration-ms="3209" started-at="2014-11-07T17:35:25Z" finished-at="2014-11-07T17:35:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforesuite -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="30578" started-at="2014-11-07T13:11:07Z" finished-at="2014-11-07T13:11:38Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="42560" started-at="2014-11-07T17:35:28Z" finished-at="2014-11-07T17:36:11Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="LC_TS_44_researchOnCompany()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_44_researchOnCompany" duration-ms="68597" started-at="2014-11-07T13:11:38Z" finished-at="2014-11-07T13:12:46Z">
+        <test-method status="PASS" signature="LC_TS_44_researchOnCompany()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_44_researchOnCompany" duration-ms="34727" started-at="2014-11-07T17:36:11Z" finished-at="2014-11-07T17:36:46Z">
           <reporter-output>
             <line>
               <![CDATA[<p>   ###### Navigate to the page ::: Research On Company########## 
@@ -116,7 +210,7 @@
               <![CDATA[<p> 7]]>
             </line>
             <line>
-              <![CDATA[<p>  The particular Lead is : 568 Angela Morgan Quimba]]>
+              <![CDATA[<p>  The particular Lead is : 1086 Peter Daniels Cogidoo]]>
             </line>
             <line>
               <![CDATA[<p>  ######### You have Navigated to Form ##########]]>
@@ -149,6 +243,18 @@
             <line>
               <![CDATA[<p> The message : Segregated Successfully and Lead Moved to Work Phase. is not displayed and could see error :Segregated Successfully and Lead Moved to Work Phase]]>
             </line>
+          </reporter-output>
+        </test-method> <!-- LC_TS_44_researchOnCompany -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="52" started-at="2014-11-07T17:36:46Z" finished-at="2014-11-07T17:36:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="26593" started-at="2014-11-07T17:36:46Z" finished-at="2014-11-07T17:37:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="LC_TS_44_researchOnCompany()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_44_researchOnCompany" duration-ms="33619" started-at="2014-11-07T17:37:12Z" finished-at="2014-11-07T17:37:46Z">
+          <reporter-output>
             <line>
               <![CDATA[<p>   ###### Navigate to the page ::: Research On Company########## 
  ]]>
@@ -157,8 +263,110 @@
               <![CDATA[<p> You have Sucessfully navigated to Research On Company]]>
             </line>
             <line>
-              <![CDATA[<p> The research Lead : 568 Angela Morgan Quimba is not present in Research Phase.]]>
+              <![CDATA[<p> 7]]>
             </line>
+            <line>
+              <![CDATA[<p>  The particular Lead is : 1087 Amanda Fisher Photobug]]>
+            </line>
+            <line>
+              <![CDATA[<p>  ######### You have Navigated to Form ##########]]>
+            </line>
+            <line>
+              <![CDATA[<p> ######### Navigated to  ResearchOnCompany Form ##########
+]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message :Please Select Company Fund Status is displayed.....]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message : Please Select Company Fund Status. is not displayed and could see error :Please Select Company Fund Status]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message :Please Select Company Status is displayed.....]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message : Please Select Company Status. is not displayed and could see error :Please Select Company Status]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message :Please Leave a Comment is displayed.....]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message : Please Leave a Comment. is not displayed and could see error :Please Leave a Comment]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message :Segregated Successfully and Lead Moved to Work Phase is displayed.....]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message : Segregated Successfully and Lead Moved to Work Phase. is not displayed and could see error :Segregated Successfully and Lead Moved to Work Phase]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- LC_TS_44_researchOnCompany -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="162" started-at="2014-11-07T17:37:46Z" finished-at="2014-11-07T17:37:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="37083" started-at="2014-11-07T17:37:46Z" finished-at="2014-11-07T17:38:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="LC_TS_44_researchOnCompany()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_44_researchOnCompany" duration-ms="33963" started-at="2014-11-07T17:38:23Z" finished-at="2014-11-07T17:38:57Z">
+          <reporter-output>
+            <line>
+              <![CDATA[<p>   ###### Navigate to the page ::: Research On Company########## 
+ ]]>
+            </line>
+            <line>
+              <![CDATA[<p> You have Sucessfully navigated to Research On Company]]>
+            </line>
+            <line>
+              <![CDATA[<p> 7]]>
+            </line>
+            <line>
+              <![CDATA[<p>  The particular Lead is : 1081 Helen Williamson Wordify]]>
+            </line>
+            <line>
+              <![CDATA[<p>  ######### You have Navigated to Form ##########]]>
+            </line>
+            <line>
+              <![CDATA[<p> ######### Navigated to  ResearchOnCompany Form ##########
+]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message :Please Select Company Fund Status is displayed.....]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message : Please Select Company Fund Status. is not displayed and could see error :Please Select Company Fund Status]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message :Please Select Company Status is displayed.....]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message : Please Select Company Status. is not displayed and could see error :Please Select Company Status]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message :Please Leave a Comment is displayed.....]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message : Please Leave a Comment. is not displayed and could see error :Please Leave a Comment]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message :Segregated Successfully and Lead Moved to Work Phase is displayed.....]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message : Segregated Successfully and Lead Moved to Work Phase. is not displayed and could see error :Segregated Successfully and Lead Moved to Work Phase]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- LC_TS_44_researchOnCompany -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="132" started-at="2014-11-07T17:38:57Z" finished-at="2014-11-07T17:38:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="42015" started-at="2014-11-07T17:38:57Z" finished-at="2014-11-07T17:39:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="LC_TS_45_1_workPhaseForTodaysDate()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_45_1_workPhaseForTodaysDate" duration-ms="39059" started-at="2014-11-07T17:39:39Z" finished-at="2014-11-07T17:40:18Z">
+          <reporter-output>
             <line>
               <![CDATA[<p>   ###### Navigate to the page ::: Work on Lead########## 
  ]]>
@@ -167,60 +375,88 @@
               <![CDATA[<p> You have Sucessfully navigated to Work on Lead]]>
             </line>
             <line>
-              <![CDATA[<p> The research Lead : 568 Angela Morgan Quimba is sucessfully navigated to Work Phase]]>
+              <![CDATA[<p> 7]]>
             </line>
             <line>
-              <![CDATA[<p> The track index ::0contains ::568]]>
+              <![CDATA[<p>  The particular Lead is : 1086 Peter Daniels Cogidoo]]>
             </line>
             <line>
-              <![CDATA[<p> The track index ::1contains ::Angela Morgan]]>
+              <![CDATA[<p>  ######### You have Navigated to Form ##########]]>
             </line>
             <line>
-              <![CDATA[<p> The track index ::2contains ::Quimba]]>
+              <![CDATA[<p> The message :Please Select FollowUp Type.... is displayed.....]]>
             </line>
             <line>
-              <![CDATA[<p> The track index ::3contains ::Mobile]]>
+              <![CDATA[<p> The message : Please Select FollowUp Type..... is not displayed and could see error :Please Select FollowUp Type....]]>
             </line>
             <line>
-              <![CDATA[<p> The track index ::4contains ::9-(230)702-4760]]>
+              <![CDATA[<p> The message :Please Leave A Comment.... is displayed.....]]>
             </line>
             <line>
-              <![CDATA[<p> The track index ::5contains ::Qualified]]>
+              <![CDATA[<p> The message : Please Leave A Comment..... is not displayed and could see error :Please Leave A Comment....]]>
             </line>
             <line>
-              <![CDATA[<p> Size is 20 1) Lead Id : 568 2) Name : Angela Morgan 19) Current Status : Qualified]]>
+              <![CDATA[<p> The message :Please Enter Next FollowUp Date.... is displayed.....]]>
             </line>
             <line>
-              <![CDATA[<p> Trackit comments for Research Phase is successfull.]]>
+              <![CDATA[<p> The message : Please Enter Next FollowUp Date..... is not displayed and could see error :Please Enter Next FollowUp Date....]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message :Successfully Updated... is displayed.....]]>
+            </line>
+            <line>
+              <![CDATA[<p> The message : Successfully Updated.... is not displayed and could see error :Successfully Updated...]]>
             </line>
           </reporter-output>
-        </test-method> <!-- LC_TS_44_researchOnCompany -->
-        <test-method status="FAIL" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:46Z" finished-at="2014-11-07T13:12:46Z">
-          <exception class="org.openqa.selenium.remote.SessionNotFoundException">
+        </test-method> <!-- LC_TS_45_1_workPhaseForTodaysDate -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="47" started-at="2014-11-07T17:40:18Z" finished-at="2014-11-07T17:40:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="54318" started-at="2014-11-07T17:40:18Z" finished-at="2014-11-07T17:41:13Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="FAIL" signature="LC_TS_46_2_todaysFollowupProposal()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_46_2_todaysFollowupProposal" duration-ms="22393" started-at="2014-11-07T17:41:13Z" finished-at="2014-11-07T17:41:35Z">
+          <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
-              <![CDATA[The FirefoxDriver cannot be used after quit() was called.
+              <![CDATA[Unable to locate element: {"method":"id","selector":"result_msg_div"}
+Command duration or timeout: 40 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.44.0', revision: '76d78cf', time: '2014-10-23 20:02:37'
-System info: host: 'LAKSHMIPRIYAS', ip: '172.16.10.174', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_40'
-Driver info: driver.version: RemoteWebDriver]]>
+System info: host: 'LAKSHMIPRIYAS', ip: '192.168.1.143', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_40'
+Session ID: 1b448d0b-4a84-46ed-816f-e7943d1fcec5
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=34.0}]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.remote.SessionNotFoundException: The FirefoxDriver cannot be used after quit() was called.
+              <![CDATA[org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"id","selector":"result_msg_div"}
+Command duration or timeout: 40 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.44.0', revision: '76d78cf', time: '2014-10-23 20:02:37'
-System info: host: 'LAKSHMIPRIYAS', ip: '172.16.10.174', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_40'
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.firefox.FirefoxDriver$LazyCommandExecutor.execute(FirefoxDriver.java:359)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:572)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:614)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions.deleteAllCookies(RemoteWebDriver.java:685)
-	at src.crm.BDE.afterMethod(BDE.java:885)
+System info: host: 'LAKSHMIPRIYAS', ip: '192.168.1.143', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_40'
+Session ID: 1b448d0b-4a84-46ed-816f-e7943d1fcec5
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=34.0}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:393)
+	at org.openqa.selenium.By$ById.findElement(By.java:214)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at src.crm.BDE.submitMessage(BDE.java:115)
+	at src.crm.BDE.LC_TS_46_2_todaysFollowupProposal(BDE.java:511)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
 	at java.lang.reflect.Method.invoke(Unknown Source)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
-	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:786)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
 	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
 	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
 	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
@@ -239,93 +475,33 @@ Driver info: driver.version: RemoteWebDriver
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"id","selector":"result_msg_div"}
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.44.0', revision: '76d78cf', time: '2014-10-23 20:02:37'
+System info: host: 'LAKSHMIPRIYAS', ip: '192.168.1.143', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_40'
+Driver info: driver.version: unknown
+	at <anonymous class>.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/Admin/AppData/Local/Temp/anonymous5536937399015962196webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+	at <anonymous class>.FirefoxDriver.prototype.findElement(file:///C:/Users/Admin/AppData/Local/Temp/anonymous5536937399015962196webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
+	at <anonymous class>.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/Admin/AppData/Local/Temp/anonymous5536937399015962196webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+	at <anonymous class>.DelayedCommand.prototype.executeInternal_(file:///C:/Users/Admin/AppData/Local/Temp/anonymous5536937399015962196webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+	at <anonymous class>.DelayedCommand.prototype.execute/<(file:///C:/Users/Admin/AppData/Local/Temp/anonymous5536937399015962196webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.remote.SessionNotFoundException -->
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="SKIP" signature="LC_TS_45_2_workPhaseForLaterDate()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_45_2_workPhaseForLaterDate" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- LC_TS_45_2_workPhaseForLaterDate -->
-        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="SKIP" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="SKIP" signature="LC_TS_45_2_workPhaseForLaterDate()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_45_2_workPhaseForLaterDate" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- LC_TS_45_2_workPhaseForLaterDate -->
-        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="SKIP" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="SKIP" signature="LC_TS_46_2_todaysFollowupProposal()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_46_2_todaysFollowupProposal" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
+            <line>
+              <![CDATA[<p>   ###### Navigate to the page ::: Today's FollowUp########## 
+ ]]>
+            </line>
+            <line>
+              <![CDATA[<p> You have Sucessfully navigated to Today's FollowUp]]>
+            </line>
+            <line>
+              <![CDATA[<p> The particular Lead is : 1086 Peter Daniels Cogidoo]]>
+            </line>
           </reporter-output>
         </test-method> <!-- LC_TS_46_2_todaysFollowupProposal -->
-        <test-method status="SKIP" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="SKIP" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="SKIP" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="SKIP" signature="LC_TS_47_TC004_confirmLeadsOfTodaysDate()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_47_TC004_confirmLeadsOfTodaysDate" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- LC_TS_47_TC004_confirmLeadsOfTodaysDate -->
-        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="SKIP" signature="LC_TS_47_TC002_AllFollowupsQuoteUpload()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_47_TC002_AllFollowupsQuoteUpload" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- LC_TS_47_TC002_AllFollowupsQuoteUpload -->
-        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="SKIP" signature="LC_TS_47_TC006_coldStorage()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_47_TC006_coldStorage" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- LC_TS_47_TC006_coldStorage -->
-        <test-method status="SKIP" signature="LC_TS_47_TC005_UIToFieldCheck()[pri:0, instance:src.crm.BDE@1023565]" name="LC_TS_47_TC005_UIToFieldCheck" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- LC_TS_47_TC005_UIToFieldCheck -->
-        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:src.crm.BDE@1023565]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="SKIP" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="SKIP" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="0" started-at="2014-11-07T13:12:47Z" finished-at="2014-11-07T13:12:47Z">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.crm.BDE@1023565]" name="afterMethod" is-config="true" duration-ms="60" started-at="2014-11-07T17:41:35Z" finished-at="2014-11-07T17:41:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->

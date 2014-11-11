@@ -6,14 +6,9 @@
       <class name="src.crm.BDE">
         <methods>
           <include name="LC_TS_46_2_todaysFollowupProposal"/>
-          <include name="LC_TS_45_2_workPhaseForLaterDate"/>
-          <include name="LC_TS_47_TC002_AllFollowupsQuoteUpload"/>
           <include name="beforesuite"/>
-          <include name="LC_TS_47_TC004_confirmLeadsOfTodaysDate"/>
           <include name="afterMethod"/>
-          <include name="LC_TS_47_TC005_UIToFieldCheck"/>
           <include name="beforeMethod"/>
-          <include name="LC_TS_47_TC006_coldStorage"/>
         </methods>
       </class> <!-- src.crm.BDE -->
     </classes>

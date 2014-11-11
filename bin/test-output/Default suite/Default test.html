@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/7</td>
+<td>Tests passed/Failed/Skipped:</td><td>4/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Nov 07 13:11:07 IST 2014</td>
+<td>Started on:</td><td>Fri Nov 07 17:35:28 IST 2014</td>
 </tr>
-<tr><td>Total time:</td><td>100 seconds (100279 ms)</td>
+<tr><td>Total time:</td><td>366 seconds (366954 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -68,31 +68,51 @@ function toggleAllBoxes() {
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
 <table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED CONFIGURATIONS</b></td></tr>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='src.crm.BDE.afterMethod()'><b>afterMethod</b><br>Test class: src.crm.BDE</td>
-<td><div><pre>org.openqa.selenium.remote.SessionNotFoundException: The FirefoxDriver cannot be used after quit() was called.
+<td title='src.crm.BDE.LC_TS_46_2_todaysFollowupProposal()'><b>LC_TS_46_2_todaysFollowupProposal</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-2864487" onClick='toggleBox("Output-2864487", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2864487" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2864487">
+<p>   ###### Navigate to the page ::: Today's FollowUp########## 
+ <br/>
+<p> You have Sucessfully navigated to Today's FollowUp<br/>
+<p> The particular Lead is : 1086 Peter Daniels Cogidoo<br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;result_msg_div&quot;}
+Command duration or timeout: 40 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:02:37&apos;
-System info: host: &apos;LAKSHMIPRIYAS&apos;, ip: &apos;172.16.10.174&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_40&apos;
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.firefox.FirefoxDriver$LazyCommandExecutor.execute(FirefoxDriver.java:359)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:572)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:614)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions.deleteAllCookies(RemoteWebDriver.java:685)
-	at src.crm.BDE.afterMethod(BDE.java:885)
+System info: host: &apos;LAKSHMIPRIYAS&apos;, ip: &apos;192.168.1.143&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_40&apos;
+Session ID: 1b448d0b-4a84-46ed-816f-e7943d1fcec5
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=34.0}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:393)
+	at org.openqa.selenium.By$ById.findElement(By.java:214)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at src.crm.BDE.submitMessage(BDE.java:115)
+	at src.crm.BDE.LC_TS_46_2_todaysFollowupProposal(BDE.java:511)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
 	at java.lang.reflect.Method.invoke(Unknown Source)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
-	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:786)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
 	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
 	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
 	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
@@ -111,24 +131,44 @@ Driver info: driver.version: RemoteWebDriver
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div><a href='#' onClick='toggleBox("stack-trace2909886", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace2909886'><pre>org.openqa.selenium.remote.SessionNotFoundException: The FirefoxDriver cannot be used after quit() was called.
+Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;result_msg_div&quot;}
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:02:37&apos;
-System info: host: &apos;LAKSHMIPRIYAS&apos;, ip: &apos;172.16.10.174&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_40&apos;
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.firefox.FirefoxDriver$LazyCommandExecutor.execute(FirefoxDriver.java:359)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:572)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:614)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions.deleteAllCookies(RemoteWebDriver.java:685)
-	at src.crm.BDE.afterMethod(BDE.java:885)
+System info: host: &apos;LAKSHMIPRIYAS&apos;, ip: &apos;192.168.1.143&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_40&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/Admin/AppData/Local/Temp/anonymous5536937399015962196webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElement(file:///C:/Users/Admin/AppData/Local/Temp/anonymous5536937399015962196webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/Admin/AppData/Local/Temp/anonymous5536937399015962196webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///C:/Users/Admin/AppData/Local/Temp/anonymous5536937399015962196webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///C:/Users/Admin/AppData/Local/Temp/anonymous5536937399015962196webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
+</pre></div><a href='#' onClick='toggleBox("stack-trace2864487", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2864487'><pre>org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;result_msg_div&quot;}
+Command duration or timeout: 40 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:02:37&apos;
+System info: host: &apos;LAKSHMIPRIYAS&apos;, ip: &apos;192.168.1.143&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_40&apos;
+Session ID: 1b448d0b-4a84-46ed-816f-e7943d1fcec5
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=34.0}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:393)
+	at org.openqa.selenium.By$ById.findElement(By.java:214)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at src.crm.BDE.submitMessage(BDE.java:115)
+	at src.crm.BDE.LC_TS_46_2_todaysFollowupProposal(BDE.java:511)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
 	at java.lang.reflect.Method.invoke(Unknown Source)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
-	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:786)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
 	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
 	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
 	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
@@ -147,86 +187,18 @@ Driver info: driver.version: RemoteWebDriver
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;result_msg_div&quot;}
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:02:37&apos;
+System info: host: &apos;LAKSHMIPRIYAS&apos;, ip: &apos;192.168.1.143&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_40&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/Admin/AppData/Local/Temp/anonymous5536937399015962196webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElement(file:///C:/Users/Admin/AppData/Local/Temp/anonymous5536937399015962196webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/Admin/AppData/Local/Temp/anonymous5536937399015962196webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///C:/Users/Admin/AppData/Local/Temp/anonymous5536937399015962196webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///C:/Users/Admin/AppData/Local/Temp/anonymous5536937399015962196webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
 </pre></div></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-</table><p>
-<table width='100%' border='1' class='invocation-skipped'>
-<tr><td colspan='4' align='center'><b>SKIPPED CONFIGURATIONS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='src.crm.BDE.beforeMethod()'><b>beforeMethod</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-<tr>
-<td title='src.crm.BDE.beforeMethod()'><b>beforeMethod</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-<tr>
-<td title='src.crm.BDE.beforeMethod()'><b>beforeMethod</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-<tr>
-<td title='src.crm.BDE.beforeMethod()'><b>beforeMethod</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-<tr>
-<td title='src.crm.BDE.beforeMethod()'><b>beforeMethod</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-<tr>
-<td title='src.crm.BDE.beforeMethod()'><b>beforeMethod</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-<tr>
-<td title='src.crm.BDE.beforeMethod()'><b>beforeMethod</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-<tr>
-<td title='src.crm.BDE.afterMethod()'><b>afterMethod</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-<tr>
-<td title='src.crm.BDE.afterMethod()'><b>afterMethod</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-<tr>
-<td title='src.crm.BDE.afterMethod()'><b>afterMethod</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-<tr>
-<td title='src.crm.BDE.afterMethod()'><b>afterMethod</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-<tr>
-<td title='src.crm.BDE.afterMethod()'><b>afterMethod</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-<tr>
-<td title='src.crm.BDE.afterMethod()'><b>afterMethod</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-<tr>
-<td title='src.crm.BDE.afterMethod()'><b>afterMethod</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
+<td>22</td>
 <td>src.crm.BDE@1023565</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
@@ -238,15 +210,15 @@ Driver info: driver.version: RemoteWebDriver
 </tr>
 <tr>
 <td title='src.crm.BDE.LC_TS_44_researchOnCompany()'><b>LC_TS_44_researchOnCompany</b><br>Test class: src.crm.BDE<br/>
-<a href="#Output-15904382" onClick='toggleBox("Output-15904382", this, "Show output", "Hide output");'>Show output</a>
+<a href="#Output-2865697" onClick='toggleBox("Output-2865697", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-15904382" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-15904382">
+<a href="#Output-2865697" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2865697">
 <p>   ###### Navigate to the page ::: Research On Company########## 
  <br/>
 <p> You have Sucessfully navigated to Research On Company<br/>
 <p> 7<br/>
-<p>  The particular Lead is : 568 Angela Morgan Quimba<br/>
+<p>  The particular Lead is : 1086 Peter Daniels Cogidoo<br/>
 <p>  ######### You have Navigated to Form ##########<br/>
 <p> ######### Navigated to  ResearchOnCompany Form ##########
 <br/>
@@ -258,69 +230,89 @@ Driver info: driver.version: RemoteWebDriver
 <p> The message : Please Leave a Comment. is not displayed and could see error :Please Leave a Comment<br/>
 <p> The message :Segregated Successfully and Lead Moved to Work Phase is displayed.....<br/>
 <p> The message : Segregated Successfully and Lead Moved to Work Phase. is not displayed and could see error :Segregated Successfully and Lead Moved to Work Phase<br/>
-<p>   ###### Navigate to the page ::: Research On Company########## 
- <br/>
-<p> You have Sucessfully navigated to Research On Company<br/>
-<p> The research Lead : 568 Angela Morgan Quimba is not present in Research Phase.<br/>
-<p>   ###### Navigate to the page ::: Work on Lead########## 
- <br/>
-<p> You have Sucessfully navigated to Work on Lead<br/>
-<p> The research Lead : 568 Angela Morgan Quimba is sucessfully navigated to Work Phase<br/>
-<p> The track index ::0contains ::568<br/>
-<p> The track index ::1contains ::Angela Morgan<br/>
-<p> The track index ::2contains ::Quimba<br/>
-<p> The track index ::3contains ::Mobile<br/>
-<p> The track index ::4contains ::9-(230)702-4760<br/>
-<p> The track index ::5contains ::Qualified<br/>
-<p> Size is 20 1) Lead Id : 568 2) Name : Angela Morgan 19) Current Status : Qualified<br/>
-<p> Trackit comments for Research Phase is successfull.<br/>
 </div>
 </td>
 <td></td>
-<td>68</td>
-<td>src.crm.BDE@1023565</td></tr>
-</table><p>
-<table width='100%' border='1' class='invocation-skipped'>
-<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='src.crm.BDE.LC_TS_45_2_workPhaseForLaterDate()'><b>LC_TS_45_2_workPhaseForLaterDate</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
+<td>34</td>
 <td>src.crm.BDE@1023565</td></tr>
 <tr>
-<td title='src.crm.BDE.LC_TS_45_2_workPhaseForLaterDate()'><b>LC_TS_45_2_workPhaseForLaterDate</b><br>Test class: src.crm.BDE</td>
+<td title='src.crm.BDE.LC_TS_44_researchOnCompany()'><b>LC_TS_44_researchOnCompany</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-24749841" onClick='toggleBox("Output-24749841", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-24749841" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-24749841">
+<p>   ###### Navigate to the page ::: Research On Company########## 
+ <br/>
+<p> You have Sucessfully navigated to Research On Company<br/>
+<p> 7<br/>
+<p>  The particular Lead is : 1087 Amanda Fisher Photobug<br/>
+<p>  ######### You have Navigated to Form ##########<br/>
+<p> ######### Navigated to  ResearchOnCompany Form ##########
+<br/>
+<p> The message :Please Select Company Fund Status is displayed.....<br/>
+<p> The message : Please Select Company Fund Status. is not displayed and could see error :Please Select Company Fund Status<br/>
+<p> The message :Please Select Company Status is displayed.....<br/>
+<p> The message : Please Select Company Status. is not displayed and could see error :Please Select Company Status<br/>
+<p> The message :Please Leave a Comment is displayed.....<br/>
+<p> The message : Please Leave a Comment. is not displayed and could see error :Please Leave a Comment<br/>
+<p> The message :Segregated Successfully and Lead Moved to Work Phase is displayed.....<br/>
+<p> The message : Segregated Successfully and Lead Moved to Work Phase. is not displayed and could see error :Segregated Successfully and Lead Moved to Work Phase<br/>
+</div>
+</td>
 <td></td>
-<td>0</td>
+<td>33</td>
 <td>src.crm.BDE@1023565</td></tr>
 <tr>
-<td title='src.crm.BDE.LC_TS_46_2_todaysFollowupProposal()'><b>LC_TS_46_2_todaysFollowupProposal</b><br>Test class: src.crm.BDE</td>
+<td title='src.crm.BDE.LC_TS_44_researchOnCompany()'><b>LC_TS_44_researchOnCompany</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-25304092" onClick='toggleBox("Output-25304092", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-25304092" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-25304092">
+<p>   ###### Navigate to the page ::: Research On Company########## 
+ <br/>
+<p> You have Sucessfully navigated to Research On Company<br/>
+<p> 7<br/>
+<p>  The particular Lead is : 1081 Helen Williamson Wordify<br/>
+<p>  ######### You have Navigated to Form ##########<br/>
+<p> ######### Navigated to  ResearchOnCompany Form ##########
+<br/>
+<p> The message :Please Select Company Fund Status is displayed.....<br/>
+<p> The message : Please Select Company Fund Status. is not displayed and could see error :Please Select Company Fund Status<br/>
+<p> The message :Please Select Company Status is displayed.....<br/>
+<p> The message : Please Select Company Status. is not displayed and could see error :Please Select Company Status<br/>
+<p> The message :Please Leave a Comment is displayed.....<br/>
+<p> The message : Please Leave a Comment. is not displayed and could see error :Please Leave a Comment<br/>
+<p> The message :Segregated Successfully and Lead Moved to Work Phase is displayed.....<br/>
+<p> The message : Segregated Successfully and Lead Moved to Work Phase. is not displayed and could see error :Segregated Successfully and Lead Moved to Work Phase<br/>
+</div>
+</td>
 <td></td>
-<td>0</td>
+<td>33</td>
 <td>src.crm.BDE@1023565</td></tr>
 <tr>
-<td title='src.crm.BDE.LC_TS_47_TC002_AllFollowupsQuoteUpload()'><b>LC_TS_47_TC002_AllFollowupsQuoteUpload</b><br>Test class: src.crm.BDE</td>
+<td title='src.crm.BDE.LC_TS_45_1_workPhaseForTodaysDate()'><b>LC_TS_45_1_workPhaseForTodaysDate</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-5525932" onClick='toggleBox("Output-5525932", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-5525932" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-5525932">
+<p>   ###### Navigate to the page ::: Work on Lead########## 
+ <br/>
+<p> You have Sucessfully navigated to Work on Lead<br/>
+<p> 7<br/>
+<p>  The particular Lead is : 1086 Peter Daniels Cogidoo<br/>
+<p>  ######### You have Navigated to Form ##########<br/>
+<p> The message :Please Select FollowUp Type.... is displayed.....<br/>
+<p> The message : Please Select FollowUp Type..... is not displayed and could see error :Please Select FollowUp Type....<br/>
+<p> The message :Please Leave A Comment.... is displayed.....<br/>
+<p> The message : Please Leave A Comment..... is not displayed and could see error :Please Leave A Comment....<br/>
+<p> The message :Please Enter Next FollowUp Date.... is displayed.....<br/>
+<p> The message : Please Enter Next FollowUp Date..... is not displayed and could see error :Please Enter Next FollowUp Date....<br/>
+<p> The message :Successfully Updated... is displayed.....<br/>
+<p> The message : Successfully Updated.... is not displayed and could see error :Successfully Updated...<br/>
+</div>
+</td>
 <td></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-<tr>
-<td title='src.crm.BDE.LC_TS_47_TC004_confirmLeadsOfTodaysDate()'><b>LC_TS_47_TC004_confirmLeadsOfTodaysDate</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-<tr>
-<td title='src.crm.BDE.LC_TS_47_TC005_UIToFieldCheck()'><b>LC_TS_47_TC005_UIToFieldCheck</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
-<td>src.crm.BDE@1023565</td></tr>
-<tr>
-<td title='src.crm.BDE.LC_TS_47_TC006_coldStorage()'><b>LC_TS_47_TC006_coldStorage</b><br>Test class: src.crm.BDE</td>
-<td></td>
-<td>0</td>
+<td>39</td>
 <td>src.crm.BDE@1023565</td></tr>
 </table><p>
 </body>

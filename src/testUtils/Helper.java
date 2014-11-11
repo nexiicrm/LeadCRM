@@ -499,7 +499,6 @@ public class Helper extends BaseTest
 	  while(!pageNext.getAttribute("class").equalsIgnoreCase("paginate_disabled_next"))
 	  {
 	  String s = driver.findElement(By.cssSelector(or.getProperty("list_info"))).getText();
-	  Reporter.log("<p>" + s);
 	  pageNext.click();
 
 	  String s1 = driver.findElement(By.cssSelector(or.getProperty("list_info"))).getText();
@@ -522,7 +521,6 @@ public class Helper extends BaseTest
 	  String s2 = driver.findElement(By.cssSelector(or.getProperty("list_info"))).getText();
 	  pagePrevious.click();
 	  String s3 = driver.findElement(By.cssSelector(or.getProperty("list_info"))).getText();
-	  Reporter.log("<p>" + s2);
 	  if(!s2.equalsIgnoreCase(s3)){
 	  Reporter.log("<p>" + "navigated to previous page");
 	  }else{
