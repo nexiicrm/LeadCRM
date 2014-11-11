@@ -3,17 +3,13 @@ package src.crm;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -70,18 +66,23 @@ public class BDM extends Helper {
 		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(bdm.getProperty("allfollowupslink_id"))).getText() + "' Link" );
 		 if(driver.findElement(By.id(bdm.getProperty("allfollowupslink_id"))).isDisplayed()) 
 		 {
+			 // Clicking on all follow ups link
 			 driver.findElement(By.id(bdm.getProperty("allfollowupslink_id"))).click();
 			 help.sleep(2);
 			 Reporter.log("<p>" + "Searching leads with status as Introductory Mail.");
+			 
+			 // Searching with Introductory mail
 			 search("Introductory Mail");
-			 if(driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText().equals("Showing 0 to 0 of 0 entries"));
+			 if(driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText().contains("Showing 0 to 0 of 0 entries"));
 				
 		     else 
-		     {
+		     { 
+		    	 // Selceting a lead from lead table
 		    	 WebElement followupLead = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
 				 Reporter.log("<p>" +"Selected Lead is:" + followupLead.getText());
 				 if (followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).isEnabled()) 
 				 {
+					 // Clicking on the follow up button
 					 followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).click();
 					 help.sleep(3);
 					 Reporter.log("<p>" + driver.findElement(By.cssSelector(bdm.getProperty("windowTitle_css"))).getText());
@@ -95,8 +96,11 @@ public class BDM extends Helper {
 					 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 					 cal.add(Calendar.DATE, -1);
 					 String date = dateFormat.format(cal.getTime());
+					 
 					 Reporter.log("<p>" +"Yesterday's date was "+ date); 
 					 driver.findElement(By.id(bdm.getProperty("nextfollowupdate_id"))).sendKeys(date);
+					 
+					 // Clicking on Proceed button
 					 driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
 					 help.sleep(5);
 					 
@@ -111,6 +115,7 @@ public class BDM extends Helper {
 		     } 
 		 }
 		 else
+			 // If no link is found to click, a user assertion is thrown
 			 Assert.fail("No Link Found");
 		 Reporter.log("<p>___________________________________________________________________________________");
 	 }   
@@ -136,11 +141,12 @@ public class BDM extends Helper {
 			 // Verifying whether the required page is loaded or not
 			 Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id(bdm.getProperty("pagevalidate_id"))).findElement(By.tagName(bdm.getProperty("pagevalidate_tag"))).getText());
 			 help.sleep(4);
-			 if(driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText().equals("Showing 0 to 0 of 0 entries"))
+			 if(driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText().contains("Showing 0 to 0 of 0 entries"))
 				  Reporter.log("<p>" +driver.findElement(By.className(bdm.getProperty("emptytable_class"))).getText());
 			 
 		     else {
 		    	
+		    	 // Checking whether the leads' status is Follow up 4 or not
 		    	 String leadno = driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText();
 				 driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys("Follow up 4");
 				 String leadnos = driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText();
@@ -174,6 +180,8 @@ public class BDM extends Helper {
 				String company = leads.get(opt).findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(2).getText();
 				String lead = leadid + " " + leadname + " " + company;
 				Reporter.log("<p>" +"The details of lead selected to confirm: " + lead);
+				
+				// Clicking on confirm button
 				leads.get(opt).findElement(By.className(bdm.getProperty("trackitbutton_class"))).click();
 				help.sleep(4);
 				Reporter.log("<p>" +driver.findElement(By.id(bdm.getProperty("pagevalidate_id"))).findElement(By.className(bdm.getProperty("successmsg_class"))).getText());
@@ -195,6 +203,8 @@ public class BDM extends Helper {
 						 driver.switchTo().window(childWindow);
 					 }
 					 
+					 
+					 // Selecting required fields
 					 Reporter.log("<p>" + "Clicking on the Lead Search and verifying the confirmed lead of cold storage.");
 					 WebElement reqfields = driver.findElement(By.id(bdm.getProperty("requiredfields_id"))).findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(0);
 					 reqfields.findElement(By.tagName(bdm.getProperty("searchbox_tag"))).click();
@@ -212,6 +222,8 @@ public class BDM extends Helper {
 					 String[] lname = lead.split(" ");
 					 
 					 Reporter.log("<p>" + "Searching the lead in Lead Search which is confirmed in cold storage phase .");
+					 
+					 // Searching with lead name and company name
 					 search(lname[1] + " " + lname[2]);
 					 
 					 // Closing the Child Window
@@ -247,15 +259,19 @@ public class BDM extends Helper {
 			 driver.findElement(By.id(bdm.getProperty("allfollowupslink_id"))).click();
 			 help.sleep(2);
 			 Reporter.log("<p>" + "Searching leads with status as Introductory Mail.");
-			 search("Introductory Mail");
 			 
-			 if(driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText().equals("Showing 0 to 0 of 0 entries"));
+			 // Searching with Introductory mail
+			 search("Introductory Mail");
+			 help.sleep(3);
+			 if(driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText().contains("Showing 0 to 0 of 0 entries"));
 				
 		     else 
 		     {
+		    	 
+		    	 // Selecting a lead
 		    	 WebElement followupLead = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
 				 
-				 String uploadleadId = followupLead.findElement(By.className(bdm.getProperty("leadidintable_class"))).getText();
+				 String uploadleadId = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(0).getText();
 				 String leadname = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(1).getText();
 				 String company = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(2).getText();
 				 String lead = uploadleadId + " " + leadname + " " + company;
@@ -265,6 +281,7 @@ public class BDM extends Helper {
 				 
 				 if (followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).isEnabled()) 
 				 {
+					 // Clicking on follow up button
 					 followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).click();
 					 help.sleep(3);
 					 Reporter.log("<p>" +driver.findElement(By.cssSelector(bdm.getProperty("windowTitle_css"))).getText());
@@ -286,6 +303,8 @@ public class BDM extends Helper {
 					 driver.findElement(By.name(bdm.getProperty("message_name"))).sendKeys("Prospect Identify for Proposal Upload");
 					 driver.findElement(By.name(bdm.getProperty("followupcomment_name"))).sendKeys("Prospect Identify for Proposal Upload");
 					 driver.findElement(By.id(bdm.getProperty("nextfollowupdate_id"))).sendKeys(dateString);
+					 
+					 // Clicking on Proceed button
 					 driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
 					 help.sleep(5);
 					 
@@ -325,21 +344,31 @@ public class BDM extends Helper {
 		 
 		 // Clicking on the Proposal Upload Link
 		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(bdm.getProperty("proposalupload_id"))).getText() + "' Link" );
-	     if(driver.findElement(By.id(bdm.getProperty("proposalupload_id"))).isDisplayed()) 
+	     
+		 // Checks whether the Proposal upload link is displayed or not
+		 if(driver.findElement(By.id(bdm.getProperty("proposalupload_id"))).isDisplayed()) 
 	     {
-			  driver.findElement(By.id(bdm.getProperty("proposalupload_id"))).click();
+			 // Proposal upload link is Clicked in Proposal Uploads phase
+			 driver.findElement(By.id(bdm.getProperty("proposalupload_id"))).click();
 			  
 			  // Verifying whether the required page is loaded or not
 			  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id(bdm.getProperty("pagevalidate_id"))).findElement(By.tagName(bdm.getProperty("pagevalidate_tag"))).getText());
 			  help.sleep(4);
 			  
-			  if(driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText().equals("Showing 0 to 0 of 0 entries"))
+			  // Verifying whether leads are present in the Proposal Uploads page.
+			  // If leads are not present it enters if condition
+			  if(driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText().contains("Showing 0 to 0 of 0 entries"))
 				  Reporter.log("<p>" +driver.findElement(By.className(bdm.getProperty("emptytable_class"))).getText());
+			  
+			  // If leads are present it enters else condition
 			  else 
 			  {
+				   // Verifying whether every lead in the page are having the status as "Prospect"
 				   String leadno = driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText();
 				   driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys("Prospect");
 				   String leadnos = driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText();
+				   
+				   // Verifying the no.of leads present before searching with "Prospect" is equal to no.of leads after search
 				   if(leadno.contains(leadnos)) 
 				   {
 					   Reporter.log("<p>" + "Lead Status of every lead is Prospect");
@@ -348,6 +377,8 @@ public class BDM extends Helper {
 				   {
 					   Reporter.log("<p>" + "Lead Status of every lead is not Prospect");
 				   }
+				   
+				   // Verifying no.of leads in the page and getting the lead ID of the uploaded lead
 				   String lead = uploadButton();
 				  
 				  // Entering details to the fields in Proposal Upload page
@@ -355,7 +386,7 @@ public class BDM extends Helper {
 				  driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
 				  driver.findElement(By.name(bdm.getProperty("proposaldescription_name"))).sendKeys("Proposal Description");
 				  driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
-				  String file = System.getProperty("user.dir") + "\\src\\testData\\invalidtextfile.txt";
+				  String file = System.getProperty("user.dir") + "\\src\\testData\\Proposal.pdf";
 				  driver.findElement(By.name(bdm.getProperty("proposaluploadbutton_name"))).sendKeys(file);
 				  driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
 				  help.sleep(4);
@@ -374,6 +405,7 @@ public class BDM extends Helper {
 				  driver.findElement(By.className(bdm.getProperty("logout_class"))).findElement(By.linkText(bdm.getProperty("logoutlink_linktext"))).click();
 				  Reporter.log("<p>" + "Logged out of BDM Module");
 				  
+				  // Spliting lead details in a string to id, name, company
 				  String[] leadiddetails = lead.split(" ");
 				  String leadid = leadiddetails[0];
 				  
@@ -383,6 +415,7 @@ public class BDM extends Helper {
 			  }
 		 } 
 		 else
+			  // If the link proposalupload is not displayed, then it throws a user exception
 			  Assert.fail("No Link Found");
 	     Reporter.log("<p>___________________________________________________________________________________");
 	 } 
@@ -407,13 +440,15 @@ public class BDM extends Helper {
 				 // Search for Leads with Introductory mail as Last Follow up type
 				 Reporter.log("<p>" + "Searching leads with status as Introductory Mail.");
 				 search("Introductory Mail");
-				 if(driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText().equals("Showing 0 to 0 of 0 entries"));
+				 help.sleep(3);
+				 if(driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText().contains("Showing 0 to 0 of 0 entries"));
 					
 			     else 
 			     {
+			    	 // Selecting a lead for follow up
 			    	 WebElement followupLead = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname"))).get(0);
 					 
-					 String uploadleadId = followupLead.findElement(By.className(bdm.getProperty("leadidintable_class"))).getText();
+					 String uploadleadId = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(0).getText();
 					 String leadname = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(1).getText();
 					 String company = followupLead.findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(2).getText();
 					 String lead = uploadleadId + " " + leadname + " " + company;
@@ -421,11 +456,14 @@ public class BDM extends Helper {
 					 
 					 Reporter.log("<p>" +"The ID of Lead selected to Follow up:" + uploadleadId);
 					 
+					 // Clicking on follow up button
 					 if (followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).isEnabled()) 
 					 {
-						 // Entering details for Quote upload
+						 
 						 followupLead.findElement(By.className(bdm.getProperty("followupbutton_class"))).click();
 						 help.sleep(5);
+						 
+						// Entering details for Quote upload request
 						 Reporter.log("<p>" +driver.findElement(By.cssSelector(bdm.getProperty("windowTitle_css"))).getText());
 						 new Select(driver.findElement(By.name(bdm.getProperty("followuptype_name")))).selectByVisibleText("Prospect Identify");
 						 new Select(driver.findElement(By.name(bdm.getProperty("prospecttype_name")))).selectByVisibleText("Quote");
@@ -435,6 +473,8 @@ public class BDM extends Helper {
 						 driver.findElement(By.id(bdm.getProperty("fixon_id"))).sendKeys(dateString);
 						 driver.findElement(By.name(bdm.getProperty("followupcomment_name"))).sendKeys("Prospect Identify for Quote Upload");
 						 driver.findElement(By.id(bdm.getProperty("nextfollowupdate_id"))).sendKeys(dateString);
+						 
+						 // Clicking on Proceed button
 						 driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
 						 help.sleep(5);
 						 
@@ -475,21 +515,31 @@ public class BDM extends Helper {
 		 
 		 // Clicking on Quote Uploads Link
 		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(bdm.getProperty("quoteupload_id"))).getText() + "' Link" );
+		 
+		 // Checks whether the Quote upload is displayed or not
 		 if(driver.findElement(By.id(bdm.getProperty("quoteupload_id"))).isDisplayed()) 
 		 {
+			  // Quote upload link is Clicked in Quote Uploads phase
 			  driver.findElement(By.id(bdm.getProperty("quoteupload_id"))).click();
 			  
 			  // Verifying whether the required page is loaded or not
 			  Reporter.log("<p>" +"Page loaded is:" + driver.findElement(By.id(bdm.getProperty("pagevalidate_id"))).findElement(By.tagName(bdm.getProperty("pagevalidate_tag"))).getText());
 			  help.sleep(4);
 			  
-			  if(driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText().equals("Showing 0 to 0 of 0 entries"))
+			  // Verifying whether leads are present in the Quote Uploads page.
+			  // If leads are not present it enters if condition
+			  if(driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText().contains("Showing 0 to 0 of 0 entries"))
 				 Reporter.log("<p>" + driver.findElement(By.className(bdm.getProperty("emptytable_class"))).getText());
+			  
+			  // If leads are present it enters else condition
 			  else {
 				  
+				   // Verifying whether every lead in the page are having the status as "Prospect"
 				   String leadno = driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText();
 				   driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys("Prospect");
 				   String leadnos = driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText();
+				   
+				   // Verifying the no.of leads present before searching with "Prospect" is equal to no.of leads after search
 				   if(leadno.contains(leadnos)) 
 				   {
 					   Reporter.log("<p>" + "Lead Status of every lead is Prospect");
@@ -507,7 +557,7 @@ public class BDM extends Helper {
 				  driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
 				  driver.findElement(By.name(bdm.getProperty("quotedescription_name"))).sendKeys("Quote Description");
 				  driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
-				  String file = System.getProperty("user.dir") + "\\src\\testData\\invalidtextfile.txt";
+				  String file = System.getProperty("user.dir") + "\\src\\testData\\Quote.doc";
 				  driver.findElement(By.name(bdm.getProperty("quoteuploadbutton_name"))).sendKeys(file);
 				  driver.findElement(By.id(bdm.getProperty("proceedbutton_id"))).click();
 				  help.sleep(5);
@@ -527,6 +577,7 @@ public class BDM extends Helper {
 				  driver.findElement(By.className(bdm.getProperty("logout_class"))).findElement(By.linkText(bdm.getProperty("logoutlink_linktext"))).click();
 				  Reporter.log("<p>" + "Logged out of BDM Module");
 				  
+				  // Splitting lead details in a string to id, name, company
 				  String[] leadiddetails = lead.split(" ");
 				  String leadid = leadiddetails[0];
 				  
@@ -535,6 +586,7 @@ public class BDM extends Helper {
 			  }
 		 } 
 		 else
+			  // If the link quoteupload is not displayed, then it throws a user exception
 			  Assert.fail("No Link Found");
 		 Reporter.log("<p>___________________________________________________________________________________");
 	 } 
@@ -622,6 +674,7 @@ public class BDM extends Helper {
 		  int opt1 = help.random(leads.size());
 		  List <String> detail =  trackitButton(opt1);
 		  
+		  // 
 		  String lead = detail.get(0);
 		  List <String> dbDetail = leadEditdb(lead);
 		  
@@ -635,40 +688,25 @@ public class BDM extends Helper {
 		  help.sleep(5);
 		  Reporter.log("<p>" +driver.findElement(By.cssSelector(bdm.getProperty("windowTitle_css"))).getText());
 		  
-		  
-		  
+		  // Conditions for the selection of the Lead edit set to be edited
 		  if((detail.get(1).equals("Jennifer")) || detail.get(1).equals("Bret"))
 		  {
 			  // Editing the Fields
-			  driver.findElement(By.id(bdm.getProperty("firstname_id"))).clear();
-			  driver.findElement(By.id(bdm.getProperty("firstname_id"))).sendKeys("John");
-			  driver.findElement(By.id(bdm.getProperty("lastname_id"))).clear();
-			  driver.findElement(By.id(bdm.getProperty("lastname_id"))).sendKeys("Andrew");
-			  driver.findElement(By.id(bdm.getProperty("mobilenumber_id"))).clear();
-			  driver.findElement(By.id(bdm.getProperty("mobilenumber_id"))).sendKeys("3-(486)235-8432");
-			  driver.findElement(By.id(bdm.getProperty("boardnumber_id"))).clear();
-			  driver.findElement(By.id(bdm.getProperty("boardnumber_id"))).sendKeys("8-(104)838-3404");
-			  new Select(driver.findElement(By.name(bdm.getProperty("service_options_name")))).selectByVisibleText("SAAS");
-			  new Select(driver.findElement(By.name(bdm.getProperty("domainoption_name")))).selectByVisibleText("Robotics");
-			  driver.findElement(By.id(bdm.getProperty("desknumber_id"))).clear();
-			  driver.findElement(By.id(bdm.getProperty("desknumber_id"))).sendKeys("3-(618)434-8752"); 
+			  editLead("John", "Andrew", "SAAS", "Robotics");
+			  
 		  }
-		  else
+		  else if (detail.get(1).equals("John"))
 		  {
 			  // Editing the Fields
-			  driver.findElement(By.id(bdm.getProperty("firstname_id"))).clear();
-			  driver.findElement(By.id(bdm.getProperty("firstname_id"))).sendKeys("Bret");
-			  driver.findElement(By.id(bdm.getProperty("lastname_id"))).clear();
-			  driver.findElement(By.id(bdm.getProperty("lastname_id"))).sendKeys("Lee");
-			  driver.findElement(By.id(bdm.getProperty("mobilenumber_id"))).clear();
-			  driver.findElement(By.id(bdm.getProperty("mobilenumber_id"))).sendKeys("3-(486)235-8432");
-			  driver.findElement(By.id(bdm.getProperty("boardnumber_id"))).clear();
-			  driver.findElement(By.id(bdm.getProperty("boardnumber_id"))).sendKeys("8-(104)838-3404");
-			  new Select(driver.findElement(By.name(bdm.getProperty("service_options_name")))).selectByVisibleText("QA");
-			  new Select(driver.findElement(By.name(bdm.getProperty("domainoption_name")))).selectByVisibleText("Finance");
-			  driver.findElement(By.id(bdm.getProperty("desknumber_id"))).clear();
-			  driver.findElement(By.id(bdm.getProperty("desknumber_id"))).sendKeys("3-(618)434-8752"); 
+			  editLead("Bret", "Lee", "QA", "Finance");
 		  }
+		  else 
+		  {
+			// Editing the Fields
+			  editLead("Katrina", "Hayden", "Mobile", "Banking");
+		  }
+		  
+		  
 		  
 		  // Clicking on Edit button to proceed
 		  driver.findElement(By.id(bdm.getProperty("editbutton_id"))).click();
@@ -682,7 +720,7 @@ public class BDM extends Helper {
 		  driver.findElement(By.name(bdm.getProperty("tablelength_name"))).findElements(By.tagName(bdm.getProperty("service_tag"))).get(3).click();
 		  help.sleep(5);
 		  
-		  // Tracking the lead and getting the details into the List
+		  // Tracking the lead and getting the details into the List from Track it and Database
 		  List <String> detail1 = trackitButton(opt1);
 		  
 		  List <String> dbDetail1 = leadEditdb(lead);
@@ -720,12 +758,16 @@ public class BDM extends Helper {
 		 // Expands the side tree menu
 		 help.expand();
 		 Reporter.log("<p>" +"Click on the '" + driver.findElement(By.id(bdm.getProperty("leadsearchlink_id"))).getText() + "' Link" );
+		
+		 // Calling search lead method from helper
 		 searchLead();
 		 
 		 Reporter.log("<p>___________________________________________________________________________________");
 	 } 	
 
 	 
+	 
+	 // ------Paginations for all Pages-------
 	 
 	 // Test Method for Lead Search Paginations
 	 @Test
@@ -741,11 +783,6 @@ public class BDM extends Helper {
 		 Reporter.log("<p>___________________________________________________________________________________");
 		 
 	 }
-	 
-
-	 
-	 
-	 // ------Paginations for all Pages-------
 	 
 	 
 	 
@@ -894,13 +931,14 @@ public class BDM extends Helper {
 	// Change Password
 	@Test
 	 public void changePassword() throws Exception {
-		
+		 	  // Expanding the side tree menu
 		      help.expand();
+		      // Calling changePassword helper method and passing the username to the method
 		      help.changePassword(config.getProperty("bdmuser"));
 	 }
 
 	 
-	 // -------- Static Methods ---------
+	 // --------------------------------- Static Methods ---------------------------------------------------
 
 	
 		
@@ -1128,6 +1166,24 @@ public class BDM extends Helper {
 		     }
 			 
 		 }
+		 
+		 
+		 
+     // Static method for lead edit sets
+	 public static void editLead(String fname, String lname, String service, String domain) {
+		  driver.findElement(By.id(bdm.getProperty("firstname_id"))).clear();
+		  driver.findElement(By.id(bdm.getProperty("firstname_id"))).sendKeys(fname);
+		  driver.findElement(By.id(bdm.getProperty("lastname_id"))).clear();
+		  driver.findElement(By.id(bdm.getProperty("lastname_id"))).sendKeys(lname);
+		  driver.findElement(By.id(bdm.getProperty("mobilenumber_id"))).clear();
+		  driver.findElement(By.id(bdm.getProperty("mobilenumber_id"))).sendKeys("3-(486)235-8432");
+		  driver.findElement(By.id(bdm.getProperty("boardnumber_id"))).clear();
+		  driver.findElement(By.id(bdm.getProperty("boardnumber_id"))).sendKeys("8-(104)838-3404");
+		  new Select(driver.findElement(By.name(bdm.getProperty("service_options_name")))).selectByVisibleText(service);
+		  new Select(driver.findElement(By.name(bdm.getProperty("domainoption_name")))).selectByVisibleText(domain);
+		  driver.findElement(By.id(bdm.getProperty("desknumber_id"))).clear();
+		  driver.findElement(By.id(bdm.getProperty("desknumber_id"))).sendKeys("3-(618)434-8752"); 
+	 }
 		 
 }
 
