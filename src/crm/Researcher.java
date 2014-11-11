@@ -80,24 +80,23 @@ public class Researcher extends Helper{
 		return false;
 		
 	}
-	
-	//===invalid xlsx msgs for Lead upload===//
-	
 	public void action()
 	{
-		//=====uploading files===//
+		//uploading files
 		Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
 	}
 		
   // @Test
    public void a_LC_TS_17_Expandandcollapse() throws Exception {
 		 
-		//========Login=======//
+		//Login to researcher module
 		  
 		help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
-		//===tree menu size displaying======//
+		
+		//tree menu size displaying
 		treeSize();
-		//======= Expanding tree menu========//
+		
+		//Expanding tree menu
 		help.expand();
 		sleep(2);
 		help.collapse();
@@ -367,15 +366,14 @@ public class Researcher extends Helper{
   public void d_LC_TS_22_Changepassword() throws Exception {
 	  
 	 Reporter.log("<p>" +"======change password=====");
+	 
 		//Login into Researcher module
 		help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
 		
 		//printing size of tree menu
-		
 		treeSize();
 		
 		//Expanding tree menu
-		
 		help.expand();
 		changePassword(config.getProperty("Researcherusername"));
   }
