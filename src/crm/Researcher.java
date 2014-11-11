@@ -1,31 +1,35 @@
 package src.crm;
 
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
+//import java.awt.Robot;
+//import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
-import java.io.IOException;
+//import java.io.FileOutputStream;
+//import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
+//import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.Set;
+//import java.util.Set;
 
 import jxl.Sheet;
 import jxl.Workbook;
-import jxl.read.biff.BiffException;
+//import jxl.read.biff.BiffException;
+//import jxl.write.Label;
+//import jxl.write.WritableSheet;
+//import jxl.write.WritableWorkbook;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.Keys;
+//import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
+//import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.firefox.FirefoxDriver;
+//import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -34,7 +38,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 
 import com.nexiilabs.dbcon.DBConnection;
-import com.sun.jna.platform.win32.Netapi32Util.User;
+
 
 import src.testUtils.Helper;
 
@@ -57,11 +61,9 @@ public class Researcher extends Helper{
 	public void  treeSize() {
 		    List<WebElement> list1 = driver.findElement(By.id(or.getProperty("user_ids"))).findElements(By.tagName(or.getProperty("user_tagname")));
 		    Reporter.log("<p>" + "Number Elements in List1 : " + list1.size());
-			//System.out.println("Number Elements in List1 : " + list1.size());
 			String user = driver.findElement(By.className(or.getProperty("user_Classname"))).getText();
 			if(user.contains("Hi ! Researcher"))
 			Reporter.log("<p>" + "User Logged in as:" + "Hi ! Researcher");
-		   // System.out.println("User Logged in as:" + user);
 	}
 	//==wait for element==//
 	public boolean waitForElement(int timeout,By by) {
@@ -74,7 +76,6 @@ public class Researcher extends Helper{
 		}
 		timeout--;
 		}
-		//System.out.println("Waiting timed out element not found"+by.toString());
 		Reporter.log("<p>" + "Waiting timed out element not found"+by.toString());
 		return false;
 		
@@ -88,83 +89,81 @@ public class Researcher extends Helper{
 		Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
 	}
 		
-	// @Test
-	  public void f() throws Exception {
+   @Test
+   public void a_LC_TS_17_Expandandcollapse() throws Exception {
 		 
 		//========Login=======//
 		  
-		  help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
-				
-			//===tree menu size dispaying======//
-			treeSize();
-			
-			//======= Expanding tree menu========//
-			
-			help.expand();
-			 sleep(2);
-			 help.collapse();
+		help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
+		//===tree menu size dispaying======//
+		treeSize();
+		//======= Expanding tree menu========//
+		help.expand();
+		sleep(2);
+		help.collapse();
 		 
 	 }
+	 
 //===========Leads Upload invalid data=========//
 	
   @Test
-  public void f1() throws Exception {
+   public void b_LC_TS18_TC001_Uplodinvaliddata() throws Exception {
 	 
-	// System.out.println("===========Leads Upload=========");
-	 Reporter.log("<p>" +"===========Leads Upload========="); 
-	//========Login to researcher module=======//
-	 help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
+		// System.out.println("===========Leads Upload=========");
+		Reporter.log("<p>" +"===========Leads Upload========="); 
+		//========Login to researcher module=======//
+		help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
 			
-	//===tree menu size dispaying======//
-	 treeSize();
-	//======= Expanding tree menu========//
-	 help.expand();
-	 sleep(2);
-	//=========clicking bulkuplods========//
-	 driver.findElement(By.id("bulkUpload")).click();
-	//==clicking directly  leaduplodbutton==//
-	// driver.findElement(By.id(or.getProperty("leadUpload"))).click();
-	 sleep(3);
-	//==clicking invalid  xlsx sheet==//
-	 driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys(System.getProperty("user.dir")+"\\src\\testData\\invalidxlsx1.xlsx");
-	 driver.findElement(By.id(or.getProperty("leadUpload"))).click();
-	 waitForElement(60,By.className("error_msg"));
-	 sleep(3);
-	//==calling action method==//
-	 action();
-	 sleep(3);
-	//==clicking invalid  xlsx sheet==//
-	 driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys(System.getProperty("user.dir")+"\\src\\testData\\invalidxlxs2.xlsx");
-	 driver.findElement(By.id(or.getProperty("leadUpload"))).click();
-	 waitForElement(60,By.className("error_msg"));
-	//==calling action method==//
-	 action();
-	 sleep(3);
-	//==clicking invalid  xlsx sheet==//
-	 driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys(System.getProperty("user.dir")+"\\src\\testData\\invalidtextfile.txt");
-	 driver.findElement(By.id(or.getProperty("leadUpload"))).click();
-	 waitForElement(60,By.className("error_msg"));
-	 sleep(3);
+		//===tree menu size dispaying======//
+		treeSize();
+		//======= Expanding tree menu========//
+		help.expand();
+		sleep(2);
+		//=========clicking bulkuplods========//
+		driver.findElement(By.id("bulkUpload")).click();
+		//==clicking directly  leaduplodbutton==//
+		// driver.findElement(By.id(or.getProperty("leadUpload"))).click();
+		sleep(3);
+		//==clicking invalid  xlsx sheet==//
+		driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys(System.getProperty("user.dir")+"\\src\\testData\\invalidxlsx1.xlsx");
+		driver.findElement(By.id(or.getProperty("leadUpload"))).click();
+		waitForElement(60,By.className("error_msg"));
+		sleep(3);
+		//==calling action method==//
+		action();
+		sleep(3);
+		//==clicking invalid  xlsx sheet==//
+		driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys(System.getProperty("user.dir")+"\\src\\testData\\invalidxlxs2.xlsx");
+		driver.findElement(By.id(or.getProperty("leadUpload"))).click();
+		waitForElement(60,By.className("error_msg"));
+		//==calling action method==//
+		action();
+		sleep(3);
+		//==clicking invalid  xlsx sheet==//
+		driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys(System.getProperty("user.dir")+"\\src\\testData\\invalidtextfile.txt");
+		driver.findElement(By.id(or.getProperty("leadUpload"))).click();
+		waitForElement(60,By.className("error_msg"));
+		sleep(3);
 		 //================tree collapsing===========//
 		
-	 Reporter.log("<p>" +"Tree collapsing"); 
+		Reporter.log("<p>" +"Tree collapsing"); 
 		 
-	 help.collapse();
+		help.collapse();
 		 
   }  
   
 //===========Leads Upload valid data=========//
 	
-  @Test
-  public void f2() throws Exception {
+   @Test
+   public void b_LC_TS18_TC002_Leadsuploadvaliddata() throws Exception {
 	  
 	   
 	 
-	  Reporter.log("<p>" +"===========Leads Upload1========="); 
+		Reporter.log("<p>" +"===========Leads Upload1========="); 
 	  
-	//========Login=======//
+		//========Login=======//
 	  
-	   help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
+	    help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
 			
 		//===tree menu size dispaying======//
 		treeSize();
@@ -172,29 +171,29 @@ public class Researcher extends Helper{
 		//======= Expanding tree menu========//
 		
 		help.expand();
-		 sleep(2);
+		sleep(2);
 		//=========clicking bulkuplods========//
-		 driver.findElement(By.id("bulkUpload")).click();
+		driver.findElement(By.id("bulkUpload")).click();
 		//==clicking valid  xlsx sheet==//
-		 driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys(System.getProperty("user.dir")+"\\src\\testData\\xlsxval.xlsx");
-		 driver.findElement(By.id(or.getProperty("leadUpload"))).click();
-		 waitForElement(60,By.className("error_msg"));
+		driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys(System.getProperty("user.dir")+"\\src\\testData\\xlsxval.xlsx");
+		driver.findElement(By.id(or.getProperty("leadUpload"))).click();
+		waitForElement(60,By.className("error_msg"));
 		//==calling action method==//
-		 action();
+		action();
 		// sleep(3);
 		// sh8 = w.getSheet(8); // data sheet
-		 log.debug("Loading Test data");
-		 FileInputStream fp;
-		 Workbook wb =null;
-		  fp = new FileInputStream(System.getProperty("user.dir")+"\\src\\testData\\xlsfile.xls");
-		  wb = Workbook.getWorkbook(fp);
-		 Sheet sh99 = wb.getSheet(0); // Login sheet
-			int rows = sh99.getRows();
-			HashSet<String> a=new HashSet<String>();
-			HashMap<String,String> hm=new HashMap<String,String>();
-			List<String> newlist = null;
+		log.debug("Loading Test data");
+		FileInputStream fp;
+		Workbook wb =null;
+		fp = new FileInputStream(System.getProperty("user.dir")+"\\src\\testData\\xlsfile.xls");
+		wb = Workbook.getWorkbook(fp);
+		Sheet sh99 = wb.getSheet(0); // Login sheet
+		int rows = sh99.getRows();
+		HashSet<String> a=new HashSet<String>();
+		HashMap<String,String> hm=new HashMap<String,String>();
+		List<String> newlist = null;
 				 
-			for(int row = 1;row < rows;row++)
+		for(int row = 1;row < rows;row++)
 			{
 				int col=3,col1=13;
 				
@@ -204,7 +203,7 @@ public class Researcher extends Helper{
 				hm.put(sh99.getCell(col,row).getContents(),sh99.getCell(col1,row).getContents());
 			}
 			
-			HashMap<String,String> lead= new HashMap<String,String>();
+		HashMap<String,String> lead= new HashMap<String,String>();
 		   for(int i=0; i<newlist.size(); i++)
 		   {
 			   String service = newlist.get(i); 
@@ -218,7 +217,7 @@ public class Researcher extends Helper{
 		   }
 		   // logout of researcher
 		   driver.findElement(By.className(bdm.getProperty("logout_class"))).findElement(By.linkText(bdm.getProperty("logoutlink_linktext"))).click();
-  		  help.sleep(2);
+  		   help.sleep(2);
 		   
 		   try {
             
@@ -253,12 +252,13 @@ public class Researcher extends Helper{
 	         			   for(int k=0;k<tlist1.size();k++) {
 	         				   str = tlist1.get(i).getText();
 	         			   }
-	         			  Reporter.log("<p>"+str);
-	         			  //Reporter.log("<p>" +"==========when tried with negative scenario=========");
+	         			  Reporter.log("<p>"+"search data is:"+str);
 	         			  if(str.contains("No matching records found")){
 	         			  Assert.fail("No matching records found");
 	         			  } else{
-	         			    Reporter.log("<p>" +driver.findElement(By.id(bdm.getProperty("tablename_id"))).findElement(By.tagName(bdm.getProperty("leads_info_tag"))).getText());
+	         				 Reporter.log("<p>" +"searching record found");
+	         				 Reporter.log("<p>" + "Your record is:"+driver.findElement(By.id(bdm.getProperty("tablename_id"))).findElement(By.tagName(bdm.getProperty("leads_info_tag"))).getText());
+	         				 //Reporter.log("<p>" +"searching record found");
 	         			    driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).clear();
 	         			    help.sleep(1);
 	         			   }
@@ -289,39 +289,39 @@ public class Researcher extends Helper{
 }
   
   //==========calling search leads==========//
- // @Test
-  public void f3() throws Exception {
+  @Test
+  public void c_LC_TS19_TC001_Searchleads() throws Exception {
 	  
-	  Reporter.log("<p>" + "=================search leads=================");
+	    Reporter.log("<p>" + "=================search leads=================");
 			
-	  help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
+	    help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
 	  
-	  Reporter.log("<p>" + "=================Expanding tree menu=================");
+	    Reporter.log("<p>" + "=================Expanding tree menu=================");
 	  
-	  help.expand();
+	    help.expand();
 	  
-	  help.searchLead();
-	  help.sleep(2);
+	    help.searchLead();
+		help.sleep(2);
 				
 	  
   }
   
   //====searchLeadPagenation=========//
-  //@Test
-  public void f4() throws Exception {
+  @Test
+  public void c_LC_TS19_TC002_Searchleadpagenavigation() throws Exception {
 	  
-	  Reporter.log("<p>" + "=================search leads=================");
+		Reporter.log("<p>" + "=================search leads=================");
 			
-	  help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
+		help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
 	  
-	  Reporter.log("<p>" + "=================Expanding tree menu=================");
+		Reporter.log("<p>" + "=================Expanding tree menu=================");
 	  
-	  help.expand();
+		help.expand();
 	  
-	  //help.searchLead();
+		//help.searchLead();
 	  
-	  help.searchLeadPagination();
-	  help.sleep(2);
+		help.searchLeadPagination();
+		help.sleep(2);
 				
 	  
   }
@@ -329,27 +329,20 @@ public class Researcher extends Helper{
 
   
 
-// @Test
-  public void f5() throws Exception {
+  @Test
+  public void d_LC_TS_22_Changepassword() throws Exception {
 	  
 	 Reporter.log("<p>" +"======change password=====");
-		//Login
-			
-				help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
-			//	String old = config.getProperty("apass");
-				//System.out.println("old password is:" + old);
-				
-				//===printing size of tree menu====//
-			    treeSize();
-			    
-			    //====Expanding tree menu====//
-			    help.expand();
-			    
-			   changePassword("pavan.nanigans@gmail.com");
+		//Login into Researcher module
+		help.login(config.getProperty("Researcherusername"),config.getProperty("Researcherpassword"));
+		//===printing size of tree menu====//
+		treeSize();
+		//====Expanding tree menu====//
+		help.expand();
+		changePassword(config.getProperty("Researcherusername"));
   }
   
  
-
 /* 
  *  Opening Firefox browser and getting the Lead CRM home page
  */
