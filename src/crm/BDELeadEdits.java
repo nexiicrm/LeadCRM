@@ -19,10 +19,14 @@ public class BDELeadEdits  extends Helper
   @BeforeMethod
   public void beforemethod() throws Exception 
   {
+	  //to open the browser
 	  help.browser();
+	  //to maximise the browser
 	  help.maxbrowser();
+	  //for getting leadcrm url page
 	  driver.get(config.getProperty("url"));
 	  help.sleep(1);
+	  //login into bde module
 	  help.login(config.getProperty("bdename"),config.getProperty("bdepass"));
 	  if(driver.findElement(By.className(bde.getProperty("login_class"))).getText().contains("Hi ! BDE")){
 		  Reporter.log("<p>"+"logged successfully");
@@ -44,9 +48,9 @@ public class BDELeadEdits  extends Helper
 			+ "a.role_id = b.role_id AND a.role_name = 'Management' AND delete_status='no'Limit 1;"); 
 			while (resultSet.next())
 			{ 
-				// String role = resultSet.getString("role_name");
 				String email = resultSet.getString("email_id");
 				String pass = resultSet.getString("password");
+				//login into management module
 				help.login(email,pass);
 			}
 		}
@@ -58,7 +62,9 @@ public class BDELeadEdits  extends Helper
 		help.sleep(5);
 		if(driver.findElement(By.id(c)).isDisplayed())
 		{
+				  //clicking on customer or lost competition
 			  	  driver.findElement(By.id(c)).click();
+			  	  //creating arraylist
 			      ArrayList<Integer> li= new ArrayList<Integer>();
 				  help.sleep(1);
 				  //sending data into searchbox
@@ -75,6 +81,7 @@ public class BDELeadEdits  extends Helper
 					 int z = Integer.parseInt(s1);
 					 li.add(b, z);
 				  }
+				  //validation
 				  if(li.contains(y))
 				  Reporter.log("<p>" +"closed lead in BDE module is present in management module");
 				  else
@@ -87,6 +94,7 @@ public class BDELeadEdits  extends Helper
 @Test                                                     // in manual test case LC_TS_48     closed phase
 public void LC_TS_48_TC001() throws Exception
 {
+	//////////// checking for the close button for each lead /////////////
 	  help.expand();
 	  help.sleep(1);
 	  if(driver.findElement(By.id(bde.getProperty("closedphase_link"))).isDisplayed())
@@ -94,24 +102,32 @@ public void LC_TS_48_TC001() throws Exception
 		    //clicking on closed phase link
 	  		driver.findElement(By.id(bde.getProperty("closedphase_link"))).click();
 	  		help.sleep(1);
+	  		// getting table records
 	  		List<WebElement> tablerecords= driver.findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
+	  		//validation 
 	  		if(tablerecords.size()==0)
 	  			Assert.fail("tablebody id not found");
-	  			List<WebElement> tablerecords2=tablerecords.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
+	  		//for getting no of  columns of 1st lead
+	  		List<WebElement> tablerecords2=tablerecords.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
 	  		if(tablerecords2.size()>1)
 	  		{
+	  			//getting show dropdown options
 	  			List<WebElement> show=driver.findElement(By.name("example_length")).findElements(By.tagName("option"));
+	  			//clicking on lastentry(100) of show dropdown
 	  			show.get(show.size()-1).click();
 	  			//Checking for the close button for each lead
 	  			int check=0;
 	  			do
 	  			{
 	  				if(check!=0)
+	  				//clicking on pagination next button	
 	  				driver.findElement(By.id("example_next")).click();
+	  				//getting table records
 	  				List<WebElement> tablerecords3=driver.findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
 	  				int count=0;
 	  				for(int i=0; i<tablerecords3.size(); i++) 
 	  				{
+	  					//Checking for the close button 
 	  					if(tablerecords3.get(i).findElement(By.className(bde.getProperty("close_button"))).isEnabled()) 
 	  					count++;
 	  					else
@@ -131,7 +147,7 @@ public void LC_TS_48_TC001() throws Exception
 @Test                                                         // in manual test case LC_TS_48     closed phase
 public void LC_TS_48_TC002() throws Exception 
 {
-	 
+	 ///////////////// closing the lead by selecting customerslist /////////////////////
 	  	help.expand();
 	  	help.sleep(1);
 	  	if(driver.findElement(By.id(bde.getProperty("closedphase_link"))).isDisplayed())
@@ -139,46 +155,60 @@ public void LC_TS_48_TC002() throws Exception
 	        //clicking on closed phase link
 	  		driver.findElement(By.id(bde.getProperty("closedphase_link"))).click();
 	  		help.sleep(3);
+	  		//getting table records
 	  		List<WebElement> tablerecords= driver.findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
 	  		String g=driver.findElement(By.className("dataTables_info")).getText();
+	  		//validation 
 	  		if(tablerecords.size()==0)
 	  			Assert.fail("tablebody id not found");
+	  		//getting no of columns of 1st lead
 	  		List<WebElement> tablerecords2=tablerecords.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
 	  		if(tablerecords2.size()>1)
 	  		{
+	  			//getting show dropdown options
 	  			List<WebElement> show=driver.findElement(By.name("example_length")).findElements(By.tagName("option"));
+	  			//click on lastentry(100) of the show dropdown
 	  			show.get(show.size()-1).click();
 	  			//random selection of close button
 	  			int o=random(tablerecords.size());
 	  			//getting  details of random lead
 	  			List<WebElement>leaddata=tablerecords.get(o).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
+	  			//getting random lead id no
 	  			String s=leaddata.get(0).getText();
+	  			//getting 3field deatails of random lead
 	  			String data=  leaddata.get(0).getText() + " " + leaddata.get(1).getText() + " " +leaddata.get(2).getText();
-	  			//converting string to integer
+	  			//converting lead id string to integer
 	  			int y=Integer.parseInt(s);
 	  			Reporter.log("<p>" +"closed lead id:"+y);
 	  			//clicking on close button
 	  			tablerecords.get(o).findElement(By.className(bde.getProperty("close_button"))).click();
 	  			//Reporter.log("<p>" +driver.findElement(By.id(bde.getProperty("dialog"))).findElement(By.tagName(bde.getProperty("dialog_tagname"))).getText()+":is opened");
 	  			help.sleep(1);
+	  			//getting leadstatus dropdown contents
 	  			List<WebElement> leadstatus=driver.findElement(By.name(bde.getProperty("leadstatus_id"))).findElements(By.tagName(bde.getProperty("dropdown_options")));
+	  			//validation
 	  			if(leadstatus.size()==0)
 				Assert.fail("lead status id not found in close form");
+	  			//clicking on customerlist( leadstatus dropdown 1st item)
 	  			leadstatus.get(1).click();
 	  			if(leadstatus.get(1).getText().equalsIgnoreCase(bde.getProperty("leadstatus_item1")))
 	  			{
 	  				String c="customersList";
+	  				//entering data into textboxes
 	  				driver.findElement(By.id(bde.getProperty("project_id"))).sendKeys(sh4.getCell(0,5).getContents());
 	  				driver.findElement(By.name(bde.getProperty("comment_id"))).sendKeys(sh4.getCell(0,6).getContents());
 	  			 	help.sleep(1);
+	  			 	//clicking on close button
 	  				driver.findElement(By.id(bde.getProperty("closeform_button"))).click();
 	  				help.sleep(2);
 	  				//Reporter.log("<p>" +driver.findElement(By.className(bde.getProperty("success_message"))).getText());
 	  				help.sleep(5);
 	  			   Actions ac = new Actions(driver);
 	  			   ac.moveToElement(driver.findElement(By.cssSelector("button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only.ui-dialog-titlebar-close"))).build().perform();
+	  			   //closing the child form
 	  			   driver.findElement(By.cssSelector("button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only.ui-dialog-titlebar-close")).click();
 	  				help.sleep(2);
+	  				//clicking on logout button
 	  				driver.findElement(By.className("user_logout")).click();
 	  				//calling close method
 	  				close(y,c,data);
@@ -192,7 +222,7 @@ public void LC_TS_48_TC002() throws Exception
 @Test                                                         // in manual test case LC_TS_48     closed phase
 public void LC_TS_48_TC003() throws Exception 
 {
-	 
+	 ///////////////////// closing the lead by selecting lost competition ////////////////////////
 	  	help.expand();
 	  	help.sleep(1);
 	  	if(driver.findElement(By.id(bde.getProperty("closedphase_link"))).isDisplayed())
@@ -200,45 +230,59 @@ public void LC_TS_48_TC003() throws Exception
 	        //clicking on closed phase link
 	  		driver.findElement(By.id(bde.getProperty("closedphase_link"))).click();
 	  		help.sleep(3);
+	  		//getting table records
 	  		List<WebElement> tablerecords= driver.findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
 	  		String g=driver.findElement(By.className("dataTables_info")).getText();
+	  		//validation
 	  		if(tablerecords.size()==0)
 	  			Assert.fail("tablebody id not found");
+	  		//getting no of columns of 1st lead
 	  		List<WebElement> tablerecords2=tablerecords.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
 	  		if(tablerecords2.size()>1)
 	  		{
+	  			//getting show dropdown entries
 	  			List<WebElement> show=driver.findElement(By.name("example_length")).findElements(By.tagName("option"));
+	  			//clicking on last entry(100) of the show dropdown
 	  			show.get(show.size()-1).click();
 	  			//random selection of close button
 	  			int o=random(tablerecords.size());
 	  			//getting  details of random lead
 	  			List<WebElement>leaddata=tablerecords.get(o).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
+	  			//getting lead id of random lead
 	  			String s=leaddata.get(0).getText();
+	  			//getting 3fields data of the random lead
 	  			String data=  leaddata.get(0).getText() + " " + leaddata.get(1).getText() + " " +leaddata.get(2).getText();
-	  			//converting string to integer
+	  			//converting leadid string to integer
 	  			int y=Integer.parseInt(s);
 	  			Reporter.log("<p>" +"closed lead id:"+y);
 	  			//clicking on close button
 	  			tablerecords.get(o).findElement(By.className(bde.getProperty("close_button"))).click();
 	  			//Reporter.log("<p>" +driver.findElement(By.id(bde.getProperty("dialog"))).findElement(By.tagName(bde.getProperty("dialog_tagname"))).getText()+":is opened");
 	  			help.sleep(5);
+	  			//getting leadstatus dropdown contents
 	  			List<WebElement> leadstatus=driver.findElement(By.name(bde.getProperty("leadstatus_id"))).findElements(By.tagName(bde.getProperty("dropdown_options")));
+	  			//validation
 	  			if(leadstatus.size()==0)
 				Assert.fail("lead status id not found in close form");
+	  			//clicking on lost competition(lead status dropdown 2nd content)
 	  			leadstatus.get(2).click();
 	  			if(leadstatus.get(2).getText().equalsIgnoreCase(bde.getProperty("leadstatus_item2")))
 	  			{
 	  				String c="lostCompetitionList";
+	  				//entering data into textboxes
 	  				driver.findElement(By.name(bde.getProperty("comment_id"))).sendKeys(sh4.getCell(0,6).getContents());
 	  			 	help.sleep(1);
+	  			 	//clicking on close button
 	  				driver.findElement(By.id(bde.getProperty("closeform_button"))).click();
 	  				help.sleep(2);
 	  				//Reporter.log("<p>" +driver.findElement(By.className(bde.getProperty("success_message"))).getText());
 	  				help.sleep(1);
 	  				 Actions ac = new Actions(driver);
 		  			   ac.moveToElement(driver.findElement(By.cssSelector("button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only.ui-dialog-titlebar-close"))).build().perform();
+		  			   //closing the child form
 		  			   driver.findElement(By.cssSelector("button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only.ui-dialog-titlebar-close")).click();
 	  				help.sleep(2);
+	  				//clicking on logout
 	  			    driver.findElement(By.className("user_logout")).click();
 	  			    //calling close method
 	  				close(y,c,data);
@@ -256,6 +300,7 @@ public void LC_TS_49_TC001() throws Exception
  {
 	  help.expand();
 	  help.sleep(1);
+	  //calling search lead from helper
 	  searchLead();
  }
  
@@ -266,18 +311,25 @@ public void LC_TS_49_TC001() throws Exception
 @Test                                                      // in manual test case LC_TS_52           leadedits     
 public void LC_TS_50_TC001() throws Exception
 {
-   help.expand();
+	/////////////////////checking for the trackit and edit button for each lead /////////////////////////////
+  help.expand();
   if(driver.findElement(By.id(bde.getProperty("leadedit_link"))).isDisplayed())
   {
+	  	//clicking on leadedits link
   		driver.findElement(By.id(bde.getProperty("leadedit_link"))).click();
   		help.sleep(1);
+  		//getting table records
   		List<WebElement> trackelement=driver.findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
+  		//validation
   		if(trackelement.size()==0)
   			Assert.fail("table body tagname not found successfully in trackit");
+  		//getting no of columns 1st lead
   		List<WebElement> trackelement2=trackelement.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
   		if( trackelement2.size()>1)
   		{
+  			//getting show dropdown entries
   			List<WebElement> show=driver.findElement(By.name("example_length")).findElements(By.tagName("option"));
+  			//clicking on lastentry(100) of the show dropdown
   			show.get(show.size()-1).click();
   			//Checking for the Track it & edit button for each lead
   			int check=0;
@@ -288,17 +340,19 @@ public void LC_TS_50_TC001() throws Exception
   				List<WebElement> trackelement3=driver.findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
   				int trackit=0;
   				int edit=0;
-  				for(int i=0; i<trackelement3.size(); i++) {
-				if(trackelement3.get(i).findElement(By.className(bde.getProperty("tracit_button"))).isEnabled()) 
-				trackit++;
-				else
-			  	Assert.fail("trackit button is not found successfully");
-				if(trackelement3.get(i).findElement(By.className(bde.getProperty("edit_button"))).isEnabled()) 
-					edit++;
+  				for(int i=0; i<trackelement3.size(); i++) 
+  				{
+  					//Checking for the Track it  button for  lead
+  					if(trackelement3.get(i).findElement(By.className(bde.getProperty("tracit_button"))).isEnabled()) 
+  						trackit++;
+  					else
+  						Assert.fail("trackit button is not found successfully");
+  					//Checking for the  edit button for  lead
+  					if(trackelement3.get(i).findElement(By.className(bde.getProperty("edit_button"))).isEnabled()) 
+  						edit++;
 					else
-				  	Assert.fail("edit button is not found successfully");
-				
-  				}
+						Assert.fail("edit button is not found successfully");
+				}
 				if(trackit==trackelement3.size())
   				Reporter.log("<p>"+"Trackit button is present for all leads.");
 				if(edit==trackelement3.size())
@@ -318,26 +372,34 @@ public void LC_TS_50_TC001() throws Exception
 @Test                                                          // in manual test case LC_TS_52                leadedits(trackit)
 public void LC_TS_50_TC002() throws Exception
  {
+	////////////////////////// TRACK IT  ///////////////////////////
 	   help.expand();
-	   Reporter.log("<p>"+"==============\n"+"TRACKIT"+"===================");;
 	   if(driver.findElement(By.id(bde.getProperty("leadedit_link"))).isDisplayed())
 	   {
+		   	//clicking on leadedits link
 	  		driver.findElement(By.id(bde.getProperty("leadedit_link"))).click();
 	  		help.sleep(3);
+	  		//getting the table records
 	  		List<WebElement> trackelement=driver.findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
+	  		//validation
 	  		if(trackelement.size()==0)
 	  			Assert.fail("table body tagname not found successfully in trackit");
+	  		//getting no of columns of 1st lead
 	  		List<WebElement> trackelement2=trackelement.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
 	  		if( trackelement2.size()>1)
 	  		{
+	  			//getting show dropdown entries
 	  			List<WebElement> show=driver.findElement(By.name("example_length")).findElements(By.tagName("option"));
+	  			//clicking on lastentry(100) of show dropdown
 	  			show.get(show.size()-1).click();
 	  			//random selection of track it button
 	  			int p=random(trackelement.size());
 	  			//getting details of random lead before clicking track it button
 	  			List<WebElement> ls =trackelement.get(p).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
+	  			//validation
 	  			if(ls.size()==0)
 	  			Assert.fail("tablecol tagname not found successfully in trackit");
+	  			//creating arraylist
 	  			ArrayList<String> ar = new ArrayList<String>();
 	  			for (int i=0;i<ls.size();i++)
 	  			{
@@ -393,20 +455,26 @@ public void LC_TS_50_TC002() throws Exception
 @Test                                                               // in manual test case LC_TS_52                leadedits(EDIT)
 public void LC_TS_51_TC001() throws Exception
   {
+	////////////////////////// EDIT ////////////////////////////////////////
 	  help.expand();
-	  Reporter.log("<p>" +"=====\n"+"EDIT::"+"======");
 	  if(driver.findElement(By.id(bde.getProperty("leadedit_link"))).isDisplayed())
 	  {
+		  	//clicking on leadedits link
 			driver.findElement(By.id(bde.getProperty("leadedit_link"))).click();
 	  		help.sleep(2);
+	  		//getting table leads
 	  		List <WebElement> leads = driver.findElement(By.id(bde.getProperty("table_id"))).findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
+	  		//validation
 		  	if(leads.size()==0)
 	  			Assert.fail("table body tagname not found successfully in edit");
 		  	help.sleep(2);
+		  	//getting columns of 1st lead
 		  	List <WebElement> leads2=leads.get(0).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
 		  	if(leads2.size()>1)
 		  	{
+		  		//getting show dropdown entries
 		  		List<WebElement> show=driver.findElement(By.name("example_length")).findElements(By.tagName("option"));
+		  		//clicking on lastentry(100) of show dropdown
 	  			show.get(show.size()-1).click();
 		  		int columns=sh4.getColumns();
 		  		int rows=sh4.getRows();
@@ -416,6 +484,7 @@ public void LC_TS_51_TC001() throws Exception
 		  		int j=random(leads.size());
 		  		//getting details of random lead before clicking edit button
 		  		List<WebElement> ls =leads.get(j).findElements(By.tagName(bde.getProperty("tablecol_tagname")));
+		  		//validation
 		  		if(ls.size()==0)
 				Assert.fail("tablecol tagname not found successfully in edit");
 		  		ArrayList<String> ar = new ArrayList<String>();
@@ -424,13 +493,16 @@ public void LC_TS_51_TC001() throws Exception
 		  			String s1= ls.get(i).getText();
 		  			ar.add(s1);  
 		  		}
+		  		//printing the lead details before clicking on edit button
 		  		Reporter.log("<p>" +"lead before clicking on edit button is: " + ar);
+		  		//clicking on edit button
 		  		leads.get(j).findElement(By.className(bde.getProperty("edit_button"))).click();
 		  		Reporter.log("<p>" +driver.findElement(By.id(bde.getProperty("dialog"))).findElement(By.tagName(bde.getProperty("dialog_tagname"))).getText());
 		  		for(int row=2;row<=2;row++)
 		  		{
 					int col=0;
 					help.sleep(1);
+					//entering data into textboxes
 					driver.findElement(By.id(bde.getProperty("first_name"))).clear();
 					driver.findElement(By.id(bde.getProperty("first_name"))).sendKeys(sh4.getCell(col, row).getContents());
 					driver.findElement(By.id(bde.getProperty("last_name"))).clear();
@@ -442,7 +514,9 @@ public void LC_TS_51_TC001() throws Exception
 					driver.findElement(By.id(bde.getProperty("desk_no"))).clear();
 					driver.findElement(By.id(bde.getProperty("desk_no"))).sendKeys(sh4.getCell(++col, row).getContents());
 		  		}
+		  		//getting update dropdowns contents
 		  		List<WebElement> updatedropdowns=driver.findElement(By.className(bde.getProperty("updatedropdown_class"))).findElements(By.tagName(bde.getProperty("updatedropdown_tag")));
+		  		//validation
 		  		if(updatedropdowns.size()==0)
 	  			Assert.fail(" updatedropdown class name not found successfully in edit");
 		  		for(int a=0;a<updatedropdowns.size();a++)
@@ -462,10 +536,12 @@ public void LC_TS_51_TC001() throws Exception
 		  		help.sleep(1);
 		  		Reporter.log("<p>" +driver.findElement(By.id(bde.getProperty("message_id"))).findElement(By.tagName(bde.getProperty("message_tagname"))).getText());
 		  		help.sleep(1);
+		  		//closing the edit form
 		  		driver.findElement(By.className(bde.getProperty("editform_close"))).click();
 		  		help.sleep(1);
 		  		//getting details of lead after  editing the lead
 		  		List <WebElement> leads1 = driver.findElement(By.id(bde.getProperty("table_id"))).findElement(By.tagName(bde.getProperty("table_body"))).findElements(By.tagName(bde.getProperty("tablerow_tagname")));
+		  		//validation
 		  		if(leads1.size()==0)
 				Assert.fail("table id not found in edit");
 		  		help.sleep(1);
@@ -476,6 +552,7 @@ public void LC_TS_51_TC001() throws Exception
 		  			String s1= ls1.get(i).getText();
 		  			ar1.add(s1);  
 		  		}
+		  		//printing the leaddetails after editing
 		  		Reporter.log("<p>" +"lead details after  editing   : " + ar1);
 		  		//validation
 		  		if(ar1.equals(ar))
@@ -506,6 +583,7 @@ public void LC_TS_52_TC001() throws Exception
 	  help.expand();
 	  String email1=config.getProperty("bdename");
 	  help.sleep(2);
+	  //calling change password from helper
 	  changePassword(email1);
 	 
   }
