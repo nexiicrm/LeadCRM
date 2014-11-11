@@ -182,45 +182,51 @@ public class Helper extends BaseTest
 	List<String> ids= new ArrayList<String>();
 	ArrayList<Integer> li= new ArrayList<Integer>();
 	List<WebElement> tablerecords= driver.findElement(By.id(or.getProperty("table_id"))).findElement(By.tagName(or.getProperty("table_body"))).findElements(By.tagName(or.getProperty("tablerow_tagname")));
-	List<WebElement> tablerecords2=tablerecords.get(0).findElements(By.tagName(or.getProperty("tablecol_tagname")));
-	if(tablerecords2.size()>1)
-	{
-	for(int a=0;a<tablerecords.size();a++){
-	if(l==0){
-	String s=tablerecords.get(a).findElements(By.tagName(or.getProperty("tablecol_tagname"))).get(l).getText() ;
-	int z = Integer.parseInt(s);
-	
-	li.add(a, z);
-	}
-	else{
-	ids.add(a, tablerecords.get(a).findElements(By.tagName(or.getProperty("tablecol_tagname"))).get(l).getText());
-	}
-	}
-	help.sleep(1);
-	//validation
-	if(l==0){
-	for(int i=0;i<li.size();i++){
-	for(int j=i;j<li.size();j++){
-	int val=(li.get(i)).compareTo(li.get(j));
-	if(val<=0)
-	continue;
-	else
-	Assert.fail("sorting ascending: is on column: "+(l+1)+":failed");
-	}
-	}
-	}
-	else{
-	for(int i=0;i<ids.size();i++){
-	for(int j=i;j<ids.size();j++){
-	int val=(ids.get(i)).compareToIgnoreCase(ids.get(j));
-	if(val<=0)
-	continue;
-	else
-	Assert.fail("sorting ascending: is on column: "+(l+1)+":failed");
-	}
-	}
-	}
-	}
+	//List<WebElement> tablerecords2=tablerecords.get(0).findElements(By.tagName(or.getProperty("tablecol_tagname")));
+		
+			for(int a=0;a<tablerecords.size();a++)
+			{
+				if(l==0)
+				{
+					String s=tablerecords.get(a).findElements(By.tagName(or.getProperty("tablecol_tagname"))).get(l).getText() ;
+					int z = Integer.parseInt(s);
+					li.add(a, z);
+				}
+				else
+				{
+					ids.add(a, tablerecords.get(a).findElements(By.tagName(or.getProperty("tablecol_tagname"))).get(l).getText());
+				}
+			}
+			help.sleep(1);
+			//validation
+			if(l==0)
+			{
+				for(int i=0;i<li.size();i++)
+				{
+					for(int j=i;j<li.size();j++)
+					{
+						int val=(li.get(i)).compareTo(li.get(j));
+						if(val<=0)
+							continue;
+						else
+							Assert.fail("sorting ascending: is on column: "+(l+1)+":failed");
+					}
+				}
+			}
+			else
+			{
+				for(int i=0;i<ids.size();i++)
+				{
+					for(int j=i;j<ids.size();j++)
+					{
+						int val=(ids.get(i)).compareToIgnoreCase(ids.get(j));
+						if(val<=0)
+							continue;
+						else
+							Assert.fail("sorting ascending: is on column: "+(l+1)+":failed");
+					}
+				}
+			}
 	}
 
 
@@ -229,76 +235,83 @@ public class Helper extends BaseTest
 	List<String> ids= new ArrayList<String>();
 	ArrayList<Integer> li= new ArrayList<Integer>();
 	List<WebElement> tablerecords= driver.findElement(By.id(or.getProperty("table_id"))).findElement(By.tagName(or.getProperty("table_body"))).findElements(By.tagName(or.getProperty("tablerow_tagname")));
-	List<WebElement> tablerecords2=tablerecords.get(0).findElements(By.tagName(or.getProperty("tablecol_tagname")));
-	if(tablerecords2.size()>1)
-	{
-	for(int a=0;a<tablerecords.size();a++){
-	if(l==0){
-	String s=tablerecords.get(a).findElements(By.tagName(or.getProperty("tablecol_tagname"))).get(l).getText() ;
-	int z = Integer.parseInt(s);
-	li.add(a, z);
-	}else{
-	ids.add(a, tablerecords.get(a).findElements(By.tagName(or.getProperty("tablecol_tagname"))).get(l).getText());
-	}
-	}
-	help.sleep(1);
-	//validation
-	if(l==0){
-	for(int i=0;i<li.size();i++){
-	for(int j=i;j<li.size();j++){
-	int val=(li.get(i)).compareTo(li.get(j));
-	if(val>=0)
-	continue;
-	else
-	Assert.fail("sorting descending: is on column: "+(l+1)+":failed");
-	}
-	}
-	}
-	else{
-	for(int i=0;i<ids.size();i++){
-	for(int j=i;j<ids.size();j++){
-	int val=(ids.get(i)).compareToIgnoreCase(ids.get(j));
-	if(val>=0)
-	continue;
-	else
-	Assert.fail("sorting descending: is on column: "+(l+1)+":failed");
-	}
-	}
-	}
-	}
+	//List<WebElement> tablerecords2=tablerecords.get(0).findElements(By.tagName(or.getProperty("tablecol_tagname")));
+		
+			for(int a=0;a<tablerecords.size();a++){
+				if(l==0){
+					String s=tablerecords.get(a).findElements(By.tagName(or.getProperty("tablecol_tagname"))).get(l).getText() ;
+					int z = Integer.parseInt(s);
+					li.add(a, z);
+				}else{
+					ids.add(a, tablerecords.get(a).findElements(By.tagName(or.getProperty("tablecol_tagname"))).get(l).getText());
+				}
+			}
+			help.sleep(1);
+			//validation
+			if(l==0){
+				for(int i=0;i<li.size();i++){
+					for(int j=i;j<li.size();j++){
+						int val=(li.get(i)).compareTo(li.get(j));
+						if(val>=0)
+							continue;
+						else
+							Assert.fail("sorting descending: is on column: "+(l+1)+":failed");
+					}
+				}
+			}
+			else{
+				for(int i=0;i<ids.size();i++){
+					for(int j=i;j<ids.size();j++){
+						int val=(ids.get(i)).compareToIgnoreCase(ids.get(j));
+						if(val>=0)
+							continue;
+						else
+							Assert.fail("sorting descending: is on column: "+(l+1)+":failed");
+					}
+				}
+			}
+		
 	}
 
 	public void sorting()    // Helper method for sorting in tables
 	{
 	int n=1;
-	List<WebElement> tablecolumns= driver.findElement(By.tagName(or.getProperty("table_head"))).findElements(By.tagName(or.getProperty("tablehead_tagname")));
-	if(driver.getCurrentUrl().contains("search/search_leads.jsp"))
-	{
-	n--;
-	}
-	Reporter.log("<p>" +"totalcolumns having sorting options="+(tablecolumns.size()));
-	for(int l=0;l<(tablecolumns.size()-n);l++){
-	tablecolumns.get(l).click();
-	help.sleep(1);
-	if(tablecolumns.get(l).getAttribute("class").contains(or.getProperty("ascending_class"))){
-	Reporter.log("<p>" +"sorting ascending: on column: "+(l+1)+":"+tablecolumns.get(l).getText());
-	ascending(l);
-	}else{
-	Reporter.log("<p>" +"sorting descending: on column: "+(l+1)+":"+tablecolumns.get(l).getText());
-	descending(l);
-	}
-	tablecolumns.get(l).click();
-	help.sleep(1);
-	if(tablecolumns.get(l).getAttribute("class").contains(or.getProperty("ascending_class"))){
-	Reporter.log("<p>" +"sorting ascending: on column: "+(l+1)+":"+tablecolumns.get(l).getText());
-	ascending(l);
-	}else{
-	Reporter.log("<p>" +"sorting descending: on column: "+(l+1)+":"+tablecolumns.get(l).getText());
-	descending(l);
-	}
-	}
+	
+		if(driver.getCurrentUrl().contains("search/search_leads.jsp"))
+		{
+			n--;
+		}
+		List<WebElement> tablecolumns= driver.findElement(By.tagName(or.getProperty("table_head"))).findElements(By.tagName(or.getProperty("tablehead_tagname")));
+		List<WebElement> tablerecords= driver.findElement(By.id(or.getProperty("table_id"))).findElement(By.tagName(or.getProperty("table_body"))).findElements(By.tagName(or.getProperty("tablerow_tagname")));
+		List<WebElement> tablerecords2=tablerecords.get(0).findElements(By.tagName(or.getProperty("tablecol_tagname")));
+		if(tablerecords2.size()>1)
+		{
+			Reporter.log("<p>" +"totalcolumns having sorting options="+(tablecolumns.size()));
+			for(int l=0;l<(tablecolumns.size()-n);l++){
+			tablecolumns.get(l).click();
+			help.sleep(1);
+			if(tablecolumns.get(l).getAttribute("class").contains(or.getProperty("ascending_class"))){
+				Reporter.log("<p>" +"sorting ascending: on column: "+(l+1)+":"+tablecolumns.get(l).getText());
+				ascending(l);
+			}else{
+				Reporter.log("<p>" +"sorting descending: on column: "+(l+1)+":"+tablecolumns.get(l).getText());
+				descending(l);
+			}
+			tablecolumns.get(l).click();
+			help.sleep(1);
+			if(tablecolumns.get(l).getAttribute("class").contains(or.getProperty("ascending_class"))){
+				Reporter.log("<p>" +"sorting ascending: on column: "+(l+1)+":"+tablecolumns.get(l).getText());
+				ascending(l);
+			}else{
+				Reporter.log("<p>" +"sorting descending: on column: "+(l+1)+":"+tablecolumns.get(l).getText());
+				descending(l);
+			}
+			}
+		}else
+			Reporter.log("<p>"+"no data available in the table, to perform sorting");
 	}
 
+		
 		
   
 	public void searchLead()		//Helper method for search leads  
