@@ -327,6 +327,7 @@ public class Helper extends BaseTest
 		driver.switchTo().window(childWindow);
 		}
 
+		help.sleep(4);
 		// Selecting Required fields
 		List <WebElement> requiredFields = driver.findElement(By.id(or.getProperty("requiredfields_id"))).findElements(By.tagName(or.getProperty("servicename_tag")));
 		int a = help.random(requiredFields.size());
@@ -351,11 +352,10 @@ public class Helper extends BaseTest
 		Reporter.log("<p>" +"Option selected is:" + option.get(c).findElement(By.tagName(or.getProperty("resultmsg_tag"))).getText());
 		option.get(c).findElement(By.tagName(or.getProperty("searchbox_tag"))).click();
 		driver.findElement(By.id(or.getProperty("registerbutton_id"))).click();
-		help.sleep(5);
+		help.waitforElement(20, By.id("example"));
 
 		// Printing the Table displayed with required fields
 		Reporter.log("<p>" +driver.findElement(By.id(or.getProperty("tablename_id"))).findElement(By.tagName(or.getProperty("leads_info_tag"))).getText());
-		//driver.navigate().refresh(); 
 		option.get(c).findElement(By.tagName(or.getProperty("searchbox_tag"))).click();
 		}
 
@@ -384,7 +384,8 @@ public class Helper extends BaseTest
 				driver.switchTo().window(childWindow);
 			}
 
-				// Selecting Required fields
+			help.sleep(4);
+			// Selecting Required fields
 			List <WebElement> requiredFields = driver.findElement(By.id(or.getProperty("requiredfields_id"))).findElements(By.tagName(or.getProperty("servicename_tag")));
 			List <String> fieldoptions = new ArrayList <String>();
 			for(int i=1; i<requiredFields.size(); i++) 
@@ -515,6 +516,7 @@ public class Helper extends BaseTest
 	  pageNext.click();
 
 	  String s1 = driver.findElement(By.cssSelector(or.getProperty("list_info"))).getText();
+	  help.sleep(1);
 	  if(!s1.equalsIgnoreCase(s)){
 	  Reporter.log("<p>" + "navigating to next page");
 	  }else{
@@ -534,6 +536,7 @@ public class Helper extends BaseTest
 	  String s2 = driver.findElement(By.cssSelector(or.getProperty("list_info"))).getText();
 	  pagePrevious.click();
 	  String s3 = driver.findElement(By.cssSelector(or.getProperty("list_info"))).getText();
+	  help.sleep(1);
 	  if(!s2.equalsIgnoreCase(s3)){
 	  Reporter.log("<p>" + "navigated to previous page");
 	  }else{
