@@ -172,6 +172,7 @@ String randomLead;
 		}
 		
 		// clicking track it button 
+		help.sleep(3);
 		String str22 = driver.findElement(By.className(mgmt.getProperty("allproposals_className"))).getText();
 		if(str22 != null)
 		{
