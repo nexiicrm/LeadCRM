@@ -649,6 +649,7 @@ public class Helper extends BaseTest
 					if(s1.equalsIgnoreCase(dat)&&s2.equalsIgnoreCase(s1)&&s3.equalsIgnoreCase(s2)) 
 					{
 						String str ="000";
+						help.sleep(2);
 						driver.findElement(By.id(or.getProperty("oldpass"))).clear();
 						driver.findElement(By.id(or.getProperty("newpass"))).clear();
 						driver.findElement(By.id(or.getProperty("confirmpass"))).clear();
