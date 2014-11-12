@@ -48,8 +48,10 @@ public class BDE extends Helper{
   			{   	   
   			   subtree.get(i).click();
   			   Reporter.log("<p>   ###### Navigate to the page ::: "+ subLink + "########## \n ");
-  			   sleep(2);		  
+  			     
   			   WebElement cont= driver.findElement(By.id(bde.getProperty("pagename")));
+  			   help.waitforElement(20 , By.id(bde.getProperty("pagename")) );	
+  			   
   			   if (cont.findElement(By.tagName(bde.getProperty("pagetag"))).getText().equalsIgnoreCase(pageName))
   				   Reporter.log("<p> You have Sucessfully navigated to " + subLink );
   			   else
@@ -61,7 +63,7 @@ public class BDE extends Helper{
   	// This method takes parameter as string. Pass this string in to search box.
   	public void searchLead(String Leadno)
   	{
-  		sleep(4);
+  		waitforElement(20, By.id(bde.getProperty("searchid")) );
   		WebElement search = driver.findElement(By.id(bde.getProperty("searchid"))).findElement(By.tagName(bde.getProperty("searchtag")));
   		if(search == null)
   			Assert.fail("The Search Text Box is not Present");
@@ -76,6 +78,7 @@ public class BDE extends Helper{
   		// Directly selects on random lead used in Research and Work Phase.
   		if (txt.contentEquals("random"))
   		{
+  			help.sleep(5);
   			List<WebElement> table = driver.findElement(By.id(bde.getProperty("tableId"))).findElement(By.tagName(bde.getProperty("tableBody"))).findElements(By.tagName(bde.getProperty("tableTr")));
   			if(tableSizeCheck().contains("dataTables_empty"))
   			{
@@ -126,8 +129,9 @@ public class BDE extends Helper{
   	public void submitMessage(WebElement sb, String msg)
   	{
   		  sb.submit();  
+  		  help.sleep(3);
   		  List<WebElement> ermg =driver.findElement(By.id(bde.getProperty("resultid"))).findElements(By.tagName(bde.getProperty("resulttag")));
-  		  sleep(2);
+  		  waitforElement(30, By.id(bde.getProperty("resultid")));
   		  if(ermg.get(0).getText().equalsIgnoreCase(msg));
   			  Reporter.log("<p> The message :" + msg +" is displayed.....");  
   		  if(ermg.get(0).getText().contains("Proposal Request Failed to send through mail"))
@@ -145,7 +149,7 @@ public class BDE extends Helper{
   		  
   		  submitMessage(seg, "Please Select FollowUp Type....");
   		  new Select(driver.findElement(By.name(bde.getProperty("Type")))).selectByVisibleText(s1);
-  		  sleep(1);
+  		  waitforElement(30, By.name(bde.getProperty("Type")));
   	 				 
   		  submitMessage(seg,"Please Leave A Comment....");
   		  WebElement cmt = driver.findElement(By.name(bde.getProperty("Comment")));
@@ -235,9 +239,9 @@ public class BDE extends Helper{
   	    		       String user = driver.findElement(By.className("user_name")).getText();
   	    		       Reporter.log("<p>user " + user);
   	    		       if (user.contains("Hi ! BDM"))
-  	       		    	   Reporter.log("<p>  ++++++++ Logged in as BDE user ++++++++++");
+  	       		    	   Reporter.log("<p>  ++++++++ Logged in as BDM user ++++++++++");
   	       		       else
-  	       		    	   Assert.fail("You have not logged in as BDE user.");
+  	       		    	   Assert.fail("You have not logged in as BDM user.");
   	       		    
   	    		       navigatePage(Linkname, Containername);
   	       		       searchLead(Leadno);
@@ -284,7 +288,7 @@ public class BDE extends Helper{
   		 
   	 }
 
-    ////@Test //UI Functionality of the BDE Module.
+    //////@Test //UI Functionality of the BDE Module.
   	public void LC_TS_43_ExpandCollapse() throws Exception
   	{	
   		//This List tree contains all Main Links of BDE Module , adds these in to "lisub" List.
@@ -326,8 +330,9 @@ public class BDE extends Helper{
           
   	}
   	
+  
   	// This researchOnCompany test, checks the functionality of Research On Company Page, 'Lead Research' Form.
-    //@Test(invocationCount = 1)
+  //  @Test(invocationCount = 1)
   	public void LC_TS_44_researchOnCompany() throws Exception
   	{
   		navigatePage("Research On Company", "Lead Research");	
@@ -387,7 +392,7 @@ public class BDE extends Helper{
   	}	
   	
     //This test method checks functionality of Work phase by giving today's date
-  	//@Test(invocationCount = 1)
+  //	@Test(invocationCount = 1)
     public void LC_TS_45_1_workPhaseForTodaysDate() throws Exception
   	{
   		date = new Date();	
@@ -441,7 +446,7 @@ public class BDE extends Helper{
   	}
   	
   	//This test method checks functionality of Work phase by giving later date
-  	@Test(invocationCount = 1)
+ // 	@Test(invocationCount = 1)
   	public void LC_TS_45_2_workPhaseForLaterDate()
   	{   
   	    cal = Calendar.getInstance();
@@ -488,7 +493,7 @@ public class BDE extends Helper{
   	}
        
   	 // This test method checks functionality of todays phase followUp 4
-     //@Test
+  //   @Test
      public void LC_TS_46_1_todaysFollowup4()
   	 {	
       	 date = new Date();	
@@ -500,7 +505,7 @@ public class BDE extends Helper{
       	 if(LeadSelection("Introductory Mail", "work") == 1)
       	 {
       		 sleep(4);
-      		 if (driver.findElement(By.tagName(config.getProperty("pagetag"))).getText().equalsIgnoreCase("Followup on Lead"))
+      		 if (driver.findElement(By.tagName(bde.getProperty("pagetag"))).getText().equalsIgnoreCase("Followup on Lead"))
       		 {
       			 fillingForm("Followup 4","selection today date",simple.format(later));		 
       		 }else
@@ -525,7 +530,7 @@ public class BDE extends Helper{
   	 }
        
     //This test method checks functionality of todays phase prospect Identify.
-  	@Test(invocationCount = 1)
+ // 	@Test(invocationCount = 1)
   	public void LC_TS_46_2_todaysFollowupProposal() throws Exception
   	{
   		 date = new Date();
@@ -534,7 +539,8 @@ public class BDE extends Helper{
   	     
   	     //Click on one random lead of status Introductory mail and fills the form by giving prospectType as 'Proposal'.
   		 if (LeadSelection("Introductory Mail" , "work") == 1)
-  		 {
+  		 {		
+  			     help.sleep(3);
   				 if(driver.findElement(By.tagName(bde.getProperty("pagetag"))).getText().equalsIgnoreCase("Followup on Lead"))
   		 		 {   
   			
@@ -633,7 +639,7 @@ public class BDE extends Helper{
   	 }
   	 
   	 // This test method checks functionality of All FollowUp phase followUp 4
-     //@Test
+  //   @Test
   	 public void LC_TS_47_TC005_AllFollowups4() throws Exception
   	 {
   		 date = new Date();	
@@ -645,6 +651,7 @@ public class BDE extends Helper{
       	 sleep(4);
   		 if (LeadSelection("Introductory Mail" , "work") == 1) 
   		 {
+  			 	 sleep(3);
   				 if(driver.findElement(By.tagName(bde.getProperty("pagetag"))).getText().equalsIgnoreCase("Followup on Lead"))
   		 		 {
   			 		sleep(2);
@@ -668,7 +675,7 @@ public class BDE extends Helper{
   	 }
   	 
        // This test method checks functionality of All FollowUp phase prospect Identify of Quote
-     @Test
+ ///    @Test
   	 public void LC_TS_47_TC002_AllFollowupsQuoteUpload() throws Exception
   	 {
   		 date = new Date();	
@@ -745,7 +752,7 @@ public class BDE extends Helper{
   		 trackIT(); 		  
   	 }
     
-  	   @Test
+  ///	   @Test
        public void LC_TS_47_TC003_AllFollowupclose()
        {
       	 navigatePage("All FollowUps", "All Followups");    
@@ -783,7 +790,7 @@ public class BDE extends Helper{
        }	 
   	
       // This test method checks functionality Todays FollowUp. Current date leads present or not
-  	 @Test
+ // 	 @Test
   	 public void LC_TS_47_TC004_confirmLeadsOfTodaysDate()
   	 {
   		 date = new Date();	
@@ -802,7 +809,7 @@ public class BDE extends Helper{
   				 navigatePage("Today's FollowUp", "Today Followups");
   			     searchLead(simple.format(date));
   			     if(tableSizeCheck().contains("dataTables_empty"))
-  				    Assert.fail("There were no leads in All FollowUp table to verify this senario.");
+  				    Reporter.log("There were no leads in All FollowUp table to verify this senario.");
   			     else
   			    	Assert.fail("There is some mis match in size of Todays Followup");
   			 }
@@ -820,23 +827,26 @@ public class BDE extends Helper{
   		 for(int j = 0; j < All.size(); j++)
   		 {
   			 List<WebElement> tds1 = Today.get(j).findElements(By.tagName(bde.getProperty("tagTd")));
+  			 if(tds1.get(j).getText().equals("No matching records found")){
+  				 Reporter.log("<p>" + "No matching records found");
+  			 }else{
   		     l2.add(tds1.get(0).getText() + " " + tds1.get(1).getText() + " " +tds1.get(2).getText());
-  		 }
+  		 
   		 Reporter.log("<p>  AllFollowUp table size:" + Today.size() + "Todays FollowUp table size:" + All.size());
   		 
   		 if(All.size() == Today.size())
   		 {
-  			 
   			 for(int k = 0; k < All.size(); k++)
   				 if(l1.get(k).equals(l2.get(k)))
   					Reporter.log("<p> "+ l1.get(k) + "is found in todays Follow ups");
   				 else
   					Reporter.log("<p>" + l1.get(k) + "is not found in todays Follow ups");
-  			     
   		 }
+  			 }
+  		 	}
   	 }
   	
-  	@Test // This checks the To Field check of prospect Identify phase.
+ // 	@Test // This checks the To Field check of prospect Identify phase.
   	public void LC_TS_47_TC001_UIToFieldCheck()
   	{
   		 date = new Date();
@@ -903,7 +913,7 @@ public class BDE extends Helper{
   		 }	
      }
   	   
-     //@Test
+     @Test
      public void LC_TS_47_TC006_coldStorage() 
   	 { 
       	 //This block checks for lead moved from closed phase to BD
