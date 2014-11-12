@@ -288,7 +288,7 @@ public class BDE extends Helper{
   		 
   	 }
 
-    //////@Test //UI Functionality of the BDE Module.
+    @Test //UI Functionality of the BDE Module.
   	public void LC_TS_43_ExpandCollapse() throws Exception
   	{	
   		//This List tree contains all Main Links of BDE Module , adds these in to "lisub" List.
@@ -332,7 +332,7 @@ public class BDE extends Helper{
   	
   
   	// This researchOnCompany test, checks the functionality of Research On Company Page, 'Lead Research' Form.
-  //  @Test(invocationCount = 1)
+   @Test(invocationCount = 1)
   	public void LC_TS_44_researchOnCompany() throws Exception
   	{
   		navigatePage("Research On Company", "Lead Research");	
@@ -392,7 +392,7 @@ public class BDE extends Helper{
   	}	
   	
     //This test method checks functionality of Work phase by giving today's date
-  //	@Test(invocationCount = 1)
+  	@Test(invocationCount = 1)
     public void LC_TS_45_1_workPhaseForTodaysDate() throws Exception
   	{
   		date = new Date();	
@@ -446,7 +446,7 @@ public class BDE extends Helper{
   	}
   	
   	//This test method checks functionality of Work phase by giving later date
- // 	@Test(invocationCount = 1)
+ 	@Test(invocationCount = 1)
   	public void LC_TS_45_2_workPhaseForLaterDate()
   	{   
   	    cal = Calendar.getInstance();
@@ -493,7 +493,7 @@ public class BDE extends Helper{
   	}
        
   	 // This test method checks functionality of todays phase followUp 4
-  //   @Test
+    @Test
      public void LC_TS_46_1_todaysFollowup4()
   	 {	
       	 date = new Date();	
@@ -530,7 +530,7 @@ public class BDE extends Helper{
   	 }
        
     //This test method checks functionality of todays phase prospect Identify.
- // 	@Test(invocationCount = 1)
+ 	@Test(invocationCount = 1)
   	public void LC_TS_46_2_todaysFollowupProposal() throws Exception
   	{
   		 date = new Date();
@@ -639,7 +639,7 @@ public class BDE extends Helper{
   	 }
   	 
   	 // This test method checks functionality of All FollowUp phase followUp 4
-  //   @Test
+     @Test
   	 public void LC_TS_47_TC005_AllFollowups4() throws Exception
   	 {
   		 date = new Date();	
@@ -675,7 +675,7 @@ public class BDE extends Helper{
   	 }
   	 
        // This test method checks functionality of All FollowUp phase prospect Identify of Quote
- ///    @Test
+     @Test
   	 public void LC_TS_47_TC002_AllFollowupsQuoteUpload() throws Exception
   	 {
   		 date = new Date();	
@@ -752,7 +752,7 @@ public class BDE extends Helper{
   		 trackIT(); 		  
   	 }
     
-  ///	   @Test
+  	   @Test
        public void LC_TS_47_TC003_AllFollowupclose()
        {
       	 navigatePage("All FollowUps", "All Followups");    
@@ -788,9 +788,9 @@ public class BDE extends Helper{
   		 else 
   			 Reporter.log("<p> The All Followup Lead is : " + Leadno + " is available in All FollowUp."); 	   	 
        }	 
-  	
+  
       // This test method checks functionality Todays FollowUp. Current date leads present or not
- // 	 @Test
+  	 @Test
   	 public void LC_TS_47_TC004_confirmLeadsOfTodaysDate()
   	 {
   		 date = new Date();	
@@ -827,7 +827,7 @@ public class BDE extends Helper{
   		 for(int j = 0; j < All.size(); j++)
   		 {
   			 List<WebElement> tds1 = Today.get(j).findElements(By.tagName(bde.getProperty("tagTd")));
-  			 if(tds1.get(j).getText().equals("No matching records found")){
+  			 if(tds1.get(j).getText().equals("No matching records found") || tds1.get(j).getText().equals("No data available in table")){
   				 Reporter.log("<p>" + "No matching records found");
   			 }else{
   		     l2.add(tds1.get(0).getText() + " " + tds1.get(1).getText() + " " +tds1.get(2).getText());
@@ -846,7 +846,7 @@ public class BDE extends Helper{
   		 	}
   	 }
   	
- // 	@Test // This checks the To Field check of prospect Identify phase.
+  	@Test // This checks the To Field check of prospect Identify phase.
   	public void LC_TS_47_TC001_UIToFieldCheck()
   	{
   		 date = new Date();
@@ -913,7 +913,7 @@ public class BDE extends Helper{
   		 }	
      }
   	   
-     @Test
+    @Test
      public void LC_TS_47_TC006_coldStorage() 
   	 { 
       	 //This block checks for lead moved from closed phase to BD
