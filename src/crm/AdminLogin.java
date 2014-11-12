@@ -449,8 +449,8 @@ public class AdminLogin extends Helper{
 		  
 //===============Functional Test Methods ====================================
 	  
-	//   @Test
-    public void i_sideTreeExpansionAndCollapse()throws Exception  {
+	   @Test
+    public void i_LC_TS_5_sideTreeExpansionAndCollapse()throws Exception  {
     	
 	   //======= Login verification =========
 	 		mylogin();
@@ -466,8 +466,8 @@ public class AdminLogin extends Helper{
     }
  
  
-    // @Test
-    public void j_dropDownVerification() throws Exception{
+     @Test
+    public void j_LC_TS_6_1_dropDownVerification() throws Exception{
     	
 	  //======Verification of 'Manager' Drop down button presence and its working=====
     	
@@ -594,9 +594,9 @@ public class AdminLogin extends Helper{
 		Reporter.log("<p>" + "=========================================================");
     }
  
-  //@Test
+  @Test
     
- 	public void k_ButtonVerification() throws Exception{
+ 	public void k_LC_TS_6_2_ButtonVerification() throws Exception{
  		
  		//calling helper methods for login and exapansion of side tree menu
  		
@@ -676,8 +676,8 @@ public class AdminLogin extends Helper{
  
  	}
  	
- 	// 	@Test
-	 public void l_newUserCreation() throws Exception{
+ 	 	@Test
+	 public void l_LC_TS_6_3_newUserCreation() throws Exception{
 	 
 		 //Calling helper methods for login and tree expansion
 		 
@@ -919,8 +919,8 @@ public class AdminLogin extends Helper{
 		Reporter.log("<p>" + "=================d_newUserCreation() success==========================");
 	 }
 	
-	  // @Test
-	  public void m_updatingUser() throws Exception{
+	   @Test
+	  public void m_LC_TS_7_updatingUser() throws Exception{
 		  
 		  // calling login methods for login and side tree expansion
 		  
@@ -1003,7 +1003,6 @@ public class AdminLogin extends Helper{
 				//retrieving the role of the user from DB by passing Email-Id
 				
 				String s1 = dbConnectionRole(smail);
-				Reporter.log("<p>" + "role before updation   "+s1);
 				
 				//updating the role of existing user
 				sleep(2);
@@ -1051,7 +1050,6 @@ public class AdminLogin extends Helper{
 				
 				//Retrieving the Role of the updated user from the database to verify the updation of the user
 				String s2 = dbConnectionRole(smail);
-				Reporter.log("<p>" + "role after updation   "+s2);
 				
 				String sub =null;
 		   
@@ -1105,8 +1103,8 @@ public class AdminLogin extends Helper{
 		
 	 
 		
-	// @Test
-	public void n_deletinguser() throws Exception{
+	 @Test
+	public void n_LC_TS_8_deletinguser() throws Exception{
 	
 		//calling helper methods for login and side tree expansion
 		mylogin();
@@ -1221,8 +1219,8 @@ public class AdminLogin extends Helper{
 	  }
 	
 
-//	@Test
-	public void o_viewUsers() throws Exception{
+	@Test
+	public void o_LC_TS_9_viewUsers() throws Exception{
 		//calling helper methods for login and side tree expansion
 		
 		mylogin();
@@ -1294,8 +1292,8 @@ public class AdminLogin extends Helper{
 	}
 	
 	
-	//@Test
-	public void p_configCreation() throws Exception{
+	@Test
+	public void p_LC_TS_10_configCreation() throws Exception{
 		
 		//calling helper methods for login and side tree expansion
 		
@@ -1507,8 +1505,8 @@ public class AdminLogin extends Helper{
 		
 	  }
 	
-//	@Test
-	public void q_updateConfig() throws Exception{
+	@Test
+	public void q_LC_TS_11_updateConfig() throws Exception{
 		//calling helper methods for login and side tree expansion
 		
 		mylogin();
@@ -1657,8 +1655,8 @@ public class AdminLogin extends Helper{
 	}
 
 
-//	@Test
-	public void r_viewConfig() throws Exception{
+	@Test
+	public void r_LC_TS_13_viewConfig() throws Exception{
 		//calling helper methods for login and side tree expansion
 		
 		mylogin();
@@ -1717,8 +1715,8 @@ public class AdminLogin extends Helper{
 		}
 		
 	}
-//	@Test
-	public void s_deleteConfig() throws Exception{
+	@Test
+	public void s_LC_TS_12_deleteConfig() throws Exception{
 		
 		//calling helper methods for login and side tree expansion
 		mylogin();
@@ -1836,8 +1834,8 @@ public class AdminLogin extends Helper{
 		
 		}
 	
-	  //@Test
-   	  public void t_changePassword() throws Exception{
+	  @Test
+   	  public void t_LC_TS_14_15_changePassword() throws Exception{
 		
 		//calling helper methods for login and side tree expansion
 		
