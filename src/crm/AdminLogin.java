@@ -30,7 +30,7 @@ public class AdminLogin extends Helper{
 		public void bf() {
 			browser();
 			
-			driver.get("http://192.168.50.32:8080/leadcrm/login.jsp");
+			driver.get(config.getProperty("url"));
 			if(driver.getTitle().equals("::LEAD-CRM::Login Here"))
 			{
 				Reporter.log("<p>" + "Page loaded successfully");
