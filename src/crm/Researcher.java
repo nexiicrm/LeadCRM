@@ -43,16 +43,10 @@ import com.nexiilabs.dbcon.DBConnection;
 import src.testUtils.Helper;
 
 public class Researcher extends Helper{
-	public static Connection connection = null;
-	public static Statement statement;
-	public static ResultSet resultSet;
 	
 	
 	public String dbConnection(String string) throws Exception, IllegalAccessException, ClassNotFoundException{
-		 Class.forName("com.mysql.jdbc.Driver").newInstance();
-		 connection = DBConnection.getConnection();
-		 statement = connection.createStatement();
-		 System.out.println("hurray connected");
+		
 		 resultSet = statement.executeQuery("select password from crm_user where email_id='"+string+"' AND delete_status='no'"); 
 		 resultSet.next();
 		 String str = resultSet.getString("password");
@@ -63,7 +57,7 @@ public class Researcher extends Helper{
 		    Reporter.log("<p>" + "Number Elements in List1 : " + list1.size());
 			String user = driver.findElement(By.className(or.getProperty("user_Classname"))).getText();
 			if(user.contains("Hi ! Researcher"))
-			Reporter.log("<p>" + "User Logged in as:" + "Hi ! Researcher");
+			Reporter.log("<p>" + "User Logged in as:" + "Researcher");
 	}
 	//==wait for element==//
 	public boolean waitForElement(int timeout,By by) {
