@@ -25,7 +25,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class AdminLogin extends Helper{
+public class Administrator extends Helper{
 	@BeforeMethod
 		public void bf() {
 			browser();
