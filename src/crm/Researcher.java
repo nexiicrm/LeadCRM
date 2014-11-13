@@ -80,7 +80,7 @@ public class Researcher extends Helper{
 		Reporter.log("<p>" +driver.findElement(By.id("result_msg_div")).getText());
 	}
 		
-  // @Test
+ //  @Test
    public void a_LC_TS_17_Expandandcollapse() throws Exception {
 		 
 		//Login to researcher module
@@ -99,7 +99,7 @@ public class Researcher extends Helper{
 	 
 //===========Leads Upload invalid data=========//
 	
- // @Test
+//  @Test
    public void b_LC_TS18_TC001_Uplodinvaliddata() throws Exception {
 		Reporter.log("<p>" +"===========Leads Upload=========");
 		
@@ -185,7 +185,7 @@ public class Researcher extends Helper{
 		driver.findElement(By.id("bulkUpload")).click();
 		
 		//clicking valid  xlsx sheet
-		
+		sleep(5);
 		driver.findElement(By.className(or.getProperty("Rtextbox"))).sendKeys(System.getProperty("user.dir")+"\\src\\testData\\xlsxval.xlsx");
 		driver.findElement(By.id(or.getProperty("leadUpload"))).click();
 		waitForElement(60,By.className("error_msg"));
@@ -316,7 +316,7 @@ public class Researcher extends Helper{
 }
   
   //==========calling search leads==========//
- // @Test
+// @Test
   public void c_LC_TS19_TC001_Searchleads() throws Exception {
 	  
 	    Reporter.log("<p>" + "=================search leads=================");
@@ -334,7 +334,7 @@ public class Researcher extends Helper{
   }
   
   //====searchLeadPagenation=========//
- // @Test
+//  @Test
   public void c_LC_TS19_TC002_Searchleadpagenavigation() throws Exception {
 	  
 		Reporter.log("<p>" + "=================search leads=================");
