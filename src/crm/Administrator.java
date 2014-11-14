@@ -73,13 +73,6 @@ public class Administrator extends Helper{
 		
 		public void myResearcher() throws Exception {
 		
-			//calling helper methods methods
-			
-		//	help.browser();
-		//	driver.get(config.getProperty("url"));
-		//	help.maxbrowser();
-		//	help.browsererror();
-			
 			//picking the password of the any researcher from database randomly
 			
 			String smail = dbReaserchPass();
@@ -186,7 +179,7 @@ public class Administrator extends Helper{
          return str;
 		}
 		
-		// //@Test
+		////@Test
 		
 		//A small test method for retrieval password and roles etc.....it is just used while writing the code
 		
@@ -447,7 +440,7 @@ public class Administrator extends Helper{
 	  
 //================End Of Non-Functional Test Methods=======================================	
 		  
-//===============Functional Test Methods ====================================
+//===============Functional Test Methods ==================================================
 	  
 	   //@Test
     public void i_LC_TS_5_sideTreeExpansionAndCollapse()throws Exception  {
@@ -919,7 +912,7 @@ public class Administrator extends Helper{
 		Reporter.log("<p>" + "=================d_newUserCreation() success==========================");
 	 }
 	
-	  // //@Test
+	  // @Test
 	  public void m_LC_TS_7_updatingUser() throws Exception{
 		  
 		  // calling login methods for login and side tree expansion
@@ -1180,11 +1173,7 @@ public class Administrator extends Helper{
 						Assert.fail("Table data not properly loaded into the list");
 					}
 					sleep(2);
-				}
-				else
-				{
-					Reporter.log("<p>"+"no user present with given search key to delete");
-				}
+				
 				
 			   //trying to login with the credentials of the deleted user
 				
@@ -1216,15 +1205,20 @@ public class Administrator extends Helper{
 			   
 			   mylogin();
 			   expand();
-			
-			}  
+			}
 			else
 			{
-				break;
+				Reporter.log("<p>"+"no user present with given search key to delete");
 			}
 			
-		 }
-	  }
+		}  
+		else
+		{
+			break;
+		}
+			
+	   }
+	}
 	
 
 	//@Test
@@ -1515,7 +1509,7 @@ public class Administrator extends Helper{
 		
 	  }
 	
-	//@Test
+//@Test
 	public void q_LC_TS_11_updateConfig() throws Exception{
 		//calling helper methods for login and side tree expansion
 		
