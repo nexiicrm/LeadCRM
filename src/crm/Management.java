@@ -143,122 +143,8 @@ String randomLead;
 			Assert.fail("All propoals cant be clickable");
 		}
 		
-		//	search box validation and picking a lead of all proposals
-		searchBox();
+		trackIt();
 		
-		//	Data validation of all proposals container
-		List<WebElement> ls =driver.findElement(By.cssSelector(mgmt.getProperty("allproposalsrow_tagName"))).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName")));
-		if(ls.size()>=0)
-		{
-			Reporter.log("<p>" + "No of columns in all proposal list page are :" + ls.size());
-		}
-		else
-		{
-			Assert.fail("there are no columns in all proposals list page");
-		}
-		ArrayList<String> ar = new ArrayList<String>();
-		if(ls.size()>=0)
-		{
-			for (int i=0;i<ls.size();i++)
-			{
-				String s1= ls.get(i).getText();
-				ar.add(s1);  
-			}
-			Reporter.log("<p>" + "Array before clicking on trackit button is: " + ar);
-		}
-		else
-		{
-			Assert.fail("No elements in array container");
-		}
-		
-		// clicking track it button 
-		help.sleep(3);
-		String str22 = driver.findElement(By.className(mgmt.getProperty("allproposals_className"))).getText();
-		if(str22 != null)
-		{
-			if(str22.equals("Track It"))
-			{
-				driver.findElement(By.className(mgmt.getProperty("allproposals_className"))).click(); 
-			}
-			else
-			{
-				Assert.fail("Trackit cannot be clickable");
-			}
-			help.sleep(2);
-		}
-		else
-		{
-			Assert.fail("Table size is zero");
-		}
-			
-		
-		//	Data validation of page after track it is clicked in all proposals
-		List<WebElement> ls2 =driver.findElement(By.tagName(mgmt.getProperty("allproposalsbody_tagName"))).findElements(By.tagName(mgmt.getProperty("allproposalsrow1_tagName")));
-		Reporter.log("<p>" + "No of rows in track it lead details of all proposals " + ls2.size());
-		ArrayList<String> ar1 = new ArrayList<String>();
-		if(ls2.size()>=0)
-		{
-			for (int i=0;i<ls2.size();i++)
-			{
-				List<WebElement> s1= ls2.get(i).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName")));
-				if(s1.size()>=0)
-				{
-					for(int j=0;j<s1.size();j++)
-					{
-						String s2 = s1.get(j).getText();
-						ar1.add(s2); 
-					} 
-				}	
-			}
-		}
-		else
-		{
-			Assert.fail("there are no rows in trackit lead details");
-		}	
-		Reporter.log("<p>" + "array size after trackit button is clicked:" + ar1.size());
-		Reporter.log("<p>" + "array element after trackit button is clicked: " + ar1.get(0));
-		Reporter.log("<p>" + "array element after trackit button is clicked: " + ar1.get(1));
-		Reporter.log("<p>" + "array element after trackit button is clicked: " + ar1.get(19));
-		if(ar1.get(0).contains(ar.get(0)))
-		{
-			if(ar1.get(1).contains(ar.get(1)))
-			{
-				if(ar1.get(19).contains(ar.get(4)))
-				{	 	 
-					Reporter.log("<p>" + "Data is matching exactly in all proposals");
-				}
-			}
-		}	
-		else
-		{
-			Assert.fail("Data doesnt match in all proposals");
-		}
-		
-		//	To get the status of all proposals after track it is clicked
-		String strt=  driver.findElements(By.tagName(mgmt.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(mgmt.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName"))).get(1).getText();
-		if(strt != null) 
-		{
-			Reporter.log("<p>" + strt);
-			help.sleep(2);
-		}
-		else
-		{
-			Assert.fail();
-		}
-		
-		//	To check link is present to download a file in all proposals after track it is clicked
-		String strtt = driver.findElements(By.tagName(mgmt.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(mgmt.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName"))).get(2).getText();
-		Reporter.log("<p>" + strtt);	
-		Reporter.log("<p>" + "tag name for the file is: "+ driver.findElement(By.tagName("a")).getTagName());
-		String s1 = driver.findElement(By.tagName("a")).getTagName();
-		if(s1.contentEquals("a"))
-		{
-			Reporter.log("<p>" + "File can be downloaded");
-		}
-		else
-		{
-			Assert.fail("File cannot be downloaded");
-		}
 	}
 
 	@Test
@@ -352,98 +238,7 @@ String randomLead;
 		}
 		help.sleep(1);   
 		
-		//	Search box validation of all lost competition
-		searchBox();
-		
-	    //	Data validation of all lost competition page before track it is clicked
-		List<WebElement> lsc =driver.findElement(By.cssSelector(mgmt.getProperty("allproposalsrow_tagName"))).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName")));
-		Reporter.log("<p>" + "No of columns in all lost competition page are: " + lsc.size());
-		ArrayList<String> arc = new ArrayList<String>();
-		if(lsc.size()>=0)
-		{
-			for (int i=0;i<lsc.size();i++)
-			{
-				String s1c= lsc.get(i).getText();
-				arc.add(s1c);  
-			}
-			Reporter.log("<p>" + "Array before clicking on trackit button is: " + arc);
-		}
-		else
-		{
-			Assert.fail("There are no elements in the array of lost competition");
-		}
-		
-		//	Clicking on track it button of all lost competition
-		String str22 = driver.findElement(By.className(mgmt.getProperty("allproposals_className"))).getText();
-		if(str22.equals("Track It"))
-		{
-			driver.findElement(By.className(mgmt.getProperty("allproposals_className"))).click(); 
-		}
-		else
-		{
-			Assert.fail("Trackit cannot be clickable");
-		}
-		help.sleep(2);
-		
-		//	Data validation of all lost competition page after track it is clicked
-		List<WebElement> ls2c =driver.findElement(By.tagName(mgmt.getProperty("allproposalsbody_tagName"))).findElements(By.tagName(mgmt.getProperty("allproposalsrow1_tagName")));
-		Reporter.log("<p>" + "No of rows in track it lead details of all lost competition " + ls2c.size());
-		ArrayList<String> ar1c = new ArrayList<String>();
-		if(ls2c.size()>=0)
-		{
-			for (int i=0;i<ls2c.size();i++)
-			{
-				List<WebElement> s1c= ls2c.get(i).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName")));
-				if(s1c.size()>=0)
-				{
-					for(int j=0;j<s1c.size();j++)
-					{
-						String s2c = s1c.get(j).getText();
-						ar1c.add(s2c); 
-					} 
-				}  
-			}
-		}
-		else
-		{
-			Assert.fail("no elements in container of all lost competition");
-		}
-		Reporter.log("<p>" + "Array size after trackit button is clicked: " + ar1c.size());
-		Reporter.log("<p>" + "array element after trackit button is clicked: " + ar1c.get(0));
-		Reporter.log("<p>" + "array element after trackit button is clicked: " + ar1c.get(1));
-		Reporter.log("<p>" + "array element after trackit button is clicked: " + ar1c.get(19));
-		if(ar1c.get(0).contains(arc.get(0)))
-		{
-			if(ar1c.get(1).contains(arc.get(1)))
-			{
-				if(ar1c.get(19).contains(arc.get(4)))
-				{	 
-					Reporter.log("<p>" + "Data is matching exactly in all lost competition");
-				}
-			}
-		}
-		else
-		{
-			Reporter.log("<p>" + "Data doesnt match in all lost competition");
-		}
-		
-	    // To get status of lead in all lost competition page after track it is clicked
-		String strt=  driver.findElements(By.tagName(mgmt.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(mgmt.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName"))).get(1).getText();
-		Reporter.log("<p>" + strt);
-		
-		// To check link is present to download a file in all lost competition after track it is clicked
-		String strtt = driver.findElements(By.tagName(mgmt.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(mgmt.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName"))).get(2).getText();
-		Reporter.log("<p>" + strtt);	
-		Reporter.log("<p>" + "tag name for the file is: "+ driver.findElement(By.tagName("a")).getTagName());
-		String s1 = driver.findElement(By.tagName("a")).getTagName();
-		if(s1.contentEquals("a"))
-	    {
-			Reporter.log("<p>" + "File can be downloaded");
-	    }
-		else
-		{
-			Assert.fail("File cannot be downloaded");
-		}
+		trackIt();
 	}
 
 	@Test
@@ -538,98 +333,7 @@ String randomLead;
 			Assert.fail("all customers link cannot be clickable");
 		}
 		
-		//	Search box validation on all customers page
-		searchBox();
-		
-		//	Data validation of all customers page before track it is clicked
-		List<WebElement> lsc =driver.findElement(By.cssSelector(mgmt.getProperty("allproposalsrow_tagName"))).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName")));
-		Reporter.log("<p>" + "No of columns in all customers page are: " + lsc.size());
-   	  	ArrayList<String> arc = new ArrayList<String>();
-   	  	if(lsc.size()>=0)
-   	  	{
-   	  		for (int i=0;i<lsc.size();i++)
-   	  		{
-   	  			String s1c= lsc.get(i).getText();
-   	  			arc.add(s1c);  
-   	  		}
-   	  		Reporter.log("<p>" + "Array before clicking on trackit button is: " + arc);
-   	  	}
-   	  	else
-   	  	{
-   	  		Assert.fail("There are no elements in the array of all customers");
-   	  	}
-   	  	
-   	  	//	Clicking on track it button of all customers
-   	  	String str22 = driver.findElement(By.className(mgmt.getProperty("allproposals_className"))).getText();
-   	  	if(str22.equals("Track It"))
-   	  	{
-   	  		driver.findElement(By.className(mgmt.getProperty("allproposals_className"))).click(); 
-   	  	}
-   	  	else
-   	  	{
-   	  		Assert.fail("Trackit cannot be clickable");
-   	  	}
-   	  	help.sleep(2);
-   	  	
-   	  	//	Data validation after track it button is clicked in all customers
-   	  	List<WebElement> ls2c =driver.findElement(By.tagName(mgmt.getProperty("allproposalsbody_tagName"))).findElements(By.tagName(mgmt.getProperty("allproposalsrow1_tagName")));
-   	  	Reporter.log("<p>" + "No of rows in track it lead details of all customers " + ls2c.size());
-   	  	ArrayList<String> ar1c = new ArrayList<String>();
-   	  	if(ar1c.size()>=0)
-   	  	{
-   	  		for (int i=0;i<ls2c.size();i++)
-   	  		{
-   	  			List<WebElement> s1c= ls2c.get(i).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName")));
-   	  			if(s1c.size()>=0)
-   	  			{
-   	  				for(int j=0;j<s1c.size();j++)
-   	  				{
-   	  					String s2c = s1c.get(j).getText();
-   	  					ar1c.add(s2c); 
-   	  				} 
-   	  			}
-   	  		}
-   	  	}
-   	  	else
-   	  	{
-   	  		Assert.fail("no elements in the table of trackit of all customers");
-   	  	}
-   	  	Reporter.log("<p>" + "Array size after trackit button is clicked: " + ar1c.size());
-   	  	Reporter.log("<p>" + "array element after trackit button is clicked: " + ar1c.get(0));
-   	  	Reporter.log("<p>" + "array element after trackit button is clicked: " + ar1c.get(1));
-   	  	Reporter.log("<p>" + "array element after trackit button is clicked: " + ar1c.get(19));
-   	  	if(ar1c.get(0).contains(arc.get(0)))
-   	  	{
-   	  		if(ar1c.get(1).contains(arc.get(1)))
-   	  		{
-   	  			if(ar1c.get(19).contains(arc.get(4)))
-   	  			{	 
-   	  				Reporter.log("<p>" + "Data is matching exactly in all customers ");
-   	  			}
-   	  		}
-   	  	}
-   	  	else
-   	  	{
-   	  		Reporter.log("<p>" + "Data doesnt match in all customers");
-   	  	}
-   	  	
-   	  	//	To get the status of lead in all customers 
-   	  	String strt=  driver.findElements(By.tagName(mgmt.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(mgmt.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName"))).get(1).getText();
-   	  	Reporter.log("<p>" + strt);
-   	  	
-   	  	//	To check link is present to download a file in all lost customers after track it is clicked
-   	  	String strtt = driver.findElements(By.tagName(mgmt.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(mgmt.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName"))).get(2).getText();
-   	  	Reporter.log("<p>" + strtt);	
-   	  	Reporter.log("<p>" + "tag name for the file is: "+ driver.findElement(By.tagName("a")).getTagName());
-   	  	String s1 = driver.findElement(By.tagName("a")).getTagName();
-   	  	if(s1.contentEquals("a"))
-   	  	{
-   	  		Reporter.log("<p>" + "File can be downloaded");
-   	  	}
-   	  	else
-   	  	{
-   	  		Assert.fail("File cannot be downloaded");
-   	  	}
+		trackIt();
 	}
  
 	@Test
@@ -723,98 +427,9 @@ String randomLead;
 		{
 			Assert.fail("all quotes link cannot be clickable");
 		}
-		help.sleep(2);
 		
-		//	Validation of search box in all quotes
-		searchBox();
-		
-		//	Data validation of all quotes page before track it is clicked
-		List<WebElement> lsc =driver.findElement(By.cssSelector(mgmt.getProperty("allproposalsrow_tagName"))).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName")));
-		Reporter.log("<p>" + "No of columns in all quotes page are: " + lsc.size());
-		ArrayList<String> arc = new ArrayList<String>();
-		if(lsc.size()>=0)
-		{
-			for (int i=0;i<lsc.size();i++)
-			{
-				String s1c= lsc.get(i).getText();
-				arc.add(s1c);  
-			}
-			Reporter.log("<p>" + "Array before clicking on trackit button is: " + arc);
-		}
-		else
-		{
-			Assert.fail("there are no elements in the array before trackit is clicked");
-		}
-		sleep(1);
-		
-		// 	Clicking on track it button of all quotes
-		String str22 = driver.findElement(By.className(mgmt.getProperty("allproposals_className"))).getText();
-		if(str22.equals("Track It")){
-			driver.findElement(By.className(mgmt.getProperty("allproposals_className"))).click(); 
-		}
-		else
-		{
-			Assert.fail("Trackit cannot be clickable");
-		}
-		help.sleep(2);
-		
-		// 	Data validation of all quotes page after track it button is clicked
-		List<WebElement> ls2c =driver.findElement(By.tagName(mgmt.getProperty("allproposalsbody_tagName"))).findElements(By.tagName(mgmt.getProperty("allproposalsrow1_tagName")));
-		Reporter.log("<p>" + "No of rows in track it lead details of all quotes " + ls2c.size());
-		ArrayList<String> ar1c = new ArrayList<String>();
-		if(ls2c.size()>=0)
-		{
-			for (int i=0;i<ls2c.size();i++)
-			{
-				List<WebElement> s1c= ls2c.get(i).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName")));
-				if(s1c.size()>=0)
-				{
-					for(int j=0;j<s1c.size();j++)
-					{
-						String s2c = s1c.get(j).getText();
-						ar1c.add(s2c); 
-					} 
-				}
-			}
-		}
-		else
-		{
-			Assert.fail("there are no elements in the track it table");
-		}
-		Reporter.log("<p>" + "Array size after trackit button is clicked: " + ar1c.size());
-		Reporter.log("<p>" + "array element after trackit button is clicked: " + ar1c.get(0));
-		Reporter.log("<p>" + "array element after trackit button is clicked: " + ar1c.get(1));
-		Reporter.log("<p>" + "array element after trackit button is clicked: " + ar1c.get(19));
-		if(ar1c.get(0).contains(arc.get(0)))
-		{
-			if(ar1c.get(1).contains(arc.get(1)))
-			{
-				if(ar1c.get(19).contains(arc.get(4)))
-				{	 
-					Reporter.log("<p>" + "Data is matching exactly in all customers ");
-				}
-			}
-			else
-			{
-				Reporter.log("<p>" + "Data doesnt match in all quotes");
-			}
-		}
-		//	To get the status of lead in all quotes page after track it is clicked
-		String strt=  driver.findElements(By.tagName(mgmt.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(mgmt.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName"))).get(1).getText();
-		Reporter.log("<p>" + strt);
-		
-		//	To check link is present to download a file in all quotes after track it is clicked
-		String strtt = driver.findElements(By.tagName(mgmt.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(mgmt.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName"))).get(2).getText();
-		Reporter.log("<p>" + strtt);	
-		Reporter.log("<p>" + "tag name for the file is: "+ driver.findElement(By.tagName("a")).getTagName());
-		String s1 = driver.findElement(By.tagName("a")).getTagName();
-		if(s1.contentEquals("a")){
-		Reporter.log("<p>" + "File can be downloaded");
-		}
-		else
-		{
-			Assert.fail("File cannot be downloaded");
-		}
+		trackIt();
+				
 	}
   
 	@Test
@@ -827,16 +442,8 @@ String randomLead;
 		Reporter.log("<p>" + "######Done with validation of Search leads page######");
 	} 	
 
-	@Test
-	public void t_TS_65_TC001CPassword() throws Exception
-	{
-		help.expand();
-		
-		//	change password from helper 
-		help.changePassword("basanirakeshreddy000@gmail.com");
-		Reporter.log("<p>" + "######Done with validation of change password page######");
-	}
-	 
+
+	
     //	Method for Search 
 	public static void search(String keyword) 
 	{
@@ -868,7 +475,129 @@ String randomLead;
 			Reporter.log("<p>" + "There is no data present in the table");
 		}
 	}
- 
+	
+    // method for track it validation 
+	public void trackIt()
+	{
+		help.sleep(2);
+		
+		searchBox();
+		
+		//	Data validation of all proposals container
+		List<WebElement> ls =driver.findElement(By.cssSelector(mgmt.getProperty("allproposalsrow_tagName"))).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName")));
+		if(ls.size()>=0)
+		{
+			Reporter.log("<p>" + "No of columns in the table are :" + ls.size());
+		}
+		else
+		{
+			Assert.fail("there are no columns in the table ");
+		}
+		ArrayList<String> ar = new ArrayList<String>();
+		if(ls.size()>=0)
+		{
+			for (int i=0;i<ls.size();i++)
+			{
+				String s1= ls.get(i).getText();
+				ar.add(s1);  
+			}
+			Reporter.log("<p>" + "Array before clicking on trackit button is: " + ar);
+		}
+		else
+		{
+			Assert.fail("No elements in array container");
+		}
+		
+		// clicking track it button 
+		help.sleep(3);
+		String str22 = driver.findElement(By.className(mgmt.getProperty("allproposals_className"))).getText();
+		if(str22 != null)
+		{
+			if(str22.equals("Track It"))
+			{
+				driver.findElement(By.className(mgmt.getProperty("allproposals_className"))).click(); 
+			}
+			else
+			{
+				Assert.fail("Trackit cannot be clickable");
+			}
+			help.sleep(2);
+		}
+		else
+		{
+			Assert.fail("Table size is zero");
+		}
+			
+		
+		//	Data validation of page after track it is clicked in all proposals
+		List<WebElement> ls2 =driver.findElement(By.tagName(mgmt.getProperty("allproposalsbody_tagName"))).findElements(By.tagName(mgmt.getProperty("allproposalsrow1_tagName")));
+		Reporter.log("<p>" + "No of rows in track it lead details of table " + ls2.size());
+		ArrayList<String> ar1 = new ArrayList<String>();
+		if(ls2.size()>=0)
+		{
+			for (int i=0;i<ls2.size();i++)
+			{
+				List<WebElement> s1= ls2.get(i).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName")));
+				if(s1.size()>=0)
+				{
+					for(int j=0;j<s1.size();j++)
+					{
+						String s2 = s1.get(j).getText();
+						ar1.add(s2); 
+					} 
+				}	
+			}
+		}
+		else
+		{
+			Assert.fail("there are no rows in trackit lead details");
+		}	
+		Reporter.log("<p>" + "array size after trackit button is clicked:" + ar1.size());
+		Reporter.log("<p>" + "array element after trackit button is clicked: " + ar1.get(0));
+		Reporter.log("<p>" + "array element after trackit button is clicked: " + ar1.get(1));
+		Reporter.log("<p>" + "array element after trackit button is clicked: " + ar1.get(19));
+		if(ar1.get(0).contains(ar.get(0)))
+		{
+			if(ar1.get(1).contains(ar.get(1)))
+			{
+				if(ar1.get(19).contains(ar.get(4)))
+				{	 	 
+					Reporter.log("<p>" + "Data is matching exactly ");
+				}
+			}
+		}	
+		else
+		{
+			Assert.fail("Data doesnt match exactly ");
+		}
+		
+		//	To get the status of all proposals after track it is clicked
+		String strt=  driver.findElements(By.tagName(mgmt.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(mgmt.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName"))).get(1).getText();
+		if(strt != null) 
+		{
+			Reporter.log("<p>" + strt);
+			help.sleep(2);
+		}
+		else
+		{
+			Assert.fail();
+		}
+		
+		//	To check link is present to download a file in all proposals after track it is clicked
+		String strtt = driver.findElements(By.tagName(mgmt.getProperty("allproposalsbody_tagName"))).get(3).findElements(By.tagName(mgmt.getProperty("allproposalsrow1_tagName"))).get(1).findElements(By.tagName(mgmt.getProperty("allproposalscol_tagName"))).get(2).getText();
+		Reporter.log("<p>" + strtt);	
+		Reporter.log("<p>" + "tag name for the file is: "+ driver.findElement(By.tagName("a")).getTagName());
+		String s1 = driver.findElement(By.tagName("a")).getTagName();
+		if(s1.contentEquals("a"))
+		{
+			Reporter.log("<p>" + "File can be downloaded");
+		}
+		else
+		{
+			Assert.fail("File cannot be downloaded");
+		}
+	}
+	
 	@BeforeMethod
 	public void beforeMethod() throws Exception 
 	{
