@@ -3,7 +3,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 
 import org.junit.Assert;
@@ -46,7 +45,7 @@ public class BDM extends Helper{
 	    /*Validating all paginations for every link present at the left hand side of
 	     * pane in BDM module
 	     */
-	    //@Test
+	    @Test
         public void a_paginations() throws Exception  { // Paginations in all pages of BDM Module (Hardik & Anuhya)
         	help.expand();
         	
@@ -66,7 +65,7 @@ public class BDM extends Helper{
 	    	help.sleep(3);
 	    	paginate(); 
 	    	
-	    	// Reasearch Phase
+	    	// Research Phase
 	    	startup("researchPhase","Lead Research");
 	    	paginate();
 	    	
@@ -112,7 +111,7 @@ public class BDM extends Helper{
       	/*Verifying options available under Select service and Assign to whom dropdown's
        	 * with the options present in database
         */
-        //@Test
+        @Test
         public void b_LC_TS_26_verifyingServiceNamesandAssign() { // ts26_tc001 (Hardik)
         	help.expand();
         	
@@ -145,7 +144,7 @@ public class BDM extends Helper{
                 e.printStackTrace();
             }
     	    
-    	    //Verifying options available under select service dropdown equals services in database
+    	    //Verifying options available under select service drop down equals services in database
     	    List<WebElement> services = driver.findElement(By.name(bdm.getProperty("service_name"))).findElements(By.tagName(bdm.getProperty("service_tag")));
     	    List<String> service_list = new ArrayList<String>();
     	    Reporter.log("<p>" + "***************Checking options under select service*********************");
@@ -155,7 +154,7 @@ public class BDM extends Helper{
     	    {
     		    service_list.add(services.get(i+1).getText());
     		    
-    		    //checking if all services present in dropdown equals services in DB
+    		    //checking if all services present in drop down equals services in DB
     		    if(sr1.get(i).equals(service_list.get(i)))
     			    Reporter.log("<p>" + service_list.get(i) + "-->service is displayed");
     		    else
@@ -173,7 +172,7 @@ public class BDM extends Helper{
     	    {
     		    assign.add(services_assign.get(i+1).getText());
     		    
-    		    //checking if all assign names present in dropdown equals names in DB
+    		    //checking if all assign names present in drop down equals names in DB
     		    if(sr2.get(i).contains(username[3]))
     			    Reporter.log("<p>" + assign.get(i) + "-->assign to person is displayed");
     		    else if(sr2.get(i).equals(assign.get(i)))
@@ -189,7 +188,7 @@ public class BDM extends Helper{
         /*Checking whether selected service matches with the services shown in
          * service table
         */
-	    //@Test
+	    @Test
 	    public void c_LC_TS_26_matching_service_name(){ // ts26_tc002 (Hardik)
 	        //expanding and clicking on assign lead link	
 	    	help.expand();
@@ -202,62 +201,45 @@ public class BDM extends Helper{
 	        
 	        //Getting total number of services present
 	        List<WebElement> service_options = driver.findElement(By.id(bdm.getProperty("service_options_id"))).findElement(By.name(bdm.getProperty("service_options_name"))).findElements(By.tagName(bdm.getProperty("service_options_tag")));
-	        Reporter.log("<p>" + "Total number of options under select service is= " +service_options.size());
-	        int service_option = random(service_options.size()-4);
-	        
-	        if(service_option==0)
-	        	service_option++;
+	       
+	        ArrayList<String> newServiceList = new ArrayList<String>();
+	        for(int i = 1;i<service_options.size();i++){
+	        	if(i<=6)
+	        		newServiceList.add(service_options.get(i).getText());
+	        	    
+	        	else
+	        		break;
+	        }
+	        Reporter.log("<p>" + "Total number of options under select service is= " +newServiceList.size());
+	        int service_option = random(newServiceList.size());
 	        service_options.get(service_option).click();
+	        Reporter.log("<p>" + "Randomly selected service is= " +service_options.get(service_option).getText());
 	        help.sleep(1);
 	        
-	        //getting service names of all leads and adding into hashset
-        	HashSet<String> service = new HashSet<String>();
-	        Reporter.log("<p>" + "Randomly selected option from select service is = " +service_options.get(service_option).getText());
-	       
-	        //Verifying randomly selected option matches with name shown in service name column
+	        //Checking if leads table is empty or not
 	        List<WebElement> leads_info = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname")));
-	        
-	        //If both next and previous buttons are disabled then pick services names whichever present
-	        if(driver.findElement(By.id("example_previous")).getAttribute("class").equals("paginate_disabled_previous") &&
-	        		driver.findElement(By.id("example_next")).getAttribute("class").equals("paginate_disabled_next")){
-	        	for(int i=0;i<leads_info.size();i++)
-	        	{
-	        		String lead_service = leads_info.get(i).findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(5).getText();
-	        		service.add(lead_service);
-	        	}
-	        }
-	        
-	        //If leads table is empty then will throw message
 	        if(leads_info.get(0).findElement(By.tagName(bdm.getProperty("servicename_tag"))).getText().equals("No data available in table"))
 	        	Reporter.log("<p>" + "leads table is empty");
-	        else
-	        {
-	        	//If next button is enabled then paginate till last page and add all services into hashset
-	        	while(!(driver.findElement(By.id(bdm.getProperty("page_id"))).getAttribute("class")).equals("paginate_disabled_next")){
-	        		List<WebElement> leads_info1 = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname")));
-	        		for(int i=0;i<leads_info1.size();i++){
-	        			String lead_service = leads_info1.get(i).findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(5).getText();
-	        			service.add(lead_service);
+	        else{
+	        	String entries = driver.findElement(By.id(bdm.getProperty("tableinfo_id"))).getText();
+	  	  		driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys(service_options.get(service_option).getText());
+	        	help.sleep(2);
+	  	  		String search_entries = driver.findElement(By.id(bdm.getProperty("tableinfo_id"))).getText();
+
+	  	  		//Checking if total entries in table is same before search and after search
+	  	  		if(entries.equals(search_entries))
+	  	  			Reporter.log("<p>" + "leads are displayed with service name selected");
+	  	  		else
+	  	  			Reporter.log("<p>" + "leads are not displayed with service name selected");
 	        }
-			driver.findElement(By.id(bdm.getProperty("page_id"))).click();
-			sleep(2);
-		    }
-	        	
-	        //If hashest size is 1 then all leads are displayed with same service orelse not	
-		    if(service.size()==1)
-			    Reporter.log("<p>" + "leads are displayed with service name selected");
-		    else
-			    Reporter.log("<p>" + "leads are not displayed with service name selected");
-		  
 		    Reporter.log("<p> ___________________________________________________________________"); 
-	  	       }
+	  	       
 	     } 
-	  
 	    
-	    /*Selecting service from select service dropdown and ticking select all button
+	    /*Selecting service from select service drop down and ticking select all button
 	     * and verifying all leads are ticked or not
 	    */
-	    //@Test
+	    @Test
 	    public void  d_LC_TS_26_selectAllcheckbox(){ // ts26_tc003 (Hardik)
 	    	//expanding and clicking on assign lead link 
 	    	help.expand();
@@ -286,10 +268,10 @@ public class BDM extends Helper{
 	    }
 	  
 	    
-	    /*Assigning one lead to self(i.e BDM)module and verifying that lead is 
-	     *assigned or not
-	    */
-	    //@Test
+	     /*Assigning one lead to self(i.e BDM)module and verifying that lead is 
+	      *assigned or not
+	     */
+	    @Test
 	    public void  e_LC_TS_27_serviceoptionsvalidation_self(){ // ts27_tc001 (Hardik)
 	    	help.expand();
 	    	startup("assignlead","Assign Leads");
@@ -339,7 +321,7 @@ public class BDM extends Helper{
 	    /*Assigning two leads to self(i.e BDM) module and verifying that leads is present
 	     * in BDM account or not.
 	    */
-	    //@Test
+	    @Test
 	    public void f_LC_TS_27_assignmultipleLeads_BDM () throws Exception{  // ts27_tc002 (Hardik)
 	    	//expanding and clicking on assign lead link 
 	    	help.expand();
@@ -374,7 +356,7 @@ public class BDM extends Helper{
 	    /*Assigning single lead to BDE module and verifying that leads is present
 	     * in BDE account or not.
 	    */
-	    //@Test
+	    @Test
 		public void  g_LC_TS_28_assignto_bde() throws Exception{ // ts28_tc001 (Hardik)
 			//expanding and clicking on assign lead link	
 		    help.expand();
@@ -403,8 +385,8 @@ public class BDM extends Helper{
 	    
 	    /*Assigning two leads to BDE module and verifying that leads is present
 	     * in BDE account or not.
-	    */  
-		//@Test
+	     */ 
+		@Test
 		public void  h_LC_TS_28_assignmultipleLeads_BDE() throws Exception{ // ts28_tc002 (Hardik)
 			//expanding and clicking on assign lead link
 			help.expand();
@@ -429,11 +411,10 @@ public class BDM extends Helper{
 		} 
         
 		
-		
-		/*Picking any username from the database and assigning multiple leads
+		/*Picking any user name from the database and assigning multiple leads
 	     * to BDE and BDM modules. 
 	    */
-        //@Test
+        @Test
         public void i_LC_TS_28_assignmultipleleadsBDM_BDE(){ // ts28_tc003 (Hardik)
         	help.expand();
         	startup("assignlead","Assign Leads");
@@ -454,7 +435,7 @@ public class BDM extends Helper{
             //Assigning multiple leads to BDE and getting success message
             new Select(driver.findElement(By.name(bdm.getProperty("service_name")))).selectByVisibleText("Mobile");
             help.sleep(3);
-            new Select(driver.findElement(By.name("assignto"))).selectByVisibleText("sreekar jakkula");
+            new Select(driver.findElement(By.name(bdm.getProperty("services_assign_name")))).selectByVisibleText("sreekar jakkula");
             driver.findElement(By.id(bdm.getProperty("selectallbutton_id"))).click();
             help.sleep(3);
            
@@ -483,7 +464,7 @@ public class BDM extends Helper{
         /*Checking research button is enabled for all leads in research
          * phase.
          */ 
-		//@Test
+		@Test
 		public void  j_LC_TS_29_researchbuttoncheck(){ // ts29_tc001 (Hardik)
 			//expanding and clicking on research on lead link
 			Reporter.log("<p>" + "*******************RESEARCH PHASE***************************");
@@ -588,13 +569,13 @@ public class BDM extends Helper{
 		/*Clicking on work phase and checking whether track it and follow up buttons
 		 * are enabled for all leads.
 		*/
-		//@Test
+		@Test
 		public void  l_LC_TS_30_workPhasetrackit(){ // ts30_tc001 (Hardik)
 			Reporter.log("<p>" + "***********************WORK PHASE********************");
 			//expanding and clicking on work phase link
 			help.expand();
 			startup("workPhase","Work on Lead");
-			//Checking whether trackit and followup buttons are available for all leads in page
+			//Checking whether track it and follow up buttons are available for all leads in page
 			List<WebElement> leads_info = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname")));
 			int trackit_followup=0;
 			if(leads_info.get(0).findElement(By.tagName(bdm.getProperty("servicename_tag"))).getText().equals("No data available in table")){
@@ -619,7 +600,7 @@ public class BDM extends Helper{
 		/*In work phase clicking on follow up and filling all details in
 		 * the form by selecting todays date.
 		*/
-		//@Test(invocationCount=2)
+		@Test(invocationCount=2)
 		public void  m_LC_TS_31_workphaseFollowupTodaysDate(){ // ts31_tc001 (Hardik)
 			help.expand();
 			startup("workPhase","Work on Lead");
@@ -686,7 +667,8 @@ public class BDM extends Helper{
 			/*In work phase clicking on follow up and filling all details in
 			 * the form by selecting future date.
 			*/
-			//@Test(invocationCount=2)
+			@SuppressWarnings("deprecation")
+			@Test(invocationCount=2)
 			public void  n_LC_TS_30_workphaseFuturedate(){ // ts30_tc003 (Hardik)
 			//Filling all the options by selecting tomorrows date and clicking on proceed button
 			help.expand();
@@ -748,7 +730,7 @@ public class BDM extends Helper{
 		/*Confirming all leads with today's date in All followups is present
 		 * in today's follow up or not.	
 		*/
-		//@Test
+		@Test
 		public void  o_LC_TS_32_confirmleadsofTodaysDate(){ // ts32_tc002 (Hardik)
 			//Clicking todays followup link and getting all leads for todays date
 			help.expand();
@@ -783,7 +765,7 @@ public class BDM extends Helper{
 		/*Verifying track it and followup button is enabled for all leads present
 		 * under allfollowups phase.	
 		*/
-		//@Test
+		@Test
 		public void  p_LC_TS_32_allfollowup(){ // ts32_tc003 (Hardik)
 			//Checking trackit and followup button for all leads and printing work phase comments
 			Reporter.log("<p>" + "****************ALL FOLLOWUP*******************");
@@ -823,7 +805,7 @@ public class BDM extends Helper{
 		/*Selecting Followup 4 from followup type dropdown and verifying the status of
 		 * that lead.
 		*/
-		//@Test
+		@Test
 		public void   q_LC_TS_32_allNextFollowup(){ // ts32_tc004 (Hardik)
 			help.expand();
 			startup("allfollowups","All Followups");	  	  	
@@ -880,7 +862,7 @@ public class BDM extends Helper{
 		
 
 		 // Test method for Cold Storage
-		 //@Test
+		 @Test
 		 public void  r_LC_TS_68_coldStorage() { // ts68_tc001 (Anuhya)
 			
 			 Reporter.log("<p>" +"Test for Cold storage");
@@ -1005,7 +987,7 @@ public class BDM extends Helper{
 		/*Selecting propspect identity by selecting proposal from proposal type dropdown 
 		 * and filling all details in the form.	
 		*/
-		//@Test
+		@Test
 		public void  s_LC_TS_32_FollowupProspectIdentityProposal() throws Exception{ // ts32_tc007 (Hardik & Anuhya <merged>)
 			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
 			Date date = new Date();
@@ -1150,7 +1132,7 @@ public class BDM extends Helper{
 		
 		 
 		 // Test method for Proposal upload
-		 //@Test
+		 @Test
 		 public void  t_LC_TS_34_proposalUpload() { // ts34_tc001 (Anuhya)
 			 
 			 Reporter.log("<p>" +"Test for Proposal Upload");
@@ -1239,7 +1221,7 @@ public class BDM extends Helper{
 		/*Selecting propspect identity by selecting Quote from proposal type dropdown 
 		 * and filling all details in the form.	
 		*/
-		//@Test
+		@Test
 		public void   u_LC_TS_32_FollowupProspectIdentityQuote() throws Exception{ // ts32_tc009 (Hardik & Anuhya <merged>)
 			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
 			Date date = new Date();
@@ -1319,7 +1301,7 @@ public class BDM extends Helper{
 		 
 	
 	 	 // Test method for Quote upload
-		 //@Test
+		 @Test
 		 public void v_LC_TS_35_quoteUpload() { // ts35_tc001 (Anuhya)
 			 
 			 Reporter.log("<p>" +"Test for Quote Upload");
@@ -1409,8 +1391,8 @@ public class BDM extends Helper{
 		 
 		/*From Allfollowup phase searching for prospect identity,clicking on followup by
 		 * selecting proposal/Quote send from followup type and filling all details.
-		 */
-		//@Test(invocationCount=2)
+		*/ 
+		@Test(invocationCount=2)
 		public void w_LC_TS_32_proposalQuoteSend(){ // ts32_tc011 (Hardik)
 			
 			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
@@ -1474,7 +1456,7 @@ public class BDM extends Helper{
 		/*From Allfollowup phase searching for prospect identity,clicking on followup by
 		 * selecting proposal/Quote accepted from followup type and filling all details.
 		*/
-		//@Test(invocationCount=2)
+		@Test(invocationCount=2)
 		public void x_LC_TS_32_proposalQuoteaccept(){ // ts32_tc012 (Hardik)
 		    help.expand();
 		    
@@ -1530,7 +1512,7 @@ public class BDM extends Helper{
 		/*Verifying close buttons is enabled for all leads in lead close phase
 		 * 
 		*/
-		//@Test
+		@Test
 		public void y_LC_TS_33_verifyleadclosebutton(){ // ts33_tc002 (Hardik)
 			help.expand();
 	  	  	startup("closedPhase","Closed Phase");
@@ -1558,7 +1540,7 @@ public class BDM extends Helper{
 		/*From closed phase clicking on close button and selecting All customers from 
 		 * followup type and filling all details and verifying that lead in Management module.
 		*/
-		//@Test
+		@Test
 		public void z_LC_TS_33_leadcloseCustomer() throws Exception{ // ts33_tc003 (Hardik)
 	  	  	help.expand();
 	  	  	startup("closedPhase","Closed Phase");
@@ -1607,7 +1589,7 @@ public class BDM extends Helper{
 		/*From closed phase clicking on close button and selecting Lost competition from 
 		 * followup type and filling all details and verifying that lead in Management module.
 		*/
-		//@Test
+		@Test
 		public void   za_LC_TS_33_leadcloseLostCompetition() throws Exception{ // ts33_tc004 (Hardik)
 	  	  	help.expand();
 	  	  	startup("closedPhase","Closed Phase");
@@ -1631,6 +1613,7 @@ public class BDM extends Helper{
 				//Entering comment and proceed
 				driver.findElement(By.name(bdm.getProperty("closedcomment_name"))).sendKeys("lead lost competition");
 				driver.findElement(By.id(bdm.getProperty("closephasebutton_id"))).click();
+				sleep(5);
 				Reporter.log("<p>" +name +" ::" +driver.findElement(By.id(bdm.getProperty("resultmsg_id"))).findElement(By.tagName(bdm.getProperty("resultmsg_tag"))).getText());
 				
 				//child window close
@@ -1645,7 +1628,7 @@ public class BDM extends Helper{
 		
 		
 		 //Method for Lead search
-		 //@Test
+		 @Test
 		 public void zb_LC_TS_36_leadSearch() { // ts36_tc001 (Anuhya)
 			
 			 Reporter.log("<p>" +"Test for Lead Search Phase");
@@ -1662,7 +1645,7 @@ public class BDM extends Helper{
 		 	
 		 
 		 // Test method for "Lead Edit" Edit button functionality
-		 //@Test
+		 @Test
 		 public void   zc_LC_TS_39_testLeadEditButton() { // ts39_tc002 (Anuhya)
 			 
 			 Reporter.log("<p>" +"Testing Edit button in Lead Edit Phase and its Functionality");
@@ -1773,7 +1756,7 @@ public class BDM extends Helper{
 			  Reporter.log("<p>___________________________________________________________________________________");
 		 } 
 		 
-		 //@Test
+		 @Test
 		 public void zd_LC_TS_40_changePassword() throws Exception { // ts40_tc001 (Anuhya)
 			 
 			 // Expands side tree menu
