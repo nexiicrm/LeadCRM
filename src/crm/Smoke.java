@@ -24,7 +24,7 @@ import src.testUtils.Helper;
 public class Smoke extends Helper
 {
 	
- //@Test
+ @Test
   public void aResearcher() throws Exception 
   {
 	  help.browser();
@@ -45,7 +45,7 @@ public class Smoke extends Helper
 	  
 	  if (driver.findElement(By.className("medium")).isDisplayed())
 	  {
-		  driver.findElement(By.className("medium")).sendKeys("D:\\Lead CRM\\Researcher Test Data 3.xlsx");
+		  driver.findElement(By.className("medium")).sendKeys(System.getProperty("user.dir")+"\\src\\testData\\Smoke.xlsx");
 	  }
 	  else
 	  {
@@ -85,7 +85,7 @@ public class Smoke extends Helper
 	  driver.close();
   }
   
- //@Test
+ @Test
   public void bBDM() throws Exception
   {
 	  help.browser();
@@ -216,7 +216,7 @@ public class Smoke extends Helper
 	  driver.close();
   }
   
-  //@Test
+  @Test
    public void cManagement() throws Exception
    {
 	      help.browser();
