@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -14,13 +13,10 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import src.testUtils.Helper;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
 import com.nexiilabs.dbcon.DBConnection;
 
 
@@ -52,7 +48,7 @@ public class BDE extends Helper{
   			   Reporter.log("<p>   ###### Navigate to the page ::: "+ subLink + "########## \n ");
   			     
   			   WebElement cont= driver.findElement(By.id(bde.getProperty("pagename")));
-  			   help.waitforElement(20 , By.id(bde.getProperty("pagename")) );
+  			   sleep(5);
   			   if (cont.findElement(By.tagName(bde.getProperty("pagetag"))).getText().equalsIgnoreCase(pageName))
   				   Reporter.log("<p> You have Sucessfully navigated to " + subLink );
   			   else
@@ -66,7 +62,7 @@ public class BDE extends Helper{
   	// This method takes parameter as string. Pass this string in to search box.
   	public void searchLead(String Leadno)
   	{
-  		waitforElement(20, By.id(bde.getProperty("searchid")) );
+  		waitforElement(5, By.id(bde.getProperty("searchid")) );
   		WebElement search = driver.findElement(By.id(bde.getProperty("searchid"))).findElement(By.tagName(bde.getProperty("searchtag")));
   		if(search == null)
   			Assert.fail("The Search Text Box is not Present");
@@ -860,10 +856,10 @@ public class BDE extends Helper{
         
         seg.click();
         List<WebElement> ermg =driver.findElement(By.id(bde.getProperty("resultid"))).findElements(By.tagName(bde.getProperty("resulttag")));
-        sleep(4);
+        sleep(5);
            
         Reporter.log("The Message after closing Lead" +ermg.get(0).getText());
-        if((ermg.get(0).getText()).contains("Successfully Updated..."))
+        if((ermg.get(0).getText()).contains("Successfully"))
         {
         	
          sleep(3);
@@ -927,21 +923,22 @@ public class BDE extends Helper{
   			 }else{
   		     l2.add(tds1.get(0).getText() + " " + tds1.get(1).getText() + " " +tds1.get(2).getText());
   		 
-  		 Reporter.log("<p>  AllFollowUp table size:" + Today.size() + "Todays FollowUp table size:" + All.size());
-  		 
+  		     Reporter.log("<p>  AllFollowUp table size:" + Today.size() + "Todays FollowUp table size:" + All.size());
+  			 }
+  		 }
   		 if(All.size() == Today.size())
   		 {
   			 for(int k = 0; k < All.size(); k++)
-  				 if(l1.get(k).equals(l2.get(k)))
+  			 {
+  				 
+  			     if((l1.get(k)).equals(l2.get(k)))
   					Reporter.log("<p> "+ l1.get(k) + "is found in todays Follow ups");
   				 else
   					Reporter.log("<p>" + l1.get(k) + "is not found in todays Follow ups");
+  		     }
   		 }
-  			 }
-  		 	}
-  	 }
-  	
-  
+  	  }
+  	 
   	
   	 // This test method checks functionality of All FollowUp phase followUp 4
      @Test
@@ -1055,8 +1052,7 @@ public class BDE extends Helper{
   		         //Switching to Parent Window
   		         driver.switchTo().window(parentWindow);
   			 }
-  	     }
-  	     
+  	     }	 
   	 } 
      
      @Test                                                     // in manual test case LC_TS_48     closed phase
