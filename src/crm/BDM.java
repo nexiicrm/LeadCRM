@@ -221,10 +221,13 @@ public class BDM extends Helper{
 	        if(leads_info.get(0).findElement(By.tagName(bdm.getProperty("servicename_tag"))).getText().equals("No data available in table"))
 	        	Reporter.log("<p>" + "leads table is empty");
 	        else{
-	        	String entries = driver.findElement(By.id(bdm.getProperty("tableinfo_id"))).getText();
+	        	help.sleep(5);
+	        	//bdm.getProperty("tableinfo_id")
+	        	String entries = driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText();
+	        	System.out.println(entries);
 	  	  		driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys(service_options.get(service_option).getText());
 	        	help.sleep(2);
-	  	  		String search_entries = driver.findElement(By.id(bdm.getProperty("tableinfo_id"))).getText();
+	  	  		String search_entries = driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText();
 
 	  	  		//Checking if total entries in table is same before search and after search
 	  	  		if(entries.equals(search_entries))
@@ -946,6 +949,7 @@ public class BDM extends Helper{
 							 driver.switchTo().window(childWindow);
 						 }
 						 
+						 help.waitforElement(20, By.id(bdm.getProperty("requiredfields_id")));
 						 Reporter.log("<p>" + "Clicking on the Lead Search and verifying the confirmed lead of cold storage.");
 						 WebElement reqfields = driver.findElement(By.id(bdm.getProperty("requiredfields_id"))).findElements(By.tagName(bdm.getProperty("servicename_tag"))).get(0);
 						 reqfields.findElement(By.tagName(bdm.getProperty("searchbox_tag"))).click();
@@ -1849,7 +1853,7 @@ public class BDM extends Helper{
 	            statement = connection.createStatement();
 	            rs = statement.executeQuery("select  a.role_name, b.email_id, b.password "
 		              		+ "from crm_role a, crm_user b where "
-		              		+ "a.role_id = b.role_id AND delete_status='no' AND role_name='Management' Limit 1;");       
+		              		+ "a.role_id = b.role_id AND b.delete_status='no' AND role_name='Management' Limit 1;");       
 	            
 	            while (rs.next()) {
 	               
@@ -2089,7 +2093,7 @@ public class BDM extends Helper{
 	       statement = connection.createStatement();
 	       resultSet = statement.executeQuery("select a.role_name, b.first_name, b.last_name, b.email_id, b.password from crm_role a, crm_user b where"
 	         + " 							a.role_id = b.role_id AND a.role_name = 'BDE' "
-	         + "										AND delete_status = 'no' Limit 1;");      
+	         + "										AND b.delete_status = 'no' Limit 1;");      
 	       while (resultSet.next()) {	             
 	           fnamelname = resultSet.getString("first_name") +" " +resultSet.getString("last_name") ;
 	           String email = resultSet.getString("email_id");
@@ -2153,7 +2157,7 @@ public class BDM extends Helper{
 	       statement = connection.createStatement();
 	       resultSet = statement.executeQuery("select  a.role_name, b.email_id, b.password "
 	                 + "from crm_role a, crm_user b where "
-	                 + "a.role_id = b.role_id AND a.role_name = 'Management' AND delete_status='no'Limit 1;");      
+	                 + "a.role_id = b.role_id AND a.role_name = 'Management' AND b.delete_status='no'Limit 1;");      
 	       while (resultSet.next()) {
 	           String email = resultSet.getString("email_id");
 	           String pass = resultSet.getString("password");
@@ -2187,7 +2191,7 @@ public class BDM extends Helper{
 	   	statement = connection.createStatement();
 	   	resultSet = statement.executeQuery("select a.role_name, b.first_name, b.last_name, b.email_id, b.password from crm_role a, crm_user b where"
 	   	+ " a.role_id = b.role_id AND a.role_name = '" +modulename 
-	   	+ "' AND delete_status = 'no' Limit 1;"); 
+	   	+ "' AND b.delete_status = 'no' Limit 1;"); 
 	   	while (resultSet.next()) {
 	   		String fnamelname = resultSet.getString("first_name") +" " +resultSet.getString("last_name");
 		    Reporter.log("<p>" + "Randomly picking any " +modulename + " from DB");
