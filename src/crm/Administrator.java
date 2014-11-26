@@ -179,7 +179,7 @@ public class Administrator extends Helper{
          return str;
 		}
 		
-		////@Test
+		//@Test
 		
 		//A small test method for retrieval password and roles etc.....it is just used while writing the code
 		
@@ -194,7 +194,7 @@ public class Administrator extends Helper{
 		  }
 	    //=============Start of Non-Functional Test methods============================		  
 	 
-	   //@Test
+	   @Test
 	   
 	   public void a_searchUsersOfUpdateUser() throws Exception{
 		   
@@ -222,7 +222,7 @@ public class Administrator extends Helper{
 		    Reporter.log("<p>" + " =====================f_searchUsers() success=================");
 	   }   
 	 
-	   //@Test
+	   @Test
 	   
 	   public void b_sortingOfUpdateUser () throws Exception{
 		   
@@ -249,7 +249,7 @@ public class Administrator extends Helper{
 		
 	   }
 	 
-	  //@Test
+	  @Test
 	    
 	  public void c_pageNavigationOfUpdateUser() throws Exception{
 	    	
@@ -277,7 +277,7 @@ public class Administrator extends Helper{
 	    
 	   }
   
-	 //@Test
+	 @Test
 	   
 	 public void d_searchbuttonOfDeleteUser() throws Exception{
 		
@@ -306,7 +306,7 @@ public class Administrator extends Helper{
 		Reporter.log("<p>" + "======== k_serachbutton() success===========");
 	  }
 
-     //@Test
+     @Test
 	 public void e_sortOfDeleteUser() throws Exception{
     	 //calling helper methods
     	 
@@ -331,7 +331,7 @@ public class Administrator extends Helper{
 		sorting();
 	}
 	
-	//@Test
+	@Test
 	public void f_pagenavigationOfDeleteUser() throws Exception{
 		
 		//calling helper methods for login and expansion of side tree
@@ -357,7 +357,7 @@ public class Administrator extends Helper{
 		pageEntries();
 	}
 
-	//@Test
+	@Test
 	
 	public void g_searchUserOfViewAllUsers() throws Exception{
 		//calling helper methods for login and expansion of side tree
@@ -383,7 +383,7 @@ public class Administrator extends Helper{
 		searchtable();
 	}	
 	
-	//@Test 
+	@Test 
 	
 	public void g_sortedUserOfViewAllUsers() throws Exception{
 		
@@ -411,7 +411,7 @@ public class Administrator extends Helper{
 		
 	  } 
 	
-	  //@Test
+	  @Test
 	   public void h_pageNavigationOfViewAllUsers() throws Exception{
 		
 			//calling helper methods for login and expansion of side tree menu
@@ -442,7 +442,7 @@ public class Administrator extends Helper{
 		  
 //===============Functional Test Methods ==================================================
 	  
-	   //@Test
+	   @Test
     public void i_LC_TS_5_sideTreeExpansionAndCollapse()throws Exception  {
     	
 	   //======= Login verification =========
@@ -459,7 +459,7 @@ public class Administrator extends Helper{
     }
  
  
-     //@Test
+     @Test
     public void j_LC_TS_6_1_dropDownVerification() throws Exception{
     	
 	  //======Verification of 'Manager' Drop down button presence and its working=====
@@ -587,7 +587,7 @@ public class Administrator extends Helper{
 		Reporter.log("<p>" + "=========================================================");
     }
  
-  //@Test
+  @Test
     
  	public void k_LC_TS_6_2_ButtonVerification() throws Exception{
  		
@@ -669,7 +669,7 @@ public class Administrator extends Helper{
  
  	}
  	
- 	 	//@Test
+ 	 	@Test
 	 public void l_LC_TS_6_3_newUserCreation() throws Exception{
 	 
 		 //Calling helper methods for login and tree expansion
@@ -912,7 +912,7 @@ public class Administrator extends Helper{
 		Reporter.log("<p>" + "=================d_newUserCreation() success==========================");
 	 }
 	
-	  // @Test
+	   @Test
 	  public void m_LC_TS_7_updatingUser() throws Exception{
 		  
 		  // calling login methods for login and side tree expansion
@@ -1104,7 +1104,7 @@ public class Administrator extends Helper{
 		
 	 
 		
-	//@Test
+	@Test
 	public void n_LC_TS_8_deletinguser() throws Exception{
 	
 		//calling helper methods for login and side tree expansion
@@ -1221,7 +1221,7 @@ public class Administrator extends Helper{
 	}
 	
 
-	//@Test
+	@Test
 	public void o_LC_TS_9_viewUsers() throws Exception{
 		//calling helper methods for login and side tree expansion
 		
@@ -1294,7 +1294,7 @@ public class Administrator extends Helper{
 	}
 	
 	
-	//@Test
+	@Test
 	public void p_LC_TS_10_configCreation() throws Exception{
 		
 		//calling helper methods for login and side tree expansion
@@ -1509,7 +1509,7 @@ public class Administrator extends Helper{
 		
 	  }
 	
-//@Test
+@Test
 	public void q_LC_TS_11_updateConfig() throws Exception{
 		//calling helper methods for login and side tree expansion
 		
@@ -1661,7 +1661,7 @@ public class Administrator extends Helper{
 	}
 
 
-	//@Test
+	@Test
 	public void r_LC_TS_13_viewConfig() throws Exception{
 		//calling helper methods for login and side tree expansion
 		
@@ -1721,7 +1721,7 @@ public class Administrator extends Helper{
 		}
 		
 	}
-	//@Test
+	@Test
 	public void s_LC_TS_12_deleteConfig() throws Exception{
 		
 		//calling helper methods for login and side tree expansion
@@ -1840,7 +1840,7 @@ public class Administrator extends Helper{
 		
 		}
 	
-	  //@Test
+	  @Test
    	  public void t_LC_TS_14_15_changePassword() throws Exception{
 		
 		//calling helper methods for login and side tree expansion
