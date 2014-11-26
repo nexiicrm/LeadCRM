@@ -197,24 +197,23 @@ public class BDM extends Helper{
 	    	startup("assignlead","Assign Leads");
 	        
 	    	//Clicking on select service dropdown and getting all the options
-	        help.sleep(5);
+	        help.sleep(1);
 	        
 	        //Getting total number of services present
 	        List<WebElement> service_options = driver.findElement(By.id(bdm.getProperty("service_options_id"))).findElement(By.name(bdm.getProperty("service_options_name"))).findElements(By.tagName(bdm.getProperty("service_options_tag")));
-	       
-	        ArrayList<String> newServiceList = new ArrayList<String>();
+	        
+	        ArrayList<WebElement> newServiceList = new ArrayList<WebElement>();
 	        for(int i = 1;i<service_options.size();i++){
 	        	if(i<=6)
-	        		newServiceList.add(service_options.get(i).getText());
-	        	    
+	        		newServiceList.add(service_options.get(i));
 	        	else
 	        		break;
 	        }
 	        Reporter.log("<p>" + "Total number of options under select service is= " +newServiceList.size());
 	        int service_option = random(newServiceList.size());
-	        service_options.get(service_option).click();
-	        Reporter.log("<p>" + "Randomly selected service is= " +service_options.get(service_option).getText());
-	        help.sleep(1);
+	        service_options.get(service_option+1).click();
+	        Reporter.log("<p>" + "Randomly selected service is= " +service_options.get(service_option+1).getText());
+	        help.sleep(5);
 	        
 	        //Checking if leads table is empty or not
 	        List<WebElement> leads_info = driver.findElement(By.tagName(bdm.getProperty("leads_info_tag"))).findElements(By.tagName(bdm.getProperty("leads_info_tagname")));
@@ -222,10 +221,8 @@ public class BDM extends Helper{
 	        	Reporter.log("<p>" + "leads table is empty");
 	        else{
 	        	help.sleep(5);
-	        	//bdm.getProperty("tableinfo_id")
-	        	String entries = driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText();
-	        	System.out.println(entries);
-	  	  		driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys(service_options.get(service_option).getText());
+	         	String entries = driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText();
+	  	  		driver.findElement(By.id(bdm.getProperty("searchbox_id"))).findElement(By.tagName(bdm.getProperty("searchbox_tag"))).sendKeys(service_options.get(service_option+1).getText());
 	        	help.sleep(2);
 	  	  		String search_entries = driver.findElement(By.className(bdm.getProperty("tableinfo_class"))).getText();
 
