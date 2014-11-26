@@ -747,12 +747,13 @@ public class Helper extends BaseTest
 	  }
 	  int count2= 0;
 	  int j = random(ar.size());
-	  driver.findElement(By.id(or.getProperty("searchbox_id"))).findElement(By.tagName(admin.getProperty("SearchBox"))).sendKeys(ar.get(j));
-	  sleep(2);
-	  result  = driver.findElement(By.cssSelector(admin.getProperty("list_info"))).getText();
+	  
 	  List<WebElement> tlist = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableData_tag")));
 	  if(tlist.size()>1){
 	  do{
+		  driver.findElement(By.id(or.getProperty("searchbox_id"))).findElement(By.tagName(admin.getProperty("SearchBox"))).sendKeys(ar.get(j));
+		  sleep(2);
+		  result  = driver.findElement(By.cssSelector(admin.getProperty("list_info"))).getText();
 	  List<WebElement> rowList = driver.findElement(By.tagName(admin.getProperty("table_tag"))).findElements(By.tagName(admin.getProperty("tableRowtag")));
 	  for(int k = 0;k<rowList.size();k++){
 	  int count = 0;
