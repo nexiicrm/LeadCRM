@@ -555,7 +555,12 @@ public class Helper extends BaseTest
   
   
   public void changePassword(String email) throws Exception // Change password pass email id as argument
-	{
+	{	
+	  Reporter.log("<p>" +"Connection open");
+	  Class.forName("com.mysql.jdbc.Driver").newInstance();
+	  connection = DBConnection.getConnection();
+	  statement = connection.createStatement();
+	  
 		resultSet = statement.executeQuery("select password from crm_user where email_id='"+email+"' AND delete_status='no'"); 
 		resultSet.next();
 		String dat = resultSet.getString("password");
@@ -573,9 +578,9 @@ public class Helper extends BaseTest
 		//=== clicking cancle button===//
 		driver.findElement(By.id(or.getProperty("cancel1"))).sendKeys(Keys.ENTER);
 		help.sleep(3);
-		//===getting current url after cancle button====//
+		//===getting current url after cancel button====//
 		String aftcancleurl = driver.getCurrentUrl();
-		//comparing current url after cancle button// 
+		//comparing current url after cancel button// 
 		if(aftcancleurl.equalsIgnoreCase(currenturl))
 		{
 		} else 
@@ -592,6 +597,8 @@ public class Helper extends BaseTest
 				if((driver.getCurrentUrl().equalsIgnoreCase("http://192.168.50.32:8080/leadcrm/login.jsp"))) 
 				{
 					Reporter.log("<p>" +"*************************");
+					
+					  
 				} 	else 
 				{
 					//=========checking oldpassword===//
@@ -713,8 +720,14 @@ public class Helper extends BaseTest
 					  driver.findElement(By.linkText("Logout")).click();
 					}
 					  // driver.findElement(By.linkText("Logout")).click()
-				}
+			 }
+				
 			}
+		
+		resultSet.close();
+		  statement.close();
+		  connection.close();
+		  Reporter.log("<p>" +"connection closed");
 	}
 
 
