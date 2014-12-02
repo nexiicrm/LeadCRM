@@ -109,7 +109,7 @@ public class Login extends Helper{
 	              Class.forName("com.mysql.jdbc.Driver").newInstance();
 	              connection = DBConnection.getConnection();
 	              statement = connection.createStatement();
-	              resultSet = statement.executeQuery("select  a.role_name, b.email_id, b.password from crm_role a, crm_user b where a.role_id = b.role_id AND delete_status='no' Group by a.role_name;");      
+	              resultSet = statement.executeQuery("select  a.role_name, b.email_id, b.password from crm_role a, crm_user b where a.role_id = b.role_id AND b.delete_status='no' Group by a.role_name;");      
 	              while (resultSet.next())
 	              {
 	                  String role = resultSet.getString("role_name");
