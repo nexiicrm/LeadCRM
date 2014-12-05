@@ -345,7 +345,7 @@ public class BDE extends Helper{
 		 	}
 	 }
 
-   // //@Test //UI Functionality of the BDE Module.
+   // @Test //UI Functionality of the BDE Module.
   	public void a_LC_TS_43_ExpandCollapse() throws Exception
   	{	
     	help.expand();
@@ -369,7 +369,7 @@ public class BDE extends Helper{
   	
   
   	// This researchOnCompany test, checks the functionality of Research On Company Page, 'Lead Research' Form.
-    //@Test(invocationCount = 5)
+    @Test(invocationCount = 5)
   	public void b_LC_TS_44_researchOnCompany() throws Exception
     {
      navigatePage("Research On Company", "Lead Research"); 
@@ -430,7 +430,7 @@ public class BDE extends Helper{
     }
   	
     //This test method checks functionality of Work phase by giving today's date
-  	//@Test(invocationCount = 2)
+  	@Test(invocationCount = 2)
     public void c_LC_TS_45_workPhaseForTodaysDate() throws Exception
   	{
   		date = new Date();	
@@ -487,7 +487,7 @@ public class BDE extends Helper{
   	}
   	
   	//This test method checks functionality of Work phase by giving later date
-    //@Test(invocationCount = 3)
+    @Test(invocationCount = 3)
     public void d_LC_TS_45_workPhaseForLaterDate()
     {   
         cal = Calendar.getInstance();
@@ -535,7 +535,7 @@ public class BDE extends Helper{
     }
        
   	 // This test method checks functionality of todays phase followUp 4
-     //@Test
+     @Test
      public void e_LC_TS_46_todaysFollowup4()
   	 {	
       	 date = new Date();	
@@ -643,7 +643,6 @@ public class BDE extends Helper{
   		 		 else
   		 			 Assert.fail("Failed to navigate to todays Followup form");
   		 
-  		 
   				 driver.findElement(By.className("user_logout")).click();
   				 sleep(1);
   		 
@@ -681,7 +680,7 @@ public class BDE extends Helper{
   	
   	 }
  	
-	//@Test // This checks the To Field check of prospect Identify phase.
+	@Test // This checks the To Field check of prospect Identify phase.
   	public void g_LC_TS_47_UIToFieldCheck()
   	{
   		 date = new Date();
@@ -750,7 +749,7 @@ public class BDE extends Helper{
   	 
   	
       // This test method checks functionality of All FollowUp phase prospect Identify of Quote
-  	//@Test
+  	@Test
     public void h_LC_TS_47_AllFollowupsQuoteUpload() throws Exception
     {
      date = new Date(); 
@@ -831,7 +830,7 @@ public class BDE extends Helper{
      }
     }
     
-  	//@Test
+  	@Test
     public void i_LC_TS_47_AllFollowupclose() throws Exception
     {
      navigatePage("All FollowUps", "All Followups");    
@@ -874,8 +873,6 @@ public class BDE extends Helper{
          else 
           Reporter.log("<p> The All Followup Lead is : " + Leadno + " is available in All FollowUp.");
         }
-       
-        
        }  
      } 
    }
@@ -940,7 +937,7 @@ public class BDE extends Helper{
   	 
   	
   	 // This test method checks functionality of All FollowUp phase followUp 4
-     //@Test
+     @Test
  	 public void k_LC_TS_47_AllFollowups4() throws Exception
  	 {
  		 date = new Date();	
@@ -975,9 +972,8 @@ public class BDE extends Helper{
  					 Reporter.log("<p> The todays Followup Lead is : " + Leadno + " is available in Cold Storage.");
  		 }
  	 }
- 	 
-  	   
-     //@Test
+ 	
+     @Test
      public void l_LC_TS_47_coldStorage() 
   	 { 
       	 //This block checks for lead moved from closed phase to BD
@@ -1054,7 +1050,7 @@ public class BDE extends Helper{
   	     }	 
   	 } 
      
-     //@Test                                                     // in manual test case LC_TS_48     closed phase
+     @Test                                                     // in manual test case LC_TS_48     closed phase
 	 public void m_LC_TS_48_closedPhasebutton() throws Exception
 	 {
 		 //////////// checking for the close button for each lead /////////////
@@ -1113,7 +1109,7 @@ public class BDE extends Helper{
 		 }else
 			 Assert.fail("closed phase  link not found successfully");
 	 }
-	 //@Test                                                         // in manual test case LC_TS_48     closed phase
+	 @Test                                                         // in manual test case LC_TS_48     closed phase
 	 public void n_LC_TS_48_closedCustomer() throws Exception 
 	 {
 		 ///////////////// closing the lead by selecting customerslist /////////////////////
@@ -1205,7 +1201,7 @@ public class BDE extends Helper{
 	  	 }else
 	  		 Assert.fail("closed phase  link not found successfully");
 	 }
-	 //@Test                                                         // in manual test case LC_TS_48     closed phase
+	 @Test                                                         // in manual test case LC_TS_48     closed phase
 	 public void o_LC_TS_48_closedCompetetion() throws Exception 
 	 {
 		 ///////////////////// closing the lead by selecting lost competition ////////////////////////
@@ -1300,7 +1296,7 @@ public class BDE extends Helper{
 
 	
  
-	 //@Test                                                   // in manual test case LC_TS_49 & 50 &51         leadsearch
+	 @Test                                                   // in manual test case LC_TS_49 & 50 &51         leadsearch
 	 public void p_LC_TS_49_searchLead() throws Exception 
 	 {
 		 help.expand();
@@ -1309,7 +1305,7 @@ public class BDE extends Helper{
 		 searchLead();
 	 }
  
-	 //@Test                                                      // in manual test case LC_TS_52           leadedits     
+	 @Test                                                      // in manual test case LC_TS_52           leadedits     
 	 public void q_LC_TS_50_leadEditbutton() throws Exception
 	 {
 		 /////////////////////checking for the trackit and edit button for each lead /////////////////////////////
@@ -1374,7 +1370,7 @@ public class BDE extends Helper{
 		 }else
 			 Assert.fail("lead edit link not found successfully");
 	 }
-	 //@Test                                                          // in manual test case LC_TS_52                leadedits(trackit)
+	 @Test                                                          // in manual test case LC_TS_52                leadedits(trackit)
 	 public void r_LC_TS_50_leadEditTrackIt() throws Exception
 	 {
 		 ////////////////////////// TRACK IT  ///////////////////////////
@@ -1468,7 +1464,7 @@ public class BDE extends Helper{
 			 Assert.fail("lead edit link not found successfully");
 	 }
 
-	 //@Test                                                               // in manual test case LC_TS_52                leadedits(EDIT)
+	 @Test                                                               // in manual test case LC_TS_52                leadedits(EDIT)
 	 public void s_LC_TS_51_LeadEdit() throws Exception
 	 {
 		 ////////////////////////// EDIT ////////////////////////////////////////
@@ -1617,7 +1613,7 @@ public class BDE extends Helper{
 	
 
   
-	 //@Test                                                               // in manual test case LC_TS_53 & 54                myaccount
+	 @Test                                                               // in manual test case LC_TS_53 & 54                myaccount
 	 public void t_LC_TS_52_changePassword() throws Exception
 	 {
 		 help.expand();
