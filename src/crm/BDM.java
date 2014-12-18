@@ -46,7 +46,7 @@ public class BDM extends Helper{
 	    /*Validating all paginations for every link present at the left hand side of
 	     * pane in BDM module
 	     */
-	    ////@Test
+	    @Test
         public void a_paginations() throws Exception  { // Paginations in all pages of BDM Module (Hardik & Anuhya)
         	help.expand();
         	
@@ -112,7 +112,7 @@ public class BDM extends Helper{
       	/*Verifying options available under Select service and Assign to whom dropdown's
        	 * with the options present in database
         */
-        //@Test
+        @Test
         public void b_LC_TS_26_verifyingServiceNamesandAssign() { // ts26_tc001 (Hardik)
         	help.expand();
         	
@@ -194,7 +194,7 @@ public class BDM extends Helper{
         /*Checking whether selected service matches with the services shown in
          * service table
         */
-	    //@Test
+	    @Test
 	    public void c_LC_TS_26_matching_service_name(){ // ts26_tc002 (Hardik)
 	        //expanding and clicking on assign lead link	
 	    	help.expand();
@@ -246,7 +246,7 @@ public class BDM extends Helper{
 	    /*Selecting service from select service drop down and ticking select all button
 	     * and verifying all leads are ticked or not
 	    */
-	    //@Test
+	    @Test
 	    public void  d_LC_TS_26_selectAllcheckbox(){ // ts26_tc003 (Hardik)
 	    	//expanding and clicking on assign lead link 
 	    	help.expand();
@@ -278,7 +278,7 @@ public class BDM extends Helper{
 	     /*Assigning one lead to self(i.e BDM)module and verifying that lead is 
 	      *assigned or not
 	     */
-	    //@Test
+	    @Test
 	    public void  e_LC_TS_27_serviceoptionsvalidation_self(){ // ts27_tc001 (Hardik)
 	    	help.expand();
 	    	startup("assignlead","Assign Leads");
@@ -329,7 +329,7 @@ public class BDM extends Helper{
 	    /*Assigning two leads to self(i.e BDM) module and verifying that leads is present
 	     * in BDM account or not.
 	    */
-	    //@Test
+	    @Test
 	    public void f_LC_TS_27_assignmultipleLeads_BDM () throws Exception{  // ts27_tc002 (Hardik)
 	    	//expanding and clicking on assign lead link 
 	    	help.expand();
@@ -365,7 +365,7 @@ public class BDM extends Helper{
 	    /*Assigning single lead to BDE module and verifying that leads is present
 	     * in BDE account or not.
 	    */
-	    //@Test
+	    @Test
 		public void  g_LC_TS_28_assignto_bde() throws Exception{ // ts28_tc001 (Hardik)
 			//expanding and clicking on assign lead link	
 		    help.expand();
@@ -395,7 +395,7 @@ public class BDM extends Helper{
 	    /*Assigning two leads to BDE module and verifying that leads is present
 	     * in BDE account or not.
 	     */ 
-		//@Test
+		@Test
 		public void  h_LC_TS_28_assignmultipleLeads_BDE() throws Exception{ // ts28_tc002 (Hardik)
 			//expanding and clicking on assign lead link
 			help.expand();
@@ -423,7 +423,7 @@ public class BDM extends Helper{
 		/*Picking any user name from the database and assigning multiple leads
 	     * to BDE and BDM modules. 
 	    */
-        //@Test
+        @Test
         public void i_LC_TS_28_assignmultipleleadsBDM_BDE(){ // ts28_tc003 (Hardik)
         	help.expand();
         	startup("assignlead","Assign Leads");
@@ -473,7 +473,7 @@ public class BDM extends Helper{
         /*Checking research button is enabled for all leads in research
          * phase.
          */ 
-		//@Test
+		@Test
 		public void  j_LC_TS_29_researchbuttoncheck(){ // ts29_tc001 (Hardik)
 			//expanding and clicking on research on lead link
 			Reporter.log("<p>" + "*******************RESEARCH PHASE***************************");
@@ -578,7 +578,7 @@ public class BDM extends Helper{
 		/*Clicking on work phase and checking whether track it and follow up buttons
 		 * are enabled for all leads.
 		*/
-		//@Test
+		@Test
 		public void  l_LC_TS_30_workPhasetrackit(){ // ts30_tc001 (Hardik)
 			Reporter.log("<p>" + "***********************WORK PHASE********************");
 			//expanding and clicking on work phase link
@@ -609,7 +609,7 @@ public class BDM extends Helper{
 		/*In work phase clicking on follow up and filling all details in
 		 * the form by selecting todays date.
 		*/
-		//@Test(invocationCount=2)
+		@Test(invocationCount=2)
 		public void  m_LC_TS_31_workphaseFollowupTodaysDate(){ // ts31_tc001 (Hardik)
 			help.expand();
 			startup("workPhase","Work on Lead");
@@ -739,7 +739,7 @@ public class BDM extends Helper{
 		/*Confirming all leads with today's date in All followups is present
 		 * in today's follow up or not.	
 		*/
-		//@Test
+		@Test
 		public void  o_LC_TS_32_confirmleadsofTodaysDate(){ // ts32_tc002 (Hardik)
 			//Clicking todays followup link and getting all leads for todays date
 			help.expand();
@@ -774,7 +774,7 @@ public class BDM extends Helper{
 		/*Verifying track it and followup button is enabled for all leads present
 		 * under allfollowups phase.	
 		*/
-		//@Test
+		@Test
 		public void  p_LC_TS_32_allfollowup(){ // ts32_tc003 (Hardik)
 			//Checking trackit and followup button for all leads and printing work phase comments
 			Reporter.log("<p>" + "****************ALL FOLLOWUP*******************");
@@ -814,7 +814,7 @@ public class BDM extends Helper{
 		/*Selecting Followup 4 from followup type dropdown and verifying the status of
 		 * that lead.
 		*/
-		//@Test
+		@Test
 		public void   q_LC_TS_32_allNextFollowup(){ // ts32_tc004 (Hardik)
 			help.expand();
 			startup("allfollowups","All Followups");	  	  	
@@ -871,7 +871,7 @@ public class BDM extends Helper{
 		
 
 		 // Test method for Cold Storage
-		 //@Test
+		 @Test
 		 public void  r_LC_TS_68_coldStorage() { // ts68_tc001 (Anuhya)
 			
 			 Reporter.log("<p>" +"Test for Cold storage");
@@ -997,7 +997,7 @@ public class BDM extends Helper{
 		/*Selecting propspect identity by selecting proposal from proposal type dropdown 
 		 * and filling all details in the form.	
 		*/
-		//@Test
+		@Test
 		public void  s_LC_TS_32_FollowupProspectIdentityProposal() throws Exception{ // ts32_tc007 (Hardik & Anuhya <merged>)
 			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
 			Date date = new Date();
@@ -1146,7 +1146,7 @@ public class BDM extends Helper{
 		
 		 
 		 // Test method for Proposal upload
-		 //@Test
+		 @Test
 		 public void  t_LC_TS_34_proposalUpload() { // ts34_tc001 (Anuhya)
 			 
 			 Reporter.log("<p>" +"Test for Proposal Upload");
@@ -1236,7 +1236,7 @@ public class BDM extends Helper{
 		/*Selecting propspect identity by selecting Quote from proposal type dropdown 
 		 * and filling all details in the form.	
 		*/
-		//@Test
+		@Test
 		public void   u_LC_TS_32_FollowupProspectIdentityQuote() throws Exception{ // ts32_tc009 (Hardik & Anuhya <merged>)
 			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
 			Date date = new Date();
@@ -1317,7 +1317,7 @@ public class BDM extends Helper{
 		 
 	
 	 	 // Test method for Quote upload
-		 //@Test
+		 @Test
 		 public void v_LC_TS_35_quoteUpload() { // ts35_tc001 (Anuhya)
 			 
 			 Reporter.log("<p>" +"Test for Quote Upload");
@@ -1408,7 +1408,7 @@ public class BDM extends Helper{
 		/*From Allfollowup phase searching for prospect identity,clicking on followup by
 		 * selecting proposal/Quote send from followup type and filling all details.
 		*/ 
-		//@Test(invocationCount=2)
+		@Test(invocationCount=2)
 		public void w_LC_TS_32_proposalQuoteSend(){ // ts32_tc011 (Hardik)
 			
 			SimpleDateFormat simple = new SimpleDateFormat("yyyy-M-dd");
@@ -1472,7 +1472,7 @@ public class BDM extends Helper{
 		/*From Allfollowup phase searching for prospect identity,clicking on followup by
 		 * selecting proposal/Quote accepted from followup type and filling all details.
 		*/
-		//@Test(invocationCount=2)
+		@Test(invocationCount=2)
 		public void x_LC_TS_32_proposalQuoteaccept(){ // ts32_tc012 (Hardik)
 		    help.expand();
 		    
@@ -1528,7 +1528,7 @@ public class BDM extends Helper{
 		/*Verifying close buttons is enabled for all leads in lead close phase
 		 * 
 		*/
-		//@Test
+		@Test
 		public void y_LC_TS_33_verifyleadclosebutton(){ // ts33_tc002 (Hardik)
 			help.expand();
 	  	  	startup("closedPhase","Closed Phase");
@@ -1556,7 +1556,7 @@ public class BDM extends Helper{
 		/*From closed phase clicking on close button and selecting All customers from 
 		 * followup type and filling all details and verifying that lead in Management module.
 		*/
-		//@Test
+		@Test
 		public void z_LC_TS_33_leadcloseCustomer() throws Exception{ // ts33_tc003 (Hardik)
 	  	  	help.expand();
 	  	  	startup("closedPhase","Closed Phase");
@@ -1605,7 +1605,7 @@ public class BDM extends Helper{
 		/*From closed phase clicking on close button and selecting Lost competition from 
 		 * followup type and filling all details and verifying that lead in Management module.
 		*/
-		//@Test
+		@Test
 		public void   za_LC_TS_33_leadcloseLostCompetition() throws Exception{ // ts33_tc004 (Hardik)
 	  	  	help.expand();
 	  	  	startup("closedPhase","Closed Phase");
@@ -1644,7 +1644,7 @@ public class BDM extends Helper{
 		
 		
 		 //Method for Lead search
-		 //@Test
+		 @Test
 		 public void zb_LC_TS_36_leadSearch() { // ts36_tc001 (Anuhya)
 			
 			 Reporter.log("<p>" +"Test for Lead Search Phase");
@@ -1661,7 +1661,7 @@ public class BDM extends Helper{
 		 	
 		 
 		 // Test method for "Lead Edit" Edit button functionality
-		 //@Test
+		 @Test
 		 public void   zc_LC_TS_39_testLeadEditButton() { // ts39_tc002 (Anuhya)
 			 
 			 Reporter.log("<p>" +"Testing Edit button in Lead Edit Phase and its Functionality");
@@ -1772,7 +1772,7 @@ public class BDM extends Helper{
 			  Reporter.log("<p>___________________________________________________________________________________");
 		 } 
 		 
-		 //@Test
+		 @Test
 		 public void zd_LC_TS_40_changePassword() throws Exception { // ts40_tc001 (Anuhya)
 			 
 			 // Expands side tree menu
