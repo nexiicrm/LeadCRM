@@ -1,0 +1,3877 @@
+<html>
+<head>
+<title>TestNG:  Regression</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Regression</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>73/6/11</td>
+</tr><tr>
+<td>Started on:</td><td>Wed Nov 26 12:40:55 IST 2014</td>
+</tr>
+<tr><td>Total time:</td><td>12681 seconds (12681954 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED CONFIGURATIONS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='src.crm.BDM.before()'><b>before</b><br>Test class: src.crm.BDM</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;username&quot;}
+Command duration or timeout: 9 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:02:37&apos;
+System info: host: &apos;pavann&apos;, ip: &apos;172.16.10.80&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_67&apos;
+Session ID: 179a88bf-6630-491c-97fe-bc6c385ed1d1
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=33.1.1}]
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:393)
+	at org.openqa.selenium.By$ById.findElement(By.java:214)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at src.testUtils.Helper.login(Helper.java:108)
+	at src.crm.BDM.before(BDM.java:37)
+Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;username&quot;}
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:02:37&apos;
+System info: host: &apos;pavann&apos;, ip: &apos;172.16.10.80&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_67&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous4610411387718899996webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElement(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous4610411387718899996webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous4610411387718899996webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous4610411387718899996webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous4610411387718899996webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace7943796", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace7943796'><pre>org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;username&quot;}
+Command duration or timeout: 9 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:02:37&apos;
+System info: host: &apos;pavann&apos;, ip: &apos;172.16.10.80&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_67&apos;
+Session ID: 179a88bf-6630-491c-97fe-bc6c385ed1d1
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=33.1.1}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:393)
+	at org.openqa.selenium.By$ById.findElement(By.java:214)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at src.testUtils.Helper.login(Helper.java:108)
+	at src.crm.BDM.before(BDM.java:37)
+	at sun.reflect.GeneratedMethodAccessor10.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:653)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.TestNG.privateMain(TestNG.java:1364)
+	at org.testng.TestNG.main(TestNG.java:1333)
+Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;username&quot;}
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:02:37&apos;
+System info: host: &apos;pavann&apos;, ip: &apos;172.16.10.80&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_67&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous4610411387718899996webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElement(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous4610411387718899996webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous4610411387718899996webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous4610411387718899996webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous4610411387718899996webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
+</pre></div></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED CONFIGURATIONS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='src.crm.BDM.before()'><b>before</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.before()'><b>before</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.before()'><b>before</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.before()'><b>before</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.before()'><b>before</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.before()'><b>before</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.before()'><b>before</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.before()'><b>before</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.before()'><b>before</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.before()'><b>before</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.after()'><b>after</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.after()'><b>after</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.after()'><b>after</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.after()'><b>after</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.after()'><b>after</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.after()'><b>after</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.after()'><b>after</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.after()'><b>after</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.after()'><b>after</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.after()'><b>after</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.after()'><b>after</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='src.crm.BDM.c_LC_TS_26_matching_service_name()'><b>c_LC_TS_26_matching_service_name</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-5988916" onClick='toggleBox("Output-5988916", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-5988916" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-5988916">
+<p>Assign Leads Page is opened<br/>
+<p>Total number of options under select service is= 6<br/>
+<p>Randomly selected service is= ---SELECT---<br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;tag name&quot;,&quot;selector&quot;:&quot;tbody&quot;}
+Command duration or timeout: 36 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:02:37&apos;
+System info: host: &apos;pavann&apos;, ip: &apos;172.16.10.80&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_67&apos;
+Session ID: bd2acd13-fc37-42c8-8f4c-11d37b60b0fb
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=33.1.1}]
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByTagName(RemoteWebDriver.java:417)
+	at org.openqa.selenium.By$ByTagName.findElement(By.java:330)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at src.crm.BDM.c_LC_TS_26_matching_service_name(BDM.java:220)
+Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;tag name&quot;,&quot;selector&quot;:&quot;tbody&quot;}
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:02:37&apos;
+System info: host: &apos;pavann&apos;, ip: &apos;172.16.10.80&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_67&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous5831922681143841993webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElement(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous5831922681143841993webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous5831922681143841993webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous5831922681143841993webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous5831922681143841993webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace5988916", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace5988916'><pre>org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;tag name&quot;,&quot;selector&quot;:&quot;tbody&quot;}
+Command duration or timeout: 36 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:02:37&apos;
+System info: host: &apos;pavann&apos;, ip: &apos;172.16.10.80&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_67&apos;
+Session ID: bd2acd13-fc37-42c8-8f4c-11d37b60b0fb
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=33.1.1}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByTagName(RemoteWebDriver.java:417)
+	at org.openqa.selenium.By$ByTagName.findElement(By.java:330)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at src.crm.BDM.c_LC_TS_26_matching_service_name(BDM.java:220)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.TestNG.privateMain(TestNG.java:1364)
+	at org.testng.TestNG.main(TestNG.java:1333)
+Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;tag name&quot;,&quot;selector&quot;:&quot;tbody&quot;}
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:02:37&apos;
+System info: host: &apos;pavann&apos;, ip: &apos;172.16.10.80&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_67&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous5831922681143841993webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElement(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous5831922681143841993webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous5831922681143841993webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous5831922681143841993webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous5831922681143841993webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
+</pre></div></td>
+<td>23</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.Management.h_TS_59_TC004LDrop()'><b>h_TS_59_TC004LDrop</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-16228468" onClick='toggleBox("Output-16228468", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-16228468" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-16228468">
+Table contents displaying as per Entries 10<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 25<p><br/>
+<p>pagination next button is present<br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: page navigation failed to next page
+	at src.testUtils.Helper.pagination(Helper.java:523)
+	at src.testUtils.Helper.pageEntries(Helper.java:484)
+	at src.crm.Management.h_TS_59_TC004LDrop(Management.java:186)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace16228468", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace16228468'><pre>java.lang.AssertionError: page navigation failed to next page
+	at org.testng.Assert.fail(Assert.java:94)
+	at src.testUtils.Helper.pagination(Helper.java:523)
+	at src.testUtils.Helper.pageEntries(Helper.java:484)
+	at src.crm.Management.h_TS_59_TC004LDrop(Management.java:186)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.TestNG.privateMain(TestNG.java:1364)
+	at org.testng.TestNG.main(TestNG.java:1333)
+</pre></div></td>
+<td>28</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.BDE.i_LC_TS_47_AllFollowupclose()'><b>i_LC_TS_47_AllFollowupclose</b><br>Test class: src.crm.BDE</td>
+<td><div><pre>java.lang.AssertionError: Side tree menu not available
+	at src.testUtils.Helper.expand(Helper.java:122)
+	at src.crm.BDE.navigatePage(BDE.java:40)
+	at src.crm.BDE.i_LC_TS_47_AllFollowupclose(BDE.java:837)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace29876886", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace29876886'><pre>java.lang.AssertionError: Side tree menu not available
+	at org.testng.Assert.fail(Assert.java:94)
+	at src.testUtils.Helper.expand(Helper.java:122)
+	at src.crm.BDE.navigatePage(BDE.java:40)
+	at src.crm.BDE.i_LC_TS_47_AllFollowupclose(BDE.java:837)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.TestNG.privateMain(TestNG.java:1364)
+	at org.testng.TestNG.main(TestNG.java:1333)
+</pre></div></td>
+<td>0</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.Management.l_TS_60_TC004CDrop()'><b>l_TS_60_TC004CDrop</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-33112125" onClick='toggleBox("Output-33112125", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-33112125" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-33112125">
+Table contents displaying as per Entries 10<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 25<p><br/>
+<p>pagination next button is present<br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: page navigation failed to next page
+	at src.testUtils.Helper.pagination(Helper.java:523)
+	at src.testUtils.Helper.pageEntries(Helper.java:484)
+	at src.crm.Management.l_TS_60_TC004CDrop(Management.java:281)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace33112125", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace33112125'><pre>java.lang.AssertionError: page navigation failed to next page
+	at org.testng.Assert.fail(Assert.java:94)
+	at src.testUtils.Helper.pagination(Helper.java:523)
+	at src.testUtils.Helper.pageEntries(Helper.java:484)
+	at src.crm.Management.l_TS_60_TC004CDrop(Management.java:281)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.TestNG.privateMain(TestNG.java:1364)
+	at org.testng.TestNG.main(TestNG.java:1333)
+</pre></div></td>
+<td>34</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.Management.p_TS_61_TC004QDrop()'><b>p_TS_61_TC004QDrop</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-7414082" onClick='toggleBox("Output-7414082", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-7414082" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-7414082">
+Table contents displaying as per Entries 10<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 25<p><br/>
+<p>pagination next button is present<br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: page navigation failed to next page
+	at src.testUtils.Helper.pagination(Helper.java:523)
+	at src.testUtils.Helper.pageEntries(Helper.java:484)
+	at src.crm.Management.p_TS_61_TC004QDrop(Management.java:376)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace7414082", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace7414082'><pre>java.lang.AssertionError: page navigation failed to next page
+	at org.testng.Assert.fail(Assert.java:94)
+	at src.testUtils.Helper.pagination(Helper.java:523)
+	at src.testUtils.Helper.pageEntries(Helper.java:484)
+	at src.crm.Management.p_TS_61_TC004QDrop(Management.java:376)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.TestNG.privateMain(TestNG.java:1364)
+	at org.testng.TestNG.main(TestNG.java:1333)
+</pre></div></td>
+<td>28</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.BDE.t_LC_TS_52_changePassword()'><b>t_LC_TS_52_changePassword</b><br>Test class: src.crm.BDE</td>
+<td><div><pre>com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 10,709,262 milliseconds ago.  The last packet sent successfully to the server was 10,709,265 milliseconds ago.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3364)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1983)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2618)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2568)
+	at com.mysql.jdbc.StatementImpl.executeQuery(StatementImpl.java:1557)
+	at src.testUtils.Helper.changePassword(Helper.java:559)
+	at src.crm.BDE.t_LC_TS_52_changePassword(BDE.java:1628)
+Caused by: java.net.SocketException: Connection reset by peer: socket write error
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:113)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:159)
+	at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:82)
+	at java.io.BufferedOutputStream.flush(BufferedOutputStream.java:140)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3345)
+	... 30 more
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace19064161", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace19064161'><pre>com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 10,709,262 milliseconds ago.  The last packet sent successfully to the server was 10,709,265 milliseconds ago.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3364)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1983)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2618)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2568)
+	at com.mysql.jdbc.StatementImpl.executeQuery(StatementImpl.java:1557)
+	at src.testUtils.Helper.changePassword(Helper.java:559)
+	at src.crm.BDE.t_LC_TS_52_changePassword(BDE.java:1628)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.TestNG.privateMain(TestNG.java:1364)
+	at org.testng.TestNG.main(TestNG.java:1333)
+Caused by: java.net.SocketException: Connection reset by peer: socket write error
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:113)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:159)
+	at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:82)
+	at java.io.BufferedOutputStream.flush(BufferedOutputStream.java:140)
+	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3345)
+	... 30 more
+</pre></div></td>
+<td>11</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='src.crm.Login.Login_CRM()'><b>Login_CRM</b><br>Test class: src.crm.Login<br/>
+<a href="#Output-13936926" onClick='toggleBox("Output-13936926", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-13936926" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-13936926">
+<p>Login button is available in Lead CRM home page<br/>
+<p>Trying to login with different username and passwords from excel sheets<br/>
+<p>logging with username: srinivasa.sanchana@nexiilabs.com, password: passss-->Invalid User Login<br/>
+<p>logging with username: srinivasa.sanchana@gmail.com, password: password-->Invalid User Login<br/>
+<p>logging with username: srinivasa.sanchana@gmail.com, password: passss-->Invalid User Login<br/>
+<p>logging with username: '1'='1', password: '1'='1'-->Invalid Credentials<br/>
+<p>logging with username: srinivasa.sanchana@nexiilabs.com, password: ' or 1=1---->Invalid Credentials<br/>
+<p>logging with username: srinivasa.sanchana@nexiilabs.com, password: ' or ''='-->Invalid Credentials<br/>
+<p>logging with username: srinivasa.sanchana@nexiilabs.com, password: ' or 1=1 --IamJOE-->Invalid Credentials<br/>
+<p>logging with username: srinivasa.sanchana@nexiilabs.com, password: ') or '1'='1---->Invalid Credentials<br/>
+<p>FORGOT PASSWORD LINK PRESENT<br/>
+<p>Forgot password link is = http://192.168.50.32:8080/leadcrm/forgot_password.jsp<br/>
+<p>Submit button is present in forgot password link<br/>
+<p>Entering username as srinivasa.sanchana@gmail.com in forgot password link<br/>
+<p>your account is not existed<br/>
+<p>Entering username as srinivasa.sanchana@nexiilabs.com in forgot password link<br/>
+<p>Successfully mail sent to your account<br/>
+</div>
+</td>
+<td></td>
+<td>55</td>
+<td>src.crm.Login@109eab7</td></tr>
+<tr>
+<td title='src.crm.Researcher.a_LC_TS_17_Expandandcollapse()'><b>a_LC_TS_17_Expandandcollapse</b><br>Test class: src.crm.Researcher<br/>
+<a href="#Output-23944274" onClick='toggleBox("Output-23944274", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-23944274" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-23944274">
+<p>Number Elements in List1 : 6<br/>
+<p>User Logged in as:Researcher<br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>src.crm.Researcher@1ba1db5</td></tr>
+<tr>
+<td title='src.crm.BDE.a_LC_TS_43_ExpandCollapse()'><b>a_LC_TS_43_ExpandCollapse</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-26907345" onClick='toggleBox("Output-26907345", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-26907345" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-26907345">
+<p>totalcolumns having sorting options=7<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Company Name<br/>
+<p>sorting descending: on column: 3:Company Name<br/>
+<p>sorting ascending: on column: 4:Designation<br/>
+<p>sorting descending: on column: 4:Designation<br/>
+<p>sorting ascending: on column: 5:Service Name<br/>
+<p>sorting descending: on column: 5:Service Name<br/>
+<p>sorting ascending: on column: 6:Mobile Number<br/>
+<p>sorting descending: on column: 6:Mobile Number<br/>
+Table contents displaying as per Entries 10<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 25<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 50<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 100<p><br/>
+<p>No .of Search results with search key within table:: 1<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+<p>totalcolumns having sorting options=7<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Company<br/>
+<p>sorting descending: on column: 3:Company<br/>
+<p>sorting ascending: on column: 4:Service<br/>
+<p>sorting descending: on column: 4:Service<br/>
+<p>sorting ascending: on column: 5:Mobile<br/>
+<p>sorting descending: on column: 5:Mobile<br/>
+<p>sorting ascending: on column: 6:Lead Status<br/>
+<p>sorting descending: on column: 6:Lead Status<br/>
+Table contents displaying as per Entries 10<p><br/>
+Table contents displaying as per Entries 25<p><br/>
+Table contents displaying as per Entries 50<p><br/>
+Table contents displaying as per Entries 100<p><br/>
+<p>No .of Search results with search key within table:: 1<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+<p>totalcolumns having sorting options=7<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Company<br/>
+<p>sorting descending: on column: 3:Company<br/>
+<p>sorting ascending: on column: 4:Service<br/>
+<p>sorting descending: on column: 4:Service<br/>
+<p>sorting ascending: on column: 5:Next FollowUp Date<br/>
+<p>sorting descending: on column: 5:Next FollowUp Date<br/>
+<p>sorting ascending: on column: 6:Last FollowUp Type<br/>
+<p>sorting descending: on column: 6:Last FollowUp Type<br/>
+Table contents displaying as per Entries 10<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 25<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 50<p><br/>
+Table contents displaying as per Entries 100<p><br/>
+<p>No .of Search results with search key within table:: 44<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+<p>totalcolumns having sorting options=7<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Company<br/>
+<p>sorting descending: on column: 3:Company<br/>
+<p>sorting ascending: on column: 4:Service<br/>
+<p>sorting descending: on column: 4:Service<br/>
+<p>sorting ascending: on column: 5:Next FollowUp Date<br/>
+<p>sorting descending: on column: 5:Next FollowUp Date<br/>
+<p>sorting ascending: on column: 6:Last FollowUp Type<br/>
+<p>sorting descending: on column: 6:Last FollowUp Type<br/>
+Table contents displaying as per Entries 10<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 25<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 50<p><br/>
+<p>pagination next button is present<br/>
+Table contents displaying as per Entries 100<p><br/>
+<p>No .of Search results with search key within table:: 1<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+<p>no data available in the table, to perform sorting<br/>
+Table contents displaying as per Entries 10<p><br/>
+Table contents displaying as per Entries 25<p><br/>
+Table contents displaying as per Entries 50<p><br/>
+Table contents displaying as per Entries 100<p><br/>
+No data present in the table to search<br/>
+<p>totalcolumns having sorting options=7<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Company<br/>
+<p>sorting descending: on column: 3:Company<br/>
+<p>sorting ascending: on column: 4:Service<br/>
+<p>sorting descending: on column: 4:Service<br/>
+<p>sorting ascending: on column: 5:Next FollowUp Date<br/>
+<p>sorting descending: on column: 5:Next FollowUp Date<br/>
+<p>sorting ascending: on column: 6:Last FollowUp Type<br/>
+<p>sorting descending: on column: 6:Last FollowUp Type<br/>
+Table contents displaying as per Entries 10<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 25<p><br/>
+Table contents displaying as per Entries 50<p><br/>
+Table contents displaying as per Entries 100<p><br/>
+<p>No .of Search results with search key within table:: 9<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+<p>totalcolumns having sorting options=7<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:First Name<br/>
+<p>sorting descending: on column: 2:First Name<br/>
+<p>sorting ascending: on column: 3:Last Name<br/>
+<p>sorting descending: on column: 3:Last Name<br/>
+<p>sorting ascending: on column: 4:Company Name<br/>
+<p>sorting descending: on column: 4:Company Name<br/>
+<p>sorting ascending: on column: 5:Service Name<br/>
+<p>sorting descending: on column: 5:Service Name<br/>
+<p>sorting ascending: on column: 6:Lead Phase<br/>
+<p>sorting descending: on column: 6:Lead Phase<br/>
+Table contents displaying as per Entries 10<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 25<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 50<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 100<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>No .of Search results with search key within table:: 1<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+</div>
+</td>
+<td></td>
+<td>778</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.Management.a_TS_57_TC001login()'><b>a_TS_57_TC001login</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-3535120" onClick='toggleBox("Output-3535120", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-3535120" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-3535120">
+<p>User Logged in as:Hi ! Management basani<br/>
+Proposals=Proposals<br/>
+Customers=Customers<br/>
+Quotes=Quotes<br/>
+Lead Search=Lead Search<br/>
+My Account=My Account<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.BDM.a_paginations()'><b>a_paginations</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-22462562" onClick='toggleBox("Output-22462562", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-22462562" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-22462562">
+<p>user Hi ! BDM srinivasa<br/>
+<p>   Logged in as BDM user <br/>
+<p>Assign Leads Page is opened<br/>
+Table contents displaying as per Entries 10<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 25<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 50<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 100<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>totalcolumns having sorting options=7<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Lead Email<br/>
+<p>sorting descending: on column: 3:Lead Email<br/>
+<p>sorting ascending: on column: 4:Company<br/>
+<p>sorting descending: on column: 4:Company<br/>
+<p>sorting ascending: on column: 5:Domain<br/>
+<p>sorting descending: on column: 5:Domain<br/>
+<p>sorting ascending: on column: 6:Service Name<br/>
+<p>sorting descending: on column: 6:Service Name<br/>
+<p>No .of Search results with search key within table:: 219<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+<p>Lead Research Page is opened<br/>
+Table contents displaying as per Entries 10<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 25<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 50<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 100<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>totalcolumns having sorting options=7<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Company Name<br/>
+<p>sorting descending: on column: 3:Company Name<br/>
+<p>sorting ascending: on column: 4:Designation<br/>
+<p>sorting descending: on column: 4:Designation<br/>
+<p>sorting ascending: on column: 5:Service Name<br/>
+<p>sorting descending: on column: 5:Service Name<br/>
+<p>sorting ascending: on column: 6:Mobile Number<br/>
+<p>sorting descending: on column: 6:Mobile Number<br/>
+<p>No .of Search results with search key within table:: 241<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+<p>Work on Lead Page is opened<br/>
+Table contents displaying as per Entries 10<p><br/>
+Table contents displaying as per Entries 25<p><br/>
+Table contents displaying as per Entries 50<p><br/>
+Table contents displaying as per Entries 100<p><br/>
+<p>totalcolumns having sorting options=7<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Company<br/>
+<p>sorting descending: on column: 3:Company<br/>
+<p>sorting ascending: on column: 4:Service<br/>
+<p>sorting descending: on column: 4:Service<br/>
+<p>sorting ascending: on column: 5:Mobile<br/>
+<p>sorting descending: on column: 5:Mobile<br/>
+<p>sorting ascending: on column: 6:Lead Status<br/>
+<p>sorting descending: on column: 6:Lead Status<br/>
+<p>No .of Search results with search key within table:: 1<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+<p>Today Followups Page is opened<br/>
+Table contents displaying as per Entries 10<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 25<p><br/>
+<p>pagination next button is present<br/>
+Table contents displaying as per Entries 50<p><br/>
+Table contents displaying as per Entries 100<p><br/>
+<p>totalcolumns having sorting options=7<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Company<br/>
+<p>sorting descending: on column: 3:Company<br/>
+<p>sorting ascending: on column: 4:Service<br/>
+<p>sorting descending: on column: 4:Service<br/>
+<p>sorting ascending: on column: 5:Next FollowUp Date<br/>
+<p>sorting descending: on column: 5:Next FollowUp Date<br/>
+<p>sorting ascending: on column: 6:Last FollowUp Type<br/>
+<p>sorting descending: on column: 6:Last FollowUp Type<br/>
+<p>No .of Search results with search key within table:: 1<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+<p>All Followups Page is opened<br/>
+Table contents displaying as per Entries 10<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 25<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 50<p><br/>
+Table contents displaying as per Entries 100<p><br/>
+<p>totalcolumns having sorting options=7<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Company<br/>
+<p>sorting descending: on column: 3:Company<br/>
+<p>sorting ascending: on column: 4:Service<br/>
+<p>sorting descending: on column: 4:Service<br/>
+<p>sorting ascending: on column: 5:Next FollowUp Date<br/>
+<p>sorting descending: on column: 5:Next FollowUp Date<br/>
+<p>sorting ascending: on column: 6:Last FollowUp Type<br/>
+<p>sorting descending: on column: 6:Last FollowUp Type<br/>
+<p>No .of Search results with search key within table:: 1<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+<p>Closed Phase Page is opened<br/>
+Table contents displaying as per Entries 10<p><br/>
+Table contents displaying as per Entries 25<p><br/>
+Table contents displaying as per Entries 50<p><br/>
+Table contents displaying as per Entries 100<p><br/>
+<p>no data available in the table, to perform sorting<br/>
+No data present in the table to search<br/>
+<p>Leads for Proposal Upload Page is opened<br/>
+Table contents displaying as per Entries 10<p><br/>
+Table contents displaying as per Entries 25<p><br/>
+Table contents displaying as per Entries 50<p><br/>
+Table contents displaying as per Entries 100<p><br/>
+<p>totalcolumns having sorting options=6<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Company<br/>
+<p>sorting descending: on column: 3:Company<br/>
+<p>sorting ascending: on column: 4:Service<br/>
+<p>sorting descending: on column: 4:Service<br/>
+<p>sorting ascending: on column: 5:Lead Status<br/>
+<p>sorting descending: on column: 5:Lead Status<br/>
+<p>No .of Search results with search key within table:: 3<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+<p>Leads for Quote Upload Page is opened<br/>
+Table contents displaying as per Entries 10<p><br/>
+Table contents displaying as per Entries 25<p><br/>
+Table contents displaying as per Entries 50<p><br/>
+Table contents displaying as per Entries 100<p><br/>
+<p>totalcolumns having sorting options=6<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Company<br/>
+<p>sorting descending: on column: 3:Company<br/>
+<p>sorting ascending: on column: 4:Service<br/>
+<p>sorting descending: on column: 4:Service<br/>
+<p>sorting ascending: on column: 5:Lead Status<br/>
+<p>sorting descending: on column: 5:Lead Status<br/>
+<p>No .of Search results with search key within table:: 3<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+<p>Cold Storage Page is opened<br/>
+Table contents displaying as per Entries 10<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 25<p><br/>
+Table contents displaying as per Entries 50<p><br/>
+Table contents displaying as per Entries 100<p><br/>
+<p>totalcolumns having sorting options=7<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Company<br/>
+<p>sorting descending: on column: 3:Company<br/>
+<p>sorting ascending: on column: 4:Service<br/>
+<p>sorting descending: on column: 4:Service<br/>
+<p>sorting ascending: on column: 5:Next FollowUp Date<br/>
+<p>sorting descending: on column: 5:Next FollowUp Date<br/>
+<p>sorting ascending: on column: 6:Last FollowUp Type<br/>
+<p>sorting descending: on column: 6:Last FollowUp Type<br/>
+<p>No .of Search results with search key within table:: 1<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+<p>Search Leads Page is opened.<br/>
+<p>The required field:Check ALL<br/>
+<p>Filter Option Selected:Choose Service<br/>
+<p>No.of options in Choose Service List:14<br/>
+<p>Option selected is:Mobile<br/>
+<p>[First Name, Last Name, Designation, Email, Board Number, Desk Number, Mobile Number, LinkedIn Profile, Company Name, Country, City, Domain, Campaign, Service, Status]<br/>
+<p>[First Name, Last Name, Designation, Email, Board Number, Desk Number, Mobile Number, LinkedIn Profile, Company Name, Country, City, Domain, Campaign, Service, Status]<br/>
+<p>The required fields selected is matched with the headers of the table.<br/>
+<p>1 Scott Vasquez Software Engineer svasquez0@nasa.gov 6-(748)974-5531 7-(600)402-1488 9-(775)874-6971 LinkedIn Profile 1 Linktype Brazil Santa Maria Hospital Campaign 1 Mobile Pre Qualified
+2 arjun mehatha s Jr Software Engineer prichards6@wordpress.com 2-90-89 6/8/00 9876543210 LinkedIn Profile 7 Edgeblab China Puyang Banking Campaign 7 Mobile Pre Qualified
+3 raju euvri Project Manager bward3a@va.gov 123 456 9876543210 LinkedIn Profile 119 Yodel Austria Traiskirchen Domain Campaign 2 Mobile Pre Qualified
+4 Katrina Hayden Technical Lead mshawac@blog.com 8-(104)838-3404 3-(618)434-8752 3-(486)235-8432 LinkedIn Profile 373 Gabcube Brazil Votorantim Banking Campaign 22 Mobile Pre Qualified
+5 Katrina Hayden Project Lead rcunninghamad@marketwatch.com 8-(104)838-3404 3-(618)434-8752 3-(486)235-8432 LinkedIn Profile 374 Ooba Brazil Blumenau Banking Campaign 23 Mobile Pre Qualified
+6 Katrina Hayden Sr Software Engineer dmartinaf@i2i.jp 8-(104)838-3404 3-(618)434-8752 3-(486)235-8432 LinkedIn Profile 376 Aimbu Egypt Zift? Banking Campaign 25 Mobile Pre Qualified
+7 Katrina Hayden Software Engineer rhansonah@irs.gov 8-(104)838-3404 3-(618)434-8752 3-(486)235-8432 LinkedIn Profile 378 Edgetag United States Irondequoit Banking Campaign 27 Mobile Pre Qualified
+8 Katrina Hayden Project Manager jwatsonas@seattletimes.com 8-(104)838-3404 3-(618)434-8752 3-(486)235-8432 LinkedIn Profile 389 Devcast Russia Pavlovsk Banking Campaign 38 Mobile Customer
+9 Katrina Hayden Sr Software Engineer bromeroat@g.co 8-(104)838-3404 3-(618)434-8752 3-(486)235-8432 LinkedIn Profile 390 Twimbo United States Petersburg Banking Campaign 39 Mobile Customer
+10 Katrina Hayden Software Engineer wcarrollav@google.com.br 8-(104)838-3404 3-(618)434-8752 3-(486)235-8432 LinkedIn Profile 392 Leenti Germany Zwickau Banking Campaign 2 Mobile Pre Qualified<br/>
+<p>totalcolumns having sorting options=16<br/>
+<p>sorting descending: on column: 1:S.NO.<br/>
+<p>sorting ascending: on column: 1:S.NO.<br/>
+<p>sorting ascending: on column: 2:First Name<br/>
+<p>sorting descending: on column: 2:First Name<br/>
+<p>sorting ascending: on column: 3:Last Name<br/>
+<p>sorting descending: on column: 3:Last Name<br/>
+<p>sorting ascending: on column: 4:Designation<br/>
+<p>sorting descending: on column: 4:Designation<br/>
+<p>sorting ascending: on column: 5:Email<br/>
+<p>sorting descending: on column: 5:Email<br/>
+<p>sorting ascending: on column: 6:Board Number<br/>
+<p>sorting descending: on column: 6:Board Number<br/>
+<p>sorting ascending: on column: 7:Desk Number<br/>
+<p>sorting descending: on column: 7:Desk Number<br/>
+<p>sorting ascending: on column: 8:Mobile Number<br/>
+<p>sorting descending: on column: 8:Mobile Number<br/>
+<p>sorting ascending: on column: 9:LinkedIn Profile<br/>
+<p>sorting descending: on column: 9:LinkedIn Profile<br/>
+<p>sorting ascending: on column: 10:Company Name<br/>
+<p>sorting descending: on column: 10:Company Name<br/>
+<p>sorting ascending: on column: 11:Country<br/>
+<p>sorting descending: on column: 11:Country<br/>
+<p>sorting ascending: on column: 12:City<br/>
+<p>sorting descending: on column: 12:City<br/>
+<p>sorting ascending: on column: 13:Domain<br/>
+<p>sorting descending: on column: 13:Domain<br/>
+<p>sorting ascending: on column: 14:Campaign<br/>
+<p>sorting descending: on column: 14:Campaign<br/>
+<p>sorting ascending: on column: 15:Service<br/>
+<p>sorting descending: on column: 15:Service<br/>
+<p>sorting ascending: on column: 16:Status<br/>
+<p>sorting descending: on column: 16:Status<br/>
+<p>972 Ronald Johnson Jr Software Engineer svasquez001@nasa.gov5 5-(952)136-9480 9-(873)147-5470 7-(011)461-6126 LinkedIn Profile 633 Shuffletag Japan Yugawara Domain H Campaign 9 Mobile Pre Qualified
+148 Ronald Johnson Jr Software Engineer rjohnsonhk@yahoo.com 5-(952)136-9480 9-(873)147-5470 7-(011)461-6126 LinkedIn Profile 633 Shuffletag Japan Yugawara Domain H Campaign 9 Mobile Pre Qualified
+484 Ronald Johnson Jr Software Engineer rjohnsonh2k@yahoo.com 5-(952)136-9480 9-(873)147-5470 7-(011)461-6126 LinkedIn Profile 633 Shuffletag Japan Yugawara Domain H Campaign 9 Mobile Pre Qualified
+654 Carl Johnson Technical Lead cjohnsoni8@creativecommons.org 0-(738)257-6922 1-(108)131-0383 4-(477)814-6460 LinkedIn Profile 657 Minyx Fiveclub Utabi Domain I Campaign 33 Mobile Pre Qualified
+434 Edward Johnson Trainee Engineer ejohnsonpi@de.vu 2-(808)849-6580 3-(782)045-4859 9-(691)508-9916 LinkedIn Profile 919 Dabfeed China Lichuan Domain G Campaign 22 Mobile Pre Qualified
+506 Cheryl Johnson Project Lead cjohnsone4@nyu.edu 6-(626)332-6219 6-(137)032-2388 6-(475)513-0584 LinkedIn Profile 509 Jetwire Fivebridge Yongxing Domain F Campaign 2 Mobile Pre Qualified
+895 Kelly Johnson Trainee Engineer kjohnsonox@sun.com 7-(448)650-2134 7-(574)106-4119 5-(654)166-3023 LinkedIn Profile 898 Skippad Mycat Doloplazy Domain G Campaign 1 Mobile Pre Qualified<br/>
+<p>Leads Edit Page is opened<br/>
+Table contents displaying as per Entries 10<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 25<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 50<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 100<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>navigated to previous page<br/>
+<p>totalcolumns having sorting options=7<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:First Name<br/>
+<p>sorting descending: on column: 2:First Name<br/>
+<p>sorting ascending: on column: 3:Last Name<br/>
+<p>sorting descending: on column: 3:Last Name<br/>
+<p>sorting ascending: on column: 4:Company Name<br/>
+<p>sorting descending: on column: 4:Company Name<br/>
+<p>sorting ascending: on column: 5:Service Name<br/>
+<p>sorting descending: on column: 5:Service Name<br/>
+<p>sorting ascending: on column: 6:Lead Phase<br/>
+<p>sorting descending: on column: 6:Lead Phase<br/>
+<p>No .of Search results with search key within table:: 1<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+</div>
+</td>
+<td></td>
+<td>2766</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.Researcher.b_LC_TS18_TC001_Uploadinvaliddata()'><b>b_LC_TS18_TC001_Uploadinvaliddata</b><br>Test class: src.crm.Researcher<br/>
+<a href="#Output-7037757" onClick='toggleBox("Output-7037757", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-7037757" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-7037757">
+<p>===========Leads Upload=========<br/>
+<p>Number Elements in List1 : 6<br/>
+<p>User Logged in as:Researcher<br/>
+<p>Please Provide Valid Excel File....!<br/>
+<p>Please Provide Valid Excel File....!<br/>
+<p>Tree collapsing<br/>
+</div>
+</td>
+<td></td>
+<td>39</td>
+<td>src.crm.Researcher@1ba1db5</td></tr>
+<tr>
+<td title='src.crm.BDM.b_LC_TS_26_verifyingServiceNamesandAssign()'><b>b_LC_TS_26_verifyingServiceNamesandAssign</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-3626105" onClick='toggleBox("Output-3626105", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-3626105" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-3626105">
+<p>Assign Leads Page is opened<br/>
+<p>***************Checking options under select service*********************<br/>
+<p>QA-->service is displayed<br/>
+<p>Cloud-->service is displayed<br/>
+<p>Mobile-->service is displayed<br/>
+<p>Web-->service is displayed<br/>
+<p>Marketing-->service is displayed<br/>
+<p>SAAS-->service is displayed<br/>
+<p>Special Officer-->service is displayed<br/>
+<p>data base specialist-->service is displayed<br/>
+<p>database admin-->service is displayed<br/>
+<p>Sai Krishna-->service is displayed<br/>
+<p>databaseadmin-->service is displayed<br/>
+<p>Test-->service is displayed<br/>
+<p>abc-->service is displayed<br/>
+<p>***************Checking options under Assign to Whom*********************<br/>
+<p>Nikhil Bharadwaj Madireddi-->assign to person is displayed<br/>
+<p>praharsha g-->assign to person is displayed<br/>
+<p>Alekhya T-->assign to person is displayed<br/>
+<p>tulasiram gulla-->assign to person is displayed<br/>
+<p>lakshmipriya sure-->assign to person is displayed<br/>
+<p>venkatesh g-->assign to person is displayed<br/>
+<p>tulasiramg gulla-->assign to person is displayed<br/>
+<p>ajay kumar kovuri-->assign to person is displayed<br/>
+<p>ajay kumar kovuri-->assign to person is displayed<br/>
+<p>ajay kumar kovuri-->assign to person is displayed<br/>
+<p>tulasiram gulla-->assign to person is displayed<br/>
+<p>SANTSOJH JUKA-->assign to person is displayed<br/>
+<p>SANTu kanchara-->assign to person is displayed<br/>
+<p>Self-->assign to person is displayed<br/>
+<p>sreekar jakkula-->assign to person is displayed<br/>
+<p>test test-->assign to person is displayed<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>16</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDE.b_LC_TS_44_researchOnCompany()'><b>b_LC_TS_44_researchOnCompany</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-3268047" onClick='toggleBox("Output-3268047", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-3268047" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-3268047">
+<p>   ###### Navigate to the page ::: Research On Company########## 
+ <br/>
+<p> You have Sucessfully navigated to Research On Company<br/>
+<p> ######### Navigated to  ResearchOnCompany Form ##########
+<br/>
+<p>  The particular Lead is : 688 Aaron Banks InnoZ<br/>
+<p>  ######### You have Navigated to Form ##########<br/>
+<p> The message :Please Select Company Fund Status is displayed.....<br/>
+<p> The message : Please Select Company Fund Status. is not displayed and could see error :Please Select Company Fund Status<br/>
+<p> The message :Please Select Company Status is displayed.....<br/>
+<p> The message : Please Select Company Status. is not displayed and could see error :Please Select Company Status<br/>
+<p> The message :Please Leave a Comment is displayed.....<br/>
+<p> The message : Please Leave a Comment. is not displayed and could see error :Please Leave a Comment<br/>
+<p> The message :Segregated Successfully and Lead Moved to Work Phase is displayed.....<br/>
+<p> The message : Segregated Successfully and Lead Moved to Work Phase. is not displayed and could see error :Segregated Successfully and Lead Moved to Work Phase<br/>
+<p>   ###### Navigate to the page ::: Research On Company########## 
+ <br/>
+<p> You have Sucessfully navigated to Research On Company<br/>
+<p> The research Lead : 688 Aaron Banks InnoZ is not present in Research Phase.<br/>
+<p>   ###### Navigate to the page ::: Work on Lead########## 
+ <br/>
+<p> You have Sucessfully navigated to Work on Lead<br/>
+<p> The research Lead : 688 Aaron Banks InnoZ is sucessfully navigated to Work Phase<br/>
+<p> The track index ::0contains ::688<br/>
+<p> The track index ::1contains ::Aaron Banks<br/>
+<p> The track index ::2contains ::InnoZ<br/>
+<p> The track index ::3contains ::Mobile<br/>
+<p> The track index ::4contains ::4-(308)688-2962<br/>
+<p> The track index ::5contains ::Qualified<br/>
+<p> Size is 20 1) Lead Id : 688 2) Name : Aaron Banks 19) Current Status : Qualified<br/>
+<p> Trackit comments for Research Phase is successfull.<br/>
+</div>
+</td>
+<td></td>
+<td>105</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.BDE.b_LC_TS_44_researchOnCompany()'><b>b_LC_TS_44_researchOnCompany</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-20006738" onClick='toggleBox("Output-20006738", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-20006738" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-20006738">
+<p>   ###### Navigate to the page ::: Research On Company########## 
+ <br/>
+<p> You have Sucessfully navigated to Research On Company<br/>
+<p> ######### Navigated to  ResearchOnCompany Form ##########
+<br/>
+<p>  The particular Lead is : 685 Jonathan Sullivan Twitterwire<br/>
+<p>  ######### You have Navigated to Form ##########<br/>
+<p> The message :Please Select Company Fund Status is displayed.....<br/>
+<p> The message : Please Select Company Fund Status. is not displayed and could see error :Please Select Company Fund Status<br/>
+<p> The message :Please Select Company Status is displayed.....<br/>
+<p> The message : Please Select Company Status. is not displayed and could see error :Please Select Company Status<br/>
+<p> The message :Please Leave a Comment is displayed.....<br/>
+<p> The message : Please Leave a Comment. is not displayed and could see error :Please Leave a Comment<br/>
+<p> The message :Segregated Successfully and Lead Moved to Work Phase is displayed.....<br/>
+<p> The message : Segregated Successfully and Lead Moved to Work Phase. is not displayed and could see error :Segregated Successfully and Lead Moved to Work Phase<br/>
+<p>   ###### Navigate to the page ::: Research On Company########## 
+ <br/>
+<p> You have Sucessfully navigated to Research On Company<br/>
+<p> The research Lead : 685 Jonathan Sullivan Twitterwire is not present in Research Phase.<br/>
+<p>   ###### Navigate to the page ::: Work on Lead########## 
+ <br/>
+<p> You have Sucessfully navigated to Work on Lead<br/>
+<p> The research Lead : 685 Jonathan Sullivan Twitterwire is sucessfully navigated to Work Phase<br/>
+<p> The track index ::0contains ::685<br/>
+<p> The track index ::1contains ::Jonathan Sullivan<br/>
+<p> The track index ::2contains ::Twitterwire<br/>
+<p> The track index ::3contains ::Mobile<br/>
+<p> The track index ::4contains ::9-(855)434-7966<br/>
+<p> The track index ::5contains ::Qualified<br/>
+<p> Size is 20 1) Lead Id : 685 2) Name : Jonathan Sullivan 19) Current Status : Qualified<br/>
+<p> Trackit comments for Research Phase is successfull.<br/>
+</div>
+</td>
+<td></td>
+<td>106</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.BDE.b_LC_TS_44_researchOnCompany()'><b>b_LC_TS_44_researchOnCompany</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-32844788" onClick='toggleBox("Output-32844788", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-32844788" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-32844788">
+<p>   ###### Navigate to the page ::: Research On Company########## 
+ <br/>
+<p> You have Sucessfully navigated to Research On Company<br/>
+<p> ######### Navigated to  ResearchOnCompany Form ##########
+<br/>
+<p>  The particular Lead is : 686 Jessica Owens Skibox<br/>
+<p>  ######### You have Navigated to Form ##########<br/>
+<p> The message :Please Select Company Fund Status is displayed.....<br/>
+<p> The message : Please Select Company Fund Status. is not displayed and could see error :Please Select Company Fund Status<br/>
+<p> The message :Please Select Company Status is displayed.....<br/>
+<p> The message : Please Select Company Status. is not displayed and could see error :Please Select Company Status<br/>
+<p> The message :Please Leave a Comment is displayed.....<br/>
+<p> The message : Please Leave a Comment. is not displayed and could see error :Please Leave a Comment<br/>
+<p> The message :Segregated Successfully and Lead Moved to Work Phase is displayed.....<br/>
+<p> The message : Segregated Successfully and Lead Moved to Work Phase. is not displayed and could see error :Segregated Successfully and Lead Moved to Work Phase<br/>
+<p>   ###### Navigate to the page ::: Research On Company########## 
+ <br/>
+<p> You have Sucessfully navigated to Research On Company<br/>
+<p> The research Lead : 686 Jessica Owens Skibox is not present in Research Phase.<br/>
+<p>   ###### Navigate to the page ::: Work on Lead########## 
+ <br/>
+<p> You have Sucessfully navigated to Work on Lead<br/>
+<p> The research Lead : 686 Jessica Owens Skibox is sucessfully navigated to Work Phase<br/>
+<p> The track index ::0contains ::686<br/>
+<p> The track index ::1contains ::Jessica Owens<br/>
+<p> The track index ::2contains ::Skibox<br/>
+<p> The track index ::3contains ::Mobile<br/>
+<p> The track index ::4contains ::0-(999)953-5975<br/>
+<p> The track index ::5contains ::Qualified<br/>
+<p> Size is 20 1) Lead Id : 686 2) Name : Jessica Owens 19) Current Status : Qualified<br/>
+<p> Trackit comments for Research Phase is successfull.<br/>
+</div>
+</td>
+<td></td>
+<td>105</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.BDE.b_LC_TS_44_researchOnCompany()'><b>b_LC_TS_44_researchOnCompany</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-26532571" onClick='toggleBox("Output-26532571", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-26532571" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-26532571">
+<p>   ###### Navigate to the page ::: Research On Company########## 
+ <br/>
+<p> You have Sucessfully navigated to Research On Company<br/>
+<p> ######### Navigated to  ResearchOnCompany Form ##########
+<br/>
+<p>  The particular Lead is : 689 Jason Mendoza Cogibox<br/>
+<p>  ######### You have Navigated to Form ##########<br/>
+<p> The message :Please Select Company Fund Status is displayed.....<br/>
+<p> The message : Please Select Company Fund Status. is not displayed and could see error :Please Select Company Fund Status<br/>
+<p> The message :Please Select Company Status is displayed.....<br/>
+<p> The message : Please Select Company Status. is not displayed and could see error :Please Select Company Status<br/>
+<p> The message :Please Leave a Comment is displayed.....<br/>
+<p> The message : Please Leave a Comment. is not displayed and could see error :Please Leave a Comment<br/>
+<p> The message :Segregated Successfully and Lead Moved to Work Phase is displayed.....<br/>
+<p> The message : Segregated Successfully and Lead Moved to Work Phase. is not displayed and could see error :Segregated Successfully and Lead Moved to Work Phase<br/>
+<p>   ###### Navigate to the page ::: Research On Company########## 
+ <br/>
+<p> You have Sucessfully navigated to Research On Company<br/>
+<p> The research Lead : 689 Jason Mendoza Cogibox is not present in Research Phase.<br/>
+<p>   ###### Navigate to the page ::: Work on Lead########## 
+ <br/>
+<p> You have Sucessfully navigated to Work on Lead<br/>
+<p> The research Lead : 689 Jason Mendoza Cogibox is sucessfully navigated to Work Phase<br/>
+<p> The track index ::0contains ::689<br/>
+<p> The track index ::1contains ::Jason Mendoza<br/>
+<p> The track index ::2contains ::Cogibox<br/>
+<p> The track index ::3contains ::Mobile<br/>
+<p> The track index ::4contains ::1-(002)912-0938<br/>
+<p> The track index ::5contains ::Qualified<br/>
+<p> Size is 20 1) Lead Id : 689 2) Name : Jason Mendoza 19) Current Status : Qualified<br/>
+<p> Trackit comments for Research Phase is successfull.<br/>
+</div>
+</td>
+<td></td>
+<td>106</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.BDE.b_LC_TS_44_researchOnCompany()'><b>b_LC_TS_44_researchOnCompany</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-27681627" onClick='toggleBox("Output-27681627", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-27681627" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-27681627">
+<p>   ###### Navigate to the page ::: Research On Company########## 
+ <br/>
+<p> You have Sucessfully navigated to Research On Company<br/>
+<p> ######### Navigated to  ResearchOnCompany Form ##########
+<br/>
+<p>  The particular Lead is : 679 Debra Fernandez Zoovu<br/>
+<p>  ######### You have Navigated to Form ##########<br/>
+<p> The message :Please Select Company Fund Status is displayed.....<br/>
+<p> The message : Please Select Company Fund Status. is not displayed and could see error :Please Select Company Fund Status<br/>
+<p> The message :Please Select Company Status is displayed.....<br/>
+<p> The message : Please Select Company Status. is not displayed and could see error :Please Select Company Status<br/>
+<p> The message :Please Leave a Comment is displayed.....<br/>
+<p> The message : Please Leave a Comment. is not displayed and could see error :Please Leave a Comment<br/>
+<p> The message :Segregated Successfully and Lead Moved to Work Phase is displayed.....<br/>
+<p> The message : Segregated Successfully and Lead Moved to Work Phase. is not displayed and could see error :Segregated Successfully and Lead Moved to Work Phase<br/>
+<p>   ###### Navigate to the page ::: Research On Company########## 
+ <br/>
+<p> You have Sucessfully navigated to Research On Company<br/>
+<p> The research Lead : 679 Debra Fernandez Zoovu is not present in Research Phase.<br/>
+<p>   ###### Navigate to the page ::: Work on Lead########## 
+ <br/>
+<p> You have Sucessfully navigated to Work on Lead<br/>
+<p> The research Lead : 679 Debra Fernandez Zoovu is sucessfully navigated to Work Phase<br/>
+<p> The track index ::0contains ::679<br/>
+<p> The track index ::1contains ::Debra Fernandez<br/>
+<p> The track index ::2contains ::Zoovu<br/>
+<p> The track index ::3contains ::Mobile<br/>
+<p> The track index ::4contains ::5-(647)795-5304<br/>
+<p> The track index ::5contains ::Qualified<br/>
+<p> Size is 20 1) Lead Id : 679 2) Name : Debra Fernandez 19) Current Status : Qualified<br/>
+<p> Trackit comments for Research Phase is successfull.<br/>
+</div>
+</td>
+<td></td>
+<td>105</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.Management.b_TS_57_TC002expand()'><b>b_TS_57_TC002expand</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-8896136" onClick='toggleBox("Output-8896136", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-8896136" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-8896136">
+<p>######Expansion and collapsing of tree menu done successfully######<br/>
+</div>
+</td>
+<td></td>
+<td>14</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.Researcher.c_LC_TS18_TC002_Leadsuploadvaliddata()'><b>c_LC_TS18_TC002_Leadsuploadvaliddata</b><br>Test class: src.crm.Researcher<br/>
+<a href="#Output-29257251" onClick='toggleBox("Output-29257251", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-29257251" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-29257251">
+<p>===========Leads Upload1=========<br/>
+<p>Number Elements in List1 : 6<br/>
+<p>User Logged in as:Researcher<br/>
+<p>Waiting timed out element  foundBy.className: error_msg<br/>
+<p>Excel File Uploaded and Leads Saved Successfully....!<br/>
+<p>search data is:4373<br/>
+<p>searching record found<br/>
+<p>Your record is:4373 Laura Gardner glee401@networksolutions.com11 Livetube Domain H Web<br/>
+<p>search data is:4376<br/>
+<p>searching record found<br/>
+<p>Your record is:4376 Jessica Fox hbowman102@hud.gov10 Kanoodle Domain H Web<br/>
+<p>search data is:4381<br/>
+<p>searching record found<br/>
+<p>Your record is:4381 Jennifer White hbowman102@hud.gov11 Yakidoo Domain H Web<br/>
+<p>search data is:Diana Castillo<br/>
+<p>searching record found<br/>
+<p>Your record is:4349 Diana Castillo svasquez001@nasa.gov3 Thoughtbeat Domain G Cloud<br/>
+<p>search data is:Cynthia Ward<br/>
+<p>searching record found<br/>
+<p>Your record is:4355 Cynthia Ward ddavis102@qq.com5 Oyoloo Domain G Cloud<br/>
+<p>search data is:Christina Bell<br/>
+<p>searching record found<br/>
+<p>Your record is:4350 Christina Bell ddavis102@qq.com4 Realcube Domain G Cloud<br/>
+<p>search data is:svasquez001@nasa.gov2<br/>
+<p>searching record found<br/>
+<p>Your record is:4344 Jack Garza svasquez001@nasa.gov2 Realblab Domain A QA<br/>
+<p>search data is:ddavis102@qq.com3<br/>
+<p>searching record found<br/>
+<p>Your record is:4345 Philip Richards ddavis102@qq.com3 Edgeblab Domain A QA<br/>
+<p>search data is:ddavis102@qq.com2<br/>
+<p>searching record found<br/>
+<p>Your record is:4340 Daniel Davis ddavis102@qq.com2 Thoughtstorm Domain A QA<br/>
+<p>search data is:jjkk<br/>
+<p>searching record found<br/>
+<p>Your record is:4384 hardik patela svasquez001@nasa.gov10 jjkk Domain H Marketing<br/>
+<p>search data is:Yakidoo<br/>
+<p>searching record found<br/>
+<p>Your record is:4382 sai11 krishna11 jwheeler301@bigcartel.com12 Yakidoo Domain H Marketing<br/>
+<p>search data is:Yakidoo<br/>
+<p>searching record found<br/>
+<p>Your record is:4383 sai12 krishna12 glee401@networksolutions.com13 Yakidoo Domain H Marketing<br/>
+<p>search data is:Domain H<br/>
+<p>searching record found<br/>
+<p>Your record is:4368 Christina Dean glee401@networksolutions.com10 Skimia Domain H Mobile<br/>
+<p>search data is:Domain H<br/>
+<p>searching record found<br/>
+<p>Your record is:4362 Matthew Greene jwheeler301@bigcartel.com8 Flipstorm Domain H Mobile<br/>
+<p>search data is:Domain H<br/>
+<p>searching record found<br/>
+<p>Your record is:4367 Stephanie Larson jwheeler301@bigcartel.com9 Browsetype Domain H Mobile<br/>
+<p>search data is:4373<br/>
+<p>searching record found<br/>
+<p>Your record is:4373 Laura Gardner glee401@networksolutions.com11 Livetube Domain H Web<br/>
+<p>search data is:4376<br/>
+<p>searching record found<br/>
+<p>Your record is:4376 Jessica Fox hbowman102@hud.gov10 Kanoodle Domain H Web<br/>
+<p>search data is:4381<br/>
+<p>searching record found<br/>
+<p>Your record is:4381 Jennifer White hbowman102@hud.gov11 Yakidoo Domain H Web<br/>
+<p>search data is:Diana Castillo<br/>
+<p>searching record found<br/>
+<p>Your record is:4349 Diana Castillo svasquez001@nasa.gov3 Thoughtbeat Domain G Cloud<br/>
+<p>search data is:Cynthia Ward<br/>
+<p>searching record found<br/>
+<p>Your record is:4355 Cynthia Ward ddavis102@qq.com5 Oyoloo Domain G Cloud<br/>
+<p>search data is:Christina Bell<br/>
+<p>searching record found<br/>
+<p>Your record is:4350 Christina Bell ddavis102@qq.com4 Realcube Domain G Cloud<br/>
+<p>search data is:svasquez001@nasa.gov2<br/>
+<p>searching record found<br/>
+<p>Your record is:4344 Jack Garza svasquez001@nasa.gov2 Realblab Domain A QA<br/>
+<p>search data is:ddavis102@qq.com3<br/>
+<p>searching record found<br/>
+<p>Your record is:4345 Philip Richards ddavis102@qq.com3 Edgeblab Domain A QA<br/>
+<p>search data is:ddavis102@qq.com2<br/>
+<p>searching record found<br/>
+<p>Your record is:4340 Daniel Davis ddavis102@qq.com2 Thoughtstorm Domain A QA<br/>
+<p>search data is:jjkk<br/>
+<p>searching record found<br/>
+<p>Your record is:4384 hardik patela svasquez001@nasa.gov10 jjkk Domain H Marketing<br/>
+<p>search data is:Yakidoo<br/>
+<p>searching record found<br/>
+<p>Your record is:4382 sai11 krishna11 jwheeler301@bigcartel.com12 Yakidoo Domain H Marketing<br/>
+<p>search data is:Yakidoo<br/>
+<p>searching record found<br/>
+<p>Your record is:4383 sai12 krishna12 glee401@networksolutions.com13 Yakidoo Domain H Marketing<br/>
+<p>search data is:Domain H<br/>
+<p>searching record found<br/>
+<p>Your record is:4368 Christina Dean glee401@networksolutions.com10 Skimia Domain H Mobile<br/>
+<p>search data is:Domain H<br/>
+<p>searching record found<br/>
+<p>Your record is:4362 Matthew Greene jwheeler301@bigcartel.com8 Flipstorm Domain H Mobile<br/>
+<p>search data is:Domain H<br/>
+<p>searching record found<br/>
+<p>Your record is:4367 Stephanie Larson jwheeler301@bigcartel.com9 Browsetype Domain H Mobile<br/>
+</div>
+</td>
+<td></td>
+<td>351</td>
+<td>src.crm.Researcher@1ba1db5</td></tr>
+<tr>
+<td title='src.crm.BDE.c_LC_TS_45_workPhaseForTodaysDate()'><b>c_LC_TS_45_workPhaseForTodaysDate</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-23323879" onClick='toggleBox("Output-23323879", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-23323879" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-23323879">
+<p>   ###### Navigate to the page ::: Work on Lead########## 
+ <br/>
+<p> You have Sucessfully navigated to Work on Lead<br/>
+<p>  The particular Lead is : 685 Jonathan Sullivan Twitterwire<br/>
+<p>  ######### You have Navigated to Form ##########<br/>
+<p> The message :Please Select FollowUp Type.... is displayed.....<br/>
+<p> The message : Please Select FollowUp Type..... is not displayed and could see error :Please Select FollowUp Type....<br/>
+<p> The message :Please Leave A Comment.... is displayed.....<br/>
+<p> The message : Please Leave A Comment..... is not displayed and could see error :Please Leave A Comment....<br/>
+<p> The message :Please Enter Next FollowUp Date.... is displayed.....<br/>
+<p> The message : Please Enter Next FollowUp Date..... is not displayed and could see error :Please Enter Next FollowUp Date....<br/>
+<p> The message :Successfully Updated... is displayed.....<br/>
+<p> The message : Successfully Updated.... is not displayed and could see error :Successfully Updated...<br/>
+<p>   ###### Navigate to the page ::: Work on Lead########## 
+ <br/>
+<p> You have Sucessfully navigated to Work on Lead<br/>
+<p> The Work Lead :685 Jonathan Sullivan Twitterwire is not present in Work Phase. <br/>
+<p>   ###### Navigate to the page ::: Today's FollowUp########## 
+ <br/>
+<p> You have Sucessfully navigated to Today's FollowUp<br/>
+<p> The research Lead : 685 Jonathan Sullivan Twitterwire is sucessfully navigated to Today's Follow up<br/>
+<p> The track index ::0contains ::685<br/>
+<p> The track index ::1contains ::Jonathan Sullivan<br/>
+<p> The track index ::2contains ::Twitterwire<br/>
+<p> The track index ::3contains ::Mobile<br/>
+<p> The track index ::4contains ::2014-11-26<br/>
+<p> The track index ::5contains ::Introductory Mail<br/>
+<p> Size is 20 1) Lead Id : 685 2) Name : Jonathan Sullivan 19) Current Status : Qualified<br/>
+<p>   ###### Navigate to the page ::: All FollowUps########## 
+ <br/>
+<p> You have Sucessfully navigated to All FollowUps<br/>
+<p> The research Lead : 685 Jonathan Sullivan Twitterwire is also available in All FollowUps<br/>
+<p> The track index ::0contains ::685<br/>
+<p> The track index ::1contains ::Jonathan Sullivan<br/>
+<p> The track index ::2contains ::Twitterwire<br/>
+<p> The track index ::3contains ::Mobile<br/>
+<p> The track index ::4contains ::2014-11-26<br/>
+<p> The track index ::5contains ::Introductory Mail<br/>
+<p> Size is 20 1) Lead Id : 685 2) Name : Jonathan Sullivan 19) Current Status : Qualified<br/>
+</div>
+</td>
+<td></td>
+<td>130</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.BDE.c_LC_TS_45_workPhaseForTodaysDate()'><b>c_LC_TS_45_workPhaseForTodaysDate</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-4876595" onClick='toggleBox("Output-4876595", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-4876595" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-4876595">
+<p>   ###### Navigate to the page ::: Work on Lead########## 
+ <br/>
+<p> You have Sucessfully navigated to Work on Lead<br/>
+<p>  The particular Lead is : 688 Aaron Banks InnoZ<br/>
+<p>  ######### You have Navigated to Form ##########<br/>
+<p> The message :Please Select FollowUp Type.... is displayed.....<br/>
+<p> The message : Please Select FollowUp Type..... is not displayed and could see error :Please Select FollowUp Type....<br/>
+<p> The message :Please Leave A Comment.... is displayed.....<br/>
+<p> The message : Please Leave A Comment..... is not displayed and could see error :Please Leave A Comment....<br/>
+<p> The message :Please Enter Next FollowUp Date.... is displayed.....<br/>
+<p> The message : Please Enter Next FollowUp Date..... is not displayed and could see error :Please Enter Next FollowUp Date....<br/>
+<p> The message :Successfully Updated... is displayed.....<br/>
+<p> The message : Successfully Updated.... is not displayed and could see error :Successfully Updated...<br/>
+<p>   ###### Navigate to the page ::: Work on Lead########## 
+ <br/>
+<p> You have Sucessfully navigated to Work on Lead<br/>
+<p> The Work Lead :688 Aaron Banks InnoZ is not present in Work Phase. <br/>
+<p>   ###### Navigate to the page ::: Today's FollowUp########## 
+ <br/>
+<p> You have Sucessfully navigated to Today's FollowUp<br/>
+<p> The research Lead : 688 Aaron Banks InnoZ is sucessfully navigated to Today's Follow up<br/>
+<p> The track index ::0contains ::688<br/>
+<p> The track index ::1contains ::Aaron Banks<br/>
+<p> The track index ::2contains ::InnoZ<br/>
+<p> The track index ::3contains ::Mobile<br/>
+<p> The track index ::4contains ::2014-11-26<br/>
+<p> The track index ::5contains ::Introductory Mail<br/>
+<p> Size is 20 1) Lead Id : 688 2) Name : Aaron Banks 19) Current Status : Qualified<br/>
+<p>   ###### Navigate to the page ::: All FollowUps########## 
+ <br/>
+<p> You have Sucessfully navigated to All FollowUps<br/>
+<p> The research Lead : 688 Aaron Banks InnoZ is also available in All FollowUps<br/>
+<p> The track index ::0contains ::688<br/>
+<p> The track index ::1contains ::Aaron Banks<br/>
+<p> The track index ::2contains ::InnoZ<br/>
+<p> The track index ::3contains ::Mobile<br/>
+<p> The track index ::4contains ::2014-11-26<br/>
+<p> The track index ::5contains ::Introductory Mail<br/>
+<p> Size is 20 1) Lead Id : 688 2) Name : Aaron Banks 19) Current Status : Qualified<br/>
+</div>
+</td>
+<td></td>
+<td>131</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.Management.c_TS_58_TC001PSearch()'><b>c_TS_58_TC001PSearch</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-10663740" onClick='toggleBox("Output-10663740", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-10663740" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-10663740">
+<p>No .of Search results with search key within table:: 3<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+</div>
+</td>
+<td></td>
+<td>30</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.Researcher.d_LC_TS19_TC001_Searchleads()'><b>d_LC_TS19_TC001_Searchleads</b><br>Test class: src.crm.Researcher<br/>
+<a href="#Output-30940979" onClick='toggleBox("Output-30940979", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-30940979" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-30940979">
+<p>=================search leads=================<br/>
+<p>=================Expanding tree menu=================<br/>
+<p>The reqiured field:LinkedIn Profile<br/>
+<p>Size of Filter option categories:7<br/>
+<p>Filter Option Selected:Choose Company<br/>
+<p>No.of options in Choose Company List:395<br/>
+<p>Option selected is:Miboo<br/>
+<p>1 LinkedIn Profile 212
+2 LinkedIn Profile 275
+3 LinkedIn Profile 698
+4 LinkedIn Profile 1653
+5 LinkedIn Profile 1752
+6 LinkedIn Profile 640
+7 LinkedIn Profile 711
+8 LinkedIn Profile 1420
+9 LinkedIn Profile 1632
+10 LinkedIn Profile<br/>
+<p>Filter Option Selected:Choose Country<br/>
+<p>No.of options in Choose Country List:502<br/>
+<p>Option selected is:Chile<br/>
+<p>1 LinkedIn Profile 99
+2 LinkedIn Profile 182
+3 LinkedIn Profile 213
+4 LinkedIn Profile 302
+5 LinkedIn Profile 429
+6 LinkedIn Profile 448
+7 LinkedIn Profile 568
+8 LinkedIn Profile 639
+9 LinkedIn Profile 1271
+10 LinkedIn Profile 1375<br/>
+<p>Filter Option Selected:Choose City<br/>
+<p>No.of options in Choose City List:3757<br/>
+<p>Option selected is:Cochabamba<br/>
+<p>1 LinkedIn Profile 1490<br/>
+<p>Filter Option Selected:Choose Domain<br/>
+<p>No.of options in Choose Domain List:24<br/>
+<p>Option selected is:Check ALL<br/>
+<p>1 LinkedIn Profile 1
+2 LinkedIn Profile 2
+3 LinkedIn Profile 3
+4 LinkedIn Profile 4
+5 LinkedIn Profile 5
+6 LinkedIn Profile 6
+7 LinkedIn Profile 7
+8 LinkedIn Profile 8
+9 LinkedIn Profile 9
+10 LinkedIn Profile 10<br/>
+<p>Filter Option Selected:Choose Campaign<br/>
+<p>No.of options in Choose Campaign List:43<br/>
+<p>Option selected is:Campaign 31<br/>
+<p>1 LinkedIn Profile 31
+2 LinkedIn Profile 70
+3 LinkedIn Profile 109
+4 LinkedIn Profile 148
+5 LinkedIn Profile 187
+6 LinkedIn Profile 226
+7 LinkedIn Profile 265
+8 LinkedIn Profile 304
+9 LinkedIn Profile 343
+10 LinkedIn Profile 382<br/>
+<p>Filter Option Selected:Choose Service<br/>
+<p>No.of options in Choose Service List:14<br/>
+<p>Option selected is:Special Officer<br/>
+<p>1 LinkedIn Profile 8
+2 LinkedIn Profile 967<br/>
+<p>Filter Option Selected:Choose Status<br/>
+<p>No.of options in Choose Status List:7<br/>
+<p>Option selected is:ColdStorage<br/>
+<p>1 LinkedIn Profile 87
+2 LinkedIn Profile 95
+3 LinkedIn Profile 100
+4 LinkedIn Profile 391
+5 LinkedIn Profile 453
+6 LinkedIn Profile 610
+7 LinkedIn Profile 612
+8 LinkedIn Profile 637
+9 LinkedIn Profile 639
+10 LinkedIn Profile 642<br/>
+</div>
+</td>
+<td></td>
+<td>86</td>
+<td>src.crm.Researcher@1ba1db5</td></tr>
+<tr>
+<td title='src.crm.BDM.d_LC_TS_26_selectAllcheckbox()'><b>d_LC_TS_26_selectAllcheckbox</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-16415955" onClick='toggleBox("Output-16415955", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-16415955" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-16415955">
+<p>Assign Leads Page is opened<br/>
+<p>lead name: Heather Ryan is ticked<br/>
+<p>lead name: Frances Fox is ticked<br/>
+<p>lead name: Raymond Vasquez is ticked<br/>
+<p>lead name: Dorothy Fowler is ticked<br/>
+<p>lead name: Margaret Henderson is ticked<br/>
+<p>lead name: Russell Marshall is ticked<br/>
+<p>lead name: Raymond Wood is ticked<br/>
+<p>lead name: Joyce Nelson is ticked<br/>
+<p>lead name: Sarah Sims is ticked<br/>
+<p>lead name: Aaron Ross is ticked<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>21</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDE.d_LC_TS_45_workPhaseForLaterDate()'><b>d_LC_TS_45_workPhaseForLaterDate</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-9812170" onClick='toggleBox("Output-9812170", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-9812170" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-9812170">
+<p>   ###### Navigate to the page ::: Work on Lead########## 
+ <br/>
+<p> You have Sucessfully navigated to Work on Lead<br/>
+<p>  The particular Lead is : 689 Jason Mendoza Cogibox<br/>
+<p>  ######### You have Navigated to Form ##########<br/>
+<p> The message :Please Select FollowUp Type.... is displayed.....<br/>
+<p> The message : Please Select FollowUp Type..... is not displayed and could see error :Please Select FollowUp Type....<br/>
+<p> The message :Please Leave A Comment.... is displayed.....<br/>
+<p> The message : Please Leave A Comment..... is not displayed and could see error :Please Leave A Comment....<br/>
+<p> The message :Please Enter Next FollowUp Date.... is displayed.....<br/>
+<p> The message : Please Enter Next FollowUp Date..... is not displayed and could see error :Please Enter Next FollowUp Date....<br/>
+<p> The message :Successfully Updated... is displayed.....<br/>
+<p> The message : Successfully Updated.... is not displayed and could see error :Successfully Updated...<br/>
+<p>   ###### Navigate to the page ::: Work on Lead########## 
+ <br/>
+<p> You have Sucessfully navigated to Work on Lead<br/>
+<p> The research Lead : 689 Jason Mendoza Cogibox is not present in Research Phase.<br/>
+<p>   ###### Navigate to the page ::: All FollowUps########## 
+ <br/>
+<p> You have Sucessfully navigated to All FollowUps<br/>
+<p> The research Lead : 689 Jason Mendoza Cogibox is also available in All FollowUps<br/>
+<p> The track index ::0contains ::689<br/>
+<p> The track index ::1contains ::Jason Mendoza<br/>
+<p> The track index ::2contains ::Cogibox<br/>
+<p> The track index ::3contains ::Mobile<br/>
+<p> The track index ::4contains ::2014-11-28<br/>
+<p> The track index ::5contains ::Introductory Mail<br/>
+<p> Size is 20 1) Lead Id : 689 2) Name : Jason Mendoza 19) Current Status : Qualified<br/>
+<p> Track it comments for Work Phase later date not found<br/>
+</div>
+</td>
+<td></td>
+<td>102</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.BDE.d_LC_TS_45_workPhaseForLaterDate()'><b>d_LC_TS_45_workPhaseForLaterDate</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-19683747" onClick='toggleBox("Output-19683747", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-19683747" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-19683747">
+<p>   ###### Navigate to the page ::: Work on Lead########## 
+ <br/>
+<p> You have Sucessfully navigated to Work on Lead<br/>
+<p>  The particular Lead is : 682 Janice Burke Avamba<br/>
+<p>  ######### You have Navigated to Form ##########<br/>
+<p> The message :Please Select FollowUp Type.... is displayed.....<br/>
+<p> The message : Please Select FollowUp Type..... is not displayed and could see error :Please Select FollowUp Type....<br/>
+<p> The message :Please Leave A Comment.... is displayed.....<br/>
+<p> The message : Please Leave A Comment..... is not displayed and could see error :Please Leave A Comment....<br/>
+<p> The message :Please Enter Next FollowUp Date.... is displayed.....<br/>
+<p> The message : Please Enter Next FollowUp Date..... is not displayed and could see error :Please Enter Next FollowUp Date....<br/>
+<p> The message :Successfully Updated... is displayed.....<br/>
+<p> The message : Successfully Updated.... is not displayed and could see error :Successfully Updated...<br/>
+<p>   ###### Navigate to the page ::: Work on Lead########## 
+ <br/>
+<p> You have Sucessfully navigated to Work on Lead<br/>
+<p> The research Lead : 682 Janice Burke Avamba is not present in Research Phase.<br/>
+<p>   ###### Navigate to the page ::: All FollowUps########## 
+ <br/>
+<p> You have Sucessfully navigated to All FollowUps<br/>
+<p> The research Lead : 682 Janice Burke Avamba is also available in All FollowUps<br/>
+<p> The track index ::0contains ::682<br/>
+<p> The track index ::1contains ::Janice Burke<br/>
+<p> The track index ::2contains ::Avamba<br/>
+<p> The track index ::3contains ::Mobile<br/>
+<p> The track index ::4contains ::2014-11-28<br/>
+<p> The track index ::5contains ::Introductory Mail<br/>
+<p> Size is 20 1) Lead Id : 682 2) Name : Janice Burke 19) Current Status : Qualified<br/>
+<p> Track it comments for Work Phase later date not found<br/>
+</div>
+</td>
+<td></td>
+<td>103</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.BDE.d_LC_TS_45_workPhaseForLaterDate()'><b>d_LC_TS_45_workPhaseForLaterDate</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-28499358" onClick='toggleBox("Output-28499358", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-28499358" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-28499358">
+<p>   ###### Navigate to the page ::: Work on Lead########## 
+ <br/>
+<p> You have Sucessfully navigated to Work on Lead<br/>
+<p>  The particular Lead is : 679 Debra Fernandez Zoovu<br/>
+<p>  ######### You have Navigated to Form ##########<br/>
+<p> The message :Please Select FollowUp Type.... is displayed.....<br/>
+<p> The message : Please Select FollowUp Type..... is not displayed and could see error :Please Select FollowUp Type....<br/>
+<p> The message :Please Leave A Comment.... is displayed.....<br/>
+<p> The message : Please Leave A Comment..... is not displayed and could see error :Please Leave A Comment....<br/>
+<p> The message :Please Enter Next FollowUp Date.... is displayed.....<br/>
+<p> The message : Please Enter Next FollowUp Date..... is not displayed and could see error :Please Enter Next FollowUp Date....<br/>
+<p> The message :Successfully Updated... is displayed.....<br/>
+<p> The message : Successfully Updated.... is not displayed and could see error :Successfully Updated...<br/>
+<p>   ###### Navigate to the page ::: Work on Lead########## 
+ <br/>
+<p> You have Sucessfully navigated to Work on Lead<br/>
+<p> The research Lead : 679 Debra Fernandez Zoovu is not present in Research Phase.<br/>
+<p>   ###### Navigate to the page ::: All FollowUps########## 
+ <br/>
+<p> You have Sucessfully navigated to All FollowUps<br/>
+<p> The research Lead : 679 Debra Fernandez Zoovu is also available in All FollowUps<br/>
+<p> The track index ::0contains ::679<br/>
+<p> The track index ::1contains ::Debra Fernandez<br/>
+<p> The track index ::2contains ::Zoovu<br/>
+<p> The track index ::3contains ::Mobile<br/>
+<p> The track index ::4contains ::2014-11-28<br/>
+<p> The track index ::5contains ::Introductory Mail<br/>
+<p> Size is 20 1) Lead Id : 679 2) Name : Debra Fernandez 19) Current Status : Qualified<br/>
+<p> Track it comments for Work Phase later date not found<br/>
+</div>
+</td>
+<td></td>
+<td>103</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.Management.d_TS_58_TC004PDrop()'><b>d_TS_58_TC004PDrop</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-13917842" onClick='toggleBox("Output-13917842", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-13917842" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-13917842">
+Table contents displaying as per Entries 10<p><br/>
+<p>pagination next button is present<br/>
+<p>navigating to next page<br/>
+<p>pagination previous button present<br/>
+<p>navigated to previous page<br/>
+Table contents displaying as per Entries 25<p><br/>
+Table contents displaying as per Entries 50<p><br/>
+Table contents displaying as per Entries 100<p><br/>
+</div>
+</td>
+<td></td>
+<td>24</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.Researcher.e_LC_TS19_TC002_Searchleadpagenavigation()'><b>e_LC_TS19_TC002_Searchleadpagenavigation</b><br>Test class: src.crm.Researcher<br/>
+<a href="#Output-9541538" onClick='toggleBox("Output-9541538", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-9541538" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-9541538">
+<p>=================search leads=================<br/>
+<p>=================Expanding tree menu=================<br/>
+<p>The required field:Check ALL<br/>
+<p>Filter Option Selected:Choose Service<br/>
+<p>No.of options in Choose Service List:14<br/>
+<p>Option selected is:Mobile<br/>
+<p>[First Name, Last Name, Designation, Email, Board Number, Desk Number, Mobile Number, LinkedIn Profile, Company Name, Country, City, Domain, Campaign, Service, Status]<br/>
+<p>[First Name, Last Name, Designation, Email, Board Number, Desk Number, Mobile Number, LinkedIn Profile, Company Name, Country, City, Domain, Campaign, Service, Status]<br/>
+<p>The required fields selected is matched with the headers of the table.<br/>
+<p>1 Scott Vasquez Software Engineer svasquez0@nasa.gov 6-(748)974-5531 7-(600)402-1488 9-(775)874-6971 LinkedIn Profile 1 Linktype Brazil Santa Maria Hospital Campaign 1 Mobile Pre Qualified
+2 arjun mehatha s Jr Software Engineer prichards6@wordpress.com 2-90-89 6/8/00 9876543210 LinkedIn Profile 7 Edgeblab China Puyang Banking Campaign 7 Mobile Pre Qualified
+3 raju euvri Project Manager bward3a@va.gov 123 456 9876543210 LinkedIn Profile 119 Yodel Austria Traiskirchen Domain Campaign 2 Mobile Pre Qualified
+4 Katrina Hayden Technical Lead mshawac@blog.com 8-(104)838-3404 3-(618)434-8752 3-(486)235-8432 LinkedIn Profile 373 Gabcube Brazil Votorantim Banking Campaign 22 Mobile Pre Qualified
+5 Katrina Hayden Project Lead rcunninghamad@marketwatch.com 8-(104)838-3404 3-(618)434-8752 3-(486)235-8432 LinkedIn Profile 374 Ooba Brazil Blumenau Banking Campaign 23 Mobile Pre Qualified
+6 Katrina Hayden Sr Software Engineer dmartinaf@i2i.jp 8-(104)838-3404 3-(618)434-8752 3-(486)235-8432 LinkedIn Profile 376 Aimbu Egypt Zift? Banking Campaign 25 Mobile Pre Qualified
+7 Katrina Hayden Software Engineer rhansonah@irs.gov 8-(104)838-3404 3-(618)434-8752 3-(486)235-8432 LinkedIn Profile 378 Edgetag United States Irondequoit Banking Campaign 27 Mobile Pre Qualified
+8 Katrina Hayden Project Manager jwatsonas@seattletimes.com 8-(104)838-3404 3-(618)434-8752 3-(486)235-8432 LinkedIn Profile 389 Devcast Russia Pavlovsk Banking Campaign 38 Mobile Customer
+9 Katrina Hayden Sr Software Engineer bromeroat@g.co 8-(104)838-3404 3-(618)434-8752 3-(486)235-8432 LinkedIn Profile 390 Twimbo United States Petersburg Banking Campaign 39 Mobile Customer
+10 Katrina Hayden Software Engineer wcarrollav@google.com.br 8-(104)838-3404 3-(618)434-8752 3-(486)235-8432 LinkedIn Profile 392 Leenti Germany Zwickau Banking Campaign 2 Mobile Pre Qualified<br/>
+<p>totalcolumns having sorting options=16<br/>
+<p>sorting descending: on column: 1:S.NO.<br/>
+<p>sorting ascending: on column: 1:S.NO.<br/>
+<p>sorting ascending: on column: 2:First Name<br/>
+<p>sorting descending: on column: 2:First Name<br/>
+<p>sorting ascending: on column: 3:Last Name<br/>
+<p>sorting descending: on column: 3:Last Name<br/>
+<p>sorting ascending: on column: 4:Designation<br/>
+<p>sorting descending: on column: 4:Designation<br/>
+<p>sorting ascending: on column: 5:Email<br/>
+<p>sorting descending: on column: 5:Email<br/>
+<p>sorting ascending: on column: 6:Board Number<br/>
+<p>sorting descending: on column: 6:Board Number<br/>
+<p>sorting ascending: on column: 7:Desk Number<br/>
+<p>sorting descending: on column: 7:Desk Number<br/>
+<p>sorting ascending: on column: 8:Mobile Number<br/>
+<p>sorting descending: on column: 8:Mobile Number<br/>
+<p>sorting ascending: on column: 9:LinkedIn Profile<br/>
+<p>sorting descending: on column: 9:LinkedIn Profile<br/>
+<p>sorting ascending: on column: 10:Company Name<br/>
+<p>sorting descending: on column: 10:Company Name<br/>
+<p>sorting ascending: on column: 11:Country<br/>
+<p>sorting descending: on column: 11:Country<br/>
+<p>sorting ascending: on column: 12:City<br/>
+<p>sorting descending: on column: 12:City<br/>
+<p>sorting ascending: on column: 13:Domain<br/>
+<p>sorting descending: on column: 13:Domain<br/>
+<p>sorting ascending: on column: 14:Campaign<br/>
+<p>sorting descending: on column: 14:Campaign<br/>
+<p>sorting ascending: on column: 15:Service<br/>
+<p>sorting descending: on column: 15:Service<br/>
+<p>sorting ascending: on column: 16:Status<br/>
+<p>sorting descending: on column: 16:Status<br/>
+<p>972 Ronald Johnson Jr Software Engineer svasquez001@nasa.gov5 5-(952)136-9480 9-(873)147-5470 7-(011)461-6126 LinkedIn Profile 633 Shuffletag Japan Yugawara Domain H Campaign 9 Mobile Pre Qualified
+148 Ronald Johnson Jr Software Engineer rjohnsonhk@yahoo.com 5-(952)136-9480 9-(873)147-5470 7-(011)461-6126 LinkedIn Profile 633 Shuffletag Japan Yugawara Domain H Campaign 9 Mobile Pre Qualified
+484 Ronald Johnson Jr Software Engineer rjohnsonh2k@yahoo.com 5-(952)136-9480 9-(873)147-5470 7-(011)461-6126 LinkedIn Profile 633 Shuffletag Japan Yugawara Domain H Campaign 9 Mobile Pre Qualified
+654 Carl Johnson Technical Lead cjohnsoni8@creativecommons.org 0-(738)257-6922 1-(108)131-0383 4-(477)814-6460 LinkedIn Profile 657 Minyx Fiveclub Utabi Domain I Campaign 33 Mobile Pre Qualified
+434 Edward Johnson Trainee Engineer ejohnsonpi@de.vu 2-(808)849-6580 3-(782)045-4859 9-(691)508-9916 LinkedIn Profile 919 Dabfeed China Lichuan Domain G Campaign 22 Mobile Pre Qualified
+506 Cheryl Johnson Project Lead cjohnsone4@nyu.edu 6-(626)332-6219 6-(137)032-2388 6-(475)513-0584 LinkedIn Profile 509 Jetwire Fivebridge Yongxing Domain F Campaign 2 Mobile Pre Qualified
+895 Kelly Johnson Trainee Engineer kjohnsonox@sun.com 7-(448)650-2134 7-(574)106-4119 5-(654)166-3023 LinkedIn Profile 898 Skippad Mycat Doloplazy Domain G Campaign 1 Mobile Pre Qualified<br/>
+</div>
+</td>
+<td></td>
+<td>188</td>
+<td>src.crm.Researcher@1ba1db5</td></tr>
+<tr>
+<td title='src.crm.BDM.e_LC_TS_27_serviceoptionsvalidation_self()'><b>e_LC_TS_27_serviceoptionsvalidation_self</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-17859807" onClick='toggleBox("Output-17859807", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-17859807" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-17859807">
+<p>Assign Leads Page is opened<br/>
+<p>CLICKING ON ASSIGN BUTTON WITHOUT SELECTING ASSIGN TO WHOM OPTION<br/>
+<p>Error-->Please Select Assign To Whom<br/>
+<p>CLICKING ON ASSIGN BUTTON WITHOUT SELECTING ANY LEAD<br/>
+<p>Getting assign to whom: praharsha g<br/>
+<p>Error-->Please Select Atleast One Lead<br/>
+<p>CLICKING ON ASSIGN BUTTON BY SELECTING ANY LEAD<br/>
+<p>lead name selected is: 1989 Heather Ryan Npath<br/>
+<p>Lead 1989 Heather Ryan Npath::Successfully Assigned and Moved to Research Phase<br/>
+<p>lead 1989 Heather Ryan Npath found in BDM's research module<br/>
+</div>
+</td>
+<td></td>
+<td>31</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDE.e_LC_TS_46_todaysFollowup4()'><b>e_LC_TS_46_todaysFollowup4</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-13040947" onClick='toggleBox("Output-13040947", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-13040947" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-13040947">
+<p>   ###### Navigate to the page ::: Today's FollowUp########## 
+ <br/>
+<p> You have Sucessfully navigated to Today's FollowUp<br/>
+<p> The particular Lead is : 3709 Stephanie Hernandez Skiba<br/>
+<p> The message :Please Select FollowUp Type.... is displayed.....<br/>
+<p> The message : Please Select FollowUp Type..... is not displayed and could see error :Please Select FollowUp Type....<br/>
+<p> The message :Please Leave A Comment.... is displayed.....<br/>
+<p> The message : Please Leave A Comment..... is not displayed and could see error :Please Leave A Comment....<br/>
+<p> The message :Please Enter Next FollowUp Date.... is displayed.....<br/>
+<p> The message : Please Enter Next FollowUp Date..... is not displayed and could see error :Please Enter Next FollowUp Date....<br/>
+<p> The message :Successfully Updated... is displayed.....<br/>
+<p> The message : Successfully Updated.... is not displayed and could see error :Successfully Updated...<br/>
+<p>   ###### Navigate to the page ::: Today's FollowUp########## 
+ <br/>
+<p> You have Sucessfully navigated to Today's FollowUp<br/>
+Lead : 3709 Stephanie Hernandez Skiba is still present in All FollowUp<br/>
+<p>   ###### Navigate to the page ::: Cold Storage########## 
+ <br/>
+<p> You have Sucessfully navigated to Cold Storage<br/>
+<p> The research Lead : 3709 Stephanie Hernandez Skiba is also available in All FollowUps<br/>
+</div>
+</td>
+<td></td>
+<td>94</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.Management.e_TS_58_TC005PSortStatus()'><b>e_TS_58_TC005PSortStatus</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-33007824" onClick='toggleBox("Output-33007824", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-33007824" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-33007824">
+<p>totalcolumns having sorting options=7<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Company Name<br/>
+<p>sorting descending: on column: 3:Company Name<br/>
+<p>sorting ascending: on column: 4:Service Name<br/>
+<p>sorting descending: on column: 4:Service Name<br/>
+<p>sorting ascending: on column: 5:Lead Status<br/>
+<p>sorting descending: on column: 5:Lead Status<br/>
+<p>sorting ascending: on column: 6:Prospect Type<br/>
+<p>sorting descending: on column: 6:Prospect Type<br/>
+<p>entries before searching  : Showing 1 to 10 of 19 entries<br/>
+<p>entries after searching : Showing 1 to 10 of 19 entries<br/>
+<p>entries doesnt change the status is prospect<br/>
+</div>
+</td>
+<td></td>
+<td>52</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.Researcher.f_LC_TS_22_Changepassword()'><b>f_LC_TS_22_Changepassword</b><br>Test class: src.crm.Researcher<br/>
+<a href="#Output-458724" onClick='toggleBox("Output-458724", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-458724" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-458724">
+<p>======change password=====<br/>
+<p>Number Elements in List1 : 6<br/>
+<p>User Logged in as:Researcher<br/>
+<p>old password is:password<br/>
+<p>New password container is avilable<br/>
+<p>Confirm password container is avilable<br/>
+<p>New password container is avilable<br/>
+<p>Confirm password container is avilable<br/>
+<p>New password container is avilable<br/>
+<p>Confirm password container is avilable<br/>
+<p>Number Elements in List1 : 6<br/>
+<p>User password reset sucessfully<br/>
+</div>
+</td>
+<td></td>
+<td>61</td>
+<td>src.crm.Researcher@1ba1db5</td></tr>
+<tr>
+<td title='src.crm.BDM.f_LC_TS_27_assignmultipleLeads_BDM()'><b>f_LC_TS_27_assignmultipleLeads_BDM</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-11515213" onClick='toggleBox("Output-11515213", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-11515213" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-11515213">
+<p>Assign Leads Page is opened<br/>
+<p>Lead 1990 Frances Fox Photolistand 1991 Raymond Vasquez Flipopia:: Successfully Assigned and Moved to Research Phase<br/>
+<p>lead 1990 Frances Fox Photolist found in BDM research module<br/>
+<p>lead 1991 Raymond Vasquez Flipopia found in BDM research module<br/>
+</div>
+</td>
+<td></td>
+<td>32</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDE.f_LC_TS_46_todaysFollowupProposal()'><b>f_LC_TS_46_todaysFollowupProposal</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-19882" onClick='toggleBox("Output-19882", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-19882" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-19882">
+<p>   ###### Navigate to the page ::: Today's FollowUp########## 
+ <br/>
+<p> You have Sucessfully navigated to Today's FollowUp<br/>
+<p> The particular Lead is : 666 Janice Mitchell Brainverse<br/>
+<p> The message :Please Select FollowUp Type.... is displayed.....<br/>
+<p> The message : Please Select FollowUp Type..... is not displayed and could see error :Please Select FollowUp Type....<br/>
+<p> The message :Please Select Prospect Type.... is displayed.....<br/>
+<p> The message : Please Select Prospect Type..... is not displayed and could see error :Please Select Prospect Type....<br/>
+<p> The message :Please Enter Fixed Date.... is displayed.....<br/>
+<p> The message : Please Enter Fixed Date..... is not displayed and could see error :Please Enter Fixed Date....<br/>
+<p> The message :Please Select Mail Id of Architect.... is displayed.....<br/>
+<p> The message : Please Select Mail Id of Architect..... is not displayed and could see error :Please Select Mail Id of Architect....<br/>
+<p> The message :Please Enter Subject is displayed.....<br/>
+<p> The message : Please Enter Subject. is not displayed and could see error :Please Enter Subject<br/>
+<p> The message : Please Leave A Message. is not displayed and could see error :Please Leave A Message....<br/>
+<p> The message : Please Leave A Comment. is not displayed and could see error :Please Leave A Comment....<br/>
+<p> The message : Please Enter Next FollowUp Date. is not displayed and could see error :Please Enter Next FollowUp Date....<br/>
+<p> The message : Proposal Request Send Successfully. is not displayed and could see error :Please Enter Next FollowUp Date....<br/>
+<p>user Hi ! BDM srinivasa<br/>
+<p>  ++++++++ Logged in as BDM user ++++++++++<br/>
+<p>   ###### Navigate to the page ::: Proposal Upload########## 
+ <br/>
+<p> You have Sucessfully navigated to Proposal Upload<br/>
+<p> The Expected Lead  : 666 Janice Mitchell Brainverse is also available in BDM Proposal Upload<br/>
+<p>   ###### Navigate to the page ::: Today's FollowUp########## 
+ <br/>
+<p> You have Sucessfully navigated to Today's FollowUp<br/>
+<p> The todays Followup Lead is : 666 Janice Mitchell Brainverse is available in today's FollowUps<br/>
+<p> The track index ::0contains ::666<br/>
+<p> The track index ::1contains ::Janice Mitchell<br/>
+<p> The track index ::2contains ::Brainverse<br/>
+<p> The track index ::3contains ::Mobile<br/>
+<p> The track index ::4contains ::2014-11-26<br/>
+<p> The track index ::5contains ::Prospect Identify<br/>
+<p> Size is 20 1) Lead Id : 666 2) Name : Janice Mitchell 19) Current Status : Prospect<br/>
+<p>   ###### Navigate to the page ::: All FollowUps########## 
+ <br/>
+<p> You have Sucessfully navigated to All FollowUps<br/>
+<p> The todays Followup Lead is : 666 Janice Mitchell Brainverse is available in today's FollowUps<br/>
+<p> The track index ::0contains ::666<br/>
+<p> The track index ::1contains ::Janice Mitchell<br/>
+<p> The track index ::2contains ::Brainverse<br/>
+<p> The track index ::3contains ::Mobile<br/>
+<p> The track index ::4contains ::2014-11-26<br/>
+<p> The track index ::5contains ::Prospect Identify<br/>
+<p> Size is 20 1) Lead Id : 666 2) Name : Janice Mitchell 19) Current Status : Prospect<br/>
+</div>
+</td>
+<td></td>
+<td>198</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.Management.f_TS_58_TC006PTrackit()'><b>f_TS_58_TC006PTrackit</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-19506413" onClick='toggleBox("Output-19506413", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-19506413" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-19506413">
+<p>The particular Lead is : 1426 Thomas Grant Linkbridge<br/>
+<p>No of columns in the table are :7<br/>
+<p>Array before clicking on trackit button is: [1426, Thomas Grant, Linkbridge, QA, Prospect, Proposal, Track It]<br/>
+<p>No of rows in track it lead details of table 5<br/>
+<p>array size after trackit button is clicked:20<br/>
+<p>array element after trackit button is clicked: Lead Id : 1426<br/>
+<p>array element after trackit button is clicked: Name : Thomas Grant<br/>
+<p>array element after trackit button is clicked: Current Status : Prospect<br/>
+<p>Data is matching exactly <br/>
+<p>Status : Uploaded<br/>
+<p>Download : invaliedtextfile.txt<br/>
+<p>tag name for the file is: a<br/>
+<p>File can be downloaded<br/>
+</div>
+</td>
+<td></td>
+<td>23</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.BDM.g_LC_TS_28_assignto_bde()'><b>g_LC_TS_28_assignto_bde</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-25103052" onClick='toggleBox("Output-25103052", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-25103052" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-25103052">
+<p>Assign Leads Page is opened<br/>
+<p>Getting assign to whom: praharsha g<br/>
+<p>Lead 1992 Dorothy Fowler Plambee::Successfully Assigned and Moved to Research Phase<br/>
+<p>logged in as: Hi ! BDE praharsha<br/>
+<p>lead 1992 Dorothy Fowler Plambee found in BDE's research module<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>40</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDE.g_LC_TS_47_UIToFieldCheck()'><b>g_LC_TS_47_UIToFieldCheck</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-17070810" onClick='toggleBox("Output-17070810", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-17070810" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-17070810">
+<p>   ###### Navigate to the page ::: Today's FollowUp########## 
+ <br/>
+<p> You have Sucessfully navigated to Today's FollowUp<br/>
+<p> The All Followup Lead is : 666 Janice Mitchell Brainverse is available in All FollowUp.<br/>
+<p>***************Checking options under 'To' dropdown*********************<br/>
+<p>lakshmi.sure@nexiilabs.com-->mail id of Architect for [lakshmi.sure@nexiilabs.com, rakesh@gmail.com, tulasiram02@gmail.com, tulasiram04@gmail.com, ssfeerttr34577@gmail.com] is displayed<br/>
+<p>rakesh@gmail.com-->mail id of Architect for [lakshmi.sure@nexiilabs.com, rakesh@gmail.com, tulasiram02@gmail.com, tulasiram04@gmail.com, ssfeerttr34577@gmail.com] is displayed<br/>
+<p>tulasiram02@gmail.com-->mail id of Architect for [lakshmi.sure@nexiilabs.com, rakesh@gmail.com, tulasiram02@gmail.com, tulasiram04@gmail.com, ssfeerttr34577@gmail.com] is displayed<br/>
+<p>tulasiram04@gmail.com-->mail id of Architect for [lakshmi.sure@nexiilabs.com, rakesh@gmail.com, tulasiram02@gmail.com, tulasiram04@gmail.com, ssfeerttr34577@gmail.com] is displayed<br/>
+<p>ssfeerttr34577@gmail.com-->mail id of Architect for [lakshmi.sure@nexiilabs.com, rakesh@gmail.com, tulasiram02@gmail.com, tulasiram04@gmail.com, ssfeerttr34577@gmail.com] is displayed<br/>
+</div>
+</td>
+<td></td>
+<td>35</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.Management.g_TS_59_TC001LSearch()'><b>g_TS_59_TC001LSearch</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-10027060" onClick='toggleBox("Output-10027060", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-10027060" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-10027060">
+<p>No .of Search results with search key within table:: 1<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+</div>
+</td>
+<td></td>
+<td>36</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.BDM.h_LC_TS_28_assignmultipleLeads_BDE()'><b>h_LC_TS_28_assignmultipleLeads_BDE</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-7257529" onClick='toggleBox("Output-7257529", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-7257529" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-7257529">
+<p>Assign Leads Page is opened<br/>
+<p>Getting assign to whom: praharsha g<br/>
+<p>Leads 1993 Margaret Henderson Jabbersphere and 1994 Russell Marshall Realfire::Successfully Assigned and Moved to Research Phase<br/>
+<p>logged in as: Hi ! BDE praharsha<br/>
+<p>lead 1993 Margaret Henderson Jabbersphere found in BDE's research module<br/>
+<p>lead 1994 Russell Marshall Realfire found in BDE's research module<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>49</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDE.h_LC_TS_47_AllFollowupsQuoteUpload()'><b>h_LC_TS_47_AllFollowupsQuoteUpload</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-22050462" onClick='toggleBox("Output-22050462", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-22050462" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-22050462">
+<p>   ###### Navigate to the page ::: All FollowUps########## 
+ <br/>
+<p> You have Sucessfully navigated to All FollowUps<br/>
+<p> The particular Lead is : 688 Aaron Banks InnoZ<br/>
+<p> The message : Please Select FollowUp Type. is not displayed and could see error :Please Select FollowUp Type....<br/>
+<p> The message : Please Select FollowUp Type. is not displayed and could see error :Please Select Prospect Type....<br/>
+<p> The message : Please Enter Fixed Date. is not displayed and could see error :Please Enter Fixed Date....<br/>
+<p> The message : Please Leave A Comment. is not displayed and could see error :Please Leave A Comment....<br/>
+<p> The message : Please Enter Next FollowUp Date. is not displayed and could see error :Please Enter Next FollowUp Date....<br/>
+<p> The message : Quote Details Successfully Updated. is not displayed and could see error :Quote Details Successfully Updated...<br/>
+<p>user Hi ! BDM srinivasa<br/>
+<p>  ++++++++ Logged in as BDM user ++++++++++<br/>
+<p>   ###### Navigate to the page ::: Quote Upload########## 
+ <br/>
+<p> You have Sucessfully navigated to Quote Upload<br/>
+<p> The Expected Lead  : 688 Aaron Banks InnoZ is also available in BDM Quote Upload<br/>
+<p>   ###### Navigate to the page ::: All FollowUps########## 
+ <br/>
+<p> You have Sucessfully navigated to All FollowUps<br/>
+<p> The All Followup Lead is : 688 Aaron Banks InnoZ is available in All FollowUp.<br/>
+<p> The track index ::0contains ::688<br/>
+<p> The track index ::1contains ::Aaron Banks<br/>
+<p> The track index ::2contains ::InnoZ<br/>
+<p> The track index ::3contains ::Mobile<br/>
+<p> The track index ::4contains ::2014-11-28<br/>
+<p> The track index ::5contains ::Prospect Identify<br/>
+<p> Size is 20 1) Lead Id : 688 2) Name : Aaron Banks 19) Current Status : Prospect<br/>
+</div>
+</td>
+<td></td>
+<td>153</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.BDM.i_LC_TS_28_assignmultipleleadsBDM_BDE()'><b>i_LC_TS_28_assignmultipleleadsBDM_BDE</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-22961400" onClick='toggleBox("Output-22961400", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-22961400" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-22961400">
+<p>Assign Leads Page is opened<br/>
+<p>Assigning leads to Self<br/>
+<p>Successfully Assigned and Moved to Research Phase<br/>
+<p>Assigning leads to BDM<br/>
+<p>Successfully Assigned and Moved to Research Phase<br/>
+<p>Randomly picking any BDM from DB<br/>
+<p>Randomly picking BDM from Database and assigning<br/>
+<p>Successfully Assigned and Moved to Research Phase<br/>
+<p>Randomly picking any BDE from DB<br/>
+<p>Randomly picking BDE from Database and assigning<br/>
+<p>Successfully Assigned and Moved to Research Phase<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>49</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.Management.i_TS_59_TC005LSortStatus()'><b>i_TS_59_TC005LSortStatus</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-30202219" onClick='toggleBox("Output-30202219", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-30202219" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-30202219">
+<p>totalcolumns having sorting options=6<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Company Name<br/>
+<p>sorting descending: on column: 3:Company Name<br/>
+<p>sorting ascending: on column: 4:Service Name<br/>
+<p>sorting descending: on column: 4:Service Name<br/>
+<p>sorting ascending: on column: 5:Lead Status<br/>
+<p>sorting descending: on column: 5:Lead Status<br/>
+<p>entries before searching  : Showing 1 to 10 of 31 entries<br/>
+<p>entries after searching : Showing 1 to 10 of 31 entries<br/>
+<p>entries doesnt change, the status is Lost Competition<br/>
+</div>
+</td>
+<td></td>
+<td>44</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.BDM.j_LC_TS_29_researchbuttoncheck()'><b>j_LC_TS_29_researchbuttoncheck</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-9742410" onClick='toggleBox("Output-9742410", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-9742410" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-9742410">
+<p>*******************RESEARCH PHASE***************************<br/>
+<p>Lead Research Page is opened<br/>
+<p>Research button is enabled for all leads.<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>16</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDE.j_LC_TS_47_confirmLeadsOfTodaysDate()'><b>j_LC_TS_47_confirmLeadsOfTodaysDate</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-32685893" onClick='toggleBox("Output-32685893", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-32685893" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-32685893">
+<p>   ###### Navigate to the page ::: All FollowUps########## 
+ <br/>
+<p> You have Sucessfully navigated to All FollowUps<br/>
+<p>   ###### Navigate to the page ::: Today's FollowUp########## 
+ <br/>
+<p> You have Sucessfully navigated to Today's FollowUp<br/>
+<p>  AllFollowUp table size:2Todays FollowUp table size:2<br/>
+<p>  AllFollowUp table size:2Todays FollowUp table size:2<br/>
+<p> 666 Janice Mitchell Brainverseis found in todays Follow ups<br/>
+<p> 685 Jonathan Sullivan Twitterwireis found in todays Follow ups<br/>
+</div>
+</td>
+<td></td>
+<td>47</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.Management.j_TS_59_TC006LTrackit()'><b>j_TS_59_TC006LTrackit</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-6534179" onClick='toggleBox("Output-6534179", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-6534179" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-6534179">
+<p>The particular Lead is : 63 Jennifer Strauss Avamm<br/>
+<p>No of columns in the table are :6<br/>
+<p>Array before clicking on trackit button is: [63, Jennifer Strauss, Avamm, SAAS, Lost Competition, Track It]<br/>
+<p>No of rows in track it lead details of table 5<br/>
+<p>array size after trackit button is clicked:20<br/>
+<p>array element after trackit button is clicked: Lead Id : 63<br/>
+<p>array element after trackit button is clicked: Name : Jennifer Strauss<br/>
+<p>array element after trackit button is clicked: Current Status : Lost Competition<br/>
+<p>Data is matching exactly <br/>
+<p>Status : Uploaded<br/>
+<p>Download : Gitbash comands.xls<br/>
+<p>tag name for the file is: a<br/>
+<p>File can be downloaded<br/>
+</div>
+</td>
+<td></td>
+<td>23</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.BDM.k_LC_TS_29_researchformfill()'><b>k_LC_TS_29_researchformfill</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-18001222" onClick='toggleBox("Output-18001222", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-18001222" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-18001222">
+<p>Lead Research Page is opened<br/>
+<p>Clicking research for lead: Samuel Rice<br/>
+<p>Child window is opened<br/>
+<p>Child window title is: Researh on Lead #1694<br/>
+<p>Clicking segregate button without filling all details<br/>
+<p>Error-->Please Select Company Fund Status<br/>
+<p>Clicking segregate button without filling company status and comment field<br/>
+<p>Error-->Please Select Company Status<br/>
+<p>Clicking segregate button without giving comment<br/>
+<p>Error-->Please Leave a Comment<br/>
+<p>Segregated Successfully and Lead Moved to Work Phase<br/>
+<p>lead name is not found in current page<br/>
+<p>----------------Research phase comments table------------------<br/>
+<p>Research Phase Comments
+S.No. Comment Id Comment DescriptionComment Comment On Comment By
+1 #870 research test 2014-11-26 17:20:36.0 srinivasa sanchana<br/>
+<p>---------------------------------------------------------------<br/>
+<p>Current Status : Qualified<br/>
+<p>Status is displayed correct<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>37</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.k_LC_TS_29_researchformfill()'><b>k_LC_TS_29_researchformfill</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-12245584" onClick='toggleBox("Output-12245584", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-12245584" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-12245584">
+<p>Lead Research Page is opened<br/>
+<p>Clicking research for lead: Carol Thomas<br/>
+<p>Child window is opened<br/>
+<p>Child window title is: Researh on Lead #1695<br/>
+<p>Clicking segregate button without filling all details<br/>
+<p>Error-->Please Select Company Fund Status<br/>
+<p>Clicking segregate button without filling company status and comment field<br/>
+<p>Error-->Please Select Company Status<br/>
+<p>Clicking segregate button without giving comment<br/>
+<p>Error-->Please Leave a Comment<br/>
+<p>Segregated Successfully and Lead Moved to Work Phase<br/>
+<p>lead name is not found in current page<br/>
+<p>----------------Research phase comments table------------------<br/>
+<p>Research Phase Comments
+S.No. Comment Id Comment DescriptionComment Comment On Comment By
+1 #871 research test 2014-11-26 17:21:36.0 srinivasa sanchana<br/>
+<p>---------------------------------------------------------------<br/>
+<p>Current Status : Qualified<br/>
+<p>Status is displayed correct<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>39</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.k_LC_TS_29_researchformfill()'><b>k_LC_TS_29_researchformfill</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-18136018" onClick='toggleBox("Output-18136018", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-18136018" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-18136018">
+<p>Lead Research Page is opened<br/>
+<p>Clicking research for lead: Sarah Knight<br/>
+<p>Child window is opened<br/>
+<p>Child window title is: Researh on Lead #1696<br/>
+<p>Clicking segregate button without filling all details<br/>
+<p>Error-->Please Select Company Fund Status<br/>
+<p>Clicking segregate button without filling company status and comment field<br/>
+<p>Error-->Please Select Company Status<br/>
+<p>Clicking segregate button without giving comment<br/>
+<p>Error-->Please Leave a Comment<br/>
+<p>Segregated Successfully and Lead Moved to Work Phase<br/>
+<p>lead name is not found in current page<br/>
+<p>----------------Research phase comments table------------------<br/>
+<p>Research Phase Comments
+S.No. Comment Id Comment DescriptionComment Comment On Comment By
+1 #872 research test 2014-11-26 17:22:38.0 srinivasa sanchana<br/>
+<p>---------------------------------------------------------------<br/>
+<p>Current Status : Qualified<br/>
+<p>Status is displayed correct<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>39</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.k_LC_TS_29_researchformfill()'><b>k_LC_TS_29_researchformfill</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-26762358" onClick='toggleBox("Output-26762358", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-26762358" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-26762358">
+<p>Lead Research Page is opened<br/>
+<p>Clicking research for lead: Douglas Robinson<br/>
+<p>Child window is opened<br/>
+<p>Child window title is: Researh on Lead #1697<br/>
+<p>Clicking segregate button without filling all details<br/>
+<p>Error-->Please Select Company Fund Status<br/>
+<p>Clicking segregate button without filling company status and comment field<br/>
+<p>Error-->Please Select Company Status<br/>
+<p>Clicking segregate button without giving comment<br/>
+<p>Error-->Please Leave a Comment<br/>
+<p>Segregated Successfully and Lead Moved to Work Phase<br/>
+<p>lead name is not found in current page<br/>
+<p>----------------Research phase comments table------------------<br/>
+<p>Research Phase Comments
+S.No. Comment Id Comment DescriptionComment Comment On Comment By
+1 #873 research test 2014-11-26 17:23:39.0 srinivasa sanchana<br/>
+<p>---------------------------------------------------------------<br/>
+<p>Current Status : Qualified<br/>
+<p>Status is displayed correct<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>39</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDE.k_LC_TS_47_AllFollowups4()'><b>k_LC_TS_47_AllFollowups4</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-19660885" onClick='toggleBox("Output-19660885", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-19660885" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-19660885">
+<p>   ###### Navigate to the page ::: All FollowUps########## 
+ <br/>
+<p> You have Sucessfully navigated to All FollowUps<br/>
+<p> The particular Lead is : 647 Nicholas Lee Eayo<br/>
+<p> The message :Please Select FollowUp Type.... is displayed.....<br/>
+<p> The message : Please Select FollowUp Type..... is not displayed and could see error :Please Select FollowUp Type....<br/>
+<p> The message :Please Leave A Comment.... is displayed.....<br/>
+<p> The message : Please Leave A Comment..... is not displayed and could see error :Please Leave A Comment....<br/>
+<p> The message :Please Enter Next FollowUp Date.... is displayed.....<br/>
+<p> The message : Please Enter Next FollowUp Date..... is not displayed and could see error :Please Enter Next FollowUp Date....<br/>
+<p> The message :Successfully Updated... is displayed.....<br/>
+<p> The message : Successfully Updated.... is not displayed and could see error :Successfully Updated...<br/>
+<p>   ###### Navigate to the page ::: All FollowUps########## 
+ <br/>
+<p> You have Sucessfully navigated to All FollowUps<br/>
+<p> The todays Followup Lead is : 647 Nicholas Lee Eayo is available in AllFollowUP.<br/>
+<p> The track index ::0contains ::604<br/>
+<p> The track index ::1contains ::Paul Kelly<br/>
+<p> The track index ::2contains ::Meembee<br/>
+<p> The track index ::3contains ::Mobile<br/>
+<p> The track index ::4contains ::2014-11-16<br/>
+<p> The track index ::5contains ::Prospect Identify<br/>
+<p> Size is 20 1) Lead Id : 604 2) Name : Paul Kelly 19) Current Status : Prospect<br/>
+<p>   ###### Navigate to the page ::: Cold Storage########## 
+ <br/>
+<p> You have Sucessfully navigated to Cold Storage<br/>
+<p> The todays Followup Lead is : 647 Nicholas Lee Eayo is available in Cold Storage.<br/>
+</div>
+</td>
+<td></td>
+<td>97</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.Management.k_TS_60_TC001CSearch()'><b>k_TS_60_TC001CSearch</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-20444129" onClick='toggleBox("Output-20444129", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-20444129" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-20444129">
+<p>No .of Search results with search key within table:: 1<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+</div>
+</td>
+<td></td>
+<td>43</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.BDM.l_LC_TS_30_workPhasetrackit()'><b>l_LC_TS_30_workPhasetrackit</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-16430253" onClick='toggleBox("Output-16430253", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-16430253" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-16430253">
+<p>***********************WORK PHASE********************<br/>
+<p>Work on Lead Page is opened<br/>
+<p>Trackit and Followup button is enabled for all leads.<br/>
+<p>Lead Status of every lead is Qualified<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>17</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDE.l_LC_TS_47_coldStorage()'><b>l_LC_TS_47_coldStorage</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-1291003" onClick='toggleBox("Output-1291003", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1291003" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1291003">
+<p>   ###### Navigate to the page ::: Cold Storage########## 
+ <br/>
+<p> You have Sucessfully navigated to Cold Storage<br/>
+<p>  The particular Lead is : 648 Elizabeth Hudson Plajo<br/>
+<p>  ######### You have Navigated to Form ##########<br/>
+<p>   ###### Navigate to the page ::: Cold Storage########## 
+ <br/>
+<p> You have Sucessfully navigated to Cold Storage<br/>
+<p> The All Followup Lead is : 648 Elizabeth Hudson Plajo is not available Cold Storage.<br/>
+<p>   ###### Navigate to the page ::: All FollowUps########## 
+ <br/>
+<p> You have Sucessfully navigated to All FollowUps<br/>
+<p> The Cold Phase lead is : 648 Elizabeth Hudson Plajo is not available in All FollowUp.<br/>
+<p>Clicking on the Lead Search and verifying the confirmed lead of cold storage.<br/>
+<p>Searching the lead in Lead Search which is confirmed in cold storage phase .<br/>
+<p> The All Followup Lead is : 648 Elizabeth Hudson Plajo is available in search leads.<br/>
+</div>
+</td>
+<td></td>
+<td>105</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.BDM.m_LC_TS_31_workphaseFollowupTodaysDate()'><b>m_LC_TS_31_workphaseFollowupTodaysDate</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-16835156" onClick='toggleBox("Output-16835156", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-16835156" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-16835156">
+<p>Work on Lead Page is opened<br/>
+<p>child window title is: Work Phase for Lead 1689
+close<br/>
+<p>Error-->Please Select FollowUp Type....<br/>
+<p>Error-->Please Leave A Comment....<br/>
+<p>Error-->Please Enter Next FollowUp Date....<br/>
+<p>Successfully Updated...<br/>
+<p>lead name is not found in current page<br/>
+<p>********************TODAY'S FOLLOWUP****************************<br/>
+<p>Today Followups Page is opened<br/>
+<p>lead name is present in todays followup<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>42</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.m_LC_TS_31_workphaseFollowupTodaysDate()'><b>m_LC_TS_31_workphaseFollowupTodaysDate</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-16082078" onClick='toggleBox("Output-16082078", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-16082078" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-16082078">
+<p>Work on Lead Page is opened<br/>
+<p>child window title is: Work Phase for Lead 1690
+close<br/>
+<p>Error-->Please Select FollowUp Type....<br/>
+<p>Error-->Please Leave A Comment....<br/>
+<p>Error-->Please Enter Next FollowUp Date....<br/>
+<p>Successfully Updated...<br/>
+<p>lead name is not found in current page<br/>
+<p>********************TODAY'S FOLLOWUP****************************<br/>
+<p>Today Followups Page is opened<br/>
+<p>lead name is present in todays followup<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>41</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDE.m_LC_TS_48_closedPhasebutton()'><b>m_LC_TS_48_closedPhasebutton</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-28887505" onClick='toggleBox("Output-28887505", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-28887505" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-28887505">
+<p>no data available<br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.Management.m_TS_60_TC005CSortStatus()'><b>m_TS_60_TC005CSortStatus</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-3723992" onClick='toggleBox("Output-3723992", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-3723992" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-3723992">
+<p>totalcolumns having sorting options=7<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Company Name<br/>
+<p>sorting descending: on column: 3:Company Name<br/>
+<p>sorting ascending: on column: 4:Service Name<br/>
+<p>sorting descending: on column: 4:Service Name<br/>
+<p>sorting ascending: on column: 5:Lead Status<br/>
+<p>sorting descending: on column: 5:Lead Status<br/>
+<p>sorting ascending: on column: 6:Project Name<br/>
+<p>sorting descending: on column: 6:Project Name<br/>
+<p>entries before searching  : Showing 1 to 10 of 44 entries<br/>
+<p>entries after searching : Showing 1 to 10 of 44 entries<br/>
+<p>entries doesnt change, the status is Customer<br/>
+</div>
+</td>
+<td></td>
+<td>51</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.BDM.n_LC_TS_30_workphaseFuturedate()'><b>n_LC_TS_30_workphaseFuturedate</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-21844071" onClick='toggleBox("Output-21844071", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-21844071" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-21844071">
+<p>Work on Lead Page is opened<br/>
+<p>child window title is: Work Phase for Lead 1691
+close<br/>
+<p>Successfully Updated...<br/>
+<p>lead name is not found in current page<br/>
+<p>All Followups Page is opened<br/>
+<p>lead name is present in All followup<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>39</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.n_LC_TS_30_workphaseFuturedate()'><b>n_LC_TS_30_workphaseFuturedate</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-18788422" onClick='toggleBox("Output-18788422", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-18788422" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-18788422">
+<p>Work on Lead Page is opened<br/>
+<p>child window title is: Work Phase for Lead 1693
+close<br/>
+<p>Successfully Updated...<br/>
+<p>lead name is not found in current page<br/>
+<p>All Followups Page is opened<br/>
+<p>lead name is present in All followup<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>39</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDE.n_LC_TS_48_closedCustomer()'><b>n_LC_TS_48_closedCustomer</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-8875807" onClick='toggleBox("Output-8875807", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-8875807" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-8875807">
+<p>no data available<br/>
+</div>
+</td>
+<td></td>
+<td>14</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.Management.n_TS_60_TC006CTrackit()'><b>n_TS_60_TC006CTrackit</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-19621250" onClick='toggleBox("Output-19621250", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-19621250" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-19621250">
+<p>The particular Lead is : 448 Eric Cruz InnoZ<br/>
+<p>No of columns in the table are :7<br/>
+<p>Array before clicking on trackit button is: [448, Eric Cruz, InnoZ, Cloud, Customer, leadcrm, Track It]<br/>
+<p>No of rows in track it lead details of table 5<br/>
+<p>array size after trackit button is clicked:20<br/>
+<p>array element after trackit button is clicked: Lead Id : 448<br/>
+<p>array element after trackit button is clicked: Name : Eric Cruz<br/>
+<p>array element after trackit button is clicked: Current Status : Customer<br/>
+<p>Data is matching exactly <br/>
+<p>Status : Uploaded<br/>
+<p>Download : dmssvh.jpg<br/>
+<p>tag name for the file is: a<br/>
+<p>File can be downloaded<br/>
+</div>
+</td>
+<td></td>
+<td>25</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.BDM.o_LC_TS_32_confirmleadsofTodaysDate()'><b>o_LC_TS_32_confirmleadsofTodaysDate</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-23876362" onClick='toggleBox("Output-23876362", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-23876362" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-23876362">
+<p>All Followups Page is opened<br/>
+Showing 1 to 10 of 10 entries (filtered from 31 total entries)<br/>
+<p>Today Followups Page is opened<br/>
+Showing 1 to 10 of 10 entries (filtered from 27 total entries)<br/>
+<p>662 Judith Myers Babbleset is found in todays followups <br/>
+<p>1679 Paula Evans Livefish is found in todays followups <br/>
+<p>1680 Melissa Torres Zoonoodle is found in todays followups <br/>
+<p>1682 Philip Brown Eadel is found in todays followups <br/>
+<p>1683 Betty Welch Browsebug is found in todays followups <br/>
+<p>1684 Teresa Burke Edgeclub is found in todays followups <br/>
+<p>1685 Debra Jackson Voonix is found in todays followups <br/>
+<p>1686 Jean Williamson Topicware is found in todays followups <br/>
+<p>1689 Jane Cruz Zooveo is found in todays followups <br/>
+<p>1690 Robin Morgan Voolith is found in todays followups <br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>24</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDE.o_LC_TS_48_closedCompetetion()'><b>o_LC_TS_48_closedCompetetion</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-17118585" onClick='toggleBox("Output-17118585", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-17118585" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-17118585">
+<p>no data available<br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.Management.o_TS_61_TC001QSearch()'><b>o_TS_61_TC001QSearch</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-23292129" onClick='toggleBox("Output-23292129", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-23292129" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-23292129">
+<p>No .of Search results with search key within table:: 1<br/>
+<p>==========when tried with negative scenario=========<br/>
+<p>No results displayed with search key not in table<br/>
+</div>
+</td>
+<td></td>
+<td>38</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.BDM.p_LC_TS_32_allfollowup()'><b>p_LC_TS_32_allfollowup</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-21362968" onClick='toggleBox("Output-21362968", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-21362968" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-21362968">
+<p>****************ALL FOLLOWUP*******************<br/>
+<p>All Followups Page is opened<br/>
+<p>Trackit and Followup button is enabled for all leads.<br/>
+<p>----------------Work phase comments table------------------<br/>
+<p>Work Phase Comments
+S.No. Comment Id Comment DescriptionComment Comment On Comment By
+1 #1798 introductory mail test 2014-11-25 19:39:42.0 srinivasa sanchana<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>18</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDE.p_LC_TS_49_searchLead()'><b>p_LC_TS_49_searchLead</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-18758234" onClick='toggleBox("Output-18758234", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-18758234" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-18758234">
+<p>The reqiured field:Status<br/>
+<p>Size of Filter option categories:7<br/>
+<p>Filter Option Selected:Choose Company<br/>
+<p>No.of options in Choose Company List:395<br/>
+<p>Option selected is:Twinder<br/>
+<p>1 Pre Qualified
+2 ColdStorage<br/>
+<p>Filter Option Selected:Choose Country<br/>
+<p>No.of options in Choose Country List:502<br/>
+<p>Option selected is:Twitternation<br/>
+<p>1 Pre Qualified<br/>
+<p>Filter Option Selected:Choose City<br/>
+<p>No.of options in Choose City List:3757<br/>
+<p>Option selected is:Jiaoxie<br/>
+<p>1 Pre Qualified<br/>
+<p>Filter Option Selected:Choose Domain<br/>
+<p>No.of options in Choose Domain List:24<br/>
+<p>Option selected is:Robotics<br/>
+<p>1 Pre Qualified
+2 Lost Competition
+3 Customer
+4 ColdStorage<br/>
+<p>Filter Option Selected:Choose Campaign<br/>
+<p>No.of options in Choose Campaign List:43<br/>
+<p>Option selected is:Campaign 37<br/>
+<p>1 Pre Qualified
+2 Customer
+3 Prospect<br/>
+<p>Filter Option Selected:Choose Service<br/>
+<p>No.of options in Choose Service List:15<br/>
+<p>Option selected is:QA<br/>
+<p>1 Pre Qualified
+2 Customer
+3 Prospect
+4 ColdStorage
+5 Lost Competition
+6 Qualified<br/>
+<p>Filter Option Selected:Choose Status<br/>
+<p>No.of options in Choose Status List:7<br/>
+<p>Option selected is:Check ALL<br/>
+<p>1 Pre Qualified
+2 Lost Competition
+3 Customer
+4 ColdStorage
+5 Prospect
+6 Qualified<br/>
+</div>
+</td>
+<td></td>
+<td>85</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.BDM.q_LC_TS_32_allNextFollowup()'><b>q_LC_TS_32_allNextFollowup</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-670327" onClick='toggleBox("Output-670327", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-670327" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-670327">
+<p>All Followups Page is opened<br/>
+<p>child window title is: Followup for Lead 662
+close<br/>
+<p>Error--> Please Leave A Comment....<br/>
+<p>Error--> Please Enter Next FollowUp Date....<br/>
+<p>Yesterday's date was 2014-11-25<br/>
+<p>Successfully Updated...<br/>
+<p>Followup status changed to follow up 4<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>31</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDE.q_LC_TS_50_leadEditbutton()'><b>q_LC_TS_50_leadEditbutton</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-18547941" onClick='toggleBox("Output-18547941", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-18547941" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-18547941">
+<p>Trackit button is present for all leads.<br/>
+<p>edit button is present for all leads.<br/>
+<p>Trackit button is present for all leads.<br/>
+<p>edit button is present for all leads.<br/>
+<p>Trackit button is present for all leads.<br/>
+<p>edit button is present for all leads.<br/>
+</div>
+</td>
+<td></td>
+<td>31</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.Management.q_TS_61_TC005QSortStatus()'><b>q_TS_61_TC005QSortStatus</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-14171435" onClick='toggleBox("Output-14171435", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-14171435" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-14171435">
+<p>totalcolumns having sorting options=7<br/>
+<p>sorting descending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 1:Lead ID<br/>
+<p>sorting ascending: on column: 2:Lead Name<br/>
+<p>sorting descending: on column: 2:Lead Name<br/>
+<p>sorting ascending: on column: 3:Company Name<br/>
+<p>sorting descending: on column: 3:Company Name<br/>
+<p>sorting ascending: on column: 4:Service Name<br/>
+<p>sorting descending: on column: 4:Service Name<br/>
+<p>sorting ascending: on column: 5:Prospect Type<br/>
+<p>sorting descending: on column: 5:Prospect Type<br/>
+<p>sorting ascending: on column: 6:Lead Status<br/>
+<p>sorting descending: on column: 6:Lead Status<br/>
+<p>entries before searching  : Showing 1 to 10 of 31 entries<br/>
+<p>entries after searching : Showing 1 to 10 of 31 entries<br/>
+<p>entries doesnt change, the prospect type is Quote<br/>
+</div>
+</td>
+<td></td>
+<td>49</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.BDE.r_LC_TS_50_leadEditTrackIt()'><b>r_LC_TS_50_leadEditTrackIt</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-21104361" onClick='toggleBox("Output-21104361", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-21104361" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-21104361">
+<p>Array before clicking on trackit button is: [394, raju, euvri, Jaloo, QA, Closed Phase, Track It Edit]<br/>
+<p>array size after trackit button is clicked:20<br/>
+<p>array element after trackit button is clicked: Lead Id : 394<br/>
+<p>array element after trackit button is clicked: Name : raju euvri<br/>
+<p>array element after trackit button is clicked: Current Phase : Closed Phase<br/>
+<p>array element after trackit button is clicked: Current Status : Customer<br/>
+<p>Data is matching exactly <br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.BDM.r_LC_TS_68_coldStorage()'><b>r_LC_TS_68_coldStorage</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-23621731" onClick='toggleBox("Output-23621731", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-23621731" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-23621731">
+<p>Test for Cold storage<br/>
+<p>Click on the 'Cold Storage' Link<br/>
+<p>Page loaded is:Cold Storage<br/>
+<p>Lead Status of every lead is Follow up 4<br/>
+<p>No. of leads in the Table:10<br/>
+<p>Confirm button is enabled for all 10 leads.<br/>
+<p>The details of lead selected to confirm: 645 Henry Sanchez Dynazzy<br/>
+<p>Lead Successfully sent to Cold Storage...<br/>
+<p>Searching the lead in cold storage phase which is confirmed.<br/>
+<p>No matching records found<br/>
+<p>Clicking on the Lead Search and verifying the confirmed lead of cold storage.<br/>
+<p>Searching the lead in Lead Search which is confirmed in cold storage phase .<br/>
+<p>11 Henry Sanchez Project Manager hsanchezhw@about.com 2-(951)304-6076 1-(129)690-1477 2-(873)210-0479 LinkedIn Profile 645 Dynazzy Mexico Ciudad de Huajuapam de Le?n Domain H Campaign 21 Mobile ColdStorage<br/>
+<p>___________________________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>61</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.Management.r_TS_61_TC006QTrackit()'><b>r_TS_61_TC006QTrackit</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-19531846" onClick='toggleBox("Output-19531846", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-19531846" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-19531846">
+<p>The particular Lead is : 664 Denise Ward Eire<br/>
+<p>No of columns in the table are :7<br/>
+<p>Array before clicking on trackit button is: [664, Denise Ward, Eire, Mobile, Quote, Prospect, Track It]<br/>
+<p>No of rows in track it lead details of table 5<br/>
+<p>array size after trackit button is clicked:20<br/>
+<p>array element after trackit button is clicked: Lead Id : 664<br/>
+<p>array element after trackit button is clicked: Name : Denise Ward<br/>
+<p>array element after trackit button is clicked: Current Status : Prospect<br/>
+<p>Status : Uploaded<br/>
+<p>Download : Quote.doc<br/>
+<p>tag name for the file is: a<br/>
+<p>File can be downloaded<br/>
+</div>
+</td>
+<td></td>
+<td>24</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.BDM.s_LC_TS_32_FollowupProspectIdentityProposal()'><b>s_LC_TS_32_FollowupProspectIdentityProposal</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-5855692" onClick='toggleBox("Output-5855692", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-5855692" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-5855692">
+<p>All Followups Page is opened<br/>
+<p>Paula Evans<br/>
+<p>child window title is: Followup for Lead 1679
+close<br/>
+<p>Error--> Please Enter Fixed Date....<br/>
+<p>Error--> Please Enter Fixed Date....<br/>
+<p>***************Checking options under 'To' dropdown*********************<br/>
+<p>ajay.kovuri5@nexiilabs.com-->mail id of Architect for Web is displayed<br/>
+<p>ajay.kovuri6@nexiilabs.com-->mail id of Architect for Web is displayed<br/>
+<p>ajay.kovuri7@nexiilabs.com-->mail id of Architect for Web is displayed<br/>
+<p>kovuriajay0@nexii.com-->mail id of Architect for Web is displayed<br/>
+<p>kovuriajay1@nexii.com-->mail id of Architect for Web is displayed<br/>
+<p>saikrishh@gmail.com-->mail id of Architect for Web is displayed<br/>
+<p>Randomly service selected is Web and randomly selecting email id is ajay.kovuri7@nexiilabs.com<br/>
+<p>Error--> Please Enter Subject<br/>
+<p>Error--> Please Leave A Message....<br/>
+<p>Error--> Please Leave A Comment....<br/>
+<p>Error--> Please Enter Next FollowUp Date....<br/>
+<p>Proposal Request Send Successfully<br/>
+<p>----------------Work phase comments table------------------<br/>
+<p>Work Phase Comments
+S.No. Comment Id Comment DescriptionComment Comment On Comment By
+1 #1814 introductory mail test 2014-11-25 20:12:43.0 srinivasa sanchana
+2 #1847 proposal test comment 2014-11-26 17:33:32.0 srinivasa sanchana<br/>
+<p>-----------------------------------------------------------<br/>
+<p>Current Status : Prospect<br/>
+<p>status is displayed correct<br/>
+<p>Logged out of BDM Module<br/>
+<p>Logging in to Management Module<br/>
+<p>Clicking on All Proposals and searching for the proposal requested lead id:1679 Paula Evans Livefish<br/>
+<p>1679 Paula Evans Livefish Web Prospect Proposal Track It<br/>
+<p>Logged out of Management Module<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>66</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDE.s_LC_TS_51_LeadEdit()'><b>s_LC_TS_51_LeadEdit</b><br>Test class: src.crm.BDE<br/>
+<a href="#Output-7349620" onClick='toggleBox("Output-7349620", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-7349620" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-7349620">
+<p>lead before clicking on edit button is: [394, raju, euvri, Jaloo, QA, Closed Phase, Track It Edit]<br/>
+<p>Update Lead<br/>
+<p>5:SAAS is selected <br/>
+<p>3:HRMS is selected <br/>
+<p>Details Updated Successfully...<br/>
+<p>lead details after  editing   : [394, raju, euvri, Jaloo, SAAS, Closed Phase, Track It Edit]<br/>
+<p>QA:changed to:SAAS<br/>
+</div>
+</td>
+<td></td>
+<td>31</td>
+<td>src.crm.BDE@80d0bb</td></tr>
+<tr>
+<td title='src.crm.Management.s_TS_62_TC001Leads()'><b>s_TS_62_TC001Leads</b><br>Test class: src.crm.Management<br/>
+<a href="#Output-759469" onClick='toggleBox("Output-759469", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-759469" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-759469">
+<p>The reqiured field:Designation<br/>
+<p>Size of Filter option categories:7<br/>
+<p>Filter Option Selected:Choose Company<br/>
+<p>No.of options in Choose Company List:395<br/>
+<p>Option selected is:Twinte<br/>
+<p>1 Project Manager
+2 Trainee Engineer
+3 Technical Lead
+4 Software Engineer
+5 Sr Software Engineer<br/>
+<p>Filter Option Selected:Choose Country<br/>
+<p>No.of options in Choose Country List:502<br/>
+<p>Option selected is:Kenya<br/>
+<p>1 Project Manager
+2 Sr Software Engineer<br/>
+<p>Filter Option Selected:Choose City<br/>
+<p>No.of options in Choose City List:3757<br/>
+<p>Option selected is:Elmont<br/>
+<p>1 Project Lead<br/>
+<p>Filter Option Selected:Choose Domain<br/>
+<p>No.of options in Choose Domain List:24<br/>
+<p>Option selected is:Banking<br/>
+<p>1 Jr Software Engineer
+2 Technical Lead
+3 Project Lead
+4 Sr Software Engineer
+5 Software Engineer
+6 Project Manager
+7 test
+8 test2<br/>
+<p>Filter Option Selected:Choose Campaign<br/>
+<p>No.of options in Choose Campaign List:43<br/>
+<p>Option selected is:Campaign 29<br/>
+<p>1 Software Engineer
+2 Project Lead
+3 Jr Software Engineer
+4 Technical Lead
+5 Sr Software Engineer
+6 Trainee Engineer
+7 Project Manager<br/>
+<p>Filter Option Selected:Choose Service<br/>
+<p>No.of options in Choose Service List:15<br/>
+<p>Option selected is:databaseadmin<br/>
+<p>1 Project Lead
+2 Jr Software Engineer<br/>
+<p>Filter Option Selected:Choose Status<br/>
+<p>No.of options in Choose Status List:7<br/>
+<p>Option selected is:Qualified<br/>
+<p>1 Jr Software Engineer
+2 Software Engineer
+3 Technical Lead
+4 Project Lead
+5 Project Manager
+6 Trainee Engineer
+7 Sr Software Engineer<br/>
+<p>######Done with validation of Search leads page######<br/>
+</div>
+</td>
+<td></td>
+<td>79</td>
+<td>src.crm.Management@1f45f2a</td></tr>
+<tr>
+<td title='src.crm.BDM.t_LC_TS_34_proposalUpload()'><b>t_LC_TS_34_proposalUpload</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-4953445" onClick='toggleBox("Output-4953445", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-4953445" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-4953445">
+<p>Test for Proposal Upload<br/>
+<p>Click on the 'Proposal Upload' Link<br/>
+<p>Page loaded is:Leads for Proposal Upload<br/>
+<p>Lead Status of every lead is Prospect<br/>
+<p>No. of leads in the Table:4<br/>
+<p>Upload button is enabled for all 4 leads.<br/>
+<p>The ID of Lead selected to Upload:1679<br/>
+Paula EvansLivefish<br/>
+<p>The lead window opened for upload:Proposal Upload for Lead 1679<br/>
+<p>Lead selected to upload is matched with the Lead opened.<br/>
+<p>Proposal Uploaded Successfully...<br/>
+<p>Searching the proposal uploaded lead in Proposal upload page.<br/>
+<p>No matching records found<br/>
+<p>Logged out of BDM Module<br/>
+<p>Logging into srinivasa.sanchana@nexiilabs.com account.<br/>
+<p>Click on the 'All FollowUps' Link<br/>
+<p>1679 Paula Evans Livefish Web 2014-11-26 Prospect Identify Track It FollowUp<br/>
+<p>Status : Uploaded<br/>
+<p>The attribute of href is: http://192.168.50.32:8080/leadcrm/ProposalDownloadServlet?leadid=1679<br/>
+<P>The file uploaded is: D:\sel\WS 1\LeadCRM\src\testData\Proposal.pdf<br/>
+<P>The file displayed in the track it of lead is:Proposal.pdf<br/>
+<p>The file uploaded is verified.<br/>
+<p>___________________________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>59</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.u_LC_TS_32_FollowupProspectIdentityQuote()'><b>u_LC_TS_32_FollowupProspectIdentityQuote</b><br>Test class: src.crm.BDM<br/>
+<a href="#Output-9650167" onClick='toggleBox("Output-9650167", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-9650167" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-9650167">
+<p>All Followups Page is opened<br/>
+<p>child window title is: Followup for Lead 1687
+close<br/>
+<p>Error--> Please Enter Fixed Date....<br/>
+<p>Error--> Please Leave A Comment....<br/>
+<p>Error--> Please Enter Next FollowUp Date....<br/>
+<p>Quote Details Successfully Updated...<br/>
+<p>----------------Work phase comments table------------------<br/>
+<p>Work Phase Comments
+S.No. Comment Id Comment DescriptionComment Comment On Comment By
+1 #1837 introductory mail test 2014-11-26 15:57:31.0 srinivasa sanchana
+2 #1848 Quote test comment 2014-11-26 17:36:21.0 srinivasa sanchana<br/>
+<p>Logged out of BDM Module<br/>
+<p>Logging in to Management Module<br/>
+<p>Clicking on All Quotes and searching for the quote requested lead with lead id:1687 Nancy Russell Reallinks<br/>
+<p>1687 Nancy Russell Reallinks Web Quote Prospect Track It<br/>
+<p>Logged out of Management Module<br/>
+<p> ___________________________________________________________________<br/>
+</div>
+</td>
+<td></td>
+<td>60</td>
+<td>src.crm.BDM@db3158</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='src.crm.BDM.v_LC_TS_35_quoteUpload()'><b>v_LC_TS_35_quoteUpload</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.w_LC_TS_32_proposalQuoteSend()'><b>w_LC_TS_32_proposalQuoteSend</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.w_LC_TS_32_proposalQuoteSend()'><b>w_LC_TS_32_proposalQuoteSend</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.x_LC_TS_32_proposalQuoteaccept()'><b>x_LC_TS_32_proposalQuoteaccept</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.x_LC_TS_32_proposalQuoteaccept()'><b>x_LC_TS_32_proposalQuoteaccept</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.y_LC_TS_33_verifyleadclosebutton()'><b>y_LC_TS_33_verifyleadclosebutton</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.z_LC_TS_33_leadcloseCustomer()'><b>z_LC_TS_33_leadcloseCustomer</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.za_LC_TS_33_leadcloseLostCompetition()'><b>za_LC_TS_33_leadcloseLostCompetition</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.zb_LC_TS_36_leadSearch()'><b>zb_LC_TS_36_leadSearch</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.zc_LC_TS_39_testLeadEditButton()'><b>zc_LC_TS_39_testLeadEditButton</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+<tr>
+<td title='src.crm.BDM.zd_LC_TS_40_changePassword()'><b>zd_LC_TS_40_changePassword</b><br>Test class: src.crm.BDM</td>
+<td></td>
+<td>0</td>
+<td>src.crm.BDM@db3158</td></tr>
+</table><p>
+</body>
+</html>

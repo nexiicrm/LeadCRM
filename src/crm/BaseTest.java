@@ -6,10 +6,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Properties;
-
 import jxl.Sheet;
 import jxl.Workbook;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeSuite;
@@ -27,7 +25,6 @@ public class BaseTest
   public static Logger log = null;
   public static Helper help = null;
   public static File f = null;
-  
   public static Connection connection = null;
   public static Statement statement;
   public static ResultSet resultSet;
@@ -88,4 +85,4 @@ public class BaseTest
 	   
   }
   
-}
+ }

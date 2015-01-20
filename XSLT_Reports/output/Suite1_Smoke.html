@@ -1,0 +1,565 @@
+<html xmlns:math="http://exslt.org/math" xmlns:testng="http://testng.org">
+   <head>
+      <title>TestNG Results</title>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8"></meta>
+      <meta http-equiv="pragma" content="no-cache"></meta>
+      <meta http-equiv="cache-control" content="max-age=0"></meta>
+      <meta http-equiv="cache-control" content="no-cache"></meta>
+      <meta http-equiv="cache-control" content="no-store"></meta>
+      <LINK rel="stylesheet" href="style.css"></LINK>
+      <script type="text/javascript" src="main.js"></script>
+   </head>
+   <body>
+      <table width="100%" style="font-size: 16px; margin-bottom: 10px;" cellspacing="1">
+         <tr>
+            <td width="100%">
+               Test case
+               
+               <b>Smoke</b>
+            </td>
+            <td style="background-color: #FFBBBB; padding: 3px 3px 3px 0;" align="center">
+               <div style="width: 50px;">1</div>
+            </td>
+            <td style="background-color: lightgreen; padding: 3px 3px 3px 0;" align="center">
+               <div style="width: 50px;">2</div>
+            </td>
+            <td style="background-color: #FFFFBB; padding: 3px 3px 3px 0;" align="center">
+               <div style="width: 50px;">0</div>
+            </td>
+            <td align="center" style="background-color: #eaf0f7; padding: 3px 3px 3px 0;">
+               <div style="width: 50px;">3</div>
+            </td>
+            <td align="center"
+                style="font-weight: bold; background-color: #eaf0f7; padding: 3px 3px 3px 0;">
+               <div style="width: 50px;">67%</div>
+            </td>
+            <td style="background-color: #eaf0f7; padding: 3px 3px 3px 0;" align="center"
+                nowrap="true">2m
+               21s
+               
+            </td>
+         </tr>
+      </table>
+      <div style="width: 200px;">
+         <label for="groupMethodsCheckBox" style="font-weight: bold; margin: 0;">
+            <input id="groupMethodsCheckBox" type="checkbox" onclick="switchTestMethodsView(this)"></input>
+            Group by class
+            
+         </label>
+         <br></br>
+         <label for="methodsFilter_ALL" style="font-weight: bold; margin: 0;">
+            <input id="methodsFilter_ALL" type="checkbox"
+                   onclick="testMethodsFilterChanged(this, 'ALL')"></input>
+            All
+            
+         </label>
+      </div>
+      <label for="methodsFilter_FAIL" style="margin-left: 20px;">
+         <input id="methodsFilter_FAIL" type="checkbox"
+                onclick="testMethodsFilterChanged(this, 'FAIL')"
+                checked=""></input>
+         Failed
+         
+      </label>
+      <label for="methodsFilter_PASS">
+         <input id="methodsFilter_PASS" type="checkbox"
+                onclick="testMethodsFilterChanged(this, 'PASS')"
+                checked=""></input>
+         Passed
+         
+      </label>
+      <label for="methodsFilter_SKIP">
+         <input id="methodsFilter_SKIP" type="checkbox"
+                onclick="testMethodsFilterChanged(this, 'SKIP')"
+                checked=""></input>
+         Skipped
+         
+      </label>
+      <label for="methodsFilter_CONF">
+         <input id="methodsFilter_CONF" type="checkbox"
+                onclick="testMethodsFilterChanged(this, 'CONF')"></input>
+         Config
+         
+      </label>
+      <br></br>
+      <div id="testMethodsByStatus">
+         <table class="testMethodsTable" cellpadding="0" cellspacing="0">
+            <tr class="methodsTableHeader">
+               <td width="100%">Name</td>
+               <td nowrap="true">Started</td>
+               <td nowrap="true">Duration</td>
+               <td>Exception</td>
+            </tr>
+            <tr id="src.crm.Smoke_bBDM_byStatus_failed_FAIL1_row" class="testMethodStatusFAIL">
+               <td width="100%" class="firstMethodCell">
+                  <a onclick="toggleDetailsVisibility('src.crm.Smoke_bBDM_byStatus_failed_FAIL1_details')">bBDM()</a>
+               </td>
+               <td nowrap="true">12:37:17</td>
+               <td nowrap="true" align="right">1m
+                  
+               </td>
+               <td nowrap="true">
+                  <a onclick="toggleDetailsVisibility('src.crm.Smoke_bBDM_byStatus_failed_FAIL1_exception')">org.openqa.selenium.NoSuchElementException: 
+                     Unable to locate element: {"method":"class name","selector":"segregate"}
+                     Command duration or timeout: 37 milliseconds
+                     For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+                     Build info: version: '2.44.0', revision: '76d78cf', time: '2014-10-23 20:02:37'
+                     System info: host: 'pavann', ip: '172.16.10.80', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_67'
+                     Session ID: bcd66619-b31d-41b1-918e-c3e2e7a43a60
+                     Driver info: org.openqa.selenium.firefox.FirefoxDriver
+                     Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true,
+                     browserName=firefox, handlesAlerts=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true,
+                     applicationCacheEnabled=true, takesScreenshot=true, version=33.1.1}]
+                     
+                  </a>
+                   
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="4" class="detailsBox">
+                  <div id="src.crm.Smoke_bBDM_byStatus_failed_FAIL1_details" class="testMethodDetails">
+                     <div>
+                        <b>Name: </b>bBDM
+                     </div>
+                     <div>
+                        <b>Signature: </b>bBDM()[pri:0, instance:src.crm.Smoke@1d317ab]
+                     </div>
+                     <div>
+                        <b>Start time: </b>12:37:17
+                     </div>
+                     <div>
+                        <b>End time: </b>12:38:17
+                     </div>
+                     <div>
+                        <b>Duration: </b>1m
+                        
+                     </div>
+                  </div>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="4" class="detailsBox">
+                  <div id="src.crm.Smoke_bBDM_byStatus_failed_FAIL1_exception"
+                       class="testMethodDetails">
+                     <pre style="padding: 5px; margin: 0;">org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"class name","selector":"segregate"}
+                        Command duration or timeout: 37 milliseconds
+                        For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+                        Build info: version: '2.44.0', revision: '76d78cf', time: '2014-10-23 20:02:37'
+                        System info: host: 'pavann', ip: '172.16.10.80', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_67'
+                        Session ID: bcd66619-b31d-41b1-918e-c3e2e7a43a60
+                        Driver info: org.openqa.selenium.firefox.FirefoxDriver
+                        Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true,
+                        browserName=firefox, handlesAlerts=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true,
+                        applicationCacheEnabled=true, takesScreenshot=true, version=33.1.1}]
+                        	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+                        	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+                        	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+                        	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+                        	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+                        	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+                        	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+                        	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+                        	at org.openqa.selenium.remote.RemoteWebDriver.findElementByClassName(RemoteWebDriver.java:433)
+                        	at org.openqa.selenium.By$ByClassName.findElement(By.java:387)
+                        	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+                        	at src.crm.Smoke.bBDM(Smoke.java:117)
+                        	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+                        	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+                        	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+                        	at java.lang.reflect.Method.invoke(Method.java:606)
+                        	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+                        	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+                        	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+                        	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+                        	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+                        	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+                        	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+                        	at org.testng.TestRunner.run(TestRunner.java:617)
+                        	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+                        	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+                        	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+                        	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+                        	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+                        	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+                        	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+                        	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+                        	at org.testng.TestNG.run(TestNG.java:1057)
+                        	at org.testng.TestNG.privateMain(TestNG.java:1364)
+                        	at org.testng.TestNG.main(TestNG.java:1333)
+                        Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"class name","selector":"segregate"}
+                        For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+                        Build info: version: '2.44.0', revision: '76d78cf', time: '2014-10-23 20:02:37'
+                        System info: host: 'pavann', ip: '172.16.10.80', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_67'
+                        Driver info: driver.version: unknown
+                        	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous3219910461319922878webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+                        	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElement(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous3219910461319922878webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
+                        	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous3219910461319922878webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+                        	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous3219910461319922878webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+                        	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous3219910461319922878webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
+                     </pre>
+                  </div>
+               </td>
+            </tr>
+            <tr id="src.crm.Smoke_beforesuite_byStatus_passed_PASS1_row"
+                class="testMethodStatusPASS testMethodStatusCONF">
+               <td width="100%" class="firstMethodCell">
+                  <a onclick="toggleDetailsVisibility('src.crm.Smoke_beforesuite_byStatus_passed_PASS1_details')">beforesuite()</a>
+               </td>
+               <td nowrap="true">12:36:34</td>
+               <td nowrap="true" align="right">2s
+                  
+               </td>
+               <td nowrap="true">
+                   
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="4" class="detailsBox">
+                  <div id="src.crm.Smoke_beforesuite_byStatus_passed_PASS1_details"
+                       class="testMethodDetails">
+                     <div>
+                        <b>Name: </b>beforesuite
+                     </div>
+                     <div>
+                        <b>Signature: </b>beforesuite()[pri:0, instance:src.crm.Smoke@1d317ab]
+                     </div>
+                     <div>
+                        <b>Start time: </b>12:36:34
+                     </div>
+                     <div>
+                        <b>End time: </b>12:36:36
+                     </div>
+                     <div>
+                        <b>Duration: </b>2s
+                        
+                     </div>
+                  </div>
+               </td>
+            </tr>
+            <tr></tr>
+            <tr id="src.crm.Smoke_aResearcher_byStatus_passed_PASS2_row"
+                class="testMethodStatusPASS">
+               <td width="100%" class="firstMethodCell">
+                  <a onclick="toggleDetailsVisibility('src.crm.Smoke_aResearcher_byStatus_passed_PASS2_details')">aResearcher()</a>
+               </td>
+               <td nowrap="true">12:36:36</td>
+               <td nowrap="true" align="right">41s
+                  
+               </td>
+               <td nowrap="true">
+                   
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="4" class="detailsBox">
+                  <div id="src.crm.Smoke_aResearcher_byStatus_passed_PASS2_details"
+                       class="testMethodDetails">
+                     <div>
+                        <b>Name: </b>aResearcher
+                     </div>
+                     <div>
+                        <b>Signature: </b>aResearcher()[pri:0, instance:src.crm.Smoke@1d317ab]
+                     </div>
+                     <div>
+                        <b>Start time: </b>12:36:36
+                     </div>
+                     <div>
+                        <b>End time: </b>12:37:17
+                     </div>
+                     <div>
+                        <b>Duration: </b>41s
+                        
+                     </div>
+                  </div>
+               </td>
+            </tr>
+            <tr></tr>
+            <tr id="src.crm.Smoke_cManagement_byStatus_passed_PASS3_row"
+                class="testMethodStatusPASS">
+               <td width="100%" class="firstMethodCell">
+                  <a onclick="toggleDetailsVisibility('src.crm.Smoke_cManagement_byStatus_passed_PASS3_details')">cManagement()</a>
+               </td>
+               <td nowrap="true">12:38:17</td>
+               <td nowrap="true" align="right">40s
+                  
+               </td>
+               <td nowrap="true">
+                   
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="4" class="detailsBox">
+                  <div id="src.crm.Smoke_cManagement_byStatus_passed_PASS3_details"
+                       class="testMethodDetails">
+                     <div>
+                        <b>Name: </b>cManagement
+                     </div>
+                     <div>
+                        <b>Signature: </b>cManagement()[pri:0, instance:src.crm.Smoke@1d317ab]
+                     </div>
+                     <div>
+                        <b>Start time: </b>12:38:17
+                     </div>
+                     <div>
+                        <b>End time: </b>12:38:57
+                     </div>
+                     <div>
+                        <b>Duration: </b>40s
+                        
+                     </div>
+                  </div>
+               </td>
+            </tr>
+            <tr></tr>
+         </table>
+      </div>
+      <div id="testMethodsByClass" style="display: none;">
+         <table class="testMethodsTable" cellpadding="0" cellspacing="0">
+            <tr>
+               <td colspan="4">
+                  <h3 style="display: inline;">src.crm.Smoke</h3>
+               </td>
+            </tr>
+            <tr class="methodsTableHeader">
+               <td width="100%">Name</td>
+               <td nowrap="true">Started</td>
+               <td nowrap="true">Duration</td>
+               <td>Exception</td>
+            </tr>
+            <tr id="src.crm.Smoke_beforesuite_byClass_PASS1_row"
+                class="testMethodStatusPASS testMethodStatusCONF">
+               <td width="100%" class="firstMethodCell">
+                  <a onclick="toggleDetailsVisibility('src.crm.Smoke_beforesuite_byClass_PASS1_details')">beforesuite()</a>
+               </td>
+               <td nowrap="true">12:36:34</td>
+               <td nowrap="true" align="right">2s
+                  
+               </td>
+               <td nowrap="true">
+                   
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="4" class="detailsBox">
+                  <div id="src.crm.Smoke_beforesuite_byClass_PASS1_details" class="testMethodDetails">
+                     <div>
+                        <b>Name: </b>beforesuite
+                     </div>
+                     <div>
+                        <b>Signature: </b>beforesuite()[pri:0, instance:src.crm.Smoke@1d317ab]
+                     </div>
+                     <div>
+                        <b>Start time: </b>12:36:34
+                     </div>
+                     <div>
+                        <b>End time: </b>12:36:36
+                     </div>
+                     <div>
+                        <b>Duration: </b>2s
+                        
+                     </div>
+                  </div>
+               </td>
+            </tr>
+            <tr></tr>
+            <tr id="src.crm.Smoke_aResearcher_byClass_PASS2_row" class="testMethodStatusPASS">
+               <td width="100%" class="firstMethodCell">
+                  <a onclick="toggleDetailsVisibility('src.crm.Smoke_aResearcher_byClass_PASS2_details')">aResearcher()</a>
+               </td>
+               <td nowrap="true">12:36:36</td>
+               <td nowrap="true" align="right">41s
+                  
+               </td>
+               <td nowrap="true">
+                   
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="4" class="detailsBox">
+                  <div id="src.crm.Smoke_aResearcher_byClass_PASS2_details" class="testMethodDetails">
+                     <div>
+                        <b>Name: </b>aResearcher
+                     </div>
+                     <div>
+                        <b>Signature: </b>aResearcher()[pri:0, instance:src.crm.Smoke@1d317ab]
+                     </div>
+                     <div>
+                        <b>Start time: </b>12:36:36
+                     </div>
+                     <div>
+                        <b>End time: </b>12:37:17
+                     </div>
+                     <div>
+                        <b>Duration: </b>41s
+                        
+                     </div>
+                  </div>
+               </td>
+            </tr>
+            <tr></tr>
+            <tr id="src.crm.Smoke_bBDM_byClass_FAIL3_row" class="testMethodStatusFAIL">
+               <td width="100%" class="firstMethodCell">
+                  <a onclick="toggleDetailsVisibility('src.crm.Smoke_bBDM_byClass_FAIL3_details')">bBDM()</a>
+               </td>
+               <td nowrap="true">12:37:17</td>
+               <td nowrap="true" align="right">1m
+                  
+               </td>
+               <td nowrap="true">
+                  <a onclick="toggleDetailsVisibility('src.crm.Smoke_bBDM_byClass_FAIL3_exception')">org.openqa.selenium.NoSuchElementException: 
+                     Unable to locate element: {"method":"class name","selector":"segregate"}
+                     Command duration or timeout: 37 milliseconds
+                     For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+                     Build info: version: '2.44.0', revision: '76d78cf', time: '2014-10-23 20:02:37'
+                     System info: host: 'pavann', ip: '172.16.10.80', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_67'
+                     Session ID: bcd66619-b31d-41b1-918e-c3e2e7a43a60
+                     Driver info: org.openqa.selenium.firefox.FirefoxDriver
+                     Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true,
+                     browserName=firefox, handlesAlerts=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true,
+                     applicationCacheEnabled=true, takesScreenshot=true, version=33.1.1}]
+                     
+                  </a>
+                   
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="4" class="detailsBox">
+                  <div id="src.crm.Smoke_bBDM_byClass_FAIL3_details" class="testMethodDetails">
+                     <div>
+                        <b>Name: </b>bBDM
+                     </div>
+                     <div>
+                        <b>Signature: </b>bBDM()[pri:0, instance:src.crm.Smoke@1d317ab]
+                     </div>
+                     <div>
+                        <b>Start time: </b>12:37:17
+                     </div>
+                     <div>
+                        <b>End time: </b>12:38:17
+                     </div>
+                     <div>
+                        <b>Duration: </b>1m
+                        
+                     </div>
+                  </div>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="4" class="detailsBox">
+                  <div id="src.crm.Smoke_bBDM_byClass_FAIL3_exception" class="testMethodDetails">
+                     <pre style="padding: 5px; margin: 0;">org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"class name","selector":"segregate"}
+                        Command duration or timeout: 37 milliseconds
+                        For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+                        Build info: version: '2.44.0', revision: '76d78cf', time: '2014-10-23 20:02:37'
+                        System info: host: 'pavann', ip: '172.16.10.80', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_67'
+                        Session ID: bcd66619-b31d-41b1-918e-c3e2e7a43a60
+                        Driver info: org.openqa.selenium.firefox.FirefoxDriver
+                        Capabilities [{platform=WINDOWS, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true,
+                        browserName=firefox, handlesAlerts=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true,
+                        applicationCacheEnabled=true, takesScreenshot=true, version=33.1.1}]
+                        	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+                        	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+                        	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+                        	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+                        	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+                        	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+                        	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+                        	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+                        	at org.openqa.selenium.remote.RemoteWebDriver.findElementByClassName(RemoteWebDriver.java:433)
+                        	at org.openqa.selenium.By$ByClassName.findElement(By.java:387)
+                        	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+                        	at src.crm.Smoke.bBDM(Smoke.java:117)
+                        	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+                        	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+                        	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+                        	at java.lang.reflect.Method.invoke(Method.java:606)
+                        	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+                        	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+                        	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+                        	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+                        	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+                        	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+                        	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+                        	at org.testng.TestRunner.run(TestRunner.java:617)
+                        	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+                        	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+                        	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+                        	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+                        	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+                        	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+                        	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+                        	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+                        	at org.testng.TestNG.run(TestNG.java:1057)
+                        	at org.testng.TestNG.privateMain(TestNG.java:1364)
+                        	at org.testng.TestNG.main(TestNG.java:1333)
+                        Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"class name","selector":"segregate"}
+                        For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+                        Build info: version: '2.44.0', revision: '76d78cf', time: '2014-10-23 20:02:37'
+                        System info: host: 'pavann', ip: '172.16.10.80', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_67'
+                        Driver info: driver.version: unknown
+                        	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous3219910461319922878webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+                        	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElement(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous3219910461319922878webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
+                        	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous3219910461319922878webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+                        	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous3219910461319922878webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+                        	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///C:/Users/pavan.n/AppData/Local/Temp/anonymous3219910461319922878webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
+                     </pre>
+                  </div>
+               </td>
+            </tr>
+            <tr id="src.crm.Smoke_cManagement_byClass_PASS4_row" class="testMethodStatusPASS">
+               <td width="100%" class="firstMethodCell">
+                  <a onclick="toggleDetailsVisibility('src.crm.Smoke_cManagement_byClass_PASS4_details')">cManagement()</a>
+               </td>
+               <td nowrap="true">12:38:17</td>
+               <td nowrap="true" align="right">40s
+                  
+               </td>
+               <td nowrap="true">
+                   
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="4" class="detailsBox">
+                  <div id="src.crm.Smoke_cManagement_byClass_PASS4_details" class="testMethodDetails">
+                     <div>
+                        <b>Name: </b>cManagement
+                     </div>
+                     <div>
+                        <b>Signature: </b>cManagement()[pri:0, instance:src.crm.Smoke@1d317ab]
+                     </div>
+                     <div>
+                        <b>Start time: </b>12:38:17
+                     </div>
+                     <div>
+                        <b>End time: </b>12:38:57
+                     </div>
+                     <div>
+                        <b>Duration: </b>40s
+                        
+                     </div>
+                  </div>
+               </td>
+            </tr>
+            <tr></tr>
+         </table>
+         <br></br>
+      </div>
+      <div style="margin-top: 15px; color: gray; text-align: center; font-size: 9px;">
+         Generated with
+         
+         <a href="http://code.google.com/p/testng-xslt/" style="color: #8888aa;"
+            target="_blank">
+            TestNG XSLT
+            
+         </a>
+      </div>
+   </body>
+</html>

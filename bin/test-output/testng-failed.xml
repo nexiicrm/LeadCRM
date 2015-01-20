@@ -1,16 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]">
-  <test name="Default test(failed)">
+<suite name="Failed suite [Suite1]">
+  <test name="Regression(failed)">
     <classes>
+      <class name="src.crm.Login">
+        <methods>
+          <include name="beforeMethod"/>
+          <include name="afterMethod"/>
+          <include name="beforesuite"/>
+        </methods>
+      </class> <!-- src.crm.Login -->
+      <class name="src.crm.BDM">
+        <methods>
+          <include name="v_LC_TS_35_quoteUpload"/>
+          <include name="zc_LC_TS_39_testLeadEditButton"/>
+          <include name="w_LC_TS_32_proposalQuoteSend"/>
+          <include name="y_LC_TS_33_verifyleadclosebutton"/>
+          <include name="zd_LC_TS_40_changePassword"/>
+          <include name="c_LC_TS_26_matching_service_name"/>
+          <include name="before"/>
+          <include name="za_LC_TS_33_leadcloseLostCompetition"/>
+          <include name="x_LC_TS_32_proposalQuoteaccept"/>
+          <include name="zb_LC_TS_36_leadSearch"/>
+          <include name="after"/>
+          <include name="z_LC_TS_33_leadcloseCustomer"/>
+        </methods>
+      </class> <!-- src.crm.BDM -->
+      <class name="src.crm.Researcher">
+        <methods>
+          <include name="beforeMethod"/>
+          <include name="afterMethod"/>
+        </methods>
+      </class> <!-- src.crm.Researcher -->
+      <class name="src.crm.Management">
+        <methods>
+          <include name="l_TS_60_TC004CDrop"/>
+          <include name="beforeMethod"/>
+          <include name="afterMethod"/>
+          <include name="p_TS_61_TC004QDrop"/>
+          <include name="h_TS_59_TC004LDrop"/>
+        </methods>
+      </class> <!-- src.crm.Management -->
       <class name="src.crm.BDE">
         <methods>
-          <include name="LC_TS_46_2_todaysFollowupProposal"/>
-          <include name="beforesuite"/>
+          <include name="t_LC_TS_52_changePassword"/>
           <include name="afterMethod"/>
+          <include name="i_LC_TS_47_AllFollowupclose"/>
           <include name="beforeMethod"/>
         </methods>
       </class> <!-- src.crm.BDE -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Regression(failed) -->
+</suite> <!-- Failed suite [Suite1] -->

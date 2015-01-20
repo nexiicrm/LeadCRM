@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite1">
@@ -14,3 +15,21 @@
   </test>
   
 </suite>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite1">
+  <test name="Regression">
+    <classes>
+       <class name="src.crm.Login"/>
+		<class name="src.crm.Administrator"/>
+	   <class name="src.crm.Researcher"/>
+	   <class name="src.crm.BDM"/>
+	   <class name="src.crm.BDE"/>
+		<class name="src.crm.Management"/>	   
+	   
+    </classes>
+  </test>
+  
+</suite>
+>>>>>>> Stashed changes
